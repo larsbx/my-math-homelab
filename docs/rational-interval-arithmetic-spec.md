@@ -1,8 +1,10 @@
 # Rational and interval arithmetic: canonical exactness specification
 
-**Status:** cross-program arithmetic contract, implemented canonically in `larsbx/finite-math-kernels`. finite-mandlebrot-research and `larsbx/pisot-substitution-conjecture-research` each vendor the same pinned monorepo commit and enforce per-file digests. Sections 0 to 5 are repository-independent; section 6 records the consumer binding rows. Exact arithmetic does not decide certificate acceptance or settle C1.
+**Status:** specification of the `finite_exact` package (layer ℚ, sections 0 to 1) and of the `larsbx/interval_q` package built on it (layer I, sections 2 to 3); shared by every consumer that vendors either package. Sections 0 to 5 are repository-independent and carry no theorem: exactness removes one class of error from a computation, and the epistemic status of the computation is governed by each consumer's own claim-status documents. Section 6 names the consumers and where each keeps its binding table; section 7 says how a consumer enforces the specification.
 
-Terminology in this file is field-recognizable (rational arithmetic, interval arithmetic, natural interval extension, dependency problem, floating-point filter). No novel bridge term is introduced. Where finite-mandlebrot-research terminology governance applies, every term here is Route A.
+History: this text was written in `larsbx/NLAP-JT` (`docs/rational-interval-arithmetic-spec.md`) while the arithmetic lived there, and moved here unchanged in sections 0 to 5 when the arithmetic was extracted. That program, now `larsbx/finite-mandlebrot-research`, and `larsbx/pisot-substitution-conjecture-research` keep only their binding rows.
+
+Terminology in this file is field-recognizable (rational arithmetic, interval arithmetic, natural interval extension, dependency problem, floating-point filter). No novel bridge term is introduced.
 
 ## 0. The problem being solved
 
@@ -204,9 +206,9 @@ A module implementing either layer is **conformant** when all of the following h
 
 The distinction between `Rat` (1.1) and a *checked* `Rat` is only C3; the algebra is the same.
 
-## 6. Repository binding
+## 6. Consumers and binding tables
 
-The binding table lists every module that instantiates a layer, its conformance class, and the criteria it currently fails. Classes:
+A consumer of either package keeps a **binding table** in its own repository: one row per module that instantiates a layer, with the module path, its conformance class, and the criteria it currently fails. Classes:
 
 | Class | Meaning |
 | --- | --- |
@@ -215,56 +217,33 @@ The binding table lists every module that instantiates a layer, its conformance 
 | DEMO | unchecked fixed-width backend; algebra conformant; barred from certificate acceptance |
 | QUARANTINED | uses floating point; allowlisted; barred from every certificate path; scheduled for replacement |
 
-### 6.1 `larsbx/pisot-substitution-conjecture-research`
+The packages themselves are CONFORMS rows in every consumer: `finite_exact/bigint_z.mojo` (1.1 integer backend, unbounded), `finite_exact/rat_q.mojo` (1.1–1.3 ℚ), and `finite_exact/closed_q.mojo` (2.1–2.5 I_Q and rank-2 boxes; stable facade `finite_exact/closed_interval.mojo`). A consumer must not re-implement a layer beside the vendored package; a second rational or interval type in a consumer is a binding-table violation.
 
-| Spec item | Module | Class | Notes |
-| --- | --- | --- | --- |
-| 1.1 integer backend, 1.1–1.3 ℚ, 2.1–2.5 I_Q | `mojo/finite_exact/bigint_z.mojo`, `mojo/finite_exact/rat_q.mojo`, `mojo/finite_exact/interval_q.mojo` | CONFORMS | copies of the three finite-mandlebrot-research modules of 6.2, identical up to the package qualification of their intra-package import lines; `scripts/check_finite_exact_sync.py` undoes that rewrite and compares SHA-256 digests with the upstream digests pinned in `mojo/finite_exact/UPSTREAM.md`, so any other local edit fails PSC CI |
-| PSC conventions over the package | `mojo/psc/exact.mojo` | CONFORMS | a rejected enclosure raises, a rejected scalar in integer-seeded polynomial arithmetic aborts as an impossible state; integer lifts, Horner helpers, midpoint, diagnostic rendering |
-| 1–2 direct consumers | `mojo/psc/qlinalg.mojo`, `mojo/psc/pisot.mojo`, `mojo/psc/tensor3.mojo`, `mojo/psc/w3.mojo` | CONFORMS | exact linear algebra, Sturm sequences, and the PIP screen over unbounded rationals; the former machine-width `Rat` is retired |
-| 2.3 enclosure of `β ∉ ℚ` | `mojo/psc/perron_interval.mojo` (`perron_root_interval`) | CONFORMS | integer bracket by exact sign changes, then bisection with unbounded endpoints |
-| 3.2 filter-then-exact | `mojo/psc/perron_interval.mojo` (`perron_sign_decision`) with oracle `psc.perron_field3.sign_at_perron` | CONFORMS | R1: fallback on `0`; R2: `interval_certified` flag |
-| 3.3 skeleton/margin split | `mojo/psc/overlap_interval_audit.mojo` | CONFORMS | overlap graph exact; margins interval-first with exact fallback; uniform minimum reported only when every margin is interval-certified |
+Known consumers and their binding tables:
 
-The earlier `CheckedRat`/`RatInterval` layer (`mojo/psc/rational_interval.mojo`, CONFORMS-CHECKED) and the unchecked `Rat` (`mojo/psc/rational.mojo`, DEMO) are deleted; their tests were carried over to `mojo/tests/test_exact_interval.mojo`.
+| Consumer | Binding table | Vendored root |
+| --- | --- | --- |
+| `larsbx/interval_q` | `README.md` | `finite_exact/` at the repository root |
+| `larsbx/finite_linear_algebra` | `README.md` | `finite_exact/` at the repository root |
+| `larsbx/finite-mandlebrot-research` | `docs/rational-interval-arithmetic-spec.md` (sections 6 and 7 only) | `src/finite_exact/`, `src/interval_q/` |
+| `larsbx/pisot-substitution-conjecture-research` | `docs/exact-arithmetic-binding.md` | `mojo/finite_exact/`, `mojo/interval_q/` |
+| `larsbx/finite-julia-set-research` | `docs/exact-arithmetic-binding.md` | `src/finite_exact/` |
 
-### 6.2 `larsbx/finite-mandlebrot-research`
+Promotion of a DEMO row to CONFORMS requires that the consumer's certificate-acceptance gate, not this package, be satisfied; `Q.accepted()` says only that a value is a well-formed rational.
 
-| Spec item | Module | Class | Notes |
-| --- | --- | --- | --- |
-| 1.1–1.3 ℚ | `src/finite_exact/rat_q.mojo` (`Q`), stable facade `src/finite_exact/rational.mojo` | CONFORMS | normalized `BigZ` numerator/positive denominator storage; addition, subtraction, and order scale by denominator cofactors of `gcd(den, den')`, multiplication cross-cancels (`q_cross_terms`); zero denominators and division by zero propagate rejection; certificate acceptance remains disabled pending consumer replay |
-| 1.1 integer backend | `src/finite_exact/bigint_z.mojo` (`BigZ`) | CONFORMS | dynamic base-`10^9` limbs; exact signed ring/order operations, quotient/remainder by schoolbook long division (Knuth Algorithm D) with the shift-and-subtract routine retained as an in-process reference, rejected non-divisions, Euclidean gcd, and canonical integer serialization; rational and core interval consumers are migrated, while certificate replay remains pending |
-| 1.1–1.5 ℚ, checked transition | `src/checked_q.mojo` (`CheckedQResult`) | CONFORMS-CHECKED | normalized accepted results; zero denominator, division by zero, unrepresentable magnitude, arithmetic overflow, and unsafe comparison all return explicit rejected no-results; feeds the checked interval certificate transition path |
-| 2.1–2.5 I_Q, checked transition | `src/checked_interval_q.mojo` (`CheckedIQResult`) | CONFORMS-CHECKED | enforces J1; propagates rejected endpoints and comparisons; reciprocal rejects intervals containing zero; sign is three-valued with a separate rejected state; feeds checked Krawczyk and exact-type exclusion predicates |
-| 2.1–2.5 complex I_Q and Horner, checked transition | `src/checked_complex_interval.mojo` (`CheckedComplexIQResult`) | CONFORMS-CHECKED | rank-2 interval coordinate arithmetic and ascending-coefficient Horner evaluation propagate every rejected component; used by checked `P_{2,1}` Krawczyk and orbit-exclusion calculations |
-| 2.4 checked strict inclusion witness | `src/checked_krawczyk_witness.mojo` (`CheckedKrawczykResult`) | CONFORMS-CHECKED | computes the `P_{2,1}` Krawczyk image at the dyadic box centered on -2; distinguishes arithmetic rejection from a valid non-contraction; does not enable proof-grade certificate acceptance |
-| 2.4 checked exact-type exclusions | `src/checked_interval_exclusion.mojo` (`CheckedExactTypeExclusionResult`) | CONFORMS-CHECKED | computes all 5 forbidden collisions for `(ell, period, horizon) = (2, 1, 3)` on the same checked c=-2 box; ambiguity and arithmetic rejection fail closed; bounded result does not enable proof-grade acceptance |
-| finite rational ray-address dynamics, checked transition | `src/checked_ray_address.mojo` (`CheckedRayAddrResult`) | CONFORMS-CHECKED | canonical modular doubling for the c=-2 address; malformed inputs and fixed-width multiplication overflow reject; not a measured angle |
-| finite angle-measure density | `src/C1_separated_density.mojo` (`SeparatedDensityResult`) | CONFORMS | BigZ-backed `Q` atom lengths, midpoints, squares, and sums for the measure of the pairs a finite set of two-ray separators separates, aggregated by side signature (`docs/C1_separated_pair_density.md`); malformed or out-of-range endpoints, a separator with coincident rays, and a total length other than one reject; the measure is Lebesgue measure on external angles, never harmonic measure or a decision about a named pair |
-| finite angle-measure density along a carrier | `src/C1_carrier_density_profile.mojo` (`CarrierDensityProfile`) | CONFORMS | BigZ-backed `Q` densities, residues, and per-level increments for every prefix of a residual directive carrier, each prefix measured by the kernel above (`docs/C1_separated_pair_density.md`); a level address that is not periodic, a separator that is not admissible under `docs/C1_admissible_separator_codes.md` (no accepted landing tag, no declared co-landing, or coincident rays), a separator the kernel refuses, a negative increment, a rising residue, and increments that do not sum to the final density all reject; the separator of each level is declared and checked, never derived from the level's address, and no level's measure is a statement about the carrier or about any named pair |
-| finite rational ray-address dynamics | `src/bigq_ray_address.mojo` (`BigQRayAddr`) | CONFORMS | normalized BigZ-backed `Q` values modulo one; malformed and out-of-range inputs reject; finite symbolic addresses only, not measured angles |
-| finite theorem-instance data | `src/bigq_theorem_tag_payload_instances.mojo` | CONFORMS | normalized BigZ-backed `Q` address data and finite source-scope matching; classification-proof attachment and final import remain explicitly false |
-| 2.1–2.5 I_Q, complex boxes | `src/finite_exact/closed_q.mojo` (`IQ`, `ComplexIQ`), stable facade `src/finite_exact/closed_interval.mojo` | CONFORMS | BigZ endpoints; `singleton` constructors for degenerate boxes; J1 and endpoint rejection enforced; reciprocal rejects zero-containing intervals; sign and containment/inclusion predicates preserve an explicit rejected state |
-| 1–2 property probe | `src/exact_arithmetic_property_probe.mojo` | CONFORMS | deterministic xorshift64* operands; prints canonical bytes of every `BigZ`, `Q`, and `IQ` result plus in-process long-division-versus-reference and canonicality self-checks; compared token by token by the secondary oracle in CI |
-| 1–2 property oracle (secondary) | `tools/exact_arithmetic_property_oracle.py` | CONFORMS | Python `int` and `fractions.Fraction`; regenerates the probe operands and the canonical encodings independently; the only trusted channel between the two is the byte layout of `docs/canonical-serialization.md` |
-| 2.3 natural extension, Horner | `src/poly_interval_eval.mojo` | DEMO | ascending-coefficient Horner over `ComplexIQ` |
-| 2.4 strict inclusion witness | `src/krawczyk_witness.mojo` | DEMO | Krawczyk contraction on `P_{2,1}`; `P_{4,1}` pending |
-| 1–2 direct arithmetic consumers | `src/complex_inverse.mojo`, `src/coord_record_eval.mojo`, `src/interval_orbit.mojo`, `src/quadratic_orbit/orbit.mojo`, `src/rank2_operator.mojo`, `src/rational_trig.mojo`, `src/smoke_tests.mojo` | DEMO | direct `Q` or `IQ` consumers now inherit BigZ arithmetic, but remain barred from certificate acceptance until each acceptance-bearing consumer is replayed and promoted explicitly; `src/quadratic_orbit/orbit.mojo` is vendored from `larsbx/finite-math-kernels` and carries the seeded orbit that `src/interval_orbit.mojo` used to define itself |
-| 2.4 exclusion oracle (secondary) | `tools/interval_exclusion_reference.py` | CONFORMS | Python `Fraction` endpoints; reference for `src/interval_orbit.mojo` |
-| exact base-ten rendering | `src/exact_decimal.mojo` (`bigz_decimal`, `q_decimal`) | CONFORMS | reads the vendored `BigZ` sign and base-`10^9` limbs and writes them as decimal digits, and a `Q` as `p/q` with the denominator kept; no division, no rounding and no floating point, so an exact value leaves the repository readable without becoming approximate; a rejected `Q` renders as `rejected` rather than as a number; it sits outside `finite_exact/` because that package is vendored byte for byte |
-| — | `src/complex_box.mojo` (`C64`, `ComplexBox`), `src/finite_mandelbrot.mojo`, `src/run_examples.mojo` | QUARANTINED | `Float64` demo substrate; replacement target is dyadic-rational endpoints per `docs/interval-orbit-native-target.md` |
+## 7. Hook: how a consumer enforces the specification
 
-Promotion of any DEMO row to CONFORMS requires the unbounded backend gate in `backend.toml` and `docs/bigint-migration-handoff.md`; promotion to CONFORMS-CHECKED requires overflow-checked operations in the constructor and every arithmetic method, with every unsafe case returning an explicit rejected result (`src/checked_q.mojo` in 6.2 is the reference implementation).
+The specification is a hook, not a note. In this package:
 
-## 7. Hook: how the specification is enforced
+1. **Law tests.** `tests/finite_exact/test_finite_exact.mojo` executes 1.3 (normalization, decidable equality, `1/10 + 2/10 = 3/10`, order-independence, lossless cancellation) and the sticky-rejection rule of the public boundary; `pixi run test-finite-exact`.
+2. **Property probe.** `tests/finite_exact/property_probe.mojo` draws deterministic pseudo-random operands and prints canonical bytes of every `BigZ` and `Q` result; `tools/property_oracle.py` recomputes them with Python `int` and `fractions.Fraction`; `pixi run property`. A disagreement on any canonical byte fails the build. `larsbx/interval_q` runs the same oracle with the I layer appended.
+3. **Public boundary.** `docs/exact-arithmetic-public-boundary.md` fixes the names, semantics, and encodings a consumer may rely on; a change there requires a matching change in this file and a passing probe.
 
-The specification is a hook, not a note. Each repository wires it into its control surfaces as follows; the regression tests fail if any wire is removed.
+In a consumer:
 
-1. **Audit script** (`tools/audit_exact_arithmetic.py` in finite-mandlebrot-research, `scripts/audit_exact_arithmetic.py` in PSC). Lexically scans the executable kernel scope for floating-point type tokens and decimal literal forms outside comments and strings, fails on any hit not in the allowlist, discovers direct arithmetic consumers and requires a binding row for each, and verifies that every module named in section 6 exists and cites this file (C7), including quarantined modules. Run in CI.
-2. **Allowlist** (`tools/exact_arithmetic_allowlist.md` in finite-mandlebrot-research, `scripts/exact_arithmetic_allowlist.md` in PSC). The only place QUARANTINED files may be named. Adding a file here requires a matching QUARANTINED row in section 6.
-3. **Law tests.** Executable checks of 1.3 (normalization, decidable equality, `1/10 + 2/10 = 3/10`, order-independence), 2.2 to 2.5 (inclusion, three-valued sign, `X − X ≠ [0,0]`, subdistributivity, fail-closed reciprocal and J1), and 3.2 (filter agrees with oracle; fallthrough on `0`). They exist in Mojo against the canonical kernels and in Python against the secondary oracle. finite-mandlebrot-research additionally runs the randomized property probe of `src/exact_arithmetic_property_probe.mojo` against `tools/exact_arithmetic_property_oracle.py` in CI (`pixi run property`); a disagreement on any canonical byte fails the build.
-4. **Policy pointers.** `README.md` and the implementation policy file (`AGENTS.md` in PSC, `docs/mojo_first_execution_policy.md` in finite-mandlebrot-research) name this file as the arithmetic policy; `backend.toml` in finite-mandlebrot-research carries `exact_arithmetic_spec` and `no_float_certificate_arithmetic = true`.
-5. **Cross-repository rule.** PSC consumes the finite-mandlebrot-research modules by pinned vendoring, not by mirroring this file. A change to `src/finite_exact/bigint_z.mojo`, `src/finite_exact/rat_q.mojo`, or `src/finite_exact/closed_q.mojo` here is picked up by PSC only when PSC re-vendors and updates `mojo/finite_exact/UPSTREAM.md`; a change to sections 0 to 5 must keep the public boundary of `docs/exact-arithmetic-public-boundary.md`. No finite-mandlebrot-research check or document may claim that a mirror of this file exists in PSC.
+4. **Pinned consumption.** Consumers pin a commit of this repository, and `tools/provenance.py --check` verifies every imported file here against the blobs pinned in `audit/provenance.json` on every CI run (`audit/CONSOLIDATION_PROVENANCE.md`). A change to the arithmetic is made here, then the consumer moves its pin; a local patch in a consumer is a binding-table violation.
+5. **Audit script and allowlist**, where the consumer has certificate paths: a lexical scan of the kernel scope for floating-point types and literals outside an allowlist, discovery of direct arithmetic consumers with a binding row required for each, and the C7 citation check. `larsbx/finite-mandlebrot-research`'s `tools/audit_exact_arithmetic.py` is the reference implementation.
+6. **Policy pointers.** The consumer's README and implementation-policy file name this specification as the arithmetic policy.
 
 ## 8. Non-goals
 

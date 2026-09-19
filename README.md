@@ -119,6 +119,20 @@ refusing to delete.
 The first five refuse to proceed; the last refuses to destroy. When a new gate
 is added, say which column it is in; when it is not obvious, it is the second.
 
+## Exact arithmetic
+
+Every certificate-relevant number is a normalized rational or a
+rational-endpoint interval, never a float. The contract is
+`docs/rational-interval-arithmetic-spec.md`, the canonical copy from
+`larsbx/finite-math-kernels`; this repository's binding table is
+`docs/exact-arithmetic-binding.md`, one row per module that instantiates a
+layer, and `tools/audit_exact_arithmetic.py` enforces both. An arithmetic
+consumer with no binding row fails the build, as does a bound module that does
+not cite the specification, a decimal literal in the kernel scope, and a
+quarantine that is not allowlisted or an allowlist entry that is not
+quarantined. The allowlist is empty: this repository has never had a
+floating-point substrate.
+
 ## Repository layout
 
 ```text
@@ -129,6 +143,9 @@ docs/
   J1_proof_definition.md                        what J1 claims and what discharges it
   J1_finite_classical_dictionary.md             finite object <-> classical referent
   J1_regime_ledger.md                           GENERATED from tools/parameter_corpus.py
+  literature-gate-2026-09-19.md                 the tags, judged
+  literature-gate-2026-09-19-transfer.md        the filled-Julia transfer, judged
+  exact-arithmetic-binding.md                   this repository's binding table
   terminology-registry.md                       declared vocabulary
   terminology-governance.md                     mirrored governance process
   rational-interval-arithmetic-spec.md          mirrored exact-arithmetic contract
@@ -146,6 +163,7 @@ tools/
   julia_reference.py        the Python reference oracle
   parameter_corpus.py       the single source of the corpus
   make_regime_ledger.py     renders every generated surface; --check gates them
+  audit_exact_arithmetic.py the binding-table and no-float gate
   vendoring/                the vendoring checker, same upstream and pin
 tests/
 corpus.json                 GENERATED
@@ -174,6 +192,7 @@ pixi run test            # Python suite, including the Mojo/Python differential 
 pixi run mojo-smoke      # the canonical Mojo smoke suite
 pixi run ledgers-check   # generated surfaces are current
 pixi run vendored        # vendored digests match their pins
+pixi run exact-arithmetic  # every arithmetic consumer is bound and exact
 ```
 
 The Mojo replay test skips where no Mojo toolchain is present, so a run that

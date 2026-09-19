@@ -48,14 +48,16 @@ all fibers of K_c trivial  <=>  K_c locally connected
     [SchleicherFiberTrivialityLocalConnectivity: ACCEPTED, unicritical case]
 
 K_c locally connected      <=>  J_c locally connected
-    [FilledJuliaLocalConnectivityTransfer: NOT GATED]
+    [FilledJuliaLocalConnectivityTransfer: DISCHARGED where K_c is connected]
 ```
 
 The first holds at this generality only because the family is unicritical: for
 an arbitrary compact connected full set, trivial fibers imply local
-connectivity but not conversely. The second is standard for a polynomial with
-connected Julia set and is nonetheless ungated here, so it is carried as an
-open obligation rather than assumed.
+connectivity but not conversely. The second is discharged in
+`docs/literature-gate-2026-09-19-transfer.md` by Torhorst in one direction and
+Carathéodory with the lamination model in the other, plus an elementary
+assembly step that gate owns rather than imports; it holds where `K_c` is
+connected, which is where `J1` is stated.
 
 ## Why this is not a priority-zero conjecture
 
@@ -116,8 +118,8 @@ A regime row in `docs/J1_regime_ledger.md` is discharged when all of:
 
 No regime is discharged. Phase 0 establishes the corpus, the witnesses, the
 two agreeing implementations, the ledger, and the literature gate that judged
-its tags. Blocks 2 to 6 are not started, and one bridge obligation --
-`FilledJuliaLocalConnectivityTransfer` -- is ungated.
+its tags. Blocks 2 to 6 are not started. Both halves of the bridge are now gated, which
+settles what `J1` would mean and settles nothing about whether it holds.
 
 The first genuinely open cell is the irrationally indifferent row: `c =
 (37 + 16i)/100` is exact data whose Siegel-or-Cremer status is not decided by

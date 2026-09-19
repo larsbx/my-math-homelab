@@ -1,5 +1,7 @@
 # smoke_tests.mojo
 #
+# Specification: docs/rational-interval-arithmetic-spec.md.
+#
 # Smoke-test harness for the finite-regime Julia computation layer.
 #
 # Each case is named after the contract it checks, and a name that is a

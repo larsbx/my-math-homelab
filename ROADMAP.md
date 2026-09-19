@@ -21,13 +21,15 @@ Phases are indexed by what becomes checkable, not by what becomes plausible.
 - [x] Take the shared orbit, smoke reporter, and vendoring checker upstream
       into `larsbx/finite-math-kernels` and vendor them back, so this
       repository holds no private copy of code a second consumer needs.
-- [ ] Gate `FilledJuliaLocalConnectivityTransfer`, the one bridge obligation
-      the literature gate left ungated.
-- [ ] Claim a binding subsection of `docs/rational-interval-arithmetic-spec.md`
-      for this repository. The mirrored spec records a binding row per
-      arithmetic consumer, and section 6 currently names the PSC and
-      Mandelbrot consumers only; this repository's kernels are unbound and
-      unaudited by the exact-arithmetic gate that enforces them there.
+- [x] Gate `FilledJuliaLocalConnectivityTransfer`
+      (`docs/literature-gate-2026-09-19-transfer.md`): discharged where `K_c`
+      is connected, by Torhorst and by Carathéodory with the lamination model,
+      plus an assembly step that gate owns rather than imports.
+- [x] Bind this repository's arithmetic consumers. The canonical spec asks a
+      consumer to keep its own binding table, so this repository keeps
+      `docs/exact-arithmetic-binding.md` and enforces it with
+      `tools/audit_exact_arithmetic.py`; `larsbx/finite-math-kernels` now names
+      this repository among the consumers.
 
 ## Phase 1 — The three-valued classifier
 

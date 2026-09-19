@@ -18,6 +18,8 @@ jobs:
         run: pixi run vendored
       - name: Run the canonical Mojo finite-core smoke suite
         run: pixi run mojo-smoke
+      - name: Audit the exact-arithmetic boundary
+        run: pixi run exact-arithmetic
       - name: Generated surfaces are current (regime ledger, corpus, Mojo corpus)
         run: pixi run ledgers-check
       - name: Run full tests, including the Mojo/Python differential replay

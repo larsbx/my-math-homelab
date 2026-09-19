@@ -1,5 +1,7 @@
 # corpus_replay.mojo
 #
+# Specification: docs/rational-interval-arithmetic-spec.md.
+#
 # The Mojo kernel, run against the generated corpus.
 #
 # Every row states the verdict the kernel must return. This file recomputes

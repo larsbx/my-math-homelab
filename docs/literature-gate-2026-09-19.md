@@ -157,6 +157,11 @@ New tags, recorded for the phase that needs them and not used by any row yet:
 | `DouadySullivanCremerNotLocallyConnected` | no row yet | ACCEPTED WITH QUALIFICATION (finding 5) |
 | `BrjunoYoccozQuadraticLinearization` | no row yet | ACCEPTED WITH QUALIFICATION (finding 5) |
 
+**Amendment, same day.** `FilledJuliaLocalConnectivityTransfer` was gated
+after this table was written; see `docs/literature-gate-2026-09-19-transfer.md`,
+which discharges it for `c` with connected `K_c`. The row above records what
+*this* gate returned and is left as it stood.
+
 "Accepted with qualification" means: a source was located, it states what the
 repository uses the tag for, and the qualification named in the finding is part
 of the tag's meaning from here on. It does not mean a theorem number was

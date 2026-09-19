@@ -5,6 +5,8 @@ rational coordinates with polynomial operations and a quadrance scalar. It is
 not an analytic complex number, and it carries no circle, disk, arc, or polar
 angle; see `docs/terminology-registry.md`.
 
+Specification: docs/rational-interval-arithmetic-spec.md.
+
 This module is the Python side of a differential pair. The proof-grade
 arithmetic is the Mojo `finite_exact` stack; this exists so the parameter
 corpus can be checked without a Mojo toolchain, and so a disagreement between
