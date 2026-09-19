@@ -44,14 +44,14 @@ K_{ij}=operatorname{Tr}(rho(g_i)rho(g_j)^{-1}).
 
 - [x] prove symmetry for self-dual/orthogonal (rho);
 - [x] derive the exact Hurwitz update law;
-- [x] prove the pairwise matrix (K) is not a closed state in general;
+- [ ] determine whether pairwise (K) is closed in any targeted representation class; the general non-closure claim is not yet proved;
 - [x] exhibit an exact (S_3) counterexample showing that determinant, rank, characteristic polynomial, and principal-minor multiset of (K) are not braid invariants.
 
 See `T2_TRACE_GRAM_HURWITZ.md`.
 
 ### Revised target
 
-Determine the **smallest trace-word state closed under Hurwitz substitution** for a restricted but nontrivial representation class.
+Determine a finite trace-coordinate state closed under Hurwitz substitution for a restricted but nontrivial representation class, without claiming that pairwise (K) is universally non-closed.
 
 Priority representation classes:
 
@@ -80,7 +80,15 @@ Do not re-prove fixed-dihedral orbit classification. Prove an arithmetic-family 
 - component counts;
 - Frobenius traces after a controlled enrichment.
 
-The theorem must use more than the elementary (qpm1) count.
+The theorem must use more than the elementary \(q\pm1\) count.
+
+### T3 progress
+
+- [x] reduce fixed-pattern pure Nielsen orbit sizes to \(J_2(q\pm1)/6\);
+- [x] prove the mod-3 sign law: positive for \(q\equiv1\pmod3\), negative for \(q\equiv-1\pmod3\) once \(q\ge322\);
+- [x] classify prime equality: exactly \(q=29,41,71\);
+- [ ] resolve the remaining prime-power family \(q=3^k\), \(k\ge6\);
+- [ ] determine whether a Frobenius-sensitive refinement yields stronger arithmetic geometry.
 
 ## T4 — Toric-to-unipotent degeneration
 

@@ -87,3 +87,16 @@ Use primary sources whenever a theorem is stated. Survey and expository referenc
   https://doi.org/10.37236/532
 
 These sources classify finite-dihedral Hurwitz orbits. The torus-normalizer model over a finite field therefore serves as a benchmark/specialization, not as a new orbit-classification framework.
+
+## Shifted Jordan-totient averages and correlations
+
+- S. Chaubey, S. Goel, M. Ram Murty, **On the Hardy-Littlewood prime tuples conjecture and higher convolutions of Ramanujan sums**, Functiones et Approximatio.  
+  DOI: 10.7169/facm/2048
+
+- A. Chandran, K. Vishnu Namboothiri, **Two identities involving Cohen-Ramanujan expansions**, 2025.  
+  https://arxiv.org/abs/2503.12027
+
+- G. Coppola, M. Ram Murty, B. Saha, **Finite Ramanujan expansions and shifted convolution sums of arithmetical functions**, 2016.  
+  https://arxiv.org/abs/1612.03136
+
+These references concern shifted averages/convolutions of multiplicative functions, including Jordan totients. They do not currently establish priority for the pointwise sign theorem recorded in T3.
