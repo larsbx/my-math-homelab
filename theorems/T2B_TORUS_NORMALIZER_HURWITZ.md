@@ -249,3 +249,14 @@ Potential novelty begins only with:
 - split/nonsplit comparison theorems over finite fields;
 - interaction with Nielsen generation conditions;
 - identification of arithmetic statistics stable across families.
+## Prior-art warning
+
+For finite fields, N(T)(F) is a finite generalized-dihedral group. Hurwitz equivalence in finite dihedral groups has already been classified in the literature (Sia 2009; Berger 2011).
+
+Therefore:
+
+- the explicit semidirect-product update formulas above are useful internal coordinates;
+- the local monomial matrices are useful computational normal forms;
+- classification of braid orbits in a fixed finite N(T)(F) is not a novelty claim.
+
+The next research layer must compare arithmetic families, geometric conjugacy data, or Frobenius structures not already exhausted by the finite-dihedral classification.
