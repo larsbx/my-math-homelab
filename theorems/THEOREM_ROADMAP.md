@@ -74,7 +74,7 @@ Priority representation classes:
 
 For (F=mathbb F_q), construct nontrivial Hurwitz families carrying 2-dimensional quadratic representations with split or nonsplit connected rank-one image.
 
-Prove a comparison theorem for one of:
+Do not re-prove fixed-dihedral orbit classification. Prove an arithmetic-family comparison theorem for one of:
 - fiber cardinalities;
 - distribution of torus-valued closure invariants;
 - component counts;
