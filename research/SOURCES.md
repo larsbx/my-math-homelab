@@ -58,3 +58,23 @@ Primary and high-value secondary references used to set the research boundary.
 ## Citation policy
 
 Use primary sources whenever a theorem is stated. Survey and expository references may orient discussion but should not be the sole support for a main theorem claim.
+
+## Trace coordinates and braid / outer-automorphism actions
+
+- R. D. Horowitz, **Characters of free groups represented in the two-dimensional special linear group**, Communications on Pure and Applied Mathematics 25 (1972), 635–649.  
+  https://doi.org/10.1002/cpa.3160250602
+
+- W. M. Goldman, **Trace Coordinates on Fricke spaces of some simple hyperbolic surfaces**.  
+  https://arxiv.org/abs/0901.1404
+
+- R. J. Brown, **Automorphisms of the Fricke Characters of Free Groups**.  
+  https://math.jhu.edu/~brown/Documents/FrickeCharAutos.pdf
+
+- S. Lawton, A. S. Sikora, **Varieties of Characters**, Algebras and Representation Theory 20 (2017), 1133–1141.  
+  https://arxiv.org/abs/1604.02164
+
+- A. S. Sikora, **SO(2n,C)-character varieties are not varieties of characters**, Journal of Algebra 478 (2017), 195–214.  
+  https://doi.org/10.1016/j.jalgebra.2016.11.034
+
+- M. de Courcy-Ireland, M. Magee, **Kesten–McKay law for the Markoff surface mod p**, Annales Henri Lebesgue 4 (2021), 227–250.  
+  https://doi.org/10.5802/ahl.71
