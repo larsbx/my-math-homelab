@@ -1,0 +1,196 @@
+{
+  "corpus": [
+    {
+      "key": "c0",
+      "name": "superattracting fixed",
+      "c": {
+        "re": "0",
+        "im": "0"
+      },
+      "regime": "HYPERBOLIC_CENTER",
+      "cycle": [
+        {
+          "re": "0",
+          "im": "0"
+        }
+      ],
+      "multiplier_class": "SUPERATTRACTING",
+      "critical_orbit": "PREPERIODIC(l=0, k=1)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_verified": false,
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "basilica",
+      "name": "period-2 centre",
+      "c": {
+        "re": "-1",
+        "im": "0"
+      },
+      "regime": "HYPERBOLIC_CENTER",
+      "cycle": [
+        {
+          "re": "0",
+          "im": "0"
+        },
+        {
+          "re": "-1",
+          "im": "0"
+        }
+      ],
+      "multiplier_class": "SUPERATTRACTING",
+      "critical_orbit": "PREPERIODIC(l=0, k=2)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_verified": false,
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "dendrite",
+      "name": "Misiurewicz dendrite",
+      "c": {
+        "re": "0",
+        "im": "1"
+      },
+      "regime": "MISIUREWICZ",
+      "cycle": [
+        {
+          "re": "-1",
+          "im": "1"
+        },
+        {
+          "re": "0",
+          "im": "-1"
+        }
+      ],
+      "multiplier_class": "REPELLING",
+      "critical_orbit": "PREPERIODIC(l=2, k=2)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
+      "theorem_tag_verified": false,
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "chebyshev",
+      "name": "Chebyshev endpoint",
+      "c": {
+        "re": "-2",
+        "im": "0"
+      },
+      "regime": "MISIUREWICZ",
+      "cycle": [
+        {
+          "re": "2",
+          "im": "0"
+        }
+      ],
+      "multiplier_class": "REPELLING",
+      "critical_orbit": "PREPERIODIC(l=2, k=1)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
+      "theorem_tag_verified": false,
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "cauliflower",
+      "name": "parabolic, multiplier 1",
+      "c": {
+        "re": "1/4",
+        "im": "0"
+      },
+      "regime": "PARABOLIC",
+      "cycle": [
+        {
+          "re": "1/2",
+          "im": "0"
+        }
+      ],
+      "multiplier_class": "PARABOLIC",
+      "critical_orbit": "CAPPED(BIT_BUDGET, n=16)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
+      "theorem_tag_verified": false,
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "parabolic_minus_one",
+      "name": "parabolic, multiplier -1",
+      "c": {
+        "re": "-3/4",
+        "im": "0"
+      },
+      "regime": "PARABOLIC",
+      "cycle": [
+        {
+          "re": "-1/2",
+          "im": "0"
+        }
+      ],
+      "multiplier_class": "PARABOLIC",
+      "critical_orbit": "CAPPED(BIT_BUDGET, n=16)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
+      "theorem_tag_verified": false,
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "parabolic_i",
+      "name": "parabolic, multiplier i",
+      "c": {
+        "re": "1/4",
+        "im": "1/2"
+      },
+      "regime": "PARABOLIC",
+      "cycle": [
+        {
+          "re": "0",
+          "im": "1/2"
+        }
+      ],
+      "multiplier_class": "PARABOLIC",
+      "critical_orbit": "CAPPED(BIT_BUDGET, n=16)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
+      "theorem_tag_verified": false,
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "niven",
+      "name": "irrationally indifferent",
+      "c": {
+        "re": "37/100",
+        "im": "4/25"
+      },
+      "regime": "IRRATIONALLY_INDIFFERENT",
+      "cycle": [
+        {
+          "re": "3/10",
+          "im": "2/5"
+        }
+      ],
+      "multiplier_class": "IRRATIONALLY_INDIFFERENT",
+      "critical_orbit": "CAPPED(BIT_BUDGET, n=15)",
+      "local_connectivity": "OPEN",
+      "theorem_tag": null,
+      "theorem_tag_verified": false,
+      "j1_expectation": "UNDECIDED"
+    },
+    {
+      "key": "escaping",
+      "name": "escaping critical orbit",
+      "c": {
+        "re": "1",
+        "im": "0"
+      },
+      "regime": "ESCAPING",
+      "cycle": null,
+      "multiplier_class": null,
+      "critical_orbit": "ESCAPES(n=3)",
+      "local_connectivity": "NOT_APPLICABLE_DISCONNECTED",
+      "theorem_tag": "FatouJuliaEscapingCantorSet",
+      "theorem_tag_verified": false,
+      "j1_expectation": "NOT_APPLICABLE"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+name: finite-regime-julia-audit
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: prefix-dev/setup-pixi@d3f436a425481402e6a95a1d1fc10331c708cd9e
+        with:
+          cache: true
+      - name: Build the canonical Mojo smoke binary
+        run: pixi run mojo-build
+      - name: Verify vendored package digests
+        run: pixi run vendored
+      - name: Run the canonical Mojo finite-core smoke suite
+        run: pixi run mojo-smoke
+      - name: Generated surfaces are current (regime ledger, corpus, Mojo corpus)
+        run: pixi run ledgers-check
+      - name: Run full tests, including the Mojo/Python differential replay
+        run: pixi run test
+      - name: Recheck vendored package digests after tests
+        run: pixi run vendored
