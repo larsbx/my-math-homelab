@@ -55,9 +55,9 @@ Determine the **smallest trace-word state closed under Hurwitz substitution** fo
 
 Priority representation classes:
 
-1. two-dimensional self-dual representations, where Fricke-type trace identities may force finite closure;
-2. representations with image in a torus normalizer;
-3. finite classical-group representations with bounded trace-word generation;
+1. finite-field arithmetic in already-known SL2 trace-coordinate models; do not claim trace closure itself as new;
+2. representations with image in a torus normalizer, to retain the smallest possible nonabelian decoration;
+3. orthogonal targets where traces do not generate the full character algebra;
 4. finite braid orbits where orbit-averaged trace-word invariants are computable exactly.
 
 ### Deliverables
