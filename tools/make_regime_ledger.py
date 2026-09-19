@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from gaussian_q import GQ  # noqa: E402
 from julia_reference import OrbitVerdict, classify_multiplier, critical_orbit, is_cycle, multiplier  # noqa: E402
-from parameter_corpus import CORPUS, Parameter  # noqa: E402
+from parameter_corpus import CORPUS, GATE, Parameter  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER = ROOT / "docs" / "J1_regime_ledger.md"
@@ -48,9 +48,12 @@ Two kinds of column appear below and they carry different authority.
 - **Verified** columns are recomputed from the parameter by exact arithmetic
   on every render: the cycle witness, its multiplier class, and the
   critical-orbit verdict. A row cannot claim one of these and be wrong.
-- **Tag** columns name an imported classical theorem and are **unverified**:
-  no literature gate has been run for any tag below. They record whose result
-  the regime's local connectivity would rest on, not that it has been checked.
+- **Tag** columns name an imported classical theorem. Each one was judged by
+  the literature gate `docs/literature-gate-2026-09-19.md`, which located a
+  source, recorded the qualification that is now part of the tag's meaning,
+  and says what it did not do -- no theorem number was checked against a
+  printed page. A gate verdict is not a proof, and no verified column below
+  depends on a tag.
 
 `J1 expects` says what the separator catalogue must do at this parameter if
 `J1` is sound. It is the point of the corpus: the `STABILIZES` rows are the
@@ -90,7 +93,7 @@ def verified(row: Parameter) -> dict[str, str]:
 def render_ledger() -> str:
     lines = [
         HEADER,
-        "| key | `c` | regime | cycle witness (verified) | multiplier (verified) | critical orbit (verified) | local connectivity | theorem tag (unverified) | J1 expects |",
+        "| key | `c` | regime | cycle witness (verified) | multiplier (verified) | critical orbit (verified) | local connectivity | theorem tag (gated) | J1 expects |",
         "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for row in CORPUS:
@@ -104,7 +107,7 @@ def render_ledger() -> str:
                 multiplier=facts["multiplier"],
                 orbit=facts["orbit"],
                 lc=row.local_connectivity.value,
-                tag=row.theorem_tag or "--",
+                tag="--" if row.theorem_tag is None else f"{row.theorem_tag} ({row.tag_status.value})",
                 j1=row.j1_expectation.value,
             )
         )
@@ -132,7 +135,8 @@ def render_corpus_json() -> str:
                 "critical_orbit": facts["orbit"],
                 "local_connectivity": row.local_connectivity.value,
                 "theorem_tag": row.theorem_tag,
-                "theorem_tag_verified": False,
+                "theorem_tag_status": row.tag_status.value,
+                "theorem_tag_gate": GATE,
                 "j1_expectation": row.j1_expectation.value,
             }
         )

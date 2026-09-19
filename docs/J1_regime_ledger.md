@@ -8,9 +8,12 @@ Two kinds of column appear below and they carry different authority.
 - **Verified** columns are recomputed from the parameter by exact arithmetic
   on every render: the cycle witness, its multiplier class, and the
   critical-orbit verdict. A row cannot claim one of these and be wrong.
-- **Tag** columns name an imported classical theorem and are **unverified**:
-  no literature gate has been run for any tag below. They record whose result
-  the regime's local connectivity would rest on, not that it has been checked.
+- **Tag** columns name an imported classical theorem. Each one was judged by
+  the literature gate `docs/literature-gate-2026-09-19.md`, which located a
+  source, recorded the qualification that is now part of the tag's meaning,
+  and says what it did not do -- no theorem number was checked against a
+  printed page. A gate verdict is not a proof, and no verified column below
+  depends on a tag.
 
 `J1 expects` says what the separator catalogue must do at this parameter if
 `J1` is sound. It is the point of the corpus: the `STABILIZES` rows are the
@@ -23,17 +26,17 @@ so an exactly iterated critical orbit that neither escapes nor repeats costs
 `O(2^n)` bits at step `n`; every parabolic and irrationally indifferent row
 exhausts its budget by construction, and reports which budget ran out.
 
-| key | `c` | regime | cycle witness (verified) | multiplier (verified) | critical orbit (verified) | local connectivity | theorem tag (unverified) | J1 expects |
+| key | `c` | regime | cycle witness (verified) | multiplier (verified) | critical orbit (verified) | local connectivity | theorem tag (gated) | J1 expects |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `c0` | `0` | HYPERBOLIC_CENTER | `0` | `0` SUPERATTRACTING | PREPERIODIC(l=0, k=1) | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected | STABILIZES |
-| `basilica` | `-1` | HYPERBOLIC_CENTER | `0, -1` | `0` SUPERATTRACTING | PREPERIODIC(l=0, k=2) | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected | STABILIZES |
-| `dendrite` | `i` | MISIUREWICZ | `-1 + i, -i` | `4 + 4i` REPELLING | PREPERIODIC(l=2, k=2) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected | STABILIZES |
-| `chebyshev` | `-2` | MISIUREWICZ | `2` | `4` REPELLING | PREPERIODIC(l=2, k=1) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected | STABILIZES |
-| `cauliflower` | `1/4` | PARABOLIC | `1/2` | `1` PARABOLIC | CAPPED(BIT_BUDGET, n=16) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected | STABILIZES |
-| `parabolic_minus_one` | `-3/4` | PARABOLIC | `-1/2` | `-1` PARABOLIC | CAPPED(BIT_BUDGET, n=16) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected | STABILIZES |
-| `parabolic_i` | `1/4 + 1/2i` | PARABOLIC | `1/2i` | `i` PARABOLIC | CAPPED(BIT_BUDGET, n=16) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected | STABILIZES |
+| `c0` | `0` | HYPERBOLIC_CENTER | `0` | `0` SUPERATTRACTING | PREPERIODIC(l=0, k=1) | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `basilica` | `-1` | HYPERBOLIC_CENTER | `0, -1` | `0` SUPERATTRACTING | PREPERIODIC(l=0, k=2) | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `dendrite` | `i` | MISIUREWICZ | `-1 + i, -i` | `4 + 4i` REPELLING | PREPERIODIC(l=2, k=2) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `chebyshev` | `-2` | MISIUREWICZ | `2` | `4` REPELLING | PREPERIODIC(l=2, k=1) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `cauliflower` | `1/4` | PARABOLIC | `1/2` | `1` PARABOLIC | CAPPED(BIT_BUDGET, n=16) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `parabolic_minus_one` | `-3/4` | PARABOLIC | `-1/2` | `-1` PARABOLIC | CAPPED(BIT_BUDGET, n=16) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `parabolic_i` | `1/4 + 1/2i` | PARABOLIC | `1/2i` | `i` PARABOLIC | CAPPED(BIT_BUDGET, n=16) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
 | `niven` | `37/100 + 4/25i` | IRRATIONALLY_INDIFFERENT | `3/10 + 2/5i` | `3/5 + 4/5i` IRRATIONALLY_INDIFFERENT | CAPPED(BIT_BUDGET, n=15) | OPEN | -- | UNDECIDED |
-| `escaping` | `1` | ESCAPING | -- | -- | ESCAPES(n=3) | NOT_APPLICABLE_DISCONNECTED | FatouJuliaEscapingCantorSet | NOT_APPLICABLE |
+| `escaping` | `1` | ESCAPING | -- | -- | ESCAPES(n=3) | NOT_APPLICABLE_DISCONNECTED | FatouJuliaEscapingCantorSet (ACCEPTED_WITH_QUALIFICATION) | NOT_APPLICABLE |
 
 ## Notes
 
@@ -44,5 +47,5 @@ exhausts its budget by construction, and reports which budget ran out.
 - **`cauliflower`** (parabolic, multiplier 1) -- Fail-closed case: the multiplier has quadrance exactly 1, so an interval test that decides attracting or repelling here is unsound.
 - **`parabolic_minus_one`** (parabolic, multiplier -1) -- Root of the period-2 component: the same fail-closed obligation with a negative multiplier.
 - **`parabolic_i`** (parabolic, multiplier i) -- The third of the four Gaussian-rational roots of unity, reached by c = lam (2 - lam) / 4 at lam = i.
-- **`niven`** (irrationally indifferent) -- Exactly representable data, open dynamics: Siegel versus Cremer turns on the Brjuno condition for the rotation number of lam = (3 + 4i)/5, which no finite test on the multiplier decides.
-- **`escaping`** (escaping critical orbit) -- K_c is totally disconnected, so fibers and local connectivity are not the question here; the escape certificate is.
+- **`niven`** (irrationally indifferent) -- Exactly representable data, open dynamics, and open twice over: whether the rotation number of lam = (3 + 4i)/5 is Brjuno decides Siegel against Cremer, and even a Siegel disk leaves local connectivity turning on whether the critical point lies on its boundary. Neither is a finite test on the multiplier.
+- **`escaping`** (escaping critical orbit) -- K_c is disconnected, and the imported fiber theory is stated for compact connected full sets, so the question the other rows answer is not posed here; the escape certificate is.

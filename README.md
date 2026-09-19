@@ -20,8 +20,9 @@ on it.
 
 In the dynamical plane the frontier is stratified. Local connectivity of
 `J_c` is a classical theorem for hyperbolic, postcritically finite, and
-parabolic parameters, and it **fails** for Cremer parameters and for Siegel
-parameters of non-Brjuno rotation number. So the top-level object here is a
+parabolic parameters, and it **fails** for Cremer parameters, and for parameters
+with a Siegel disk whose boundary contains no critical point. So the top-level
+object here is a
 regime ledger, not a conjecture, and two things become available that the
 parameter plane cannot offer:
 
@@ -71,8 +72,10 @@ c = (37 + 16i)/100
 ```
 
 an exactly representable parameter with an irrationally indifferent fixed
-point whose Siegel-or-Cremer status turns on the Brjuno condition. Exact data,
-open dynamics.
+point whose Siegel-or-Cremer status turns on the Brjuno condition -- and where
+even a Siegel disk would leave local connectivity turning on whether the
+critical point lies on its boundary. Exact data, open dynamics, open twice
+over.
 
 **Rational multiplier dichotomy.** A quadrance-1 element of `Q(i)` is a root
 of unity exactly when it is one of `1, -1, i, -i`; the proof is section 6 of

@@ -39,11 +39,23 @@ the periodic points they land at, and `SameFiber_c` is equality through the
 accepted fiber adapter -- not carrier-label equality and not display-name
 equality.
 
-The classical bridge is an import, not a result of this repository:
+The classical bridge is an import, not a result of this repository, and it is
+two obligations rather than one (`docs/literature-gate-2026-09-19.md`, finding
+1):
 
 ```text
-all fibers of K_c trivial  <=>  J_c locally connected     [theorem tag]
+all fibers of K_c trivial  <=>  K_c locally connected
+    [SchleicherFiberTrivialityLocalConnectivity: ACCEPTED, unicritical case]
+
+K_c locally connected      <=>  J_c locally connected
+    [FilledJuliaLocalConnectivityTransfer: NOT GATED]
 ```
+
+The first holds at this generality only because the family is unicritical: for
+an arbitrary compact connected full set, trivial fibers imply local
+connectivity but not conversely. The second is standard for a polynomial with
+connected Julia set and is nonetheless ungated here, so it is carried as an
+open obligation rather than assumed.
 
 ## Why this is not a priority-zero conjecture
 
@@ -51,8 +63,8 @@ all fibers of K_c trivial  <=>  J_c locally connected     [theorem tag]
 isolated but not closed, and everything downstream of it waits. The
 dynamical-plane analogue is not one statement. Local connectivity of `J_c` is
 known for hyperbolic, postcritically finite, and parabolic parameters, and is
-known to **fail** for Cremer parameters and for Siegel parameters of
-non-Brjuno rotation number. So `J1` is a family of obligations of very
+known to **fail** for a parameter with a Cremer cycle, and for one whose
+Siegel disk has no critical point on its boundary. So `J1` is a family of obligations of very
 different difficulty, and the correct top-level object is the regime ledger,
 not a conjecture.
 
@@ -96,14 +108,16 @@ A regime row in `docs/J1_regime_ledger.md` is discharged when all of:
 - a capped critical orbit read as a classification
 - an interval test that decides attracting or repelling at quadrance exactly 1
 - a Mojo computation without theorem-tag import validation
-- a local-connectivity tag whose literature gate has not been run
+- a local-connectivity tag whose literature gate has not been run, or one
+  whose gate verdict is read without its qualification
 ```
 
 ## Current status
 
 No regime is discharged. Phase 0 establishes the corpus, the witnesses, the
-two agreeing implementations, and the ledger. Blocks 2 to 6 are not started,
-and every local-connectivity tag in the ledger is unverified.
+two agreeing implementations, the ledger, and the literature gate that judged
+its tags. Blocks 2 to 6 are not started, and one bridge obligation --
+`FilledJuliaLocalConnectivityTransfer` -- is ungated.
 
 The first genuinely open cell is the irrationally indifferent row: `c =
 (37 + 16i)/100` is exact data whose Siegel-or-Cremer status is not decided by

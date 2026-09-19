@@ -23,8 +23,11 @@ The last row is the reason for a separate program. `C1` can be isolated but
 not closed. Its dynamical-plane analogue splits into cells that are already
 classical theorems (Douady-Hubbard for hyperbolic and postcritically finite
 `c`; Yoccoz for at most finitely renormalizable `c` with all cycles repelling;
-Petersen for bounded-type Siegel) and cells where local connectivity **fails**
-(Cremer; non-Brjuno Siegel).
+Petersen for bounded-type Siegel) and cells where local connectivity **fails**:
+a Cremer cycle, or a Siegel disk whose boundary contains no critical point
+(`docs/literature-gate-2026-09-19.md`, finding 5; an earlier draft of this
+section wrote "non-Brjuno Siegel", which is an empty class in the quadratic
+family, since a non-Brjuno rotation number gives a Cremer point).
 
 Consequences, in the order they matter:
 
@@ -56,7 +59,9 @@ c = (37 + 16i)/100
 
 is an exactly representable parameter with an **irrationally indifferent**
 fixed point whose Siegel-or-Cremer status turns on the Brjuno condition for
-`theta = arg(lam) / 2pi`. Exact data, open dynamics. Roots of unity
+`theta = arg(lam) / 2pi`, and which, even in the Siegel case, leaves local
+connectivity turning on whether the critical point lies on the disk's
+boundary. Exact data, open dynamics. Roots of unity
 `lam in {1, -1, i, -i}` give the parabolics `c = 1/4`, `-3/4`, `(1 + 2i)/4`,
 `(1 - 2i)/4`.
 

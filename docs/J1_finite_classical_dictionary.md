@@ -19,7 +19,8 @@ classical referent, and which side of the boundary each one lives on.
 | `MULT_IRRATIONALLY_INDIFFERENT` | irrationally indifferent cycle | decided; the Siegel/Cremer split is **not** |
 | `Separated_k^c` | separation by landed dynamical rays at rational angles | finite combinatorial separator (Phase 3) |
 | `SameFiberLevel_k^c` | not separated through catalogue level `k` | finite non-separation predicate (Phase 3) |
-| `LocallyConnected(J_c)` | local connectivity of the Julia set | external theorem tag, never proved here |
+| `LocallyConnected(K_c)` | local connectivity of the filled Julia set | what the imported fiber theory is stated about |
+| `LocallyConnected(J_c)` | local connectivity of the Julia set | external theorem tag, never proved here; reached from `K_c` by an ungated transfer |
 | `BrjunoCondition` | Brjuno condition on the rotation number | external, and not a finite test |
 
 ## Allowed finite claims

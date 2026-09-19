@@ -40,6 +40,17 @@ class LocalConnectivity(Enum):
     OPEN = "OPEN"
 
 
+class TagStatus(Enum):
+    """What `docs/literature-gate-2026-09-19.md` returned for a row's tag.
+
+    A tag is a named import. `NONE` means the row imports nothing, which is
+    what an open cell must do; it never means a tag was assumed.
+    """
+
+    ACCEPTED_WITH_QUALIFICATION = "ACCEPTED_WITH_QUALIFICATION"
+    NONE = "NONE"
+
+
 class J1Expectation(Enum):
     """What the separator catalogue must do here if `J1` is sound.
 
@@ -53,6 +64,10 @@ class J1Expectation(Enum):
     NOT_APPLICABLE = "NOT_APPLICABLE"
 
 
+#: The gate that judged every tag below.
+GATE = "docs/literature-gate-2026-09-19.md"
+
+
 @dataclass(frozen=True, slots=True)
 class Parameter:
     key: str
@@ -64,6 +79,7 @@ class Parameter:
     orbit_signature: str
     local_connectivity: LocalConnectivity
     theorem_tag: str | None
+    tag_status: TagStatus
     j1_expectation: J1Expectation
     note: str
 
@@ -82,6 +98,7 @@ CORPUS: tuple[Parameter, ...] = (
         orbit_signature="PREPERIODIC(l=0, k=1)",
         local_connectivity=LocalConnectivity.TAGGED_LOCALLY_CONNECTED,
         theorem_tag="DouadyHubbardHyperbolicLocallyConnected",
+        tag_status=TagStatus.ACCEPTED_WITH_QUALIFICATION,
         j1_expectation=J1Expectation.STABILIZES,
         note="J_0 is the quadrance-1 locus. It is not a circle at rank 2, and no arc, angle, or circumference is available from it.",
     ),
@@ -95,6 +112,7 @@ CORPUS: tuple[Parameter, ...] = (
         orbit_signature="PREPERIODIC(l=0, k=2)",
         local_connectivity=LocalConnectivity.TAGGED_LOCALLY_CONNECTED,
         theorem_tag="DouadyHubbardHyperbolicLocallyConnected",
+        tag_status=TagStatus.ACCEPTED_WITH_QUALIFICATION,
         j1_expectation=J1Expectation.STABILIZES,
         note="Attracting-cycle certificate with a superattracting witness; the interior is the pullback of the immediate basin.",
     ),
@@ -108,6 +126,7 @@ CORPUS: tuple[Parameter, ...] = (
         orbit_signature="PREPERIODIC(l=2, k=2)",
         local_connectivity=LocalConnectivity.TAGGED_LOCALLY_CONNECTED,
         theorem_tag="TanYinGeometricallyFiniteLocallyConnected",
+        tag_status=TagStatus.ACCEPTED_WITH_QUALIFICATION,
         j1_expectation=J1Expectation.STABILIZES,
         note="Postcritically finite with empty interior: the IN certificate has nothing to certify, so the classifier is OUT-or-UNKNOWN here.",
     ),
@@ -121,6 +140,7 @@ CORPUS: tuple[Parameter, ...] = (
         orbit_signature="PREPERIODIC(l=2, k=1)",
         local_connectivity=LocalConnectivity.TAGGED_LOCALLY_CONNECTED,
         theorem_tag="TanYinGeometricallyFiniteLocallyConnected",
+        tag_status=TagStatus.ACCEPTED_WITH_QUALIFICATION,
         j1_expectation=J1Expectation.STABILIZES,
         note="Degenerate real case: the exclusion machinery must handle a Julia set carried by one rational segment.",
     ),
@@ -134,6 +154,7 @@ CORPUS: tuple[Parameter, ...] = (
         orbit_signature="CAPPED(BIT_BUDGET, n=16)",
         local_connectivity=LocalConnectivity.TAGGED_LOCALLY_CONNECTED,
         theorem_tag="TanYinGeometricallyFiniteLocallyConnected",
+        tag_status=TagStatus.ACCEPTED_WITH_QUALIFICATION,
         j1_expectation=J1Expectation.STABILIZES,
         note="Fail-closed case: the multiplier has quadrance exactly 1, so an interval test that decides attracting or repelling here is unsound.",
     ),
@@ -147,6 +168,7 @@ CORPUS: tuple[Parameter, ...] = (
         orbit_signature="CAPPED(BIT_BUDGET, n=16)",
         local_connectivity=LocalConnectivity.TAGGED_LOCALLY_CONNECTED,
         theorem_tag="TanYinGeometricallyFiniteLocallyConnected",
+        tag_status=TagStatus.ACCEPTED_WITH_QUALIFICATION,
         j1_expectation=J1Expectation.STABILIZES,
         note="Root of the period-2 component: the same fail-closed obligation with a negative multiplier.",
     ),
@@ -160,6 +182,7 @@ CORPUS: tuple[Parameter, ...] = (
         orbit_signature="CAPPED(BIT_BUDGET, n=16)",
         local_connectivity=LocalConnectivity.TAGGED_LOCALLY_CONNECTED,
         theorem_tag="TanYinGeometricallyFiniteLocallyConnected",
+        tag_status=TagStatus.ACCEPTED_WITH_QUALIFICATION,
         j1_expectation=J1Expectation.STABILIZES,
         note="The third of the four Gaussian-rational roots of unity, reached by c = lam (2 - lam) / 4 at lam = i.",
     ),
@@ -173,8 +196,9 @@ CORPUS: tuple[Parameter, ...] = (
         orbit_signature="CAPPED(BIT_BUDGET, n=15)",
         local_connectivity=LocalConnectivity.OPEN,
         theorem_tag=None,
+        tag_status=TagStatus.NONE,
         j1_expectation=J1Expectation.UNDECIDED,
-        note="Exactly representable data, open dynamics: Siegel versus Cremer turns on the Brjuno condition for the rotation number of lam = (3 + 4i)/5, which no finite test on the multiplier decides.",
+        note="Exactly representable data, open dynamics, and open twice over: whether the rotation number of lam = (3 + 4i)/5 is Brjuno decides Siegel against Cremer, and even a Siegel disk leaves local connectivity turning on whether the critical point lies on its boundary. Neither is a finite test on the multiplier.",
     ),
     Parameter(
         key="escaping",
@@ -186,8 +210,9 @@ CORPUS: tuple[Parameter, ...] = (
         orbit_signature="ESCAPES(n=3)",
         local_connectivity=LocalConnectivity.NOT_APPLICABLE_DISCONNECTED,
         theorem_tag="FatouJuliaEscapingCantorSet",
+        tag_status=TagStatus.ACCEPTED_WITH_QUALIFICATION,
         j1_expectation=J1Expectation.NOT_APPLICABLE,
-        note="K_c is totally disconnected, so fibers and local connectivity are not the question here; the escape certificate is.",
+        note="K_c is disconnected, and the imported fiber theory is stated for compact connected full sets, so the question the other rows answer is not posed here; the escape certificate is.",
     ),
 )
 

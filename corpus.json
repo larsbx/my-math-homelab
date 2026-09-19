@@ -18,7 +18,8 @@
       "critical_orbit": "PREPERIODIC(l=0, k=1)",
       "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
       "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
-      "theorem_tag_verified": false,
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
       "j1_expectation": "STABILIZES"
     },
     {
@@ -43,7 +44,8 @@
       "critical_orbit": "PREPERIODIC(l=0, k=2)",
       "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
       "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
-      "theorem_tag_verified": false,
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
       "j1_expectation": "STABILIZES"
     },
     {
@@ -68,7 +70,8 @@
       "critical_orbit": "PREPERIODIC(l=2, k=2)",
       "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
       "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
-      "theorem_tag_verified": false,
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
       "j1_expectation": "STABILIZES"
     },
     {
@@ -89,7 +92,8 @@
       "critical_orbit": "PREPERIODIC(l=2, k=1)",
       "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
       "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
-      "theorem_tag_verified": false,
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
       "j1_expectation": "STABILIZES"
     },
     {
@@ -110,7 +114,8 @@
       "critical_orbit": "CAPPED(BIT_BUDGET, n=16)",
       "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
       "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
-      "theorem_tag_verified": false,
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
       "j1_expectation": "STABILIZES"
     },
     {
@@ -131,7 +136,8 @@
       "critical_orbit": "CAPPED(BIT_BUDGET, n=16)",
       "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
       "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
-      "theorem_tag_verified": false,
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
       "j1_expectation": "STABILIZES"
     },
     {
@@ -152,7 +158,8 @@
       "critical_orbit": "CAPPED(BIT_BUDGET, n=16)",
       "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
       "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
-      "theorem_tag_verified": false,
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
       "j1_expectation": "STABILIZES"
     },
     {
@@ -173,7 +180,8 @@
       "critical_orbit": "CAPPED(BIT_BUDGET, n=15)",
       "local_connectivity": "OPEN",
       "theorem_tag": null,
-      "theorem_tag_verified": false,
+      "theorem_tag_status": "NONE",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
       "j1_expectation": "UNDECIDED"
     },
     {
@@ -189,7 +197,8 @@
       "critical_orbit": "ESCAPES(n=3)",
       "local_connectivity": "NOT_APPLICABLE_DISCONNECTED",
       "theorem_tag": "FatouJuliaEscapingCantorSet",
-      "theorem_tag_verified": false,
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
       "j1_expectation": "NOT_APPLICABLE"
     }
   ]
