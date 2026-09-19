@@ -170,4 +170,5 @@ pixi run ledgers-check   # generated surfaces are current
 pixi run vendored        # vendored digests match their pins
 ```
 
-The Mojo replay test skips where no Mojo toolchain is present; CI installs one.
+The Mojo replay test skips where no Mojo toolchain is present, so a run that
+reports it skipped has checked only one of the two implementations.
