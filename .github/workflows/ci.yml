@@ -9,9 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # No pixi.lock is committed yet, and setup-pixi's cache key is derived
+      # from one. Caching turns back on with the lockfile; until then the
+      # environment is solved on every run.
       - uses: prefix-dev/setup-pixi@d3f436a425481402e6a95a1d1fc10331c708cd9e
         with:
-          cache: true
+          cache: false
       - name: Build the canonical Mojo smoke binary
         run: pixi run mojo-build
       - name: Verify vendored package digests
