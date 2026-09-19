@@ -100,3 +100,11 @@ These sources classify finite-dihedral Hurwitz orbits. The torus-normalizer mode
   https://arxiv.org/abs/1612.03136
 
 These references concern shifted averages/convolutions of multiplicative functions, including Jordan totients. They do not currently establish priority for the pointwise sign theorem recorded in T3.
+
+## Primitive divisors and cyclotomic order
+
+- K. Zsigmondy, **Zur Theorie der Potenzreste**, Monatshefte für Mathematik und Physik 3 (1892), 265–284. Classical source for the primitive-divisor theorem.
+
+- The Bang–Zsigmondy theorem: for coprime \(a>b>0\), \(a^n-b^n\) has a primitive prime divisor outside the standard exceptional cases. A convenient modern statement appears in literature on primitive prime divisors and finite groups.
+
+The powers-of-3 residual uses this only as structural input: a primitive divisor of \(3^{2k}-1\) yields a prime divisor of \(3^k+1\) of multiplicative order \(2k\), but this does not by itself distinguish the Jordan values.
