@@ -31,6 +31,10 @@ Phases are indexed by what becomes checkable, not by what becomes plausible.
       `tools/audit_exact_arithmetic.py`; `larsbx/finite-math-kernels` now names
       this repository among the consumers.
 
+- [x] Check that the paths and tasks this repository's prose names resolve
+      (`pixi run references`). The design analysis carried a reference to a
+      file that never existed until this check was added.
+
 ## Phase 1 — The three-valued classifier
 
 Deliver `G^c_r(box) -> IN | OUT | UNKNOWN` over dyadic boxes at a
@@ -83,4 +87,6 @@ should consume them, not reimplement them.
   reporter, and the vendoring checker are upstream, and this repository holds
   no private copy of any of them.
 - The remaining ladder rungs are the polynomial and Krawczyk kernels, which
-  Phase 2 needs and this repository does not yet use.
+  Phase 2 needs and this repository does not yet use. The reference-check
+  engine went upstream as `references` when this repository became its second
+  consumer, on the same rule.

@@ -133,6 +133,15 @@ quarantine that is not allowlisted or an allowlist entry that is not
 quarantined. The allowlist is empty: this repository has never had a
 floating-point substrate.
 
+## References
+
+Prose names files and tasks, and a renamed file leaves the sentence behind.
+`tools/check_references.py` reads every tracked text file, collects backticked
+paths and `pixi run` phrases, and fails the build on one that resolves to
+nothing. A reference that lives in another repository is attested by a
+sentence naming that repository rather than exempted. The engine is the
+vendored `references` package; the policy is this repository's.
+
 ## Repository layout
 
 ```text
@@ -164,6 +173,8 @@ tools/
   parameter_corpus.py       the single source of the corpus
   make_regime_ledger.py     renders every generated surface; --check gates them
   audit_exact_arithmetic.py the binding-table and no-float gate
+  check_references.py       this repository's reference policy
+  references/               the reference-check engine, same upstream and pin
   vendoring/                the vendoring checker, same upstream and pin
 tests/
 corpus.json                 GENERATED
@@ -193,6 +204,7 @@ pixi run mojo-smoke      # the canonical Mojo smoke suite
 pixi run ledgers-check   # generated surfaces are current
 pixi run vendored        # vendored digests match their pins
 pixi run exact-arithmetic  # every arithmetic consumer is bound and exact
+pixi run references      # every path and task a document names resolves
 ```
 
 The Mojo replay test skips where no Mojo toolchain is present, so a run that

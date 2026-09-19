@@ -20,6 +20,8 @@ jobs:
         run: pixi run mojo-smoke
       - name: Audit the exact-arithmetic boundary
         run: pixi run exact-arithmetic
+      - name: Every path and task reference resolves
+        run: pixi run references
       - name: Generated surfaces are current (regime ledger, corpus, Mojo corpus)
         run: pixi run ledgers-check
       - name: Run full tests, including the Mojo/Python differential replay

@@ -12,6 +12,7 @@ mojo-build = "mojo build src/smoke_tests.mojo -o .pixi/finite-julia-smoke"
 transcript = "mojo src/corpus_transcript.mojo"
 vendored = "python tools/vendoring/check_vendored_sync.py"
 exact-arithmetic = "python tools/audit_exact_arithmetic.py"
+references = "python tools/check_references.py"
 ledgers = "python tools/make_regime_ledger.py"
 ledgers-check = "python tools/make_regime_ledger.py --check"
 

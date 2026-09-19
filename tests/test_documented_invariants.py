@@ -72,8 +72,19 @@ def test_no_float_arithmetic_in_the_reference_oracle(path):
 def test_the_scan_covers_this_repository_and_not_its_copies():
     """The boundary is stated, not implied: every own source is scanned, and
     no vendored file is."""
-    names = {path.name for path in MOJO + PYTHON}
-    assert {"julia_orbit.mojo", "corpus_replay.mojo", "smoke_tests.mojo"} <= names
-    assert {"julia_reference.py", "parameter_corpus.py", "gaussian_q.py"} <= names
-    assert not names & {"rat_q.mojo", "bigint_z.mojo", "orbit.mojo", "report.mojo", "check_vendored_sync.py"}
-    assert len(VENDORED) == 4
+    scanned = {path.relative_to(ROOT).as_posix() for path in MOJO + PYTHON}
+    assert {"src/julia_orbit.mojo", "src/corpus_replay.mojo", "src/smoke_tests.mojo"} <= scanned
+    assert {"tools/julia_reference.py", "tools/parameter_corpus.py", "tools/gaussian_q.py"} <= scanned
+    # A vendored file and a file this repository writes can share a basename:
+    # the reference-check policy is ours, the engine beside it is upstream's.
+    assert "tools/check_references.py" in scanned
+    assert not scanned & {
+        "src/finite_exact/rat_q.mojo",
+        "src/quadratic_orbit/orbit.mojo",
+        "src/mojo_smoke/report.mojo",
+        "tools/vendoring/check_vendored_sync.py",
+        "tools/references/check_references.py",
+    }
+    assert {path.name for path in VENDORED} == {
+        "finite_exact", "quadratic_orbit", "mojo_smoke", "vendoring", "references",
+    }

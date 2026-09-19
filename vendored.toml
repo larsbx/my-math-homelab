@@ -49,3 +49,13 @@ root = "tools"
 [package.files]
 "vendoring/__init__.py" = "959cdf7a89536784da18659db7cfe4099c885f5370249eccc71ce73775f8a584"
 "vendoring/check_vendored_sync.py" = "cdcb673d92bcd0cab84574b8fbe1744253e9a935d9d779bc76066f7828e3cba1"
+
+[[package]]
+name = "references"
+repository = "larsbx/finite-math-kernels"
+commit = "3e0acaea192e08ca6c18c732a62648c0386d0c68"
+root = "tools"
+
+[package.files]
+"references/__init__.py" = "d241dd4166c0f171b9cd36003b5c1f9f5eb98765f08bdb4cb9b38ebd79f2cc28"
+"references/check_references.py" = "096882ac4ce8bda59bd66eb83d74bebe1a63fcd181ff90dcf67615ed95059a04"
