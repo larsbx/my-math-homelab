@@ -22,3 +22,16 @@
 | Trace matrix K_ij = Tr(rho(g_i)rho(g_j)^-1) is Gram for orthogonal rho | Direct lemma | Prove internally |
 | det(K) controls Frobenius product-one counts | Unknown | Research question |
 | A braid-sensitive trace-Gram invariant exists | Unknown | Highest-priority theorem target |
+| Pairwise trace-Gram data is closed under Hurwitz moves in general | False | Prohibit |
+| det(K) is a braid invariant in general | False | Exact S3 counterexample |
+| rank(K) is a braid invariant in general | False | Exact S3 counterexample |
+| Characteristic polynomial of K is a braid invariant in general | False | Exact S3 counterexample |
+| Principal-minor multiset of K is a braid invariant in general | False | Exact S3 counterexample |
+| A rank-one torus image retains pure-braid information | False | Abelian-image collapse lemma |
+| Direct torus projection can encode full Nielsen braid dynamics | False in general | Must retain extra nonabelian data |
+| A finite Hurwitz-closed trace-word state exists for useful representation classes | Open | Revised highest-priority theorem target |
+| A braid-sensitive invariant of such a closed trace-word state exists | Open | Research target |
+| Hurwitz orbit classification for finite torus normalizers / dihedral groups is new | False | Cite Sia 2009 and Berger 2011 |
+| Local torus-normalizer Hurwitz formulas are useful exact coordinates | Internal lemma | Keep as benchmark |
+| Four-reflection pure-braid orbit length n/gcd(n,2d) is a main novelty result | No | Treat as elementary benchmark / corollary |
+| Split/nonsplit family statistics across q may contain new arithmetic content | Open | T3 target |
