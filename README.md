@@ -95,7 +95,8 @@ declared as an unverified tag. A hand-edited surface fails
 `make_regime_ledger.py --check` rather than drifting.
 
 Two implementations decide every row: the Mojo kernel `src/julia_orbit.mojo`
-over the vendored `finite_exact` stack, and the Python reference oracle
+over the vendored `finite_exact` and `quadratic_orbit` packages, and the
+Python reference oracle
 `tools/julia_reference.py`. `tests/test_mojo_replay.py` compares their
 transcripts line for line, so neither one is the reason the other is believed.
 
@@ -132,18 +133,20 @@ docs/
   terminology-governance.md                     mirrored governance process
   rational-interval-arithmetic-spec.md          mirrored exact-arithmetic contract
 src/
-  julia_orbit.mojo          exact orbit, escape bound, multiplier classification
+  julia_orbit.mojo          escape bound, cycle checks, multiplier classification
   corpus_replay.mojo        the kernel run against the corpus
   corpus_transcript.mojo    the transcript the differential test consumes
   parameter_corpus.mojo     GENERATED
   smoke_tests.mojo          the canonical Mojo smoke suite
   finite_exact/             vendored from larsbx/finite-math-kernels, pinned in vendored.toml
+  quadratic_orbit/          the seeded orbit of z^2 + c, same upstream and pin
+  mojo_smoke/               the smoke reporter, same upstream and pin
 tools/
   gaussian_q.py             exact Gaussian-rational coordinate records
   julia_reference.py        the Python reference oracle
   parameter_corpus.py       the single source of the corpus
   make_regime_ledger.py     renders every generated surface; --check gates them
-  check_vendored_sync.py    copied from the Mandelbrot repository pending extraction
+  vendoring/                the vendoring checker, same upstream and pin
 tests/
 corpus.json                 GENERATED
 backend.toml                arithmetic backend readiness

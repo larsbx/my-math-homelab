@@ -21,7 +21,7 @@ from julia_orbit import (
     gaussian_q,
     is_gaussian_root_of_unity,
 )
-from smoke_report import SmokeReport, smoke_report_smoke
+from mojo_smoke.report import SmokeReport, smoke_report_smoke
 
 
 def escape_bound_smoke() -> Bool:

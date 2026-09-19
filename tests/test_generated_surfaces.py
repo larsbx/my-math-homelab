@@ -30,7 +30,7 @@ def test_regime_ledger_is_current():
 
 
 def test_vendored_packages_match_their_pins():
-    result = run("check_vendored_sync.py")
+    result = run("vendoring/check_vendored_sync.py")
     assert result.returncode == 0, result.stdout + result.stderr
 
 

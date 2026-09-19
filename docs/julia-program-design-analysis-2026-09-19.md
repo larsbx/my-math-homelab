@@ -155,6 +155,13 @@ special case `(0, C)` and hands this repository its main loop. That single
 refactor is most of the shared surface, and it belongs in the kernels
 repository with the Mandelbrot repository as its second consumer.
 
+**Done, at `finite-math-kernels@56ac8bc`.** The orbit is the
+`quadratic_orbit` package there, seeded rather than critical, with the
+collision partition beside it; the smoke reporter and the vendoring checker
+went with it. This repository vendors all three and holds no private copy.
+The P1 polynomial and Krawczyk rungs are still local to the Mandelbrot
+repository, and Phase 2 is what will need them.
+
 ## 6. The rational multiplier dichotomy
 
 A finite lemma that the corpus depends on, stated here and tested in

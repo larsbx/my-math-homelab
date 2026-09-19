@@ -1,13 +1,39 @@
 """Repository invariants that are cheap to state and expensive to lose."""
 
 import re
+import tomllib
 from pathlib import Path
 
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
-MOJO = sorted((ROOT / "src").glob("*.mojo"))
-PYTHON = sorted((ROOT / "tools").glob("*.py"))
+
+
+def vendored_directories() -> set[Path]:
+    """The package directories this repository copies rather than writes.
+
+    Their invariants are upstream's to keep, and `pixi run vendored` checks
+    that the copies are faithful. What is scanned below is this repository's
+    own executable surface, and the boundary is read from the manifest so it
+    cannot drift by editing a glob.
+    """
+    manifest = tomllib.loads((ROOT / "vendored.toml").read_text(encoding="utf-8"))
+    return {ROOT / pkg["root"] / pkg["name"] for pkg in manifest.get("package", [])}
+
+
+VENDORED = vendored_directories()
+
+
+def own_sources(directory: str, pattern: str) -> list[Path]:
+    return sorted(
+        path
+        for path in (ROOT / directory).rglob(pattern)
+        if not any(parent in VENDORED for parent in path.parents)
+    )
+
+
+MOJO = own_sources("src", "*.mojo")
+PYTHON = own_sources("tools", "*.py")
 
 #: Rank-2 forbidden constructors. `docs/terminology-registry.md` allows these
 #: words in prose about a higher layer, but not as identifiers in the
@@ -41,3 +67,13 @@ def test_no_float_arithmetic_in_the_reference_oracle(path):
     text = path.read_text(encoding="utf-8")
     assert "float(" not in text
     assert not re.search(r"\b\d+\.\d+\b", text), f"{path.name}: decimal literal"
+
+
+def test_the_scan_covers_this_repository_and_not_its_copies():
+    """The boundary is stated, not implied: every own source is scanned, and
+    no vendored file is."""
+    names = {path.name for path in MOJO + PYTHON}
+    assert {"julia_orbit.mojo", "corpus_replay.mojo", "smoke_tests.mojo"} <= names
+    assert {"julia_reference.py", "parameter_corpus.py", "gaussian_q.py"} <= names
+    assert not names & {"rat_q.mojo", "bigint_z.mojo", "orbit.mojo", "report.mojo", "check_vendored_sync.py"}
+    assert len(VENDORED) == 4

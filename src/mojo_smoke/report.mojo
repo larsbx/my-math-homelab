@@ -1,10 +1,6 @@
-# Named reporting for the canonical Mojo smoke suite.
+# report.mojo
 #
-# Copied from larsbx/finite-mandelbrot-research, this note aside, pending its own
-# extraction into larsbx/finite-math-kernels; see
-# docs/julia-program-design-analysis-2026-09-19.md, section 5. It is test
-# scaffolding with no mathematical content, so the copy costs nothing but the
-# obligation to lift it once a third consumer appears.
+# Named reporting for a Mojo smoke suite.
 #
 # The suite used to be one chain of `if not case(): return False`, so a
 # failure reported a single bare FAIL: which of the fifty checks broke, and

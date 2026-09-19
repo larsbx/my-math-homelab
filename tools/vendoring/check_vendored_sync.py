@@ -34,10 +34,24 @@ import sys
 import tomllib
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-MANIFEST = ROOT / "vendored.toml"
+MANIFEST_NAME = "vendored.toml"
 COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
 SOURCE_SUFFIXES = {".mojo", ".py"}
+
+
+def repo_root(start: Path | None = None) -> Path:
+    """The nearest ancestor of this file holding the manifest.
+
+    The checker is itself vendored, so it cannot assume how deep inside a
+    consumer it sits. Searching upward for the manifest makes the depth
+    irrelevant; with no manifest anywhere above, the grandparent is returned
+    and `check` reports the manifest missing rather than guessing.
+    """
+    here = (start or Path(__file__)).resolve()
+    for parent in here.parents:
+        if (parent / MANIFEST_NAME).exists():
+            return parent
+    return here.parents[1]
 
 
 def sources(package_dir: Path) -> list[Path]:
@@ -48,7 +62,8 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def load(manifest: Path = MANIFEST) -> list[dict]:
+def load(manifest: Path | None = None) -> list[dict]:
+    manifest = manifest or repo_root() / MANIFEST_NAME
     return tomllib.loads(manifest.read_text(encoding="utf-8")).get("package", [])
 
 
@@ -80,7 +95,9 @@ def check_package(pkg: dict, root: Path) -> list[str]:
     return errors
 
 
-def check(root: Path = ROOT, manifest: Path = MANIFEST) -> list[str]:
+def check(root: Path | None = None, manifest: Path | None = None) -> list[str]:
+    root = root or repo_root()
+    manifest = manifest or root / MANIFEST_NAME
     if not manifest.exists():
         return [f"missing manifest {manifest.name}"]
     packages = load(manifest)
@@ -100,7 +117,9 @@ def render(packages: list[dict]) -> str:
     return "\n".join(out)
 
 
-def pin(name: str, commit: str, root: Path = ROOT, manifest: Path = MANIFEST) -> list[str]:
+def pin(name: str, commit: str, root: Path | None = None, manifest: Path | None = None) -> list[str]:
+    root = root or repo_root()
+    manifest = manifest or root / MANIFEST_NAME
     if not COMMIT_RE.match(commit):
         return ["commit must be a full 40-hex SHA"]
     packages = load(manifest)
@@ -132,7 +151,7 @@ def main(argv: list[str]) -> int:
         print("vendored packages are out of sync with vendored.toml:\n")
         print("\n".join(errors))
         return 1
-    names = ", ".join(p["name"] for p in load())
+    names = ", ".join(p["name"] for p in load(repo_root() / MANIFEST_NAME))
     print(f"OK: vendored packages match their pins ({names}).")
     return 0
 

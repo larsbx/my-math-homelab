@@ -16,7 +16,13 @@ Phases are indexed by what becomes checkable, not by what becomes plausible.
       oracle, compared transcript for transcript.
 - [x] Generate the regime ledger, `corpus.json`, and the Mojo corpus from one
       table, with `--check` gating them.
-- [ ] Run the literature gate for each local-connectivity theorem tag.
+- [x] Run the literature gate for each local-connectivity theorem tag
+      (`docs/literature-gate-2026-09-19.md`).
+- [x] Take the shared orbit, smoke reporter, and vendoring checker upstream
+      into `larsbx/finite-math-kernels` and vendor them back, so this
+      repository holds no private copy of code a second consumer needs.
+- [ ] Gate `FilledJuliaLocalConnectivityTransfer`, the one bridge obligation
+      the literature gate left ungated.
 
 ## Phase 1 — The three-valued classifier
 
@@ -65,6 +71,9 @@ should consume them, not reimplement them.
 
 - Nothing already present in `finite-mandelbrot-research/src` is copied here.
   It is lifted into `larsbx/finite-math-kernels` and vendored twice; the
-  extraction ladder is section 5 of the design analysis.
-- `tools/check_vendored_sync.py` and `src/smoke_report.mojo` are copies
-  carrying that obligation today.
+  extraction ladder is section 5 of the design analysis. As of
+  `finite-math-kernels@56ac8bc` the orbit, the collision partition, the smoke
+  reporter, and the vendoring checker are upstream, and this repository holds
+  no private copy of any of them.
+- The remaining ladder rungs are the polynomial and Krawczyk kernels, which
+  Phase 2 needs and this repository does not yet use.

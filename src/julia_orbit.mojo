@@ -18,6 +18,7 @@
 
 from finite_exact.rat_q import Q, q_max
 from finite_exact.closed_interval import ComplexIQ
+from quadratic_orbit.orbit import orbit_term, quadratic_step, zero_box
 
 alias ORBIT_ESCAPES = 0
 alias ORBIT_PREPERIODIC = 1
@@ -46,11 +47,6 @@ def singleton_eq(a: ComplexIQ, b: ComplexIQ) -> Bool:
     if not (is_singleton(a) and is_singleton(b)):
         return False
     return a.re.lo.eq(b.re.lo) and a.im.lo.eq(b.im.lo)
-
-
-def julia_step(z: ComplexIQ, c: ComplexIQ) -> ComplexIQ:
-    """`f_c(z) = z^2 + c`."""
-    return z.square().add(c)
 
 
 def escape_bound_quadrance(c: ComplexIQ) -> Q:
@@ -120,14 +116,6 @@ def orbit_rejected() -> OrbitOutcome:
     return OrbitOutcome(ORBIT_CAPPED, -1, -1, -1, -1, True)
 
 
-def iterate_from_zero(c: ComplexIQ, steps: Int) -> ComplexIQ:
-    """`z_steps`, recomputed from `z_0 = 0`. Allocation-free by construction."""
-    var z = gaussian_q(0, 1, 0, 1)
-    for _ in range(steps):
-        z = julia_step(z, c)
-    return z.copy()
-
-
 def critical_orbit(c: ComplexIQ, horizon: Int) -> OrbitOutcome:
     """Run z_0 = 0, z_{n+1} = z_n^2 + c exactly for at most `horizon` steps.
 
@@ -145,19 +133,19 @@ def critical_orbit(c: ComplexIQ, horizon: Int) -> OrbitOutcome:
     if horizon < 1 or not is_singleton(c):
         return orbit_rejected()
     for n in range(horizon + 1):
-        var z = iterate_from_zero(c, n)
+        var z = orbit_term(zero_box(), c, n)
         if not z.accepted():
             return orbit_rejected()
         if escapes_at(z, c):
             return OrbitOutcome(ORBIT_ESCAPES, n, -1, -1, n, False)
         for first in range(n):
-            if singleton_eq(iterate_from_zero(c, first), z):
+            if singleton_eq(orbit_term(zero_box(), c, first), z):
                 return OrbitOutcome(ORBIT_PREPERIODIC, -1, first, n - first, n, False)
     return orbit_capped(horizon)
 
 
 def is_cycle_of_length_one(c: ComplexIQ, z: ComplexIQ) -> Bool:
-    return singleton_eq(julia_step(z, c), z)
+    return singleton_eq(quadratic_step(z, c), z)
 
 
 def multiplier_of_fixed_point(z: ComplexIQ) -> ComplexIQ:
