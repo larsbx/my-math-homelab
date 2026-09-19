@@ -1,0 +1,1 @@
+# finite-julia-set-research
