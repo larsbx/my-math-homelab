@@ -78,3 +78,12 @@ Use primary sources whenever a theorem is stated. Survey and expository referenc
 
 - M. de Courcy-Ireland, M. Magee, **Kesten–McKay law for the Markoff surface mod p**, Annales Henri Lebesgue 4 (2021), 227–250.  
   https://doi.org/10.5802/ahl.71
+## Hurwitz equivalence in dihedral groups
+
+- C. Sia, **Hurwitz Equivalence in Tuples of Dihedral Groups, Dicyclic Groups, and Semidihedral Groups**, Electronic Journal of Combinatorics 16 (2009), #R95.
+  https://www.combinatorics.org/ojs/index.php/eljc/article/download/v16i1r95/pdf/
+
+- E. Berger, **Hurwitz Equivalence in Dihedral Groups**, Electronic Journal of Combinatorics 18 (2011), #P45.
+  https://doi.org/10.37236/532
+
+These sources classify finite-dihedral Hurwitz orbits. The torus-normalizer model over a finite field therefore serves as a benchmark/specialization, not as a new orbit-classification framework.
