@@ -23,6 +23,11 @@ Phases are indexed by what becomes checkable, not by what becomes plausible.
       repository holds no private copy of code a second consumer needs.
 - [ ] Gate `FilledJuliaLocalConnectivityTransfer`, the one bridge obligation
       the literature gate left ungated.
+- [ ] Claim a binding subsection of `docs/rational-interval-arithmetic-spec.md`
+      for this repository. The mirrored spec records a binding row per
+      arithmetic consumer, and section 6 currently names the PSC and
+      Mandelbrot consumers only; this repository's kernels are unbound and
+      unaudited by the exact-arithmetic gate that enforces them there.
 
 ## Phase 1 — The three-valued classifier
 
