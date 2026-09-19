@@ -1,0 +1,97 @@
+# Terminology Registry
+
+Status: controlled vocabulary registry.
+
+The governance process is `docs/terminology-governance.md`, mirrored from
+`larsbx/finite-mandelbrot-research`. Terms shared with the parameter-plane
+program keep the sense that registry gives them; this file records the
+dynamical-plane vocabulary and the deltas.
+
+## Established field terms
+
+Usable without a terminology declaration, in their ordinary field sense:
+
+- Julia set
+- filled Julia set
+- Fatou set
+- critical orbit
+- postcritically finite
+- Misiurewicz parameter
+- parabolic parameter
+- hyperbolic parameter
+- indifferent cycle
+- rationally indifferent, irrationally indifferent
+- Siegel disk, Cremer point
+- Brjuno condition, rotation number
+- multiplier
+- attracting, superattracting, repelling
+- local connectivity
+- fiber, trivial fiber
+- dynamical ray, external ray, landing
+- doubling map
+- kneading sequence, orbit portrait
+- dyadic box, interval arithmetic
+- Krawczyk method, squarefree polynomial
+- quadrance, spread, incidence relation, vertex
+
+## Declared terms
+
+### Gaussian-rational parameter
+
+Status: definition-only.
+Genealogy: `Q(i)` as the field of coordinates; the rank-2 coordinate record of
+`docs/rank2-coordinate-substrate.md` in the parameter-plane program.
+Bridge claim: a pair of exact rationals with polynomial operations and a
+quadrance scalar. It is not an analytic complex number and carries no circle,
+disk, arc, polar angle, or connected component.
+Known leaks: an exactly representable parameter can have dynamics that no
+finite test decides; see the irrationally indifferent row of the ledger.
+Use discipline: the Phase 0 parameter domain. Interval and algebraic
+parameters are Phase 4 and are a different term.
+
+### Rational multiplier dichotomy
+
+Status: theorem, proved in
+`docs/julia-program-design-analysis-2026-09-19.md`, section 6.
+Genealogy: the degree of cyclotomic extensions; Kronecker-style constraints on
+algebraic numbers of unit modulus.
+Bridge claim: a quadrance-1 element of `Q(i)` is a root of unity exactly when
+it is one of `1, -1, i, -i`, so rationally versus irrationally indifferent is
+decided by a four-element membership test.
+Known leaks: it decides nothing about Siegel versus Cremer, which turns on the
+Brjuno condition for the rotation number.
+Use discipline: cite it wherever the parabolic case is separated from the
+irrationally indifferent case; never cite it for a linearizability claim.
+
+### Regime ledger
+
+Status: novel bridge term.
+Genealogy: the proof-block ledger of the parameter-plane program; the
+classical classification of quadratic parameters.
+Bridge claim: a generated table indexed by regime whose verified columns are
+recomputed by exact arithmetic and whose tag columns name unverified imported
+theorems. It records status; it promotes nothing.
+Known leaks: a row is a statement about one parameter, never about its
+regime. A regime is discharged by `docs/J1_proof_definition.md`, not by a row.
+Use discipline: the ledger is generated. A hand edit fails the build.
+
+### CAPPED
+
+Status: definition-only.
+Genealogy: the capped-run convention of the parameter-plane program
+(`UW-2`: an exhausted budget is not a verdict).
+Bridge claim: the critical orbit neither escaped nor repeated within the
+stated budget, and the run names which budget ran out.
+Known leaks: a capped run says nothing about boundedness. Exact iteration
+doubles coordinate size per step, so `CAPPED` is the *expected* outcome for
+every parabolic and irrationally indifferent parameter, not a defect.
+Use discipline: never read `CAPPED` as `IN`, as `OUT`, or as evidence for
+either.
+
+## Forbidden usages
+
+- calling the quadrance-1 locus of `J_0` a circle, or deriving an arc, an
+  angle, or a circumference from it;
+- calling a capped run bounded or unbounded;
+- calling an irrationally indifferent parameter Siegel or Cremer;
+- using `J1` without naming the regime it is claimed on.

@@ -60,7 +60,7 @@ fixed point whose Siegel-or-Cremer status turns on the Brjuno condition for
 `lam in {1, -1, i, -i}` give the parabolics `c = 1/4`, `-3/4`, `(1 + 2i)/4`,
 `(1 - 2i)/4`.
 
-The corpus this produces is `docs/parameter-corpus.md`. Every regime except
+The corpus this produces is the generated `docs/J1_regime_ledger.md`. Every regime except
 "Siegel with bounded type" is reached by exactly representable data.
 
 ## 2. What transfers unchanged
