@@ -158,7 +158,7 @@ alias CORPUS_SIZE = {size}
 alias MOJO_HORIZON = {horizon}
 
 
-struct CorpusRow(Copyable, Movable):
+struct CorpusRow(Copyable):
     \"\"\"One parameter, its witness, and the verdict the kernel must return.\"\"\"
 
     var key: String

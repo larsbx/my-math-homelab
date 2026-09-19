@@ -25,7 +25,7 @@ alias CORPUS_SIZE = 9
 alias MOJO_HORIZON = 8
 
 
-struct CorpusRow(Copyable, Movable):
+struct CorpusRow(Copyable):
     """One parameter, its witness, and the verdict the kernel must return."""
 
     var key: String

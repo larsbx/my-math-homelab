@@ -25,7 +25,7 @@ from smoke_report import SmokeReport, smoke_report_smoke
 
 
 def escape_bound_smoke() -> Bool:
-    """max(4, N(c)), and a box on the bound does not certify escape."""
+    """`max(4, N(c))`, and a box on the bound does not certify escape."""
     if not escape_bound_quadrance(gaussian_q(0, 1, 0, 1)).eq(Q(4, 1)):
         return False
     if not escape_bound_quadrance(gaussian_q(3, 1, 4, 1)).eq(Q(25, 1)):

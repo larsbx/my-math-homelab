@@ -49,12 +49,12 @@ def singleton_eq(a: ComplexIQ, b: ComplexIQ) -> Bool:
 
 
 def julia_step(z: ComplexIQ, c: ComplexIQ) -> ComplexIQ:
-    """f_c(z) = z^2 + c."""
+    """`f_c(z) = z^2 + c`."""
     return z.square().add(c)
 
 
 def escape_bound_quadrance(c: ComplexIQ) -> Q:
-    """max(4, N(c)).
+    """`max(4, N(c))`.
 
     The classical criterion is |z| > max(2, |c|). Squaring both sides keeps
     the test inside the rank-2 layer: no square root, and no radius.
@@ -121,11 +121,11 @@ def orbit_rejected() -> OrbitOutcome:
 
 
 def iterate_from_zero(c: ComplexIQ, steps: Int) -> ComplexIQ:
-    """z_steps, recomputed from z_0 = 0. Allocation-free by construction."""
+    """`z_steps`, recomputed from `z_0 = 0`. Allocation-free by construction."""
     var z = gaussian_q(0, 1, 0, 1)
     for _ in range(steps):
         z = julia_step(z, c)
-    return z
+    return z.copy()
 
 
 def critical_orbit(c: ComplexIQ, horizon: Int) -> OrbitOutcome:
@@ -161,12 +161,12 @@ def is_cycle_of_length_one(c: ComplexIQ, z: ComplexIQ) -> Bool:
 
 
 def multiplier_of_fixed_point(z: ComplexIQ) -> ComplexIQ:
-    """lam = f'(z) = 2z, the one-cycle case of lam = 2^k prod z_j."""
+    """`lam = f'(z) = 2z`, the one-cycle case of `lam = 2^k prod z_j`."""
     return z.add(z)
 
 
 def multiplier_of_two_cycle(a: ComplexIQ, b: ComplexIQ) -> ComplexIQ:
-    """lam = 4 a b."""
+    """`lam = 4 a b`."""
     var product = a.mul(b)
     return product.add(product).add(product.add(product))
 
