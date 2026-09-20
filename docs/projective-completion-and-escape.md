@@ -20,12 +20,13 @@ Two things about it are worth saying plainly.
 - **Infinity is not an object anywhere in this tree.** "Escape to infinity" is
   a name inherited from the analytic picture; the finite content is that a
   quadrance left a bound, plus a classical fact that it never comes back.
-- **That classical fact is imported, not proved here.** The usual argument
-  runs through `|z^2 + c| >= |z|^2 - |c|` and the Cauchy-Schwarz bound on
-  `Re(conj(z)^2 c)`, both natural in `|.|` and awkward in quadrance: each step
-  needs squaring back into polynomial form before it is a statement this layer
-  can make. Nothing in this repository carries that derivation. Phase 1's
-  completeness proof is where it would have to land, in one form or another.
+- **That classical fact was imported rather than proved, and now is proved.**
+  When this note was written nothing here carried the derivation. It does now:
+  `docs/escape-criterion.md` replaces the implication with a finite
+  certificate carrying a rational growth ratio, by squaring the usual
+  modulus argument back into two polynomial forms in the quadrances. So the
+  gap that section motivated is closed, and it is closed in the affine layer
+  rather than by this note's route.
 
 The projective vocabulary is already present in the estate, but only in the
 negative: `docs/no-points-invariant.md` forbids treating an *ideal point* as
@@ -120,11 +121,14 @@ reason the expensive check is worth running.
 
 ## 5. What that is worth, beyond tidiness
 
-- **The soundness path shortens.** A contraction certificate at `[1 : 0]` is
-  polynomial and interval-checkable end to end, where the escape inequality of
-  section 0 is imported. Whether the inequality can be derived cleanly in this
-  layer is a separate question; the point is that the projective route does
-  not need it.
+- **The certificate shapes collapse to one.** This was first argued as
+  "the soundness path shortens", on the reading that the escape inequality was
+  imported and a contraction certificate would not be. That reading is now
+  wrong: `docs/escape-criterion.md` derives the inequality in the affine
+  layer, so the projective route wins nothing on soundness. What it still
+  wins is uniformity -- `OUT` and `IN` become the same kind of object, checked
+  by the same witness machinery, rather than an inequality beside a
+  contraction.
 - **A theorem tag gets a binding site.** Phase 3 needs dynamical rays, and the
   Böttcher coordinate is analytic and must stay an import. The `u`-chart
   neighbourhood of `[1 : 0]` is where that tag attaches: a named chart with a

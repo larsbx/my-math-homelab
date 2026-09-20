@@ -51,9 +51,11 @@ Two consequences make the dynamical plane easier than the parameter plane,
 and the repository states them as such rather than importing the parameter
 plane's open questions:
 
-- **Escape is exactly decidable.** `N(z) > max(4, N(c))` implies escape, and
-  the test is a quadrance against a rational bound: rank-2 legal, no radius,
-  no square root.
+- **Escape is exactly decidable, and now derived.** `N(z) > max(4, N(c))`
+  implies escape, the test is a quadrance against a rational bound, and the
+  implication is no longer an unnamed import: `docs/escape-criterion.md`
+  carries a certificate with a rational growth ratio, proved with two
+  polynomial forms and no square root.
 - **Interior certification does not touch density of hyperbolicity.** For
   fixed hyperbolic `c` the interior of `K_c` is the union of preimages of the
   immediate basin, so `IN` is a pullback certificate from one attracting-cycle
@@ -155,6 +157,7 @@ docs/
   literature-gate-2026-09-19.md                 the tags, judged
   literature-gate-2026-09-19-transfer.md        the filled-Julia transfer, judged
   exact-arithmetic-binding.md                   this repository's binding table
+  escape-criterion.md                           escape, derived rather than imported
   projective-completion-and-escape.md           where escape meets the algebra
   terminology-registry.md                       declared vocabulary
   terminology-governance.md                     mirrored governance process

@@ -31,6 +31,9 @@ Phases are indexed by what becomes checkable, not by what becomes plausible.
       `tools/audit_exact_arithmetic.py`; `larsbx/finite-math-kernels` now names
       this repository among the consumers.
 
+- [x] Derive the escape criterion instead of importing it
+      (`docs/escape-criterion.md`). `ESCAPES` was a decided verdict resting on
+      an implication nothing here proved and no tag named.
 - [x] Check that the paths and tasks this repository's prose names resolve
       (`pixi run references`). The design analysis carried a reference to a
       file that never existed until this check was added.
@@ -40,7 +43,8 @@ Phases are indexed by what becomes checkable, not by what becomes plausible.
 Deliver `G^c_r(box) -> IN | OUT | UNKNOWN` over dyadic boxes at a
 Gaussian-rational parameter, with:
 
-- escape certificates for `OUT`, from the exact quadrance bound;
+- escape certificates for `OUT`, from the exact quadrance bound and the
+  growth ratio of `docs/escape-criterion.md`;
 - attracting-cycle certificates plus basin pullback for `IN`;
 - `UNKNOWN` everywhere else, with the residual reported rather than shrunk.
 

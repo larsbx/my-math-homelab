@@ -157,6 +157,14 @@ New tags, recorded for the phase that needs them and not used by any row yet:
 | `DouadySullivanCremerNotLocallyConnected` | no row yet | ACCEPTED WITH QUALIFICATION (finding 5) |
 | `BrjunoYoccozQuadraticLinearization` | no row yet | ACCEPTED WITH QUALIFICATION (finding 5) |
 
+**Amendment, 2026-09-20.** This gate judged the tags the ledger carries. It did
+not judge the escape *criterion* -- the step from "a quadrance passed a bound"
+to "the orbit is unbounded" -- because no tag named it and nothing in the
+repository derived it. That gap is closed in `docs/escape-criterion.md`, by
+derivation rather than by import, so the criterion is not a tag and does not
+belong in the table below. Finding 4's tag is about the Cantor structure of
+the resulting Julia set, which is a different statement and remains imported.
+
 **Amendment, same day.** `FilledJuliaLocalConnectivityTransfer` was gated
 after this table was written; see `docs/literature-gate-2026-09-19-transfer.md`,
 which discharges it for `c` with connected `K_c`. The row above records what

@@ -20,6 +20,7 @@ certificate grammar yet to accept into.
 | 2.1–2.5 I_Q, complex boxes | `src/finite_exact/closed_q.mojo` (`IQ`, `ComplexIQ`), stable facade `src/finite_exact/closed_interval.mojo` | CONFORMS | vendored; J1 enforced, three-valued predicates with an explicit rejected state |
 | 2.1–2.5 seeded quadratic orbit | `src/quadratic_orbit/orbit.mojo` | DEMO | vendored; the orbit of `z^2 + c` over singleton and non-degenerate boxes, the collision interval, and the three-valued zero-exclusion test; a direct `IQ` consumer, barred from certificate acceptance |
 | 1–2 escape bound and multiplier classification | `src/julia_orbit.mojo` | DEMO | quadrance against a rational bound, exact cycle checks, and the five-way multiplier classification whose indifferent case refuses to decide; direct `Q` and `ComplexIQ` consumer |
+| 1–2 escape certificate | `src/escape_certificate.mojo` | DEMO | the threshold and growth forms of `docs/escape-criterion.md`, both polynomial in two quadrances; exact rational comparisons only, and a rejected value refuses rather than answering |
 | 1–2 corpus replay | `src/corpus_replay.mojo` | DEMO | runs the kernel against the generated corpus and prints the transcript the differential test consumes |
 | 1–2 generated corpus | `src/parameter_corpus.mojo` | DEMO | generated from `tools/parameter_corpus.py`; exact `Int64` numerator and denominator pairs lifted into singleton boxes |
 | 1–2 smoke suite | `src/smoke_tests.mojo` | DEMO | the canonical Mojo smoke driver; exercises the layers it reports on |

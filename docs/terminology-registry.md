@@ -97,6 +97,23 @@ Use discipline: name the chart whenever a statement is made about infinity.
 "Escape" without a chart is the affine inequality of
 `src/julia_orbit.mojo` and nothing more.
 
+### Escape certificate
+
+Status: novel bridge term.
+Genealogy: the classical escape radius of quadratic dynamics; the
+certificate-carrying discipline of the parameter-plane program.
+Bridge claim: a rational ratio `r > 1`, together with the two quadrances it
+was checked against, such that the quadrance of the orbit grows by at least
+`r` at every step from that point on. The claim is per step and is proved in
+`docs/escape-criterion.md`; it is not a statement about a limit.
+Known leaks: a parameter with no certificate is not thereby bounded, and the
+certificate says nothing about the Julia set of the parameter, whose Cantor
+structure remains an imported tag. The ratio is a lower bound on growth, not
+the growth.
+Use discipline: attach it wherever `ESCAPES` is reported. An escape index
+without a ratio is a threshold crossing, which is a weaker statement than the
+word escape suggests.
+
 ### Regime ledger
 
 Status: novel bridge term.

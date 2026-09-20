@@ -60,6 +60,22 @@ def test_stabilization_is_expected_only_where_a_tag_backs_it(row):
         assert row.local_connectivity is LocalConnectivity.TAGGED_LOCALLY_CONNECTED
 
 
+@pytest.mark.parametrize("row", ROWS)
+def test_every_escaping_verdict_carries_a_certificate(row):
+    """An `ESCAPES` verdict is only as good as the reason behind it.
+
+    The criterion in `src/julia_orbit.mojo` fires at `t > max(4, m)`, which is
+    exactly where a rational growth ratio exists, so a verdict without a
+    certificate would mean the two disagree.
+    """
+    orbit = critical_orbit(row.c)
+    if orbit.verdict is OrbitVerdict.ESCAPES:
+        assert orbit.certificate is not None and orbit.certificate.valid()
+        assert orbit.certificate.ratio > 1
+    else:
+        assert orbit.certificate is None
+
+
 def test_the_corpus_reaches_every_regime():
     assert {row.regime for row in CORPUS} == set(Regime)
 

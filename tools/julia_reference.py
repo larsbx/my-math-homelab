@@ -16,6 +16,7 @@ from enum import Enum
 from fractions import Fraction
 from typing import Sequence
 
+from escape_certificate import EscapeCertificate, escape_certificate
 from gaussian_q import GQ, ZERO, is_root_of_unity
 
 
@@ -53,7 +54,11 @@ class CapReason(Enum):
 class CriticalOrbit:
     """What a bounded exact run of the critical orbit established.
 
-    `ESCAPES` carries the first index whose quadrance exceeds the bound.
+    `ESCAPES` carries the first index whose quadrance exceeds the bound, and
+    the certificate that says what exceeding it buys: a rational ratio the
+    quadrance grows by at every later step (`docs/escape-criterion.md`). The
+    index alone would be a threshold crossing; the certificate is the reason
+    to call it escape.
     `PREPERIODIC` carries the exact preperiod and period of the critical
     orbit. `CAPPED` carries the budget that ran out and the step reached, and
     establishes nothing: the orbit neither escaped nor repeated within the
@@ -62,6 +67,7 @@ class CriticalOrbit:
 
     verdict: OrbitVerdict
     escape_index: int | None = None
+    certificate: EscapeCertificate | None = None
     preperiod: int | None = None
     period: int | None = None
     horizon: int | None = None
@@ -112,7 +118,11 @@ def critical_orbit(c: GQ, horizon: int = DEFAULT_HORIZON, bit_budget: int = DEFA
     bound = escape_bound_quadrance(c)
     for n in range(horizon + 1):
         if z.quadrance() > bound:
-            return CriticalOrbit(OrbitVerdict.ESCAPES, escape_index=n)
+            return CriticalOrbit(
+                OrbitVerdict.ESCAPES,
+                escape_index=n,
+                certificate=escape_certificate(z.quadrance(), c.quadrance()),
+            )
         if z in seen:
             first = seen[z]
             return CriticalOrbit(OrbitVerdict.PREPERIODIC, preperiod=first, period=n - first)

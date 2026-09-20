@@ -10,7 +10,7 @@ classical referent, and which side of the boundary each one lives on.
 | `GQ` / `ComplexIQ` singleton | a Gaussian-rational parameter or point | rank-2 coordinate record, not an analytic complex number |
 | `quadrance` | squared modulus | exact rational scalar; no modulus and no square root exist here |
 | `escape_bound_quadrance` | the escape radius `max(2, \|c\|)`, squared | exact rational bound |
-| `critical_orbit` verdict `ESCAPES` | the critical orbit tends to infinity | finite certificate |
+| `critical_orbit` verdict `ESCAPES` | the critical orbit tends to infinity | finite certificate: the quadrance grows by a rational ratio `r > 1` at every later step (`docs/escape-criterion.md`), which is derived here, not imported |
 | `critical_orbit` verdict `PREPERIODIC` | the parameter is postcritically finite | finite certificate with exact preperiod and period |
 | `critical_orbit` verdict `CAPPED` | nothing | exhausted budget; not a classification |
 | cycle witness | a periodic orbit of `f_c` | finite data, checked by exact identity |
@@ -31,8 +31,9 @@ classical referent, and which side of the boundary each one lives on.
    classes;
 4. a quadrance-1 multiplier is or is not one of the four roots of unity of
    `Q(i)`;
-5. a critical orbit escapes at a named index, or is preperiodic with a named
-   preperiod and period, or exhausted a named budget;
+5. a critical orbit escapes at a named index with a rational growth ratio, or
+   is preperiodic with a named preperiod and period, or exhausted a named
+   budget;
 6. two implementations agree on all of the above.
 
 ## Forbidden finite claims
@@ -40,11 +41,12 @@ classical referent, and which side of the boundary each one lives on.
 1. a Julia set is locally connected;
 2. an irrationally indifferent parameter is Siegel, or is Cremer;
 3. a capped orbit is bounded, or is unbounded;
-4. a multiplier of quadrance exactly 1 is attracting, or is repelling;
-5. a coordinate record is an analytic complex number;
-6. the quadrance-1 locus of `J_0` is a circle, or carries an arc, an angle, or
+4. an orbit with no escape certificate is bounded;
+5. a multiplier of quadrance exactly 1 is attracting, or is repelling;
+6. a coordinate record is an analytic complex number;
+7. the quadrance-1 locus of `J_0` is a circle, or carries an arc, an angle, or
    a circumference;
-7. a regime is discharged because one of its parameters checked out.
+8. a regime is discharged because one of its parameters checked out.
 
 ## The bridge shape
 
