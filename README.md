@@ -56,10 +56,11 @@ plane's open questions:
   implication is no longer an unnamed import: `docs/escape-criterion.md`
   carries a certificate with a rational growth ratio, proved with two
   polynomial forms and no square root.
-- **Interior certification does not touch density of hyperbolicity.** For
-  fixed hyperbolic `c` the interior of `K_c` is the union of preimages of the
-  immediate basin, so `IN` is a pullback certificate from one attracting-cycle
-  witness, decided exactly by `lam = 2^k prod z_j` and `N(lam) < 1`.
+- **Interior certification does not touch density of hyperbolicity.** `IN` is
+  a *trap*: a box that an iterate maps strictly inside itself, verified
+  directly, so no multiplier and no theorem about basins is needed
+  (`docs/three-valued-classifier.md`). A parabolic parameter has no such box,
+  and the classifier answers `UNKNOWN` there rather than guessing.
 
 ## Exactly representable data reaches every regime
 
@@ -158,12 +159,16 @@ docs/
   literature-gate-2026-09-19-transfer.md        the filled-Julia transfer, judged
   exact-arithmetic-binding.md                   this repository's binding table
   escape-criterion.md                           escape, derived rather than imported
+  three-valued-classifier.md                    the box certificates and their soundness
+  classifier-census.md                          GENERATED: how a grid comes out per parameter
   projective-completion-and-escape.md           where escape meets the algebra
   terminology-registry.md                       declared vocabulary
   terminology-governance.md                     mirrored governance process
   rational-interval-arithmetic-spec.md          mirrored exact-arithmetic contract
 src/
   julia_orbit.mojo          escape bound, cycle checks, multiplier classification
+  box_classifier.mojo       OUT, IN and UNKNOWN over boxes
+  escape_certificate.mojo   the growth ratio behind OUT
   corpus_replay.mojo        the kernel run against the corpus
   corpus_transcript.mojo    the transcript the differential test consumes
   parameter_corpus.mojo     GENERATED
@@ -175,6 +180,9 @@ tools/
   gaussian_q.py             exact Gaussian-rational coordinate records
   julia_reference.py        the Python reference oracle
   parameter_corpus.py       the single source of the corpus
+  box_classifier.py         the classifier, Python side
+  escape_certificate.py     the escape derivation, Python side
+  interval_box.py           exact rational boxes for the Python side
   make_regime_ledger.py     renders every generated surface; --check gates them
   audit_exact_arithmetic.py the binding-table and no-float gate
   check_references.py       this repository's reference policy

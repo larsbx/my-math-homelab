@@ -3,7 +3,9 @@
 import pytest
 
 from julia_reference import OrbitVerdict, classify_multiplier, critical_orbit, is_cycle, multiplier
-from parameter_corpus import CORPUS, J1Expectation, LocalConnectivity, Regime
+from box_classifier import is_trap
+from interval_box import ComplexBox
+from parameter_corpus import CORPUS, TRAPS, J1Expectation, LocalConnectivity, Regime
 
 ROWS = [pytest.param(row, id=row.key) for row in CORPUS]
 WITH_CYCLE = [pytest.param(row, id=row.key) for row in CORPUS if row.cycle is not None]
@@ -74,6 +76,22 @@ def test_every_escaping_verdict_carries_a_certificate(row):
         assert orbit.certificate.ratio > 1
     else:
         assert orbit.certificate is None
+
+
+@pytest.mark.parametrize("key", sorted(TRAPS))
+def test_every_declared_trap_verifies(key):
+    """A trap is a witness, and a witness that is not checked is a claim."""
+    row = next(row for row in CORPUS if row.key == key)
+    corners, period = TRAPS[key]
+    assert is_trap(ComplexBox.of(*corners), ComplexBox.singleton(row.c.re, row.c.im), period)
+
+
+def test_only_hyperbolic_rows_declare_a_trap():
+    """A parabolic basin has no strictly invariant box and an empty interior has
+    nothing to trap, so a trap anywhere else would be a mistake, not a bonus."""
+    for row in CORPUS:
+        if row.key in TRAPS:
+            assert row.regime is Regime.HYPERBOLIC_CENTER
 
 
 def test_the_corpus_reaches_every_regime():

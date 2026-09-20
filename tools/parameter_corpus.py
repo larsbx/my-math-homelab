@@ -217,3 +217,15 @@ CORPUS: tuple[Parameter, ...] = (
 )
 
 BY_KEY = {row.key: row for row in CORPUS}
+
+#: Trap witnesses, by corpus key: a box and the period whose iterate maps it
+#: strictly inside itself (`docs/three-valued-classifier.md`). A trap is a
+#: witness like a cycle is: it is declared here and verified by
+#: `tools/box_classifier.py` before any verdict rests on it. A parameter
+#: absent from this table has no trap *in this table*, which is not a claim
+#: that none exists -- though for a parabolic parameter none does, and for a
+#: parameter with empty interior there is nothing to trap.
+TRAPS: dict[str, tuple[tuple[F, F, F, F], int]] = {
+    "c0": ((F(-1, 4), F(1, 4), F(-1, 4), F(1, 4)), 1),
+    "basilica": ((F(-1, 8), F(1, 8), F(-1, 8), F(1, 8)), 2),
+}

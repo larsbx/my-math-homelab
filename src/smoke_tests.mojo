@@ -13,6 +13,7 @@
 from finite_exact.rat_q import Q, bigq_storage_smoke, demo_q_normalization, demo_q_order, q_cancellation_smoke
 from finite_exact.closed_interval import bigq_interval_conformance_smoke, demo_complex_quadrance_point, demo_interval_mul
 from corpus_replay import corpus_replay_smoke, rejected_configuration_smoke
+from box_classifier import box_classifier_smoke
 from escape_certificate import escape_certificate_smoke
 from julia_orbit import (
     MULT_IRRATIONALLY_INDIFFERENT,
@@ -66,6 +67,7 @@ def run_smoke_tests() -> Bool:
     _ = report.record("interval conformance", bigq_interval_conformance_smoke())
     _ = report.record("escape bound", escape_bound_smoke())
     _ = report.record("escape certificate", escape_certificate_smoke())
+    _ = report.record("box classifier", box_classifier_smoke())
     _ = report.record("rational multiplier dichotomy", multiplier_dichotomy_smoke())
     _ = report.record("parameter corpus replay", corpus_replay_smoke())
     _ = report.record("rejected orbit configuration", rejected_configuration_smoke())

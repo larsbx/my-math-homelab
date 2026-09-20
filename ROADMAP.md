@@ -40,8 +40,18 @@ Phases are indexed by what becomes checkable, not by what becomes plausible.
 
 ## Phase 1 — The three-valued classifier
 
-Deliver `G^c_r(box) -> IN | OUT | UNKNOWN` over dyadic boxes at a
-Gaussian-rational parameter, with:
+- [x] `G^c_r(box) -> IN | OUT | UNKNOWN` over dyadic boxes, in both
+      implementations, with soundness proved for both certificates
+      (`docs/three-valued-classifier.md`).
+- [x] `OUT` from the escape certificate applied to a whole box; `IN` from a
+      declared trap, verified before any verdict rests on it; `UNKNOWN`
+      reported as its own column in the generated
+      `docs/classifier-census.md`.
+- [ ] The completeness proof for hyperbolic Gaussian-rational `c`. Both
+      halves reduce to one missing lemma on how enclosure width propagates
+      under a step; section 6 of the classifier document states it.
+
+The remaining deliverable, restated:
 
 - escape certificates for `OUT`, from the exact quadrance bound and the
   growth ratio of `docs/escape-criterion.md`;
@@ -57,7 +67,8 @@ ahead of it. Decide that before the classifier is written, not after.
 The deliverable is a **completeness proof for hyperbolic Gaussian-rational
 `c`**: every box whose closure misses `J_c` is classified at some resolution.
 This is the claim the parameter plane cannot make, and it should be proved
-rather than demonstrated.
+rather than demonstrated. The census is not that proof and is not evidence
+for it.
 
 ## Phase 2 — Postcritically finite certificates
 
