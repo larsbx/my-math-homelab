@@ -129,9 +129,44 @@ double. **The critical point's multiplicity is the two-to-one branching of
 `f`, nothing else**, and it compounds once per step of preperiod.
 
 At the base, `l = 0`, the multiplicity is `1` exactly when `R'_{0,k}(z) != 0`.
-A vanishing `R'_{0,k}` means the cycle has multiplier one, which is a
-parabolic parameter; `exact_multiplicity` refuses there rather than guessing,
-and that refusal is the only case this section does not cover.
+A vanishing `R'_{0,k}` means the cycle has multiplier one, a parabolic
+parameter, and the recursion has no base case there. That is a limit of the
+*account*, not of the question, and the account is not how the number is
+computed.
+
+**The computation is a jet.** A jet of order `m` at `w` is the coefficient
+list of `g(w + e)` modulo `e^(m+1)`, with exact Gaussian-rational
+coefficients. Pushing the seed jet `(w, 1, 0, ..., 0)` through `z -> z^2 + c`
+gives every derivative of `f^n` at `w` at once, because truncated
+multiplication is a finite convolution and that is all the map needs. The
+multiplicity is then the index of the first nonzero coefficient of the
+residual's jet, with no case analysis at all:
+
+| parameter | point | type | multiplicity |
+| --- | --- | --- | --- |
+| `c = 0` | `0` | `(1, 1)` | `2` |
+| `c = i` | `0` | `(2, 2)` | `2` |
+| `c = 1/4` | `1/2` | `(0, 1)` | `2` |
+| `c = -3/4` | `-1/2` | `(0, 2)` | `3` |
+
+The last two are the parabolic cases, and the last one is worth reading: a
+cycle of multiplier `-1` has two attracting petals for `f^2`, and the
+multiplicity is `1 + 2`. Nothing in this repository knows what a petal is;
+the jet counted it.
+
+`tools/jet.py` is the layer and `branching_multiplicity` is kept beside
+`exact_multiplicity` deliberately: the recursion explains *why* the critical
+point is degenerate, the jet computes *how much*, and
+`tests/test_preperiodic.py` checks they agree wherever both are defined. A
+jet that is flat to the order computed returns `None`, which is a budget and
+not a multiplicity of zero.
+
+The jet layer is Python-side only. Its Mojo counterpart would need
+`List[ComplexIQ]`, which the vendored exact arithmetic cannot provide -- a
+`ComplexIQ` is not `Movable` -- so it would have to fix the order in the type
+and unroll the convolution. That is a real constraint and it is recorded
+rather than worked around: the exact-identity layer of section 4 has always
+been the Python side's, and the Mojo side carries the box certificates.
 
 ## 5. Enumeration, and when it is complete
 
@@ -219,7 +254,9 @@ for witness.
 ## 8. What this does not claim
 
 It does not claim the isolated roots are in `J_c`, though the repelling ones
-are. It does not give the exact type of a root the certificate declines. An
+are. A multiplicity from a jet is the order of vanishing of the residual and
+nothing else: it counts petals only in the sense that the classical count
+happens to agree, and no petal is constructed here. It does not give the exact type of a root the certificate declines. An
 enumeration whose count refuses is a budget that ran out and never a claim
 that the missing roots are absent. And it discharges no block of
 `docs/J1_proof_definition.md`.

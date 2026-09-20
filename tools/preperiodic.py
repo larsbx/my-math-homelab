@@ -25,6 +25,7 @@ from fractions import Fraction
 from box_classifier import escape_bound_quadrance, step
 from gaussian_q import GQ
 from interval_box import ComplexBox
+from jet import residual as jet_residual, vanishing_order
 from julia_reference import step as point_step
 
 ONE = ComplexBox.singleton(1)
@@ -239,8 +240,8 @@ def is_exact_root(z: GQ, c: GQ, preperiod: int, period: int) -> bool:
     return residue is not None and residue.is_zero()
 
 
-def exact_multiplicity(z: GQ, c: GQ, preperiod: int, period: int) -> int | None:
-    """The multiplicity of an exactly representable root, or `None`.
+def branching_multiplicity(z: GQ, c: GQ, preperiod: int, period: int) -> int | None:
+    """The multiplicity of a root by the branching recursion, or `None`.
 
     `R_{l,k} = R_{l-1,k} . f` for `l >= 1`, because `f^n(z)` depends on `z`
     only through `f(z)` once `n >= 1`. So the multiplicity at `z` is the
@@ -249,19 +250,40 @@ def exact_multiplicity(z: GQ, c: GQ, preperiod: int, period: int) -> int | None:
     reason a Misiurewicz critical point is a multiple root of its own
     residual, and it is why no amount of refinement isolates it.
 
-    `None` where the point is not a root, or where the base case is itself
-    degenerate: `R'_{0,k}(z) = 0` means the cycle has multiplier one, which is
-    a parabolic parameter and a different problem.
+    This is the *account*, not the computation. It stops at a degenerate base
+    -- `R'_{0,k}(z) = 0` means the cycle has multiplier one, a parabolic
+    parameter -- and returns `None` there. `exact_multiplicity` answers that
+    case too, by a different route, and `tests/test_preperiodic.py` checks the
+    two agree wherever both are defined.
     """
     if not is_exact_root(z, c, preperiod, period):
         return None
     if preperiod == 0:
         slope = exact_residual_derivative(z, c, 0, period)
         return 1 if slope is not None and not slope.is_zero() else None
-    inner = exact_multiplicity(point_step(z, c), c, preperiod - 1, period)
+    inner = branching_multiplicity(point_step(z, c), c, preperiod - 1, period)
     if inner is None:
         return None
     return inner * (2 if z.is_zero() else 1)
+
+
+def exact_multiplicity(z: GQ, c: GQ, preperiod: int, period: int, order: int = 8) -> int | None:
+    """The multiplicity of an exactly representable root, or `None`.
+
+    The order of vanishing of the residual's jet at the point, which needs no
+    coefficients and no case analysis: `tools/jet.py` pushes the seed jet
+    through the iteration and the first nonzero coefficient is the answer.
+    It covers the parabolic case that `branching_multiplicity` refuses, where
+    the cycle has multiplier one and the root is degenerate for a reason the
+    branching recursion cannot see.
+
+    `None` where the point is not a root, or where the jet is flat to the
+    order computed -- the second is a budget that ran out and says only that
+    the multiplicity is above `order`.
+    """
+    if not is_exact_root(z, c, preperiod, period):
+        return None
+    return vanishing_order(jet_residual(z, c, preperiod, period, order))
 
 
 # --- enumeration, and when it is complete ----------------------------------

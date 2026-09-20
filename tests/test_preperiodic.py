@@ -19,6 +19,7 @@ from julia_reference import step as point_step
 from parameter_corpus import BY_KEY, PREPERIODIC
 from preperiodic import (
     RootVerdict,
+    branching_multiplicity,
     certifies_all_roots,
     certify,
     enumerate_roots,
@@ -160,13 +161,34 @@ def test_the_critical_point_doubles_the_multiplicity_and_nothing_else_does():
     assert exact_multiplicity(point_step(GQ(F(0), F(0)), c), c, 1, 2) == 1
 
 
-def test_a_parabolic_cycle_is_refused_rather_than_counted():
-    """At `c = 1/4` the fixed point `1/2` has multiplier one, so `R'` vanishes
-    there and the multiplicity is not this recursion's to give."""
-    c, fixed = GQ(F(1, 4), F(0)), GQ(F(1, 2), F(0))
-    assert is_exact_root(fixed, c, 0, 1)
-    assert exact_residual_derivative(fixed, c, 0, 1).is_zero()
-    assert exact_multiplicity(fixed, c, 0, 1) is None
+PARABOLIC = [
+    ("c=1/4, multiplier one, one petal", GQ(F(1, 4), F(0)), GQ(F(1, 2), F(0)), 0, 1, 2),
+    ("c=-3/4, multiplier minus one, two petals", GQ(F(-3, 4), F(0)), GQ(F(-1, 2), F(0)), 0, 2, 3),
+]
+
+
+@pytest.mark.parametrize("label,c,fixed,l,k,multiplicity", PARABOLIC, ids=[case[0] for case in PARABOLIC])
+def test_the_parabolic_case_the_recursion_refuses_is_answered_by_the_jet(label, c, fixed, l, k, multiplicity):
+    """`R'` vanishes at a parabolic cycle, so the branching recursion has no
+    base case and says so. The jet has no case analysis and answers."""
+    assert is_exact_root(fixed, c, l, k)
+    assert exact_residual_derivative(fixed, c, l, k).is_zero()
+    assert branching_multiplicity(fixed, c, l, k) is None
+    assert exact_multiplicity(fixed, c, l, k) == multiplicity
+
+
+@pytest.mark.parametrize("label,z,c,l,k,multiplicity", EXACT_CASES, ids=[case[0] for case in EXACT_CASES])
+def test_the_two_routes_agree_wherever_both_are_defined(label, z, c, l, k, multiplicity):
+    """The recursion is the account and the jet is the computation. Where the
+    account applies they have to give the same number, and do."""
+    assert branching_multiplicity(z, c, l, k) == exact_multiplicity(z, c, l, k) == multiplicity
+
+
+def test_a_flat_jet_is_a_budget_not_a_multiplicity():
+    """Asked to too low an order, the jet says nothing rather than zero."""
+    c, critical = GQ(F(0), F(1)), GQ(F(0), F(0))
+    assert exact_multiplicity(critical, c, 2, 2, order=1) is None
+    assert exact_multiplicity(critical, c, 2, 2, order=2) == 2
 
 
 def test_a_point_that_is_not_a_root_has_no_multiplicity():

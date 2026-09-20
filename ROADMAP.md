@@ -110,11 +110,19 @@ isolated simple roots plus named multiplicities reaching the degree leaves no
 room for another root. Six enumerations pinned, one budget exhaustion
 reported as such.
 
-What remains in this phase: a multiple root that is *not* exactly
-representable, which happens at a parabolic parameter where `R'` vanishes on
-the cycle -- `exact_multiplicity` refuses there rather than guessing. Nothing
-in the phase reaches `J_c` itself; the roots certified here are its finite
-skeleton, and what connects the two is Phase 3's business.
+**Third rung, same day.** The parabolic refusal is closed. `tools/jet.py`
+computes the order of vanishing of the residual by pushing a truncated Taylor
+jet through the iteration -- exact, coefficient-free, and with no case
+analysis -- so the multiplicity is available at a parabolic cycle too: `2` at
+`c = 1/4` and `3` at `c = -3/4`, where a multiplier of `-1` gives `f^2` two
+petals. The branching recursion is kept beside it as the account of *why*,
+and the two are checked to agree wherever both are defined.
+
+What remains in this phase: nothing reaches `J_c` itself. The roots certified
+here are its finite skeleton, and what connects the two is Phase 3's
+business. The jet layer is Python-side only, because a Mojo jet would need
+`List[ComplexIQ]`, which the exact arithmetic cannot provide; the constraint
+is recorded in `docs/preperiodic-certificates.md` section 4.
 
 ## Phase 3 — Separator catalogue and the J1 ledger
 
