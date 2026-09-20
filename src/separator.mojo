@@ -235,3 +235,64 @@ def permanent_witness_smoke() -> Bool:
     if side_compatible(through_origin, trap_zero, c_zero, 1):
         return False
     return not permanently_unseparated(a0, b0, c_zero, through_origin, trap_zero, 1, 3)
+
+
+def real_axis_cut() -> Cut:
+    """`y = 0`. At a real parameter this is not an arbitrary line: see
+    `docs/ray-certificates.md` section 3."""
+    return Cut.of(Q.zero(), Q(1, 1), Q.zero())
+
+
+def certifies_real_rays(c: Q, outer: Q, segment: Q) -> Bool:
+    """The rational inequalities of `docs/ray-certificates.md` section 2.
+
+    Beyond `outer` the real half-lines escape, with advance at least
+    `outer^2 + c - outer` at every step; `[-segment, segment]` is forward
+    invariant and so inside `K_c`.
+    """
+    if not (c.accepted() and outer.accepted() and segment.accepted()):
+        return False
+    if outer.lt(Q(1, 1)):
+        return False
+    if not Q.zero().lt(outer.square().add(c).sub(outer)):
+        return False
+    if not Q.zero().lt(segment):
+        return False
+    if segment.lt(segment.square().add(c)):
+        return False
+    if c.lt(segment.neg()):
+        return False
+    return segment.lt(outer)
+
+
+def ray_witness_smoke() -> Bool:
+    """The real rows of `tools/parameter_corpus.py`, and the one refusal."""
+    if not certifies_real_rays(Q.zero(), Q(2, 1), Q(1, 2)):
+        return False
+    if not certifies_real_rays(Q(-1, 1), Q(2, 1), Q(1, 1)):
+        return False
+    if not certifies_real_rays(Q(-2, 1), Q(9, 4), Q(2, 1)):
+        return False
+    if not certifies_real_rays(Q(1, 4), Q(2, 1), Q(1, 2)):
+        return False
+    if not certifies_real_rays(Q(-3, 4), Q(2, 1), Q(1, 1)):
+        return False
+    # c = 1 has no real fixed point, so no invariant segment exists and the
+    # certificate declines rather than inventing one.
+    if certifies_real_rays(Q(1, 1), Q(2, 1), Q(1, 1)):
+        return False
+    if certifies_real_rays(Q(1, 1), Q(4, 1), Q(8, 1)):
+        return False
+    # The two regions must not overlap, and the outer bound must be at least one.
+    if certifies_real_rays(Q(-1, 1), Q(2, 1), Q(4, 1)):
+        return False
+    if certifies_real_rays(Q(-1, 1), Q(1, 2), Q(1, 4)):
+        return False
+    # The real axis separates conjugate boxes at a real parameter.
+    var c_basilica = ComplexIQ.singleton(Q(-1, 1), Q.zero())
+    var upper = ComplexIQ(IQ(Q(9, 8), Q(5, 4)), IQ(Q(1, 8), Q(1, 4)))
+    var lower = ComplexIQ(IQ(Q(9, 8), Q(5, 4)), IQ(Q(-1, 4), Q(-1, 8)))
+    if separating_level(upper, lower, c_basilica, real_axis_cut(), 3) != 0:
+        return False
+    var straddling = ComplexIQ(IQ(Q(9, 8), Q(5, 4)), IQ(Q(-1, 8), Q(1, 8)))
+    return side(real_axis_cut(), straddling) == side_undecided()

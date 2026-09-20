@@ -236,6 +236,23 @@ TRAPS: dict[str, tuple[tuple[F, F, F, F], int]] = {
 }
 
 
+#: Real-axis ray witnesses, by corpus key: `(outer, segment)` for a real
+#: parameter, verified by `tools/ray.py`. Beyond `outer` the real half-lines
+#: are the angle-zero ray and its preimage and every point escapes;
+#: `[-segment, segment]` is forward invariant and so inside `K_c`.
+#:
+#: `escaping` is absent and that is the point: at `c = 1` there is no real
+#: fixed point, so the real axis carries no invariant segment, and the
+#: certificate refuses rather than inventing one.
+REAL_RAYS: dict[str, tuple[F, F]] = {
+    "c0": (F(2), F(1, 2)),
+    "basilica": (F(2), F(1)),
+    "chebyshev": (F(9, 4), F(2)),
+    "cauliflower": (F(2), F(1, 2)),
+    "parabolic_minus_one": (F(2), F(1)),
+}
+
+
 #: Permanent non-separation witnesses, by corpus key: a catalogue of cuts as
 #: `(a, b, e)` triples, a trap with its period, two boxes, and the common step
 #: at which both are inside the trap. Verified by `tools/separator.py` against

@@ -179,8 +179,20 @@ cut-equivalence gate it is not something a bridge can rescue either: a ray
 pair meets `K_c` only at its landing point, so it never separates two
 interior points, while a cut does it at once
 (`docs/literature-gate-2026-09-20-cut-equivalence.md`). Reaching the
-classical reading means building pieces out of rays, which this repository
-has no certificate for.
+classical reading means building pieces out of rays, and the first such piece
+now exists: `docs/ray-certificates.md` certifies, for a **real** rational
+parameter, that the real half-lines beyond a rational bound escape with a
+rational advance at every step and that a rational segment around the origin
+is forward invariant. So the cut `y = 0` is not arbitrary there -- it runs
+along the angle-zero ray outside and along trapped real dynamics inside, and
+it is the first cut in the repository with a dynamical warrant rather than
+only a soundness proof.
+
+What the layer cannot reach is stated with it: a ray's direction at infinity
+is a coordinate record, so only the angles `0, 1/4, 1/2, 3/4` name one, and
+the period-two pair that pinches the basilica is not among them. Reading the
+itinerary's digits as an external angle is `ExternalAngleItinerary`, gated in
+`docs/literature-gate-2026-09-20-external-angle.md` before anything uses it.
 
 The budget is what makes the theorem worth having rather than decorative: a
 search for these pairs caps at step fourteen, so the levels the theorem
