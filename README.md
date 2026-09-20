@@ -155,6 +155,7 @@ docs/
   literature-gate-2026-09-19.md                 the tags, judged
   literature-gate-2026-09-19-transfer.md        the filled-Julia transfer, judged
   exact-arithmetic-binding.md                   this repository's binding table
+  projective-completion-and-escape.md           where escape meets the algebra
   terminology-registry.md                       declared vocabulary
   terminology-governance.md                     mirrored governance process
   rational-interval-arithmetic-spec.md          mirrored exact-arithmetic contract

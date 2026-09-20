@@ -63,6 +63,40 @@ Brjuno condition for the rotation number.
 Use discipline: cite it wherever the parabolic case is separated from the
 irrationally indifferent case; never cite it for a linearizability claim.
 
+### Homogeneous coordinate record
+
+Status: novel bridge term.
+Genealogy: homogeneous coordinates of classical projective geometry; the
+rank-2 coordinate record of `docs/rank2-coordinate-substrate.md`.
+Bridge claim: a pair of rank-2 coordinate records `[Z : W]`, taken modulo
+scaling by a nonzero record. Every operation on it in
+`docs/projective-completion-and-escape.md` is polynomial, and the quadratic
+map lifts to it as a morphism with no base point.
+Known leaks: it is not an ideal point. `[1 : 0]` is a class of records, not an
+element of the plane, and nothing about it may be evaluated as if it were a
+value; the no-points invariant of the parameter-plane program applies here
+unchanged. Reading `[Z : W]` as a value also requires a chart, and a chart is
+a division with a nonzero-quadrance domain.
+Use discipline: use it only for the `P^1(C)` completion of section 1 of
+`docs/projective-completion-and-escape.md`. The circular points of the other
+completion are a different layer and are not reachable from this term.
+
+### Chart at infinity
+
+Status: definition-only.
+Genealogy: the standard second affine chart of `P^1`; inverse by conjugate
+over quadrance, as the parameter-plane program computes it.
+Bridge claim: the substitution `u = W / Z`, under which the quadratic map
+reads `u -> u^2 / (1 + c u^2)` and infinity is a superattracting fixed
+element of order two.
+Known leaks: the chart is undefined where the quadrance vanishes, and over a
+box it is undefined unless the quadrance interval excludes zero. A box that
+straddles the origin is outside the chart, and the verdict there is
+`UNKNOWN`, never a chart value computed anyway.
+Use discipline: name the chart whenever a statement is made about infinity.
+"Escape" without a chart is the affine inequality of
+`src/julia_orbit.mojo` and nothing more.
+
 ### Regime ledger
 
 Status: novel bridge term.
@@ -93,5 +127,9 @@ either.
 - calling the quadrance-1 locus of `J_0` a circle, or deriving an arc, an
   angle, or a circumference from it;
 - calling a capped run bounded or unbounded;
+- calling a homogeneous coordinate record an ideal point, or evaluating one
+  without naming a chart;
+- placing the quadratic map on the projective completion that carries the
+  circular points, where it is not a morphism;
 - calling an irrationally indifferent parameter Siegel or Cremer;
 - using `J1` without naming the regime it is claimed on.

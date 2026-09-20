@@ -45,6 +45,10 @@ EXTERNAL: dict[str, str] = {
     "spec/regime_correspondences.toml": MANDELBROT,
     "src/interval_orbit.mojo": MANDELBROT,
     "docs/no-points-invariant.md": MANDELBROT,
+    "docs/rational-trigonometry-policy.md": MANDELBROT,
+    "src/complex_inverse.mojo": MANDELBROT,
+    "src/krawczyk_witness.mojo": MANDELBROT,
+    "tools/audit_no_points.py": MANDELBROT,
 }
 
 #: Tasks the mirrored specification names, which belong to upstream's manifest.

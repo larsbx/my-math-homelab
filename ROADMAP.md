@@ -44,6 +44,12 @@ Gaussian-rational parameter, with:
 - attracting-cycle certificates plus basin pullback for `IN`;
 - `UNKNOWN` everywhere else, with the residual reported rather than shrunk.
 
+`docs/projective-completion-and-escape.md` argues that `OUT` should be the
+same shape as `IN` rather than an inequality: infinity is a superattracting
+fixed element of the homogeneous lift, so escape is a contraction certificate
+in the chart at infinity, with the quadrance bound kept as the cheap filter
+ahead of it. Decide that before the classifier is written, not after.
+
 The deliverable is a **completeness proof for hyperbolic Gaussian-rational
 `c`**: every box whose closure misses `J_c` is classified at some resolution.
 This is the claim the parameter plane cannot make, and it should be proved
