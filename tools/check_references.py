@@ -43,6 +43,8 @@ EXTERNAL: dict[str, str] = {
     "finite_exact/enclosure_width.mojo": KERNELS,
     "quadratic_orbit/preperiodic.mojo": KERNELS,
     "angle_doubling/angle.mojo": KERNELS,
+    "projective/chart.mojo": KERNELS,
+    "projective/homogeneous.mojo": KERNELS,
     # Named by documents mirrored from the parameter-plane program.
     "docs/rank2-coordinate-substrate.md": MANDELBROT,
     "spec/regime_correspondences.toml": MANDELBROT,

@@ -161,12 +161,16 @@ point is degenerate, the jet computes *how much*, and
 jet that is flat to the order computed returns `None`, which is a budget and
 not a multiplicity of zero.
 
-The jet layer is Python-side only. Its Mojo counterpart would need
-`List[ComplexIQ]`, which the vendored exact arithmetic cannot provide -- a
-`ComplexIQ` is not `Movable` -- so it would have to fix the order in the type
-and unroll the convolution. That is a real constraint and it is recorded
-rather than worked around: the exact-identity layer of section 4 has always
-been the Python side's, and the Mojo side carries the box certificates.
+The layer is a differential pair like every other: `src/jet.mojo` is the
+canonical side and `tools/jet.py` the independent oracle, and the smoke suite
+replays the multiplicities above.
+
+An earlier draft of this note claimed the Mojo side was impossible, because
+`List[ComplexIQ]` would need `ComplexIQ` to be `Movable` and it is not. That
+was wrong: `ComplexIQ` is not *implicitly copyable*, which is why every
+assignment here calls `.copy()`, and that is a different conformance. The
+claim was a workaround written up as a constraint, and it is recorded here
+because the distinction is easy to make again.
 
 ## 5. Enumeration, and when it is complete
 

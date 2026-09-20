@@ -27,6 +27,7 @@ from fractions import Fraction
 from typing import Union
 
 from box_classifier import step
+from budget import DEFAULT_BIT_BUDGET, within_budget
 from interval_box import ComplexBox
 from separator import NEGATIVE, POSITIVE, UNDECIDED, Cut, side
 
@@ -89,20 +90,29 @@ def advances_by(witness: RealRayWitness, x: Scalar) -> Fraction | None:
     return x * x + witness.c - abs(x)
 
 
-def itinerary(box: ComplexBox, c: ComplexBox, steps: int) -> tuple[int, ...] | None:
+def itinerary(
+    box: ComplexBox,
+    c: ComplexBox,
+    steps: int,
+    bit_budget: int = DEFAULT_BIT_BUDGET,
+) -> tuple[int, ...] | None:
     """Which side of the real axis each iterate of the box is on.
 
-    `None` as soon as a step is undecided, because a word with a gap in it is
-    not a word. Each entry is `POSITIVE` or `NEGATIVE` from
-    `tools/separator.py`, and the whole of it is a statement about the
-    enclosure: every point of the box has its iterates on those sides.
+    `None` as soon as a step is undecided or the coordinates outgrow the
+    budget, because a word with a gap in it is not a word and a word that
+    stopped for want of room is not a shorter word. Each entry is `POSITIVE`
+    or `NEGATIVE` from `tools/separator.py`, and the whole of it is a
+    statement about the enclosure: every point of the box has its iterates on
+    those sides.
     """
     if steps < 0 or not (box.accepted() and c.accepted()):
         return None
     word: list[int] = []
     for _ in range(steps + 1):
+        if not within_budget(bit_budget, box):
+            return None
         where = side(REAL_AXIS, box)
-        if where is UNDECIDED or where == UNDECIDED:
+        if where == UNDECIDED:
             return None
         word.append(where)
         box = step(box, c)

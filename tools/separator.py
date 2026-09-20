@@ -28,7 +28,7 @@ from typing import Union
 
 from box_classifier import is_trap, step
 from interval_box import IQ, ComplexBox
-from julia_reference import DEFAULT_BIT_BUDGET
+from budget import DEFAULT_BIT_BUDGET, box_bits, within_budget
 
 Scalar = Union[int, Fraction]
 
@@ -113,22 +113,6 @@ class Separation:
         return self.verdict is SeparationVerdict.SEPARATED
 
 
-def box_bits(box: ComplexBox) -> int:
-    """The largest numerator or denominator bit length among the corners.
-
-    Exact iteration squares the coordinates, so their bit size doubles every
-    step. A search that ignores this does not return a wrong answer; it stops
-    returning one, which is worse.
-    """
-    if not box.accepted():
-        return 0
-    parts = (box.re.lo, box.re.hi, box.im.lo, box.im.hi)
-    return max(
-        max(abs(part.numerator).bit_length(), part.denominator.bit_length())
-        for part in parts
-    )
-
-
 def search(
     left: ComplexBox,
     right: ComplexBox,
@@ -147,7 +131,7 @@ def search(
         return Separation(SeparationVerdict.CAPPED)
     here, there = left, right
     for index in range(level + 1):
-        if max(box_bits(here), box_bits(there)) > bit_budget:
+        if not within_budget(bit_budget, here, there):
             return Separation(SeparationVerdict.CAPPED, index)
         for cut in cuts:
             if opposite(side(cut, here), side(cut, there)):

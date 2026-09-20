@@ -74,6 +74,17 @@ class IQ:
     def contains_zero(self) -> bool:
         return self.accepted() and self.lo <= 0 <= self.hi
 
+    def reciprocal(self) -> "IQ":
+        """`1/X`, refusing where the interval meets zero.
+
+        Mirrors `IQ.reciprocal` of the vendored `finite_exact` layer: the
+        domain of a division is enforced by the arithmetic, not by a caller
+        contract.
+        """
+        if not self.accepted() or self.contains_zero():
+            return IQ.refused()
+        return IQ.of(1 / self.hi, 1 / self.lo)
+
     def subset_of(self, other: "IQ") -> bool:
         if self.rejected or other.rejected:
             return False
@@ -135,6 +146,22 @@ class ComplexBox:
 
     def quadrance(self) -> IQ:
         return self.re.square().add(self.im.square())
+
+    def reciprocal(self) -> "ComplexBox":
+        """`1/z` as conjugate over quadrance, refusing on the chart's edge.
+
+        A chart is a division, so it has a domain, and the domain is enforced
+        by the arithmetic rather than by a caller contract: a box whose
+        quadrance interval contains zero has no reciprocal here and gets a
+        refusal. The enclosure is valid but not tight -- the numerator and
+        the reciprocal are enclosed separately.
+        """
+        if not self.accepted():
+            return ComplexBox.refused()
+        inverse = self.quadrance().reciprocal()
+        if not inverse.accepted():
+            return ComplexBox.refused()
+        return ComplexBox(self.re.mul(inverse), self.im.neg().mul(inverse))
 
     def subset_of(self, other: "ComplexBox") -> bool:
         return self.re.subset_of(other.re) and self.im.subset_of(other.im)

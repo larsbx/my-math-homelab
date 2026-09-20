@@ -67,3 +67,14 @@ root = "src"
 [package.files]
 "angle_doubling/__init__.mojo" = "9166f13819f822a439beef317c127d5f726ee3ef25e4e6f73f7a9178573be97f"
 "angle_doubling/angle.mojo" = "46defc94d8dc3ff5e9079f1c2543479bd27316bae32054966e20cd107742c233"
+
+[[package]]
+name = "projective"
+repository = "larsbx/finite-math-kernels"
+commit = "87e678539112f4065a0269e4d3c2aa5aebe57e16"
+root = "src"
+
+[package.files]
+"projective/__init__.mojo" = "6b0819d675d556e7b6e310f48df601a3453fc7204a90e8654e1d96f045b3beac"
+"projective/chart.mojo" = "9616a1642742dfe00aa2c7fc8a6e4db2b47c5a2ed6781024322289a0fe03cd2b"
+"projective/homogeneous.mojo" = "b5a64ad2926ba9b08edbf56a2a871b01d1f4e596778911a783dba243414fafcc"

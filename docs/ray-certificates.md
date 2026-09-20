@@ -10,16 +10,45 @@ piece. It does not construct a ray. It certifies the parts of one that are
 exactly representable, and at a **real** rational parameter that turns out to
 be most of what the separator needs.
 
-## 1. Why the direction at infinity is the obstruction
+## 1. The direction at infinity is not the obstruction
 
-A dynamical ray at angle `t` approaches infinity in the direction that `t`
-names. At rank 2 that direction is a coordinate record, so it exists only for
-the four angles `0, 1/4, 1/2, 3/4`; every other rational angle names a
-direction this layer cannot write down.
+An earlier draft of this note said a ray must be named by the direction it
+approaches infinity in; that at rank 2 a direction is a coordinate record, so
+only `0, 1/4, 1/2, 3/4` name one; and that every other ray is therefore out of
+reach. **That was wrong**, and the projective layer this repository already
+has is what shows it.
 
-That is the whole difficulty, and it is worth stating before the good news,
-because it says which rays are reachable and which are not. The angle-zero
-ray is reachable. The period-two ray pair that pinches the basilica is not.
+In the chart at infinity, `u = 1/z`, the point at infinity is an ordinary
+coordinate record with value zero, fixed, and superattracting of order two
+(`docs/projective-completion-and-escape.md` section 3). Its neighbourhood is
+a bounded box, not an unbounded one, and `tools/chart.py` computes the step
+`u -> u^2 / (1 + c u^2)` there, refusing where the chart's domain fails
+rather than being handed a caller contract.
+
+That changes the question, because **near that fixed point every ray looks
+the same**. The tail carries no angular information at all; all rays converge
+into any contracting neighbourhood of `u = 0`. So nothing about a ray can be
+read off its direction, and nothing needs to be. What distinguishes one ray
+from another is the finite itinerary of section 3, and that is available at
+every angle.
+
+The worked case is angle `1/3`, whose direction `e^(2 pi i / 3)` is not a
+coordinate record and never will be. A box around `2 e^(2 pi i / 3)` at
+`c = 0` yields the itinerary
+
+```text
+(+, -, +, -, +, -, +, -, +, -, +, -)
+```
+
+twelve digits of `0.010101...`, which is `1/3` in binary. No direction was
+named anywhere in producing it.
+
+**The real limit is different and is stated in section 4**: a finite
+certificate pins a dyadic interval of angles of width `2^-n`, never an angle.
+And `n` is bounded by the coordinate budget rather than by how narrow the box
+is -- narrowing the box from `10^-6` to `10^-9` buys no further digits,
+because exact iteration squares the coordinates and the budget runs out
+first. That is the wrapping effect setting the price, not the geometry.
 
 ## 2. The real axis of a real parameter, certified
 
@@ -98,6 +127,6 @@ whatever it is called, and the separator uses it as an invariant; the word
 
 It does not construct a ray, does not claim the certified half-lines are the
 whole ray, and does not locate a landing point -- `x -> β` is a limit and this
-layer has none. It does not certify any ray at any angle other than `0` and
-`1/2`, and section 1 says why. It does not apply to a non-real parameter at
+layer has none. It does not name a ray's direction, does not need to, and pins only a dyadic
+interval of angles at any finite depth. It does not apply to a non-real parameter at
 all. And it discharges no block of `docs/J1_proof_definition.md`.
