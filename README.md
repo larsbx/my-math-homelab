@@ -160,6 +160,7 @@ docs/
   exact-arithmetic-binding.md                   this repository's binding table
   escape-criterion.md                           escape, derived rather than imported
   three-valued-classifier.md                    the box certificates and their soundness
+  enclosure-width-lemma.md                      the width bound, and completeness
   classifier-census.md                          GENERATED: how a grid comes out per parameter
   projective-completion-and-escape.md           where escape meets the algebra
   terminology-registry.md                       declared vocabulary
@@ -168,6 +169,7 @@ docs/
 src/
   julia_orbit.mojo          escape bound, cycle checks, multiplier classification
   box_classifier.mojo       OUT, IN and UNKNOWN over boxes
+  enclosure_bound.mojo      how far an enclosure drifts from its orbit
   escape_certificate.mojo   the growth ratio behind OUT
   corpus_replay.mojo        the kernel run against the corpus
   corpus_transcript.mojo    the transcript the differential test consumes
@@ -180,7 +182,8 @@ tools/
   gaussian_q.py             exact Gaussian-rational coordinate records
   julia_reference.py        the Python reference oracle
   parameter_corpus.py       the single source of the corpus
-  box_classifier.py         the classifier, Python side
+  box_classifier.py         the classifier and adaptive refinement, Python side
+  enclosure_bound.py        the width bounds, Python side
   escape_certificate.py     the escape derivation, Python side
   interval_box.py           exact rational boxes for the Python side
   make_regime_ledger.py     renders every generated surface; --check gates them

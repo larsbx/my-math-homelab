@@ -157,6 +157,14 @@ New tags, recorded for the phase that needs them and not used by any row yet:
 | `DouadySullivanCremerNotLocallyConnected` | no row yet | ACCEPTED WITH QUALIFICATION (finding 5) |
 | `BrjunoYoccozQuadraticLinearization` | no row yet | ACCEPTED WITH QUALIFICATION (finding 5) |
 
+**Amendment, 2026-09-20, second.** `docs/enclosure-width-lemma.md` proves two
+completeness theorems for the classifier without importing anything. Its
+corollary, that a hyperbolic parameter's trap basin is the whole interior of
+`K_c`, does import: the tag is `FatouHyperbolicInteriorIsTheBasin` and this
+gate has **not** judged it, so the corollary is conditional and the theorems
+are not. The tag joins `FilledJuliaLocalConnectivityTransfer`'s original
+position: named, used, ungated.
+
 **Amendment, 2026-09-20.** This gate judged the tags the ledger carries. It did
 not judge the escape *criterion* -- the step from "a quadrance passed a bound"
 to "the orbit is unbounded" -- because no tag named it and nothing in the

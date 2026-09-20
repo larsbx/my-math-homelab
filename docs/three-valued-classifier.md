@@ -103,34 +103,30 @@ behaviour so it cannot quietly change.
 At a parameter with **empty interior** (`dendrite`, `chebyshev`, `escaping`)
 there is nothing to trap and `IN` is never reported, which the census shows.
 
-## 6. Completeness: not proved here
+## 6. Completeness
 
 The roadmap's Phase 1 deliverable is a **completeness proof for hyperbolic
 Gaussian-rational `c`**: every box whose closure misses `J_c` is classified at
-some resolution. This document does not supply it. What exists is soundness,
-both directions, and a census that is consistent with completeness without
-being evidence for it.
+some resolution. The missing ingredient was a bound on how enclosure width
+propagates under a step, and it is now proved, with explicit rational
+constants, in `docs/enclosure-width-lemma.md`. Two theorems follow, both
+unconditional:
 
-Two things are missing, and they are different.
+- **Theorem A.** A box whose closure misses `K_c` is classified `OUT` once
+  refined below an explicit radius.
+- **Theorem B.** A box whose iterate lands in the interior of a trap is
+  classified `IN` once refined below an explicit radius.
 
-1. **`OUT` completeness.** Every point outside `K_c` escapes, so every box
-   whose closure misses `K_c` eventually has an iterate past the bound. The
-   gap is the enclosure: a box's image under one step has width roughly
-   `2 |z| w + w^2`, so widths can grow faster than the orbit separates, and
-   the certificate fires on the *enclosure*, not on the points. What is needed
-   is a bound saying that refining the box far enough makes the enclosure
-   track the true image closely enough for the test to fire. That is a
-   statement about interval arithmetic, not about dynamics.
-2. **`IN` completeness.** For hyperbolic `c` the interior of `K_c` is the union
-   of the basin's preimages, and every compact subset of the basin reaches the
-   trap in finitely many steps. Turning that into a statement about boxes
-   needs the same enclosure control as above, plus the observation that a
-   compact subset is covered by finitely many boxes of a given resolution.
+Theorem B is about the **basin of the trap**, which is what the classifier can
+see. The roadmap's statement is the corollary that the trap's basin is the
+whole interior of `K_c` for a hyperbolic parameter, and that step is classical
+and is **not** proved here: it enters as the tag
+`FatouHyperbolicInteriorIsTheBasin`, which no literature gate has judged. So
+the two theorems hold on their own and the corollary is conditional on one
+named import.
 
-Both reduce to one missing lemma about how enclosure width propagates, which
-is why they are listed together and why neither is claimed. Until it exists,
-the classifier is sound and its completeness is a conjecture with a census
-beside it.
+At a parabolic parameter Theorem B has no hypothesis to offer, since no trap
+exists (section 5), and completeness there is open.
 
 ## 7. What this document does not claim
 

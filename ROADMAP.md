@@ -47,9 +47,16 @@ Phases are indexed by what becomes checkable, not by what becomes plausible.
       declared trap, verified before any verdict rests on it; `UNKNOWN`
       reported as its own column in the generated
       `docs/classifier-census.md`.
-- [ ] The completeness proof for hyperbolic Gaussian-rational `c`. Both
-      halves reduce to one missing lemma on how enclosure width propagates
-      under a step; section 6 of the classifier document states it.
+- [x] The enclosure-width lemma, with explicit rational constants
+      (`docs/enclosure-width-lemma.md`), and the two completeness theorems it
+      unlocks: a box missing `K_c` is `OUT` below an explicit radius, and a
+      box whose iterate enters a trap's interior is `IN` below one. Both
+      unconditional.
+- [ ] Gate `FatouHyperbolicInteriorIsTheBasin`, the one import the corollary
+      needs to turn Theorem B into the roadmap's statement about the whole
+      interior of `K_c`.
+- [ ] Completeness at a parabolic parameter, where no trap exists and
+      Theorem B has no hypothesis to offer.
 
 The remaining deliverable, restated:
 

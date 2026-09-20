@@ -154,6 +154,65 @@ def census(
     return Census(resolution, counts[BoxVerdict.OUT], counts[BoxVerdict.IN], counts[BoxVerdict.UNKNOWN])
 
 
+@dataclass(frozen=True, slots=True)
+class Refinement:
+    """What adaptive subdivision of one box came to.
+
+    `undecided` counts the leaves still unresolved at the depth limit, and
+    `undecided_fraction` is the share of the original box they cover. Those
+    leaves are the only thing the refinement claims: they are boxes the
+    classifier refused, not boxes known to meet the Julia set. The share
+    shrinking with depth is what the completeness theorems predict; it is not
+    evidence for them.
+    """
+
+    out: int
+    inside: int
+    undecided: int
+    deepest: int
+    undecided_fraction: Fraction = Fraction(0)
+
+    def leaves(self) -> int:
+        return self.out + self.inside + self.undecided
+
+    def decided(self) -> bool:
+        return self.undecided == 0
+
+
+def refine_until_decided(
+    box: ComplexBox,
+    c: ComplexBox,
+    trap: ComplexBox | None = None,
+    period: int = 1,
+    max_depth: int = 4,
+    horizon: int = 12,
+) -> Refinement:
+    """Subdivide the undecided part, to a depth limit.
+
+    This is the constructive side of `docs/enclosure-width-lemma.md`: the
+    theorems there say a small enough box is decided, and this is what
+    "small enough" costs on a given box. The limit is a budget, and a leaf
+    that reaches it is reported rather than guessed at.
+    """
+    verdict = classify(box, c, trap, period, horizon).verdict
+    if verdict is BoxVerdict.OUT:
+        return Refinement(1, 0, 0, 0, Fraction(0))
+    if verdict is BoxVerdict.IN:
+        return Refinement(0, 1, 0, 0, Fraction(0))
+    if max_depth <= 0:
+        return Refinement(0, 0, 1, 0, Fraction(1))
+    out = inside = undecided = deepest = 0
+    share = Fraction(0)
+    for quarter in box.quarters():
+        child = refine_until_decided(quarter, c, trap, period, max_depth - 1, horizon)
+        out += child.out
+        inside += child.inside
+        undecided += child.undecided
+        deepest = max(deepest, child.deepest + 1)
+        share += child.undecided_fraction / 4
+    return Refinement(out, inside, undecided, deepest, share)
+
+
 def trap_candidate(c: ComplexBox, period: int, seed: ComplexBox, refinements: int = 12) -> ComplexBox | None:
     """Search for a trap by shrinking a seed box; not part of any certificate.
 
