@@ -165,6 +165,12 @@ gate has **not** judged it, so the corollary is conditional and the theorems
 are not. The tag joins `FilledJuliaLocalConnectivityTransfer`'s original
 position: named, used, ungated.
 
+**Amendment, 2026-09-20, third.** `docs/literature-gate-2026-09-20-basins.md` judges it, and
+accepts it for the quadratic family together with a second tag,
+`FatouParabolicInteriorIsTheBasin`, that the parabolic trap of
+`docs/three-valued-classifier.md` section 5 raised. Both are imports; neither
+is proved here.
+
 **Amendment, 2026-09-20.** This gate judged the tags the ledger carries. It did
 not judge the escape *criterion* -- the step from "a quadrance passed a bound"
 to "the orbit is unbounded" -- because no tag named it and nothing in the

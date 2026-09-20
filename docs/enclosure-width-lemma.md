@@ -176,8 +176,11 @@ that the interior of `K_c` is the trap's basin:
 
 The step from "interior of `K_c`" to "attracted to the cycle" is classical and
 is **not** proved here. It enters as the tag
-`FatouHyperbolicInteriorIsTheBasin`, which no literature gate has judged. So
-this last corollary is conditional, and section 5 and section 6 are not.
+`FatouHyperbolicInteriorIsTheBasin`, which `docs/literature-gate-2026-09-20-basins.md`
+accepts for the quadratic family, as a chain of four classical results. An
+accepted tag is an accepted import, so this last corollary is conditional on
+a judged statement rather than on a name; section 5 and section 6 are not
+conditional on anything.
 
 ## 7. What the bounds cost, and what they do not say
 

@@ -143,14 +143,17 @@ The `IN` direction is about the **basin of the trap**, which is what the
 classifier can see. The roadmap's statement is the corollary that the trap's
 basin is the whole interior of `K_c` for a hyperbolic parameter, and that step
 is classical and is **not** proved here: it enters as the tag
-`FatouHyperbolicInteriorIsTheBasin`, which no literature gate has judged. So
-the theorem holds on its own and the corollary is conditional on one named
-import.
+`FatouHyperbolicInteriorIsTheBasin`, which `docs/literature-gate-2026-09-20-basins.md`
+accepts for the quadratic family. So the theorem holds on its own and the
+corollary is conditional on one judged import.
 
 At a parabolic parameter the `IN` direction applies as it does anywhere else,
 on the basin of the petal trap of section 5. Extending it from that basin to
 the whole interior of `K_c` needs the same kind of import as the hyperbolic
-case: that the interior is the parabolic basin.
+case, that the interior is the parabolic basin, and the same gate accepts it
+as the tag `FatouParabolicInteriorIsTheBasin`. Both rest on one count: the
+quadratic family has a single finite critical point, so it has at most one
+such cycle.
 
 ## 7. What this document does not claim
 
