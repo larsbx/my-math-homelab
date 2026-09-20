@@ -48,19 +48,21 @@ def escapes(box: ComplexIQ, c: ComplexIQ) -> Bool:
 
 
 def is_trap(trap: ComplexIQ, c: ComplexIQ, period: Int) -> Bool:
-    """Does `f_c^period` map the trap strictly inside itself?
+    """Does `f_c^period` map the trap into itself?
 
-    Strictly, not merely inside: equality leaves no room and certifies
-    nothing. A box with this property is forward invariant under the iterate,
-    so an orbit entering it stays in the union of its first `period` images,
-    which is bounded.
+    Inclusion is the whole certificate, and it is not strict. A box with this
+    property is forward invariant under the iterate, so an orbit entering it
+    stays in the union of its first `period` images, which is bounded. That
+    argument never used strictness, and requiring it cost the parabolic case,
+    whose petal touches the parabolic fixed point and so is invariant without
+    being strictly invariant.
     """
     if period < 1 or not (trap.accepted() and c.accepted()):
         return False
     var image = trap.copy()
     for _ in range(period):
         image = quadratic_step(image, c)
-    var inside = image.strict_subset_of(trap)
+    var inside = image.subset_of(trap)
     return inside.value and not inside.rejected
 
 
@@ -112,8 +114,15 @@ def box_classifier_smoke() -> Bool:
         return False
     if not is_trap(trap_basilica, c_basilica, 2):
         return False
-    # f(B) = B is not a trap: strictness is the certificate.
+    # A box the map leaves is not a trap, however little it leaves by.
     if is_trap(box(-1, 1, -1, 1, 1), c_zero, 1):
+        return False
+    # The parabolic petal at c = 1/4: invariant, and not strictly invariant.
+    var c_cauliflower = ComplexIQ.singleton(Q(1, 4), Q.zero())
+    var petal = box(1, 2, -1, 1, 4)
+    if not is_trap(petal, c_cauliflower, 1):
+        return False
+    if quadratic_step(petal, c_cauliflower).strict_subset_of(petal).value:
         return False
     if is_trap(trap_zero, c_zero, 0):
         return False

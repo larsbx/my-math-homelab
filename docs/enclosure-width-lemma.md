@@ -202,7 +202,7 @@ nor weakens them.
 
 ## 8. What this does not claim
 
-It does not claim the residual approximates `J_c`, does not settle
-completeness at a parabolic parameter, where no trap exists and section 5's
-`IN` branch has no hypothesis to offer, and does not discharge any block of
-`docs/J1_proof_definition.md`.
+It does not claim the residual approximates `J_c`, and it does not discharge
+any block of `docs/J1_proof_definition.md`. It no longer excepts the parabolic
+parameter: a petal is an invariant box, so section 5's `IN` branch has a
+hypothesis there too (`docs/three-valued-classifier.md`, section 5).

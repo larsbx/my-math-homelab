@@ -228,4 +228,9 @@ BY_KEY = {row.key: row for row in CORPUS}
 TRAPS: dict[str, tuple[tuple[F, F, F, F], int]] = {
     "c0": ((F(-1, 4), F(1, 4), F(-1, 4), F(1, 4)), 1),
     "basilica": ((F(-1, 8), F(1, 8), F(-1, 8), F(1, 8)), 2),
+    # The parabolic petal. It is anchored at the parabolic fixed point `1/2`
+    # rather than centred anywhere, which is why a search that shrinks toward
+    # a midpoint never finds it, and it is invariant without being strictly
+    # invariant, which is why it was once thought not to exist.
+    "cauliflower": ((F(1, 4), F(1, 2), F(-1, 4), F(1, 4)), 1),
 }

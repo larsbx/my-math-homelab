@@ -4,14 +4,14 @@
 [[package]]
 name = "finite_exact"
 repository = "larsbx/finite-math-kernels"
-commit = "b21a93ba32aecb5a163b319d9426b6c68326af9d"
+commit = "d4895cfb4cd4065e293f0d874e84428b71475df3"
 root = "src"
 
 [package.files]
 "finite_exact/__init__.mojo" = "6c12cff9ef6a09417bddaa8324372888a30b4c75b2b64438eb47bb17ea9138c9"
 "finite_exact/bigint_z.mojo" = "d02a0c033042661161a24f0b31f1e89fbf3ed908ccc86e42b5b80b8df4240df1"
 "finite_exact/closed_interval.mojo" = "6a276e8f6f0d1ebe2c2795a9ba590857aea4e5617807cbc0bfe3ff1f1b26bf08"
-"finite_exact/closed_q.mojo" = "72f66b6ed05913b9055c3e44c8f3e32e27a6e2908a407eb29c8ef2d790f9b186"
+"finite_exact/closed_q.mojo" = "76d19fe6418fa6ba975873ec0dd94037cdd028d10f14eeba5385cc5306ea3af2"
 "finite_exact/enclosure_width.mojo" = "a2fbfd4eaa8ad91e55e6570a0e610def015c485bfc18b688222e132201211408"
 "finite_exact/rat_q.mojo" = "d7f8cc3a3879d76bfc242304a13d4f2c9d4cf2cdeeba586fa4af95980a4b9fa6"
 "finite_exact/rational.mojo" = "6d84b8f4c3b1699648eee2512f49c7736dd5d4c8f7236809585b09cf1b5631c0"

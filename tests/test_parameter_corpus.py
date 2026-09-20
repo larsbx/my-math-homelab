@@ -5,7 +5,7 @@ import pytest
 from julia_reference import OrbitVerdict, classify_multiplier, critical_orbit, is_cycle, multiplier
 from box_classifier import is_trap
 from interval_box import ComplexBox
-from parameter_corpus import CORPUS, TRAPS, J1Expectation, LocalConnectivity, Regime
+from parameter_corpus import BY_KEY, CORPUS, TRAPS, J1Expectation, LocalConnectivity, Regime
 
 ROWS = [pytest.param(row, id=row.key) for row in CORPUS]
 WITH_CYCLE = [pytest.param(row, id=row.key) for row in CORPUS if row.cycle is not None]
@@ -86,12 +86,16 @@ def test_every_declared_trap_verifies(key):
     assert is_trap(ComplexBox.of(*corners), ComplexBox.singleton(row.c.re, row.c.im), period)
 
 
-def test_only_hyperbolic_rows_declare_a_trap():
-    """A parabolic basin has no strictly invariant box and an empty interior has
-    nothing to trap, so a trap anywhere else would be a mistake, not a bonus."""
+def test_a_trap_is_declared_exactly_where_there_is_an_interior_to_trap():
+    """A row with empty interior has nothing to trap, so a trap there would be
+    a mistake. A row with an interior may have one, including the parabolic
+    row: its petal is invariant without being strictly invariant, which is the
+    case the certificate used to miss."""
+    with_interior = {Regime.HYPERBOLIC_CENTER, Regime.PARABOLIC}
     for row in CORPUS:
         if row.key in TRAPS:
-            assert row.regime is Regime.HYPERBOLIC_CENTER
+            assert row.regime in with_interior
+    assert Regime.PARABOLIC in {BY_KEY[key].regime for key in TRAPS}
 
 
 def test_the_corpus_reaches_every_regime():

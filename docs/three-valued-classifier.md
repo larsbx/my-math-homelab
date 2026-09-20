@@ -48,12 +48,12 @@ quadrance grows at every later step, hence an unbounded orbit. So
 A box `T` is a **trap of period `p`** when
 
 ```text
-f_c^p(T) strictly inside T
+f_c^p(T) inside T
 ```
 
-where the image is the interval enclosure and *strictly* means both
-coordinates shrink at both ends. The classifier then answers `IN` for any box
-whose iterate lands inside `T`.
+where the image is the interval enclosure and *inside* is inclusion, not
+strict inclusion. The classifier then answers `IN` for any box whose iterate
+lands inside `T`.
 
 **Soundness.** Let `T` be a trap of period `p` and let `z` be in `T`. The
 enclosure contains the true image, so `f_c^p(T)` is inside `T` as sets, and by
@@ -65,9 +65,13 @@ an orbit unbounded, so `B` is inside `K_c`. []
 
 **No attracting cycle is named.** The roadmap phrased this certificate as
 "attracting-cycle certificates plus basin pullback", and a trap is what that
-amounts to once the analytic content is removed: strict invariance is checked
+amounts to once the analytic content is removed: invariance is checked
 directly, so no multiplier, no linearisation, and no theorem about basins is
-needed. The trap is a declared witness, verified before any verdict rests on
+needed. It is also why inclusion needs no strictness. Strict inclusion is the
+hypothesis of the contraction theorems (section 2.4 of
+`docs/rational-interval-arithmetic-spec.md`), which buy an attracting
+periodic point inside `T`. This certificate claims no such point: boundedness
+is all it needs, and the induction above never uses strictness. The trap is a declared witness, verified before any verdict rests on
 it, exactly as a cycle witness is.
 
 ## 3. `UNKNOWN`: the residual
@@ -92,13 +96,31 @@ mistaken witness can only lose information, never produce a false `IN`.
 
 ## 5. Where it stops, and why that is correct
 
-At a **parabolic** parameter there is no trap, and `trap_candidate` returns
-nothing however far it shrinks. That is not a gap in the search: a parabolic
-fixed point is on the boundary of its own basin, and no box around it is
-strictly invariant. The classifier therefore answers `UNKNOWN` on the interior
-of a parabolic basin, which is the fail-closed answer -- it declines rather
-than guessing -- and `test_the_parabolic_parameter_has_no_trap` pins the
-behaviour so it cannot quietly change.
+At a **parabolic** parameter `trap_candidate` still returns nothing however
+far it shrinks, and that is a fact about the search, not about the parameter.
+The search shrinks a box toward its own midpoint; a parabolic petal is
+anchored at the parabolic fixed point and centred nowhere, so a centred search
+walks away from it.
+
+The petal itself is a trap. At `c = 1/4`, with the parabolic fixed point at
+`1/2`,
+
+```text
+T = [1/4, 1/2] x [-1/4, 1/4],    F(T) = T
+```
+
+exactly, in the repository's own interval arithmetic. `F(T) = T` is inclusion
+and not strict inclusion, which is precisely the case the certificate used to
+reject, and rejecting it was the error: the soundness argument of section 2
+never used strictness. So the classifier answers `IN` on the interior of a
+parabolic basin like any other, and `TRAPS["cauliflower"]` pins the witness.
+
+Two things had to be true for this box to be seen at all. The certificate had
+to ask for inclusion rather than strict inclusion, and the enclosure had to be
+sharp enough to notice: with the complex square in the expanded form
+`Z * Z` the image of `T` overshoots by a sixteenth and the inclusion is lost.
+Specification section 2.5 is about exactly that, and the kernel now squares
+each coordinate by the rule of section 2.2.
 
 At a parameter with **empty interior** (`dendrite`, `chebyshev`, `escaping`)
 there is nothing to trap and `IN` is never reported, which the census shows.
@@ -125,8 +147,10 @@ is classical and is **not** proved here: it enters as the tag
 the theorem holds on its own and the corollary is conditional on one named
 import.
 
-At a parabolic parameter the `IN` direction has no hypothesis to offer, since
-no trap exists (section 5), and completeness there is open.
+At a parabolic parameter the `IN` direction applies as it does anywhere else,
+on the basin of the petal trap of section 5. Extending it from that basin to
+the whole interior of `K_c` needs the same kind of import as the hyperbolic
+case: that the interior is the parabolic basin.
 
 ## 7. What this document does not claim
 

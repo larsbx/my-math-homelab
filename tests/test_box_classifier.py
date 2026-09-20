@@ -46,8 +46,8 @@ def test_the_pinned_traps_verify(trap, c, period):
     assert is_trap(trap, c, period)
 
 
-def test_a_trap_needs_strict_containment():
-    """`f(B) = B` is not a trap: equality leaves no room and certifies nothing."""
+def test_a_box_the_map_leaves_is_not_a_trap():
+    """Inclusion is not strictness, but it is still inclusion."""
     unit = ComplexBox.of(F(-1), F(1), F(-1), F(1))
     assert not is_trap(unit, C0, 1)
 
@@ -57,11 +57,26 @@ def test_a_nonpositive_period_is_refused(period):
     assert not is_trap(TRAP_C0, C0, period)
 
 
-def test_the_parabolic_parameter_has_no_trap():
-    """A parabolic basin has no strictly invariant box, and the classifier says
-    so rather than inventing one: it is the fail-closed case, not a defect."""
+def test_the_parabolic_petal_is_a_trap_that_no_centred_search_finds():
+    """The parabolic case, which the certificate used to declare impossible.
+
+    The petal is anchored at the parabolic fixed point `1/2` and centred
+    nowhere, so shrinking a box toward its own midpoint walks away from it --
+    a fact about the search. The box itself is invariant, without being
+    strictly invariant, and that is what the certificate now asks for.
+    """
+    petal = ComplexBox.of(F(1, 4), F(1, 2), F(-1, 4), F(1, 4))
+    image = step(petal, C_CAULIFLOWER)
+    assert image.subset_of(petal) and not image.strict_subset_of(petal)
+    assert is_trap(petal, C_CAULIFLOWER, 1)
     seed = ComplexBox.of(F(1, 4), F(3, 4), F(-1, 4), F(1, 4))
     assert trap_candidate(C_CAULIFLOWER, 1, seed) is None
+
+
+def test_the_classifier_answers_in_inside_a_parabolic_basin():
+    petal = ComplexBox.of(F(1, 4), F(1, 2), F(-1, 4), F(1, 4))
+    inside = ComplexBox.of(F(3, 8), F(7, 16), F(-1, 16), F(1, 16))
+    assert classify(inside, C_CAULIFLOWER, petal, 1).verdict is BoxVerdict.IN
 
 
 def test_escape_is_tested_on_the_whole_box():

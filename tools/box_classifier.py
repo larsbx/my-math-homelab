@@ -43,19 +43,26 @@ def escapes(box: ComplexBox, c: ComplexBox) -> bool:
 
 
 def is_trap(trap: ComplexBox, c: ComplexBox, period: int) -> bool:
-    """Does `f_c^period` map the trap strictly inside itself?
+    """Does `f_c^period` map the trap into itself?
 
-    That is the whole `IN` certificate. A box with this property is forward
-    invariant under `f^period`, so every orbit that enters it stays in the
-    union of its first `period` images, which is bounded. No attracting cycle
-    is named and none is needed.
+    That is the whole `IN` certificate, and inclusion is all of it. By
+    inclusion monotonicity `f^p(T) ⊆ F^p(T) ⊆ T`, so by induction every
+    `f^(pn)(z)` is in `T` and every intermediate iterate is in one of the
+    `p` boxes `F^j(T)`. A finite union of boxes is bounded, so `T ⊆ K_c`. No
+    attracting cycle is named and none is needed.
+
+    Inclusion here is **not** strict. It used to be, which cost the parabolic
+    case: a parabolic fixed point sits on the boundary of its own basin, so
+    every invariant box touches it and none is strictly invariant. Strictness
+    would buy an attracting periodic point inside `T`, which this certificate
+    neither claims nor needs. See `docs/three-valued-classifier.md` section 5.
     """
     if period < 1 or not (trap.accepted() and c.accepted()):
         return False
     image = trap
     for _ in range(period):
         image = step(image, c)
-    return image.strict_subset_of(trap)
+    return image.subset_of(trap)
 
 
 class BoxVerdict(Enum):
