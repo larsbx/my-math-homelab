@@ -23,6 +23,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import jet
+from dyadic import DEFAULT_PRECISION, round_down, round_up
 from gaussian_q import GQ
 from interval_box import ComplexBox
 
@@ -164,3 +165,43 @@ def orbit(model: TaylorModel, c: GQ, steps: int) -> TaylorModel:
     for _ in range(steps):
         model = step(model, c)
     return model
+
+
+def round_coefficient(value: GQ, precision: int) -> tuple[GQ, ComplexBox]:
+    """A rounded coefficient, and an enclosure of what rounding lost.
+
+    The error is returned rather than bounded: it is the exact difference
+    between the coefficient and its rounding, so the caller can put it where
+    soundness requires.
+    """
+    rounded = GQ(round_down(value.re, precision), round_down(value.im, precision))
+    difference = value - rounded
+    return rounded, ComplexBox.of(
+        round_down(difference.re, precision), round_up(difference.re, precision),
+        round_down(difference.im, precision), round_up(difference.im, precision),
+    )
+
+
+def round_model(model: TaylorModel, precision: int = DEFAULT_PRECISION) -> TaylorModel:
+    """Round every coefficient, moving what rounding loses into the remainder.
+
+    This is the exchange a Taylor model exists to make. An exact backend has
+    no rounding, so coefficients grow without bound -- every step squares
+    them -- and the model becomes unaffordable long before the enclosure
+    becomes useless. Giving a little width back to the remainder buys a
+    coefficient that stays small.
+
+    Soundness is unchanged: for every `e` in the domain,
+    `p(e) = p_rounded(e) + sum_j (a_j - rounded_j) e^j`, and the sum is
+    enclosed and added. Nothing is dropped.
+    """
+    if not model.accepted() or precision < 1:
+        return model
+    coefficients: list[GQ] = []
+    lost = ZERO_BOX
+    for degree, value in enumerate(model.polynomial):
+        rounded, error = round_coefficient(value, precision)
+        coefficients.append(rounded)
+        if not error.re.lo == error.re.hi == error.im.lo == error.im.hi == 0:
+            lost = lost.add(error.mul(power(model.domain, degree)))
+    return TaylorModel(model.centre, model.domain, tuple(coefficients), model.remainder.add(lost))
