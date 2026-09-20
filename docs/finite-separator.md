@@ -47,7 +47,20 @@ the reverse. []
 That is the entire claim. It says nothing about fibers, nothing about
 components, and nothing about the curve `L = 0`.
 
-## 3. The nest is monotone
+## 3. The search is three-valued, like every other search here
+
+`search` returns `SEPARATED`, `UNSEPARATED` through the level, or `CAPPED`.
+The third is not the second. Exact iteration squares the coordinates, so
+their bit size doubles every step: a pair of boxes with 32nds in their
+corners outgrows a 65536-bit budget by step fourteen, and a search asked for
+level thirty stops there rather than running until something gives.
+
+`not_separated_through` is false on a capped search. An exhausted budget is
+not a finding, which is the same rule `CAPPED` follows in
+`docs/terminology-registry.md` for an orbit, and it is why section 6's
+permanent witness is worth having: it reaches conclusions the search cannot.
+
+## 4. The nest is monotone
 
 **If `A` and `B` are separated at level `k`, they are separated at every
 level above `k`, with the same cut and the same step.**
@@ -59,7 +72,7 @@ So non-separation is decreasing in `k`: the relations
 `NotSep_0 ⊇ NotSep_1 ⊇ NotSep_2 ⊇ ...` form a nest, and "the nest stabilizes"
 is a finite, checkable event at each level rather than a limit.
 
-## 4. Adequacy, and why it must be relative
+## 5. Adequacy, and why it must be relative
 
 **If `A` and `B` are disjoint, the catalogue `{coordinate_cut_between(A, B)}`
 separates them at level `0`, and that cut is written down rather than
@@ -84,7 +97,7 @@ about the parameter alone, and any row claiming either has to name its
 catalogue. That is a real change from the ray-pair formulation, where the
 catalogue was determined by the dynamics.
 
-## 5. Non-separation is a tolerance, not an equivalence
+## 6. Non-separation is a tolerance, not an equivalence
 
 **Level-`k` non-separation is reflexive and symmetric, and is not
 transitive.**
@@ -101,7 +114,7 @@ not a curiosity: **a class of non-separation is not a fiber and must never be
 called one**, because the relation does not partition anything. The
 terminology registry carries this as a declared leak.
 
-## 6. What `J1` becomes
+## 7. What `J1` becomes
 
 `docs/J1_proof_definition.md` states the bridge as two obligations. Under the
 restatement they split three ways, and the split is the point:
@@ -109,8 +122,8 @@ restatement they split three ways, and the split is the point:
 | original | status here |
 | --- | --- |
 | `J1-A`: the finite catalogue relation is extensionally fiber separation | **not restated.** Extensional equality with fiber separation is exactly the part that needs rays. It becomes an import, below. |
-| `J1-B`: a finite nest stabilizes exactly when the fiber is trivial | **split.** That the nest is decreasing and its stabilization decidable at each level is section 3, proved. That stabilization means *triviality of a fiber* is the same import. |
-| -- | **new, and proved:** sections 2, 4 and 5 -- soundness, relative adequacy, and the tolerance-not-equivalence warning. |
+| `J1-B`: a finite nest stabilizes exactly when the fiber is trivial | **split.** That the nest is decreasing and its stabilization decidable at each level is section 4, proved. That stabilization means *triviality of a fiber* is the same import. |
+| -- | **new, and proved:** sections 2, 5 and 6 -- soundness, relative adequacy, and the tolerance-not-equivalence warning -- and the permanent witness of `docs/permanent-non-separation.md`. |
 
 The import that would restore the classical reading:
 
@@ -126,7 +139,7 @@ about cuts, and none of them mentions a fiber. `RationalRayLanding`
 imply this one -- landing tells you a ray reaches a point, not that a straight
 cut through that point separates what the ray pair separates.
 
-## 7. What this does not claim
+## 8. What this does not claim
 
 It does not claim the relation is fiber separation, that a class is a fiber,
 or that the classes are connected. It does not claim any catalogue is

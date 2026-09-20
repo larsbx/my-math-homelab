@@ -22,11 +22,13 @@ Mojo side.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from enum import Enum
 from fractions import Fraction
 from typing import Union
 
-from box_classifier import step
+from box_classifier import is_trap, step
 from interval_box import IQ, ComplexBox
+from julia_reference import DEFAULT_BIT_BUDGET
 
 Scalar = Union[int, Fraction]
 
@@ -91,33 +93,72 @@ def opposite(first: int, second: int) -> bool:
     return first != UNDECIDED and second != UNDECIDED and first != second
 
 
-def separated_at(
+class SeparationVerdict(Enum):
+    SEPARATED = "SEPARATED"
+    UNSEPARATED = "UNSEPARATED"
+    CAPPED = "CAPPED"
+
+
+@dataclass(frozen=True, slots=True)
+class Separation:
+    """What a search found: separated, not separated through the level, or
+    out of budget. The third is not the second, and reading it as the second
+    is the one mistake this type exists to prevent."""
+
+    verdict: SeparationVerdict
+    step: int | None = None
+    cut: Cut | None = None
+
+    def decided(self) -> bool:
+        return self.verdict is SeparationVerdict.SEPARATED
+
+
+def box_bits(box: ComplexBox) -> int:
+    """The largest numerator or denominator bit length among the corners.
+
+    Exact iteration squares the coordinates, so their bit size doubles every
+    step. A search that ignores this does not return a wrong answer; it stops
+    returning one, which is worse.
+    """
+    if not box.accepted():
+        return 0
+    parts = (box.re.lo, box.re.hi, box.im.lo, box.im.hi)
+    return max(
+        max(abs(part.numerator).bit_length(), part.denominator.bit_length())
+        for part in parts
+    )
+
+
+def search(
     left: ComplexBox,
     right: ComplexBox,
     c: ComplexBox,
     cuts: tuple[Cut, ...],
     level: int,
-) -> tuple[int, Cut] | None:
-    """The first `(step, cut)` that puts the two boxes on opposite sides.
+    bit_budget: int = DEFAULT_BIT_BUDGET,
+) -> Separation:
+    """Look for a cut and a step putting the two boxes on opposite sides.
 
-    Returns `None` when the catalogue does not separate them through `level`,
-    which is a statement about the catalogue and the level, never a claim that
-    the boxes hold the same anything.
+    Three-valued and fail-closed, like every other search here. `CAPPED` means
+    the coordinates outgrew the budget before the level ran out, and it is
+    never evidence of non-separation.
     """
     if level < 0 or not (left.accepted() and right.accepted() and c.accepted()):
-        return None
+        return Separation(SeparationVerdict.CAPPED)
     here, there = left, right
     for index in range(level + 1):
+        if max(box_bits(here), box_bits(there)) > bit_budget:
+            return Separation(SeparationVerdict.CAPPED, index)
         for cut in cuts:
             if opposite(side(cut, here), side(cut, there)):
-                return index, cut
+                return Separation(SeparationVerdict.SEPARATED, index, cut)
         here, there = step(here, c), step(there, c)
-    return None
+    return Separation(SeparationVerdict.UNSEPARATED, level)
 
 
 def separated(left: ComplexBox, right: ComplexBox, c: ComplexBox, cuts: tuple[Cut, ...], level: int) -> bool:
     """Does the catalogue separate the two boxes within `level` steps?"""
-    return separated_at(left, right, c, cuts, level) is not None
+    return search(left, right, c, cuts, level).decided()
 
 
 def not_separated_through(
@@ -129,11 +170,15 @@ def not_separated_through(
 ) -> bool:
     """The level-`k` non-separation predicate.
 
-    Reflexive and symmetric, and **not** transitive: see section 4 of
+    True only on a completed search. A capped search is not non-separation,
+    and this returns false for it rather than promoting an exhausted budget
+    into a finding.
+
+    Reflexive and symmetric, and **not** transitive: see section 5 of
     `docs/finite-separator.md`. It is a tolerance relation, so calling a class
     of it a fiber would be a leak, and nothing here does.
     """
-    return not separated(left, right, c, cuts, level)
+    return search(left, right, c, cuts, level).verdict is SeparationVerdict.UNSEPARATED
 
 
 def separating_level(
@@ -144,8 +189,8 @@ def separating_level(
     level: int,
 ) -> int | None:
     """The least step at which the catalogue separates, or `None`."""
-    found = separated_at(left, right, c, cuts, level)
-    return None if found is None else found[0]
+    found = search(left, right, c, cuts, level)
+    return found.step if found.decided() else None
 
 
 def cut_through(box: ComplexBox, a: Scalar, b: Scalar) -> Cut:
@@ -179,3 +224,74 @@ def coordinate_cut_between(left: ComplexBox, right: ComplexBox) -> Cut:
                 offset = (first.hi + second.lo) / 2
                 return Cut.of(orientation * normal, orientation * (1 - normal), orientation * offset)
     return Cut.refused()
+
+
+# --- permanent failure -----------------------------------------------------
+
+
+def trap_images(trap: ComplexBox, c: ComplexBox, period: int) -> tuple[ComplexBox, ...]:
+    """`T, F(T), ..., F^(p-1)(T)`: the boxes a trapped orbit cycles through."""
+    if period < 1 or not (trap.accepted() and c.accepted()):
+        return ()
+    images, image = [], trap
+    for _ in range(period):
+        images.append(image)
+        image = step(image, c)
+    return tuple(images)
+
+
+def side_compatible(cuts: tuple[Cut, ...], trap: ComplexBox, c: ComplexBox, period: int) -> bool:
+    """Is every image of the trap on a decided side of every cut?
+
+    Not the *same* side for different images, and not the same side for
+    different cuts: only decided. That is all the theorem needs, because two
+    orbits inside the same image box at the same step are on the same side of
+    everything, whatever that side is.
+    """
+    images = trap_images(trap, c, period)
+    if not images:
+        return False
+    return all(side(cut, image) != UNDECIDED for cut in cuts for image in images)
+
+
+def iterate(box: ComplexBox, c: ComplexBox, steps: int) -> ComplexBox:
+    """`F^steps(box)`, recomputed from the box."""
+    for _ in range(steps):
+        box = step(box, c)
+    return box
+
+
+def permanently_unseparated(
+    left: ComplexBox,
+    right: ComplexBox,
+    c: ComplexBox,
+    cuts: tuple[Cut, ...],
+    trap: ComplexBox,
+    period: int,
+    entry: int,
+) -> bool:
+    """A finite witness that the catalogue never separates the two boxes.
+
+    Never at any level, not merely up to one. The hypotheses are all finite:
+    the trap is verified, its cycle of images is on decided sides of every
+    cut, both boxes are inside the trap at the same step `entry`, and no cut
+    separates them at any earlier step.
+
+    The conclusion is about the **catalogue**, not about the points. It says
+    this finite set of cuts cannot tell these two boxes apart, which is
+    exactly what `docs/finite-separator.md` section 4 says is the only form
+    the question can take.
+
+    This is also where the budget stops mattering. A search cannot reach the
+    levels a trapped orbit needs -- the coordinates outgrow it long before --
+    and the theorem replaces that infinite tail with `p` box comparisons.
+    """
+    if entry < 0 or period < 1 or not (left.accepted() and right.accepted() and c.accepted()):
+        return False
+    if not is_trap(trap, c, period):
+        return False
+    if not side_compatible(cuts, trap, c, period):
+        return False
+    if entry > 0 and not not_separated_through(left, right, c, cuts, entry - 1):
+        return False
+    return iterate(left, c, entry).subset_of(trap) and iterate(right, c, entry).subset_of(trap)

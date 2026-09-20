@@ -17,6 +17,7 @@
 
 from finite_exact.closed_interval import ComplexIQ, IQ
 from finite_exact.rat_q import Q
+from box_classifier import is_trap
 from quadratic_orbit.orbit import quadratic_step
 
 
@@ -142,3 +143,95 @@ def separator_smoke() -> Bool:
     if Cut.of(Q.zero(), Q.zero(), Q(1, 1)).accepted():
         return False
     return separating_level(right_of, left_of, c, Cut.refused(), 4) == -1
+
+
+def trap_image(trap: ComplexIQ, c: ComplexIQ, steps: Int) -> ComplexIQ:
+    """`F^steps(trap)`, recomputed from the trap."""
+    var image = trap.copy()
+    for _ in range(steps):
+        image = quadratic_step(image, c)
+    return image.copy()
+
+
+def side_compatible(cut: Cut, trap: ComplexIQ, c: ComplexIQ, period: Int) -> Bool:
+    """Is every image of the trap on a decided side of this cut?
+
+    Decided, not the same side: two orbits inside one image box are on the
+    same side of everything, whatever that side is.
+    """
+    if period < 1 or cut.rejected or not (trap.accepted() and c.accepted()):
+        return False
+    for index in range(period):
+        if side(cut, trap_image(trap, c, index)) == side_undecided():
+            return False
+    return True
+
+
+def permanently_unseparated(
+    left: ComplexIQ,
+    right: ComplexIQ,
+    c: ComplexIQ,
+    cut: Cut,
+    trap: ComplexIQ,
+    period: Int,
+    entry: Int,
+) -> Bool:
+    """The witness of `docs/permanent-non-separation.md`, for one cut.
+
+    The search that would look for a separation lives on the Python side,
+    because it needs a bit budget and this layer has no access to one through
+    the exact-arithmetic boundary. What is here is the verification, which is
+    what a certificate is for: `entry` steps of direct checking and `period`
+    box comparisons replace the infinite tail.
+    """
+    if entry < 0 or period < 1 or cut.rejected:
+        return False
+    if not (left.accepted() and right.accepted() and c.accepted() and trap.accepted()):
+        return False
+    if not is_trap(trap, c, period):
+        return False
+    if not side_compatible(cut, trap, c, period):
+        return False
+    var here = left.copy()
+    var there = right.copy()
+    for _ in range(entry):
+        if opposite(side(cut, here), side(cut, there)):
+            return False
+        here = quadratic_step(here, c)
+        there = quadratic_step(there, c)
+    var left_inside = here.subset_of(trap)
+    var right_inside = there.subset_of(trap)
+    if left_inside.rejected or right_inside.rejected:
+        return False
+    return left_inside.value and right_inside.value
+
+
+def permanent_witness_smoke() -> Bool:
+    """The two witnesses of `tools/parameter_corpus.py`, replayed."""
+    # c = 0, the cut x = 1/2, the fixed trap, entry at step three.
+    var c_zero = ComplexIQ.singleton(Q.zero(), Q.zero())
+    var cut_zero = Cut.of(Q(1, 1), Q.zero(), Q(1, 2))
+    var trap_zero = ComplexIQ(IQ(Q(-1, 4), Q(1, 4)), IQ(Q(-1, 4), Q(1, 4)))
+    var a0 = ComplexIQ(IQ(Q(19, 32), Q(21, 32)), IQ(Q(-1, 32), Q(1, 32)))
+    var b0 = ComplexIQ(IQ(Q(11, 16), Q(23, 32)), IQ(Q(-1, 32), Q(1, 32)))
+    if not permanently_unseparated(a0, b0, c_zero, cut_zero, trap_zero, 1, 3):
+        return False
+    # An entry step that is too early is refused rather than stretched.
+    if permanently_unseparated(a0, b0, c_zero, cut_zero, trap_zero, 1, 2):
+        return False
+    # c = -1, a period-two trap whose two images straddle the cut.
+    var c_basilica = ComplexIQ.singleton(Q(-1, 1), Q.zero())
+    var cut_basilica = Cut.of(Q(1, 1), Q.zero(), Q(-1, 2))
+    var trap_basilica = ComplexIQ(IQ(Q(-1, 8), Q(1, 8)), IQ(Q(-1, 8), Q(1, 8)))
+    if not side_compatible(cut_basilica, trap_basilica, c_basilica, 2):
+        return False
+    var a1 = ComplexIQ(IQ(Q(1, 4), Q(9, 32)), IQ(Q(-1, 64), Q(1, 64)))
+    var b1 = ComplexIQ(IQ(Q(-9, 32), Q(-1, 4)), IQ(Q(-1, 64), Q(1, 64)))
+    if not permanently_unseparated(a1, b1, c_basilica, cut_basilica, trap_basilica, 2, 4):
+        return False
+    # A trap that straddles the cut carries no witness: the fixed trap at the
+    # origin against the cut through the origin.
+    var through_origin = Cut.of(Q(1, 1), Q.zero(), Q.zero())
+    if side_compatible(through_origin, trap_zero, c_zero, 1):
+        return False
+    return not permanently_unseparated(a0, b0, c_zero, through_origin, trap_zero, 1, 3)

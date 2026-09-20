@@ -236,6 +236,36 @@ TRAPS: dict[str, tuple[tuple[F, F, F, F], int]] = {
 }
 
 
+#: Permanent non-separation witnesses, by corpus key: a catalogue of cuts as
+#: `(a, b, e)` triples, a trap with its period, two boxes, and the common step
+#: at which both are inside the trap. Verified by `tools/separator.py` against
+#: the theorem of `docs/permanent-non-separation.md`.
+#:
+#: Each is an exhibit of a **catalogue's** limit and nothing else. The two
+#: boxes of a row are disjoint, so by that note's corollary one more cut would
+#: separate either pair at once; what the row shows is that the cuts declared
+#: here never will, at any level.
+PERMANENTLY_UNSEPARATED: dict[str, tuple[tuple[tuple[F, F, F], ...], tuple[F, F, F, F], int, tuple[F, F, F, F], tuple[F, F, F, F], int]] = {
+    # One cut, a fixed trap, and three steps checked before the trap takes over.
+    "c0": (
+        ((F(1), F(0), F(1, 2)),),
+        (F(-1, 4), F(1, 4), F(-1, 4), F(1, 4)), 1,
+        (F(19, 32), F(21, 32), F(-1, 32), F(1, 32)),
+        (F(11, 16), F(23, 32), F(-1, 32), F(1, 32)),
+        3,
+    ),
+    # A period-two trap whose two images straddle the cut, which is the case
+    # hypothesis 1 of the theorem is phrased for.
+    "basilica": (
+        ((F(1), F(0), F(-1, 2)),),
+        (F(-1, 8), F(1, 8), F(-1, 8), F(1, 8)), 2,
+        (F(1, 4), F(9, 32), F(-1, 64), F(1, 64)),
+        (F(-9, 32), F(-1, 4), F(-1, 64), F(1, 64)),
+        4,
+    ),
+}
+
+
 #: Preperiodic-point witnesses, by corpus key: a box, a preperiod, a period,
 #: and the point the box is drawn around. Each is verified by
 #: `tools/preperiodic.py` -- isolated at the stated type, and of *exactly*

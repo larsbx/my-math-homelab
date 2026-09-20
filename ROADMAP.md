@@ -154,6 +154,24 @@ so Phase 4's witness only has content against a fixed one.
 
 - a finite witness that the catalogue permanently fails to separate a named
   pair, at a parameter whose local connectivity is false;
+
+**First rung delivered, 2026-09-20.** The witness exists, and it is not the
+witness this line describes. `docs/permanent-non-separation.md` proves that
+once both boxes are inside a trap at a common step, and the trap's cycle of
+images is on decided sides of every cut, no cut of the catalogue ever
+separates them -- at any level, with the infinite tail replaced by `p` box
+comparisons. Two witnesses are declared and replayed in both implementations,
+one with a period-two trap whose images straddle the cut.
+
+What it is a statement about is the **catalogue**, not the parameter: by the
+adequacy corollary one more cut separates either pair at once. So the second
+half of the line above -- "at a parameter whose local connectivity is false"
+-- is not something this construction can deliver, and
+`docs/finite-separator.md` section 7 says which import would be needed.
+
+The budget is what makes the theorem worth having rather than decorative: a
+search for these pairs caps at step fourteen, so the levels the theorem
+covers are ones no search reaches.
 - escalation of `c` from `Q(i)` to exact algebraic and interval parameters,
   which is the bridge back to the parameter plane.
 

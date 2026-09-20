@@ -16,19 +16,24 @@ from box_classifier import step
 from gaussian_q import GQ
 from interval_box import ComplexBox
 from julia_reference import step as point_step
+from parameter_corpus import BY_KEY, PERMANENTLY_UNSEPARATED
 from separator import (
     NEGATIVE,
     POSITIVE,
     UNDECIDED,
     Cut,
+    SeparationVerdict,
+    box_bits,
     coordinate_cut_between,
     cut_through,
     not_separated_through,
     opposite,
+    permanently_unseparated,
+    search,
     separated,
-    separated_at,
     separating_level,
     side,
+    side_compatible,
 )
 
 C0 = ComplexBox.singleton(0)
@@ -55,9 +60,9 @@ def test_a_degenerate_or_malformed_cut_is_refused_as_a_value():
 
 def test_separation_is_a_statement_about_every_point_of_both_boxes():
     """Soundness: sampled points really do land on opposite sides."""
-    found = separated_at(RIGHT, UPWARD, C0, (VERTICAL,), 4)
-    assert found is not None
-    steps, cut = found
+    found = search(RIGHT, UPWARD, C0, (VERTICAL,), 4)
+    assert found.decided()
+    steps, cut = found.step, found.cut
     assert steps == 1, "the pullback is what decides this pair, not step zero"
     for here, there in ((GQ(F(1, 2), F(0)), GQ(F(0), F(1, 2))), (GQ(F(9, 16), F(1, 16)), GQ(F(-1, 16), F(7, 16)))):
         for _ in range(steps):
@@ -119,3 +124,57 @@ def test_a_catalogue_separates_what_any_of_its_cuts_separates():
 def test_a_negative_level_is_refused():
     assert not separated(RIGHT, LEFT, C0, (VERTICAL,), -1)
     assert separating_level(RIGHT, LEFT, C0, (VERTICAL,), -1) is None
+
+
+# --- the budget, and permanent failure -------------------------------------
+
+
+def test_an_exhausted_budget_is_not_non_separation():
+    """Exact iteration doubles coordinate size every step, so a deep search
+    runs out of room. `CAPPED` is not `UNSEPARATED`, and the predicate says
+    so rather than promoting a budget into a finding."""
+    capped = search(RIGHT, ComplexBox.of(F(11, 16), F(23, 32), F(-1, 32), F(1, 32)), C0, (Cut.of(1, 0, F(1, 2)),), 30)
+    assert capped.verdict is SeparationVerdict.CAPPED
+    assert capped.step is not None and capped.step < 30
+    assert not not_separated_through(
+        RIGHT, ComplexBox.of(F(11, 16), F(23, 32), F(-1, 32), F(1, 32)), C0, (Cut.of(1, 0, F(1, 2)),), 30
+    )
+    assert box_bits(RIGHT) >= 4 and box_bits(ComplexBox.refused()) == 0
+
+
+WITNESSES = [(key, *row) for key, row in PERMANENTLY_UNSEPARATED.items()]
+
+
+@pytest.mark.parametrize("key,cuts,trap,period,left,right,entry", WITNESSES, ids=[w[0] for w in WITNESSES])
+def test_the_permanent_witnesses_verify(key, cuts, trap, period, left, right, entry):
+    row = BY_KEY[key]
+    c = ComplexBox.singleton(row.c.re, row.c.im)
+    catalogue = tuple(Cut.of(*triple) for triple in cuts)
+    trap_box, a, b = ComplexBox.of(*trap), ComplexBox.of(*left), ComplexBox.of(*right)
+    assert side_compatible(catalogue, trap_box, c, period)
+    assert permanently_unseparated(a, b, c, catalogue, trap_box, period, entry)
+    # The search cannot reach this on its own: it runs out of budget first.
+    assert search(a, b, c, catalogue, 30).verdict is SeparationVerdict.CAPPED
+    # The pair is genuinely two boxes, and one more cut would separate them.
+    assert not a.subset_of(b) and not b.subset_of(a)
+    extra = coordinate_cut_between(a, b)
+    assert extra.accepted() and separated(a, b, c, (extra,), 0)
+
+
+def test_the_witness_needs_a_trap_off_the_cut():
+    """A trap the cut passes through carries no witness: the fixed trap at the
+    origin against the cut through the origin."""
+    trap = ComplexBox.of(F(-1, 4), F(1, 4), F(-1, 4), F(1, 4))
+    assert not side_compatible((VERTICAL,), trap, C0, 1)
+    assert not permanently_unseparated(RIGHT, LEFT, C0, (VERTICAL,), trap, 1, 3)
+
+
+def test_the_witness_needs_a_common_entry_step_and_a_real_trap():
+    trap = ComplexBox.of(F(-1, 4), F(1, 4), F(-1, 4), F(1, 4))
+    cuts = (Cut.of(1, 0, F(1, 2)),)
+    a = ComplexBox.of(F(19, 32), F(21, 32), F(-1, 32), F(1, 32))
+    b = ComplexBox.of(F(11, 16), F(23, 32), F(-1, 32), F(1, 32))
+    assert not permanently_unseparated(a, b, C0, cuts, trap, 1, 2), "too early to be inside"
+    assert not permanently_unseparated(a, b, C0, cuts, ComplexBox.of(F(-2), F(2), F(-2), F(2)), 1, 3), "not a trap"
+    assert not permanently_unseparated(a, b, C0, cuts, trap, 1, -1)
+    assert not permanently_unseparated(a, b, C0, cuts, trap, 0, 3)
