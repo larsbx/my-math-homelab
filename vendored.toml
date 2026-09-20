@@ -57,3 +57,13 @@ root = "tools"
 [package.files]
 "references/__init__.py" = "d241dd4166c0f171b9cd36003b5c1f9f5eb98765f08bdb4cb9b38ebd79f2cc28"
 "references/check_references.py" = "096882ac4ce8bda59bd66eb83d74bebe1a63fcd181ff90dcf67615ed95059a04"
+
+[[package]]
+name = "angle_doubling"
+repository = "larsbx/finite-math-kernels"
+commit = "87e678539112f4065a0269e4d3c2aa5aebe57e16"
+root = "src"
+
+[package.files]
+"angle_doubling/__init__.mojo" = "9166f13819f822a439beef317c127d5f726ee3ef25e4e6f73f7a9178573be97f"
+"angle_doubling/angle.mojo" = "46defc94d8dc3ff5e9079f1c2543479bd27316bae32054966e20cd107742c233"

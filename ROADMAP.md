@@ -120,6 +120,21 @@ skeleton, and what connects the two is Phase 3's business.
 
 - rational-angle combinatorics under `t -> 2t`, as dynamical-ray addresses;
 - landed-ray separators and the finite separation predicate `Separated_k^c`;
+
+**First rung delivered, 2026-09-20.** The first bullet, and only it.
+`docs/angle-types-and-landing.md`, with `angle_doubling/angle.mojo` upstream
+and `tools/angle.py` as the Python side: an angle's preperiod and period are
+closed forms in its denominator rather than searches, and the counting
+identity `2^l (2^k - 1) + 2^l = 2^(l+k)` meets Phase 2's degree at `c = 0`,
+where the second summand is the critical point's multiplicity. Both finite,
+both proved, neither importing anything.
+
+The second bullet is **not** built and the note says why. Landing is gated as
+`RationalRayLanding` in `docs/literature-gate-2026-09-20-landing.md` -- before
+anything uses it, which is the order the escape-criterion episode taught --
+but landing gives a point, not a cut. Deciding which side of a ray pair a box
+lies on is geometry about the rays as curves, which this repository has no
+certificate for and does not fake.
 - `J1` stated and discharged per regime, against
   `docs/J1_proof_definition.md`;
 - the cross-check: run the parameter plane's adequacy machinery on regimes
