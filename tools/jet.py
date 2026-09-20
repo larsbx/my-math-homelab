@@ -49,17 +49,31 @@ def sub(left: Jet, right: Jet) -> Jet:
     return tuple(a - b for a, b in zip(left, right))
 
 
+def convolve(left: Jet, right: Jet) -> Jet:
+    """The full product, of length `len(left) + len(right) - 1`.
+
+    Nothing is dropped. `mul` truncates it and a Taylor model keeps the tail
+    as an interval instead, which is the whole difference between the two
+    (`docs/taylor-models.md`).
+    """
+    width = len(left) + len(right) - 1
+    return tuple(
+        sum(
+            (left[i] * right[n - i]
+             for i in range(max(0, n - len(right) + 1), min(n, len(left) - 1) + 1)),
+            ZERO,
+        )
+        for n in range(width)
+    )
+
+
 def mul(left: Jet, right: Jet) -> Jet:
     """Truncated convolution: `(fg)_n = sum_(i+j=n) f_i g_j`, dropping the rest.
 
     Dropping is exact, not an approximation. Coefficients above the order are
     not computed wrongly; they are not part of the object.
     """
-    order = len(left) - 1
-    return tuple(
-        sum((left[i] * right[n - i] for i in range(n + 1)), ZERO)
-        for n in range(order + 1)
-    )
+    return convolve(left, right)[:len(left)]
 
 
 def step(state: Jet, c: GQ) -> Jet:

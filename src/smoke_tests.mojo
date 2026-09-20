@@ -16,6 +16,7 @@ from corpus_replay import corpus_replay_smoke, rejected_configuration_smoke
 from box_classifier import box_classifier_smoke
 from enclosure_bound import enclosure_bound_smoke
 from jet import jet_smoke
+from taylor import taylor_smoke
 from angle_witness import angle_witness_smoke
 from separator import permanent_witness_smoke, ray_witness_smoke, separator_smoke
 from preperiodic_witness import preperiodic_witness_smoke
@@ -80,6 +81,7 @@ def run_smoke_tests() -> Bool:
     _ = report.record("permanent non-separation", permanent_witness_smoke())
     _ = report.record("real-axis ray witnesses", ray_witness_smoke())
     _ = report.record("taylor jets", jet_smoke())
+    _ = report.record("taylor models", taylor_smoke())
     _ = report.record("rational multiplier dichotomy", multiplier_dichotomy_smoke())
     _ = report.record("parameter corpus replay", corpus_replay_smoke())
     _ = report.record("rejected orbit configuration", rejected_configuration_smoke())

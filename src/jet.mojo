@@ -52,15 +52,31 @@ def jet_sub(left: List[ComplexIQ], right: List[ComplexIQ]) -> List[ComplexIQ]:
     return out^
 
 
+def jet_convolve(left: List[ComplexIQ], right: List[ComplexIQ]) -> List[ComplexIQ]:
+    """The full product. Nothing is dropped.
+
+    `jet_mul` truncates it; a Taylor model keeps the tail as an interval
+    instead, which is the whole difference between the two
+    (`docs/taylor-models.md`).
+    """
+    var out = List[ComplexIQ]()
+    for n in range(len(left) + len(right) - 1):
+        var total = jet_zero()
+        for i in range(len(left)):
+            var j = n - i
+            if j >= 0 and j < len(right):
+                total = total.add(left[i].mul(right[j]))
+        out.append(total.copy())
+    return out^
+
+
 def jet_mul(left: List[ComplexIQ], right: List[ComplexIQ]) -> List[ComplexIQ]:
     """Truncated convolution. Dropping is exact, not an approximation: the
     coefficients above the order are not part of the object."""
+    var full = jet_convolve(left, right)
     var out = List[ComplexIQ]()
     for n in range(len(left)):
-        var total = jet_zero()
-        for i in range(n + 1):
-            total = total.add(left[i].mul(right[n - i]))
-        out.append(total.copy())
+        out.append(full[n].copy())
     return out^
 
 

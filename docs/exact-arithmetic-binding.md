@@ -24,6 +24,7 @@ certificate grammar yet to accept into.
 | 2.4 three-valued sign | `src/separator.mojo` | CONFORMS | the side of a rational cut a box is enclosed on, three-valued and fail-closed (`docs/finite-separator.md`) |
 | 1 exact rational order | `src/separator.mojo` (`certifies_real_rays`) | CONFORMS | the rational inequalities of the real-axis ray witness (`docs/ray-certificates.md`) |
 | 1.1-1.3 Q(i) jets | `src/jet.mojo`, oracle `tools/jet.py` | CONFORMS | truncated Taylor jets over `Q(i)`; multiplicity as the order of vanishing (`docs/preperiodic-certificates.md`) |
+| 2.5 Taylor models | `src/taylor.mojo`, oracle `tools/taylor.py` | CONFORMS | an exact jet plus a rigorous interval remainder, evaluated term by term with sharp powers (`docs/taylor-models.md`) |
 | 2.2 charts | `src/projective/chart.mojo` and `src/projective/homogeneous.mojo`, mirror `tools/chart.py` | CONFORMS | vendored; the chart at infinity and its step, refusing where the division has no domain (`docs/ray-certificates.md`) |
 | 2.1–2.5 seeded quadratic orbit | `src/quadratic_orbit/orbit.mojo` | DEMO | vendored; the orbit of `z^2 + c` over singleton and non-degenerate boxes, the collision interval, and the three-valued zero-exclusion test; a direct `IQ` consumer, barred from certificate acceptance |
 | 1–2 escape bound and multiplier classification | `src/julia_orbit.mojo` | DEMO | quadrance against a rational bound, exact cycle checks, and the five-way multiplier classification whose indifferent case refuses to decide; direct `Q` and `ComplexIQ` consumer |
