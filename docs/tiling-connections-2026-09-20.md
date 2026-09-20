@@ -188,9 +188,17 @@ dendrite parameter and is dynamically conjugate to it.
 those `0` has a one-point postcritical set and no partition at all. The whole
 of the Phase 0 parameter domain therefore supplies exactly **two**
 transition matrices, of sizes `2` and `1`. Enriching the bridge is not a
-matter of searching harder: it requires the algebraic parameters of the
+matter of searching harder: it requires the **algebraic** half of the
 roadmap's Phase 4, where `c` is a root of an exact integer polynomial rather
 than an element of `Q(i)`.
+
+It is specifically that half. Phase 4 also escalates `c` to an interval, and
+that escalation cannot serve this bridge at all: section 2.1 needs the
+postcritical set as points, sorted, and a finite critical orbit is detected
+by an exact equality, which an enclosure does not decide -- overlap is never
+equality. An interval parameter buys coverage of the parameter plane and
+gives up the verdict this construction is built on. `ROADMAP.md` separates
+the two escalations for that reason.
 
 ## 4. What the rung computes, and what came out
 

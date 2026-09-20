@@ -158,7 +158,7 @@ so Phase 4's witness only has content against a fixed one.
 - the cross-check: run the parameter plane's adequacy machinery on regimes
   whose answer is a classical theorem, and report what it does.
 
-## Phase 4 — Non-triviality and interval parameters
+## Phase 4 — Non-triviality, algebraic and interval parameters
 
 - a finite witness that the catalogue permanently fails to separate a named
   pair, at a parameter whose local connectivity is false;
@@ -197,8 +197,29 @@ itinerary's digits as an external angle is `ExternalAngleItinerary`, gated in
 The budget is what makes the theorem worth having rather than decorative: a
 search for these pairs caps at step fourteen, so the levels the theorem
 covers are ones no search reaches.
-- escalation of `c` from `Q(i)` to exact algebraic and interval parameters,
-  which is the bridge back to the parameter plane.
+- escalation of `c` from `Q(i)` to exact **algebraic** parameters: `c` a root
+  of an integer polynomial, carried as that polynomial together with an
+  isolating bracket. Arithmetic moves into the number field `Q(c)`, where
+  equality is still decidable, so every Phase 0 verdict that rests on an
+  exact equality -- the preperiodic one above all -- survives the move.
+  Ordering two elements of `Q(c)` under a real embedding is a sign
+  determination, and that is the upstream `finite_linear_algebra/qpoly.mojo`
+  (`docs/exact-polynomial-root-isolation-spec.md`): a bracket refined until
+  the sign is constant across it.
+- escalation of `c` to **interval** parameters: `c` an enclosure rather than
+  a value. This is the bridge back to the parameter plane, because a region
+  of that plane is a box and not a point. Equality is not decidable on
+  enclosures -- overlap is never equality -- so this escalation gains
+  coverage and gives up every verdict that reads an exact equality.
+
+These were one line until 2026-09-20 and they are not one item. Algebraic
+parameters keep the verdicts and add parameters; interval parameters add
+coverage and give verdicts up, so the two escalations serve different
+consumers and neither substitutes for the other. Anything postcritically
+finite needs the first: `docs/tiling-connections-2026-09-20.md`, section 3.3,
+proves that `Q(i)` holds exactly five postcritically finite parameters, and
+an enclosure can never certify a sixth, because a finite critical orbit is
+detected by an equality.
 
 ## Standing obligations
 

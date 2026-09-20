@@ -52,8 +52,11 @@ quadrance scalar. It is not an analytic complex number and carries no circle,
 disk, arc, polar angle, or connected component.
 Known leaks: an exactly representable parameter can have dynamics that no
 finite test decides; see the irrationally indifferent row of the ledger.
-Use discipline: the Phase 0 parameter domain. Interval and algebraic
-parameters are Phase 4 and are a different term.
+Use discipline: the Phase 0 parameter domain. Algebraic parameters and
+interval parameters are both Phase 4 and are **two** different terms, not
+one: an algebraic parameter keeps exact equality and so keeps every verdict
+that reads one, and an interval parameter does not. `ROADMAP.md`, Phase 4,
+carries the distinction.
 
 ### Rational multiplier dichotomy
 
