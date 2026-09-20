@@ -66,6 +66,36 @@ def orbit_gap_bound(bound: Q, steps: Int, radius: Q) -> Q:
     return Q(2, 1).mul(iterated_radius_bound(bound, steps, radius))
 
 
+def quadrance_drift_bound(bound: Q, distance: Q) -> Q:
+    """`6 M e`: how far a quadrance can move over a sup-distance `e <= 1`."""
+    return Q(6, 1).mul(bound).mul(distance)
+
+
+def quadrance_margin(bound: Q, gap: Q) -> Q:
+    """The sup-distance that spends at most half of a quadrance gap."""
+    if not (gap.accepted() and Q.zero().lt(gap)):
+        return Q(0, 0)
+    var inverted = gap.div(Q(12, 1).mul(bound))
+    if inverted.le(Q(1, 1)):
+        return inverted.copy()
+    return Q(1, 1)
+
+
+def sufficient_radius(bound: Q, steps: Int, margin: Q) -> Q:
+    """The radius that keeps the enclosure within `margin` of the orbit."""
+    if not (margin.accepted() and Q.zero().lt(margin)):
+        return Q(0, 0)
+    var factor = Q(1, 1)
+    for _ in range(steps):
+        factor = factor.mul(coarse_step_factor(bound))
+    return margin.div(Q(2, 1).mul(factor))
+
+
+def escape_completeness_radius(bound: Q, steps: Int, gap: Q) -> Q:
+    """Theorem A's `s`, for a closure whose quadrance clears the bound by `gap`."""
+    return sufficient_radius(bound, steps, quadrance_margin(bound, gap))
+
+
 def enclosure_bound_smoke() -> Bool:
     """The one-step bound against the arithmetic, on boxes chosen to be awkward."""
     var bound = Q(2, 1)
@@ -91,4 +121,18 @@ def enclosure_bound_smoke() -> Bool:
     # Two steps compose: (6M)^2 r.
     if not iterated_radius_bound(bound, 2, radius).eq(coarse_step_factor(bound).square().mul(radius)):
         return False
-    return orbit_gap_bound(bound, 0, radius).eq(Q(2, 1).mul(radius))
+    if not orbit_gap_bound(bound, 0, radius).eq(Q(2, 1).mul(radius)):
+        return False
+    # Section 4(b): a sup-distance of e moves a quadrance by at most 6 M e.
+    var drift = quadrance_drift_bound(bound, Q(1, 8))
+    if not drift.eq(Q(3, 2)):
+        return False
+    # The margin spends half the gap, and is capped at one.
+    if not quadrance_margin(bound, Q(6, 1)).eq(Q(1, 4)):
+        return False
+    if not quadrance_margin(bound, Q(60, 1)).eq(Q(1, 1)):
+        return False
+    # Theorem A's s composes the margin with the iterated factor.
+    return escape_completeness_radius(bound, 2, Q(6, 1)).eq(
+        Q(1, 4).div(Q(2, 1).mul(coarse_step_factor(bound).square()))
+    )

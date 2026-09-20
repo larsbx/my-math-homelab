@@ -22,6 +22,7 @@ Usable without a terminology declaration, in their ordinary field sense:
 - indifferent cycle
 - rationally indifferent, irrationally indifferent
 - Siegel disk, Cremer point
+- circular points (the ideal elements `I` and `J` of `P^2`)
 - Brjuno condition, rotation number
 - multiplier
 - attracting, superattracting, repelling
@@ -150,3 +151,18 @@ either.
   circular points, where it is not a morphism;
 - calling an irrationally indifferent parameter Siegel or Cremer;
 - using `J1` without naming the regime it is claimed on.
+
+## Enforcement of the forbidden usages
+
+`tools/audit_terminology.py` (`pixi run terminology`) reads this file and
+scans every non-vendored `docs/*.md`, `tools/*.py`, and `src/*.mojo` for the
+circle-family vocabulary of the first forbidden usage. An occurrence passes
+only if it is a field term registered above, is denied in its own clause, sits
+under a heading that forbids, or carries an explicit
+`<!-- terminology-exempt: reason -->` marker. The bare word *angle* is not
+scanned: the prohibition is on deriving an angle from the quadrance-1 locus,
+not on the rational angles of `Q/Z`, which Phase 3 needs.
+
+The audit is the reason this registry is a rule rather than a note. It was
+added after the vocabulary it forbids reached `docs/enclosure-width-lemma.md`
+and survived every gate.

@@ -65,6 +65,29 @@ def orbit_gap_bound(bound: Scalar, steps: int, radius: Scalar) -> Fraction:
     return 2 * iterated_radius_bound(bound, steps, radius)
 
 
+def quadrance_drift_bound(bound: Scalar, distance: Scalar) -> Fraction:
+    """`6 M e`: how far a quadrance can move over a sup-distance `e <= 1`.
+
+    Section 4(b). The escape test compares a quadrance against a rational
+    bound, so a sup-distance between enclosure and orbit only becomes usable
+    once it is converted into a quadrance gap. This is the conversion, and it
+    stays inside the rationals: no modulus and no square root.
+    """
+    return 6 * Fraction(bound) * Fraction(distance)
+
+
+def quadrance_margin(bound: Scalar, gap: Scalar) -> Fraction:
+    """The sup-distance that spends at most half of a quadrance gap.
+
+    Inverting section 4(b) at `gap / 2`, capped at `1` because that is where
+    the lemma and the confinement induction both hold.
+    """
+    gap = Fraction(gap)
+    if gap <= 0:
+        raise ValueError("gap must be positive")
+    return min(Fraction(1), gap / (12 * Fraction(bound)))
+
+
 def sufficient_radius(bound: Scalar, steps: int, margin: Scalar) -> Fraction:
     """The radius that keeps the enclosure within `margin` of the orbit.
 
@@ -84,3 +107,12 @@ def bounded_orbit_hypothesis(bound: Scalar, steps: int, radius: Scalar) -> bool:
     an orbit that stays within `M - 1`, it stays within `M`.
     """
     return orbit_gap_bound(bound, steps, radius) <= 1
+
+
+def escape_completeness_radius(bound: Scalar, steps: int, gap: Scalar) -> Fraction:
+    """Theorem A's `s`, for a closure whose quadrance clears the bound by `gap`.
+
+    Refine below it and every point of the enclosure is past the escape bound,
+    so the classifier answers `OUT` at `steps` at the latest.
+    """
+    return sufficient_radius(bound, steps, quadrance_margin(bound, gap))

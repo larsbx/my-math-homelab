@@ -136,6 +136,20 @@ quarantine that is not allowlisted or an allowlist entry that is not
 quarantined. The allowlist is empty: this repository has never had a
 floating-point substrate.
 
+## Terminology
+
+`docs/terminology-registry.md` says which words this repository may use and
+which it may not. Until now it said so only to readers: the executable check
+banned the circle family as *identifiers* and never read a sentence, so the
+phrase "the unit circle" reached `docs/enclosure-width-lemma.md` and passed
+every gate. `tools/audit_terminology.py` closes that. It scans the prose and
+comments of every non-vendored document and source file, and an occurrence of
+the circle family passes only if it is a field term registered in the
+registry, is denied by the clause it sits in, sits under a heading that
+forbids, or carries an explicit `<!-- terminology-exempt: reason -->` marker.
+Literature gates, which quote classical statements verbatim, are scanned as
+the classical layer they declare themselves to be.
+
 ## References
 
 Prose names files and tasks, and a renamed file leaves the sentence behind.
@@ -220,6 +234,7 @@ pixi run ledgers-check   # generated surfaces are current
 pixi run vendored        # vendored digests match their pins
 pixi run exact-arithmetic  # every arithmetic consumer is bound and exact
 pixi run references      # every path and task a document names resolves
+pixi run terminology     # the registry's forbidden usages, in prose as well as code
 ```
 
 The Mojo replay test skips where no Mojo toolchain is present, so a run that

@@ -44,6 +44,7 @@ the dynamics on the wrong space.
 | the plane as a **one-dimensional complex** object | `P^1(C)` | one ideal element, `[1 : 0]` | **yes**, as a degree-2 morphism |
 | the plane as a **two-dimensional rank-2** object | `P^2` and its complexification | an ideal *line*, containing the circular points `I = [1 : i : 0]` and `J = [1 : -i : 0]` | **no** |
 
+<!-- terminology-exempt: the classical device of the second row, a layer this program has not built and in which no rank-2 locus is constructed -->
 The second row is where the quadrance form degenerates: `Q(x, y) = x^2 + y^2`
 vanishes on the null directions `y = ±ix`, and those directions are exactly
 `I` and `J`. That is the classical device by which every circle-like locus

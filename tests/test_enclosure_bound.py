@@ -17,8 +17,11 @@ from box_classifier import refine_until_decided, step
 from enclosure_bound import (
     bounded_orbit_hypothesis,
     coarse_step_factor,
+    escape_completeness_radius,
     iterated_radius_bound,
     orbit_gap_bound,
+    quadrance_drift_bound,
+    quadrance_margin,
     step_radius_bound,
     sufficient_radius,
     sup_magnitude,
@@ -149,3 +152,65 @@ def test_the_undecided_share_falls_on_a_boundary_box():
     deep = refine_until_decided(STRADDLING, C0, TRAP, 1, max_depth=4)
     assert deep.undecided_fraction < shallow.undecided_fraction / 2
     assert deep.deepest == 4 and deep.leaves() > shallow.leaves()
+
+
+@pytest.mark.parametrize("bound", [F(1), F(2), F(5)])
+def test_quadrance_moves_by_at_most_the_drift_bound(bound):
+    """Section 4(b), against pairs of points that stay inside the square."""
+    rng = random.Random(int(bound) * 31)
+    coordinate = lambda: F(rng.randint(-int(bound) * 8, int(bound) * 8), 8)
+    checked = 0
+    for _ in range(300):
+        point = GQ(coordinate(), coordinate())
+        distance = F(rng.randint(1, 8), 8)
+        offset = lambda: F(rng.randint(-8, 8), 8) * distance
+        shifted = GQ(point.re + offset(), point.im + offset())
+        if max(abs(shifted.re), abs(shifted.im)) > bound:
+            continue
+        assert abs(shifted.quadrance() - point.quadrance()) <= quadrance_drift_bound(bound, distance)
+        checked += 1
+    assert checked > 100, "the sampling must exercise the bound, not skip it"
+
+
+@pytest.mark.parametrize("bound,gap", [(F(2), F(6)), (F(4), F(1, 3)), (F(1), F(100))])
+def test_the_margin_spends_at_most_half_the_gap(bound, gap):
+    margin = quadrance_margin(bound, gap)
+    assert 0 < margin <= 1
+    assert quadrance_drift_bound(bound, margin) <= gap / 2
+
+
+@pytest.mark.parametrize("bad", [F(0), F(-3)])
+def test_a_nonpositive_gap_is_refused(bad):
+    with pytest.raises(ValueError):
+        quadrance_margin(F(2), bad)
+
+
+@pytest.mark.parametrize("centre,steps", [
+    (GQ(F(3, 2), F(0)), 1),
+    (GQ(F(7, 4), F(1, 4)), 1),
+    (GQ(F(-2), F(1, 3)), 0),
+])
+def test_theorem_a_radius_puts_the_whole_enclosure_past_the_escape_bound(centre, steps):
+    """Theorem A's constructive side, at `c = 0` where the bound is `4`.
+
+    The orbit of the centre clears the bound by `gap`; the theorem's radius is
+    what makes the *enclosure* clear it too, which is the only thing the
+    classifier can read.
+    """
+    c, parameter, escape = ComplexBox.singleton(F(0)), GQ(F(0), F(0)), F(4)
+    point, reach = centre, max(abs(centre.re), abs(centre.im))
+    for _ in range(steps):
+        point = point_step(point, parameter)
+        reach = max(reach, abs(point.re), abs(point.im))
+    gap = point.quadrance() - escape
+    assert gap > 0, "the centre must escape for the theorem to say anything"
+
+    bound = reach + 1
+    radius = escape_completeness_radius(bound, steps, gap)
+    box = ComplexBox.of(centre.re - radius, centre.re + radius,
+                        centre.im - radius, centre.im + radius)
+    image = box
+    for _ in range(steps):
+        assert within(image, bound)
+        image = step(image, c)
+    assert image.quadrance().lo > escape

@@ -60,8 +60,8 @@ c = (37 + 16i)/100
 is an exactly representable parameter with an **irrationally indifferent**
 fixed point whose Siegel-or-Cremer status turns on the Brjuno condition for
 `theta = arg(lam) / 2pi`, and which, even in the Siegel case, leaves local
-connectivity turning on whether the critical point lies on the disk's
-boundary. Exact data, open dynamics. Roots of unity
+connectivity turning on whether the critical point lies on the Siegel
+disk's boundary. Exact data, open dynamics. Roots of unity
 `lam in {1, -1, i, -i}` give the parabolics `c = 1/4`, `-3/4`, `(1 + 2i)/4`,
 `(1 - 2i)/4`.
 

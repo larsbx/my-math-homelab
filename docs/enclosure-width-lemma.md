@@ -77,18 +77,32 @@ rad(F^n(B)) <= (6 M)^n rad(B)
 `f^n(a)` lies in `F^n(B)` by inclusion monotonicity, and two points of a box
 of radius `s` are within `2 s` of each other in the sup norm. []
 
-## 4. Lemma (the iterates stay confined)
+## 4. Two lemmas: the iterates stay confined, and quadrance moves slowly
 
-**If `|f^k(a)| <= M - 1` in the sup norm for `k <= n`, and
-`2 (6 M)^n rad(B) <= 1`, then `F^k(B) ⊆ M` for every `k <= n`.**
+**(a) If `f^k(a) ⊆ M - 1` for `k <= n`, and `2 (6 M)^n rad(B) <= 1`, then
+`F^k(B) ⊆ M` for every `k <= n`.**
 
 *Proof.* Induction on `k`. The hypothesis of section 3 holds up to `k - 1`, so
 every point of `F^k(B)` is within `2 (6 M)^k rad(B) <= 1` of `f^k(a)`, whose
 coordinates are at most `M - 1`. []
 
-This is what makes the corollary usable: its hypothesis is not an assumption
-about the enclosure but a consequence of the box being small enough, and
-"small enough" is the rational quantity `sufficient_radius` computes.
+**(b) If `w ⊆ M` and `w' ⊆ M` are within sup-distance `e <= 1`, then**
+
+```text
+|N(w') - N(w)| <= 6 M e,        N(x, y) = x^2 + y^2
+```
+
+*Proof.* `|x'^2 - x^2| = |x' - x| (|x'| + |x|) <= e (2 M + e) <= e (2 M + 1)`,
+and `2 M + 1 <= 3 M` because `M >= 1`, so each coordinate contributes at most
+`3 M e`. []
+
+Lemma (a) is what makes the corollary usable: its hypothesis is not an
+assumption about the enclosure but a consequence of the box being small
+enough, and "small enough" is the rational quantity `sufficient_radius`
+computes. Lemma (b) is what lets the escape test be read on the enclosure:
+the test is a quadrance against a rational bound, so what section 3 gives in
+sup-distance has to be converted into a quadrance gap, and `6 M` is the
+rational conversion factor. No modulus and no square root enter.
 
 ## 5. Theorem A (OUT completeness), unconditional
 
@@ -96,14 +110,16 @@ about the enclosure but a consequence of the box being small enough, and
 `s > 0` such that every sub-box of `B_0` with radius below `s` is classified
 `OUT`.**
 
-*Proof.* Let `R = max(2, |c|)` be the escape radius. Every point of the
-closure has an unbounded orbit, so each leaves the disc of radius `R`, and by
-`docs/escape-criterion.md` it never returns: the sets
-`U_n = {z : |f^n(z)| > R}` are open and increase. The closure is compact and
-covered by them, so `U_N` contains it for some `N`, and
+*Proof.* Let `R = max(4, N(c))` be the escape bound, which is the exact
+rational `escape_bound_quadrance` the classifier compares against. Every point
+of the closure has an unbounded orbit, so some iterate of it has quadrance
+above `R`, and by `docs/escape-criterion.md` the certificate that fires there
+fires at every later step: the sets `U_n = {z : N(f^n(z)) > R}` are open and
+increase. The closure is compact and covered by them, so `U_N` contains it for
+some `N`, and
 
 ```text
-delta = min over the closure of |f^N| - R
+delta = min over the closure of N(f^N) - R
 ```
 
 is positive by continuity on a compact set. Let `M` be one more than the
@@ -111,14 +127,19 @@ largest sup-norm coordinate reached by `f^k` on the closure for `k <= N`, and
 put
 
 ```text
-s = min(1, delta / sqrt 2) / (2 (6 M)^N)
+e = min(1, delta / (12 M)),        s = e / (2 (6 M)^N)
 ```
 
-For a sub-box `B` of radius below `s`, section 4 confines the iterates and
-section 3 puts every point of `F^N(B)` within sup-distance `min(1, delta/sqrt 2)`
-of `f^N(a)`, hence within Euclidean distance `delta` of it, hence at modulus
-above `R`. The whole enclosure is past the bound, so the classifier answers
-`OUT` at step `N` at the latest. []
+For a sub-box `B` of radius below `s`, section 4(a) confines the iterates and
+section 3 puts every point `w` of `F^N(B)` within sup-distance `e` of
+`f^N(a)`. Both lie in `M`, so section 4(b) gives
+
+```text
+N(w) >= N(f^N(a)) - 6 M e >= (R + delta) - delta/2 > R
+```
+
+The whole enclosure is past the bound, so the classifier answers `OUT` at step
+`N` at the latest. []
 
 ## 6. Theorem B (IN completeness), unconditional
 
@@ -153,10 +174,15 @@ the classifier in practice decides at `10^-2`. That gap is the usual distance
 between a worst-case bound and behaviour, and closing it is an optimisation,
 not a correctness question.
 
-`tools/enclosure_bound.py` computes each quantity above exactly, and
+`tools/enclosure_bound.py` and `src/enclosure_bound.mojo` compute each
+quantity above exactly and agree: the step factor, the iterated bound, the
+sufficient radius, section 4(b)'s quadrance drift and margin, and Theorem A's
+`s` itself, as `escape_completeness_radius`.
+
 `refine_until_decided` in `tools/box_classifier.py` is the constructive side:
 it subdivides the undecided part and reports the share of the original box
-still unresolved. On a box straddling the unit circle at `c = 0` that share
+still unresolved. On a box straddling the quadrance-1 locus at `c = 0` -- which
+`docs/terminology-registry.md` forbids calling anything else -- that share
 falls from `1` to about `0.09` over six levels. **That is behaviour, not
 evidence**: the theorems are proved above, and a census neither strengthens
 nor weakens them.

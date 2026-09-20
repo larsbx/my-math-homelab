@@ -81,7 +81,7 @@ The following moves are disallowed unless a terminology declaration explicitly r
 
 ## Rank-2 reminder
 
-At rank 2, the finite core has coordinate records, polynomial maps, operators, and quadrance scalars. A circle is undefined at rank 2. Locus-like language belongs only to higher incidence or constraint layers with explicit genealogy and leaks.
+At rank 2, the finite core has coordinate records, polynomial maps, operators, and quadrance scalars. There is no circle at rank 2: it is undefined there. Locus-like language belongs only to higher incidence or constraint layers with explicit genealogy and leaks.
 
 ## Linter contract
 
