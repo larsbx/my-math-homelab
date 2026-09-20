@@ -1,14 +1,10 @@
-# Vendored packages, checked by tools/vendoring/check_vendored_sync.py; re-pin
-# with `check_vendored_sync.py pin NAME COMMIT` after copying from upstream.
-#
-# The protocol and the checker are themselves vendored: `vendoring` is the
-# upstream package, so this repository holds no private copy of the tool that
-# judges its copies.
+# Vendored packages, checked by check_vendored_sync.py; re-pin with
+# `check_vendored_sync.py pin NAME COMMIT` after copying from upstream.
 
 [[package]]
 name = "finite_exact"
 repository = "larsbx/finite-math-kernels"
-commit = "56ac8bc6e2fe47aae32f74fc392819d334ffecba"
+commit = "b21a93ba32aecb5a163b319d9426b6c68326af9d"
 root = "src"
 
 [package.files]
@@ -16,6 +12,7 @@ root = "src"
 "finite_exact/bigint_z.mojo" = "d02a0c033042661161a24f0b31f1e89fbf3ed908ccc86e42b5b80b8df4240df1"
 "finite_exact/closed_interval.mojo" = "6a276e8f6f0d1ebe2c2795a9ba590857aea4e5617807cbc0bfe3ff1f1b26bf08"
 "finite_exact/closed_q.mojo" = "72f66b6ed05913b9055c3e44c8f3e32e27a6e2908a407eb29c8ef2d790f9b186"
+"finite_exact/enclosure_width.mojo" = "a2fbfd4eaa8ad91e55e6570a0e610def015c485bfc18b688222e132201211408"
 "finite_exact/rat_q.mojo" = "d7f8cc3a3879d76bfc242304a13d4f2c9d4cf2cdeeba586fa4af95980a4b9fa6"
 "finite_exact/rational.mojo" = "6d84b8f4c3b1699648eee2512f49c7736dd5d4c8f7236809585b09cf1b5631c0"
 

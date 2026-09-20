@@ -3,25 +3,21 @@
 # Specification: docs/rational-interval-arithmetic-spec.md.
 # Statements and proofs: docs/enclosure-width-lemma.md.
 #
-# How far an enclosure can drift from the orbit it encloses. The classifier's
-# certificates fire on the enclosure rather than on the points, so these
-# bounds are what makes refining a box worth doing: inside the square of
-# half-side M an enclosure grows by at most 6M per step, so over a fixed
-# number of steps a small enough box stays as close to the orbit as required.
+# What this repository owes the interval layer's refinement theorem, which is
+# the step factor and nothing else. Section 2.5 of the specification bounds
+# how far an enclosure drifts from the orbit it encloses, for any extension
+# with a rational per-step width factor K; sections 2 and 4(b) of the lemma
+# supply `K = 6M` for `z -> z^2 + c` and convert the resulting distance into
+# a quadrance, which is what the escape test reads.
 #
 # This is the Mojo side of a differential pair; tools/enclosure_bound.py is
-# the Python side.
+# the Python side and keeps its own arithmetic, because a differential pair
+# that shares an implementation compares nothing.
 
 from finite_exact.closed_interval import ComplexIQ, IQ
+from finite_exact.enclosure_width import refinement_radius as interval_refinement_radius, sup_radius
 from finite_exact.rat_q import Q, q_abs, q_max
 
-
-def sup_radius(box: ComplexIQ) -> Q:
-    """Half the larger coordinate width: the radius in the sup norm."""
-    if not box.accepted():
-        return Q.zero()
-    var widths = q_max(box.re.hi.sub(box.re.lo), box.im.hi.sub(box.im.lo))
-    return widths.div(Q(2, 1))
 
 
 def sup_magnitude(box: ComplexIQ) -> Q:
@@ -50,20 +46,6 @@ def coarse_step_factor(bound: Q) -> Q:
     return Q(6, 1).mul(bound)
 
 
-def iterated_radius_bound(bound: Q, steps: Int, radius: Q) -> Q:
-    """`(6 M)^n r`, valid while every iterate stays inside the square."""
-    if steps < 0:
-        return Q(0, 0)
-    var factor = coarse_step_factor(bound)
-    var accumulated = radius.copy()
-    for _ in range(steps):
-        accumulated = accumulated.mul(factor)
-    return accumulated.copy()
-
-
-def orbit_gap_bound(bound: Q, steps: Int, radius: Q) -> Q:
-    """`2 (6 M)^n r`: the distance from the enclosure to the orbit it holds."""
-    return Q(2, 1).mul(iterated_radius_bound(bound, steps, radius))
 
 
 def quadrance_drift_bound(bound: Q, distance: Q) -> Q:
@@ -71,21 +53,17 @@ def quadrance_drift_bound(bound: Q, distance: Q) -> Q:
     return Q(6, 1).mul(bound).mul(distance)
 
 
-def sufficient_radius(bound: Q, steps: Int, margin: Q) -> Q:
-    """The radius that keeps the enclosure within `margin` of the orbit."""
-    if not (margin.accepted() and Q.zero().lt(margin)):
-        return Q(0, 0)
-    var factor = Q(1, 1)
-    for _ in range(steps):
-        factor = factor.mul(coarse_step_factor(bound))
-    return margin.div(Q(2, 1).mul(factor))
-
 
 def refinement_radius(bound: Q, steps: Int, margin: Q) -> Q:
-    """Section 5's `s = delta / (12 M (6 M)^N)`, for a margin `delta <= 1`."""
+    """Section 5's `s = delta / (12 M (6 M)^N)`, for a margin `delta <= 1`.
+
+    The interval layer's radius at this map's step factor, with the margin
+    converted from a quadrance gap to a distance by 4(b).
+    """
     if not (margin.accepted() and Q.zero().lt(margin) and margin.le(Q(1, 1))):
         return Q(0, 0)
-    return sufficient_radius(bound, steps, margin.div(coarse_step_factor(bound)))
+    var factor = coarse_step_factor(bound)
+    return interval_refinement_radius(factor, steps, margin.div(factor))
 
 
 def enclosure_bound_smoke() -> Bool:
@@ -109,11 +87,6 @@ def enclosure_bound_smoke() -> Bool:
     # The sharp bound is dominated by the coarse factor, which is what composes.
     var radius = sup_radius(straddling)
     if not step_radius_bound(bound, radius).le(coarse_step_factor(bound).mul(radius)):
-        return False
-    # Two steps compose: (6M)^2 r.
-    if not iterated_radius_bound(bound, 2, radius).eq(coarse_step_factor(bound).square().mul(radius)):
-        return False
-    if not orbit_gap_bound(bound, 0, radius).eq(Q(2, 1).mul(radius)):
         return False
     # Section 4(b): a sup-distance of e moves a quadrance by at most 6 M e.
     var drift = quadrance_drift_bound(bound, Q(1, 8))
