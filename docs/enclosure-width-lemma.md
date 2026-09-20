@@ -73,9 +73,12 @@ rad(F^n(B)) <= (6 M)^n rad(B)
 **and every point of `F^n(B)` is within sup-distance `2 (6 M)^n rad(B)` of
 `f^n(a)`, for every `a ∈ B`.**
 
-*Proof.* The radius bound is section 2 applied `n` times. For the second part,
-`f^n(a)` lies in `F^n(B)` by inclusion monotonicity, and two points of a box
-of radius `s` are within `2 s` of each other in the sup norm. []
+*Proof.* This is section 2.5 of `docs/rational-interval-arithmetic-spec.md`
+at step factor `K = 6 M`, which section 2 above supplies. Nothing quadratic
+enters it: the radius bound is one inequality applied `n` times, and the
+distance bound is inclusion monotonicity plus the fact that two points of a
+box of radius `s` are within `2 s` of each other. What this repository owes
+the general statement is `K`, and that is section 2. []
 
 ## 4. Two lemmas: the iterates stay confined, and quadrance moves slowly
 
@@ -132,7 +135,11 @@ every enclosure to the `M` square, and section 3 puts every point `w` of
 `F^N(B) ⊆ T` and the trap certificate fires. []
 
 One theorem, one constant, both directions, and nothing in it is a limit: `s`
-is a rational that `refinement_radius` computes and a caller can check.
+is a rational that `refinement_radius` computes and a caller can check. It is
+the interval layer's own `refinement_radius` at `K = 6 M` and margin
+`delta / 6 M`; the quadrance conversion of 4(b) is what this repository adds
+to it, because the escape test reads a quadrance and the general statement
+reads a distance.
 
 ## 6. Corollary (completeness), and where the import enters
 
