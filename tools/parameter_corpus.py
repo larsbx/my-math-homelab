@@ -219,7 +219,7 @@ CORPUS: tuple[Parameter, ...] = (
 BY_KEY = {row.key: row for row in CORPUS}
 
 #: Trap witnesses, by corpus key: a box and the period whose iterate maps it
-#: strictly inside itself (`docs/three-valued-classifier.md`). A trap is a
+#: inside itself (`docs/three-valued-classifier.md`). A trap is a
 #: witness like a cycle is: it is declared here and verified by
 #: `tools/box_classifier.py` before any verdict rests on it. A parameter
 #: absent from this table has no trap *in this table*, which is not a claim
@@ -233,4 +233,30 @@ TRAPS: dict[str, tuple[tuple[F, F, F, F], int]] = {
     # a midpoint never finds it, and it is invariant without being strictly
     # invariant, which is why it was once thought not to exist.
     "cauliflower": ((F(1, 4), F(1, 2), F(-1, 4), F(1, 4)), 1),
+}
+
+
+#: Preperiodic-point witnesses, by corpus key: a box, a preperiod, a period,
+#: and the point the box is drawn around. Each is verified by
+#: `tools/preperiodic.py` -- isolated at the stated type, and of *exactly*
+#: that type, with every smaller type excluded on the same box. The boxes are
+#: declared here and checked there; none of them is a search result.
+#:
+#: The point is named only so a reader can see what the box is about. No
+#: certificate uses it, and for the irrational one there is no exact name to
+#: use: the certificate is about the box, which is why a box is what is
+#: stored.
+PREPERIODIC: dict[str, tuple[tuple[tuple[F, F, F, F], int, int, str], ...]] = {
+    "c0": (
+        ((F(7, 8), F(9, 8), F(-1, 8), F(1, 8)), 0, 1, "the fixed point 1"),
+        ((F(-17, 16), F(-15, 16), F(-1, 16), F(1, 16)), 1, 1, "-1, which lands on 1 and stays"),
+    ),
+    "basilica": (
+        ((F(-1, 16), F(1, 16), F(-1, 16), F(1, 16)), 0, 2, "the critical point, on the 2-cycle"),
+        ((F(25, 16), F(27, 16), F(-1, 16), F(1, 16)), 0, 1, "the fixed point (1 + sqrt 5)/2, which is irrational"),
+    ),
+    "dendrite": (
+        ((F(-1, 16), F(1, 16), F(-17, 16), F(-15, 16)), 0, 2, "-i, on the 2-cycle the critical orbit falls into"),
+        ((F(-33, 32), F(-31, 32), F(31, 32), F(33, 32)), 0, 2, "-1 + i, the other point of that cycle"),
+    ),
 }

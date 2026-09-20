@@ -90,6 +90,23 @@ exact-type exclusion. The kernels are the ones `interval_orbit` becomes once
 it is parameterized by `(z_0, c)` in `larsbx/finite-math-kernels`; this phase
 should consume them, not reimplement them.
 
+**First rung delivered, 2026-09-20.** `docs/preperiodic-certificates.md`, with
+`quadratic_orbit/preperiodic.mojo` upstream and `tools/preperiodic.py` as the
+Python side. All three properties are there, and the squarefree step is not:
+`R^c_{l,k}` is evaluated as a difference of orbit terms and its derivative by
+the chain rule, so what `sqfree` would buy -- a simple root -- is checked
+directly on an enclosure of `R'`. Exclusion is proved in-layer; isolation is
+the Krawczyk-Moore hypothesis and the theorem is gated as an import in
+`docs/literature-gate-2026-09-20-krawczyk.md`. Six witnesses across three
+parameters, verified in both implementations.
+
+What remains in this phase: the critical point is a multiple root of its own
+residual whenever its preperiod is positive, so a Misiurewicz parameter's own
+critical point is not isolable by this certificate and needs a deflated
+residual (`docs/preperiodic-certificates.md` section 4). Enumeration of all
+roots at a given type is also not built -- the certificates judge boxes they
+are handed.
+
 ## Phase 3 — Separator catalogue and the J1 ledger
 
 - rational-angle combinatorics under `t -> 2t`, as dynamical-ray addresses;

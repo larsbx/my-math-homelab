@@ -223,7 +223,11 @@ literature gate is run. No regime is discharged.
 
 Phase 0: scaffold, governed terminology, vendored exact arithmetic, the
 parameter corpus with exactly verified witnesses, two agreeing
-implementations, and the generated regime ledger.
+implementations, and the generated regime ledger. Phase 1: the escape
+criterion, the three-valued box classifier, the enclosure-width lemma and the
+refinement theorem. Phase 2, first rung: preperiodic certificates on
+`R^c_{l,k} = f^{l+k} - f^l`, by exclusion and by the Krawczyk hypothesis
+(`docs/preperiodic-certificates.md`).
 
 ## Verification
 

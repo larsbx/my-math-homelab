@@ -116,6 +116,9 @@ class ComplexBox:
     def add(self, other: "ComplexBox") -> "ComplexBox":
         return ComplexBox(self.re.add(other.re), self.im.add(other.im))
 
+    def sub(self, other: "ComplexBox") -> "ComplexBox":
+        return ComplexBox(self.re.sub(other.re), self.im.sub(other.im))
+
     def mul(self, other: "ComplexBox") -> "ComplexBox":
         return ComplexBox(
             self.re.mul(other.re).sub(self.im.mul(other.im)),
