@@ -109,24 +109,24 @@ The roadmap's Phase 1 deliverable is a **completeness proof for hyperbolic
 Gaussian-rational `c`**: every box whose closure misses `J_c` is classified at
 some resolution. The missing ingredient was a bound on how enclosure width
 propagates under a step, and it is now proved, with explicit rational
-constants, in `docs/enclosure-width-lemma.md`. Two theorems follow, both
-unconditional:
+constants, in `docs/enclosure-width-lemma.md`. One theorem follows, in both
+directions at once and unconditional:
 
-- **Theorem A.** A box whose closure misses `K_c` is classified `OUT` once
-  refined below an explicit radius.
-- **Theorem B.** A box whose iterate lands in the interior of a trap is
-  classified `IN` once refined below an explicit radius.
+> **Refinement decides.** A box is classified once refined below
+> `delta / (12 M (6 M)^N)`, where the orbit of one of its points clears the
+> escape bound by `delta` at step `N`, or lands `delta` inside a trap at step
+> `N`, and stays inside the `M` square throughout.
 
-Theorem B is about the **basin of the trap**, which is what the classifier can
-see. The roadmap's statement is the corollary that the trap's basin is the
-whole interior of `K_c` for a hyperbolic parameter, and that step is classical
-and is **not** proved here: it enters as the tag
+The `IN` direction is about the **basin of the trap**, which is what the
+classifier can see. The roadmap's statement is the corollary that the trap's
+basin is the whole interior of `K_c` for a hyperbolic parameter, and that step
+is classical and is **not** proved here: it enters as the tag
 `FatouHyperbolicInteriorIsTheBasin`, which no literature gate has judged. So
-the two theorems hold on their own and the corollary is conditional on one
-named import.
+the theorem holds on its own and the corollary is conditional on one named
+import.
 
-At a parabolic parameter Theorem B has no hypothesis to offer, since no trap
-exists (section 5), and completeness there is open.
+At a parabolic parameter the `IN` direction has no hypothesis to offer, since
+no trap exists (section 5), and completeness there is open.
 
 ## 7. What this document does not claim
 

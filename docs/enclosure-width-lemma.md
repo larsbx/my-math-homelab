@@ -1,11 +1,11 @@
 # The enclosure-width lemma, and completeness
 
 **Status:** derivation, dated 2026-09-20. It supplies the lemma that section 6
-of `docs/three-valued-classifier.md` named as missing, and the two
-completeness theorems that follow from it. Both theorems are this
-repository's own and unconditional. The corollary that turns them into the
-roadmap's Phase 1 claim is **not** unconditional: it rests on one named
-classical import, and section 6 says which.
+of `docs/three-valued-classifier.md` named as missing, and the completeness
+theorem that follows from it. The theorem is this repository's own and
+unconditional. The corollary that turns it into the roadmap's Phase 1 claim is
+**not** unconditional: it rests on one named classical import, and section 6
+says which.
 
 ## 0. The gap this closes
 
@@ -104,67 +104,73 @@ the test is a quadrance against a rational bound, so what section 3 gives in
 sup-distance has to be converted into a quadrance gap, and `6 M` is the
 rational conversion factor. No modulus and no square root enter.
 
-## 5. Theorem A (OUT completeness), unconditional
+## 5. Theorem (refinement decides), finite and unconditional
 
-**Let `B_0` be a box whose closure misses `K_c`. Then there is a rational
-`s > 0` such that every sub-box of `B_0` with radius below `s` is classified
-`OUT`.**
-
-*Proof.* Let `R = max(4, N(c))` be the escape bound, which is the exact
-rational `escape_bound_quadrance` the classifier compares against. Every point
-of the closure has an unbounded orbit, so some iterate of it has quadrance
-above `R`, and by `docs/escape-criterion.md` the certificate that fires there
-fires at every later step: the sets `U_n = {z : N(f^n(z)) > R}` are open and
-increase. The closure is compact and covered by them, so `U_N` contains it for
-some `N`, and
+Fix `M >= 1`, a step count `N >= 0`, and a rational margin `0 < delta <= 1`.
+Put
 
 ```text
-delta = min over the closure of N(f^N) - R
+L = (6 M)^N,        s = delta / (12 M L)
 ```
 
-is positive by continuity on a compact set. Let `M` be one more than the
-largest sup-norm coordinate reached by `f^k` on the closure for `k <= N`, and
-put
+**Let `a` satisfy `f^k(a) ⊆ M - 1` for `k <= N`, and let `B` be a box
+containing `a` of radius below `s`. Then**
 
-```text
-e = min(1, delta / (12 M)),        s = e / (2 (6 M)^N)
-```
+- **(OUT)** **if `N(f^N(a)) >= R + delta`, where `R` is the escape bound, the
+  classifier answers `OUT` at step `N` at the latest;**
+- **(IN)** **if `f^N(a)` lies in a verified trap `T` at sup-distance at least
+  `delta` from everything outside `T`, the classifier answers `IN`.**
 
-For a sub-box `B` of radius below `s`, section 4(a) confines the iterates and
-section 3 puts every point `w` of `F^N(B)` within sup-distance `e` of
-`f^N(a)`. Both lie in `M`, so section 4(b) gives
+*Proof.* `2 L rad(B) < 2 L s = delta / (6 M) <= 1`, so section 4(a) confines
+every enclosure to the `M` square, and section 3 puts every point `w` of
+`F^N(B)` within sup-distance `e < delta / (6 M)` of `f^N(a)`.
 
-```text
-N(w) >= N(f^N(a)) - 6 M e >= (R + delta) - delta/2 > R
-```
+(OUT) By 4(b), `N(w) > N(f^N(a)) - 6 M e > (R + delta) - delta = R`. The
+*whole* enclosure is past the bound, which is what the escape test reads.
 
-The whole enclosure is past the bound, so the classifier answers `OUT` at step
-`N` at the latest. []
+(IN) `e < delta / (6 M) <= delta`, so every `w` is in `T`, hence
+`F^N(B) ⊆ T` and the trap certificate fires. []
 
-## 6. Theorem B (IN completeness), unconditional
+One theorem, one constant, both directions, and nothing in it is a limit: `s`
+is a rational that `refinement_radius` computes and a caller can check.
 
-**Let `T` be a trap of period `p`, and let `B_0` be a box with
-`f^N(closure B_0) ⊆ interior T` for some `N`. Then there is a rational
-`s > 0` such that every sub-box of `B_0` with radius below `s` is classified
-`IN`.**
+## 6. Corollary (completeness), and where the import enters
 
-*Proof.* Identical, with `delta` the distance from the compact set
-`f^N(closure B_0)` to the boundary of `T`, which is positive. For a small
-enough sub-box, `F^N(B) ⊆ T` and the trap certificate fires. []
+**Let the closure of `B_0` be either disjoint from `K_c` or inside the basin
+of a verified trap. Then there is a rational `s > 0` such that every sub-box
+of `B_0` with radius below `s` is classified.**
 
-Theorem B is about the **basin of the trap**, which is what the classifier can
-see. Extending it to the whole interior of `K_c` is where an import enters:
+*Proof.* Only to supply section 5's `N`, `delta`, and `M`, uniformly over the
+closure, which is compact.
+
+*Disjoint from `K_c`:* every point has an unbounded orbit, so some iterate has
+quadrance above `R`, and by `docs/escape-criterion.md` the certificate that
+fires there fires at every later step. The sets `U_n = {z : N(f^n(z)) > R}`
+are therefore open and increasing, so a single `U_N` covers the closure, and
+`delta = min(1, min over the closure of N(f^N) - R)` is positive by continuity
+on a compact set.
+
+*Inside the basin:* `f^N(closure B_0) ⊆ interior T` for some `N`, and `delta`
+is the minimum of `1` and the distance from that compact image to the
+complement of `T`, again positive.
+
+Either way take `M` to be one more than the largest sup-norm coordinate
+reached by `f^k` on the closure for `k <= N`, and section 5 decides every
+sub-box below `s`. []
+
+The two hypotheses are exactly what the classifier can see. Reaching the
+roadmap's statement -- *every* box whose closure misses `J_c` -- means knowing
+that the interior of `K_c` is the trap's basin:
 
 > **Corollary (hyperbolic completeness).** For a hyperbolic parameter with
 > attracting cycle and a trap `T` containing a neighbourhood of that cycle,
-> every box whose closure lies in the interior of `K_c` satisfies Theorem B's
-> hypothesis, so with Theorem A every box whose closure misses `J_c` is
-> classified at some resolution.
+> every box whose closure misses `J_c` satisfies one of the two hypotheses
+> above, so it is classified at some resolution.
 
 The step from "interior of `K_c`" to "attracted to the cycle" is classical and
 is **not** proved here. It enters as the tag
 `FatouHyperbolicInteriorIsTheBasin`, which no literature gate has judged. So
-the corollary is conditional, and the two theorems it rests on are not.
+this last corollary is conditional, and section 5 and section 6 are not.
 
 ## 7. What the bounds cost, and what they do not say
 
@@ -175,9 +181,9 @@ between a worst-case bound and behaviour, and closing it is an optimisation,
 not a correctness question.
 
 `tools/enclosure_bound.py` and `src/enclosure_bound.mojo` compute each
-quantity above exactly and agree: the step factor, the iterated bound, the
-sufficient radius, section 4(b)'s quadrance drift and margin, and Theorem A's
-`s` itself, as `escape_completeness_radius`.
+quantity above exactly and agree: the step factor, the iterated bound,
+section 4(b)'s quadrance drift, and section 5's `s` itself, as
+`refinement_radius`.
 
 `refine_until_decided` in `tools/box_classifier.py` is the constructive side:
 it subdivides the undecided part and reports the share of the original box
@@ -190,6 +196,6 @@ nor weakens them.
 ## 8. What this does not claim
 
 It does not claim the residual approximates `J_c`, does not settle
-completeness at a parabolic parameter, where no trap exists and Theorem B has
-no hypothesis to offer, and does not discharge any block of
+completeness at a parabolic parameter, where no trap exists and section 5's
+`IN` branch has no hypothesis to offer, and does not discharge any block of
 `docs/J1_proof_definition.md`.

@@ -17,11 +17,10 @@ from box_classifier import refine_until_decided, step
 from enclosure_bound import (
     bounded_orbit_hypothesis,
     coarse_step_factor,
-    escape_completeness_radius,
     iterated_radius_bound,
     orbit_gap_bound,
     quadrance_drift_bound,
-    quadrance_margin,
+    refinement_radius,
     step_radius_bound,
     sufficient_radius,
     sup_magnitude,
@@ -172,17 +171,22 @@ def test_quadrance_moves_by_at_most_the_drift_bound(bound):
     assert checked > 100, "the sampling must exercise the bound, not skip it"
 
 
-@pytest.mark.parametrize("bound,gap", [(F(2), F(6)), (F(4), F(1, 3)), (F(1), F(100))])
-def test_the_margin_spends_at_most_half_the_gap(bound, gap):
-    margin = quadrance_margin(bound, gap)
-    assert 0 < margin <= 1
-    assert quadrance_drift_bound(bound, margin) <= gap / 2
+@pytest.mark.parametrize("bound,steps,margin", [
+    (F(2), 2, F(1)), (F(4), 3, F(1, 3)), (F(1), 0, F(1, 10)),
+])
+def test_the_refinement_radius_is_what_the_theorem_asks_for(bound, steps, margin):
+    """Section 5's `s`: small enough to confine the enclosure, and small
+    enough that the drift over `steps` spends less than the margin."""
+    s = refinement_radius(bound, steps, margin)
+    assert s == margin / (12 * bound * coarse_step_factor(bound) ** steps)
+    assert bounded_orbit_hypothesis(bound, steps, s)
+    assert quadrance_drift_bound(bound, orbit_gap_bound(bound, steps, s)) <= margin
 
 
-@pytest.mark.parametrize("bad", [F(0), F(-3)])
-def test_a_nonpositive_gap_is_refused(bad):
+@pytest.mark.parametrize("bad", [F(0), F(-3), F(2)])
+def test_a_margin_outside_the_unit_range_is_refused(bad):
     with pytest.raises(ValueError):
-        quadrance_margin(F(2), bad)
+        refinement_radius(F(2), 3, bad)
 
 
 @pytest.mark.parametrize("centre,steps", [
@@ -190,11 +194,11 @@ def test_a_nonpositive_gap_is_refused(bad):
     (GQ(F(7, 4), F(1, 4)), 1),
     (GQ(F(-2), F(1, 3)), 0),
 ])
-def test_theorem_a_radius_puts_the_whole_enclosure_past_the_escape_bound(centre, steps):
-    """Theorem A's constructive side, at `c = 0` where the bound is `4`.
+def test_the_theorem_puts_the_whole_enclosure_past_the_escape_bound(centre, steps):
+    """Section 5(OUT) at `c = 0`, where the escape bound is `4`.
 
-    The orbit of the centre clears the bound by `gap`; the theorem's radius is
-    what makes the *enclosure* clear it too, which is the only thing the
+    The orbit of the centre clears the bound by `delta`; the theorem's radius
+    is what makes the *enclosure* clear it too, which is the only thing the
     classifier can read.
     """
     c, parameter, escape = ComplexBox.singleton(F(0)), GQ(F(0), F(0)), F(4)
@@ -202,11 +206,11 @@ def test_theorem_a_radius_puts_the_whole_enclosure_past_the_escape_bound(centre,
     for _ in range(steps):
         point = point_step(point, parameter)
         reach = max(reach, abs(point.re), abs(point.im))
-    gap = point.quadrance() - escape
-    assert gap > 0, "the centre must escape for the theorem to say anything"
+    margin = min(F(1), point.quadrance() - escape)
+    assert margin > 0, "the centre must escape for the theorem to say anything"
 
     bound = reach + 1
-    radius = escape_completeness_radius(bound, steps, gap)
+    radius = refinement_radius(bound, steps, margin)
     box = ComplexBox.of(centre.re - radius, centre.re + radius,
                         centre.im - radius, centre.im + radius)
     image = box

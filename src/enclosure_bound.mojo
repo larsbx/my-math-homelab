@@ -71,16 +71,6 @@ def quadrance_drift_bound(bound: Q, distance: Q) -> Q:
     return Q(6, 1).mul(bound).mul(distance)
 
 
-def quadrance_margin(bound: Q, gap: Q) -> Q:
-    """The sup-distance that spends at most half of a quadrance gap."""
-    if not (gap.accepted() and Q.zero().lt(gap)):
-        return Q(0, 0)
-    var inverted = gap.div(Q(12, 1).mul(bound))
-    if inverted.le(Q(1, 1)):
-        return inverted.copy()
-    return Q(1, 1)
-
-
 def sufficient_radius(bound: Q, steps: Int, margin: Q) -> Q:
     """The radius that keeps the enclosure within `margin` of the orbit."""
     if not (margin.accepted() and Q.zero().lt(margin)):
@@ -91,9 +81,11 @@ def sufficient_radius(bound: Q, steps: Int, margin: Q) -> Q:
     return margin.div(Q(2, 1).mul(factor))
 
 
-def escape_completeness_radius(bound: Q, steps: Int, gap: Q) -> Q:
-    """Theorem A's `s`, for a closure whose quadrance clears the bound by `gap`."""
-    return sufficient_radius(bound, steps, quadrance_margin(bound, gap))
+def refinement_radius(bound: Q, steps: Int, margin: Q) -> Q:
+    """Section 5's `s = delta / (12 M (6 M)^N)`, for a margin `delta <= 1`."""
+    if not (margin.accepted() and Q.zero().lt(margin) and margin.le(Q(1, 1))):
+        return Q(0, 0)
+    return sufficient_radius(bound, steps, margin.div(coarse_step_factor(bound)))
 
 
 def enclosure_bound_smoke() -> Bool:
@@ -127,12 +119,9 @@ def enclosure_bound_smoke() -> Bool:
     var drift = quadrance_drift_bound(bound, Q(1, 8))
     if not drift.eq(Q(3, 2)):
         return False
-    # The margin spends half the gap, and is capped at one.
-    if not quadrance_margin(bound, Q(6, 1)).eq(Q(1, 4)):
+    # Section 5's s: delta / (12 M (6 M)^N), refused outside (0, 1].
+    if not refinement_radius(bound, 2, Q(1, 1)).eq(
+        Q(1, 1).div(Q(12, 1).mul(bound).mul(coarse_step_factor(bound).square()))
+    ):
         return False
-    if not quadrance_margin(bound, Q(60, 1)).eq(Q(1, 1)):
-        return False
-    # Theorem A's s composes the margin with the iterated factor.
-    return escape_completeness_radius(bound, 2, Q(6, 1)).eq(
-        Q(1, 4).div(Q(2, 1).mul(coarse_step_factor(bound).square()))
-    )
+    return not refinement_radius(bound, 2, Q(2, 1)).accepted()

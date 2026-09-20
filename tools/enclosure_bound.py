@@ -76,18 +76,6 @@ def quadrance_drift_bound(bound: Scalar, distance: Scalar) -> Fraction:
     return 6 * Fraction(bound) * Fraction(distance)
 
 
-def quadrance_margin(bound: Scalar, gap: Scalar) -> Fraction:
-    """The sup-distance that spends at most half of a quadrance gap.
-
-    Inverting section 4(b) at `gap / 2`, capped at `1` because that is where
-    the lemma and the confinement induction both hold.
-    """
-    gap = Fraction(gap)
-    if gap <= 0:
-        raise ValueError("gap must be positive")
-    return min(Fraction(1), gap / (12 * Fraction(bound)))
-
-
 def sufficient_radius(bound: Scalar, steps: int, margin: Scalar) -> Fraction:
     """The radius that keeps the enclosure within `margin` of the orbit.
 
@@ -109,10 +97,14 @@ def bounded_orbit_hypothesis(bound: Scalar, steps: int, radius: Scalar) -> bool:
     return orbit_gap_bound(bound, steps, radius) <= 1
 
 
-def escape_completeness_radius(bound: Scalar, steps: int, gap: Scalar) -> Fraction:
-    """Theorem A's `s`, for a closure whose quadrance clears the bound by `gap`.
+def refinement_radius(bound: Scalar, steps: int, margin: Scalar) -> Fraction:
+    """Section 5's `s = delta / (12 M (6 M)^N)`, for a margin `delta <= 1`.
 
-    Refine below it and every point of the enclosure is past the escape bound,
-    so the classifier answers `OUT` at `steps` at the latest.
+    The one constant the completeness theorem needs, and it serves both of its
+    directions: refine below it and the certificate that holds for the point
+    holds for the whole enclosure.
     """
-    return sufficient_radius(bound, steps, quadrance_margin(bound, gap))
+    margin = Fraction(margin)
+    if not 0 < margin <= 1:
+        raise ValueError("margin must lie in (0, 1]")
+    return sufficient_radius(bound, steps, margin / coarse_step_factor(bound))
