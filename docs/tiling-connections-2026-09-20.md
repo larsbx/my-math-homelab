@@ -35,11 +35,15 @@ Anything weaker is listed in section 7 as a direction, not as a bridge.
 | `finite_linear_algebra/mat3.mojo` | `3x3` integer matrices | `charpoly()`, `det`, `adjugate`, `has_rational_root` |
 | `finite_linear_algebra/qlinalg.mojo` | exact rational matrices, any size | `rref`, `rank`, `nullspace`, `in_span` |
 | `finite_linear_algebra/madic_ball.mojo` | `m`-adic balls | exact ball arithmetic |
+| `finite_linear_algebra/qpoly.mojo` | exact polynomials over `Q` | division, gcd, squarefree part, root bound, Sturm chain, `largest_root_bracket`, `charpoly` in any dimension |
 
-What is **not** built there: a general-size characteristic polynomial, any
-Perron-root extraction, and the Pisot screen the ledger scope
-`primitive Pisot substitutions` is named for. The ledger records the scope;
-no module computes it.
+The last row is new, and it is this note's own doing: item 2 below named the
+general-size characteristic polynomial and the largest-root isolation as
+missing, and `docs/exact-polynomial-root-isolation-spec.md` in that
+repository is the answer. What is still **not** built there is the Pisot
+screen the ledger scope `primitive Pisot substitutions` is named for: no
+module decides irreducibility, forms a minimal polynomial, or locates a root
+by quadrance. The ledger records the scope; no module computes it.
 
 **The dynamical side is this repository.** What is built and exact:
 critical-orbit verdicts over `Q(i)` (`tools/julia_reference.py`), preperiodic
@@ -243,7 +247,7 @@ depends on it. That the growth rate is the topological entropy of `f` on
 dynamics; it would enter as a tag, `MarkovTransitionIsEntropy`, and **no such
 tag has been opened, so nothing here may be read as an entropy statement**.
 
-## 6. The Pisot question, stated exactly and not answered
+## 6. The Pisot question, stated exactly and answered degenerately
 
 A **Pisot number** is a real algebraic integer above `1` all of whose other
 conjugates have quadrance below `1`. Whether a substitution's incidence
@@ -251,29 +255,44 @@ matrix has a Pisot Perron root is the hypothesis under which the tiling
 theory of the kernels repository's `primitive Pisot substitutions` scope
 operates.
 
-For the two matrices section 4 produces the question is degenerate: `x - 1`
-and `x^2 - 2x` both have rational roots, so `has_rational_root` in the
-kernels answers immediately and the conjugate condition is vacuous. The
-question becomes real only at parameters whose transition matrix has an
-irreducible characteristic polynomial of degree at least `2`, and section 3
-proves there are none over `Q(i)`.
+For the two matrices section 4 produces the question has an answer, and it is
+degenerate in both directions.
 
-So the honest status is: the bridge is built, the screen at the far end is
-not, and the only inputs that would exercise either are out of the current
-parameter domain. That is a precise statement of what Phase 4 buys.
+At `c = -1` the matrix is `(1)` and its only root is `1`. A Pisot number is
+above `1`, so `1` is not one, and there is nothing further to test.
+
+At `c = -2` the characteristic polynomial is `x^2 - 2x = x (x - 2)` and the
+largest real root is `2`. The minimal polynomial of `2` over `Q` is `x - 2`,
+which has no other root, so the condition on the other conjugates holds
+vacuously and **`2` is a Pisot number** -- trivially, as every rational
+integer above `1` is. The root `0` of the characteristic polynomial is not a
+conjugate of `2`; it belongs to a different minimal polynomial, and a screen
+that tested the characteristic polynomial's roots instead of the minimal
+one's would be testing the wrong set.
+
+So the tiling question, over the whole of the Phase 0 parameter domain, comes
+back: no growth at one parameter, a trivial Pisot number at the other. The
+non-trivial question -- a Pisot root whose conjugates are a real constraint --
+needs a transition matrix whose characteristic polynomial is irreducible of
+degree at least `2`, and section 3 proves there is none over `Q(i)`. That is
+a precise statement of what Phase 4 buys.
 
 ## 7. Candidate bridges, ranked by what each still needs
 
 1. **Transition matrix to incidence matrix.** Built (section 2). Needs
    nothing. Exercised by two parameters.
-2. **Perron root to Pisot screen.** Needs three things, none of which
-   exists: a general-size characteristic polynomial in
-   `finite_linear_algebra` (this repository has one in `tools/markov.py` and
-   `src/markov.mojo`, which is where it should not stay); a root separation
-   that identifies the Perron root rather than merely some root, since
-   `growth_bracket` does the latter; and an exact conjugate-quadrance bound
-   for the Pisot condition itself. All three are ordinary exact linear
-   algebra and real-root isolation.
+2. **Perron root to Pisot screen.** Two of the three things this item named
+   now exist upstream, in `finite_linear_algebra/qpoly.mojo`: the
+   characteristic polynomial in any dimension, and `largest_root_bracket`,
+   which isolates the largest real root by a Sturm chain and returns a
+   bracket carrying its own sign change. What remains is the Pisot condition
+   itself -- irreducibility, the minimal polynomial, and a root-location test
+   by quadrance -- and, on this side, vendoring: `vendored.toml` here does not
+   carry `finite_linear_algebra`, so `tools/markov.py` and `src/markov.mojo`
+   keep their own characteristic polynomial and their own bracket until it
+   does. The local `growth_bracket` finds *a* root; the upstream one finds
+   the largest, and replacing the first with the second is the vendoring
+   step, not a new derivation.
 3. **Kneading data to tuning substitution.** The parameter-plane program
    already computes tunings (`angle_tuning` in
    `larsbx/finite-mandelbrot-research`); the dynamical-plane counterpart is

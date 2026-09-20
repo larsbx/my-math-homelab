@@ -73,6 +73,8 @@ EXTERNAL: dict[str, str] = {
     "finite_linear_algebra/mat3.mojo": KERNELS_UNPINNED,
     "finite_linear_algebra/qlinalg.mojo": KERNELS_UNPINNED,
     "finite_linear_algebra/madic_ball.mojo": KERNELS_UNPINNED,
+    "finite_linear_algebra/qpoly.mojo": KERNELS_UNPINNED,
+    "docs/exact-polynomial-root-isolation-spec.md": KERNELS_UNPINNED,
 }
 
 #: Tasks the mirrored specification names, which belong to upstream's manifest.

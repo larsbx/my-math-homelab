@@ -192,6 +192,23 @@ def test_the_path_count_at_the_basilica_parameter(steps):
     assert entry_sum_of_power(partition(F(-1)).matrix, steps) == 1
 
 
+def test_the_chebyshev_roots_are_zero_and_two():
+    """Monic of degree two and vanishing at `0` and `2`, so those are all its
+    roots and the largest is `2` -- which section 6 of the note reads, via the
+    minimal polynomial `x - 2`, as a trivial Pisot number."""
+    coefficients = characteristic_polynomial(partition(F(-2)).matrix)
+    assert len(coefficients) == 3 and coefficients[-1] == 1
+    assert evaluate(coefficients, 0) == 0
+    assert evaluate(coefficients, 2) == 0
+
+
+def test_the_basilica_root_is_one_and_so_is_not_a_pisot_candidate():
+    """A Pisot number is above `1`; this root is `1`."""
+    coefficients = characteristic_polynomial(partition(F(-1)).matrix)
+    assert len(coefficients) == 2 and coefficients[-1] == 1
+    assert evaluate(coefficients, 1) == 0
+
+
 # --- the growth bracket -----------------------------------------------------
 
 
