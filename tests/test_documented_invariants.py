@@ -44,14 +44,33 @@ FORBIDDEN_IDENTIFIERS = ("circle", "disk", "arc", "circumference", "polar_angle"
 FORBIDDEN_CALLS = ("math.sin", "math.cos", "math.atan", "math.exp", "math.log", "math.sqrt", "cmath")
 
 
+def declares(word: str, code: str) -> bool:
+    """Does the code declare a name with `word` as one of its components?
+
+    A component, not a substring: `search_radius` contains "arc" and is
+    nobody's circle primitive. A scan that blocked it would be a gate people
+    route around, which is worse than no gate.
+    """
+    return bool(re.search(rf"\b(def|fn|struct|var|alias)\s+(\w+_)?{word}(_\w+)?\b", code, re.IGNORECASE))
+
+
 @pytest.mark.parametrize("path", MOJO + PYTHON, ids=lambda p: p.name)
 def test_no_forbidden_rank2_identifiers(path):
     text = path.read_text(encoding="utf-8")
     code = "\n".join(line for line in text.splitlines() if not line.strip().startswith(("#", '"""')))
     for word in FORBIDDEN_IDENTIFIERS:
-        assert not re.search(rf"\b(def|fn|struct|var|alias)\s+\w*{word}\w*\b", code, re.IGNORECASE), (
-            f"{path.name}: {word} is not a rank-2 constructor"
-        )
+        assert not declares(word, code), f"{path.name}: {word} is not a rank-2 constructor"
+
+
+def test_the_identifier_ban_is_about_components_not_substrings():
+    """The ban is on building a circle, not on the letters. A name that merely
+    contains one of the words -- `search`, which contains "arc" -- is not a
+    rank-2 constructor, and a scan that blocked it would be a gate people
+    route around."""
+    assert not any(declares(word, "def search_radius(c):\n    pass\n") for word in FORBIDDEN_IDENTIFIERS)
+    assert declares("circle", "def unit_circle(c):\n    pass\n")
+    assert declares("arc", "fn arc_length(x):\n    pass\n")
+    assert declares("disk", "var disk = 1\n")
 
 
 @pytest.mark.parametrize("path", MOJO + PYTHON, ids=lambda p: p.name)

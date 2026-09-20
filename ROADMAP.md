@@ -100,12 +100,21 @@ the Krawczyk-Moore hypothesis and the theorem is gated as an import in
 `docs/literature-gate-2026-09-20-krawczyk.md`. Six witnesses across three
 parameters, verified in both implementations.
 
-What remains in this phase: the critical point is a multiple root of its own
-residual whenever its preperiod is positive, so a Misiurewicz parameter's own
-critical point is not isolable by this certificate and needs a deflated
-residual (`docs/preperiodic-certificates.md` section 4). Enumeration of all
-roots at a given type is also not built -- the certificates judge boxes they
-are handed.
+**Second rung, same day.** The two gaps the first rung named are closed.
+The critical point needed no deflated residual, because it needs no box: it
+is a Gaussian rational, so its type is an identity over `Q(i)` and its
+multiplicity is exact, by the recursion `R_{l,k} = R_{l-1,k} . f` whose only
+doubling is the two-to-one branching of `f` at `0`. Enumeration is built, with
+a completeness certificate that is a count: `deg R^c_{l,k} = 2^(l+k)`, so
+isolated simple roots plus named multiplicities reaching the degree leaves no
+room for another root. Six enumerations pinned, one budget exhaustion
+reported as such.
+
+What remains in this phase: a multiple root that is *not* exactly
+representable, which happens at a parabolic parameter where `R'` vanishes on
+the cycle -- `exact_multiplicity` refuses there rather than guessing. Nothing
+in the phase reaches `J_c` itself; the roots certified here are its finite
+skeleton, and what connects the two is Phase 3's business.
 
 ## Phase 3 — Separator catalogue and the J1 ledger
 

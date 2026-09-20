@@ -97,19 +97,99 @@ from `Z`, and the root is in `Z`. []
 That is the "pointwise exact-type exclusion" the roadmap names, and it is
 finitely many exclusion certificates on one box.
 
-## 4. Where it stops
+## 4. Named roots, which need no box at all
 
-**The critical point is not isolable above preperiod zero.** The chain rule
-puts the factor `2 f^0(0) = 0` into both products, so `R'(0) = 0` whenever
-`l >= 1`: the critical point is a multiple root of its own residual. `Y` does
-not exist, the operator refuses, and the certificate declines. At `c = i`,
-where the critical point has type `(2, 2)`, this is exactly what happens, and
-`test_the_critical_point_is_never_isolable_above_preperiod_zero` pins it.
+A box is only needed where the root cannot be named. The critical point can:
+it is `0`, and every iterate of it is a Gaussian rational. For such a point
 
-This is not a defect of the certificate and it is not repaired by `sqfree`
-either: the multiplicity is real, and a Misiurewicz point is a multiple root
-of the dynamical residual by construction. Reaching it needs the deflated
-residual or a different certificate, and neither is built here.
+```text
+R^c_{l,k}(z) = 0
+```
+
+is an identity over `Q(i)`, decided by exact arithmetic with no enclosure, no
+contraction, and no import. `is_exact_root` is that decision.
+
+Its multiplicity is exact too, and the recursion that gives it is the
+structural reason the critical point was a problem in section 2. For `l >= 1`,
+
+```text
+R^c_{l,k}(z) = f^{l+k}(z) - f^l(z) = R^c_{l-1,k}(f(z))
+```
+
+because `f^{n}(z) = f^{n-1}(f(z))`. So `R_{l,k}` is a shorter residual
+composed with `f`, and
+
+```text
+mult_z(R_{l,k}) = mult_{f(z)}(R_{l-1,k}) · mult_z(f - f(z))
+```
+
+The second factor is `1` everywhere but the critical point: `f(w) - f(z) =
+(w - z)(w + z)`, which is simple at `w = z` unless `z = 0`, where it is
+double. **The critical point's multiplicity is the two-to-one branching of
+`f`, nothing else**, and it compounds once per step of preperiod.
+
+At the base, `l = 0`, the multiplicity is `1` exactly when `R'_{0,k}(z) != 0`.
+A vanishing `R'_{0,k}` means the cycle has multiplier one, which is a
+parabolic parameter; `exact_multiplicity` refuses there rather than guessing,
+and that refusal is the only case this section does not cover.
+
+## 5. Enumeration, and when it is complete
+
+Every preperiodic point has a bounded orbit, so by `docs/escape-criterion.md`
+its quadrance never passes the escape bound and both coordinates lie inside a
+box of integer half-side. That box is not a guess about where the roots are:
+it is the region outside which there are none.
+
+`enumerate_roots` subdivides it, drops what excludes, keeps what isolates, and
+clusters what is left. The clustering is not cosmetic. The grid is dyadic and
+so are many roots, so a root lands on a cut line as often as not, and then
+every cell around it has the root on a boundary where no contraction is
+possible -- which is why a straight subdivision isolates nothing at `c = 0`.
+The cells that stay undecided are the ones near a root, and their component's
+bounding box is centred on it.
+
+**Counting theorem.** `deg R^c_{l,k} = 2^(l+k)`, since `f^{l+k}` and `f^l`
+have different degrees and cannot cancel, so `R` has exactly `2^(l+k)` roots
+counted with multiplicity. If the isolated boxes hold pairwise distinct simple
+roots, the named roots are distinct from each other and from those, and
+
+```text
+(number of isolated boxes) + (sum of named multiplicities) = 2^(l+k)
+```
+
+then **those are all the roots**. *Proof.* The listed roots already exhaust
+the multiplicity count, so another root would push the total past the degree.
+[]
+
+The undecided boxes therefore need no explaining under that identity, which is
+the pleasant part: the certificate is a count, and a search that leaves
+residue can still be complete. What does need checking is checked --- that the
+named points are roots, that their multiplicities are computed rather than
+taken on trust, and that nothing is counted twice. Two isolated boxes can
+share an edge, so disjointness is the wrong test; two are distinct when their
+shared region excludes a root, which is exclusion again.
+
+Six enumerations are pinned in `tests/test_preperiodic.py`, including
+`(l, k) = (1, 1)` at `c = 0`, where two simple roots and the double root at
+the critical point make `2 + 2 = 4`. At `c = i` and type `(2, 2)` the budget
+runs out --- six of sixteen --- and the count refuses, which is the answer a
+search is allowed to give.
+
+## 6. Where it stops
+
+**The critical point is not isolable by section 2, and does not need to be.**
+The chain rule puts the factor `2 f^0(0) = 0` into both products, so
+`R'(0) = 0` whenever `l >= 1`, the operator refuses, and the certificate
+declines. `sqfree` would not have repaired it either: the multiplicity is
+real, and by section 4 it is exactly the branching of `f`. What repairs it is
+that the point is *named*: section 4 decides it by identity and gives its
+multiplicity, and section 5 counts it. No box was ever the right tool for a
+point one can write down.
+
+What remains is the box case: a box that happens to contain a multiple root
+is undecided by both certificates, and stays so however far it is refined.
+Under the counting theorem that costs nothing when the root is named, and
+everything when it is not.
 
 **Width costs resolution.** The certificates fire on enclosures, so the same
 point at the same type can fail on a wide box and succeed on a narrow one --
@@ -118,7 +198,7 @@ box of radius `1/64` succeeds. `docs/enclosure-width-lemma.md` is what says
 refining is guaranteed to help, and `refine_until_certified` is the
 constructive side. Reported residue is a budget that ran out, never a claim.
 
-## 5. The witnesses
+## 7. The witnesses
 
 `tools/parameter_corpus.py` declares six boxes across three parameters, each
 isolated at its type and exact by section 3: the fixed point `1` and the
@@ -136,9 +216,10 @@ data.
 types against the vendored kernel, so the two implementations agree witness
 for witness.
 
-## 6. What this does not claim
+## 8. What this does not claim
 
 It does not claim the isolated roots are in `J_c`, though the repelling ones
-are; it does not enumerate the roots of any `R_{l,k}`, only certifies boxes
-handed to it; it does not give the exact type of any root the certificate
-declines; and it discharges no block of `docs/J1_proof_definition.md`.
+are. It does not give the exact type of a root the certificate declines. An
+enumeration whose count refuses is a budget that ran out and never a claim
+that the missing roots are absent. And it discharges no block of
+`docs/J1_proof_definition.md`.

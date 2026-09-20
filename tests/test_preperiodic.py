@@ -19,7 +19,12 @@ from julia_reference import step as point_step
 from parameter_corpus import BY_KEY, PREPERIODIC
 from preperiodic import (
     RootVerdict,
+    certifies_all_roots,
     certify,
+    enumerate_roots,
+    exact_multiplicity,
+    exact_residual_derivative,
+    is_exact_root,
     exact_type,
     excludes,
     isolates,
@@ -28,6 +33,8 @@ from preperiodic import (
     refine_until_certified,
     residual,
     residual_derivative,
+    search_box,
+    search_radius,
     singleton_reciprocal,
 )
 
@@ -125,3 +132,95 @@ def test_wrapping_costs_resolution_and_refinement_buys_it_back():
     narrow = ComplexBox.of(F(63, 64), F(65, 64), F(-1, 64), F(1, 64))
     assert not isolates(wide, c, 1, 1)
     assert isolates(narrow, c, 1, 1)
+
+
+# --- exactly representable roots -------------------------------------------
+
+EXACT_CASES = [
+    ("c=0, the critical point is a double root of its own residual", GQ(F(0), F(0)), GQ(F(0), F(0)), 1, 1, 2),
+    ("c=0, the fixed point 1 is simple", GQ(F(1), F(0)), GQ(F(0), F(0)), 0, 1, 1),
+    ("c=-1, the critical point is on the 2-cycle and simple there", GQ(F(0), F(0)), GQ(F(-1), F(0)), 0, 2, 1),
+    ("c=i, the Misiurewicz critical point is a double root", GQ(F(0), F(0)), GQ(F(0), F(1)), 2, 2, 2),
+]
+
+
+@pytest.mark.parametrize("label,z,c,l,k,multiplicity", EXACT_CASES, ids=[case[0] for case in EXACT_CASES])
+def test_a_named_root_is_decided_by_identity(label, z, c, l, k, multiplicity):
+    """No enclosure, no contraction, no import: an identity over `Q(i)`."""
+    assert is_exact_root(z, c, l, k)
+    assert exact_multiplicity(z, c, l, k) == multiplicity
+
+
+def test_the_critical_point_doubles_the_multiplicity_and_nothing_else_does():
+    """`R_{l,k} = R_{l-1,k} . f`, and `f` is two-to-one only at `0`."""
+    c = GQ(F(0), F(1))
+    assert exact_multiplicity(GQ(F(0), F(0)), c, 2, 2) == 2
+    # The image of the critical point has the same residual one step shorter,
+    # at preperiod one, and is a simple root there.
+    assert exact_multiplicity(point_step(GQ(F(0), F(0)), c), c, 1, 2) == 1
+
+
+def test_a_parabolic_cycle_is_refused_rather_than_counted():
+    """At `c = 1/4` the fixed point `1/2` has multiplier one, so `R'` vanishes
+    there and the multiplicity is not this recursion's to give."""
+    c, fixed = GQ(F(1, 4), F(0)), GQ(F(1, 2), F(0))
+    assert is_exact_root(fixed, c, 0, 1)
+    assert exact_residual_derivative(fixed, c, 0, 1).is_zero()
+    assert exact_multiplicity(fixed, c, 0, 1) is None
+
+
+def test_a_point_that_is_not_a_root_has_no_multiplicity():
+    c = GQ(F(0), F(0))
+    assert not is_exact_root(GQ(F(2), F(0)), c, 0, 1)
+    assert exact_multiplicity(GQ(F(2), F(0)), c, 0, 1) is None
+
+
+# --- enumeration -----------------------------------------------------------
+
+ENUMERATIONS = [
+    ("c=0, the fixed points", GQ(F(0), F(0)), 0, 1, ()),
+    ("c=0, preperiod one", GQ(F(0), F(0)), 1, 1, (GQ(F(0), F(0)),)),
+    ("c=-1, the fixed points", GQ(F(-1), F(0)), 0, 1, ()),
+    ("c=-1, period two", GQ(F(-1), F(0)), 0, 2, ()),
+    ("c=i, the fixed points", GQ(F(0), F(1)), 0, 1, ()),
+    ("c=i, period two", GQ(F(0), F(1)), 0, 2, ()),
+]
+
+
+@pytest.mark.parametrize("label,c,l,k,named", ENUMERATIONS, ids=[case[0] for case in ENUMERATIONS])
+def test_every_root_is_accounted_for(label, c, l, k, named):
+    box_c = ComplexBox.singleton(c.re, c.im)
+    found = enumerate_roots(box_c, l, k)
+    assert certifies_all_roots(found, box_c, named)
+    assert len(found.isolated) + sum(
+        exact_multiplicity(root, c, l, k) for root in named
+    ) == found.degree()
+
+
+def test_the_search_box_is_where_the_roots_have_to_be():
+    """A preperiodic point has a bounded orbit, so its quadrance never passes
+    the escape bound and both coordinates are inside the box."""
+    for c, expected in ((ComplexBox.singleton(0), F(2)), (ComplexBox.singleton(-1), F(2))):
+        assert search_radius(c) == expected
+        box = search_box(c)
+        assert box.re.lo == -expected and box.re.hi == expected
+
+
+def test_an_exhausted_budget_is_reported_and_not_guessed_past():
+    """A shallow search leaves clusters undecided, and the count refuses."""
+    c = ComplexBox.singleton(0)
+    shallow = enumerate_roots(c, 0, 1, max_depth=2)
+    assert not certifies_all_roots(shallow, c)
+    assert len(shallow.isolated) < shallow.degree()
+
+
+def test_a_parameter_that_is_not_a_point_is_refused():
+    wide = ComplexBox.of(F(-1, 16), F(1, 16), F(-1, 16), F(1, 16))
+    found = enumerate_roots(wide, 0, 1, max_depth=3)
+    assert not certifies_all_roots(found, wide)
+
+
+def test_a_named_root_that_is_not_one_fails_the_count():
+    c = ComplexBox.singleton(0)
+    found = enumerate_roots(c, 0, 1)
+    assert not certifies_all_roots(found, c, (GQ(F(2), F(0)),))
