@@ -34,6 +34,11 @@ Usable without a terminology declaration, in their ordinary field sense:
 - dyadic box, interval arithmetic
 - Krawczyk method, squarefree polynomial
 - quadrance, spread, incidence relation, vertex
+- Markov partition, transition matrix, transfer matrix
+- substitution, incidence matrix, primitive substitution
+- Perron root, Perron-Frobenius theorem, spectral radius
+- characteristic polynomial, algebraic integer, conjugate, Pisot number
+- topological entropy, symbolic dynamics, admissible word
 
 ## Declared terms
 

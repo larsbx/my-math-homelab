@@ -34,6 +34,8 @@ certificate grammar yet to accept into.
 | 1–2 three-valued classifier | `src/box_classifier.mojo` | DEMO | the escape and trap certificates of `docs/three-valued-classifier.md` over boxes; strict containment decides `IN`, the quadrance lower bound decides `OUT`, and an unverified trap is ignored |
 | 1–2 corpus replay | `src/corpus_replay.mojo` | DEMO | runs the kernel against the generated corpus and prints the transcript the differential test consumes |
 | 1–2 generated corpus | `src/parameter_corpus.mojo` | DEMO | generated from `tools/parameter_corpus.py`; exact `Int64` numerator and denominator pairs lifted into singleton boxes |
+| 1 exact rational order | `src/markov.mojo`, oracle `tools/markov.py` | DEMO | the postcritical partition of a real postcritically finite parameter and its transition matrix, decided by rational inequalities; the characteristic polynomial by Faddeev-LeVerrier over `Q` and a rational sign-change bracket (`docs/tiling-connections-2026-09-20.md`) |
+| 1–2 markov transcript | `src/markov_transcript.mojo` | DEMO | prints the partition transcript the differential test consumes; decides nothing |
 | 1–2 smoke suite | `src/smoke_tests.mojo` | DEMO | the canonical Mojo smoke driver; exercises the layers it reports on |
 | 1–2 reference oracle (secondary) | `tools/gaussian_q.py`, `tools/julia_reference.py` | CONFORMS | Python `fractions.Fraction`; an independent implementation of the same verdicts, compared against the Mojo kernel transcript by `tests/test_mojo_replay.py` |
 

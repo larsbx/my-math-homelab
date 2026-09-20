@@ -23,6 +23,11 @@ from references.check_references import Policy, run  # noqa: E402
 KERNELS = "larsbx/finite-math-kernels at the commit pinned in vendored.toml"
 MANDELBROT = "larsbx/finite-mandelbrot-research"
 
+#: Kernels paths this repository names but does not vendor. They carry no
+#: pin, which is exactly why the attestation names the repository and not a
+#: commit: `docs/tiling-connections-2026-09-20.md` inventories them.
+KERNELS_UNPINNED = "larsbx/finite-math-kernels, not vendored here"
+
 #: Every entry says which repository the path lives in. A reader can check an
 #: attestation; a bare exemption would only say that someone once decided not
 #: to look.
@@ -54,6 +59,20 @@ EXTERNAL: dict[str, str] = {
     "src/complex_inverse.mojo": MANDELBROT,
     "src/krawczyk_witness.mojo": MANDELBROT,
     "tools/audit_no_points.py": MANDELBROT,
+    "docs/atlas-dataset.md": MANDELBROT,
+    # Named by the tiling-connections note, which inventories the far side of
+    # the bridge without importing any of it.
+    "substitution_dynamics/substitution.mojo": KERNELS_UNPINNED,
+    "substitution_dynamics/tuning.mojo": KERNELS_UNPINNED,
+    "substitution_dynamics/sadic.mojo": KERNELS_UNPINNED,
+    "substitution_dynamics/coincidence.mojo": KERNELS_UNPINNED,
+    "substitution_dynamics/automaton.mojo": KERNELS_UNPINNED,
+    "substitution_dynamics/words.mojo": KERNELS_UNPINNED,
+    "substitution_dynamics/balanced_pairs.mojo": KERNELS_UNPINNED,
+    "substitution_dynamics/discrepancy.mojo": KERNELS_UNPINNED,
+    "finite_linear_algebra/mat3.mojo": KERNELS_UNPINNED,
+    "finite_linear_algebra/qlinalg.mojo": KERNELS_UNPINNED,
+    "finite_linear_algebra/madic_ball.mojo": KERNELS_UNPINNED,
 }
 
 #: Tasks the mirrored specification names, which belong to upstream's manifest.
