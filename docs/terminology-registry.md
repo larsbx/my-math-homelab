@@ -115,6 +115,40 @@ Use discipline: attach it wherever `ESCAPES` is reported. An escape index
 without a ratio is a threshold crossing, which is a weaker statement than the
 word escape suggests.
 
+### Cut
+
+Status: novel bridge term.
+Genealogy: the landed ray pairs of the classical separator; the three-valued
+interval sign of `docs/rational-interval-arithmetic-spec.md` section 2.4.
+Bridge claim: an exact rational linear form `a x + b y - e`, together with
+the side of it a box is enclosed on, three-valued. The claim a cut makes is
+`docs/finite-separator.md` section 2 and nothing more: two boxes on decided
+opposite sides hold points whose iterates are on opposite sides of that line.
+Known leaks: a cut is not a ray and a pair of cuts is not a ray pair. It does
+not bound a region, does not cut the plane into components in any sense this
+repository can check, and separating by a cut is not separating by the
+classical catalogue -- that identification is the ungated
+`CutCatalogueRayEquivalence`. A cut needs no verification, so an
+uninformative cut is not a defective one.
+Use discipline: a cut is declared data. Report the step and the cut that
+decided a separation, never the bare verdict, and never say a box is "inside"
+or "outside" a cut.
+
+### Level-k non-separation
+
+Status: novel bridge term.
+Genealogy: `SameFiberLevel_k^c` of the parameter-plane program's separator
+catalogue; the finite nests of `docs/J1_proof_definition.md`.
+Bridge claim: no cut of a declared catalogue, at any step up to `k`, puts the
+two boxes on decided opposite sides. Decreasing in `k`
+(`docs/finite-separator.md` section 3).
+Known leaks: it is reflexive and symmetric and **not transitive**, so it
+partitions nothing and has no classes. It is relative to a declared
+catalogue, so it is never a statement about the parameter alone. Two boxes
+not separated may hold the same point, different points, or nothing at all.
+Use discipline: always name the catalogue and the level. Never call a set of
+mutually non-separated boxes a class, a component, or a fiber.
+
 ### Regime ledger
 
 Status: novel bridge term.
@@ -150,7 +184,10 @@ either.
 - placing the quadratic map on the projective completion that carries the
   circular points, where it is not a morphism;
 - calling an irrationally indifferent parameter Siegel or Cremer;
-- using `J1` without naming the regime it is claimed on.
+- using `J1` without naming the regime it is claimed on;
+- calling a set of mutually non-separated boxes a fiber, a class, or a
+  component, or reporting non-separation without naming its catalogue and
+  level.
 
 ## Enforcement of the forbidden usages
 

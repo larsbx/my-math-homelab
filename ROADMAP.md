@@ -135,6 +135,16 @@ anything uses it, which is the order the escape-criterion episode taught --
 but landing gives a point, not a cut. Deciding which side of a ray pair a box
 lies on is geometry about the rays as curves, which this repository has no
 certificate for and does not fake.
+**Second rung, 2026-09-20: the separator, restated.** The ray-pair
+separator is not writable here, so `docs/finite-separator.md` replaces the ray
+pair with an exact rational cut and the side test with the three-valued
+interval sign. Soundness, the monotone nest, constructive adequacy and the
+failure of transitivity are proved; the identification with fiber separation
+becomes the named, ungated `CutCatalogueRayEquivalence`. Adequacy and
+non-triviality are now statements about a *declared* catalogue, which is a
+real change: an unrestricted catalogue separates everything distinguishable,
+so Phase 4's witness only has content against a fixed one.
+
 - `J1` stated and discharged per regime, against
   `docs/J1_proof_definition.md`;
 - the cross-check: run the parameter plane's adequacy machinery on regimes

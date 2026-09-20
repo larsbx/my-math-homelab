@@ -1,6 +1,7 @@
 """Repository invariants that are cheap to state and expensive to lose."""
 
 import re
+import tokenize
 import tomllib
 from pathlib import Path
 
@@ -80,12 +81,39 @@ def test_no_analytic_transcendental_calls(path):
         assert call not in text, f"{path.name}: {call} is outside the finite core"
 
 
+def code_tokens(path) -> tuple[list[str], list[str]]:
+    """The numbers and names a Python file actually executes.
+
+    Read with `tokenize` rather than as text, so that prose is prose: a
+    docstring citing "section 2.4" is a citation, not a decimal literal, and
+    a scan that cannot tell the difference forbids writing the citation down.
+    """
+    with path.open("rb") as handle:
+        tokens = list(tokenize.tokenize(handle.readline))
+    return (
+        [token.string for token in tokens if token.type == tokenize.NUMBER],
+        [token.string for token in tokens if token.type == tokenize.NAME],
+    )
+
+
 @pytest.mark.parametrize("path", PYTHON, ids=lambda p: p.name)
 def test_no_float_arithmetic_in_the_reference_oracle(path):
     """Certificate-relevant numbers are exact rationals, never floats."""
-    text = path.read_text(encoding="utf-8")
-    assert "float(" not in text
-    assert not re.search(r"\b\d+\.\d+\b", text), f"{path.name}: decimal literal"
+    numbers, names = code_tokens(path)
+    assert "float" not in names, f"{path.name}: float is outside the finite core"
+    for number in numbers:
+        assert "." not in number and "e" not in number.lower(), f"{path.name}: {number} is a float literal"
+
+
+def test_the_float_scan_reads_code_and_not_prose(tmp_path):
+    """Both directions, because the scan used to fail on its own citations."""
+    prose = tmp_path / "prose.py"
+    prose.write_text('"""See section 2.4 of the spec."""\nx = 3\n', encoding="utf-8")
+    assert code_tokens(prose) == (["3"], ["x"])
+    literal = tmp_path / "literal.py"
+    literal.write_text("x = 2.4\ny = float(1)\n", encoding="utf-8")
+    numbers, names = code_tokens(literal)
+    assert "2.4" in numbers and "float" in names
 
 
 def test_the_scan_covers_this_repository_and_not_its_copies():

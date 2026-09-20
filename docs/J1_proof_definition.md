@@ -125,3 +125,31 @@ The first genuinely open cell is the irrationally indifferent row: `c =
 (37 + 16i)/100` is exact data whose Siegel-or-Cremer status is not decided by
 any finite test on the multiplier. It is the intended home of criterion 5's
 second branch.
+
+## Amendment, 2026-09-20: the separator is restated
+
+`J1-A` and `J1-B` above are stated over the classical separator, whose
+elements are landed ray pairs. `docs/angle-types-and-landing.md` section 4
+reported that this repository cannot write that separator down: landing gives
+a point, a ray pair cuts with curves, and a curve is not an object at rank 2.
+
+`docs/finite-separator.md` restates it over exact rational cuts, and the
+restatement splits these two obligations three ways:
+
+- the soundness of separation, the monotonicity of the nest, and the
+  constructive adequacy of an unrestricted catalogue are **proved there**, and
+  they are new;
+- the identification of the finite relation with fiber separation -- the whole
+  of `J1-A`, and the "exactly when the fiber is trivial" half of `J1-B` --
+  becomes one named import, `CutCatalogueRayEquivalence`, which is **not**
+  gated and **not** used;
+- adequacy and non-triviality become statements about a **declared
+  catalogue**, never about the parameter alone, because an unrestricted
+  catalogue separates every distinguishable pair and makes the question
+  vacuous.
+
+One warning belongs here rather than only there. Level-`k` non-separation is
+reflexive and symmetric and **not transitive**, so it has no classes, and the
+word fiber must not be attached to it. The blocks above are unchanged and
+undischarged; what changed is which of them this repository could ever
+discharge on its own.
