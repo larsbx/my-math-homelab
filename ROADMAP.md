@@ -174,8 +174,13 @@ one with a period-two trap whose images straddle the cut.
 What it is a statement about is the **catalogue**, not the parameter: by the
 adequacy corollary one more cut separates either pair at once. So the second
 half of the line above -- "at a parameter whose local connectivity is false"
--- is not something this construction can deliver, and
-`docs/finite-separator.md` section 7 says which import would be needed.
+-- is not something this construction can deliver, and as of the
+cut-equivalence gate it is not something a bridge can rescue either: a ray
+pair meets `K_c` only at its landing point, so it never separates two
+interior points, while a cut does it at once
+(`docs/literature-gate-2026-09-20-cut-equivalence.md`). Reaching the
+classical reading means building pieces out of rays, which this repository
+has no certificate for.
 
 The budget is what makes the theorem worth having rather than decorative: a
 search for these pairs caps at step fourteen, so the levels the theorem

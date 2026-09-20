@@ -141,8 +141,12 @@ restatement splits these two obligations three ways:
   they are new;
 - the identification of the finite relation with fiber separation -- the whole
   of `J1-A`, and the "exactly when the fiber is trivial" half of `J1-B` --
-  becomes one named import, `CutCatalogueRayEquivalence`, which is **not**
-  gated and **not** used;
+  was named as one import, `CutCatalogueRayEquivalence`. `docs/literature-gate-2026-09-20-cut-equivalence.md`
+  judges it and **rejects** it: a ray pair meets `K_c` only at its landing
+  point, so it cannot separate two interior points, and a cut can. These two
+  halves are therefore not merely unproved here; they are not reachable from
+  the cut separator at all, and reaching them means building pieces out of
+  rays;
 - adequacy and non-triviality become statements about a **declared
   catalogue**, never about the parameter alone, because an unrestricted
   catalogue separates every distinguishable pair and makes the question

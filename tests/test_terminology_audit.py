@@ -11,7 +11,16 @@ from __future__ import annotations
 
 import pytest
 
-from audit_terminology import REQUIRED_CLAUSE, REGISTRY, SELF, audit_file, field_terms, main
+from audit_terminology import (
+    REGISTRY,
+    REQUIRED_CLAUSE,
+    SELF,
+    audit_file,
+    audit_rejected,
+    field_terms,
+    main,
+    rejected_claims,
+)
 
 
 @pytest.fixture(scope="module")
@@ -89,3 +98,45 @@ def test_comments_in_the_executable_core_are_scanned(tmp_path, terms):
 def test_the_bare_word_angle_is_not_scanned(tmp_path, terms):
     """Route A language the programme needs: rational angles in `Q/Z`."""
     assert not findings(tmp_path, "Angle combinatorics on `Q/Z` under `t -> 2t`.", terms)
+
+
+# --- rejected claims -------------------------------------------------------
+
+
+@pytest.fixture(scope="module")
+def claims() -> list[str]:
+    return rejected_claims()
+
+
+def test_the_registry_names_at_least_one_rejected_claim(claims):
+    """The section exists because a claim was judged false, not because the
+    format asked for it."""
+    assert "CutCatalogueRayEquivalence" in claims
+
+
+def rejection_findings(tmp_path, text: str, claims: list[str], name: str = "note.md") -> list[str]:
+    path = tmp_path / name
+    path.write_text(text, encoding="utf-8")
+    errors: list[str] = []
+    audit_rejected(path, claims, errors)
+    return errors
+
+
+def test_a_rejected_claim_cited_as_open_is_caught(tmp_path, claims):
+    assert rejection_findings(tmp_path, "This rests on CutCatalogueRayEquivalence, which is not yet gated.\n", claims)
+
+
+def test_a_rejected_claim_cited_as_rejected_passes(tmp_path, claims):
+    assert not rejection_findings(tmp_path, "CutCatalogueRayEquivalence is rejected; see the gate.\n", claims)
+    assert not rejection_findings(tmp_path, "The gate rejects it. " + "x" * 200 + " CutCatalogueRayEquivalence\n", claims)
+
+
+def test_the_rejection_word_has_to_be_within_reach(tmp_path, claims):
+    far = "It is rejected. " + "x" * 400 + " CutCatalogueRayEquivalence is the bridge.\n"
+    assert rejection_findings(tmp_path, far, claims)
+
+
+def test_the_gate_that_judged_it_may_state_it_plainly(tmp_path, claims):
+    text = "the cut catalogue separates exactly what a ray-pair catalogue separates [CutCatalogueRayEquivalence]\n"
+    assert not rejection_findings(tmp_path, text, claims, name="literature-gate-2026-09-20-cut-equivalence.md")
+    assert rejection_findings(tmp_path, text, claims)

@@ -64,6 +64,13 @@ EXEMPT_MARKER = re.compile(r"<!--\s*terminology-exempt:\s*(?P<reason>[^>]+?)\s*-
 #: the audit cannot outlive the rule it enforces.
 REQUIRED_CLAUSE = "calling the quadrance-1 locus of `J_0` a circle"
 
+#: A claim the repository named, judged, and found false stays citable only as
+#: a rejected one. The names are read from the registry rather than repeated
+#: here, and an occurrence passes only with a rejection word within reach.
+REJECTED_SECTION = "## Rejected bridge claims"
+REJECTION = re.compile(r"reject", re.IGNORECASE)
+REJECTION_REACH = 320
+
 SELF = "tools/audit_terminology.py"
 
 
@@ -95,6 +102,15 @@ def field_terms() -> list[str]:
                for line in section.splitlines() if line.startswith("- ")
                for item in line[2:].split(","))
     return [entry for entry in entries if BANNED.search(entry)]
+
+
+def rejected_claims() -> list[str]:
+    """The names under the registry's rejected-claims section."""
+    text = REGISTRY.read_text(encoding="utf-8")
+    if REJECTED_SECTION not in text:
+        return []
+    section = text.split(REJECTED_SECTION, 1)[1].split("\n## ", 1)[0]
+    return [line[4:].strip() for line in section.splitlines() if line.startswith("### ")]
 
 
 def strip_comment(line: str) -> str:
@@ -161,9 +177,24 @@ def audit_registry(errors: list[str]) -> None:
         errors.append("docs/terminology-registry.md: the registry is missing")
         return
     text = REGISTRY.read_text(encoding="utf-8")
-    for required in ("## Established field terms", "## Forbidden usages", REQUIRED_CLAUSE, SELF):
+    for required in ("## Established field terms", "## Forbidden usages", REJECTED_SECTION, REQUIRED_CLAUSE, SELF):
         if required not in text:
             errors.append(f"docs/terminology-registry.md: missing {required!r}")
+
+
+def audit_rejected(path: Path, claims: list[str], errors: list[str]) -> None:
+    """Every mention of a rejected claim has to say so within reach."""
+    if rel(path) == REGISTRY.relative_to(ROOT).as_posix() or path.name.startswith("literature-gate"):
+        return
+    text = path.read_text(encoding="utf-8")
+    for claim in claims:
+        for found in re.finditer(re.escape(claim), text):
+            window = text[max(0, found.start() - REJECTION_REACH): found.end() + REJECTION_REACH]
+            if not REJECTION.search(window):
+                errors.append(
+                    f"{rel(path)}: {claim!r} is a rejected claim and must be cited as one; "
+                    "see the registry's rejected-claims section"
+                )
 
 
 def audit_file(path: Path, terms: list[str], errors: list[str]) -> None:
@@ -189,9 +220,10 @@ def main() -> int:
     errors: list[str] = []
     audit_registry(errors)
     if not errors:
-        terms = field_terms()
+        terms, claims = field_terms(), rejected_claims()
         for path in own_files():
             audit_file(path, terms, errors)
+            audit_rejected(path, claims, errors)
     if errors:
         print("Terminology audit failed:")
         for error in errors:

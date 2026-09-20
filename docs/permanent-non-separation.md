@@ -97,7 +97,9 @@ witnesses are exhibits of a catalogue's limit, and they are labelled as such.
 
 It does not claim any catalogue is inadequate for a purpose, because no
 purpose is fixed here. It does not claim a pair is permanently unseparated by
-the *classical* separator, which is `CutCatalogueRayEquivalence` and is
-ungated and unused. It does not discharge any block of
+the *classical* separator, and there is no bridge to that claim: the one that
+was named for the job, `CutCatalogueRayEquivalence`, is **rejected** in
+`docs/literature-gate-2026-09-20-cut-equivalence.md`, because a ray pair
+cannot separate two interior points of `K_c` and a cut can. It does not discharge any block of
 `docs/J1_proof_definition.md`, and it closes no regime of
 `docs/J1_regime_ledger.md`.

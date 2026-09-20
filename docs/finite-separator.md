@@ -121,23 +121,31 @@ restatement they split three ways, and the split is the point:
 
 | original | status here |
 | --- | --- |
-| `J1-A`: the finite catalogue relation is extensionally fiber separation | **not restated.** Extensional equality with fiber separation is exactly the part that needs rays. It becomes an import, below. |
-| `J1-B`: a finite nest stabilizes exactly when the fiber is trivial | **split.** That the nest is decreasing and its stabilization decidable at each level is section 4, proved. That stabilization means *triviality of a fiber* is the same import. |
+| `J1-A`: the finite catalogue relation is extensionally fiber separation | **not restated, and now known not to be restatable this way.** The bridge that would have carried it is rejected below. |
+| `J1-B`: a finite nest stabilizes exactly when the fiber is trivial | **split.** That the nest is decreasing and its stabilization decidable at each level is section 4, proved. That stabilization means *triviality of a fiber* rested on the same rejected bridge. |
 | -- | **new, and proved:** sections 2, 5 and 6 -- soundness, relative adequacy, and the tolerance-not-equivalence warning -- and the permanent witness of `docs/permanent-non-separation.md`. |
 
-The import that would restore the classical reading:
+There is **no** import that restores the classical reading, and the one this
+note first named for the job does not exist:
 
 ```text
 the cut catalogue separates exactly what a landed ray-pair catalogue separates
-    [CutCatalogueRayEquivalence: NOT GATED, NOT USED]
+    [CutCatalogueRayEquivalence: REJECTED]
 ```
 
-It is named here so that nothing uses it by accident, and it is **not** gated,
-because nothing in this repository needs it yet: every statement above is
-about cuts, and none of them mentions a fiber. `RationalRayLanding`
-(`docs/literature-gate-2026-09-20-landing.md`) is a different tag and does not
-imply this one -- landing tells you a ray reaches a point, not that a straight
-cut through that point separates what the ray pair separates.
+`docs/literature-gate-2026-09-20-cut-equivalence.md` judges it and
+rejects it. A ray lies in the basin of infinity, so a ray pair meets `K_c`
+only at its landing point, which is a boundary point: **no ray pair separates
+two interior points of `K_c`, ever**, and a cut does it at once. The two
+separators are blind in different places by design, and no weakening of the
+claim survives -- section 3 of that gate says why.
+
+So the restatement is not a translation waiting for a bridge. It is a
+different separator, with its own soundness and its own limits, and reaching
+the classical reading would mean building pieces out of rays rather than
+carrying cuts across. `RationalRayLanding`
+(`docs/literature-gate-2026-09-20-landing.md`) is a different tag and never
+implied this one.
 
 ## 8. What this does not claim
 

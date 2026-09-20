@@ -125,10 +125,11 @@ the side of it a box is enclosed on, three-valued. The claim a cut makes is
 `docs/finite-separator.md` section 2 and nothing more: two boxes on decided
 opposite sides hold points whose iterates are on opposite sides of that line.
 Known leaks: a cut is not a ray and a pair of cuts is not a ray pair. It does
-not bound a region, does not cut the plane into components in any sense this
-repository can check, and separating by a cut is not separating by the
-classical catalogue -- that identification is the ungated
-`CutCatalogueRayEquivalence`. A cut needs no verification, so an
+not bound a region and does not cut the plane into components in any sense
+this repository can check. Separating by a cut is **not** separating by the
+classical catalogue, and that is settled rather than open: a cut separates
+points inside `K_c` where no ray pair can, so the two are blind in different
+places (`docs/literature-gate-2026-09-20-cut-equivalence.md`). A cut needs no verification, so an
 uninformative cut is not a defective one.
 Use discipline: a cut is declared data. Report the step and the cut that
 decided a separation, never the bare verdict, and never say a box is "inside"
@@ -174,6 +175,25 @@ every parabolic and irrationally indifferent parameter, not a defect.
 Use discipline: never read `CAPPED` as `IN`, as `OUT`, or as evidence for
 either.
 
+## Rejected bridge claims
+
+A claim that was named, judged, and found false. It stays here so that it
+cannot be reintroduced as an open question.
+
+### CutCatalogueRayEquivalence
+
+Status: rejected bridge claim.
+Genealogy: the separator restatement of `docs/finite-separator.md`; the
+landed ray-pair catalogue of the classical fiber theory.
+Bridge claim, as it was proposed: the cut catalogue separates exactly what a
+landed ray-pair catalogue separates.
+Verdict: **rejected**, `docs/literature-gate-2026-09-20-cut-equivalence.md`.
+A ray lies in the basin of infinity, so a ray pair meets `K_c` only at its
+landing point; no ray pair separates two interior points of `K_c`, and a cut
+separates them at once. No weakening of the claim survives.
+Use discipline: never as a hypothesis, a conditional, or a future gate. Cite
+it only as a rejected claim, and only with its gate.
+
 ## Forbidden usages
 
 - calling the quadrance-1 locus of `J_0` a circle, or deriving an arc, an
@@ -187,7 +207,8 @@ either.
 - using `J1` without naming the regime it is claimed on;
 - calling a set of mutually non-separated boxes a fiber, a class, or a
   component, or reporting non-separation without naming its catalogue and
-  level.
+  level;
+- citing `CutCatalogueRayEquivalence` as anything but a rejected claim.
 
 ## Enforcement of the forbidden usages
 
@@ -199,6 +220,12 @@ under a heading that forbids, or carries an explicit
 `<!-- terminology-exempt: reason -->` marker. The bare word *angle* is not
 scanned: the prohibition is on deriving an angle from the quadrance-1 locus,
 not on the rational angles of `Q/Z`, which Phase 3 needs.
+
+It also reads the rejected-claims section above and requires every mention of
+a claim listed there to carry a rejection word within reach, so a claim that
+was judged false cannot quietly become an open question again. That rule
+caught a stale citation in `docs/permanent-non-separation.md` on its first
+run.
 
 The audit is the reason this registry is a rule rather than a note. It was
 added after the vocabulary it forbids reached `docs/enclosure-width-lemma.md`
