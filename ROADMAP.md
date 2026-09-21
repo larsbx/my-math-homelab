@@ -10,8 +10,11 @@ Phases are indexed by what becomes checkable, not by what becomes plausible.
       layer.
 - [x] Vendor `finite_exact` from `larsbx/finite-math-kernels`, pinned and
       digest-checked.
-- [x] Build the nine-parameter corpus covering every regime, with witnesses
-      verified by exact arithmetic.
+- [x] Build the ten-parameter corpus covering every regime, with witnesses
+      verified by exact arithmetic. It was nine until 2026-09-21, when the
+      classification of section 3.3 of `docs/tiling-connections-2026-09-20.md`
+      showed it was missing one of the five postcritically finite parameters
+      of `Q(i)`; a test now pins the five rather than the count.
 - [x] Two agreeing implementations: the Mojo kernel and the Python reference
       oracle, compared transcript for transcript.
 - [x] Generate the regime ledger, `corpus.json`, and the Mojo corpus from one

@@ -31,6 +31,7 @@ exhausts its budget by construction, and reports which budget ran out.
 | `c0` | `0` | HYPERBOLIC_CENTER | `0` | `0` SUPERATTRACTING | PREPERIODIC(l=0, k=1) | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
 | `basilica` | `-1` | HYPERBOLIC_CENTER | `0, -1` | `0` SUPERATTRACTING | PREPERIODIC(l=0, k=2) | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
 | `dendrite` | `i` | MISIUREWICZ | `-1 + i, -i` | `4 + 4i` REPELLING | PREPERIODIC(l=2, k=2) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `dendrite_conjugate` | `-i` | MISIUREWICZ | `-1 - i, i` | `4 - 4i` REPELLING | PREPERIODIC(l=2, k=2) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
 | `chebyshev` | `-2` | MISIUREWICZ | `2` | `4` REPELLING | PREPERIODIC(l=2, k=1) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
 | `cauliflower` | `1/4` | PARABOLIC | `1/2` | `1` PARABOLIC | CAPPED(BIT_BUDGET, n=16) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
 | `parabolic_minus_one` | `-3/4` | PARABOLIC | `-1/2` | `-1` PARABOLIC | CAPPED(BIT_BUDGET, n=16) | TAGGED_LOCALLY_CONNECTED | TanYinGeometricallyFiniteLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
@@ -43,6 +44,7 @@ exhausts its budget by construction, and reports which budget ran out.
 - **`c0`** (superattracting fixed) -- J_0 is the quadrance-1 locus. It is not a circle at rank 2, and no arc, angle, or circumference is available from it.
 - **`basilica`** (period-2 centre) -- Attracting-cycle certificate with a superattracting witness; the interior is the pullback of the immediate basin.
 - **`dendrite`** (Misiurewicz dendrite) -- Postcritically finite with empty interior: the IN certificate has nothing to certify, so the classifier is OUT-or-UNKNOWN here.
+- **`dendrite_conjugate`** (Misiurewicz dendrite, conjugate) -- The fifth and last postcritically finite parameter of Q(i), by section 3.3 of docs/tiling-connections-2026-09-20.md. It is the complex conjugate of the dendrite and dynamically conjugate to it, so it adds no regime; what it adds is that the corpus now holds every such parameter rather than four of the five.
 - **`chebyshev`** (Chebyshev endpoint) -- Degenerate real case: the exclusion machinery must handle a Julia set carried by one rational segment.
 - **`cauliflower`** (parabolic, multiplier 1) -- Fail-closed case: the multiplier has quadrance exactly 1, so an interval test that decides attracting or repelling here is unsound.
 - **`parabolic_minus_one`** (parabolic, multiplier -1) -- Root of the period-2 component: the same fail-closed obligation with a negative multiplier.

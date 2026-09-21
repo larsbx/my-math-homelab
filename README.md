@@ -89,8 +89,11 @@ open one, on the same parameter.
 
 ## The corpus and the ledger
 
-`tools/parameter_corpus.py` is the single source. Nine parameters cover every
-regime, each with the witness a checker needs. `tools/make_regime_ledger.py`
+`tools/parameter_corpus.py` is the single source. Ten parameters cover every
+regime, each with the witness a checker needs, and they include **every**
+postcritically finite parameter of `Q(i)` -- there are five, by section 3.3 of
+`docs/tiling-connections-2026-09-20.md`, and `tests/test_parameter_corpus.py`
+fails if the corpus holds any other number of them. `tools/make_regime_ledger.py`
 renders three surfaces from it -- `docs/J1_regime_ledger.md`, `corpus.json`,
 and `src/parameter_corpus.mojo` -- filling the verified columns by re-running
 the exact oracle, so a surface can only say what was decided or what a row

@@ -30,7 +30,6 @@ from markov import (
     partition,
     postcritical_points,
 )
-from parameter_corpus import CORPUS
 
 ROOT = Path(__file__).resolve().parents[1]
 TRANSCRIPT_DRIVER = ROOT / "src" / "markov_transcript.mojo"
@@ -241,16 +240,6 @@ def test_the_bracket_narrows_when_asked_to():
 
 def test_the_gaussian_classification():
     assert gaussian_pcf_parameters() == ((-2, 0), (-1, 0), (0, -1), (0, 0), (0, 1))
-
-
-def test_every_preperiodic_corpus_row_is_in_the_classification():
-    classified = set(gaussian_pcf_parameters())
-    for row in CORPUS:
-        verdict = critical_orbit(GQ(row.c.re, row.c.im))
-        if verdict.verdict is not OrbitVerdict.PREPERIODIC:
-            continue
-        assert (row.c.re.numerator, row.c.im.numerator) in classified
-        assert row.c.re.denominator == 1 and row.c.im.denominator == 1
 
 
 @pytest.mark.parametrize("c", [F(1, 2), F(-3, 4), F(1, 3), F(-13, 16), F(5, 7)])

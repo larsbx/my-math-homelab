@@ -23,7 +23,7 @@ from julia_orbit import (
     gaussian_q,
 )
 
-alias CORPUS_SIZE = 9
+alias CORPUS_SIZE = 10
 alias MOJO_HORIZON = 8
 
 
@@ -103,6 +103,18 @@ def corpus_row(index: Int) -> CorpusRow:
         )
     if index == 3:
         return CorpusRow(
+            "dendrite_conjugate",
+            gaussian_q(0, 1, -1, 1),
+            2,
+            gaussian_q(-1, 1, -1, 1),
+            gaussian_q(0, 1, 1, 1),
+            MULT_REPELLING,
+            ORBIT_PREPERIODIC,
+            2,
+            2,
+        )
+    if index == 4:
+        return CorpusRow(
             "chebyshev",
             gaussian_q(-2, 1, 0, 1),
             1,
@@ -113,7 +125,7 @@ def corpus_row(index: Int) -> CorpusRow:
             2,
             1,
         )
-    if index == 4:
+    if index == 5:
         return CorpusRow(
             "cauliflower",
             gaussian_q(1, 4, 0, 1),
@@ -125,7 +137,7 @@ def corpus_row(index: Int) -> CorpusRow:
             -1,
             -1,
         )
-    if index == 5:
+    if index == 6:
         return CorpusRow(
             "parabolic_minus_one",
             gaussian_q(-3, 4, 0, 1),
@@ -137,7 +149,7 @@ def corpus_row(index: Int) -> CorpusRow:
             -1,
             -1,
         )
-    if index == 6:
+    if index == 7:
         return CorpusRow(
             "parabolic_i",
             gaussian_q(1, 4, 1, 2),
@@ -149,7 +161,7 @@ def corpus_row(index: Int) -> CorpusRow:
             -1,
             -1,
         )
-    if index == 7:
+    if index == 8:
         return CorpusRow(
             "niven",
             gaussian_q(37, 100, 4, 25),
@@ -161,7 +173,7 @@ def corpus_row(index: Int) -> CorpusRow:
             -1,
             -1,
         )
-    if index == 8:
+    if index == 9:
         return CorpusRow(
             "escaping",
             gaussian_q(1, 1, 0, 1),

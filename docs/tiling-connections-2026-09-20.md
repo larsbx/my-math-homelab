@@ -181,9 +181,14 @@ there are thirteen such Gaussian integers, and
 verdict. The five above are preperiodic and the other eight escape. []
 
 The five are `0` (periodic, period 1), `-1` (period 2), `-2` (preperiod 2,
-period 1), and `i`, `-i` (preperiod 2, period 2). Four of them are already
-rows of `tools/parameter_corpus.py`; `-i` is the complex conjugate of the
-dendrite parameter and is dynamically conjugate to it.
+period 1), and `i`, `-i` (preperiod 2, period 2). Four were rows of
+`tools/parameter_corpus.py` when this was written and `-i` was not; it is one
+now, and `tests/test_parameter_corpus.py` checks the corpus against this
+theorem in both directions, so the corpus cannot hold a postcritically finite
+parameter this section does not list, or omit one it does. `-i` is the
+complex conjugate of the dendrite parameter and dynamically conjugate to it,
+so it adds no regime -- what it adds is that the corpus is now complete for
+this property rather than nearly so.
 
 **Consequence for the bridge.** Only `-2`, `-1`, and `0` are real, and of
 those `0` has a one-point postcritical set and no partition at all. The whole

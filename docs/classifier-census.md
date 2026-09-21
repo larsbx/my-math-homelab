@@ -23,6 +23,7 @@ parabolic basin has no strictly invariant box.
 | `c0` | `0` | HYPERBOLIC_CENTER | `[-1/4, 1/4]^2`, period 1 | 144 | 24 | 88 |
 | `basilica` | `-1` | HYPERBOLIC_CENTER | `[-1/8, 1/8]^2`, period 2 | 152 | 4 | 100 |
 | `dendrite` | `i` | MISIUREWICZ | -- | 158 | 0 | 98 |
+| `dendrite_conjugate` | `-i` | MISIUREWICZ | -- | 158 | 0 | 98 |
 | `chebyshev` | `-2` | MISIUREWICZ | -- | 180 | 0 | 76 |
 | `cauliflower` | `1/4` | PARABOLIC | `[1/4, 1/2]^2`, period 1 | 148 | 24 | 84 |
 | `parabolic_minus_one` | `-3/4` | PARABOLIC | -- | 152 | 0 | 104 |

@@ -75,6 +75,32 @@
       "j1_expectation": "STABILIZES"
     },
     {
+      "key": "dendrite_conjugate",
+      "name": "Misiurewicz dendrite, conjugate",
+      "c": {
+        "re": "0",
+        "im": "-1"
+      },
+      "regime": "MISIUREWICZ",
+      "cycle": [
+        {
+          "re": "-1",
+          "im": "-1"
+        },
+        {
+          "re": "0",
+          "im": "1"
+        }
+      ],
+      "multiplier_class": "REPELLING",
+      "critical_orbit": "PREPERIODIC(l=2, k=2)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
       "key": "chebyshev",
       "name": "Chebyshev endpoint",
       "c": {

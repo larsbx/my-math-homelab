@@ -5,6 +5,8 @@ import pytest
 from julia_reference import OrbitVerdict, classify_multiplier, critical_orbit, is_cycle, multiplier
 from box_classifier import is_trap
 from interval_box import ComplexBox
+from gaussian_q import GQ
+from markov import gaussian_pcf_parameters
 from parameter_corpus import BY_KEY, CORPUS, TRAPS, J1Expectation, LocalConnectivity, Regime
 
 ROWS = [pytest.param(row, id=row.key) for row in CORPUS]
@@ -112,3 +114,47 @@ def test_the_corpus_reaches_all_four_gaussian_rational_roots_of_unity():
 def test_keys_are_unique():
     keys = [row.key for row in CORPUS]
     assert len(set(keys)) == len(keys)
+
+
+# --- completeness for the one property that has a classification -------------
+
+
+def test_the_corpus_holds_every_postcritically_finite_parameter_of_q_i():
+    """Both directions, against the theorem rather than against a count.
+
+    Section 3.3 of `docs/tiling-connections-2026-09-20.md` classifies them:
+    `c` in `Q(i)` has a finite critical orbit exactly for the five below. A
+    corpus that held four of them was not wrong about any row, which is why
+    nothing caught it until the classification existed. This is the check that
+    would have.
+    """
+    classified = set(gaussian_pcf_parameters())
+    present = {
+        (row.c.re.numerator, row.c.im.numerator)
+        for row in CORPUS
+        if critical_orbit(row.c).verdict is OrbitVerdict.PREPERIODIC
+    }
+    assert present == classified
+    assert all(
+        row.c.re.denominator == 1 and row.c.im.denominator == 1
+        for row in CORPUS
+        if critical_orbit(row.c).verdict is OrbitVerdict.PREPERIODIC
+    )
+
+
+def conjugated(z: GQ) -> GQ:
+    """`x - i y`. A helper here rather than a method, because nothing in the
+    executable layer conjugates anything and an unused kernel is a liability."""
+    return GQ.of(z.re, -z.im)
+
+
+def test_the_conjugate_pair_carries_conjugate_witnesses():
+    """`i` and `-i` are complex conjugates, so their cycles and multipliers
+    are too. A row written by hand is a row that can drift from its twin."""
+    dendrite, conjugate = BY_KEY["dendrite"], BY_KEY["dendrite_conjugate"]
+    assert conjugate.c == conjugated(dendrite.c)
+    assert {conjugated(z) for z in conjugate.cycle} == set(dendrite.cycle)
+    assert multiplier(conjugate.cycle) == conjugated(multiplier(dendrite.cycle))
+    assert conjugate.regime is dendrite.regime
+    assert conjugate.orbit_signature == dendrite.orbit_signature
+    assert conjugate.theorem_tag == dendrite.theorem_tag
