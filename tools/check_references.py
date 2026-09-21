@@ -78,6 +78,11 @@ EXTERNAL: dict[str, str] = {
     # Named by the vendored `finite_linear_algebra` headers, which are upstream's.
     "docs/madic-ball-arithmetic-spec.md": KERNELS,
     "tools/qpoly_reference.py": KERNELS,
+    # Named by the vendored `substitution_dynamics` headers and by the note
+    # that hands them a word.
+    "docs/tuning-substitutions-spec.md": KERNELS,
+    "tools/tuning_reference.py": KERNELS,
+    "tests/substitution_dynamics/test_tuning.mojo": KERNELS,
 }
 
 #: Tasks the mirrored specification names, which belong to upstream's manifest.

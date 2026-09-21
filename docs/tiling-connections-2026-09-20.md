@@ -311,12 +311,19 @@ a precise statement of what Phase 4 buys.
    condition itself: irreducibility, the minimal polynomial, and a
    root-location test by quadrance. None of the three exists anywhere in the
    estate.
-3. **Kneading data to tuning substitution.** The parameter-plane program
-   already computes tunings (`angle_tuning` in
-   `larsbx/finite-mandelbrot-research`); the dynamical-plane counterpart is
-   the itinerary of `tools/ray.py` against a separator. Needs the itinerary
-   to be read as a word over the kernels' alphabet, which is a re-encoding,
-   not new mathematics.
+3. **Kneading data to tuning substitution.** Built, 2026-09-21:
+   `docs/kneading-and-tuning.md`. It was not quite the re-encoding this line
+   expected. `tools/ray.py`'s itinerary cuts at the real axis and decides
+   nothing for a real parameter, whose orbit lies on it, so the word needed a
+   different cut -- `x = 0`, through the critical point -- and a letter
+   convention that is the opposite of the one a coordinate sign suggests,
+   because the twist the kernels read is the parity of the
+   orientation-reversing steps and `f'(x) = 2x` is negative on the left.
+   `src/kneading.mojo` hands the word to the vendored `TuningPattern` and
+   gets back `((1,1),(1,0))` at `c = -1`, the constant the kernels pin from
+   combinatorics that never mention a Julia set. The parameter-plane
+   program's `angle_tuning` in `larsbx/finite-mandelbrot-research` computes
+   tunings from the other plane; nothing here compares the two yet.
 4. **Doubling on `Q/Z` to a constant-length substitution.** `tools/angle.py`
    computes preperiod and period of a rational angle exactly; the doubling
    map is the length-2 substitution the kernels model. Needs a statement of

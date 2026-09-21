@@ -35,6 +35,7 @@ Usable without a terminology declaration, in their ordinary field sense:
 - Krawczyk method, squarefree polynomial
 - quadrance, spread, incidence relation, vertex
 - Markov partition, transition matrix, transfer matrix
+- kneading prefix, critical itinerary, tuning, tuning pattern, star product
 - substitution, incidence matrix, primitive substitution
 - Perron root, Perron-Frobenius theorem, spectral radius
 - characteristic polynomial, algebraic integer, conjugate, Pisot number
