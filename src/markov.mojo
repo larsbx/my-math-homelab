@@ -18,12 +18,17 @@
 
 from finite_exact.bigint_z import BigZ, BIGZ_BASE
 from finite_exact.rat_q import Q, q_max
+from finite_linear_algebra.qpoly import RootBracket, charpoly, largest_root_bracket
 
 
 # The budget the Python oracle shares. A `BigZ` limb is base `10^9`, so a
 # limb count is a decimal digit count divided by nine and both sides compute
 # it exactly; sharing it in limbs is what lets the transcripts be compared.
 comptime MARKOV_LIMB_BUDGET = 40
+
+# The smoke case's own budgets, kept beside the one they accompany.
+comptime MARKOV_SMOKE_HORIZON = 64
+comptime MARKOV_SMOKE_STEPS = 256
 
 
 def coordinate_limbs(value: Q) -> Int:
@@ -107,36 +112,37 @@ def covering_matrix(c: Q, points: List[Q]) -> List[Int]:
     return out^
 
 
-def characteristic_polynomial(matrix: List[Int], size: Int) -> List[Q]:
-    """Coefficients of `det(x I - A)`, ascending, by Faddeev-LeVerrier.
-
-    Exact over `Q` and monic by construction. The recurrence is
-    `M_k = A (M_(k-1) + c_(k-1) I)`, which is `A M_(k-1) + c_(k-1) A`.
-    """
-    var current = List[Q]()
-    for _ in range(size * size):
-        current.append(Q.zero())
-    var coefficients = List[Q]()
-    coefficients.append(Q.one())
-    for step in range(1, size + 1):
-        var tail = coefficients[len(coefficients) - 1].copy()
-        var updated = List[Q]()
-        for i in range(size):
-            for j in range(size):
-                var total = Q.zero()
-                for k in range(size):
-                    total = total.add(Q.from_int(Int64(matrix[size * i + k])).mul(current[size * k + j]))
-                total = total.add(tail.mul(Q.from_int(Int64(matrix[size * i + j]))))
-                updated.append(total^)
-        current = updated.copy()
-        var trace = Q.zero()
-        for i in range(size):
-            trace = trace.add(current[size * i + i])
-        coefficients.append(trace.neg().div(Q.from_int(Int64(step))))
-    var out = List[Q]()
-    for i in range(len(coefficients)):
-        out.append(coefficients[len(coefficients) - 1 - i].copy())
+def rational_matrix(matrix: List[Int], size: Int) -> List[List[Q]]:
+    """The flat `0/1` covering matrix as rows over `Q`, for the kernels."""
+    var out = List[List[Q]]()
+    for i in range(size):
+        var row = List[Q]()
+        for j in range(size):
+            row.append(Q.from_int(Int64(matrix[size * i + j])))
+        out.append(row^)
     return out^
+
+
+def transition_polynomial(matrix: List[Int], size: Int) -> List[Q]:
+    """`det(x I - A)`, ascending, from the vendored `finite_linear_algebra`.
+
+    This module carried its own Faddeev-LeVerrier until the kernels grew one
+    that works in every dimension; `docs/tiling-connections-2026-09-20.md`,
+    section 7, called keeping it here the wrong place for it.
+    """
+    return charpoly(rational_matrix(matrix, size))
+
+
+def growth_bracket(matrix: List[Int], size: Int, width: Q, max_steps: Int) -> RootBracket:
+    """An isolating bracket of the largest real root of `det(x I - A)`.
+
+    The upstream routine isolates the largest root by a Sturm chain; the
+    Python oracle's `growth_bracket` bisects a sign change and lands on some
+    root. They answer different questions, so this one is not in the
+    transcript the two compare: `tests/test_markov.py` checks each against the
+    root it is supposed to bracket instead.
+    """
+    return largest_root_bracket(transition_polynomial(matrix, size), width, max_steps)
 
 
 def bigz_small(value: BigZ) -> Int:
@@ -174,9 +180,41 @@ def transcript_line(c: Q, horizon: Int) -> String:
     for i in range(len(matrix)):
         line += String(matrix[i])
     line += " poly="
-    var poly = characteristic_polynomial(matrix, size)
+    var poly = transition_polynomial(matrix, size)
     for i in range(len(poly)):
         if i > 0:
             line += ","
         line += q_text(poly[i])
     return line
+
+
+def markov_smoke() -> Bool:
+    """The two transition matrices the parameter domain supplies, and the
+    root each of them brackets.
+
+    The bracket comes from the vendored `finite_linear_algebra/qpoly.mojo`,
+    so this case is also the check that the vendored package works here. It
+    asserts a bracket, never a Pisot verdict: section 6 of
+    `docs/tiling-connections-2026-09-20.md` reads `2` as a trivial one, and
+    nothing in this repository computes that.
+    """
+    var width = Q(1, 1 << 20)
+    var chebyshev = postcritical_points(Q(-2, 1), MARKOV_SMOKE_HORIZON, MARKOV_LIMB_BUDGET)
+    if len(chebyshev) != 3:
+        return False
+    var pair = covering_matrix(Q(-2, 1), chebyshev)
+    if len(pair) != 4:
+        return False
+    for i in range(len(pair)):
+        if pair[i] != 1:
+            return False
+    var two = Q(2, 1)
+    var bracket = growth_bracket(pair, 2, width, MARKOV_SMOKE_STEPS)
+    if not bracket.found or not (bracket.lo.le(two) and two.le(bracket.hi)):
+        return False
+    var basilica = postcritical_points(Q(-1, 1), MARKOV_SMOKE_HORIZON, MARKOV_LIMB_BUDGET)
+    if len(basilica) != 2:
+        return False
+    var single = covering_matrix(Q(-1, 1), basilica)
+    var root = growth_bracket(single, 1, width, MARKOV_SMOKE_STEPS)
+    return root.found and root.exact and root.lo.eq(Q.one())

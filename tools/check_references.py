@@ -49,6 +49,10 @@ EXTERNAL: dict[str, str] = {
     "quadratic_orbit/preperiodic.mojo": KERNELS,
     "angle_doubling/angle.mojo": KERNELS,
     "projective/chart.mojo": KERNELS,
+    "finite_linear_algebra/qpoly.mojo": KERNELS,
+    "finite_linear_algebra/qlinalg.mojo": KERNELS,
+    "finite_linear_algebra/mat3.mojo": KERNELS,
+    "finite_linear_algebra/madic_ball.mojo": KERNELS,
     "projective/homogeneous.mojo": KERNELS,
     # Named by documents mirrored from the parameter-plane program.
     "docs/rank2-coordinate-substrate.md": MANDELBROT,
@@ -70,11 +74,10 @@ EXTERNAL: dict[str, str] = {
     "substitution_dynamics/words.mojo": KERNELS_UNPINNED,
     "substitution_dynamics/balanced_pairs.mojo": KERNELS_UNPINNED,
     "substitution_dynamics/discrepancy.mojo": KERNELS_UNPINNED,
-    "finite_linear_algebra/mat3.mojo": KERNELS_UNPINNED,
-    "finite_linear_algebra/qlinalg.mojo": KERNELS_UNPINNED,
-    "finite_linear_algebra/madic_ball.mojo": KERNELS_UNPINNED,
-    "finite_linear_algebra/qpoly.mojo": KERNELS_UNPINNED,
-    "docs/exact-polynomial-root-isolation-spec.md": KERNELS_UNPINNED,
+    "docs/exact-polynomial-root-isolation-spec.md": KERNELS,
+    # Named by the vendored `finite_linear_algebra` headers, which are upstream's.
+    "docs/madic-ball-arithmetic-spec.md": KERNELS,
+    "tools/qpoly_reference.py": KERNELS,
 }
 
 #: Tasks the mirrored specification names, which belong to upstream's manifest.

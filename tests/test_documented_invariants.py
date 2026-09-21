@@ -131,11 +131,12 @@ def test_the_scan_covers_this_repository_and_not_its_copies():
         "src/quadratic_orbit/preperiodic.mojo",
         "src/angle_doubling/angle.mojo",
         "src/projective/chart.mojo",
+        "src/finite_linear_algebra/qpoly.mojo",
         "src/mojo_smoke/report.mojo",
         "tools/vendoring/check_vendored_sync.py",
         "tools/references/check_references.py",
     }
     assert {path.name for path in VENDORED} == {
         "finite_exact", "quadratic_orbit", "angle_doubling", "projective",
-        "mojo_smoke", "vendoring", "references",
+        "finite_linear_algebra", "mojo_smoke", "vendoring", "references",
     }

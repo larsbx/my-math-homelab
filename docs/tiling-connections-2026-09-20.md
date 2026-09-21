@@ -40,7 +40,8 @@ Anything weaker is listed in section 7 as a direction, not as a bridge.
 The last row is new, and it is this note's own doing: item 2 below named the
 general-size characteristic polynomial and the largest-root isolation as
 missing, and `docs/exact-polynomial-root-isolation-spec.md` in that
-repository is the answer. What is still **not** built there is the Pisot
+repository is the answer. It is vendored here as of 2026-09-21, pinned in
+`vendored.toml` like every other package this repository borrows. What is still **not** built there is the Pisot
 screen the ledger scope `primitive Pisot substitutions` is named for: no
 module decides irreducibility, forms a minimal polynomial, or locates a root
 by quadrance. The ledger records the scope; no module computes it.
@@ -210,8 +211,10 @@ the two escalations for that reason.
   exact over `Q`, any size;
 - `growth_bracket(p)` -- a pair of rationals at which `p` has opposite signs,
   bracketing *a* root in `[1, 2]`. Not the largest one: bisection converges to
-  whichever root the sign changes lead it to, and nothing here separates the
-  Perron root from the others.
+  whichever root the sign changes lead it to. This is the Python oracle's
+  method. `src/markov.mojo` asks the vendored `largest_root_bracket` instead,
+  which isolates the largest by a Sturm chain, so the two are checked against
+  the roots they should bracket rather than against each other.
 
 Both sides refuse rather than guess. A parameter whose critical orbit neither
 closes nor escapes -- every parabolic one, and by section 3.1 every
@@ -289,18 +292,20 @@ a precise statement of what Phase 4 buys.
 
 1. **Transition matrix to incidence matrix.** Built (section 2). Needs
    nothing. Exercised by two parameters.
-2. **Perron root to Pisot screen.** Two of the three things this item named
-   now exist upstream, in `finite_linear_algebra/qpoly.mojo`: the
-   characteristic polynomial in any dimension, and `largest_root_bracket`,
-   which isolates the largest real root by a Sturm chain and returns a
-   bracket carrying its own sign change. What remains is the Pisot condition
-   itself -- irreducibility, the minimal polynomial, and a root-location test
-   by quadrance -- and, on this side, vendoring: `vendored.toml` here does not
-   carry `finite_linear_algebra`, so `tools/markov.py` and `src/markov.mojo`
-   keep their own characteristic polynomial and their own bracket until it
-   does. The local `growth_bracket` finds *a* root; the upstream one finds
-   the largest, and replacing the first with the second is the vendoring
-   step, not a new derivation.
+2. **Perron root to Pisot screen.** Built as far as it goes. The
+   characteristic polynomial in any dimension and `largest_root_bracket` are
+   upstream in `finite_linear_algebra/qpoly.mojo`; as of this rung the
+   package is vendored here and `src/markov.mojo` calls them instead of
+   carrying its own copy of the first. `tools/markov.py` keeps its own of
+   both, because it is the independent oracle and a differential pair with
+   one implementation in it is not one. The two brackets answer different
+   questions -- the oracle bisects a sign change and lands on whichever root
+   that leads to, the kernel isolates the largest by a Sturm chain -- so
+   neither is in the transcript the two compare, and each is checked against
+   the root it is supposed to bracket. What is still missing is the Pisot
+   condition itself: irreducibility, the minimal polynomial, and a
+   root-location test by quadrance. None of the three exists anywhere in the
+   estate.
 3. **Kneading data to tuning substitution.** The parameter-plane program
    already computes tunings (`angle_tuning` in
    `larsbx/finite-mandelbrot-research`); the dynamical-plane counterpart is
@@ -312,7 +317,10 @@ a precise statement of what Phase 4 buys.
    map is the length-2 substitution the kernels model. Needs a statement of
    what the identification preserves, which is the part that is missing.
 5. **`madic_ball` to anything here.** No identification found. Listed so that
-   the absence is on the record rather than implied.
+   the absence is on the record rather than implied -- and it needs saying
+   twice now, because item 2 vendored the package whole and the module is
+   sitting in `src/finite_linear_algebra/` unused. That is a fact about how
+   packages are vendored, not a connection.
 
 ## 8. Rendering, and the doctrine it inherits
 

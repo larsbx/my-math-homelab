@@ -65,6 +65,48 @@ def test_a_faithful_tree_passes(tree):
     assert audit.audit() == []
 
 
+def test_a_tree_without_a_manifest_exempts_nothing(tree):
+    """No `vendored.toml` means nothing is vendored, so C7 applies to all."""
+    assert audit.vendored_exempt() == ()
+
+
+def test_a_vendored_module_is_exempt_from_the_citation(tree):
+    """A vendored file carries upstream's header, so C7 is upstream's.
+
+    The exemption is read from the manifest rather than written into the
+    audit, so adding a package is one step and not two.
+    """
+    (tree / "vendored.toml").write_text(
+        '[[package]]\nname = "borrowed"\nrepository = "elsewhere"\n'
+        'commit = "' + "0" * 40 + '"\nroot = "src"\n\n[package.files]\n',
+        encoding="utf-8",
+    )
+    (tree / "src" / "borrowed").mkdir()
+    (tree / "src" / "borrowed" / "lifted.mojo").write_text(CONSUMER, encoding="utf-8")
+    (tree / "docs" / "exact-arithmetic-binding.md").write_text(
+        "| Spec item | Module | Class | Notes |\n| --- | --- | --- | --- |\n"
+        "| 1–2 kernel | `src/kernel.mojo` | DEMO | the one module |\n"
+        "| 1–2 borrowed | `src/borrowed/lifted.mojo` | CONFORMS | vendored |\n",
+        encoding="utf-8",
+    )
+    assert audit.vendored_exempt() == ("src/borrowed/",)
+    assert audit.audit() == []
+
+
+def test_an_unvendored_module_still_owes_the_citation(tree):
+    """The same file outside a vendored package is named by C7."""
+    (tree / "src" / "lifted.mojo").write_text(CONSUMER, encoding="utf-8")
+    (tree / "docs" / "exact-arithmetic-binding.md").write_text(
+        "| Spec item | Module | Class | Notes |\n| --- | --- | --- | --- |\n"
+        "| 1–2 kernel | `src/kernel.mojo` | DEMO | the one module |\n"
+        "| 1–2 lifted | `src/lifted.mojo` | DEMO | not vendored |\n",
+        encoding="utf-8",
+    )
+    assert audit.audit() == [
+        "src/lifted.mojo does not cite docs/rational-interval-arithmetic-spec.md (C7)"
+    ]
+
+
 def test_an_unbound_arithmetic_consumer_is_named(tree):
     (tree / "src" / "stray.mojo").write_text(HEADER + CONSUMER, encoding="utf-8")
     assert audit.audit() == ["arithmetic consumer lacks binding row: src/stray.mojo"]

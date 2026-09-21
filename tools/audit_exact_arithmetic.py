@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import re
 import sys
+import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,9 +40,22 @@ ROW_RE = re.compile(r"^\|(?P<cells>.+)\|\s*$")
 ARITHMETIC_IMPORT_RE = re.compile(r"^from finite_exact\.\w+ import", re.M)
 FLOAT_RE = re.compile(r"\b(?:Float16|Float32|Float64|SIMD\[DType\.float|float)\b|\b\d+\.\d+\b")
 
-#: Vendored package files carry upstream's headers; their citation is
-#: upstream's obligation, and editing them here would be drift, not compliance.
-VENDORED_EXEMPT = ("src/finite_exact/", "src/quadratic_orbit/", "src/mojo_smoke/")
+def vendored_exempt() -> tuple[str, ...]:
+    """Prefixes of the vendored packages, read from the manifest.
+
+    Vendored package files carry upstream's headers; their citation is
+    upstream's obligation, and editing them here would be drift, not
+    compliance. The list used to be written out here, which meant vendoring a
+    package and remembering to widen an audit were two steps instead of one.
+    `vendored.toml` is the one place that knows what is vendored. A tree with
+    no manifest vendors nothing, so it gets no exemptions -- which is the
+    fail-closed direction.
+    """
+    path = ROOT / "vendored.toml"
+    if not path.exists():
+        return ()
+    manifest = tomllib.loads(path.read_text(encoding="utf-8"))
+    return tuple(f"{pkg['root']}/{pkg['name']}/" for pkg in manifest.get("package", []))
 
 REQUIRED_SPEC_SECTIONS = (
     "## 0. The problem being solved",
@@ -143,7 +157,7 @@ def audit() -> list[str]:
             if not path.exists():
                 errors.append(f"binding row names missing file {rel}")
                 continue
-            if rel.startswith(VENDORED_EXEMPT):
+            if rel.startswith(vendored_exempt()):
                 continue
             if SPEC_REL not in path.read_text(encoding="utf-8"):
                 errors.append(f"{rel} does not cite {SPEC_REL} (C7)")
