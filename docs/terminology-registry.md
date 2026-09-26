@@ -33,6 +33,8 @@ Usable without a terminology declaration, in their ordinary field sense:
 - kneading sequence, orbit portrait
 - dyadic box, interval arithmetic
 - Krawczyk method, squarefree polynomial
+- Ford circles (the Farey tangency family; also inside the sibling repository
+  slug `mandelbrot-bulbs-and-ford-circles-research`)
 - quadrance, spread, incidence relation, vertex
 - Markov partition, transition matrix, transfer matrix
 - kneading prefix, critical itinerary, tuning, tuning pattern, star product

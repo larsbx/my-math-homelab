@@ -14,6 +14,8 @@ jobs:
           cache: true
       - name: Build the canonical Mojo smoke binary
         run: pixi run mojo-build
+      - name: Audit estate repository architecture
+        run: pixi run estate-audit
       - name: Verify vendored package digests
         run: pixi run vendored
       - name: Run the canonical Mojo finite-core smoke suite

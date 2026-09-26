@@ -161,9 +161,14 @@ def units(path: Path) -> list[tuple[int, str, str]]:
 
 
 def mask(clause: str, terms: list[str]) -> str:
-    """Blank registered field terms, keeping offsets so denials stay in reach."""
+    """Blank registered field terms, keeping offsets so denials stay in reach.
+
+    A space in a registered term also matches a hyphen, so a term reads the
+    same inside a repository slug (`ford-circles`).
+    """
     for term in terms:
-        clause = re.sub(re.escape(term), " " * len(term), clause, flags=re.IGNORECASE)
+        pattern = re.escape(term).replace(r"\ ", r"[\s-]")
+        clause = re.sub(pattern, lambda found: " " * len(found.group(0)), clause, flags=re.IGNORECASE)
     return clause
 
 

@@ -1,0 +1,115 @@
+version = 1
+template = "estate-repository-v1"
+
+[repository]
+id = "larsbx/finite-julia-set-research"
+kind = "research"
+lifecycle = "active"
+default_branch = "main"
+layout_status = "transitional"
+
+[principles]
+ordering = ["authority", "domain", "language"]
+empty_silos = "forbidden"
+cross_language_disagreement = "fail_closed"
+generated_surfaces = "derived_only"
+vendor_code = "non_local"
+experimental_code = "non_authoritative"
+
+[[plane]]
+id = "policy"
+target = "policy"
+authority = "governance"
+required = true
+current = ["estate.toml", "backend.toml", "polyglot.manifest.toml", "vendored.toml"]
+
+[[plane]]
+id = "kernel"
+target = "kernel"
+authority = "canonical_executable"
+required = true
+current = ["src"]
+
+[[plane]]
+id = "reference"
+target = "reference"
+authority = "non_authoritative_reference"
+required = true
+current = ["tools/angle.py", "tools/box_classifier.py", "tools/budget.py", "tools/chart.py", "tools/dyadic.py", "tools/enclosure_bound.py", "tools/escape_certificate.py", "tools/gaussian_q.py", "tools/interval_box.py", "tools/jet.py", "tools/julia_reference.py", "tools/kneading.py", "tools/markov.py", "tools/parameter_corpus.py", "tools/preperiodic.py", "tools/ray.py", "tools/scaled.py", "tools/separator.py", "tools/taylor.py"]
+
+[[plane]]
+id = "oracles"
+target = "oracles"
+authority = "non_authoritative_oracle"
+required = true
+current = ["tools/parabolic_index.py"]
+
+[[plane]]
+id = "schemas"
+target = "schemas"
+authority = "contract"
+required = true
+current_globs = [".polyglot/*.schema.json"]
+
+[[plane]]
+id = "conformance"
+target = "conformance"
+authority = "evidence"
+required = true
+current = ["tests", "corpus.json", ".polyglot/conformance-v1.json"]
+
+[[plane]]
+id = "vendor"
+target = "vendor"
+authority = "pinned_external"
+required = true
+current = ["src/finite_exact", "src/finite_linear_algebra", "src/quadratic_orbit", "src/mojo_smoke", "src/angle_doubling", "src/projective", "src/substitution_dynamics", "tools/vendoring", "tools/references"]
+
+[[plane]]
+id = "tooling"
+target = "tools"
+authority = "repository_tooling"
+required = true
+current = ["tools/audit_exact_arithmetic.py", "tools/audit_terminology.py", "tools/check_references.py", "tools/make_regime_ledger.py"]
+
+[[plane]]
+id = "docs"
+target = "docs"
+authority = "exposition"
+required = true
+current = ["docs", "ROADMAP.md"]
+
+[[language]]
+name = "Mojo"
+authority = "canonical"
+roles = ["kernel"]
+acceptance_authority = true
+
+[[language]]
+name = "Python"
+authority = "supporting"
+roles = ["reference", "audit", "generation"]
+acceptance_authority = false
+
+[[language]]
+name = "Lean"
+authority = "supporting"
+roles = ["formal_proof_target"]
+acceptance_authority = false
+
+[migration]
+mode = "boundary_first"
+mass_move = false
+next = [
+  "separate vendored Mojo packages from local kernel modules under src",
+  "move Python reference semantics out of tools into reference",
+  "split CI by authority plane",
+]
+
+[governance]
+repository = "larsbx/estate-governance"
+revision = "bd0a9491488f54f28b4a3b9076051349092383bb"
+
+[governance.sha256]
+"docs/architecture/estate-repository-template-v1.md" = "b5eab7543c877484a159b47cbe36aa6255c51bd6ec5863dbb9fe13d9a2c06f6b"
+"tools/audit_estate_layout.py" = "f462c397dee8a596a2a7a8c40fd5ded2989652322186c568b712366294251003"
