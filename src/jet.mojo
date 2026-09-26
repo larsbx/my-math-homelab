@@ -145,6 +145,12 @@ def jet_smoke() -> Bool:
     var c_minus = ComplexIQ.singleton(Q(-3, 4), Q.zero())
     if jet_vanishing_order(jet_residual(ComplexIQ.singleton(Q(-1, 2), Q.zero()), c_minus, 0, 2, 6)) != 3:
         return False
+    # lambda = i gives c = 1/4 + i/2 and z0 = i/2.  The fourth
+    # iterate is tangent to the identity to order q+1 = 5.
+    var c_q4 = ComplexIQ.singleton(Q(1, 4), Q(1, 2))
+    var z_q4 = ComplexIQ.singleton(Q.zero(), Q(1, 2))
+    if jet_vanishing_order(jet_residual(z_q4, c_q4, 0, 4, 9)) != 5:
+        return False
     # Order one is too low to see a double root, and says nothing rather than
     # zero.
     if jet_vanishing_order(jet_residual(critical, c_dendrite, 2, 2, 1)) != -1:

@@ -164,6 +164,7 @@ def test_the_critical_point_doubles_the_multiplicity_and_nothing_else_does():
 PARABOLIC = [
     ("c=1/4, multiplier one, one petal", GQ(F(1, 4), F(0)), GQ(F(1, 2), F(0)), 0, 1, 2),
     ("c=-3/4, multiplier minus one, two petals", GQ(F(-3, 4), F(0)), GQ(F(-1, 2), F(0)), 0, 2, 3),
+    ("c=1/4+i/2, multiplier i, order-five fourth-iterate contact", GQ(F(1, 4), F(1, 2)), GQ(F(0), F(1, 2)), 0, 4, 5),
 ]
 
 
