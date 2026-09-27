@@ -3,8 +3,8 @@
 **Status:** research-direction note, dated 2026-09-20, carrying two theorems
 of this repository -- section 2.2, that the partition is Markov, and section
 3.3, which classifies the postcritically finite parameters of `Q(i)` -- and
-the rung that computes what they describe (`tools/markov.py`,
-`src/markov.mojo`, `tests/test_markov.py`). The note states a programme; the
+the rung that computes what they describe (`reference/markov.py`,
+`kernel/markov.mojo`, `tests/test_markov.py`). The note states a programme; the
 theorems are unconditional and are not part of the programme's speculation.
 
 ## 0. The goal, stated so it can fail
@@ -47,7 +47,7 @@ module decides irreducibility, forms a minimal polynomial, or locates a root
 by quadrance. The ledger records the scope; no module computes it.
 
 **The dynamical side is this repository.** What is built and exact:
-critical-orbit verdicts over `Q(i)` (`tools/julia_reference.py`), preperiodic
+critical-orbit verdicts over `Q(i)` (`reference/julia_reference.py`), preperiodic
 certificates and multiplicities (`docs/preperiodic-certificates.md`), rational
 angles under doubling on `Q/Z` (`docs/angle-types-and-landing.md`), the
 three-valued classifier and its refinement theorem
@@ -81,8 +81,8 @@ with elements `p_0 < p_1 < ... < p_m`, and `I_i = [p_(i-1), p_i]` for
 A[i][j] = 1  iff  I_j is contained in f(I_i),   else 0.
 ```
 
-`tools/markov.py` computes `P`, the intervals, and `A` in exact rational
-arithmetic; `src/markov.mojo` computes the same over `Q`, and
+`reference/markov.py` computes `P`, the intervals, and `A` in exact rational
+arithmetic; `kernel/markov.mojo` computes the same over `Q`, and
 `tests/test_markov.py` compares the two transcripts.
 
 ### 2.2 Theorem (the partition is Markov, and `A` is its transition matrix)
@@ -177,12 +177,12 @@ c in {0, -1, -2, i, -i}.
 
 *Proof.* By 3.1 such a `c` lies in `Z[i]`; by 3.2 it satisfies `N(c) <= 4`;
 there are thirteen such Gaussian integers, and
-`tools/markov.py::gaussian_pcf_parameters` decides each by exact orbit
+`reference/markov.py::gaussian_pcf_parameters` decides each by exact orbit
 verdict. The five above are preperiodic and the other eight escape. []
 
 The five are `0` (periodic, period 1), `-1` (period 2), `-2` (preperiod 2,
 period 1), and `i`, `-i` (preperiod 2, period 2). Four were rows of
-`tools/parameter_corpus.py` when this was written and `-i` was not; it is one
+`reference/parameter_corpus.py` when this was written and `-i` was not; it is one
 now, and `tests/test_parameter_corpus.py` checks the corpus against this
 theorem in both directions, so the corpus cannot hold a postcritically finite
 parameter this section does not list, or omit one it does. `-i` is the
@@ -208,7 +208,7 @@ the two escalations for that reason.
 
 ## 4. What the rung computes, and what came out
 
-`tools/markov.py` and `src/markov.mojo`:
+`reference/markov.py` and `kernel/markov.mojo`:
 
 - `postcritical_points(c)` -- the sorted finite set `P`, or a refusal;
 - `partition(c)` -- the intervals and `A`, or a refusal;
@@ -217,7 +217,7 @@ the two escalations for that reason.
 - `growth_bracket(p)` -- a pair of rationals at which `p` has opposite signs,
   bracketing *a* root in `[1, 2]`. Not the largest one: bisection converges to
   whichever root the sign changes lead it to. This is the Python oracle's
-  method. `src/markov.mojo` asks the vendored `largest_root_bracket` instead,
+  method. `kernel/markov.mojo` asks the vendored `largest_root_bracket` instead,
   which isolates the largest by a Sturm chain, so the two are checked against
   the roots they should bracket rather than against each other.
 
@@ -300,8 +300,8 @@ a precise statement of what Phase 4 buys.
 2. **Perron root to Pisot screen.** Built as far as it goes. The
    characteristic polynomial in any dimension and `largest_root_bracket` are
    upstream in `finite_linear_algebra/qpoly.mojo`; as of this rung the
-   package is vendored here and `src/markov.mojo` calls them instead of
-   carrying its own copy of the first. `tools/markov.py` keeps its own of
+   package is vendored here and `kernel/markov.mojo` calls them instead of
+   carrying its own copy of the first. `reference/markov.py` keeps its own of
    both, because it is the independent oracle and a differential pair with
    one implementation in it is not one. The two brackets answer different
    questions -- the oracle bisects a sign change and lands on whichever root
@@ -313,18 +313,18 @@ a precise statement of what Phase 4 buys.
    estate.
 3. **Kneading data to tuning substitution.** Built, 2026-09-21:
    `docs/kneading-and-tuning.md`. It was not quite the re-encoding this line
-   expected. `tools/ray.py`'s itinerary cuts at the real axis and decides
+   expected. `reference/ray.py`'s itinerary cuts at the real axis and decides
    nothing for a real parameter, whose orbit lies on it, so the word needed a
    different cut -- `x = 0`, through the critical point -- and a letter
    convention that is the opposite of the one a coordinate sign suggests,
    because the twist the kernels read is the parity of the
    orientation-reversing steps and `f'(x) = 2x` is negative on the left.
-   `src/kneading.mojo` hands the word to the vendored `TuningPattern` and
+   `kernel/kneading.mojo` hands the word to the vendored `TuningPattern` and
    gets back `((1,1),(1,0))` at `c = -1`, the constant the kernels pin from
    combinatorics that never mention a Julia set. The parameter-plane
    program's `angle_tuning` in `larsbx/finite-mandelbrot-research` computes
    tunings from the other plane; nothing here compares the two yet.
-4. **Doubling on `Q/Z` to a constant-length substitution.** `tools/angle.py`
+4. **Doubling on `Q/Z` to a constant-length substitution.** `reference/angle.py`
    computes preperiod and period of a rational angle exactly; the doubling
    map is the length-2 substitution the kernels model. Needs a statement of
    what the identification preserves, which is the part that is missing.

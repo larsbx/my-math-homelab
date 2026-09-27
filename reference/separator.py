@@ -15,7 +15,7 @@ given up is the identification of the resulting relation with the classical
 fiber relation; `docs/finite-separator.md` section 5 says exactly what that
 costs.
 
-This is the Python side of a differential pair; `src/separator.mojo` is the
+This is the Python side of a differential pair; `kernel/separator.mojo` is the
 Mojo side.
 """
 

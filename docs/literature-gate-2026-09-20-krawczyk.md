@@ -67,7 +67,7 @@ records that the theorem does not secretly say more.
 
 | Tag | Where used | Verdict |
 | --- | --- | --- |
-| `KrawczykMooreUniqueness` | `docs/preperiodic-certificates.md` section 2, `tools/preperiodic.py`, `quadratic_orbit/preperiodic.mojo` | ACCEPTED, including the complex instance (findings 1-2) |
+| `KrawczykMooreUniqueness` | `docs/preperiodic-certificates.md` section 2, `reference/preperiodic.py`, `quadratic_orbit/preperiodic.mojo` | ACCEPTED, including the complex instance (findings 1-2) |
 
 ## What this gate did not do
 

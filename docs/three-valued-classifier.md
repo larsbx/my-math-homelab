@@ -20,8 +20,8 @@ G_c(B) -> OUT | IN | UNKNOWN
 - `UNKNOWN` means neither certificate fired at this resolution. It is not a
   statement about `B`.
 
-The implementations are `tools/box_classifier.py` and
-`src/box_classifier.mojo`, and they are compared against each other the way
+The implementations are `reference/box_classifier.py` and
+`kernel/box_classifier.mojo`, and they are compared against each other the way
 the corpus verdicts are.
 
 ## 1. `OUT`: the escape certificate on a whole box

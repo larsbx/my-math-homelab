@@ -13,7 +13,7 @@ interval remainder, guaranteeing
 for every z = centre + e with e in domain,    g(z) in p(e) + remainder
 ```
 
-`tools/jet.py` and `src/jet.mojo` supply `p`, exactly over `Q(i)`. What is
+`reference/jet.py` and `kernel/jet.mojo` supply `p`, exactly over `Q(i)`. What is
 added here is the remainder and the guarantee. A plain enclosure treats every
 occurrence of a variable as independent, so widths inflate through an iterated
 map; a model carries the correlation in `p` and absorbs only what the
@@ -96,7 +96,7 @@ for `z^2 + c` that is two.
 
 It does not claim a tighter enclosure anywhere it has not been measured. It
 does not reduce coordinate bit size -- the exact rationals still square every
-step, so the budget of `tools/budget.py` binds exactly as before, and a model
+step, so the budget of `reference/budget.py` binds exactly as before, and a model
 costs *more* bits than a plain box for the same depth. It does not implement
 affine arithmetic, which stays out of scope. And it changes no certificate:
 every verdict in this repository still rests on the enclosure it always did,

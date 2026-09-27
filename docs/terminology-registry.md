@@ -33,6 +33,8 @@ Usable without a terminology declaration, in their ordinary field sense:
 - kneading sequence, orbit portrait
 - dyadic box, interval arithmetic
 - Krawczyk method, squarefree polynomial
+- Ford circles (the Farey tangency family; also inside the sibling repository
+  slug `mandelbrot-bulbs-and-ford-circles-research`)
 - quadrance, spread, incidence relation, vertex
 - Markov partition, transition matrix, transfer matrix
 - kneading prefix, critical itinerary, tuning, tuning pattern, star product
@@ -105,7 +107,7 @@ straddles the origin is outside the chart, and the verdict there is
 `UNKNOWN`, never a chart value computed anyway.
 Use discipline: name the chart whenever a statement is made about infinity.
 "Escape" without a chart is the affine inequality of
-`src/julia_orbit.mojo` and nothing more.
+`kernel/julia_orbit.mojo` and nothing more.
 
 ### Escape certificate
 
@@ -222,7 +224,7 @@ it only as a rejected claim, and only with its gate.
 ## Enforcement of the forbidden usages
 
 `tools/audit_terminology.py` (`pixi run terminology`) reads this file and
-scans every non-vendored `docs/*.md`, `tools/*.py`, and `src/*.mojo` for the
+scans every non-vendored `docs/*.md`, `tools/*.py`, `reference/*.py`, `oracles/*.py`, and `kernel/*.mojo` for the
 circle-family vocabulary of the first forbidden usage. An occurrence passes
 only if it is a field term registered above, is denied in its own clause, sits
 under a heading that forbids, or carries an explicit

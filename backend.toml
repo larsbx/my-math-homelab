@@ -5,7 +5,7 @@
 # The finite-regime certificate engine must not accept proof-grade
 # certificates unless this manifest declares a backend that satisfies the full
 # exact-arithmetic contract and the corresponding implementation exists in
-# src/. Phase 0 has a checker, a corpus, and two implementations that agree;
+# kernel/. Phase 0 has a checker, a corpus, and two implementations that agree;
 # it has no certificate grammar, so nothing here is proof-grade.
 
 [backend]

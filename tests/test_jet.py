@@ -39,7 +39,7 @@ def test_truncated_multiplication_drops_and_does_not_round():
 @pytest.mark.parametrize("steps", [0, 1, 2, 3])
 def test_the_jets_first_two_coefficients_are_the_value_and_the_derivative(point, steps):
     """Order zero is `f^n(z)` and order one is `(f^n)'(z)`, which the chain
-    rule computes separately in `tools/preperiodic.py`."""
+    rule computes separately in `reference/preperiodic.py`."""
     state = orbit(point, CI, steps, 2)
     value = point
     for _ in range(steps):

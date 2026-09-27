@@ -1,7 +1,7 @@
 # The escape criterion, derived
 
 **Status:** derivation, dated 2026-09-20. It states what
-`src/julia_orbit.mojo` was entitled to conclude from its escape test, what it
+`kernel/julia_orbit.mojo` was entitled to conclude from its escape test, what it
 was not, and the finite certificate that closes the gap. The proofs below are
 elementary and are this repository's own; nothing classical is imported and no
 theorem tag is added.
@@ -118,7 +118,7 @@ now `test_the_lower_branch_is_rejected` in
 The admissible ratios are exactly the interval `1 < r < (sqrt(t) - 1)^2`,
 which is nonempty precisely when `t > 4`. So the certificate and the classical
 threshold agree about where they apply, and the strict inequality in
-`src/julia_orbit.mojo` is the right one: at `t = 4` the interval is empty.
+`kernel/julia_orbit.mojo` is the right one: at `t = 4` the interval is empty.
 
 ## 4. What `ESCAPES` now means
 
@@ -128,8 +128,8 @@ threshold agree about where they apply, and the strict inequality in
 | concluded | the orbit tends to infinity | the quadrance grows by at least a rational `r > 1` at every step from `n` on |
 | rests on | an unnamed classical import | section 2, in this repository |
 
-`tools/escape_certificate.py` and `src/escape_certificate.mojo` compute the
-ratio; `tools/julia_reference.py` attaches it to the verdict, and a test
+`reference/escape_certificate.py` and `kernel/escape_certificate.mojo` compute the
+ratio; `reference/julia_reference.py` attaches it to the verdict, and a test
 asserts that every `ESCAPES` row of the corpus carries one. A parameter with
 no certificate is not thereby bounded: absence is the fail-closed reading,
 not a claim.

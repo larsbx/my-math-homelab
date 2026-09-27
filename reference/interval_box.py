@@ -3,7 +3,7 @@
 Specification: docs/rational-interval-arithmetic-spec.md.
 
 `IQ` and `ComplexBox` here are the Python side of the differential pair whose
-Mojo side is `src/finite_exact/closed_q.mojo`: the same enclosure semantics,
+Mojo side is `vendor/mojo/finite_exact/closed_q.mojo`: the same enclosure semantics,
 the same fail-closed rejection, and the same refusal to promote an unknown
 containment to equality. They exist so the classifier can be checked without a
 Mojo toolchain, not to be a second authority.

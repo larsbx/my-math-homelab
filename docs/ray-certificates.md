@@ -21,7 +21,7 @@ has is what shows it.
 In the chart at infinity, `u = 1/z`, the point at infinity is an ordinary
 coordinate record with value zero, fixed, and superattracting of order two
 (`docs/projective-completion-and-escape.md` section 3). Its neighbourhood is
-a bounded box, not an unbounded one, and `tools/chart.py` computes the step
+a bounded box, not an unbounded one, and `reference/chart.py` computes the step
 `u -> u^2 / (1 + c u^2)` there, refusing where the chart's domain fails
 rather than being handed a caller contract.
 
@@ -90,7 +90,7 @@ value.
 
 ## 3. What this buys the separator
 
-`tools/separator.py` treats every cut alike, and
+`reference/separator.py` treats every cut alike, and
 `docs/literature-gate-2026-09-20-cut-equivalence.md` showed that an arbitrary
 cut is blind in different places from a ray pair. At a real parameter the cut
 `y = 0` is not arbitrary:
@@ -103,7 +103,7 @@ real axis  =  the two certified escaping half-lines  ∪  an uncertified stretch
 So this one cut runs along genuine rays outside and along trapped real
 dynamics inside. It is the first cut in this repository with a dynamical
 warrant rather than only a soundness proof, and `REAL_RAYS` in
-`tools/parameter_corpus.py` declares the witness for every real row of the
+`reference/parameter_corpus.py` declares the witness for every real row of the
 corpus.
 
 The **itinerary** of an escaping orbit relative to that cut -- the sequence of

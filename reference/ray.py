@@ -11,7 +11,7 @@ exactly representable.
 For a **real** rational parameter the real axis carries both pieces. Beyond a
 rational `outer` the half-line is the angle-zero ray, and the certificate is a
 rational growth witness; around the origin a rational `segment` is forward
-invariant and lies in `K_c`. So the cut `y = 0` of `tools/separator.py` is not
+invariant and lies in `K_c`. So the cut `y = 0` of `reference/separator.py` is not
 an arbitrary line at such a parameter: it runs along genuine rays outside and
 along trapped real dynamics inside.
 
@@ -101,7 +101,7 @@ def itinerary(
     `None` as soon as a step is undecided or the coordinates outgrow the
     budget, because a word with a gap in it is not a word and a word that
     stopped for want of room is not a shorter word. Each entry is `POSITIVE`
-    or `NEGATIVE` from `tools/separator.py`, and the whole of it is a
+    or `NEGATIVE` from `reference/separator.py`, and the whole of it is a
     statement about the enclosure: every point of the box has its iterates on
     those sides.
     """

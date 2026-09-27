@@ -89,21 +89,21 @@ open one, on the same parameter.
 
 ## The corpus and the ledger
 
-`tools/parameter_corpus.py` is the single source. Ten parameters cover every
+`reference/parameter_corpus.py` is the single source. Ten parameters cover every
 regime, each with the witness a checker needs, and they include **every**
 postcritically finite parameter of `Q(i)` -- there are five, by section 3.3 of
 `docs/tiling-connections-2026-09-20.md`, and `tests/test_parameter_corpus.py`
 fails if the corpus holds any other number of them. `tools/make_regime_ledger.py`
 renders three surfaces from it -- `docs/J1_regime_ledger.md`, `corpus.json`,
-and `src/parameter_corpus.mojo` -- filling the verified columns by re-running
+and `kernel/parameter_corpus.mojo` -- filling the verified columns by re-running
 the exact oracle, so a surface can only say what was decided or what a row
 declared as an unverified tag. A hand-edited surface fails
 `make_regime_ledger.py --check` rather than drifting.
 
-Two implementations decide every row: the Mojo kernel `src/julia_orbit.mojo`
+Two implementations decide every row: the Mojo kernel `kernel/julia_orbit.mojo`
 over the vendored `finite_exact` and `quadratic_orbit` packages, and the
 Python reference oracle
-`tools/julia_reference.py`. `tests/test_mojo_replay.py` compares their
+`reference/julia_reference.py`. `tests/test_mojo_replay.py` compares their
 transcripts line for line, so neither one is the reason the other is believed.
 
 ## Fail closed, and which way closed points
@@ -171,7 +171,7 @@ docs/
   julia-program-design-analysis-2026-09-19.md   why this program, and its decisions
   J1_proof_definition.md                        what J1 claims and what discharges it
   J1_finite_classical_dictionary.md             finite object <-> classical referent
-  J1_regime_ledger.md                           GENERATED from tools/parameter_corpus.py
+  J1_regime_ledger.md                           GENERATED from reference/parameter_corpus.py
   literature-gate-2026-09-19.md                 the tags, judged
   literature-gate-2026-09-19-transfer.md        the filled-Julia transfer, judged
   exact-arithmetic-binding.md                   this repository's binding table
@@ -183,7 +183,7 @@ docs/
   terminology-registry.md                       declared vocabulary
   terminology-governance.md                     mirrored governance process
   rational-interval-arithmetic-spec.md          mirrored exact-arithmetic contract
-src/
+kernel/                     canonical Mojo executable
   julia_orbit.mojo          escape bound, cycle checks, multiplier classification
   box_classifier.mojo       OUT, IN and UNKNOWN over boxes
   enclosure_bound.mojo      how far an enclosure drifts from its orbit
@@ -192,10 +192,7 @@ src/
   corpus_transcript.mojo    the transcript the differential test consumes
   parameter_corpus.mojo     GENERATED
   smoke_tests.mojo          the canonical Mojo smoke suite
-  finite_exact/             vendored from larsbx/finite-math-kernels, pinned in vendored.toml
-  quadratic_orbit/          the seeded orbit of z^2 + c, same upstream and pin
-  mojo_smoke/               the smoke reporter, same upstream and pin
-tools/
+reference/                  Python reference semantics, never an acceptance path
   gaussian_q.py             exact Gaussian-rational coordinate records
   julia_reference.py        the Python reference oracle
   parameter_corpus.py       the single source of the corpus
@@ -203,12 +200,23 @@ tools/
   enclosure_bound.py        the width bounds, Python side
   escape_certificate.py     the escape derivation, Python side
   interval_box.py           exact rational boxes for the Python side
+oracles/
+  parabolic_index.py        research oracle; accepts nothing
+vendor/                     pinned in vendored.toml; never edited here
+  mojo/                     Mojo include root (-I vendor/mojo)
+    finite_exact/           vendored from larsbx/finite-math-kernels
+    quadratic_orbit/        the seeded orbit of z^2 + c, same upstream
+    mojo_smoke/             the smoke reporter, same upstream
+  python/
+    references/             the reference-check engine, same upstream
+    vendoring/              the vendoring checker, same upstream
+tools/
   make_regime_ledger.py     renders every generated surface; --check gates them
   audit_exact_arithmetic.py the binding-table and no-float gate
   check_references.py       this repository's reference policy
-  references/               the reference-check engine, same upstream and pin
-  vendoring/                the vendoring checker, same upstream and pin
+  audit_estate_layout.py    estate layout audit, vendored from larsbx/estate-governance
 tests/
+estate.toml                 estate manifest (canonical layout)
 corpus.json                 GENERATED
 backend.toml                arithmetic backend readiness
 vendored.toml               vendored digests

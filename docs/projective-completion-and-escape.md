@@ -8,7 +8,7 @@ no certificate in this repository changes until Phase 1 implements one.
 
 ## 0. What escape is in this repository today
 
-`src/julia_orbit.mojo` decides escape by an affine test:
+`kernel/julia_orbit.mojo` decides escape by an affine test:
 
 ```text
 N(z) > max(4, N(c)),        N(x, y) = x^2 + y^2

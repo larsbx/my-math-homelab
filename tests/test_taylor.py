@@ -66,7 +66,7 @@ def test_one_step_at_a_high_enough_order_truncates_nothing():
 
 def test_a_low_order_truncates_and_pays_for_it():
     """At order one the square term is dropped from the jet and appears in the
-    remainder instead, which is the whole difference from `tools/jet.py`."""
+    remainder instead, which is the whole difference from `reference/jet.py`."""
     model = taylor.step(taylor.variable(GQ(F(-1), F(0)), F(1, 64), 1), GQ.of(0))
     assert model.polynomial == (GQ.of(1), GQ.of(-2))
     assert model.remainder.re.width() > 0

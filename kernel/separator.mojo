@@ -12,7 +12,7 @@
 # Soundness never depends on where a cut is drawn. A badly placed cut is
 # uninformative and cannot be wrong.
 #
-# This is the Mojo side of a differential pair; tools/separator.py is the
+# This is the Mojo side of a differential pair; reference/separator.py is the
 # Python side.
 
 from finite_exact.closed_interval import ComplexIQ, IQ
@@ -207,7 +207,7 @@ def permanently_unseparated(
 
 
 def permanent_witness_smoke() -> Bool:
-    """The two witnesses of `tools/parameter_corpus.py`, replayed."""
+    """The two witnesses of `reference/parameter_corpus.py`, replayed."""
     # c = 0, the cut x = 1/2, the fixed trap, entry at step three.
     var c_zero = ComplexIQ.singleton(Q.zero(), Q.zero())
     var cut_zero = Cut.of(Q(1, 1), Q.zero(), Q(1, 2))
@@ -266,7 +266,7 @@ def certifies_real_rays(c: Q, outer: Q, segment: Q) -> Bool:
 
 
 def ray_witness_smoke() -> Bool:
-    """The real rows of `tools/parameter_corpus.py`, and the one refusal."""
+    """The real rows of `reference/parameter_corpus.py`, and the one refusal."""
     if not certifies_real_rays(Q.zero(), Q(2, 1), Q(1, 2)):
         return False
     if not certifies_real_rays(Q(-1, 1), Q(2, 1), Q(1, 1)):

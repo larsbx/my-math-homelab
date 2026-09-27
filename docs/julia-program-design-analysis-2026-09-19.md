@@ -165,7 +165,7 @@ repository, and Phase 2 is what will need them.
 ## 6. The rational multiplier dichotomy
 
 A finite lemma that the corpus depends on, stated here and tested in
-`tools/julia_reference.py` and `src/julia_orbit.mojo`.
+`reference/julia_reference.py` and `kernel/julia_orbit.mojo`.
 
 **Lemma.** Let `lam` in `Q(i)` with `N(lam) = 1`. Then `lam` is a root of
 unity if and only if `lam` is in `{1, -1, i, -i}`.

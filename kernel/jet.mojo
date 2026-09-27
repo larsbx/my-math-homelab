@@ -13,7 +13,7 @@
 # finite convolution and that is all the map needs. No polynomial in `z` is
 # ever formed.
 #
-# This is the Mojo side of a differential pair; tools/jet.py is the Python
+# This is the Mojo side of a differential pair; reference/jet.py is the Python
 # side.
 
 from finite_exact.closed_interval import ComplexIQ, IQ

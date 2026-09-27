@@ -2,7 +2,7 @@
 
 Every row is exactly representable Gaussian-rational data plus the witness a
 checker needs, and every claim a row makes is either verified by
-`tools/julia_reference.py` (the `VERIFIED` columns of the generated ledger) or
+`reference/julia_reference.py` (the `VERIFIED` columns of the generated ledger) or
 declared as a named, unverified theorem tag (the `TAG` columns). Nothing here
 is established by having been written down.
 
@@ -235,7 +235,7 @@ BY_KEY = {row.key: row for row in CORPUS}
 #: Trap witnesses, by corpus key: a box and the period whose iterate maps it
 #: inside itself (`docs/three-valued-classifier.md`). A trap is a
 #: witness like a cycle is: it is declared here and verified by
-#: `tools/box_classifier.py` before any verdict rests on it. A parameter
+#: `reference/box_classifier.py` before any verdict rests on it. A parameter
 #: absent from this table has no trap *in this table*, which is not a claim
 #: that none exists -- though for a parabolic parameter none does, and for a
 #: parameter with empty interior there is nothing to trap.
@@ -251,7 +251,7 @@ TRAPS: dict[str, tuple[tuple[F, F, F, F], int]] = {
 
 
 #: Real-axis ray witnesses, by corpus key: `(outer, segment)` for a real
-#: parameter, verified by `tools/ray.py`. Beyond `outer` the real half-lines
+#: parameter, verified by `reference/ray.py`. Beyond `outer` the real half-lines
 #: are the angle-zero ray and its preimage and every point escapes;
 #: `[-segment, segment]` is forward invariant and so inside `K_c`.
 #:
@@ -269,7 +269,7 @@ REAL_RAYS: dict[str, tuple[F, F]] = {
 
 #: Permanent non-separation witnesses, by corpus key: a catalogue of cuts as
 #: `(a, b, e)` triples, a trap with its period, two boxes, and the common step
-#: at which both are inside the trap. Verified by `tools/separator.py` against
+#: at which both are inside the trap. Verified by `reference/separator.py` against
 #: the theorem of `docs/permanent-non-separation.md`.
 #:
 #: Each is an exhibit of a **catalogue's** limit and nothing else. The two
@@ -299,7 +299,7 @@ PERMANENTLY_UNSEPARATED: dict[str, tuple[tuple[tuple[F, F, F], ...], tuple[F, F,
 
 #: Preperiodic-point witnesses, by corpus key: a box, a preperiod, a period,
 #: and the point the box is drawn around. Each is verified by
-#: `tools/preperiodic.py` -- isolated at the stated type, and of *exactly*
+#: `reference/preperiodic.py` -- isolated at the stated type, and of *exactly*
 #: that type, with every smaller type excluded on the same box. The boxes are
 #: declared here and checked there; none of them is a search result.
 #:

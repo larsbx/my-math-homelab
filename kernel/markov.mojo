@@ -13,7 +13,7 @@
 # measures anything: a matrix entry is a covering, and a covering is decided
 # by two rational inequalities.
 #
-# This is the Mojo side of a differential pair; tools/markov.py is the Python
+# This is the Mojo side of a differential pair; reference/markov.py is the Python
 # side, and tests/test_markov.py compares the transcripts.
 
 from finite_exact.bigint_z import BigZ, BIGZ_BASE

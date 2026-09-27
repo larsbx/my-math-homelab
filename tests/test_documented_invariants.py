@@ -33,8 +33,8 @@ def own_sources(directory: str, pattern: str) -> list[Path]:
     )
 
 
-MOJO = own_sources("src", "*.mojo")
-PYTHON = own_sources("tools", "*.py")
+MOJO = own_sources("kernel", "*.mojo")
+PYTHON = [path for plane in ("reference", "oracles", "tools") for path in own_sources(plane, "*.py")]
 
 #: Rank-2 forbidden constructors. `docs/terminology-registry.md` allows these
 #: words in prose about a higher layer, but not as identifiers in the
@@ -120,22 +120,22 @@ def test_the_scan_covers_this_repository_and_not_its_copies():
     """The boundary is stated, not implied: every own source is scanned, and
     no vendored file is."""
     scanned = {path.relative_to(ROOT).as_posix() for path in MOJO + PYTHON}
-    assert {"src/julia_orbit.mojo", "src/corpus_replay.mojo", "src/smoke_tests.mojo"} <= scanned
-    assert {"tools/julia_reference.py", "tools/parameter_corpus.py", "tools/gaussian_q.py"} <= scanned
+    assert {"kernel/julia_orbit.mojo", "kernel/corpus_replay.mojo", "kernel/smoke_tests.mojo"} <= scanned
+    assert {"reference/julia_reference.py", "reference/parameter_corpus.py", "reference/gaussian_q.py"} <= scanned
     # A vendored file and a file this repository writes can share a basename:
     # the reference-check policy is ours, the engine beside it is upstream's.
     assert "tools/check_references.py" in scanned
     assert not scanned & {
-        "src/finite_exact/rat_q.mojo",
-        "src/quadratic_orbit/orbit.mojo",
-        "src/quadratic_orbit/preperiodic.mojo",
-        "src/angle_doubling/angle.mojo",
-        "src/projective/chart.mojo",
-        "src/finite_linear_algebra/qpoly.mojo",
-        "src/substitution_dynamics/tuning.mojo",
-        "src/mojo_smoke/report.mojo",
-        "tools/vendoring/check_vendored_sync.py",
-        "tools/references/check_references.py",
+        "vendor/mojo/finite_exact/rat_q.mojo",
+        "vendor/mojo/quadratic_orbit/orbit.mojo",
+        "vendor/mojo/quadratic_orbit/preperiodic.mojo",
+        "vendor/mojo/angle_doubling/angle.mojo",
+        "vendor/mojo/projective/chart.mojo",
+        "vendor/mojo/finite_linear_algebra/qpoly.mojo",
+        "vendor/mojo/substitution_dynamics/tuning.mojo",
+        "vendor/mojo/mojo_smoke/report.mojo",
+        "vendor/python/vendoring/check_vendored_sync.py",
+        "vendor/python/references/check_references.py",
     }
     assert {path.name for path in VENDORED} == {
         "finite_exact", "quadratic_orbit", "angle_doubling", "projective",

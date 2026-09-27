@@ -13,7 +13,7 @@
 # searches for a witness, and an exhausted budget returns CAPPED, which is a
 # statement about the budget and not a classification.
 #
-# This is the Mojo side of a differential pair; tools/julia_reference.py is
+# This is the Mojo side of a differential pair; reference/julia_reference.py is
 # the Python side, and tests/test_mojo_replay.py compares the two.
 
 from finite_exact.rat_q import Q, q_max

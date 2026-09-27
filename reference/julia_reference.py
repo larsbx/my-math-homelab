@@ -192,7 +192,7 @@ def indifferent_fixed_parameter(lam: GQ) -> GQ:
     return (lam * (GQ.of(2) - lam)).scale(Fraction(1, 4))
 
 
-#: Wire encoding shared with the Mojo kernel. `src/julia_orbit.mojo` declares
+#: Wire encoding shared with the Mojo kernel. `kernel/julia_orbit.mojo` declares
 #: the same numbers as aliases, and `tests/test_mojo_replay.py` fails if the
 #: two ever disagree, so a transcript cannot be compared under two different
 #: codes.

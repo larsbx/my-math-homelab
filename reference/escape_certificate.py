@@ -3,7 +3,7 @@
 Specification: docs/rational-interval-arithmetic-spec.md.
 Derivation and proofs: docs/escape-criterion.md.
 
-`src/julia_orbit.mojo` decides escape by `N(z) > max(4, N(c))`. That test is a
+`kernel/julia_orbit.mojo` decides escape by `N(z) > max(4, N(c))`. That test is a
 sound *criterion*, but what it computes is only that a quadrance passed a
 bound; the step from there to "the orbit is unbounded" is classical, and
 nothing in this repository derived it or tagged it. This module supplies the

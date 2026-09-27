@@ -26,11 +26,11 @@ from julia_reference import (
 from parameter_corpus import CORPUS
 
 ROOT = Path(__file__).resolve().parents[1]
-KERNEL = ROOT / "src" / "julia_orbit.mojo"
-TRANSCRIPT_DRIVER = ROOT / "src" / "corpus_transcript.mojo"
+KERNEL = ROOT / "kernel" / "julia_orbit.mojo"
+TRANSCRIPT_DRIVER = ROOT / "kernel" / "corpus_transcript.mojo"
 
 #: The Mojo replay's step budget, declared by the generated corpus.
-MOJO_HORIZON = int(re.search(r"alias MOJO_HORIZON = (\d+)", (ROOT / "src" / "parameter_corpus.mojo").read_text()).group(1))
+MOJO_HORIZON = int(re.search(r"alias MOJO_HORIZON = (\d+)", (ROOT / "kernel" / "parameter_corpus.mojo").read_text()).group(1))
 
 #: Large enough that the Mojo horizon, not the bit budget, is what runs out.
 REPLAY_BIT_BUDGET = 1 << 30
@@ -88,7 +88,7 @@ def test_reference_transcript_is_well_formed():
 @pytest.mark.skipif(shutil.which("mojo") is None, reason="mojo binary not on PATH")
 def test_mojo_transcript_matches_the_reference():
     result = subprocess.run(
-        ["mojo", str(TRANSCRIPT_DRIVER)], capture_output=True, text=True, cwd=ROOT, check=False
+        ["mojo", "run", "-I", str(ROOT / "vendor" / "mojo"), str(TRANSCRIPT_DRIVER)], capture_output=True, text=True, cwd=ROOT, check=False
     )
     assert result.returncode == 0, result.stdout + result.stderr
     actual = [line for line in result.stdout.splitlines() if line.strip()]

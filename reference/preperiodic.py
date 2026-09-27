@@ -271,7 +271,7 @@ def exact_multiplicity(z: GQ, c: GQ, preperiod: int, period: int, order: int = 8
     """The multiplicity of an exactly representable root, or `None`.
 
     The order of vanishing of the residual's jet at the point, which needs no
-    coefficients and no case analysis: `tools/jet.py` pushes the seed jet
+    coefficients and no case analysis: `reference/jet.py` pushes the seed jet
     through the iteration and the first nonzero coefficient is the answer.
     It covers the parabolic case that `branching_multiplicity` refuses, where
     the cycle has multiplier one and the root is degenerate for a reason the

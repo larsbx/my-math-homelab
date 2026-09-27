@@ -140,3 +140,19 @@ def test_the_gate_that_judged_it_may_state_it_plainly(tmp_path, claims):
     text = "the cut catalogue separates exactly what a ray-pair catalogue separates [CutCatalogueRayEquivalence]\n"
     assert not rejection_findings(tmp_path, text, claims, name="literature-gate-2026-09-20-cut-equivalence.md")
     assert rejection_findings(tmp_path, text, claims)
+
+
+def test_ford_circles_is_a_registered_field_term(terms):
+    assert "Ford circles" in terms
+
+
+@pytest.mark.parametrize("prose", [
+    "The bulb radii follow the Ford circles law `q^-2`.",
+    "See `larsbx/mandelbrot-bulbs-and-ford-circles-research`.",
+])
+def test_ford_circles_passes_in_prose_and_repository_slugs(tmp_path, terms, prose):
+    assert not findings(tmp_path, prose, terms)
+
+
+def test_a_registered_term_does_not_excuse_the_bare_word(tmp_path, terms):
+    assert findings(tmp_path, "The Ford circles meet a unit circle.", terms)
