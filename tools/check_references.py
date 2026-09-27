@@ -21,7 +21,9 @@ from references.check_references import Policy, run  # noqa: E402
 #: The vendored packages carry upstream's prose, which names upstream's tests
 #: and tools; those paths are attested below rather than resolved here.
 KERNELS = "larsbx/finite-math-kernels at the commit pinned in vendored.toml"
-MANDELBROT = "larsbx/finite-mandelbrot-research"
+#: Pinned: the estate layout later moved these paths (src/ -> kernel/mojo/<domain>/,
+#: spec/ -> schemas/), and a mirrored document names them as they were.
+MANDELBROT = "larsbx/finite-mandelbrot-research at 834446b, before its estate layout"
 
 #: Kernels paths this repository names but does not vendor. They carry no
 #: pin, which is exactly why the attestation names the repository and not a
