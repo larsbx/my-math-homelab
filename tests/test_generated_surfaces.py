@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def run(script: str, *args: str) -> subprocess.CompletedProcess:
     return subprocess.run(
-        [sys.executable, str(ROOT / "tools" / script), *args],
+        [sys.executable, str(ROOT / script), *args],
         capture_output=True,
         text=True,
         cwd=ROOT,
@@ -25,12 +25,12 @@ def run(script: str, *args: str) -> subprocess.CompletedProcess:
 
 
 def test_regime_ledger_is_current():
-    result = run("make_regime_ledger.py", "--check")
+    result = run("tools/make_regime_ledger.py", "--check")
     assert result.returncode == 0, result.stdout + result.stderr
 
 
 def test_vendored_packages_match_their_pins():
-    result = run("vendoring/check_vendored_sync.py")
+    result = run("vendor/python/vendoring/check_vendored_sync.py")
     assert result.returncode == 0, result.stdout + result.stderr
 
 

@@ -6,10 +6,10 @@
 # This repository's preperiodic witnesses, replayed against the vendored
 # kernel. The certificates themselves are `quadratic_orbit/preperiodic.mojo`;
 # nothing is reimplemented here. What is here is the corpus: the boxes of
-# `tools/parameter_corpus.py`, the types they are claimed at, and the checks
+# `reference/parameter_corpus.py`, the types they are claimed at, and the checks
 # that each one isolates a root of exactly that type.
 #
-# This is the Mojo side of a differential pair; tools/preperiodic.py is the
+# This is the Mojo side of a differential pair; reference/preperiodic.py is the
 # Python side.
 
 from finite_exact.closed_interval import ComplexIQ, IQ
@@ -44,7 +44,7 @@ def has_exact_type(z: ComplexIQ, c: ComplexIQ, preperiod: Int, period: Int) -> B
 
 
 def preperiodic_witness_smoke() -> Bool:
-    """Every witness of `tools/parameter_corpus.py`, at its declared type."""
+    """Every witness of `reference/parameter_corpus.py`, at its declared type."""
     var c_zero = ComplexIQ.singleton(Q.zero(), Q.zero())
     var c_basilica = ComplexIQ.singleton(Q(-1, 1), Q.zero())
     var c_dendrite = ComplexIQ.singleton(Q.zero(), Q(1, 1))

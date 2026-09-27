@@ -16,11 +16,13 @@ The ordering rule is:
 authority -> mathematical/domain concern -> implementation language
 ```
 
-Mojo under `src/` is the one canonical executable. Python under `tools/` is
-reference semantics and audit tooling, never an acceptance path. Packages pinned
-in `vendored.toml` are external code even where they sit beside local modules.
+Mojo under `kernel/` is the one canonical executable. Python under `reference/`
+is reference semantics and `oracles/` holds research oracles; neither is an
+acceptance path. `tools/` is audits and generators only. Packages pinned in
+`vendored.toml` live under `vendor/mojo/` and `vendor/python/`, which are their
+include roots; Mojo entrypoints run with `-I vendor/mojo`.
 
-The layout is transitional. Each plane in `estate.toml` records its future
-`target` and the existing paths it currently covers; existing paths remain
-authoritative until a dedicated migration PR moves one bounded context. Directory
-renames alone must not change claim status, acceptance, or authority.
+The layout is canonical: every plane in `estate.toml` maps exactly its `target`
+(root-level files aside), every top-level directory is some plane's target, and
+no migration step is pending; the audit enforces all three. Directory renames
+alone must not change claim status, acceptance, or authority.

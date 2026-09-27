@@ -163,7 +163,7 @@ def itinerary(
 ) -> tuple[int, ...] | None:
     """The real-axis itinerary, computed with a separated exponent.
 
-    `None` as soon as a step is undecided, exactly as `tools/ray.py`. What is
+    `None` as soon as a step is undecided, exactly as `reference/ray.py`. What is
     gone is the budget: the mantissa is bounded by construction, so the depth
     is set by how long the enclosure stays on one side rather than by how many
     bits the orbit needs.

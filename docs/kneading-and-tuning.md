@@ -93,7 +93,7 @@ letters:
 tau_{A',eps}(s) = A' . (s xor eps)
 ```
 
-`src/kneading.mojo` hands it the word section 3 computes, with the parity
+`kernel/kneading.mojo` hands it the word section 3 computes, with the parity
 twist, and `TuningPattern.substitution()` returns the substitution. At
 `c = -1` this repository computes the prefix `(1,)` from the dynamics of
 `z^2 - 1` and the kernels return

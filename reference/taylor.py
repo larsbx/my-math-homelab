@@ -10,11 +10,11 @@ carries the correlation instead: a jet in the local variable, exact over
 
     for every z = centre + e with e in domain,   g(z) in p(e) + remainder
 
-`tools/jet.py` supplies the polynomial part; this adds the remainder and the
+`reference/jet.py` supplies the polynomial part; this adds the remainder and the
 guarantee. Nothing here is an approximation: the remainder is an enclosure,
 and every operation below is proved to preserve the guarantee.
 
-This is the Python side of a differential pair; `src/taylor.mojo` is the Mojo
+This is the Python side of a differential pair; `kernel/taylor.mojo` is the Mojo
 side.
 """
 

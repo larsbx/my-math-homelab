@@ -12,7 +12,7 @@
 # widths inflate through an iterated map. A model carries the correlation in
 # the jet and absorbs only what the truncation drops.
 #
-# This is the Mojo side of a differential pair; tools/taylor.py is the Python
+# This is the Mojo side of a differential pair; reference/taylor.py is the Python
 # side.
 
 from finite_exact.closed_interval import ComplexIQ, IQ

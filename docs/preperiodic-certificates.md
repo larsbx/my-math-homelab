@@ -1,7 +1,7 @@
 # Preperiodic certificates, and the one import they need
 
 **Status:** derivation, dated 2026-09-20. It states the two certificates of
-`tools/preperiodic.py` and the vendored `quadratic_orbit/preperiodic.mojo`,
+`reference/preperiodic.py` and the vendored `quadratic_orbit/preperiodic.mojo`,
 proves the one that is this repository's own, and names the one that is not.
 This is Phase 2's first rung: root isolation in dyadic boxes, Krawczyk
 uniqueness, and pointwise exact-type exclusion, on
@@ -154,15 +154,15 @@ cycle of multiplier `-1` has two attracting petals for `f^2`, and the
 multiplicity is `1 + 2`. Nothing in this repository knows what a petal is;
 the jet counted it.
 
-`tools/jet.py` is the layer and `branching_multiplicity` is kept beside
+`reference/jet.py` is the layer and `branching_multiplicity` is kept beside
 `exact_multiplicity` deliberately: the recursion explains *why* the critical
 point is degenerate, the jet computes *how much*, and
 `tests/test_preperiodic.py` checks they agree wherever both are defined. A
 jet that is flat to the order computed returns `None`, which is a budget and
 not a multiplicity of zero.
 
-The layer is a differential pair like every other: `src/jet.mojo` is the
-canonical side and `tools/jet.py` the independent oracle, and the smoke suite
+The layer is a differential pair like every other: `kernel/jet.mojo` is the
+canonical side and `reference/jet.py` the independent oracle, and the smoke suite
 replays the multiplicities above.
 
 An earlier draft of this note claimed the Mojo side was impossible, because
@@ -239,7 +239,7 @@ constructive side. Reported residue is a budget that ran out, never a claim.
 
 ## 7. The witnesses
 
-`tools/parameter_corpus.py` declares six boxes across three parameters, each
+`reference/parameter_corpus.py` declares six boxes across three parameters, each
 isolated at its type and exact by section 3: the fixed point `1` and the
 preperiodic `-1` at `c = 0`, the critical point on the 2-cycle and the
 **irrational** fixed point `(1 + sqrt 5)/2` at `c = -1`, and both points of
@@ -251,7 +251,7 @@ corners, and what it establishes is that exactly one root of `z^2 - 1 - z`
 lies in it. An exact statement about an irrational point, from exact rational
 data.
 
-`src/preperiodic_witness.mojo` checks the same six boxes at the same six
+`kernel/preperiodic_witness.mojo` checks the same six boxes at the same six
 types against the vendored kernel, so the two implementations agree witness
 for witness.
 

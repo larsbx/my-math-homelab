@@ -1,7 +1,7 @@
 # Angle types, the counting identity, and the one import Phase 3 needs
 
 **Status:** derivation, dated 2026-09-20. It proves the two finite facts of
-`tools/angle.py` and the vendored `angle_doubling/angle.mojo`, states the
+`reference/angle.py` and the vendored `angle_doubling/angle.mojo`, states the
 counting identity that ties the angle side to Phase 2's point side, and names
 the import that everything further in Phase 3 rests on. This is Phase 3's
 first rung.

@@ -5,9 +5,9 @@
 # The Mojo kernel, run against the generated corpus.
 #
 # Every row states the verdict the kernel must return. This file recomputes
-# each verdict from src/julia_orbit.mojo and compares, and it prints the same
+# each verdict from kernel/julia_orbit.mojo and compares, and it prints the same
 # verdicts as a transcript so tests/test_mojo_replay.py can compare them
-# against tools/julia_reference.py. A row is checked twice, by two
+# against reference/julia_reference.py. A row is checked twice, by two
 # implementations, and neither one is allowed to be the reason the other is
 # believed.
 

@@ -76,7 +76,7 @@ statement about `c`, which it is not.
 
 ## 4. The witnesses
 
-`tools/parameter_corpus.py` declares two, and `src/separator.mojo` replays
+`reference/parameter_corpus.py` declares two, and `kernel/separator.mojo` replays
 them.
 
 At `c = 0`, catalogue `{x = 1/2}`, trap `[-1/4, 1/4]^2` of period one: the

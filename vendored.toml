@@ -5,7 +5,7 @@
 name = "finite_exact"
 repository = "larsbx/finite-math-kernels"
 commit = "d4895cfb4cd4065e293f0d874e84428b71475df3"
-root = "src"
+root = "vendor/mojo"
 
 [package.files]
 "finite_exact/__init__.mojo" = "6c12cff9ef6a09417bddaa8324372888a30b4c75b2b64438eb47bb17ea9138c9"
@@ -20,7 +20,7 @@ root = "src"
 name = "quadratic_orbit"
 repository = "larsbx/finite-math-kernels"
 commit = "a68d7a8969e4aadb48660f79196fc68b3434ca12"
-root = "src"
+root = "vendor/mojo"
 
 [package.files]
 "quadratic_orbit/__init__.mojo" = "4d8f371cf6378c9154f0f22e874b405c0c05a524904c6747ef385d48b9b4b49f"
@@ -32,7 +32,7 @@ root = "src"
 name = "mojo_smoke"
 repository = "larsbx/finite-math-kernels"
 commit = "56ac8bc6e2fe47aae32f74fc392819d334ffecba"
-root = "src"
+root = "vendor/mojo"
 
 [package.files]
 "mojo_smoke/__init__.mojo" = "55145a26cff03dbc92a81f445903ea447bee9c9360d9e5ccd1ba8094f0908d14"
@@ -42,7 +42,7 @@ root = "src"
 name = "vendoring"
 repository = "larsbx/finite-math-kernels"
 commit = "56ac8bc6e2fe47aae32f74fc392819d334ffecba"
-root = "tools"
+root = "vendor/python"
 
 [package.files]
 "vendoring/__init__.py" = "959cdf7a89536784da18659db7cfe4099c885f5370249eccc71ce73775f8a584"
@@ -52,7 +52,7 @@ root = "tools"
 name = "references"
 repository = "larsbx/finite-math-kernels"
 commit = "3e0acaea192e08ca6c18c732a62648c0386d0c68"
-root = "tools"
+root = "vendor/python"
 
 [package.files]
 "references/__init__.py" = "d241dd4166c0f171b9cd36003b5c1f9f5eb98765f08bdb4cb9b38ebd79f2cc28"
@@ -62,7 +62,7 @@ root = "tools"
 name = "angle_doubling"
 repository = "larsbx/finite-math-kernels"
 commit = "87e678539112f4065a0269e4d3c2aa5aebe57e16"
-root = "src"
+root = "vendor/mojo"
 
 [package.files]
 "angle_doubling/__init__.mojo" = "9166f13819f822a439beef317c127d5f726ee3ef25e4e6f73f7a9178573be97f"
@@ -72,7 +72,7 @@ root = "src"
 name = "projective"
 repository = "larsbx/finite-math-kernels"
 commit = "87e678539112f4065a0269e4d3c2aa5aebe57e16"
-root = "src"
+root = "vendor/mojo"
 
 [package.files]
 "projective/__init__.mojo" = "6b0819d675d556e7b6e310f48df601a3453fc7204a90e8654e1d96f045b3beac"
@@ -83,7 +83,7 @@ root = "src"
 name = "finite_linear_algebra"
 repository = "larsbx/finite-math-kernels"
 commit = "f3c1a1dce276d63b4356b5f115ed174ac4f7ee3b"
-root = "src"
+root = "vendor/mojo"
 
 [package.files]
 "finite_linear_algebra/__init__.mojo" = "947a8f244105add762e1888b91edeb4984ee3e6436ff718b9ce25fca1c7d4fe2"
@@ -102,7 +102,7 @@ root = "src"
 name = "substitution_dynamics"
 repository = "larsbx/finite-math-kernels"
 commit = "f3c1a1dce276d63b4356b5f115ed174ac4f7ee3b"
-root = "src"
+root = "vendor/mojo"
 
 [package.files]
 "substitution_dynamics/__init__.mojo" = "249a8f3ea14cb37d58b32cee97f7d0d724502257ab30faab5bdabb6ac74f0183"

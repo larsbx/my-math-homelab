@@ -88,7 +88,7 @@ def test_a_certificate_carries_its_own_successor(t, m):
 @pytest.mark.parametrize("t,m", [(F(4), F(4)), (F(4), F(0)), (F(3), F(1)), (F(1), F(1)), (F(0), F(0))])
 def test_no_certificate_at_or_below_the_classical_threshold(t, m):
     """At `t = 4` the admissible ratios are empty, which is why the criterion in
-    `src/julia_orbit.mojo` is a strict inequality."""
+    `kernel/julia_orbit.mojo` is a strict inequality."""
     assert escape_certificate(t, m) is None
 
 

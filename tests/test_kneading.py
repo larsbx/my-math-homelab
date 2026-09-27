@@ -1,7 +1,7 @@
 """Kneading data from the critical cut, and the pattern it lands on.
 
 Statements: `docs/kneading-and-tuning.md`. Every constant pinned here is also
-pinned by `kneading_smoke` in `src/kneading.mojo`, so the oracle and the
+pinned by `kneading_smoke` in `kernel/kneading.mojo`, so the oracle and the
 kernel agree on values and not merely on shapes -- and the kernel's copy goes
 on to build the substitution with the vendored tuning layer, which is the
 half of the bridge a Python test cannot reach.

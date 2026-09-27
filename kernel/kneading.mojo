@@ -10,7 +10,7 @@
 #
 # This is the side of the pair that completes the bridge: it hands the word to
 # the vendored `substitution_dynamics/tuning.mojo` and returns the
-# substitution that layer builds from it. tools/kneading.py is the Python
+# substitution that layer builds from it. reference/kneading.py is the Python
 # oracle and carries its own copy of the two combinatorial one-liners, because
 # an oracle that imports what it checks is not an oracle.
 
@@ -68,7 +68,7 @@ def tuning_prefix(c: Q, period: Int) -> List[Int]:
     """The word `A'` for a superattracting parameter of the given period.
 
     The period is the caller's, because deciding it is the critical-orbit
-    verdict's job and `src/julia_orbit.mojo` already does that. Section 3 of
+    verdict's job and `kernel/julia_orbit.mojo` already does that. Section 3 of
     the note is what makes the length `period - 1` the right request: the
     iterates before the return are all off the cut, and the return is on it.
     """

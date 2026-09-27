@@ -13,7 +13,7 @@
 # for: an unverified trap is ignored, so a wrong witness costs an UNKNOWN and
 # never an IN.
 #
-# This is the Mojo side of a differential pair; tools/box_classifier.py is the
+# This is the Mojo side of a differential pair; reference/box_classifier.py is the
 # Python side.
 
 from finite_exact.closed_interval import ComplexIQ, IQ

@@ -83,7 +83,7 @@ def own_files() -> list[Path]:
     copied = vendored()
     return sorted(
         path
-        for directory, pattern in (("docs", "*.md"), ("tools", "*.py"), ("src", "*.mojo"))
+        for directory, pattern in (("docs", "*.md"), ("tools", "*.py"), ("reference", "*.py"), ("oracles", "*.py"), ("kernel", "*.mojo"))
         for path in (ROOT / directory).rglob(pattern)
         if not any(parent in copied for parent in path.parents)
     )

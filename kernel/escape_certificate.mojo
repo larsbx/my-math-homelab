@@ -9,7 +9,7 @@
 # are polynomial in the two quadrances, so no modulus and no square root is
 # needed and the argument stays inside the rank-2 layer.
 #
-# This is the Mojo side of a differential pair; tools/escape_certificate.py is
+# This is the Mojo side of a differential pair; reference/escape_certificate.py is
 # the Python side.
 
 from finite_exact.rat_q import Q

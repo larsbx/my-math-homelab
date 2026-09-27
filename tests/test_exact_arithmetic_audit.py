@@ -49,7 +49,7 @@ def tree(tmp_path, monkeypatch):
     monkeypatch.setattr(audit, "SPEC", tmp_path / "docs" / "rational-interval-arithmetic-spec.md")
     monkeypatch.setattr(audit, "BINDING", tmp_path / "docs" / "exact-arithmetic-binding.md")
     monkeypatch.setattr(audit, "ALLOWLIST", tmp_path / "tools" / "exact_arithmetic_allowlist.md")
-    monkeypatch.setattr(audit, "SCAN_ROOT", tmp_path / "src")
+    monkeypatch.setattr(audit, "SCAN_ROOTS", (tmp_path / "src",))
     return tmp_path
 
 

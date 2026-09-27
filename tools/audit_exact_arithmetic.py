@@ -32,7 +32,9 @@ BINDING_REL = "docs/exact-arithmetic-binding.md"
 SPEC = ROOT / SPEC_REL
 BINDING = ROOT / BINDING_REL
 ALLOWLIST = ROOT / "tools" / "exact_arithmetic_allowlist.md"
-SCAN_ROOT = ROOT / "src"
+#: The Mojo the audit reads: the kernel, and the vendored packages beside it,
+#: whose arithmetic consumers are bound here even though their headers are upstream's.
+SCAN_ROOTS = (ROOT / "kernel", ROOT / "vendor" / "mojo")
 
 CLASSES = ("CONFORMS-CHECKED", "CONFORMS", "DEMO", "QUARANTINED")
 PATH_RE = re.compile(r"`([A-Za-z0-9_./-]+\.(?:mojo|py))`")
@@ -98,7 +100,7 @@ def allowlisted() -> set[str]:
 
 
 def kernel_files() -> list[Path]:
-    return sorted(SCAN_ROOT.rglob("*.mojo"))
+    return sorted(path for root in SCAN_ROOTS for path in root.rglob("*.mojo"))
 
 
 def arithmetic_consumers() -> set[str]:
@@ -170,7 +172,7 @@ def audit() -> list[str]:
 
     for path in kernel_files():
         rel = path.relative_to(ROOT).as_posix()
-        if rel in allow or rel.startswith("src/finite_exact/"):
+        if rel in allow or rel.startswith("vendor/mojo/finite_exact/"):
             continue
         for lineno, line in code_lines(path.read_text(encoding="utf-8")):
             if FLOAT_RE.search(line):

@@ -26,7 +26,7 @@ number of steps is chosen first and the radius second.
 For a box `B = X × Y` with exact rational corners write `rad(B)` for half its
 larger coordinate width, the radius in the sup norm, and say `B ⊆ M` when
 every coordinate of every point of `B` has magnitude at most `M`. Let `F` be
-the interval step of `tools/box_classifier.py`,
+the interval step of `reference/box_classifier.py`,
 
 ```text
 F(B) = B^2 + c,    re F = X^2 - Y^2,    im F = 2 X Y
@@ -190,12 +190,12 @@ the classifier in practice decides at `10^-2`. That gap is the usual distance
 between a worst-case bound and behaviour, and closing it is an optimisation,
 not a correctness question.
 
-`tools/enclosure_bound.py` and `src/enclosure_bound.mojo` compute each
+`reference/enclosure_bound.py` and `kernel/enclosure_bound.mojo` compute each
 quantity above exactly and agree: the step factor, the iterated bound,
 section 4(b)'s quadrance drift, and section 5's `s` itself, as
 `refinement_radius`.
 
-`refine_until_decided` in `tools/box_classifier.py` is the constructive side:
+`refine_until_decided` in `reference/box_classifier.py` is the constructive side:
 it subdivides the undecided part and reports the share of the original box
 still unresolved. On a box straddling the quadrance-1 locus at `c = 0` -- which
 `docs/terminology-registry.md` forbids calling anything else -- that share

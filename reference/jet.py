@@ -15,7 +15,7 @@ with every `a_j` an exact Gaussian rational. Pushing the seed jet
 multiplication is a finite convolution, and that is all the map needs.
 
 This is the coefficient-free way to ask a question that looks like it needs
-coefficients. `orbit_derivative` of `tools/preperiodic.py` is the order-one
+coefficients. `orbit_derivative` of `reference/preperiodic.py` is the order-one
 case of it.
 """
 

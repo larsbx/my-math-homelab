@@ -7,7 +7,7 @@
 # the angles Phase 3 names, and the counting identity that ties the angle side
 # to the point side of section 2.
 #
-# This is the Mojo side of a differential pair; tools/angle.py is the Python
+# This is the Mojo side of a differential pair; reference/angle.py is the Python
 # side.
 
 from angle_doubling.angle import Angle, angle_smoke, has_type, orbit_term, period, preperiod, type_count

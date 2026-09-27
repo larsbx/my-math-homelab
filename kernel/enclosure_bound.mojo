@@ -10,7 +10,7 @@
 # supply `K = 6M` for `z -> z^2 + c` and convert the resulting distance into
 # a quadrance, which is what the escape test reads.
 #
-# This is the Mojo side of a differential pair; tools/enclosure_bound.py is
+# This is the Mojo side of a differential pair; reference/enclosure_bound.py is
 # the Python side and keeps its own arithmetic, because a differential pair
 # that shares an implementation compares nothing.
 

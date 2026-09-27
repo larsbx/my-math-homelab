@@ -94,7 +94,7 @@ it is parameterized by `(z_0, c)` in `larsbx/finite-math-kernels`; this phase
 should consume them, not reimplement them.
 
 **First rung delivered, 2026-09-20.** `docs/preperiodic-certificates.md`, with
-`quadratic_orbit/preperiodic.mojo` upstream and `tools/preperiodic.py` as the
+`quadratic_orbit/preperiodic.mojo` upstream and `reference/preperiodic.py` as the
 Python side. All three properties are there, and the squarefree step is not:
 `R^c_{l,k}` is evaluated as a difference of orbit terms and its derivative by
 the chain rule, so what `sqfree` would buy -- a simple root -- is checked
@@ -113,7 +113,7 @@ isolated simple roots plus named multiplicities reaching the degree leaves no
 room for another root. Six enumerations pinned, one budget exhaustion
 reported as such.
 
-**Third rung, same day.** The parabolic refusal is closed. `tools/jet.py`
+**Third rung, same day.** The parabolic refusal is closed. `reference/jet.py`
 computes the order of vanishing of the residual by pushing a truncated Taylor
 jet through the iteration -- exact, coefficient-free, and with no case
 analysis -- so the multiplicity is available at a parabolic cycle too: `2` at
@@ -134,7 +134,7 @@ is recorded in `docs/preperiodic-certificates.md` section 4.
 
 **First rung delivered, 2026-09-20.** The first bullet, and only it.
 `docs/angle-types-and-landing.md`, with `angle_doubling/angle.mojo` upstream
-and `tools/angle.py` as the Python side: an angle's preperiod and period are
+and `reference/angle.py` as the Python side: an angle's preperiod and period are
 closed forms in its denominator rather than searches, and the counting
 identity `2^l (2^k - 1) + 2^l = 2^(l+k)` meets Phase 2's degree at `c = 0`,
 where the second summand is the critical point's multiplicity. Both finite,

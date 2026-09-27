@@ -31,7 +31,7 @@ trigonometric function, limit, or floating-point approximation.
 
 When `lambda` is one of the roots of unity already representable in
 `Q(i)`, the whole local computation stays in exact Gaussian rationals.
-`tools/parabolic_index.py` reconstructs the fixed-point index from a finite
+`oracles/parabolic_index.py` reconstructs the fixed-point index from a finite
 jet:
 
 ```text

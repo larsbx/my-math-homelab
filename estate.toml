@@ -6,7 +6,7 @@ id = "larsbx/finite-julia-set-research"
 kind = "research"
 lifecycle = "active"
 default_branch = "main"
-layout_status = "transitional"
+layout_status = "canonical"
 
 [principles]
 ordering = ["authority", "domain", "language"]
@@ -16,9 +16,10 @@ generated_surfaces = "derived_only"
 vendor_code = "non_local"
 experimental_code = "non_authoritative"
 
+# Policy is four root manifests; no policy/ silo is created for them.
 [[plane]]
 id = "policy"
-target = "policy"
+target = "estate.toml"
 authority = "governance"
 required = true
 current = ["estate.toml", "backend.toml", "polyglot.manifest.toml", "vendored.toml"]
@@ -28,56 +29,58 @@ id = "kernel"
 target = "kernel"
 authority = "canonical_executable"
 required = true
-current = ["src"]
+current = ["kernel"]
 
 [[plane]]
 id = "reference"
 target = "reference"
 authority = "non_authoritative_reference"
 required = true
-current = ["tools/angle.py", "tools/box_classifier.py", "tools/budget.py", "tools/chart.py", "tools/dyadic.py", "tools/enclosure_bound.py", "tools/escape_certificate.py", "tools/gaussian_q.py", "tools/interval_box.py", "tools/jet.py", "tools/julia_reference.py", "tools/kneading.py", "tools/markov.py", "tools/parameter_corpus.py", "tools/preperiodic.py", "tools/ray.py", "tools/scaled.py", "tools/separator.py", "tools/taylor.py"]
+current = ["reference"]
 
 [[plane]]
 id = "oracles"
 target = "oracles"
 authority = "non_authoritative_oracle"
 required = true
-current = ["tools/parabolic_index.py"]
+current = ["oracles"]
 
+# The polyglot boundary envelope and its conformance vectors.
 [[plane]]
 id = "schemas"
-target = "schemas"
+target = ".polyglot"
 authority = "contract"
 required = true
-current_globs = [".polyglot/*.schema.json"]
+current = [".polyglot"]
 
 [[plane]]
 id = "conformance"
-target = "conformance"
+target = "tests"
 authority = "evidence"
 required = true
-current = ["tests", "corpus.json", ".polyglot/conformance-v1.json"]
+current = ["tests", "corpus.json"]
 
+# vendor/mojo and vendor/python are the include roots named in vendored.toml.
 [[plane]]
 id = "vendor"
 target = "vendor"
 authority = "pinned_external"
 required = true
-current = ["src/finite_exact", "src/finite_linear_algebra", "src/quadratic_orbit", "src/mojo_smoke", "src/angle_doubling", "src/projective", "src/substitution_dynamics", "tools/vendoring", "tools/references"]
+current = ["vendor"]
 
 [[plane]]
 id = "tooling"
 target = "tools"
 authority = "repository_tooling"
 required = true
-current = ["tools/audit_exact_arithmetic.py", "tools/audit_terminology.py", "tools/check_references.py", "tools/make_regime_ledger.py"]
+current = ["tools"]
 
 [[plane]]
 id = "docs"
 target = "docs"
 authority = "exposition"
 required = true
-current = ["docs", "ROADMAP.md"]
+current = ["docs", "README.md", "ROADMAP.md", "ARCHITECTURE.md"]
 
 [[language]]
 name = "Mojo"
@@ -100,16 +103,12 @@ acceptance_authority = false
 [migration]
 mode = "boundary_first"
 mass_move = false
-next = [
-  "separate vendored Mojo packages from local kernel modules under src",
-  "move Python reference semantics out of tools into reference",
-  "split CI by authority plane",
-]
+next = []
 
 [governance]
 repository = "larsbx/estate-governance"
-revision = "bd0a9491488f54f28b4a3b9076051349092383bb"
+revision = "283b6955395ea17f022412aa1539db7aa0448e08"
 
 [governance.sha256]
-"docs/architecture/estate-repository-template-v1.md" = "b5eab7543c877484a159b47cbe36aa6255c51bd6ec5863dbb9fe13d9a2c06f6b"
-"tools/audit_estate_layout.py" = "f462c397dee8a596a2a7a8c40fd5ded2989652322186c568b712366294251003"
+"docs/architecture/estate-repository-template-v1.md" = "e2a136e7779290224c1c4a73f4fefb9da51e1b0881fd460e911611db59da08d5"
+"tools/audit_estate_layout.py" = "8037f9366da3eeb03f928944c9688ea3ef14a6861c8a8950d9351692e22f37da"

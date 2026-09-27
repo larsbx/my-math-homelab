@@ -8,7 +8,7 @@ on. It is a fact about enclosures, three-valued and fail-closed: an undecided
 step returns no word rather than a shorter one, because the undecided step is
 the critical point itself and a word with a gap is not a word.
 
-This is the Python side of a differential pair; `src/kneading.mojo` is the
+This is the Python side of a differential pair; `kernel/kneading.mojo` is the
 Mojo side, and it is the one that hands the word to the kernels' tuning
 layer.
 """

@@ -254,7 +254,7 @@ def transcript_line(
     horizon: int = DEFAULT_HORIZON,
     limb_budget: int = DEFAULT_LIMB_BUDGET,
 ) -> str:
-    """One parameter, in the shape `src/markov_transcript.mojo` prints."""
+    """One parameter, in the shape `kernel/markov_transcript.mojo` prints."""
     line = "c=" + rational_text(Fraction(c))
     part = partition(c, horizon, limb_budget)
     if part is None:

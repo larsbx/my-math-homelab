@@ -32,7 +32,7 @@ from markov import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-TRANSCRIPT_DRIVER = ROOT / "src" / "markov_transcript.mojo"
+TRANSCRIPT_DRIVER = ROOT / "kernel" / "markov_transcript.mojo"
 
 #: The parameters the Mojo driver prints, in its order.
 DRIVER_PARAMETERS = (F(0), F(-1), F(-2), F(1, 4), F(-3, 4), F(1))
@@ -293,8 +293,8 @@ def test_the_budget_does_not_touch_a_parameter_that_closes():
     "c", [F(0), F(-1), F(-2), F(1), F(2), F(-3), F(1, 4), F(-3, 4), F(-7, 4), F(1, 2), F(-13, 16)]
 )
 def test_the_partition_agrees_with_the_orbit_oracle(c):
-    """`tools/markov.py` runs its own loop on the line; it must decide what
-    `tools/julia_reference.py` decides over `Q(i)`."""
+    """`reference/markov.py` runs its own loop on the line; it must decide what
+    `reference/julia_reference.py` decides over `Q(i)`."""
     finite = critical_orbit(GQ(c, F(0))).verdict is OrbitVerdict.PREPERIODIC
     assert (postcritical_points(c) is not None) == finite
 
@@ -316,6 +316,6 @@ def test_the_transcript_is_the_shape_the_driver_prints():
 @pytest.mark.skipif(shutil.which("mojo") is None, reason="no Mojo toolchain")
 def test_the_kernel_and_the_oracle_print_the_same_transcript():
     result = subprocess.run(
-        ["mojo", str(TRANSCRIPT_DRIVER)], capture_output=True, text=True, check=True, cwd=ROOT
+        ["mojo", "run", "-I", str(ROOT / "vendor" / "mojo"), str(TRANSCRIPT_DRIVER)], capture_output=True, text=True, check=True, cwd=ROOT
     )
     assert result.stdout.splitlines() == python_transcript()
