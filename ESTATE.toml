@@ -20,12 +20,12 @@ artifacts = []
 
 [[dep]]
 id = "estate-governance"
-rev = "f5fe90d588806c09998764c4929e6238f2298e64"
+rev = "0833929ed82d42cf3674a1565681625a9622827b"
 pin = "sha256:32e4bc78a70c59f11e7c53654e33eae3078733fb489d5c7400a11ca6cfcdb274"
 
 [[dep]]                       # vendored packages, pinned by digest in vendored.toml
 id = "finite-math-kernels"
-pin = "sha256:12280d00a85845824e13a347ed0a42da633b88ac0516a72d5301da468b0351a9"
+pin = "sha256:c8925f922e3491344a4598153962d5dd2203c813755361e52c4bd8bccec6d2c2"
 
 [exports]
 names = []
