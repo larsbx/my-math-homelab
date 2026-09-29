@@ -214,9 +214,8 @@ tools/
   make_regime_ledger.py     renders every generated surface; --check gates them
   audit_exact_arithmetic.py the binding-table and no-float gate
   check_references.py       this repository's reference policy
-  audit_estate_layout.py    estate layout audit, vendored from larsbx/estate-governance
 tests/
-estate.toml                 estate manifest (canonical layout)
+ESTATE.toml                 estate manifest; audited from a pinned larsbx/estate-governance
 corpus.json                 GENERATED
 backend.toml                arithmetic backend readiness
 vendored.toml               vendored digests
