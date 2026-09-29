@@ -14,8 +14,14 @@ jobs:
           cache: true
       - name: Build the canonical Mojo smoke binary
         run: pixi run mojo-build
-      - name: Audit estate repository architecture
-        run: pixi run estate-audit
+      - name: Estate audit (pinned estate-governance)
+        env:
+          ESTATE_GOVERNANCE_TOKEN: ${{ secrets.ESTATE_GOVERNANCE_TOKEN }}
+        run: |
+          rev=$(python3 -c 'import tomllib; print(next(d["rev"] for d in tomllib.load(open("ESTATE.toml", "rb"))["dep"] if d["id"] == "estate-governance"))')
+          git clone -q "https://x-access-token:${ESTATE_GOVERNANCE_TOKEN}@github.com/larsbx/estate-governance" .estate
+          git -C .estate checkout -q "$rev"
+          python3 .estate/kernel/audit_estate_layout.py --root .
       - name: Verify vendored package digests
         run: pixi run vendored
       - name: Run the canonical Mojo finite-core smoke suite

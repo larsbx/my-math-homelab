@@ -7,7 +7,7 @@ authority_change = false
 ci_wiring = false
 
 [estate]
-manifest = "estate.toml"
+manifest = "ESTATE.toml"
 
 [authority]
 primary_languages = ["Mojo"]
