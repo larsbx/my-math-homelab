@@ -33,13 +33,18 @@ PISOT = "larsbx/pisot-substitution-conjecture-research, the first consumer of in
 #: attestation; a bare exemption would only say that someone once decided not
 #: to look.
 EXTERNAL: dict[str, str] = {
-    # Named by the mirrored arithmetic specification, which describes upstream.
-    "audit/CONSOLIDATION_PROVENANCE.md": KERNELS,
-    "audit/provenance.json": KERNELS,
+    # Named by the mirrored arithmetic specification, which describes upstream
+    # in upstream's own layout.
+    "docs/audit/CONSOLIDATION_PROVENANCE.md": KERNELS,
+    "policy/provenance.json": KERNELS,
     "docs/exact-arithmetic-public-boundary.md": KERNELS,
     "tests/finite_exact/property_probe.mojo": KERNELS,
     "tests/finite_exact/test_finite_exact.mojo": KERNELS,
-    "tools/property_oracle.py": KERNELS,
+    "oracles/property_oracle.py": KERNELS,
+    "kernel/finite_exact/bigint_z.mojo": KERNELS,
+    "kernel/finite_exact/rat_q.mojo": KERNELS,
+    "kernel/finite_exact/closed_q.mojo": KERNELS,
+    "kernel/finite_exact/closed_interval.mojo": KERNELS,
     # Named by documents mirrored from the parameter-plane program.
     "docs/rank2-coordinate-substrate.md": MANDELBROT,
     "spec/regime_correspondences.toml": MANDELBROT,
