@@ -15,6 +15,9 @@ certificate grammar yet to accept into.
 
 | Spec item | Module | Class | Notes |
 | --- | --- | --- | --- |
+| 1.1–1.3 exact field adapter | `vendor/mojo/finite_exact/field.mojo` (`ExactField`, `QField`) | CONFORMS | vendored; `QField` delegates to unbounded `Q` with sticky rejection; the trait specifies exact field operations. Included with the whole package; unused here |
+| finite prime field | `vendor/mojo/finite_exact/fp.mojo` (`Fp`, `FpField`) | DEMO | vendored whole-package snapshot; a compile-time prime bound below `2^31` keeps canonical-residue operations within Int64, and division by zero rejects. Unused here; no rational certificate path rests on it |
+| 1 checked fixed width and support decision | `vendor/mojo/finite_linear_algebra/integer_matrix.mojo` | CONFORMS-CHECKED | vendored; square dimensions, products and accumulation are checked and raise on refusal. Primitivity uses exact Boolean support powers rather than weighted products. Unused here |
 | 1.1 integer backend | `vendor/mojo/finite_exact/bigint_z.mojo` (`BigZ`) | CONFORMS | vendored unbounded backend; dynamic base-`10^9` limbs, exact ring and order operations, long division, Euclidean gcd, canonical encoding |
 | 1.1–1.3 ℚ | `vendor/mojo/finite_exact/rat_q.mojo` (`Q`), stable facade `vendor/mojo/finite_exact/rational.mojo` | CONFORMS | vendored; normalized `BigZ` fraction with sticky rejection |
 | 2.1–2.5 I_Q, complex boxes | `vendor/mojo/finite_exact/closed_q.mojo` (`IQ`, `ComplexIQ`), stable facade `vendor/mojo/finite_exact/closed_interval.mojo` | CONFORMS | vendored; J1 enforced, three-valued predicates with an explicit rejected state |
@@ -47,8 +50,10 @@ certificate grammar yet to accept into.
 
 ## Notes on the classes used
 
-`CONFORMS` rows are the vendored packages and the Python oracle, all on
-unbounded exact arithmetic. Every module this repository writes on top of them
+`CONFORMS` rows are the unbounded vendored arithmetic and the Python oracle.
+`CONFORMS-CHECKED` records the bounded matrix operations that raise on refusal;
+the finite prime-field snapshot is `DEMO` and unused here.
+Every module this repository writes on top of the unbounded packages
 is `DEMO`: the algebra is conformant and the backend is unbounded, but nothing
 here has been replayed into a certificate path, because there is no
 certificate path yet. There are no `QUARANTINED` rows: this repository has
