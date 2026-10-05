@@ -40,6 +40,9 @@ class Policy:
     external: Mapping[str, str] = field(default_factory=dict)
     external_tasks: Mapping[str, str] = field(default_factory=dict)
     skipped_prefixes: tuple[str, ...] = ()
+    #: Include roots of vendorable packages: paths inside a package are
+    #: package-relative, so a token with a slash also resolves beneath one.
+    package_roots: tuple[str, ...] = ()
     suffixes: tuple[str, ...] = CHECKED_SUFFIXES
     executables: frozenset[str] = frozenset({"mojo", "python"})
 
@@ -76,7 +79,8 @@ def check(files: Mapping[str, str], tracked: Iterable[str], tasks: Iterable[str]
         if path.startswith(policy.skipped_prefixes) or not path.endswith(policy.suffixes):
             continue
         for token in path_tokens(text):
-            if token in tracked or token in policy.external or ("/" not in token and basenames[token] == 1):
+            if (token in tracked or token in policy.external or ("/" not in token and basenames[token] == 1)
+                    or ("/" in token and any(f"{root}/{token}" in tracked for root in policy.package_roots))):
                 continue
             errors.append(f"{path}: path `{token}` is not a tracked file, a unique basename, or a listed external reference")
         for task in task_tokens(text):

@@ -6,7 +6,7 @@ its composite is `sigma_1 o ... o sigma_n` and `apply_directive` evaluates
 that composite on a word without forming it. Nothing here asserts a limit,
 a primitivity property, or any theorem about the S-adic system.
 
-Reference oracle: `tools/tuning_reference.py`.
+Reference oracle: `reference/tuning_reference.py`.
 """
 
 from substitution_dynamics.substitution import Substitution

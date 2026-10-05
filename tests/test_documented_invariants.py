@@ -133,12 +133,13 @@ def test_the_scan_covers_this_repository_and_not_its_copies():
         "vendor/mojo/projective/chart.mojo",
         "vendor/mojo/finite_linear_algebra/qpoly.mojo",
         "vendor/mojo/substitution_dynamics/tuning.mojo",
+        "vendor/mojo/finite_graph/scc.mojo",
         "vendor/mojo/mojo_smoke/report.mojo",
         "vendor/python/vendoring/check_vendored_sync.py",
         "vendor/python/references/check_references.py",
     }
     assert {path.name for path in VENDORED} == {
         "finite_exact", "quadratic_orbit", "angle_doubling", "projective",
-        "finite_linear_algebra", "substitution_dynamics", "mojo_smoke",
-        "vendoring", "references",
+        "finite_linear_algebra", "substitution_dynamics", "finite_graph",
+        "mojo_smoke", "vendoring", "references",
     }
