@@ -25,37 +25,26 @@ KERNELS = "larsbx/finite-math-kernels at the commit pinned in vendored.toml"
 #: spec/ -> schemas/), and a mirrored document names them as they were.
 MANDELBROT = "larsbx/finite-mandelbrot-research at 834446b, before its estate layout"
 
-#: Kernels paths this repository names but does not vendor. They carry no
-#: pin, which is exactly why the attestation names the repository and not a
-#: commit: `docs/tiling-connections-2026-09-20.md` inventories them.
-KERNELS_UNPINNED = "larsbx/finite-math-kernels, not vendored here"
+#: The first consumer of the vendored `finite_linear_algebra/integer_vector.mojo`,
+#: whose header names that consumer's benchmark.
+PISOT = "larsbx/pisot-substitution-conjecture-research, the first consumer of integer_vector"
 
 #: Every entry says which repository the path lives in. A reader can check an
 #: attestation; a bare exemption would only say that someone once decided not
 #: to look.
 EXTERNAL: dict[str, str] = {
-    # Named by the mirrored arithmetic specification, which describes upstream.
-    "audit/CONSOLIDATION_PROVENANCE.md": KERNELS,
-    "audit/provenance.json": KERNELS,
+    # Named by the mirrored arithmetic specification, which describes upstream
+    # in upstream's own layout.
+    "docs/audit/CONSOLIDATION_PROVENANCE.md": KERNELS,
+    "policy/provenance.json": KERNELS,
     "docs/exact-arithmetic-public-boundary.md": KERNELS,
     "tests/finite_exact/property_probe.mojo": KERNELS,
     "tests/finite_exact/test_finite_exact.mojo": KERNELS,
-    "tools/property_oracle.py": KERNELS,
-    # Named by the specification as package-relative upstream paths.
-    "finite_exact/bigint_z.mojo": KERNELS,
-    "finite_exact/rat_q.mojo": KERNELS,
-    "finite_exact/closed_q.mojo": KERNELS,
-    "finite_exact/closed_interval.mojo": KERNELS,
-    "finite_exact/interval_q.mojo": KERNELS,
-    "finite_exact/enclosure_width.mojo": KERNELS,
-    "quadratic_orbit/preperiodic.mojo": KERNELS,
-    "angle_doubling/angle.mojo": KERNELS,
-    "projective/chart.mojo": KERNELS,
-    "finite_linear_algebra/qpoly.mojo": KERNELS,
-    "finite_linear_algebra/qlinalg.mojo": KERNELS,
-    "finite_linear_algebra/mat3.mojo": KERNELS,
-    "finite_linear_algebra/madic_ball.mojo": KERNELS,
-    "projective/homogeneous.mojo": KERNELS,
+    "oracles/property_oracle.py": KERNELS,
+    "kernel/finite_exact/bigint_z.mojo": KERNELS,
+    "kernel/finite_exact/rat_q.mojo": KERNELS,
+    "kernel/finite_exact/closed_q.mojo": KERNELS,
+    "kernel/finite_exact/closed_interval.mojo": KERNELS,
     # Named by documents mirrored from the parameter-plane program.
     "docs/rank2-coordinate-substrate.md": MANDELBROT,
     "spec/regime_correspondences.toml": MANDELBROT,
@@ -66,25 +55,21 @@ EXTERNAL: dict[str, str] = {
     "src/krawczyk_witness.mojo": MANDELBROT,
     "tools/audit_no_points.py": MANDELBROT,
     "docs/atlas-dataset.md": MANDELBROT,
-    # Named by the tiling-connections note, which inventories the far side of
-    # the bridge without importing any of it.
-    "substitution_dynamics/substitution.mojo": KERNELS_UNPINNED,
-    "substitution_dynamics/tuning.mojo": KERNELS_UNPINNED,
-    "substitution_dynamics/sadic.mojo": KERNELS_UNPINNED,
-    "substitution_dynamics/coincidence.mojo": KERNELS_UNPINNED,
-    "substitution_dynamics/automaton.mojo": KERNELS_UNPINNED,
-    "substitution_dynamics/words.mojo": KERNELS_UNPINNED,
-    "substitution_dynamics/balanced_pairs.mojo": KERNELS_UNPINNED,
-    "substitution_dynamics/discrepancy.mojo": KERNELS_UNPINNED,
     "docs/exact-polynomial-root-isolation-spec.md": KERNELS,
     # Named by the vendored `finite_linear_algebra` headers, which are upstream's.
     "docs/madic-ball-arithmetic-spec.md": KERNELS,
-    "tools/qpoly_reference.py": KERNELS,
+    "reference/qpoly_reference.py": KERNELS,
+    "test_integer_vector.mojo": KERNELS,
+    "kernel/integer_vector_bench.mojo": PISOT,
     # Named by the vendored `substitution_dynamics` headers and by the note
     # that hands them a word.
     "docs/tuning-substitutions-spec.md": KERNELS,
-    "tools/tuning_reference.py": KERNELS,
+    "reference/tuning_reference.py": KERNELS,
     "tests/substitution_dynamics/test_tuning.mojo": KERNELS,
+    # Named by the vendored `mojo_smoke/claims.mojo`, which links a test to a
+    # claim in a consumer's ledger; this repository keeps no such ledger.
+    "claim_governance.toml": "a consumer repository root, per larsbx/finite-math-kernels docs/audit/policy-format.md",
+    "tools/claim_governance/checks/coverage.py": KERNELS,
 }
 
 #: Tasks the mirrored specification names, which belong to upstream's manifest.
@@ -98,7 +83,17 @@ EXTERNAL_TASKS: dict[str, str] = {
 #: it, so its paths are fixtures rather than claims.
 SKIPPED_PREFIXES = ("tests/test_exact_arithmetic_audit.py", "tests/test_check_references.py")
 
-POLICY = Policy(external=EXTERNAL, external_tasks=EXTERNAL_TASKS, skipped_prefixes=SKIPPED_PREFIXES)
+#: The vendored include roots. A package-relative path such as
+#: `finite_exact/closed_q.mojo` resolves to the pinned copy beneath one of
+#: them, so it needs no attestation: the file is here, at the pinned bytes.
+PACKAGE_ROOTS = ("vendor/mojo", "vendor/python")
+
+POLICY = Policy(
+    external=EXTERNAL,
+    external_tasks=EXTERNAL_TASKS,
+    skipped_prefixes=SKIPPED_PREFIXES,
+    package_roots=PACKAGE_ROOTS,
+)
 
 
 if __name__ == "__main__":

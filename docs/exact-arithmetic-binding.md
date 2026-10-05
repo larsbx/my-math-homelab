@@ -15,6 +15,9 @@ certificate grammar yet to accept into.
 
 | Spec item | Module | Class | Notes |
 | --- | --- | --- | --- |
+| 1.1–1.3 exact field adapter | `vendor/mojo/finite_exact/field.mojo` (`ExactField`, `QField`) | CONFORMS | vendored; `QField` delegates to unbounded `Q` with sticky rejection; the trait specifies exact field operations. Included with the whole package; unused here |
+| finite prime field | `vendor/mojo/finite_exact/fp.mojo` (`Fp`, `FpField`) | DEMO | vendored whole-package snapshot; a compile-time prime bound below `2^31` keeps canonical-residue operations within Int64, and division by zero rejects. Unused here; no rational certificate path rests on it |
+| 1 checked fixed width and support decision | `vendor/mojo/finite_linear_algebra/integer_matrix.mojo` | CONFORMS-CHECKED | vendored; square dimensions, products and accumulation are checked and raise on refusal. Primitivity uses exact Boolean support powers rather than weighted products. Unused here |
 | 1.1 integer backend | `vendor/mojo/finite_exact/bigint_z.mojo` (`BigZ`) | CONFORMS | vendored unbounded backend; dynamic base-`10^9` limbs, exact ring and order operations, long division, Euclidean gcd, canonical encoding |
 | 1.1–1.3 ℚ | `vendor/mojo/finite_exact/rat_q.mojo` (`Q`), stable facade `vendor/mojo/finite_exact/rational.mojo` | CONFORMS | vendored; normalized `BigZ` fraction with sticky rejection |
 | 2.1–2.5 I_Q, complex boxes | `vendor/mojo/finite_exact/closed_q.mojo` (`IQ`, `ComplexIQ`), stable facade `vendor/mojo/finite_exact/closed_interval.mojo` | CONFORMS | vendored; J1 enforced, three-valued predicates with an explicit rejected state |
@@ -37,6 +40,9 @@ certificate grammar yet to accept into.
 | 1.1-1.3 exact rational linear algebra | `vendor/mojo/finite_linear_algebra/qlinalg.mojo`, `vendor/mojo/finite_linear_algebra/scalar.mojo`, `vendor/mojo/finite_linear_algebra/madic_ball.mojo`, `vendor/mojo/finite_linear_algebra/tensor3.mojo`, `vendor/mojo/finite_linear_algebra/w3.mojo` | CONFORMS | vendored as part of the package `qpoly` belongs to; elimination over `Q`, the integer lifts and the fail-closed zero test `qpoly` uses, `m`-adic balls, and the rank-three tensor combinatorics. Only the integer lifts are reached from this repository; the rest is here because a package is vendored whole |
 | 2.4 three-valued sign | `kernel/kneading.mojo`, oracle `reference/kneading.py` | DEMO | the side of the critical cut `x = 0` each iterate of the critical point is on, three-valued and fail-closed, and the word handed to the vendored tuning layer (`docs/kneading-and-tuning.md`) |
 | 1.1-1.3 exact rational polynomials | `vendor/mojo/finite_linear_algebra/qpoly.mojo`, consumed by `kernel/markov.mojo` | CONFORMS | vendored; Euclidean division, greatest common divisor, squarefree part, the Cauchy root bound and the Sturm chain over `Q`, and an isolating bracket for the largest real root that carries its own sign change (`docs/exact-polynomial-root-isolation-spec.md`) |
+| 1.1-1.3 exact integer module normal form | `vendor/mojo/finite_linear_algebra/integer_module.mojo` | CONFORMS | vendored as part of the package `qpoly` belongs to; the row Hermite normal form of an embedded subgroup of `Z^d` over unbounded `BigZ`. Nothing in this repository reaches it |
+| 1 checked fixed width | `vendor/mojo/finite_linear_algebra/integer_vector.mojo` | CONFORMS | vendored as part of the package `qpoly` belongs to; short integer vectors whose every sum and product is checked and raises rather than wraps. Nothing in this repository reaches it |
+| 1.1-1.3 exact decimal rendering | `vendor/mojo/finite_exact/exact_decimal.mojo`, consumed by `kernel/markov.mojo` | CONFORMS | vendored; base-ten text of a `BigZ` and of a `Q` (always `p/q`, and `rejected` for a value that carries no number), with no division, rounding or floating point |
 | 1 exact rational order | `kernel/markov.mojo`, oracle `reference/markov.py` | DEMO | the postcritical partition of a real postcritically finite parameter and its transition matrix, decided by rational inequalities; the characteristic polynomial and the largest-root bracket from the vendored `qpoly` on the Mojo side, and the oracle's own Faddeev-LeVerrier and sign-change bracket on the Python side (`docs/tiling-connections-2026-09-20.md`) |
 | 1–2 markov transcript | `kernel/markov_transcript.mojo` | DEMO | prints the partition transcript the differential test consumes; decides nothing |
 | 1–2 smoke suite | `kernel/smoke_tests.mojo` | DEMO | the canonical Mojo smoke driver; exercises the layers it reports on |
@@ -44,8 +50,10 @@ certificate grammar yet to accept into.
 
 ## Notes on the classes used
 
-`CONFORMS` rows are the vendored packages and the Python oracle, all on
-unbounded exact arithmetic. Every module this repository writes on top of them
+`CONFORMS` rows are the unbounded vendored arithmetic and the Python oracle.
+`CONFORMS-CHECKED` records the bounded matrix operations that raise on refusal;
+the finite prime-field snapshot is `DEMO` and unused here.
+Every module this repository writes on top of the unbounded packages
 is `DEMO`: the algebra is conformant and the backend is unbounded, but nothing
 here has been replayed into a certificate path, because there is no
 certificate path yet. There are no `QUARANTINED` rows: this repository has

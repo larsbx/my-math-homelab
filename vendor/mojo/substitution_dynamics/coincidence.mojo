@@ -11,7 +11,7 @@ The predicate is finite combinatorics. Whether it decides pure discrete
 spectrum (Dekking's theorem, with its height hypothesis) is the consumer's
 imported theorem, not this module's claim.
 
-Reference oracle: `tools/tuning_reference.py`.
+Reference oracle: `reference/tuning_reference.py`.
 """
 
 from substitution_dynamics.substitution import Substitution

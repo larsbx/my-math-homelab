@@ -16,7 +16,7 @@
 # This is the Mojo side of a differential pair; reference/markov.py is the Python
 # side, and tests/test_markov.py compares the transcripts.
 
-from finite_exact.bigint_z import BigZ, BIGZ_BASE
+from finite_exact.exact_decimal import q_decimal
 from finite_exact.rat_q import Q, q_max
 from finite_linear_algebra.qpoly import RootBracket, charpoly, largest_root_bracket
 
@@ -145,27 +145,9 @@ def growth_bracket(matrix: List[Int], size: Int, width: Q, max_steps: Int) -> Ro
     return largest_root_bracket(transition_polynomial(matrix, size), width, max_steps)
 
 
-def bigz_small(value: BigZ) -> Int:
-    """The integer a `BigZ` holds, for transcript rendering only.
-
-    Every quantity this module prints is a small integer; a value too large
-    for `Int` would be a bug in the caller, not a case to handle here.
-    """
-    var magnitude = 0
-    for index in range(len(value.limbs)):
-        magnitude = magnitude * Int(BIGZ_BASE) + Int(value.limbs[len(value.limbs) - 1 - index])
-    return value.sign * magnitude
-
-
-def q_text(value: Q) -> String:
-    if value.rejected:
-        return "rejected"
-    return String(bigz_small(value.num)) + "/" + String(bigz_small(value.den))
-
-
 def transcript_line(c: Q, horizon: Int) -> String:
     """One parameter, as the Python oracle prints it too."""
-    var line = "c=" + q_text(c)
+    var line = "c=" + q_decimal(c)
     var points = postcritical_points(c, horizon, MARKOV_LIMB_BUDGET)
     if len(points) < 2:
         return line + " none"
@@ -173,7 +155,7 @@ def transcript_line(c: Q, horizon: Int) -> String:
     for i in range(len(points)):
         if i > 0:
             line += ","
-        line += q_text(points[i])
+        line += q_decimal(points[i])
     var matrix = covering_matrix(c, points)
     var size = len(points) - 1
     line += " matrix="
@@ -184,7 +166,7 @@ def transcript_line(c: Q, horizon: Int) -> String:
     for i in range(len(poly)):
         if i > 0:
             line += ","
-        line += q_text(poly[i])
+        line += q_decimal(poly[i])
     return line
 
 

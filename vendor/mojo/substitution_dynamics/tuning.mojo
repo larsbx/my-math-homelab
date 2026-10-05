@@ -12,7 +12,7 @@ finite combinatorics only. The star product is defined so that
 `compose(a.substitution(), b.substitution())` for every pair of patterns,
 whatever their twists, and both twist rules are closed under it.
 
-Reference oracle: `tools/tuning_reference.py`.
+Reference oracle: `reference/tuning_reference.py`.
 """
 
 from substitution_dynamics.substitution import Substitution

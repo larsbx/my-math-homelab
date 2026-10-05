@@ -1,7 +1,7 @@
 """Exact polynomials over Q: division, gcd, the Sturm chain, and isolation.
 
 Specification: docs/exact-polynomial-root-isolation-spec.md. The executable
-reference written before this kernel is `tools/qpoly_reference.py`.
+reference written before this kernel is `reference/qpoly_reference.py`.
 
 A polynomial is `List[Q]` in ascending degree, normalized so that its last
 coefficient is nonzero; the empty list is zero. Nothing here names a root: a
