@@ -17,9 +17,11 @@ Two kinds of column appear below and they carry different authority.
 
 `J1 expects` says what the separator catalogue must do at this parameter if
 `J1` is sound. It is the point of the corpus: the `STABILIZES` rows are the
-confirmation cases that the parameter plane cannot supply, and the `UNDECIDED`
-row is where a finite witness of fiber non-triviality would be the deliverable
-instead of a stabilization proof.
+confirmation cases that the parameter plane cannot supply. `UNDECIDED` records
+an unresolved J1 obligation, not permanent undecidability or a claim that
+local connectivity fails. The algebraic-multiplier import and its analytic
+boundary are recorded in the notes rather than in the local-connectivity tag
+column.
 
 `CAPPED` is not a classification. Squaring doubles the coordinate bit length,
 so an exactly iterated critical orbit that neither escapes nor repeats costs
@@ -49,5 +51,5 @@ exhausts its budget by construction, and reports which budget ran out.
 - **`cauliflower`** (parabolic, multiplier 1) -- Fail-closed case: the multiplier has quadrance exactly 1, so an interval test that decides attracting or repelling here is unsound.
 - **`parabolic_minus_one`** (parabolic, multiplier -1) -- Root of the period-2 component: the same fail-closed obligation with a negative multiplier.
 - **`parabolic_i`** (parabolic, multiplier i) -- The third of the four Gaussian-rational roots of unity, reached by c = lam (2 - lam) / 4 at lam = i.
-- **`niven`** (irrationally indifferent) -- Exactly representable data, open dynamics, and open twice over: whether the rotation number of lam = (3 + 4i)/5 is Brjuno decides Siegel against Cremer, and even a Siegel disk leaves local connectivity turning on whether the critical point lies on its boundary. Neither is a finite test on the multiplier.
+- **`niven`** (irrationally indifferent) -- The exact algebraic multiplier lam = (3 + 4i)/5 is not a root of unity. The literature import in docs/literature-gate-2026-10-06-algebraic-multiplier.md gives Diophantine and Brjuno; the accepted linearization and Herman imports give a Siegel disk with the critical point on its boundary. Local connectivity remains OPEN, and J1 remains UNDECIDED. These are classical imports, not new finite-core verdicts.
 - **`escaping`** (escaping critical orbit) -- K_c is disconnected, and the imported fiber theory is stated for compact connected full sets, so the question the other rows answer is not posed here; the escape certificate is.

@@ -121,10 +121,12 @@ two agreeing implementations, the ledger, and the literature gate that judged
 its tags. Blocks 2 to 6 are not started. Both halves of the bridge are now gated, which
 settles what `J1` would mean and settles nothing about whether it holds.
 
-The first genuinely open cell is the irrationally indifferent row: `c =
-(37 + 16i)/100` is exact data whose Siegel-or-Cremer status is not decided by
-any finite test on the multiplier. It is the intended home of criterion 5's
-second branch.
+The first open local-connectivity cell is the irrationally indifferent row:
+`c = (37 + 16i)/100`. The algebraic-multiplier import in
+`docs/literature-gate-2026-10-06-algebraic-multiplier.md` settles Brjuno and
+gives the classical Siegel/critical-boundary conclusions. It settles neither
+local connectivity nor J1. This row does not establish failure of local
+connectivity and is not yet a witness for criterion 5's second branch.
 
 ## Amendment, 2026-09-20: the separator is restated
 

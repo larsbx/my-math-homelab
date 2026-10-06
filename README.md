@@ -75,17 +75,19 @@ c = (37 + 16i)/100
 ```
 
 an exactly representable parameter with an irrationally indifferent fixed
-point whose Siegel-or-Cremer status turns on the Brjuno condition -- and where
-even a Siegel disk would leave local connectivity turning on whether the
-critical point lies on its boundary. Exact data, open dynamics, open twice
-over.
+point. Its algebraic multiplier is Diophantine and hence Brjuno in the
+classical interpretation, by
+`docs/literature-gate-2026-10-06-algebraic-multiplier.md`. The accepted
+linearization and Herman imports give a Siegel disk with the critical point
+on its boundary. Local connectivity at this rotation number remains open.
 
 **Rational multiplier dichotomy.** A quadrance-1 element of `Q(i)` is a root
 of unity exactly when it is one of `1, -1, i, -i`; the proof is section 6 of
 the design analysis. So *rationally versus irrationally indifferent* is
-finitely decidable on this data, while *Siegel versus Cremer* is not. The
-regime ledger therefore carries a provably decidable cell next to a provably
-open one, on the same parameter.
+finitely decidable on this data. The dichotomy alone does not decide
+linearizability; the separate algebraic-multiplier import does for the
+irrationally indifferent rows. The regime ledger keeps the exact multiplier
+class distinct from the open local-connectivity cell.
 
 ## The corpus and the ledger
 
@@ -223,11 +225,13 @@ vendored.toml               vendored digests
 
 ## Boundary of claims
 
-This repository does not claim local connectivity of any Julia set, any
-Brjuno or Diophantine property of any rotation number, or that any classical
-statement it cites has been verified against its literature. Every classical
-statement enters as a named theorem tag and is unverified until that tag's
-literature gate is run. No regime is discharged.
+This repository does not prove local connectivity or analytic linearization
+internally. The algebraic-multiplier gate accepts the named classical imports
+above; those conclusions do not become finite-core verdicts. Every classical
+statement enters only through its stated literature-gate boundary. Local
+connectivity at `niven`, residual-measure completeness, and a quantitative
+rotation-domain `IN` certificate remain open obligations. No regime is
+discharged.
 
 ## Status
 

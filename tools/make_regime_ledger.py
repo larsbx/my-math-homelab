@@ -66,9 +66,11 @@ Two kinds of column appear below and they carry different authority.
 
 `J1 expects` says what the separator catalogue must do at this parameter if
 `J1` is sound. It is the point of the corpus: the `STABILIZES` rows are the
-confirmation cases that the parameter plane cannot supply, and the `UNDECIDED`
-row is where a finite witness of fiber non-triviality would be the deliverable
-instead of a stabilization proof.
+confirmation cases that the parameter plane cannot supply. `UNDECIDED` records
+an unresolved J1 obligation, not permanent undecidability or a claim that
+local connectivity fails. The algebraic-multiplier import and its analytic
+boundary are recorded in the notes rather than in the local-connectivity tag
+column.
 
 `CAPPED` is not a classification. Squaring doubles the coordinate bit length,
 so an exactly iterated critical orbit that neither escapes nor repeats costs

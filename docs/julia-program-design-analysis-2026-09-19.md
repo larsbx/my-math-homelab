@@ -58,15 +58,16 @@ c = (37 + 16i)/100
 ```
 
 is an exactly representable parameter with an **irrationally indifferent**
-fixed point whose Siegel-or-Cremer status turns on the Brjuno condition for
-`theta = arg(lam) / 2pi`, and which, even in the Siegel case, leaves local
-connectivity turning on whether the critical point lies on the Siegel
-disk's boundary. Exact data, open dynamics. Roots of unity
+fixed point. The algebraic-multiplier gate
+`docs/literature-gate-2026-10-06-algebraic-multiplier.md` gives Diophantine and
+Brjuno in the classical layer. The accepted imports give a Siegel disk with
+the critical point on its boundary; local connectivity remains open. Roots of unity
 `lam in {1, -1, i, -i}` give the parabolics `c = 1/4`, `-3/4`, `(1 + 2i)/4`,
 `(1 - 2i)/4`.
 
-The corpus this produces is the generated `docs/J1_regime_ledger.md`. Every regime except
-"Siegel with bounded type" is reached by exactly representable data.
+The corpus this produces is the generated `docs/J1_regime_ledger.md`.
+It reaches every multiplier regime in that ledger; neither bounded type nor
+a Cremer fixed point is established by these parameters.
 
 ## 2. What transfers unchanged
 
@@ -180,10 +181,10 @@ converse is immediate. []
 **Consequence.** For a Gaussian-rational parameter with an indifferent cycle,
 the split *parabolic versus irrationally indifferent* is exactly decidable by
 finite means: compute `lam`, test `N(lam) = 1`, then test membership in the
-four-element set. The split *Siegel versus Cremer* is **not** decided by it,
-because that turns on the Brjuno condition for the rotation number. The
-regime ledger therefore has one provably decidable cell next to one provably
-open cell, on the same exactly representable parameter.
+four-element set. This lemma alone does not decide linearization. The
+separate algebraic-multiplier gate supplies the Diophantine and Brjuno
+imports on its irrationally indifferent branch; no finite prefix is needed.
+The local-connectivity cell remains open on the same exact parameter.
 
 ## 7. Decisions taken for Phase 0
 
@@ -206,14 +207,15 @@ open cell, on the same exactly representable parameter.
   squarefree route, on `P^c_{l,k}`.
 - **Phase 3** — dynamical-ray separator catalogue, `J1` per regime, and the
   cross-check against `C1`'s adequacy machinery.
-- **Phase 4** — non-triviality witnesses at `(37 + 16i)/100`, and escalation
-  of `c` from `Q(i)` to exact algebraic and interval parameters.
+- **Phase 4** — non-triviality witnesses where failure is established, and
+  escalation of `c` from `Q(i)` to exact algebraic and interval parameters.
+  The `niven` row is not yet such a witness.
 
 ## 9. What this document does not claim
 
-It does not claim local connectivity of any Julia set, any Brjuno or
-Diophantine property of `arg((3 + 4i)/5) / 2pi`, or that any classical
-statement cited above has been verified against its literature. Every
-classical statement enters the executable layer as a named theorem tag and is
-unverified until the literature gate for that tag is run. The regime table in
-`docs/J1_regime_ledger.md` records tags, not proofs.
+It does not prove local connectivity or analytic linearization internally.
+The algebraic-multiplier gate records accepted classical Diophantine, Brjuno
+and critical-boundary conclusions at `niven`, with their qualifications.
+These are literature imports, not executable verdicts. The regime table in
+`docs/J1_regime_ledger.md` keeps local connectivity open and records tags,
+not proofs.
