@@ -4,7 +4,7 @@
 [[package]]
 name = "finite_exact"
 repository = "larsbx/finite-math-kernels"
-commit = "56887e0bc916e810df4a94761ae2e1b398968f0f"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
 root = "vendor/mojo"
 
 [package.files]
@@ -24,7 +24,7 @@ root = "vendor/mojo"
 [[package]]
 name = "quadratic_orbit"
 repository = "larsbx/finite-math-kernels"
-commit = "56887e0bc916e810df4a94761ae2e1b398968f0f"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
 root = "vendor/mojo"
 
 [package.files]
@@ -38,7 +38,7 @@ root = "vendor/mojo"
 [[package]]
 name = "mojo_smoke"
 repository = "larsbx/finite-math-kernels"
-commit = "56887e0bc916e810df4a94761ae2e1b398968f0f"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
 root = "vendor/mojo"
 
 [package.files]
@@ -49,7 +49,7 @@ root = "vendor/mojo"
 [[package]]
 name = "vendoring"
 repository = "larsbx/finite-math-kernels"
-commit = "56887e0bc916e810df4a94761ae2e1b398968f0f"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
 root = "vendor/python"
 
 [package.files]
@@ -59,7 +59,7 @@ root = "vendor/python"
 [[package]]
 name = "references"
 repository = "larsbx/finite-math-kernels"
-commit = "56887e0bc916e810df4a94761ae2e1b398968f0f"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
 root = "vendor/python"
 
 [package.files]
@@ -69,7 +69,7 @@ root = "vendor/python"
 [[package]]
 name = "angle_doubling"
 repository = "larsbx/finite-math-kernels"
-commit = "56887e0bc916e810df4a94761ae2e1b398968f0f"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
 root = "vendor/mojo"
 
 [package.files]
@@ -79,7 +79,7 @@ root = "vendor/mojo"
 [[package]]
 name = "projective"
 repository = "larsbx/finite-math-kernels"
-commit = "56887e0bc916e810df4a94761ae2e1b398968f0f"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
 root = "vendor/mojo"
 
 [package.files]
@@ -90,7 +90,7 @@ root = "vendor/mojo"
 [[package]]
 name = "finite_linear_algebra"
 repository = "larsbx/finite-math-kernels"
-commit = "56887e0bc916e810df4a94761ae2e1b398968f0f"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
 root = "vendor/mojo"
 
 [package.files]
@@ -128,7 +128,7 @@ root = "vendor/mojo"
 [[package]]
 name = "substitution_dynamics"
 repository = "larsbx/finite-math-kernels"
-commit = "56887e0bc916e810df4a94761ae2e1b398968f0f"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
 root = "vendor/mojo"
 
 [package.files]
@@ -145,7 +145,7 @@ root = "vendor/mojo"
 [[package]]
 name = "finite_graph"
 repository = "larsbx/finite-math-kernels"
-commit = "56887e0bc916e810df4a94761ae2e1b398968f0f"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
 root = "vendor/mojo"
 
 [package.files]
@@ -157,7 +157,7 @@ root = "vendor/mojo"
 [[package]]
 name = "closed_interval"
 repository = "larsbx/finite-math-kernels"
-commit = "56887e0bc916e810df4a94761ae2e1b398968f0f"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
 root = "vendor/python"
 
 [package.files]
@@ -168,7 +168,7 @@ root = "vendor/python"
 [[package]]
 name = "exact_arithmetic_audit"
 repository = "larsbx/finite-math-kernels"
-commit = "56887e0bc916e810df4a94761ae2e1b398968f0f"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
 root = "vendor/python"
 
 [package.files]
@@ -178,7 +178,7 @@ root = "vendor/python"
 [[package]]
 name = "claim_governance"
 repository = "larsbx/finite-math-kernels"
-commit = "56887e0bc916e810df4a94761ae2e1b398968f0f"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
 root = "vendor/python"
 
 [package.files]
@@ -196,3 +196,13 @@ root = "vendor/python"
 "claim_governance/policy.py" = "7b7f34419d9436ecf818c7e64093a504de7d924d8abe80de047c54e50c236095"
 "claim_governance/repo.py" = "11a603c0288f9030ec0c5990d260f2c3f593b7e44a2b86d49f13920f84348dd3"
 "claim_governance/runner.py" = "86c48c3dc677e3cacf515b852382dfc459c30bc12d8220d6171efa22a84bef89"
+
+[[package]]
+name = "lexical_audit"
+repository = "larsbx/finite-math-kernels"
+commit = "9019c641521f903f5076223b921abbee6703c2e9"
+root = "vendor/python"
+
+[package.files]
+"lexical_audit/__init__.py" = "ad206b6b719a55abad97f933fed25d603de26845c537509e6af9a18faefd7fc2"
+"lexical_audit/audit.py" = "475195c469cf2851fa34b93b658a55dd7bbe667400082eb1fdc7e81a1f3af3f0"
