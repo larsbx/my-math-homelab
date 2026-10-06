@@ -4,7 +4,7 @@ branch = "polyglot/migration-v1"
 boundary_id = "finite-julia-certificate"
 fail_closed = true
 authority_change = false
-ci_wiring = false
+ci_wiring = false  # CI runs polyglot-check: .polyglot/ must equal the rendered FMK template; no conformance runner is wired
 
 [estate]
 manifest = "ESTATE.toml"
