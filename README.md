@@ -215,6 +215,7 @@ vendor/                     pinned in vendored.toml; never edited here
     exact_arithmetic_audit/ the spec section 7 audit engine, same upstream
     lexical_audit/          the terminology audit engine, same upstream
     claim_governance/       the lexer both audit engines use, same upstream
+    polyglot_envelope/      renders .polyglot/ from polyglot.manifest.toml, same upstream
 tools/
   make_regime_ledger.py     renders every generated surface; --check gates them
   audit_exact_arithmetic.py the binding-table and no-float policy (vendored engine)
