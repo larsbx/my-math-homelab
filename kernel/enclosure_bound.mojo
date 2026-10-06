@@ -8,7 +8,9 @@
 # how far an enclosure drifts from the orbit it encloses, for any extension
 # with a rational per-step width factor K; sections 2 and 4(b) of the lemma
 # supply `K = 6M` for `z -> z^2 + c` and convert the resulting distance into
-# a quadrance, which is what the escape test reads.
+# a quadrance, which is what the escape test reads. The box measures
+# themselves, `sup_radius`, `sup_magnitude` and `within`, are the vendored
+# `finite_exact.enclosure_width`, which refuses to measure a rejected box.
 #
 # This is the Mojo side of a differential pair; reference/enclosure_bound.py is
 # the Python side and keeps its own arithmetic, because a differential pair
@@ -16,24 +18,7 @@
 
 from finite_exact.closed_interval import ComplexIQ, IQ
 from finite_exact.enclosure_width import refinement_radius as interval_refinement_radius, sup_radius
-from finite_exact.rat_q import Q, q_abs, q_max
-
-
-
-def sup_magnitude(box: ComplexIQ) -> Q:
-    """The largest coordinate magnitude the box reaches."""
-    if not box.accepted():
-        return Q.zero()
-    var real = q_max(q_abs(box.re.lo), q_abs(box.re.hi))
-    var imaginary = q_max(q_abs(box.im.lo), q_abs(box.im.hi))
-    return q_max(real, imaginary)
-
-
-def within(box: ComplexIQ, bound: Q) -> Bool:
-    """Does the box lie inside the square of half-side `bound`?"""
-    if not (box.accepted() and bound.accepted()):
-        return False
-    return sup_magnitude(box).le(bound)
+from finite_exact.rat_q import Q
 
 
 def step_radius_bound(bound: Q, radius: Q) -> Q:

@@ -153,7 +153,8 @@ the circle family passes only if it is a field term registered in the
 registry, is denied by the clause it sits in, sits under a heading that
 forbids, or carries an explicit `<!-- terminology-exempt: reason -->` marker.
 Literature gates, which quote classical statements verbatim, are scanned as
-the classical layer they declare themselves to be.
+the classical layer they declare themselves to be. The engine is the vendored
+`lexical_audit` package; the policy is this repository's.
 
 ## References
 
@@ -186,10 +187,9 @@ docs/
   terminology-governance.md                     mirrored governance process
   rational-interval-arithmetic-spec.md          mirrored exact-arithmetic contract
 kernel/                     canonical Mojo executable
-  julia_orbit.mojo          escape bound, cycle checks, multiplier classification
+  julia_orbit.mojo          orbit verdicts, cycle checks, multiplier classification
   box_classifier.mojo       OUT, IN and UNKNOWN over boxes
   enclosure_bound.mojo      how far an enclosure drifts from its orbit
-  escape_certificate.mojo   the growth ratio behind OUT
   corpus_replay.mojo        the kernel run against the corpus
   corpus_transcript.mojo    the transcript the differential test consumes
   parameter_corpus.mojo     GENERATED
@@ -206,17 +206,24 @@ oracles/
 vendor/                     pinned in vendored.toml; never edited here
   mojo/                     Mojo include root (-I vendor/mojo)
     finite_exact/           vendored from larsbx/finite-math-kernels
-    quadratic_orbit/        the seeded orbit of z^2 + c, same upstream
+    quadratic_orbit/        the orbit of z^2 + c, its escape test and certificate, the multiplier trichotomy, the Krawczyk test for z^2 + c, same upstream
+    root_isolation/         the Krawczyk operator quadratic_orbit uses, same upstream
+    finite_polynomial/      truncated jets and Taylor models kernel/jet.mojo and kernel/taylor.mojo build on, same upstream
+    rational_dynamics/      the Moebius function finite_polynomial imports, same upstream
     mojo_smoke/             the smoke reporter, same upstream
   python/
     references/             the reference-check engine, same upstream
     vendoring/              the vendoring checker, same upstream
     closed_interval/        exact rational boxes and dyadic rounding, same upstream
+    root_isolation_py/      the Krawczyk operator reference/preperiodic.py uses, same upstream
     exact_arithmetic_audit/ the spec section 7 audit engine, same upstream
-    claim_governance/       its comment and string lexer, same upstream
+    lexical_audit/          the terminology audit engine, same upstream
+    claim_governance/       the lexer both audit engines use, same upstream
+    polyglot_envelope/      renders .polyglot/ from polyglot.manifest.toml, same upstream
 tools/
   make_regime_ledger.py     renders every generated surface; --check gates them
   audit_exact_arithmetic.py the binding-table and no-float policy (vendored engine)
+  audit_terminology.py      the rank-2 vocabulary policy (vendored engine)
   check_references.py       this repository's reference policy
 tests/
 ESTATE.toml                 estate manifest; audited from a pinned larsbx/estate-governance

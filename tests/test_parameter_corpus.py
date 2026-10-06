@@ -68,9 +68,9 @@ def test_stabilization_is_expected_only_where_a_tag_backs_it(row):
 def test_every_escaping_verdict_carries_a_certificate(row):
     """An `ESCAPES` verdict is only as good as the reason behind it.
 
-    The criterion in `kernel/julia_orbit.mojo` fires at `t > max(4, m)`, which is
-    exactly where a rational growth ratio exists, so a verdict without a
-    certificate would mean the two disagree.
+    The criterion in `vendor/mojo/quadratic_orbit/escape_criterion.mojo` fires at
+    `t > max(4, m)`, where a rational growth ratio always exists, so a verdict
+    without a certificate would mean the two disagree.
     """
     orbit = critical_orbit(row.c)
     if orbit.verdict is OrbitVerdict.ESCAPES:

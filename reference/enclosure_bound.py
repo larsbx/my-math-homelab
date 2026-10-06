@@ -29,7 +29,10 @@ def sup_radius(box: ComplexBox) -> Fraction:
 
 
 def sup_magnitude(box: ComplexBox) -> Fraction:
-    """The largest coordinate magnitude the box reaches."""
+    """The largest coordinate magnitude the box reaches; a refused box has none
+    and raises, as `sup_radius` does and as the Mojo side rejects."""
+    if not box.accepted():
+        raise ValueError("a rejected box has no magnitude")
     return max(abs(box.re.lo), abs(box.re.hi), abs(box.im.lo), abs(box.im.hi))
 
 

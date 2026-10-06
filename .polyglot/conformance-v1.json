@@ -51,6 +51,31 @@
         "payload_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
         "critical": {}
       }
+    },
+    {
+      "name": "malformed-digest",
+      "reason": "payload digests are lowercase sha256 hex",
+      "value": {
+        "schema": "polyglot-boundary-envelope/v1",
+        "boundary": "finite-julia-certificate",
+        "producer_role": "canonical",
+        "artifact_id": "fixture-bad-digest",
+        "payload_digest": "sha256:ABC",
+        "critical": {}
+      }
+    },
+    {
+      "name": "unknown-top-level-field",
+      "reason": "the envelope is closed; unknown fields fail closed",
+      "value": {
+        "schema": "polyglot-boundary-envelope/v1",
+        "boundary": "finite-julia-certificate",
+        "producer_role": "canonical",
+        "artifact_id": "fixture-extra-field",
+        "payload_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+        "critical": {},
+        "verdict": "accepted"
+      }
     }
   ]
 }

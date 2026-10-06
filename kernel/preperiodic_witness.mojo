@@ -12,10 +12,10 @@
 # This is the Mojo side of a differential pair; reference/preperiodic.py is the
 # Python side.
 
-from finite_exact.closed_interval import ComplexIQ
+from finite_exact.closed_interval import ComplexIQ, complex_box as box
 from finite_exact.rat_q import Q
-from box_classifier import box
-from quadratic_orbit.preperiodic import excludes_preperiodic_point, isolates_preperiodic_point
+from quadratic_orbit.krawczyk_operator import isolates_preperiodic_point
+from quadratic_orbit.preperiodic import excludes_preperiodic_point
 
 
 def has_exact_type(z: ComplexIQ, c: ComplexIQ, preperiod: Int, period: Int) -> Bool:

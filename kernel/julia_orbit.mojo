@@ -4,9 +4,12 @@
 # Specification: docs/rational-interval-arithmetic-spec.md.
 #
 # A Gaussian-rational parameter is a rank-2 singleton box: two exact rational
-# coordinates, with polynomial operations and a quadrance scalar. No circle,
-# disk, arc, or polar angle is available here, and the escape test is a
-# quadrance compared against a rational bound rather than a radius.
+# coordinates, with polynomial operations and a quadrance scalar.
+# No circle, disk, arc, or polar angle is available here, and the escape test
+# is a quadrance compared against a rational bound rather than a radius: the
+# vendored `quadratic_orbit.escape_criterion`, as is the multiplier
+# trichotomy (`quadratic_orbit.multiplier_classification`) that the
+# classification below refines.
 #
 # Every routine is a checker. It consumes a parameter and, where one is
 # required, a witness, and returns what exact arithmetic decides. Nothing
@@ -16,8 +19,9 @@
 # This is the Mojo side of a differential pair; reference/julia_reference.py is
 # the Python side, and tests/test_mojo_replay.py compares the two.
 
-from finite_exact.rat_q import Q, q_max
-from finite_exact.closed_interval import ComplexIQ
+from finite_exact.closed_interval import ComplexIQ, gaussian_singleton as gaussian_q
+from quadratic_orbit.escape_criterion import escapes
+from quadratic_orbit.multiplier_classification import MULTIPLIER_ATTRACTING, MULTIPLIER_INDIFFERENT, MULTIPLIER_REPELLING, multiplier_regime
 from quadratic_orbit.orbit import orbit_term, quadratic_step, zero_box
 
 alias ORBIT_ESCAPES = 0
@@ -30,47 +34,6 @@ alias MULT_ATTRACTING = 1
 alias MULT_PARABOLIC = 2
 alias MULT_IRRATIONALLY_INDIFFERENT = 3
 alias MULT_REPELLING = 4
-
-
-def gaussian_q(re_num: Int64, re_den: Int64, im_num: Int64, im_den: Int64) -> ComplexIQ:
-    """A Gaussian-rational coordinate record as a rank-2 singleton box."""
-    return ComplexIQ.singleton(Q(re_num, re_den), Q(im_num, im_den))
-
-
-def is_singleton(z: ComplexIQ) -> Bool:
-    if not z.accepted():
-        return False
-    return z.re.lo.eq(z.re.hi) and z.im.lo.eq(z.im.hi)
-
-
-def singleton_eq(a: ComplexIQ, b: ComplexIQ) -> Bool:
-    if not (is_singleton(a) and is_singleton(b)):
-        return False
-    return a.re.lo.eq(b.re.lo) and a.im.lo.eq(b.im.lo)
-
-
-def escape_bound_quadrance(c: ComplexIQ) -> Q:
-    """`max(4, N(c))`.
-
-    The classical criterion is |z| > max(2, |c|). Squaring both sides keeps
-    the test inside the rank-2 layer: no square root, and no radius.
-    """
-    var quadrance = c.quadrance()
-    if not quadrance.accepted():
-        return Q(0, 1)
-    return q_max(Q(4, 1), quadrance.hi)
-
-
-def escapes_at(z: ComplexIQ, c: ComplexIQ) -> Bool:
-    """Does the whole box lie beyond the escape bound?
-
-    The bound is compared against the lower endpoint of the quadrance, so a
-    box that merely touches the bound does not certify escape.
-    """
-    var quadrance = z.quadrance()
-    if not quadrance.accepted():
-        return False
-    return escape_bound_quadrance(c).lt(quadrance.lo)
 
 
 struct OrbitOutcome(Copyable, Movable):
@@ -130,22 +93,22 @@ def critical_orbit(c: ComplexIQ, horizon: Int) -> OrbitOutcome:
     arithmetic is dominated by the size of the last term, and recomputation
     keeps the kernel allocation-free.
     """
-    if horizon < 1 or not is_singleton(c):
+    if horizon < 1 or not c.is_singleton():
         return orbit_rejected()
     for n in range(horizon + 1):
         var z = orbit_term(zero_box(), c, n)
         if not z.accepted():
             return orbit_rejected()
-        if escapes_at(z, c):
+        if escapes(z, c):
             return OrbitOutcome(ORBIT_ESCAPES, n, -1, -1, n, False)
         for first in range(n):
-            if singleton_eq(orbit_term(zero_box(), c, first), z):
+            if orbit_term(zero_box(), c, first).singleton_eq(z):
                 return OrbitOutcome(ORBIT_PREPERIODIC, -1, first, n - first, n, False)
     return orbit_capped(horizon)
 
 
 def is_cycle_of_length_one(c: ComplexIQ, z: ComplexIQ) -> Bool:
-    return singleton_eq(quadratic_step(z, c), z)
+    return quadratic_step(z, c).singleton_eq(z)
 
 
 def multiplier_of_fixed_point(z: ComplexIQ) -> ComplexIQ:
@@ -163,34 +126,28 @@ def is_gaussian_root_of_unity(lam: ComplexIQ) -> Bool:
     """The rational multiplier dichotomy: a quadrance-1 element of Q(i) is a
     root of unity exactly when it is one of 1, -1, i, -i. See
     docs/julia-program-design-analysis-2026-09-19.md, section 6."""
-    if singleton_eq(lam, gaussian_q(1, 1, 0, 1)):
-        return True
-    if singleton_eq(lam, gaussian_q(-1, 1, 0, 1)):
-        return True
-    if singleton_eq(lam, gaussian_q(0, 1, 1, 1)):
-        return True
-    return singleton_eq(lam, gaussian_q(0, 1, -1, 1))
+    return (
+        lam.singleton_eq(gaussian_q(1, 1, 0, 1)) or lam.singleton_eq(gaussian_q(-1, 1, 0, 1)) or
+        lam.singleton_eq(gaussian_q(0, 1, 1, 1)) or lam.singleton_eq(gaussian_q(0, 1, -1, 1))
+    )
 
 
 def classify_multiplier(lam: ComplexIQ) -> Int:
     """Classify a Gaussian-rational multiplier exactly.
 
-    The indifferent case splits by the dichotomy above, so parabolic versus
-    irrationally indifferent needs no bound on the period. What the dichotomy
-    does not decide is Siegel versus Cremer: that turns on the Brjuno
-    condition for the rotation number, which is not a finite test on the
-    multiplier.
+    The vendored trichotomy decides attracting, indifferent or repelling; zero
+    is the superattracting case of the first, and the indifferent case splits
+    by the dichotomy above, so parabolic versus irrationally indifferent needs
+    no bound on the period. What the dichotomy does not decide is Siegel
+    versus Cremer: that turns on the Brjuno condition for the rotation number,
+    which is not a finite test on the multiplier. A box the trichotomy leaves
+    undecided, and a refusal, classify as nothing (`MULT_NONE`).
     """
-    if singleton_eq(lam, gaussian_q(0, 1, 0, 1)):
-        return MULT_SUPERATTRACTING
-    var quadrance = lam.quadrance()
-    if not quadrance.accepted():
+    var regime = multiplier_regime(lam)
+    if regime == MULTIPLIER_ATTRACTING:
+        return MULT_SUPERATTRACTING if lam.singleton_eq(gaussian_q(0, 1, 0, 1)) else MULT_ATTRACTING
+    if regime == MULTIPLIER_REPELLING:
         return MULT_REPELLING
-    var one = Q(1, 1)
-    if quadrance.hi.lt(one):
-        return MULT_ATTRACTING
-    if one.lt(quadrance.lo):
-        return MULT_REPELLING
-    if is_gaussian_root_of_unity(lam):
-        return MULT_PARABOLIC
-    return MULT_IRRATIONALLY_INDIFFERENT
+    if regime == MULTIPLIER_INDIFFERENT:
+        return MULT_PARABOLIC if is_gaussian_root_of_unity(lam) else MULT_IRRATIONALLY_INDIFFERENT
+    return MULT_NONE
