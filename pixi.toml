@@ -16,6 +16,8 @@ references = "python tools/check_references.py"
 terminology = "python tools/audit_terminology.py"
 ledgers = "python tools/make_regime_ledger.py"
 ledgers-check = "python tools/make_regime_ledger.py --check"
+polyglot = "python vendor/python/polyglot_envelope/render.py"
+polyglot-check = "python vendor/python/polyglot_envelope/render.py --check"
 
 [dependencies]
 mojo = "==1.0.0"

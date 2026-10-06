@@ -214,6 +214,7 @@ vendor/                     pinned in vendored.toml; never edited here
     closed_interval/        exact rational boxes and dyadic rounding, same upstream
     exact_arithmetic_audit/ the spec section 7 audit engine, same upstream
     claim_governance/       its comment and string lexer, same upstream
+    polyglot_envelope/      renders .polyglot/ from polyglot.manifest.toml, same upstream
 tools/
   make_regime_ledger.py     renders every generated surface; --check gates them
   audit_exact_arithmetic.py the binding-table and no-float policy (vendored engine)
