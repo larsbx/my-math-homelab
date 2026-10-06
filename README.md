@@ -207,11 +207,13 @@ vendor/                     pinned in vendored.toml; never edited here
   mojo/                     Mojo include root (-I vendor/mojo)
     finite_exact/           vendored from larsbx/finite-math-kernels
     quadratic_orbit/        the seeded orbit of z^2 + c, same upstream
+    root_isolation/         the Krawczyk operator quadratic_orbit uses, same upstream
     mojo_smoke/             the smoke reporter, same upstream
   python/
     references/             the reference-check engine, same upstream
     vendoring/              the vendoring checker, same upstream
     closed_interval/        exact rational boxes and dyadic rounding, same upstream
+    root_isolation_py/      the Krawczyk operator reference/preperiodic.py uses, same upstream
     exact_arithmetic_audit/ the spec section 7 audit engine, same upstream
     claim_governance/       its comment and string lexer, same upstream
 tools/

@@ -25,6 +25,7 @@ from fractions import Fraction
 from box_classifier import escape_bound_quadrance, step
 from gaussian_q import GQ
 from closed_interval import ComplexBox
+from root_isolation_py import centre, exact_inverse, excludes_zero, krawczyk, strictly_inside
 from jet import residual as jet_residual, vanishing_order
 from julia_reference import step as point_step
 
@@ -70,17 +71,15 @@ def excludes(z: ComplexBox, c: ComplexBox, preperiod: int, period: int) -> bool:
     """Does `z` provably contain no point of this preperiod and period?
 
     True is a proof about every point of the box; False is a statement about
-    the enclosure and never about the points.
+    the enclosure and never about the points. The exclusion test of the
+    vendored `root_isolation_py` (FMK docs/root-isolation-spec.md, section 3).
     """
-    image = residual(z, c, preperiod, period)
-    return image.accepted() and not (image.re.contains_zero() and image.im.contains_zero())
+    return excludes_zero((residual(z, c, preperiod, period),))
 
 
 def midpoint(z: ComplexBox) -> ComplexBox:
     """The singleton at the centre of a box, exactly."""
-    if not z.accepted():
-        return ComplexBox.refused()
-    return ComplexBox.singleton(z.re.midpoint(), z.im.midpoint())
+    return centre((z,))[0]
 
 
 def singleton_reciprocal(w: ComplexBox) -> ComplexBox:
@@ -91,23 +90,24 @@ def singleton_reciprocal(w: ComplexBox) -> ComplexBox:
     because in floating point there is no other kind; over `Q(i)` the inverse
     of a singleton is a singleton and the operator inherits no error from it.
     """
-    if not w.accepted() or w.re.lo != w.re.hi or w.im.lo != w.im.hi:
-        return ComplexBox.refused()
-    a, b = w.re.lo, w.im.lo
-    quadrance = a * a + b * b
-    if quadrance == 0:
-        return ComplexBox.refused()
-    return ComplexBox.singleton(a / quadrance, -b / quadrance)
+    return exact_inverse(((w,),))[0][0]
 
 
 def krawczyk_image(z: ComplexBox, c: ComplexBox, preperiod: int, period: int) -> ComplexBox:
-    """`K(Z) = m - Y R(m) + (1 - Y R'(Z))(Z - m)`, with `Y = 1/R'(m)`."""
-    centre = midpoint(z)
-    y = singleton_reciprocal(residual_derivative(centre, c, preperiod, period))
-    if not y.accepted():
-        return ComplexBox.refused()
-    slope = ONE.sub(y.mul(residual_derivative(z, c, preperiod, period)))
-    return centre.sub(y.mul(residual(centre, c, preperiod, period))).add(slope.mul(z.sub(centre)))
+    """`K(Z) = m - Y R(m) + (1 - Y R'(Z))(Z - m)`, with `Y = 1/R'(m)`.
+
+    The operator of the vendored `root_isolation_py` (FMK
+    docs/root-isolation-spec.md, section 2) with the residual and its
+    derivative as the enclosures and the exact inverse as `Y`.
+    """
+
+    def at_centre(m: tuple[ComplexBox, ...]):
+        return (residual(m[0], c, preperiod, period),), ((residual_derivative(m[0], c, preperiod, period),),)
+
+    def over_box(x: tuple[ComplexBox, ...]):
+        return ((residual_derivative(x[0], c, preperiod, period),),)
+
+    return krawczyk((z,), at_centre, over_box)[0]
 
 
 def isolates(z: ComplexBox, c: ComplexBox, preperiod: int, period: int) -> bool:
@@ -118,8 +118,7 @@ def isolates(z: ComplexBox, c: ComplexBox, preperiod: int, period: int) -> bool:
     """
     if preperiod < 0 or period < 1 or not (z.accepted() and c.accepted()):
         return False
-    image = krawczyk_image(z, c, preperiod, period)
-    return image.accepted() and image.strict_subset_of(z)
+    return strictly_inside((krawczyk_image(z, c, preperiod, period),), (z,))
 
 
 class RootVerdict(Enum):

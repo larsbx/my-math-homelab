@@ -135,5 +135,5 @@ def test_the_scan_covers_this_repository_and_not_its_copies():
         "finite_exact", "quadratic_orbit", "angle_doubling", "projective",
         "finite_linear_algebra", "substitution_dynamics", "finite_graph",
         "mojo_smoke", "vendoring", "references", "closed_interval",
-        "exact_arithmetic_audit", "claim_governance",
+        "exact_arithmetic_audit", "claim_governance", "root_isolation", "root_isolation_py",
     }
