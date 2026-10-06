@@ -14,7 +14,7 @@ import pytest
 
 from box_classifier import step
 from gaussian_q import GQ
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 from julia_reference import step as point_step
 from parameter_corpus import BY_KEY, PERMANENTLY_UNSEPARATED
 from separator import (

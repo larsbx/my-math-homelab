@@ -23,9 +23,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import jet
-from dyadic import DEFAULT_PRECISION, round_down, round_up
+from closed_interval import DEFAULT_PRECISION, ComplexBox, round_down, round_up
 from gaussian_q import GQ
-from interval_box import ComplexBox
 
 ZERO_BOX = ComplexBox.singleton(0)
 

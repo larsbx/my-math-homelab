@@ -24,8 +24,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from fractions import Fraction
 
-from dyadic import DEFAULT_PRECISION, round_down, round_up
-from interval_box import ComplexBox
+from closed_interval import DEFAULT_PRECISION, ComplexBox, round_down, round_up
 from separator import NEGATIVE, POSITIVE, UNDECIDED
 
 TWO = Fraction(2)

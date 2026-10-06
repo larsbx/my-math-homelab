@@ -14,7 +14,7 @@ from fractions import Fraction as F
 import pytest
 
 import kneading
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 from kneading import (
     CRITICAL_CUT,
     critical_itinerary,

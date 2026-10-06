@@ -18,7 +18,7 @@ from enum import Enum
 from fractions import Fraction
 
 from escape_certificate import EscapeCertificate, escape_certificate
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 
 
 def step(box: ComplexBox, c: ComplexBox) -> ComplexBox:

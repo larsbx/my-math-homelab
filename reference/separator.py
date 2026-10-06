@@ -27,7 +27,7 @@ from fractions import Fraction
 from typing import Union
 
 from box_classifier import is_trap, step
-from interval_box import IQ, ComplexBox
+from closed_interval import IQ, ComplexBox
 from budget import DEFAULT_BIT_BUDGET, box_bits, within_budget
 
 Scalar = Union[int, Fraction]

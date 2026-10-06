@@ -21,11 +21,12 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "reference"))
+for _plane in ("vendor/python", "reference"):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / _plane))
 
 from box_classifier import census, is_trap  # noqa: E402
 from gaussian_q import GQ  # noqa: E402
-from interval_box import ComplexBox  # noqa: E402
+from closed_interval import ComplexBox  # noqa: E402
 from julia_reference import OrbitVerdict, classify_multiplier, critical_orbit, is_cycle, multiplier  # noqa: E402
 from parameter_corpus import CORPUS, GATE, TRAPS, Parameter  # noqa: E402
 

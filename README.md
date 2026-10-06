@@ -201,7 +201,6 @@ reference/                  Python reference semantics, never an acceptance path
   box_classifier.py         the classifier and adaptive refinement, Python side
   enclosure_bound.py        the width bounds, Python side
   escape_certificate.py     the escape derivation, Python side
-  interval_box.py           exact rational boxes for the Python side
 oracles/
   parabolic_index.py        research oracle; accepts nothing
 vendor/                     pinned in vendored.toml; never edited here

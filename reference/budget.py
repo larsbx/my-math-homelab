@@ -12,7 +12,7 @@ remembered.
 
 from __future__ import annotations
 
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 from julia_reference import DEFAULT_BIT_BUDGET
 
 __all__ = ["DEFAULT_BIT_BUDGET", "box_bits", "within_budget"]
