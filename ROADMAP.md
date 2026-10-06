@@ -55,7 +55,7 @@ Phases are indexed by what becomes checkable, not by what becomes plausible.
       unlocks: a box missing `K_c` is `OUT` below an explicit radius, and a
       box whose iterate enters a trap's interior is `IN` below one. Both
       unconditional.
-- [ ] Gate `FatouHyperbolicInteriorIsTheBasin`, the one import the corollary
+- [x] Gate `FatouHyperbolicInteriorIsTheBasin`, the one import the corollary
       needs to turn Theorem B into the roadmap's statement about the whole
       interior of `K_c`.
 - [ ] Completeness at a parabolic parameter, where no trap exists and

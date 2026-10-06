@@ -29,6 +29,10 @@ MANDELBROT = "larsbx/finite-mandelbrot-research at 834446b, before its estate la
 #: whose header names that consumer's benchmark.
 PISOT = "larsbx/pisot-substitution-conjecture-research, the first consumer of integer_vector"
 
+#: The external open-problems survey is stored once, in the parameter-plane
+#: repository, and the assessment here cites it there.
+MANDELBROT_HEAD = "larsbx/finite-mandelbrot-research, current layout"
+
 #: Every entry says which repository the path lives in. A reader can check an
 #: attestation; a bare exemption would only say that someone once decided not
 #: to look.
@@ -55,6 +59,7 @@ EXTERNAL: dict[str, str] = {
     "src/krawczyk_witness.mojo": MANDELBROT,
     "tools/audit_no_points.py": MANDELBROT,
     "docs/atlas-dataset.md": MANDELBROT,
+    "docs/literature/open-problems-survey-2026-10.md": MANDELBROT_HEAD,
     "docs/exact-polynomial-root-isolation-spec.md": KERNELS,
     # Named by the vendored `finite_linear_algebra` headers, which are upstream's.
     "docs/madic-ball-arithmetic-spec.md": KERNELS,
