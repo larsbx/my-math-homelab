@@ -4,9 +4,9 @@
 # Specification: docs/rational-interval-arithmetic-spec.md.
 #
 # A Gaussian-rational parameter is a rank-2 singleton box: two exact rational
-# coordinates, with polynomial operations and a quadrance scalar. No circle,
-# disk, arc, or polar angle is available here, and the escape test is a
-# quadrance compared against a rational bound rather than a radius: the
+# coordinates, with polynomial operations and a quadrance scalar.
+# No circle, disk, arc, or polar angle is available here, and the escape test
+# is a quadrance compared against a rational bound rather than a radius: the
 # vendored `quadratic_orbit.escape_criterion`, as is the multiplier
 # trichotomy (`quadratic_orbit.multiplier_classification`) that the
 # classification below refines.
