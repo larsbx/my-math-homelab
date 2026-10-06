@@ -4,7 +4,7 @@ import pytest
 
 from julia_reference import OrbitVerdict, classify_multiplier, critical_orbit, is_cycle, multiplier
 from box_classifier import is_trap
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 from gaussian_q import GQ
 from markov import gaussian_pcf_parameters
 from parameter_corpus import BY_KEY, CORPUS, TRAPS, J1Expectation, LocalConnectivity, Regime

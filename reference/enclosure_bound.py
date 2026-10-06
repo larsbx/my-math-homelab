@@ -18,7 +18,7 @@ from __future__ import annotations
 from fractions import Fraction
 from typing import Union
 
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 
 Scalar = Union[int, Fraction]
 

@@ -106,7 +106,8 @@ It does not make the orbit cheaper: the exponent still doubles every step,
 and after `n` steps it is a `2^n`-sized integer stored in `log` space rather
 than a `2^n`-bit numerator. It does not apply to the classifier, the
 separator, or any certificate that needs an exact value rather than a decided
-side; those still use `reference/interval_box.py` and are unaffected. It does not
+side; those still use the exact boxes of the vendored
+`vendor/python/closed_interval/interval.py` and are unaffected. It does not
 replace Taylor models, which remain the right tool for width and the wrong
 one for magnitude. And rounding a mantissa is a *widening*: a scaled box is
 never tighter than the exact box it came from, only affordable.

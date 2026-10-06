@@ -2,27 +2,20 @@
 
 import re
 import tokenize
-import tomllib
 from pathlib import Path
 
 import pytest
+from vendoring.check_vendored_sync import vendored_directories
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def vendored_directories() -> set[Path]:
-    """The package directories this repository copies rather than writes.
-
-    Their invariants are upstream's to keep, and `pixi run vendored` checks
-    that the copies are faithful. What is scanned below is this repository's
-    own executable surface, and the boundary is read from the manifest so it
-    cannot drift by editing a glob.
-    """
-    manifest = tomllib.loads((ROOT / "vendored.toml").read_text(encoding="utf-8"))
-    return {ROOT / pkg["root"] / pkg["name"] for pkg in manifest.get("package", [])}
-
-
-VENDORED = vendored_directories()
+#: The package directories this repository copies rather than writes.
+#: Their invariants are upstream's to keep, and `pixi run vendored` checks
+#: that the copies are faithful. What is scanned below is this repository's
+#: own executable surface, and the boundary is read from the manifest, by the
+#: vendored checker that pins it, so it cannot drift by editing a glob.
+VENDORED = {ROOT / directory for directory in vendored_directories(ROOT)}
 
 
 def own_sources(directory: str, pattern: str) -> list[Path]:
@@ -141,5 +134,6 @@ def test_the_scan_covers_this_repository_and_not_its_copies():
     assert {path.name for path in VENDORED} == {
         "finite_exact", "quadratic_orbit", "angle_doubling", "projective",
         "finite_linear_algebra", "substitution_dynamics", "finite_graph",
-        "mojo_smoke", "vendoring", "references",
+        "mojo_smoke", "vendoring", "references", "closed_interval",
+        "exact_arithmetic_audit", "claim_governance",
     }

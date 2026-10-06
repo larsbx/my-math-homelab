@@ -12,7 +12,7 @@ from fractions import Fraction as F
 
 import pytest
 
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 from julia_reference import step as point_step
 from gaussian_q import GQ
 from parameter_corpus import BY_KEY, REAL_RAYS

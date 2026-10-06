@@ -24,7 +24,7 @@ from fractions import Fraction
 
 from box_classifier import escape_bound_quadrance, step
 from gaussian_q import GQ
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 from jet import residual as jet_residual, vanishing_order
 from julia_reference import step as point_step
 

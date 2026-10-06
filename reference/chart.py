@@ -17,7 +17,7 @@ unbounded one in the other chart.
 
 from __future__ import annotations
 
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 
 ONE = ComplexBox.singleton(1)
 

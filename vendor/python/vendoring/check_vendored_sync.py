@@ -5,15 +5,18 @@ A consumer repository copies each upstream package directory byte-for-byte
 and records, per package, the upstream repository, the upstream commit, the
 local root that acts as the Mojo include path, and the SHA-256 of every
 vendored file. This script verifies that every pinned file exists with the
-pinned digest and that no unlisted ``.mojo`` or ``.py`` file sits inside a
+pinned digest and that no unlisted file (bytecode caches aside) sits inside a
 vendored package directory, so no local patch can land unnoticed. Protocol:
 the README of each consumer repository.
 
 Usage:
     check_vendored_sync.py                 check every package; exit 1 on drift
     check_vendored_sync.py pin NAME COMMIT re-pin NAME's digests from the local
-                                           files after copying them from COMMIT
-                                           (re-derives the ESTATE.toml pins too)
+                                           files after replacing the package
+                                           directory with a clean copy from
+                                           COMMIT (a file upstream removed
+                                           drops out; re-derives the
+                                           ESTATE.toml pins too)
     check_vendored_sync.py estate          re-derive the ESTATE.toml pins only
 
 A consumer whose ESTATE.toml pins a vendoring source with a [[dep]] gets that
@@ -41,12 +44,11 @@ import json
 import re
 import sys
 import tomllib
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 MANIFEST_NAME = "vendored.toml"
 ESTATE = "ESTATE.toml"
 COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
-SOURCE_SUFFIXES = {".mojo", ".py"}
 
 
 def repo_root(start: Path | None = None) -> Path:
@@ -64,8 +66,10 @@ def repo_root(start: Path | None = None) -> Path:
     return here.parents[1]
 
 
-def sources(package_dir: Path) -> list[Path]:
-    return sorted(p for p in package_dir.glob("**/*") if p.suffix in SOURCE_SUFFIXES) if package_dir.exists() else []
+def package_files(package_dir: Path) -> list[Path]:
+    """Every file of a vendored package directory except Python bytecode caches."""
+    return sorted(p for p in package_dir.glob("**/*")
+                  if p.is_file() and p.suffix != ".pyc" and "__pycache__" not in p.parts)
 
 
 def sha256(path: Path) -> str:
@@ -75,6 +79,27 @@ def sha256(path: Path) -> str:
 def load(manifest: Path | None = None) -> list[dict]:
     manifest = manifest or repo_root() / MANIFEST_NAME
     return tomllib.loads(manifest.read_text(encoding="utf-8")).get("package", [])
+
+
+def vendored_directories(root: Path | None = None, manifest: Path | None = None) -> tuple[str, ...]:
+    """The package directories the manifest vendors, as sorted repo-relative paths.
+
+    Each is ``root/name`` of a ``[[package]]`` entry (``name`` alone when the
+    entry's root is ``.``), with no trailing slash. A consumer that exempts
+    vendored files from its own checks reads the boundary here instead of
+    re-parsing the manifest. With no manifest, nothing is vendored and the
+    answer is empty: the fail-closed direction, since an empty exemption
+    exempts nothing. A manifest entry without ``name`` or ``root`` is
+    skipped here; ``check`` reports it.
+    """
+    root = root or repo_root()
+    manifest = manifest or root / MANIFEST_NAME
+    if not manifest.exists():
+        return ()
+    return tuple(sorted({
+        (PurePosixPath(pkg["root"]) / pkg["name"]).as_posix()
+        for pkg in load(manifest) if "root" in pkg and "name" in pkg
+    }))
 
 
 def check_package(pkg: dict, root: Path) -> list[str]:
@@ -98,7 +123,7 @@ def check_package(pkg: dict, root: Path) -> list[str]:
             errors.append(f"{name}: {rel} differs from {pkg['repository']}@{pkg['commit'][:12]}")
     package_dir = base / name
     listed = set(pkg["files"])
-    for path in sources(package_dir):
+    for path in package_files(package_dir):
         rel = path.relative_to(base).as_posix()
         if rel not in listed:
             errors.append(f"{name}: {rel} is not pinned in vendored.toml")
@@ -192,11 +217,11 @@ def pin(name: str, commit: str, root: Path | None = None, manifest: Path | None 
     if target is None:
         return [f"no package named {name!r} in {manifest.name}"]
     base = root / target["root"]
-    files = dict(target["files"])
-    files.update({p.relative_to(base).as_posix(): "" for p in sources(base / name)})
-    missing = [rel for rel in files if not (base / rel).exists()]
-    if missing:
-        return [f"{name}: cannot pin missing file {rel}" for rel in missing]
+    # The pin set is the fresh copy, every file it holds: a file upstream
+    # removed drops out and one it added or renamed is pinned.
+    files = [p.relative_to(base).as_posix() for p in package_files(base / name)]
+    if not files:
+        return [f"{name}: nothing to pin under {target['root']}/{name}"]
     target["files"] = {rel: sha256(base / rel) for rel in files}
     target["commit"] = commit
     manifest.write_text(render(packages), encoding="utf-8")

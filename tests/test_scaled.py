@@ -14,7 +14,7 @@ import pytest
 
 import scaled
 from gaussian_q import GQ
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 from julia_reference import step as point_step
 from ray import itinerary as exact_itinerary
 from separator import NEGATIVE, POSITIVE, UNDECIDED

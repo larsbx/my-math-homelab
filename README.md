@@ -201,7 +201,6 @@ reference/                  Python reference semantics, never an acceptance path
   box_classifier.py         the classifier and adaptive refinement, Python side
   enclosure_bound.py        the width bounds, Python side
   escape_certificate.py     the escape derivation, Python side
-  interval_box.py           exact rational boxes for the Python side
 oracles/
   parabolic_index.py        research oracle; accepts nothing
 vendor/                     pinned in vendored.toml; never edited here
@@ -212,9 +211,12 @@ vendor/                     pinned in vendored.toml; never edited here
   python/
     references/             the reference-check engine, same upstream
     vendoring/              the vendoring checker, same upstream
+    closed_interval/        exact rational boxes and dyadic rounding, same upstream
+    exact_arithmetic_audit/ the spec section 7 audit engine, same upstream
+    claim_governance/       its comment and string lexer, same upstream
 tools/
   make_regime_ledger.py     renders every generated surface; --check gates them
-  audit_exact_arithmetic.py the binding-table and no-float gate
+  audit_exact_arithmetic.py the binding-table and no-float policy (vendored engine)
   check_references.py       this repository's reference policy
 tests/
 ESTATE.toml                 estate manifest; audited from a pinned larsbx/estate-governance

@@ -28,7 +28,7 @@ from enclosure_bound import (
     within,
 )
 from gaussian_q import GQ
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 from julia_reference import step as point_step
 
 
@@ -218,3 +218,16 @@ def test_the_theorem_puts_the_whole_enclosure_past_the_escape_bound(centre, step
         assert within(image, bound)
         image = step(image, c)
     assert image.quadrance().lo > escape
+
+
+def test_a_rejected_box_has_no_radius():
+    """A refused box is not a converged one.
+
+    The local interval copy answered width `0` for a rejected interval, so
+    `sup_radius` measured a refusal as a point. The vendored `closed_interval`
+    refuses to measure it. `kernel/enclosure_bound.mojo` still measures a
+    rejected box as zero (its binding row says so); the two sides agree on
+    every accepted box and differ here, where the Python side now fails closed.
+    """
+    with pytest.raises(ValueError):
+        sup_radius(ComplexBox.refused())

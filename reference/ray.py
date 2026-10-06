@@ -28,7 +28,7 @@ from typing import Union
 
 from box_classifier import step
 from budget import DEFAULT_BIT_BUDGET, within_budget
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 from separator import NEGATIVE, POSITIVE, UNDECIDED, Cut, side
 
 Scalar = Union[int, Fraction]

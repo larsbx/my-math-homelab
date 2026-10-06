@@ -22,7 +22,7 @@ from box_classifier import (
     step,
     trap_candidate,
 )
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 
 C0 = ComplexBox.singleton(0)
 C_BASILICA = ComplexBox.singleton(-1)
@@ -154,3 +154,14 @@ def test_the_residual_is_reported_not_hidden():
     """Every box lands in exactly one column, and the columns sum to the grid."""
     result = census(C0, 3, TRAP_C0, 1, horizon=6)
     assert result.total() == 64 and result.unknown > 0
+
+
+def test_a_rejected_seed_is_not_searched():
+    """A refused seed has no centre to shrink toward.
+
+    With the local interval copy, a rejected seed's midpoint was `1/2` and
+    its width `0`, so the search went on from the singleton `1/2 + i/2`, a
+    box nothing had produced. The vendored `closed_interval` raises instead.
+    """
+    with pytest.raises(ValueError):
+        trap_candidate(C_CAULIFLOWER, 1, ComplexBox.refused())

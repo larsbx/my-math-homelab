@@ -21,7 +21,7 @@ from typing import Union
 from box_classifier import step
 from budget import DEFAULT_BIT_BUDGET, within_budget
 from gaussian_q import GQ
-from interval_box import ComplexBox
+from closed_interval import ComplexBox
 from julia_reference import OrbitVerdict, critical_orbit
 from separator import NEGATIVE, POSITIVE, UNDECIDED, Cut, side
 

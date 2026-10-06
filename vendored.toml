@@ -4,7 +4,7 @@
 [[package]]
 name = "finite_exact"
 repository = "larsbx/finite-math-kernels"
-commit = "360bc90c27893900d30718e42d61d14ce255e530"
+commit = "65038cf1b6e8b038f1efc85e802d08b8c22fe4e1"
 root = "vendor/mojo"
 
 [package.files]
@@ -24,7 +24,7 @@ root = "vendor/mojo"
 [[package]]
 name = "quadratic_orbit"
 repository = "larsbx/finite-math-kernels"
-commit = "360bc90c27893900d30718e42d61d14ce255e530"
+commit = "65038cf1b6e8b038f1efc85e802d08b8c22fe4e1"
 root = "vendor/mojo"
 
 [package.files]
@@ -36,7 +36,7 @@ root = "vendor/mojo"
 [[package]]
 name = "mojo_smoke"
 repository = "larsbx/finite-math-kernels"
-commit = "360bc90c27893900d30718e42d61d14ce255e530"
+commit = "65038cf1b6e8b038f1efc85e802d08b8c22fe4e1"
 root = "vendor/mojo"
 
 [package.files]
@@ -47,17 +47,17 @@ root = "vendor/mojo"
 [[package]]
 name = "vendoring"
 repository = "larsbx/finite-math-kernels"
-commit = "360bc90c27893900d30718e42d61d14ce255e530"
+commit = "65038cf1b6e8b038f1efc85e802d08b8c22fe4e1"
 root = "vendor/python"
 
 [package.files]
 "vendoring/__init__.py" = "959cdf7a89536784da18659db7cfe4099c885f5370249eccc71ce73775f8a584"
-"vendoring/check_vendored_sync.py" = "b3ed66adbaba22f74f5d05b93319fdcd3d022c9dcb3595099a3e23a24e8064a7"
+"vendoring/check_vendored_sync.py" = "7e7464a20adb333bb7a6a72e35a0eff45944e8b7243d1e20b202fe9c6aacf15c"
 
 [[package]]
 name = "references"
 repository = "larsbx/finite-math-kernels"
-commit = "360bc90c27893900d30718e42d61d14ce255e530"
+commit = "65038cf1b6e8b038f1efc85e802d08b8c22fe4e1"
 root = "vendor/python"
 
 [package.files]
@@ -67,7 +67,7 @@ root = "vendor/python"
 [[package]]
 name = "angle_doubling"
 repository = "larsbx/finite-math-kernels"
-commit = "360bc90c27893900d30718e42d61d14ce255e530"
+commit = "65038cf1b6e8b038f1efc85e802d08b8c22fe4e1"
 root = "vendor/mojo"
 
 [package.files]
@@ -77,7 +77,7 @@ root = "vendor/mojo"
 [[package]]
 name = "projective"
 repository = "larsbx/finite-math-kernels"
-commit = "360bc90c27893900d30718e42d61d14ce255e530"
+commit = "65038cf1b6e8b038f1efc85e802d08b8c22fe4e1"
 root = "vendor/mojo"
 
 [package.files]
@@ -88,7 +88,7 @@ root = "vendor/mojo"
 [[package]]
 name = "finite_linear_algebra"
 repository = "larsbx/finite-math-kernels"
-commit = "360bc90c27893900d30718e42d61d14ce255e530"
+commit = "65038cf1b6e8b038f1efc85e802d08b8c22fe4e1"
 root = "vendor/mojo"
 
 [package.files]
@@ -110,7 +110,7 @@ root = "vendor/mojo"
 [[package]]
 name = "substitution_dynamics"
 repository = "larsbx/finite-math-kernels"
-commit = "360bc90c27893900d30718e42d61d14ce255e530"
+commit = "65038cf1b6e8b038f1efc85e802d08b8c22fe4e1"
 root = "vendor/mojo"
 
 [package.files]
@@ -127,7 +127,7 @@ root = "vendor/mojo"
 [[package]]
 name = "finite_graph"
 repository = "larsbx/finite-math-kernels"
-commit = "360bc90c27893900d30718e42d61d14ce255e530"
+commit = "65038cf1b6e8b038f1efc85e802d08b8c22fe4e1"
 root = "vendor/mojo"
 
 [package.files]
@@ -135,3 +135,46 @@ root = "vendor/mojo"
 "finite_graph/scc.mojo" = "9ed62e16bdcab3f523297226712c27ffe06377e46822cdc1afff28dd892166dc"
 "finite_graph/signing.mojo" = "c67f2b5353244377135689a2ad58a40877c365907a5799d69df32e2190872fb8"
 "finite_graph/union_find.mojo" = "fb7f2666dc227c76fb1c364372171d88419b2347bdb78296cce8bcc47d206100"
+
+[[package]]
+name = "closed_interval"
+repository = "larsbx/finite-math-kernels"
+commit = "65038cf1b6e8b038f1efc85e802d08b8c22fe4e1"
+root = "vendor/python"
+
+[package.files]
+"closed_interval/__init__.py" = "25f2f2555bc5ce24bb9df5d7e20389ba3213d99f432751fb19288381ff6c2a83"
+"closed_interval/dyadic.py" = "c1be682fa4551a3c66122d090fb62005ef8c53300a73f0ba7a451d09f110d97c"
+"closed_interval/interval.py" = "3fae9c63bc9d66f5a4c25b164012a208c45705ee756512daa1694edbfbda7e51"
+
+[[package]]
+name = "exact_arithmetic_audit"
+repository = "larsbx/finite-math-kernels"
+commit = "65038cf1b6e8b038f1efc85e802d08b8c22fe4e1"
+root = "vendor/python"
+
+[package.files]
+"exact_arithmetic_audit/__init__.py" = "34ade2482e6c3f8f64061357450308cd7d0b518d132ceccdc12b3262606eaa73"
+"exact_arithmetic_audit/audit.py" = "eca6a3dcc89a794f165de09e0b8fadfdccde227db8e9600534baa6a045367330"
+
+[[package]]
+name = "claim_governance"
+repository = "larsbx/finite-math-kernels"
+commit = "65038cf1b6e8b038f1efc85e802d08b8c22fe4e1"
+root = "vendor/python"
+
+[package.files]
+"claim_governance/__init__.py" = "64883fe16bdb5ad85b150b6625c8015de1de06a2dde2cae9e99d275b00750378"
+"claim_governance/checks/__init__.py" = "aeb4d89c1eeee260ab01df84e6576e954342c1a3a76ab126408e52bf44d7fe07"
+"claim_governance/checks/claims.py" = "35580a55a2f62e97ebeebf7128c8a255ccf5f3a12144c74dff6514ec15ef17ab"
+"claim_governance/checks/consistency.py" = "79ff0709ea01a044ddbd3941190765281b05c59c93ee91ee57dfbba484836947"
+"claim_governance/checks/coverage.py" = "78dc02b66132a562e741978654fd7fd41256558072b94233c1db619920fc13cc"
+"claim_governance/checks/numerics.py" = "5af0bba117d7503a2ea81d1aaeb4ef6fdd83504345925779224749ddd5666598"
+"claim_governance/checks/promotion.py" = "297aced859ea014d6cbb37166b9787bcda8f74ad52bba52fef83df7be04c1840"
+"claim_governance/checks/terminology.py" = "adfa2be8c2f49e6c81aa4f661293c6a088af3624f006a901a8d1d747924baef1"
+"claim_governance/cli.py" = "122f6b5acf8d5910ded64d93b83390c64aa8ee702179b5e71d0138b988855257"
+"claim_governance/findings.py" = "a8dafbaacc963b725d3b4fa32c8ac04ba10f4d69606362f52e5858af775bf3b4"
+"claim_governance/lexing.py" = "2a7c163bedf51f86c6074c887d2ba0d3cf9116c0955dc62e71c4b7bedfcb1499"
+"claim_governance/policy.py" = "7b7f34419d9436ecf818c7e64093a504de7d924d8abe80de047c54e50c236095"
+"claim_governance/repo.py" = "11a603c0288f9030ec0c5990d260f2c3f593b7e44a2b86d49f13920f84348dd3"
+"claim_governance/runner.py" = "86c48c3dc677e3cacf515b852382dfc459c30bc12d8220d6171efa22a84bef89"
