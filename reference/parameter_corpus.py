@@ -212,7 +212,7 @@ CORPUS: tuple[Parameter, ...] = (
         theorem_tag=None,
         tag_status=TagStatus.NONE,
         j1_expectation=J1Expectation.UNDECIDED,
-        note="Exactly representable data, open dynamics, and open twice over: whether the rotation number of lam = (3 + 4i)/5 is Brjuno decides Siegel against Cremer, and even a Siegel disk leaves local connectivity turning on whether the critical point lies on its boundary. Neither is a finite test on the multiplier.",
+        note="The exact algebraic multiplier lam = (3 + 4i)/5 is not a root of unity. The literature import in docs/literature-gate-2026-10-06-algebraic-multiplier.md gives Diophantine and Brjuno; the accepted linearization and Herman imports give a Siegel disk with the critical point on its boundary. Local connectivity remains OPEN, and J1 remains UNDECIDED. These are classical imports, not new finite-core verdicts.",
     ),
     Parameter(
         key="escaping",

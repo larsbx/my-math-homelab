@@ -16,12 +16,12 @@ classical referent, and which side of the boundary each one lives on.
 | cycle witness | a periodic orbit of `f_c` | finite data, checked by exact identity |
 | `multiplier` | `(f_c^k)'` along the cycle | exact Gaussian rational |
 | `MULT_PARABOLIC` | rationally indifferent cycle | decided by the multiplier dichotomy |
-| `MULT_IRRATIONALLY_INDIFFERENT` | irrationally indifferent cycle | decided; the Siegel/Cremer split is **not** |
+| `MULT_IRRATIONALLY_INDIFFERENT` | irrationally indifferent cycle | exact class decided; algebraic linearization is a separate literature import |
 | `Separated_k^c` | separation by landed dynamical rays at rational angles | finite combinatorial separator (Phase 3) |
 | `SameFiberLevel_k^c` | not separated through catalogue level `k` | finite non-separation predicate (Phase 3) |
 | `LocallyConnected(K_c)` | local connectivity of the filled Julia set | what the imported fiber theory is stated about |
 | `LocallyConnected(J_c)` | local connectivity of the Julia set | external theorem tag, never proved here; reached from `K_c` by an ungated transfer |
-| `BrjunoCondition` | Brjuno condition on the rotation number | external, and not a finite test |
+| `BrjunoCondition` | Brjuno condition on the rotation number | no arbitrary prefix test; algebraic non-root-of-unity multipliers satisfy it by `docs/literature-gate-2026-10-06-algebraic-multiplier.md` |
 
 ## Allowed finite claims
 
@@ -39,7 +39,8 @@ classical referent, and which side of the boundary each one lives on.
 ## Forbidden finite claims
 
 1. a Julia set is locally connected;
-2. an irrationally indifferent parameter is Siegel, or is Cremer;
+2. an irrationally indifferent parameter is Siegel, or is Cremer, as a
+   finite-core verdict (the separately gated classical import is permitted);
 3. a capped orbit is bounded, or is unbounded;
 4. an orbit with no escape certificate is bounded;
 5. a multiplier of quadrance exactly 1 is attracting, or is repelling;

@@ -53,8 +53,9 @@ Genealogy: `Q(i)` as the field of coordinates; the rank-2 coordinate record of
 Bridge claim: a pair of exact rationals with polynomial operations and a
 quadrance scalar. It is not an analytic complex number and carries no circle,
 disk, arc, polar angle, or connected component.
-Known leaks: an exactly representable parameter can have dynamics that no
-finite test decides; see the irrationally indifferent row of the ledger.
+Known leaks: exact representation does not settle local connectivity; see
+the irrationally indifferent row of the ledger. Its algebraic multiplier
+does settle Brjuno through a separate classical import.
 Use discipline: the Phase 0 parameter domain. Algebraic parameters and
 interval parameters are both Phase 4 and are **two** different terms, not
 one: an algebraic parameter keeps exact equality and so keeps every verdict
@@ -70,8 +71,9 @@ algebraic numbers of unit modulus.
 Bridge claim: a quadrance-1 element of `Q(i)` is a root of unity exactly when
 it is one of `1, -1, i, -i`, so rationally versus irrationally indifferent is
 decided by a four-element membership test.
-Known leaks: it decides nothing about Siegel versus Cremer, which turns on the
-Brjuno condition for the rotation number.
+Known leaks: the dichotomy alone decides nothing about linearization. The
+algebraic-multiplier gate separately supplies Diophantine and Brjuno on the
+irrational branch; those conclusions are not outputs of this finite lemma.
 Use discipline: cite it wherever the parabolic case is separated from the
 irrationally indifferent case; never cite it for a linearizability claim.
 
@@ -214,7 +216,9 @@ it only as a rejected claim, and only with its gate.
   without naming a chart;
 - placing the quadratic map on the projective completion that carries the
   circular points, where it is not a morphism;
-- calling an irrationally indifferent parameter Siegel or Cremer;
+- calling an irrationally indifferent parameter Siegel or Cremer as a
+  finite-core verdict; a classical conclusion must name its applicable gate,
+  as at `niven` in `docs/literature-gate-2026-10-06-algebraic-multiplier.md`;
 - using `J1` without naming the regime it is claimed on;
 - calling a set of mutually non-separated boxes a fiber, a class, or a
   component, or reporting non-separation without naming its catalogue and

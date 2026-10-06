@@ -21,6 +21,10 @@ Phases are indexed by what becomes checkable, not by what becomes plausible.
       table, with `--check` gating them.
 - [x] Run the literature gate for each local-connectivity theorem tag
       (`docs/literature-gate-2026-09-19.md`).
+- [x] Gate the algebraic irrational multiplier
+      (`docs/literature-gate-2026-10-06-algebraic-multiplier.md`): Diophantine,
+      Brjuno, and the imported Siegel/critical-boundary conclusions at `niven`.
+      Local connectivity stays open; these are not finite-core verdicts.
 - [x] Take the shared orbit, smoke reporter, and vendoring checker upstream
       into `larsbx/finite-math-kernels` and vendor them back, so this
       repository holds no private copy of code a second consumer needs.
@@ -60,6 +64,12 @@ Phases are indexed by what becomes checkable, not by what becomes plausible.
       interior of `K_c`.
 - [ ] Completeness at a parabolic parameter, where no trap exists and
       Theorem B has no hypothesis to offer.
+- [ ] Residual-measure completeness on a fixed bounded observation window
+      (`docs/survey-assessment-2026-10-05.md`): gate zero Julia area and prove
+      exhaustive interior coverage with fair, persistent refinement.
+- [ ] Rotation-domain `IN` certificates: the algebraic-multiplier gate
+      settles Brjuno at `niven`, but explicit constants, a quantitative
+      linearization bound and a replayable checker are still missing.
 
 The remaining deliverable, restated:
 

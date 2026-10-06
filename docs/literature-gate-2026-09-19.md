@@ -135,11 +135,14 @@ The two classes where local connectivity genuinely fails are:
   critical point lies on the boundary for every Diophantine rotation number,
   but there are Brjuno numbers for which it does not.[^8]
 
-This sharpens the `niven` row rather than changing its status. At
-`c = (37 + 16i)/100` the multiplier is `(3 + 4i)/5` and the row is `UNDECIDED`
-for two reasons now, not one: whether `arg(lam) / 2pi` is Brjuno is not known,
-and *even if it is*, local connectivity would still turn on whether the
-critical point lies on the boundary of the resulting Siegel disk.
+**Correction, 2026-10-06.** At `niven` the multiplier `(3 + 4i)/5` is
+algebraic and not a root of unity.
+`docs/literature-gate-2026-10-06-algebraic-multiplier.md` supplies the
+Diophantine/Brjuno import, so the linearization tag applies. Its Herman import
+also puts the critical point on the boundary of the fixed Siegel disk. The
+former Brjuno-unknown and critical-boundary-unknown explanations are
+withdrawn. Local connectivity is still open and `J1` remains `UNDECIDED`;
+critical-boundary incidence alone does not imply local connectivity.
 
 New tags, recorded for the phase that needs them and not used by any row yet:
 `DouadySullivanCremerNotLocallyConnected`, `BrjunoYoccozQuadraticLinearization`
@@ -155,7 +158,7 @@ New tags, recorded for the phase that needs them and not used by any row yet:
 | `SchleicherFiberTrivialityLocalConnectivity` | `docs/J1_proof_definition.md` | ACCEPTED, unicritical case (finding 1) |
 | `FilledJuliaLocalConnectivityTransfer` | `docs/J1_proof_definition.md` | **NOT GATED** (finding 1) |
 | `DouadySullivanCremerNotLocallyConnected` | no row yet | ACCEPTED WITH QUALIFICATION (finding 5) |
-| `BrjunoYoccozQuadraticLinearization` | no row yet | ACCEPTED WITH QUALIFICATION (finding 5) |
+| `BrjunoYoccozQuadraticLinearization` | `niven` classical note, via the 2026-10-06 algebraic-multiplier gate | ACCEPTED WITH QUALIFICATION (finding 5) |
 
 **Amendment, 2026-09-20, second.** `docs/enclosure-width-lemma.md` proves two
 completeness theorems for the classifier without importing anything. Its
