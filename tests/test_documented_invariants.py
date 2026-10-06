@@ -134,7 +134,7 @@ def test_the_scan_covers_this_repository_and_not_its_copies():
     }
     assert {path.name for path in VENDORED} == {
         "finite_exact", "quadratic_orbit", "angle_doubling", "projective",
-        "finite_linear_algebra", "finite_polynomial", "substitution_dynamics", "finite_graph",
+        "finite_linear_algebra", "finite_polynomial", "rational_dynamics", "substitution_dynamics", "finite_graph",
         "mojo_smoke", "vendoring", "references", "closed_interval",
         "exact_arithmetic_audit", "claim_governance", "lexical_audit",
         "polyglot_envelope", "root_isolation", "root_isolation_py",

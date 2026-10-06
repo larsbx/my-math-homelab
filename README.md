@@ -208,6 +208,8 @@ vendor/                     pinned in vendored.toml; never edited here
     finite_exact/           vendored from larsbx/finite-math-kernels
     quadratic_orbit/        the orbit of z^2 + c, its escape test and certificate, the multiplier trichotomy, the Krawczyk test for z^2 + c, same upstream
     root_isolation/         the Krawczyk operator quadratic_orbit uses, same upstream
+    finite_polynomial/      truncated jets and Taylor models kernel/jet.mojo and kernel/taylor.mojo build on, same upstream
+    rational_dynamics/      the Moebius function finite_polynomial imports, same upstream
     mojo_smoke/             the smoke reporter, same upstream
   python/
     references/             the reference-check engine, same upstream

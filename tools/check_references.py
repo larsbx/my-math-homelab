@@ -79,6 +79,16 @@ EXTERNAL: dict[str, str] = {
     # policy file format upstream; this repository vendors only its lexer's
     # package and keeps no claim_governance.toml.
     "docs/audit/policy-format.md": KERNELS,
+    # Named by the vendored `rational_dynamics` headers (the dependency
+    # finite_polynomial brings), which point at upstream's Python twin and its
+    # twin test.
+    "oracles/rational_dynamics_py/doubling.py": KERNELS,
+    "oracles/rational_dynamics_py/moebius_function.py": KERNELS,
+    "tests/rational_dynamics/test_doubling_twin.py": KERNELS,
+    # Named by the vendored `substitution_dynamics/internal_address.mojo` header.
+    "reference/internal_address_reference.py": KERNELS,
+    # Named by the vendored `polyglot_envelope` header: upstream's own checker.
+    "reference/boundary_envelope.py": KERNELS,
 }
 
 #: Tasks the mirrored specification names, which belong to upstream's manifest.

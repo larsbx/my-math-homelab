@@ -18,7 +18,8 @@
 
 from finite_exact.exact_decimal import q_decimal
 from finite_exact.rat_q import Q
-from finite_linear_algebra.qpoly import RootBracket, charpoly, largest_root_bracket
+from finite_linear_algebra.faddeev_leverrier import charpoly
+from finite_linear_algebra.sturm_sequence import RootBracket, largest_root_bracket
 from quadratic_orbit.escape_criterion import escape_bound
 
 
@@ -170,8 +171,10 @@ def markov_smoke() -> Bool:
     """The two transition matrices the parameter domain supplies, and the
     root each of them brackets.
 
-    The bracket comes from the vendored `finite_linear_algebra/qpoly.mojo`,
-    so this case is also the check that the vendored package works here. It
+    The bracket comes from the vendored
+    `finite_linear_algebra/sturm_sequence.mojo` over
+    `finite_linear_algebra/qpoly.mojo`, so this case is also the check that
+    the vendored package works here. It
     asserts a bracket, never a Pisot verdict: section 6 of
     `docs/tiling-connections-2026-09-20.md` reads `2` as a trivial one, and
     nothing in this repository computes that.
