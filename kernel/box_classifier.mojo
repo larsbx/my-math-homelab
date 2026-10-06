@@ -7,44 +7,23 @@
 #
 #     G(box) -> OUT | IN | UNKNOWN
 #
-# OUT is the escape certificate applied to a whole box, IN is a trap the
-# orbit of the box falls into, and UNKNOWN is the residual, which is reported
-# rather than shrunk. A trap is supplied and verified here, never searched
+# OUT is the vendored escape test (`quadratic_orbit.escape_criterion`)
+# applied to a whole box, IN is a trap the orbit of the box falls into, and
+# UNKNOWN is the residual, which is reported rather than shrunk. A trap is supplied and verified here, never searched
 # for: an unverified trap is ignored, so a wrong witness costs an UNKNOWN and
 # never an IN.
 #
 # This is the Mojo side of a differential pair; reference/box_classifier.py is the
 # Python side.
 
-from finite_exact.closed_interval import ComplexIQ, IQ
-from finite_exact.rat_q import Q, q_max
+from finite_exact.closed_interval import ComplexIQ, complex_box as box
+from finite_exact.rat_q import Q
+from quadratic_orbit.escape_criterion import escapes
 from quadratic_orbit.orbit import quadratic_step
 
 alias BOX_OUT = 0
 alias BOX_IN = 1
 alias BOX_UNKNOWN = 2
-
-
-def escape_bound_quadrance(c: ComplexIQ) -> Q:
-    """`max(4, N(c))`, taking the largest quadrance the parameter box allows."""
-    var quadrance = c.quadrance()
-    if not quadrance.accepted():
-        return Q.zero()
-    return q_max(Q(4, 1), quadrance.hi)
-
-
-def escapes(box: ComplexIQ, c: ComplexIQ) -> Bool:
-    """Is every point the box encloses past the escape bound?
-
-    The comparison is against the lower endpoint of the box's quadrance, so a
-    box that merely reaches past the bound does not qualify.
-    """
-    if not (box.accepted() and c.accepted()):
-        return False
-    var quadrance = box.quadrance()
-    if not quadrance.accepted():
-        return False
-    return escape_bound_quadrance(c).lt(quadrance.lo)
 
 
 def is_trap(trap: ComplexIQ, c: ComplexIQ, period: Int) -> Bool:
@@ -97,11 +76,6 @@ def classify(box: ComplexIQ, c: ComplexIQ, trap: ComplexIQ, has_trap: Bool, peri
         if not image.accepted():
             return BoxOutcome(BOX_UNKNOWN, n)
     return BoxOutcome(BOX_UNKNOWN, horizon)
-
-
-def box(re_lo: Int64, re_hi: Int64, im_lo: Int64, im_hi: Int64, den: Int64) -> ComplexIQ:
-    """A box with the given numerators over a common denominator."""
-    return ComplexIQ(IQ(Q(re_lo, den), Q(re_hi, den)), IQ(Q(im_lo, den), Q(im_hi, den)))
 
 
 def box_classifier_smoke() -> Bool:

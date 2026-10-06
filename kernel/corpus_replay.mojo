@@ -22,7 +22,6 @@ from julia_orbit import (
     is_cycle_of_length_one,
     multiplier_of_fixed_point,
     multiplier_of_two_cycle,
-    singleton_eq,
 )
 from quadratic_orbit.orbit import quadratic_step
 from parameter_corpus import CORPUS_SIZE, CorpusRow, MOJO_HORIZON, corpus_row
@@ -36,11 +35,11 @@ def cycle_is_valid(row: CorpusRow) -> Bool:
         return is_cycle_of_length_one(row.c, row.cycle_a)
     if row.cycle_length != 2:
         return False
-    if singleton_eq(row.cycle_a, row.cycle_b):
+    if row.cycle_a.singleton_eq(row.cycle_b):
         return False
-    if not singleton_eq(quadratic_step(row.cycle_a, row.c), row.cycle_b):
+    if not quadratic_step(row.cycle_a, row.c).singleton_eq(row.cycle_b):
         return False
-    return singleton_eq(quadratic_step(row.cycle_b, row.c), row.cycle_a)
+    return quadratic_step(row.cycle_b, row.c).singleton_eq(row.cycle_a)
 
 
 def observed_multiplier_class(row: CorpusRow) -> Int:

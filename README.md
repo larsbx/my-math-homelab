@@ -186,10 +186,9 @@ docs/
   terminology-governance.md                     mirrored governance process
   rational-interval-arithmetic-spec.md          mirrored exact-arithmetic contract
 kernel/                     canonical Mojo executable
-  julia_orbit.mojo          escape bound, cycle checks, multiplier classification
+  julia_orbit.mojo          orbit verdicts, cycle checks, multiplier classification
   box_classifier.mojo       OUT, IN and UNKNOWN over boxes
   enclosure_bound.mojo      how far an enclosure drifts from its orbit
-  escape_certificate.mojo   the growth ratio behind OUT
   corpus_replay.mojo        the kernel run against the corpus
   corpus_transcript.mojo    the transcript the differential test consumes
   parameter_corpus.mojo     GENERATED
@@ -206,7 +205,7 @@ oracles/
 vendor/                     pinned in vendored.toml; never edited here
   mojo/                     Mojo include root (-I vendor/mojo)
     finite_exact/           vendored from larsbx/finite-math-kernels
-    quadratic_orbit/        the seeded orbit of z^2 + c, same upstream
+    quadratic_orbit/        the orbit of z^2 + c, its escape test and certificate, the multiplier trichotomy, same upstream
     mojo_smoke/             the smoke reporter, same upstream
   python/
     references/             the reference-check engine, same upstream
