@@ -8,8 +8,9 @@ Analytic quantities in this document belong to the classical layer.
 ## Proposed step and decision
 
 The finite hypothesis is an exactly computed multiplier `lam` in `Q(i)` with
-quadrance 1 and `is_root_of_unity(lam)` false. The four-element root-of-unity
-test is proved in `docs/julia-program-design-analysis-2026-09-19.md`, section 6.
+quadrance 1 and outside `{1, -1, i, -i}`. This is the irrationally indifferent
+branch of the existing `classify_multiplier` checker. The four-element test
+is proved in `docs/julia-program-design-analysis-2026-09-19.md`, section 6.
 
 **`AlgebraicMultiplierDiophantine`: ACCEPTED WITH QUALIFICATION.** An algebraic
 number of modulus 1 that is not a root of unity has a Diophantine rotation
