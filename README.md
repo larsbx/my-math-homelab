@@ -216,7 +216,7 @@ vendor/                     pinned in vendored.toml; never edited here
     claim_governance/       its comment and string lexer, same upstream
 tools/
   make_regime_ledger.py     renders every generated surface; --check gates them
-  audit_exact_arithmetic.py the binding-table and no-float gate
+  audit_exact_arithmetic.py the binding-table and no-float policy (vendored engine)
   check_references.py       this repository's reference policy
 tests/
 ESTATE.toml                 estate manifest; audited from a pinned larsbx/estate-governance
