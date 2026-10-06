@@ -32,10 +32,13 @@ from __future__ import annotations
 
 import re
 import sys
-import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "vendor" / "python"))
+
+from vendoring.check_vendored_sync import vendored_directories  # noqa: E402
+
 REGISTRY = ROOT / "docs" / "terminology-registry.md"
 
 #: The rank-2 unavailable vocabulary. `docs/terminology-governance.md`: "A
@@ -75,8 +78,8 @@ SELF = "tools/audit_terminology.py"
 
 
 def vendored() -> set[Path]:
-    manifest = tomllib.loads((ROOT / "vendored.toml").read_text(encoding="utf-8"))
-    return {ROOT / pkg["root"] / pkg["name"] for pkg in manifest.get("package", [])}
+    """The vendored package directories, as the vendoring checker reads them."""
+    return {ROOT / directory for directory in vendored_directories(ROOT)}
 
 
 def own_files() -> list[Path]:
