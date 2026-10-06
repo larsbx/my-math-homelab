@@ -153,7 +153,8 @@ the circle family passes only if it is a field term registered in the
 registry, is denied by the clause it sits in, sits under a heading that
 forbids, or carries an explicit `<!-- terminology-exempt: reason -->` marker.
 Literature gates, which quote classical statements verbatim, are scanned as
-the classical layer they declare themselves to be.
+the classical layer they declare themselves to be. The engine is the vendored
+`lexical_audit` package; the policy is this repository's.
 
 ## References
 
@@ -213,10 +214,12 @@ vendor/                     pinned in vendored.toml; never edited here
     vendoring/              the vendoring checker, same upstream
     closed_interval/        exact rational boxes and dyadic rounding, same upstream
     exact_arithmetic_audit/ the spec section 7 audit engine, same upstream
-    claim_governance/       its comment and string lexer, same upstream
+    lexical_audit/          the terminology audit engine, same upstream
+    claim_governance/       the lexer both audit engines use, same upstream
 tools/
   make_regime_ledger.py     renders every generated surface; --check gates them
   audit_exact_arithmetic.py the binding-table and no-float policy (vendored engine)
+  audit_terminology.py      the rank-2 vocabulary policy (vendored engine)
   check_references.py       this repository's reference policy
 tests/
 ESTATE.toml                 estate manifest; audited from a pinned larsbx/estate-governance
