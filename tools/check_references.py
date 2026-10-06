@@ -75,6 +75,10 @@ EXTERNAL: dict[str, str] = {
     # claim in a consumer's ledger; this repository keeps no such ledger.
     "claim_governance.toml": "a consumer repository root, per larsbx/finite-math-kernels docs/audit/policy-format.md",
     "tools/claim_governance/checks/coverage.py": KERNELS,
+    # Named by the vendored `claim_governance` headers, which document the
+    # policy file format upstream; this repository vendors only its lexer's
+    # package and keeps no claim_governance.toml.
+    "docs/audit/policy-format.md": KERNELS,
 }
 
 #: Tasks the mirrored specification names, which belong to upstream's manifest.
