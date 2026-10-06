@@ -17,8 +17,9 @@
 # side, and tests/test_markov.py compares the transcripts.
 
 from finite_exact.exact_decimal import q_decimal
-from finite_exact.rat_q import Q, q_max
+from finite_exact.rat_q import Q
 from finite_linear_algebra.qpoly import RootBracket, charpoly, largest_root_bracket
+from quadratic_orbit.escape_criterion import escape_bound
 
 
 # The budget the Python oracle shares. A `BigZ` limb is base `10^9`, so a
@@ -37,11 +38,6 @@ def coordinate_limbs(value: Q) -> Int:
     if numerator > denominator:
         return numerator
     return denominator
-
-
-def escape_threshold(c: Q) -> Q:
-    """`max(4, N(c))`, the threshold of docs/escape-criterion.md on the line."""
-    return q_max(Q.from_int(4), c.square())
 
 
 def sorted_points(points: List[Q]) -> List[Q]:
@@ -69,7 +65,7 @@ def postcritical_points(c: Q, horizon: Int, limb_budget: Int) -> List[Q]:
     capped, or rejected. Refusing is the whole of the fail-closed rule here,
     and an empty list is the refusal.
     """
-    var threshold = escape_threshold(c)
+    var threshold = escape_bound(c.square())
     var seen = List[Q]()
     seen.append(Q.zero())
     var z = Q.zero()

@@ -117,8 +117,12 @@ now `test_the_lower_branch_is_rejected` in
 
 The admissible ratios are exactly the interval `1 < r < (sqrt(t) - 1)^2`,
 which is nonempty precisely when `t > 4`. So the certificate and the classical
-threshold agree about where they apply, and the strict inequality in
-`kernel/julia_orbit.mojo` is the right one: at `t = 4` the interval is empty.
+threshold agree about where they apply, and the strict inequality in the test
+(now the vendored `vendor/mojo/quadratic_orbit/escape_criterion.mojo`) is the right one:
+at `t = 4` the interval is empty. The test is the conservative side in one
+place only: at the tie `t = m > 4` a certificate exists (`m <= t` allows it)
+and `t > max(4, m)` does not fire. Every quadrance the test passes carries a
+certificate; the converse is not claimed.
 
 ## 4. What `ESCAPES` now means
 
@@ -128,8 +132,9 @@ threshold agree about where they apply, and the strict inequality in
 | concluded | the orbit tends to infinity | the quadrance grows by at least a rational `r > 1` at every step from `n` on |
 | rests on | an unnamed classical import | section 2, in this repository |
 
-`reference/escape_certificate.py` and `kernel/escape_certificate.mojo` compute the
-ratio; `reference/julia_reference.py` attaches it to the verdict, and a test
+`reference/escape_certificate.py` and the vendored
+`vendor/mojo/quadratic_orbit/escape_criterion.mojo` (from `larsbx/finite-math-kernels`)
+compute the ratio; `reference/julia_reference.py` attaches it to the verdict, and a test
 asserts that every `ESCAPES` row of the corpus carries one. A parameter with
 no certificate is not thereby bounded: absence is the fail-closed reading,
 not a claim.

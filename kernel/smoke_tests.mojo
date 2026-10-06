@@ -22,17 +22,15 @@ from taylor import taylor_smoke
 from angle_witness import angle_witness_smoke
 from separator import permanent_witness_smoke, ray_witness_smoke, separator_smoke
 from preperiodic_witness import preperiodic_witness_smoke
-from escape_certificate import escape_certificate_smoke
 from julia_orbit import (
     MULT_IRRATIONALLY_INDIFFERENT,
     MULT_PARABOLIC,
     MULT_REPELLING,
     classify_multiplier,
-    escape_bound_quadrance,
-    escapes_at,
     gaussian_q,
     is_gaussian_root_of_unity,
 )
+from quadratic_orbit.escape_criterion import escape_bound_quadrance, escape_certificate_smoke, escapes
 from mojo_smoke.report import SmokeReport, smoke_report_smoke
 
 
@@ -43,9 +41,9 @@ def escape_bound_smoke() -> Bool:
     if not escape_bound_quadrance(gaussian_q(3, 1, 4, 1)).eq(Q(25, 1)):
         return False
     var c = gaussian_q(1, 1, 0, 1)
-    if escapes_at(gaussian_q(2, 1, 0, 1), c):
+    if escapes(gaussian_q(2, 1, 0, 1), c):
         return False
-    return escapes_at(gaussian_q(5, 1, 0, 1), c)
+    return escapes(gaussian_q(5, 1, 0, 1), c)
 
 
 def multiplier_dichotomy_smoke() -> Bool:

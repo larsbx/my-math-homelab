@@ -191,7 +191,8 @@ between a worst-case bound and behaviour, and closing it is an optimisation,
 not a correctness question.
 
 `reference/enclosure_bound.py` and `kernel/enclosure_bound.mojo` compute each
-quantity above exactly and agree: the step factor, the iterated bound,
+quantity above exactly and agree (the Mojo side's box radius and magnitude are
+the vendored `vendor/mojo/finite_exact/enclosure_width.mojo`): the step factor, the iterated bound,
 section 4(b)'s quadrance drift, and section 5's `s` itself, as
 `refinement_radius`.
 

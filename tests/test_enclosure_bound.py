@@ -223,11 +223,13 @@ def test_the_theorem_puts_the_whole_enclosure_past_the_escape_bound(centre, step
 def test_a_rejected_box_has_no_radius():
     """A refused box is not a converged one.
 
-    The local interval copy answered width `0` for a rejected interval, so
-    `sup_radius` measured a refusal as a point. The vendored `closed_interval`
-    refuses to measure it. `kernel/enclosure_bound.mojo` still measures a
-    rejected box as zero (its binding row says so); the two sides agree on
-    every accepted box and differ here, where the Python side now fails closed.
+    The local interval copies answered width `0` for a rejected interval and
+    magnitude `0` for a rejected box, so a refusal measured as a point. Both
+    sides now refuse: the vendored `finite_exact.enclosure_width` returns a
+    rejected value, and these raise. Neither box lies within any bound.
     """
     with pytest.raises(ValueError):
         sup_radius(ComplexBox.refused())
+    with pytest.raises(ValueError):
+        sup_magnitude(ComplexBox.refused())
+    assert not within(ComplexBox.refused(), 100)
