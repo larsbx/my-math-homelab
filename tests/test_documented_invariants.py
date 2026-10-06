@@ -137,5 +137,5 @@ def test_the_scan_covers_this_repository_and_not_its_copies():
         "finite_linear_algebra", "finite_polynomial", "substitution_dynamics", "finite_graph",
         "mojo_smoke", "vendoring", "references", "closed_interval",
         "exact_arithmetic_audit", "claim_governance", "lexical_audit",
-        "polyglot_envelope",
+        "polyglot_envelope", "root_isolation", "root_isolation_py",
     }

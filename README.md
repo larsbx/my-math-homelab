@@ -206,12 +206,14 @@ oracles/
 vendor/                     pinned in vendored.toml; never edited here
   mojo/                     Mojo include root (-I vendor/mojo)
     finite_exact/           vendored from larsbx/finite-math-kernels
-    quadratic_orbit/        the orbit of z^2 + c, its escape test and certificate, the multiplier trichotomy, same upstream
+    quadratic_orbit/        the orbit of z^2 + c, its escape test and certificate, the multiplier trichotomy, the Krawczyk test for z^2 + c, same upstream
+    root_isolation/         the Krawczyk operator quadratic_orbit uses, same upstream
     mojo_smoke/             the smoke reporter, same upstream
   python/
     references/             the reference-check engine, same upstream
     vendoring/              the vendoring checker, same upstream
     closed_interval/        exact rational boxes and dyadic rounding, same upstream
+    root_isolation_py/      the Krawczyk operator reference/preperiodic.py uses, same upstream
     exact_arithmetic_audit/ the spec section 7 audit engine, same upstream
     lexical_audit/          the terminology audit engine, same upstream
     claim_governance/       the lexer both audit engines use, same upstream

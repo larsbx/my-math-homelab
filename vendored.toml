@@ -33,7 +33,7 @@ root = "vendor/mojo"
 "quadratic_orbit/escape_criterion.mojo" = "4353689584221aa94424cca0e4aca0dd7bf377126b5d447570603aab57c3a798"
 "quadratic_orbit/multiplier_classification.mojo" = "e143e3de5571c9679a485daa4cea307fdde47ffabda5b5c9d5a2978332e4a7b0"
 "quadratic_orbit/orbit.mojo" = "ce37cada4a11ba57c0f6d3d6008a69846ca3136c07d021a25b082410c1f8392b"
-"quadratic_orbit/preperiodic.mojo" = "5d010196a8f15232e664d48629bbf330747e1380e78e3dbde2e4c58d96073e2e"
+"quadratic_orbit/preperiodic.mojo" = "f55d6f89571fb20c402677ed7ece1053f946b5014b83a10dace9d056b8362322"
 
 [[package]]
 name = "mojo_smoke"
@@ -218,3 +218,27 @@ root = "vendor/python"
 "polyglot_envelope/boundary-envelope-v1.schema.json" = "bc336f2cf14ccd33df10ecaaddcacd92cf950cd456b626ead7004d6c5c921d77"
 "polyglot_envelope/conformance-v1.json" = "cbb004de07ef44eb9e07b23900e3ebbcdfa41bd69e977a542cac533d6e530ecb"
 "polyglot_envelope/render.py" = "d218beaa4c7c231bc66d24f489e9b9fad4d481a28e9339de692e17b77b03a4b7"
+
+[[package]]
+name = "root_isolation"
+repository = "larsbx/finite-math-kernels"
+commit = "dfc6e5bd2425d67182915aa47b88c4073959eba3"
+root = "vendor/mojo"
+
+[package.files]
+"root_isolation/__init__.mojo" = "d08b99e0d4d09899d71699d7e2e167a2ea58ecd180f445816a1c1426f3957c75"
+"root_isolation/boxes.mojo" = "b4f1f482d142ece1883aa19c2f062321b9c4aec508a3831e735ab8ebb2326589"
+"root_isolation/krawczyk.mojo" = "3e7e983135e88ddf3039fed8d1c6775d80afe41e7e0823c336592164b1d1641f"
+"root_isolation/krawczyk_moore.mojo" = "e7ae89b45907ac47a94632b31f5c90f9de014e78dc2c5e79c5856fa93a31f245"
+
+[[package]]
+name = "root_isolation_py"
+repository = "larsbx/finite-math-kernels"
+commit = "dfc6e5bd2425d67182915aa47b88c4073959eba3"
+root = "vendor/python"
+
+[package.files]
+"root_isolation_py/__init__.py" = "44307370e4e2308dc6ea550696854321211817c4be05ba0080452c6c56812539"
+"root_isolation_py/boxes.py" = "823d46d77d112ad197fdbb2fb3d3761246e695043df34272f23ab91cbcb0c7c9"
+"root_isolation_py/krawczyk.py" = "e3bf9b11db8abb2d1f54c10ba20cfc4d6be9682b223cfd2eeeaef4dc818500a2"
+"root_isolation_py/krawczyk_moore.py" = "e1808e9ca1481b7e8da5ed08588621ef1d862e304db7b42f5e3a0ce966691792"
