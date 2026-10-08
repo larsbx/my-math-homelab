@@ -111,8 +111,9 @@ verified over the whole box so the classifier can count `IN`. The same script
 renders them into the ledger's "Algebraic parameters" section, the
 `algebraic` array of `corpus.json`, the census, and
 `kernel/algebraic_corpus.mojo`, which `kernel/algebraic_parameter.mojo`
-re-checks in the smoke suite. Which component a box sits in is the import
-`RationalRayLanding`; see `docs/algebraic-parameters.md`.
+re-checks in the smoke suite, exact period included. Which component a box
+sits in is the import `ParameterRayLandingCorrespondence`, which no gate here
+has judged, so the keys are labels; see `docs/algebraic-parameters.md`.
 
 Two implementations decide every row: the Mojo kernel `kernel/julia_orbit.mojo`
 over the vendored `finite_exact` and `quadratic_orbit` packages, and the

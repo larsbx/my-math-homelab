@@ -150,9 +150,16 @@ on every render, and a row that fails one is refused rather than rendered:
 - **trap** -- the declared box is a trap of period `n` for every parameter in
   the root box (`reference/box_classifier.py`).
 
-Which component a box sits in -- that the rays at the listed angles land at
-its root -- is the import `RationalRayLanding`, named in the identification
-column and not computed.
+Which component a box sits in -- that the parameter rays at the listed
+angles land at its root -- is the import `ParameterRayLandingCorrespondence`.
+No literature gate of this repository has judged it (`RationalRayLanding` is
+about dynamical rays and refuses angle-to-root correspondence), so it is
+marked `NOT_GATED` and the keys are labels. Nothing verified depends on it:
+every root of an exact-period Gleason factor is superattracting, whichever
+component it centres. The exact-period column is decided twice -- by the
+reference's integer algebra and by the kernel, which divides `f_c^n(0)` by the
+monic polynomial exactly and checks a Bezout certificate against `f_c^d(0)`
+for each proper divisor `d`.
 """
 
 
@@ -181,7 +188,7 @@ def box_text(box: ComplexBox) -> str:
 def render_algebraic_ledger() -> list[str]:
     lines = [
         ALGEBRAIC_HEADER,
-        "| key | polynomial | period | exact period (verified) | isolated root (verified) | trap (verified) | identification (gated) | local connectivity | theorem tag (gated) | J1 expects |",
+        "| key | polynomial | period | exact period (verified) | isolated root (verified) | trap (verified) | identification (NOT GATED) | local connectivity | theorem tag (gated) | J1 expects |",
         "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for row in ac.ALGEBRAIC_CORPUS:
@@ -239,6 +246,7 @@ def render_corpus_json() -> str:
                 "conjugate_of": row.conjugate_of,
                 "root_angles": [str(a) for a in row.root_angles],
                 "identification_tag": ac.IDENTIFICATION_TAG,
+                "identification_tag_status": ac.IDENTIFICATION_STATUS,
                 "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
                 "theorem_tag": ac.THEOREM_TAG,
                 "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
@@ -376,8 +384,9 @@ MOJO_ALGEBRAIC_HEADER = """# algebraic_corpus.mojo
 #
 # The algebraic corpus as root handles: an integer polynomial and a rational
 # box per row, with the row's period and its declared trap.
-# kernel/algebraic_parameter.mojo checks each box isolates a root (Krawczyk)
-# and each trap is a trap on the whole box.
+# kernel/algebraic_parameter.mojo checks each polynomial is an exact-period
+# Gleason factor (exact division and the Bezout certificates below), each box
+# isolates a root (Krawczyk), and each trap is a trap on the whole box.
 
 from finite_exact.closed_interval import ComplexIQ, IQ
 from finite_exact.rat_q import Q
@@ -412,6 +421,21 @@ struct AlgebraicRow(Copyable):
         self.conjugate_of = conjugate_of
 
 
+struct BezoutCertificate(Copyable):
+    \"\"\"`a p + b f_c^d(0) = n` with `n` a nonzero integer: `p` shares no root with `f_c^d(0)`.\"\"\"
+
+    var divisor: Int
+    var a: List[Int]
+    var b: List[Int]
+    var n: Int
+
+    def __init__(out self, divisor: Int, var a: List[Int], var b: List[Int], n: Int):
+        self.divisor = divisor
+        self.a = a^
+        self.b = b^
+        self.n = n
+
+
 def algebraic_row(index: Int) -> AlgebraicRow:"""
 
 
@@ -441,6 +465,25 @@ def render_mojo_algebraic() -> str:
         body.append("        )")
     body.append("    var none = List[Int]()")
     body.append('    return AlgebraicRow("", none^, ComplexIQ.singleton(Q(1, 0), Q(1, 0)), 0, ComplexIQ.singleton(Q(1, 0), Q(1, 0)), "")')
+    body.append("")
+    body.append("")
+    body.append("def certificate_count(index: Int) -> Int:")
+    for index, row in enumerate(ac.ALGEBRAIC_CORPUS):
+        body.append(f"    if index == {index}:")
+        body.append(f"        return {len(ac.period_certificates(row.handle.polynomial, row.period))}")
+    body.append("    return 0")
+    body.append("")
+    body.append("")
+    body.append("def bezout_certificate(index: Int, j: Int) -> BezoutCertificate:")
+    for index, row in enumerate(ac.ALGEBRAIC_CORPUS):
+        for j, (d, (a, b, n)) in enumerate(ac.period_certificates(row.handle.polynomial, row.period)):
+            body.append(f"    if index == {index} and j == {j}:")
+            body.append(f"        var a: List[Int] = [{', '.join(map(str, a))}]")
+            body.append(f"        var b: List[Int] = [{', '.join(map(str, b))}]")
+            body.append(f"        return BezoutCertificate({d}, a^, b^, {n})")
+    body.append("    var none = List[Int]()")
+    body.append("    var empty = List[Int]()")
+    body.append("    return BezoutCertificate(0, none^, empty^, 0)")
     body.append("")
     return "\n".join([MOJO_ALGEBRAIC_HEADER.format(size=len(ac.ALGEBRAIC_CORPUS))] + body)
 

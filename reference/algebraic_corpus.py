@@ -11,7 +11,9 @@ of its roots. Every claim a row makes is checked:
 
 - the polynomial divides `f_c^n(0)` and shares no root with `f_c^d(0)` for a
   proper divisor `d` of the row's period `n`, so every root is the centre of a
-  component of exact period `n` (exact integer algebra, no import);
+  component of exact period `n` (exact integer algebra, no import); the
+  kernel decides the same by exact division and the Bezout certificates of
+  `period_certificates`;
 - the box isolates one root: the Krawczyk image lies strictly inside the box,
   read through the accepted import `KrawczykMooreUniqueness`
   (`docs/literature-gate-2026-09-20-krawczyk.md`);
@@ -21,10 +23,15 @@ of its roots. Every claim a row makes is checked:
 - the declared trap is a trap of the row's period at every parameter in the
   box (`reference/box_classifier.py`), so the classifier may count `IN`.
 
-Which component a box sits in -- that the rays at `root_angles` land at the
-root of the component whose centre is in the box -- is the accepted import
-`RationalRayLanding` (`docs/literature-gate-2026-09-20-landing.md`), named and
-not computed. The boxes were found offline by exact dyadic Newton steps and
+Which component a box sits in -- that the parameter rays at `root_angles`
+land at the root of the component whose centre is in the box -- is the
+import `ParameterRayLandingCorrespondence`, which **no literature gate of this
+repository has judged**. `RationalRayLanding` does not cover it: that gate is
+about dynamical rays of one polynomial and refuses angle-to-root
+correspondence (its findings 3 and 4). The keys and names below are therefore
+labels; nothing verified depends on them. Every root of an exact-period
+Gleason factor is superattracting, so hyperbolic, whichever component it
+centres. The boxes were found offline by exact dyadic Newton steps and
 are declared here, like every witness in the corpus; none is a search result.
 """
 
@@ -32,6 +39,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from fractions import Fraction as F
+from math import lcm
 
 from box_classifier import is_trap
 from closed_interval import ComplexBox
@@ -44,7 +52,8 @@ Poly = tuple[int, ...]  # integer coefficients in c, constant term first
 REGIME = "HYPERBOLIC_CENTER"
 MULTIPLIER_CLASS = "SUPERATTRACTING"
 THEOREM_TAG = "DouadyHubbardHyperbolicLocallyConnected"
-IDENTIFICATION_TAG = "RationalRayLanding"
+IDENTIFICATION_TAG = "ParameterRayLandingCorrespondence"
+IDENTIFICATION_STATUS = "NOT_GATED"
 J1_EXPECTATION = "STABILIZES"
 
 #: Half-width of every declared box, and the dyadic grid of its centre.
@@ -191,6 +200,45 @@ def exact_period_factor(p: Poly, n: int) -> bool:
     )
 
 
+def _sub(p, q) -> tuple:
+    return _add(p, tuple(-a for a in q))
+
+
+def _divmod(p, d) -> tuple[tuple, tuple]:
+    r, q = [F(a) for a in p], [F(0)] * max(1, len(p) - len(d) + 1)
+    while _trim(r) and len(_trim(r)) >= len(d):
+        r = list(_trim(r))
+        k, s = len(r) - len(d), r[-1] / d[-1]
+        q[k] = s
+        r = [r[i] - (s * d[i - k] if i >= k else 0) for i in range(len(r))]
+    return _trim(q), _trim(r)
+
+
+def bezout_certificate(p: Poly, g: Poly) -> tuple[Poly, Poly, int]:
+    """Integer polynomials `A`, `B` and a nonzero integer `N` with `A p + B g = N`: a certificate,
+    checkable by multiplication alone, that `p` and `g` share no root. Extended Euclid over `Q`,
+    denominators cleared."""
+    r0, r1, s0, s1, t0, t1 = tuple(map(F, p)), tuple(map(F, g)), (F(1),), (), (), (F(1),)
+    while r1:
+        q, r = _divmod(r0, r1)
+        r0, r1, s0, s1, t0, t1 = r1, r, s1, _sub(s0, _mul(q, s1)), t1, _sub(t0, _mul(q, t1))
+    if len(r0) != 1:
+        raise ValueError("not coprime")
+    s, t = [a / r0[0] for a in s0], [a / r0[0] for a in t0]
+    scale = lcm(*(a.denominator for a in s + t))
+    return tuple(int(a * scale) for a in s), tuple(int(a * scale) for a in t), scale
+
+
+def certifies_coprime(p: Poly, g: Poly, certificate: tuple[Poly, Poly, int]) -> bool:
+    a, b, n = certificate
+    return n != 0 and _add(_mul(a, p), _mul(b, g)) == (n,)
+
+
+def period_certificates(p: Poly, n: int) -> list[tuple[int, tuple[Poly, Poly, int]]]:
+    """One coprimality certificate per proper divisor `d` of `n`, against `f_c^d(0)`."""
+    return [(d, bezout_certificate(p, gleason(d))) for d in range(1, n) if n % d == 0]
+
+
 # --- interval checks --------------------------------------------------------------
 
 def _horner(p, z: ComplexBox) -> ComplexBox:
@@ -227,6 +275,8 @@ def row_errors(row: AlgebraicParameter, rows: tuple[AlgebraicParameter, ...]) ->
     errors = []
     if not exact_period_factor(p, row.period):
         errors.append(f"polynomial is not an exact period-{row.period} Gleason factor")
+    elif p[-1] != 1 or not all(certifies_coprime(p, gleason(d), c) for d, c in period_certificates(p, row.period)):
+        errors.append("the kernel's exact-period certificate does not check")
     if not isolates(p, box):
         errors.append("the box does not isolate a root of the polynomial")
     errors += [

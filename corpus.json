@@ -267,7 +267,8 @@
         "1/7",
         "2/7"
       ],
-      "identification_tag": "RationalRayLanding",
+      "identification_tag": "ParameterRayLandingCorrespondence",
+      "identification_tag_status": "NOT_GATED",
       "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
       "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
       "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
@@ -312,7 +313,8 @@
         "5/7",
         "6/7"
       ],
-      "identification_tag": "RationalRayLanding",
+      "identification_tag": "ParameterRayLandingCorrespondence",
+      "identification_tag_status": "NOT_GATED",
       "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
       "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
       "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
@@ -357,7 +359,8 @@
         "3/7",
         "4/7"
       ],
-      "identification_tag": "RationalRayLanding",
+      "identification_tag": "ParameterRayLandingCorrespondence",
+      "identification_tag_status": "NOT_GATED",
       "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
       "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
       "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
@@ -405,7 +408,8 @@
         "1/5",
         "4/15"
       ],
-      "identification_tag": "RationalRayLanding",
+      "identification_tag": "ParameterRayLandingCorrespondence",
+      "identification_tag_status": "NOT_GATED",
       "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
       "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
       "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
@@ -453,7 +457,8 @@
         "11/15",
         "4/5"
       ],
-      "identification_tag": "RationalRayLanding",
+      "identification_tag": "ParameterRayLandingCorrespondence",
+      "identification_tag_status": "NOT_GATED",
       "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
       "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
       "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",

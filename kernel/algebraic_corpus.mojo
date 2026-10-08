@@ -7,8 +7,9 @@
 #
 # The algebraic corpus as root handles: an integer polynomial and a rational
 # box per row, with the row's period and its declared trap.
-# kernel/algebraic_parameter.mojo checks each box isolates a root (Krawczyk)
-# and each trap is a trap on the whole box.
+# kernel/algebraic_parameter.mojo checks each polynomial is an exact-period
+# Gleason factor (exact division and the Bezout certificates below), each box
+# isolates a root (Krawczyk), and each trap is a trap on the whole box.
 
 from finite_exact.closed_interval import ComplexIQ, IQ
 from finite_exact.rat_q import Q
@@ -41,6 +42,21 @@ struct AlgebraicRow(Copyable):
         self.period = period
         self.trap = trap.copy()
         self.conjugate_of = conjugate_of
+
+
+struct BezoutCertificate(Copyable):
+    """`a p + b f_c^d(0) = n` with `n` a nonzero integer: `p` shares no root with `f_c^d(0)`."""
+
+    var divisor: Int
+    var a: List[Int]
+    var b: List[Int]
+    var n: Int
+
+    def __init__(out self, divisor: Int, var a: List[Int], var b: List[Int], n: Int):
+        self.divisor = divisor
+        self.a = a^
+        self.b = b^
+        self.n = n
 
 
 def algebraic_row(index: Int) -> AlgebraicRow:
@@ -96,3 +112,51 @@ def algebraic_row(index: Int) -> AlgebraicRow:
         )
     var none = List[Int]()
     return AlgebraicRow("", none^, ComplexIQ.singleton(Q(1, 0), Q(1, 0)), 0, ComplexIQ.singleton(Q(1, 0), Q(1, 0)), "")
+
+
+def certificate_count(index: Int) -> Int:
+    if index == 0:
+        return 1
+    if index == 1:
+        return 1
+    if index == 2:
+        return 1
+    if index == 3:
+        return 2
+    if index == 4:
+        return 2
+    return 0
+
+
+def bezout_certificate(index: Int, j: Int) -> BezoutCertificate:
+    if index == 0 and j == 0:
+        var a: List[Int] = [1]
+        var b: List[Int] = [-1, -2, -1]
+        return BezoutCertificate(1, a^, b^, 1)
+    if index == 1 and j == 0:
+        var a: List[Int] = [1]
+        var b: List[Int] = [-1, -2, -1]
+        return BezoutCertificate(1, a^, b^, 1)
+    if index == 2 and j == 0:
+        var a: List[Int] = [1]
+        var b: List[Int] = [-1, -2, -1]
+        return BezoutCertificate(1, a^, b^, 1)
+    if index == 3 and j == 0:
+        var a: List[Int] = [1]
+        var b: List[Int] = [0, -2, -3, -3, -3, -1]
+        return BezoutCertificate(1, a^, b^, 1)
+    if index == 3 and j == 1:
+        var a: List[Int] = [1]
+        var b: List[Int] = [0, -2, -1, -2, -1]
+        return BezoutCertificate(2, a^, b^, 1)
+    if index == 4 and j == 0:
+        var a: List[Int] = [1]
+        var b: List[Int] = [0, -2, -3, -3, -3, -1]
+        return BezoutCertificate(1, a^, b^, 1)
+    if index == 4 and j == 1:
+        var a: List[Int] = [1]
+        var b: List[Int] = [0, -2, -1, -2, -1]
+        return BezoutCertificate(2, a^, b^, 1)
+    var none = List[Int]()
+    var empty = List[Int]()
+    return BezoutCertificate(0, none^, empty^, 0)

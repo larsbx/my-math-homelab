@@ -7,7 +7,8 @@ makes is checked here: the polynomial is an exact-period Gleason factor, the
 box isolates exactly one of its roots (Krawczyk-Moore, the accepted import
 `KrawczykMooreUniqueness`), boxes on one polynomial are disjoint, declared
 conjugates have conjugate boxes, and the declared trap is a trap at every
-parameter in the box. Which component a box sits in is the landing import.
+parameter in the box. Which component a box sits in is the ungated import
+`ParameterRayLandingCorrespondence`; nothing checked here depends on it.
 """
 
 from __future__ import annotations
@@ -85,7 +86,30 @@ def test_corrupted_rows_are_refused(change: dict) -> None:
 
 
 def test_root_angles_are_periodic_of_the_row_period() -> None:
-    """The angle pair is the row's identification, imported through `RationalRayLanding`;
-    what is checked is only that both angles have the row's exact period."""
+    """The angle pair is the row's identification, through the ungated import
+    `ParameterRayLandingCorrespondence`; what is checked is only that both angles
+    have the row's exact period."""
     for row in ROWS:
         assert all(ac.angle_period(a) == row.period for a in row.root_angles), row.key
+
+
+def test_bezout_certificates_cover_every_proper_divisor_and_check() -> None:
+    for row in ROWS:
+        certs = ac.period_certificates(row.handle.polynomial, row.period)
+        assert [d for d, _ in certs] == [d for d in range(1, row.period) if row.period % d == 0]
+        assert all(ac.certifies_coprime(row.handle.polynomial, ac.gleason(d), c) for d, c in certs)
+
+
+def test_a_wrong_bezout_certificate_is_refused() -> None:
+    cubic = (1, 1, 2, 1)
+    a, b, n = ac.bezout_certificate(cubic, ac.gleason(1))
+    assert ac.certifies_coprime(cubic, ac.gleason(1), (a, b, n))
+    assert not ac.certifies_coprime(cubic, ac.gleason(1), (a, b, n + 1))
+    assert not ac.certifies_coprime(cubic, ac.gleason(1), (a, b, 0))
+    assert not ac.certifies_coprime((0, 1, 1), ac.gleason(1), (a, b, n))  # c(c + 1) shares the root 0
+
+
+def test_identification_is_marked_ungated() -> None:
+    """No gate of this repository covers parameter-ray correspondence; the rows must say so."""
+    assert ac.IDENTIFICATION_TAG != "RationalRayLanding"
+    assert ac.IDENTIFICATION_STATUS == "NOT_GATED"

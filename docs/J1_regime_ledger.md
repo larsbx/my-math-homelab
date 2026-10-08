@@ -69,17 +69,24 @@ on every render, and a row that fails one is refused rather than rendered:
 - **trap** -- the declared box is a trap of period `n` for every parameter in
   the root box (`reference/box_classifier.py`).
 
-Which component a box sits in -- that the rays at the listed angles land at
-its root -- is the import `RationalRayLanding`, named in the identification
-column and not computed.
+Which component a box sits in -- that the parameter rays at the listed
+angles land at its root -- is the import `ParameterRayLandingCorrespondence`.
+No literature gate of this repository has judged it (`RationalRayLanding` is
+about dynamical rays and refuses angle-to-root correspondence), so it is
+marked `NOT_GATED` and the keys are labels. Nothing verified depends on it:
+every root of an exact-period Gleason factor is superattracting, whichever
+component it centres. The exact-period column is decided twice -- by the
+reference's integer algebra and by the kernel, which divides `f_c^n(0)` by the
+monic polynomial exactly and checks a Bezout certificate against `f_c^d(0)`
+for each proper divisor `d`.
 
-| key | polynomial | period | exact period (verified) | isolated root (verified) | trap (verified) | identification (gated) | local connectivity | theorem tag (gated) | J1 expects |
+| key | polynomial | period | exact period (verified) | isolated root (verified) | trap (verified) | identification (NOT GATED) | local connectivity | theorem tag (gated) | J1 expects |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `rabbit` | `c^3 + 2c^2 + c + 1` | 3 | yes | `[-269514856191/2199023255552, -269514856187/2199023255552] x [818984173483/1099511627776, 818984173485/1099511627776]` | `[-1/64, 1/64]^2`, period 3 | RationalRayLanding: rays 1/7, 2/7 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
-| `co_rabbit` | `c^3 + 2c^2 + c + 1` | 3 | yes | `[-269514856191/2199023255552, -269514856187/2199023255552] x [-818984173485/1099511627776, -818984173483/1099511627776]` | `[-1/64, 1/64]^2`, period 3 | RationalRayLanding: rays 5/7, 6/7 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
-| `airplane` | `c^3 + 2c^2 + c + 1` | 3 | yes | `[-3859016798727/2199023255552, -3859016798723/2199023255552] x [-1/1099511627776, 1/1099511627776]` | `[-1/64, 1/64]^2`, period 3 | RationalRayLanding: rays 3/7, 4/7 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
-| `kokopelli` | `c^6 + 3c^5 + 3c^4 + 3c^3 + 2c^2 + 1` | 4 | yes | `[-21511967927/137438953472, -86047871707/549755813888] x [567483849499/549755813888, 141870962375/137438953472]` | `[-1/64, 1/64]^2`, period 4 | RationalRayLanding: rays 1/5, 4/15 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
-| `kokopelli_conjugate` | `c^6 + 3c^5 + 3c^4 + 3c^3 + 2c^2 + 1` | 4 | yes | `[-21511967927/137438953472, -86047871707/549755813888] x [-141870962375/137438953472, -567483849499/549755813888]` | `[-1/64, 1/64]^2`, period 4 | RationalRayLanding: rays 11/15, 4/5 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `rabbit` | `c^3 + 2c^2 + c + 1` | 3 | yes | `[-269514856191/2199023255552, -269514856187/2199023255552] x [818984173483/1099511627776, 818984173485/1099511627776]` | `[-1/64, 1/64]^2`, period 3 | ParameterRayLandingCorrespondence: rays 1/7, 2/7 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `co_rabbit` | `c^3 + 2c^2 + c + 1` | 3 | yes | `[-269514856191/2199023255552, -269514856187/2199023255552] x [-818984173485/1099511627776, -818984173483/1099511627776]` | `[-1/64, 1/64]^2`, period 3 | ParameterRayLandingCorrespondence: rays 5/7, 6/7 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `airplane` | `c^3 + 2c^2 + c + 1` | 3 | yes | `[-3859016798727/2199023255552, -3859016798723/2199023255552] x [-1/1099511627776, 1/1099511627776]` | `[-1/64, 1/64]^2`, period 3 | ParameterRayLandingCorrespondence: rays 3/7, 4/7 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `kokopelli` | `c^6 + 3c^5 + 3c^4 + 3c^3 + 2c^2 + 1` | 4 | yes | `[-21511967927/137438953472, -86047871707/549755813888] x [567483849499/549755813888, 141870962375/137438953472]` | `[-1/64, 1/64]^2`, period 4 | ParameterRayLandingCorrespondence: rays 1/5, 4/15 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `kokopelli_conjugate` | `c^6 + 3c^5 + 3c^4 + 3c^3 + 2c^2 + 1` | 4 | yes | `[-21511967927/137438953472, -86047871707/549755813888] x [-141870962375/137438953472, -567483849499/549755813888]` | `[-1/64, 1/64]^2`, period 4 | ParameterRayLandingCorrespondence: rays 11/15, 4/5 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
 
 - **`rabbit`** (Douady rabbit) -- Centre of the 1/3-bulb: the upper non-real root of c^3 + 2c^2 + c + 1.
 - **`co_rabbit`** (co-rabbit) -- Centre of the 2/3-bulb, the complex conjugate of the rabbit's. Conjugate of `rabbit`.
