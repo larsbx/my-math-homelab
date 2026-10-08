@@ -20,7 +20,11 @@ polyglot = "python vendor/python/polyglot_envelope/render.py"
 polyglot-check = "python vendor/python/polyglot_envelope/render.py --check"
 
 [dependencies]
+# Mojo 1.0.0 release: every Modular package pinned (tests check against pixi.lock).
 mojo = "==1.0.0"
+mojo-compiler = "==1.0.0"
+mojo-python = "==1.0.0"
+mblack = "==26.5.0"
 
 [pypi-dependencies]
 pytest = "==8.3.5"

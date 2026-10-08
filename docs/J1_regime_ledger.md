@@ -53,3 +53,43 @@ exhausts its budget by construction, and reports which budget ran out.
 - **`parabolic_i`** (parabolic, multiplier i) -- The third of the four Gaussian-rational roots of unity, reached by c = lam (2 - lam) / 4 at lam = i.
 - **`niven`** (irrationally indifferent) -- The exact algebraic multiplier lam = (3 + 4i)/5 is not a root of unity. The literature import in docs/literature-gate-2026-10-06-algebraic-multiplier.md gives Diophantine and Brjuno; the accepted linearization and Herman imports give a Siegel disk with the critical point on its boundary. Local connectivity remains OPEN, and J1 remains UNDECIDED. These are classical imports, not new finite-core verdicts.
 - **`escaping`** (escaping critical orbit) -- K_c is disconnected, and the imported fiber theory is stated for compact connected full sets, so the question the other rows answer is not posed here; the escape certificate is.
+
+## Algebraic parameters
+
+Generated from `reference/algebraic_corpus.py`. These parameters are
+irrational, so `c` is a **root handle**: an integer polynomial and a rational
+box isolating exactly one of its roots. The verified columns are recomputed
+on every render, and a row that fails one is refused rather than rendered:
+
+- **exact period** -- the polynomial divides `f_c^n(0)` and is coprime to
+  `f_c^d(0)` for every proper divisor `d` of `n`, by exact integer algebra;
+- **isolated** -- the Krawczyk image of the box lies strictly inside it, read
+  through `KrawczykMooreUniqueness`; boxes on one polynomial are disjoint, and
+  a declared conjugate has the conjugate box;
+- **trap** -- the declared box is a trap of period `n` for every parameter in
+  the root box (`reference/box_classifier.py`).
+
+Which component a box sits in -- that the parameter rays at the listed
+angles land at its root -- is the import `ParameterRayLandingCorrespondence`.
+No literature gate of this repository has judged it (`RationalRayLanding` is
+about dynamical rays and refuses angle-to-root correspondence), so it is
+marked `NOT_GATED` and the keys are labels. Nothing verified depends on it:
+every root of an exact-period Gleason factor is superattracting, whichever
+component it centres. The exact-period column is decided twice -- by the
+reference's integer algebra and by the kernel, which divides `f_c^n(0)` by the
+monic polynomial exactly and checks a Bezout certificate against `f_c^d(0)`
+for each proper divisor `d`.
+
+| key | polynomial | period | exact period (verified) | isolated root (verified) | trap (verified) | identification (NOT GATED) | local connectivity | theorem tag (gated) | J1 expects |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `rabbit` | `c^3 + 2c^2 + c + 1` | 3 | yes | `[-269514856191/2199023255552, -269514856187/2199023255552] x [818984173483/1099511627776, 818984173485/1099511627776]` | `[-1/64, 1/64]^2`, period 3 | ParameterRayLandingCorrespondence: rays 1/7, 2/7 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `co_rabbit` | `c^3 + 2c^2 + c + 1` | 3 | yes | `[-269514856191/2199023255552, -269514856187/2199023255552] x [-818984173485/1099511627776, -818984173483/1099511627776]` | `[-1/64, 1/64]^2`, period 3 | ParameterRayLandingCorrespondence: rays 5/7, 6/7 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `airplane` | `c^3 + 2c^2 + c + 1` | 3 | yes | `[-3859016798727/2199023255552, -3859016798723/2199023255552] x [-1/1099511627776, 1/1099511627776]` | `[-1/64, 1/64]^2`, period 3 | ParameterRayLandingCorrespondence: rays 3/7, 4/7 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `kokopelli` | `c^6 + 3c^5 + 3c^4 + 3c^3 + 2c^2 + 1` | 4 | yes | `[-21511967927/137438953472, -86047871707/549755813888] x [567483849499/549755813888, 141870962375/137438953472]` | `[-1/64, 1/64]^2`, period 4 | ParameterRayLandingCorrespondence: rays 1/5, 4/15 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+| `kokopelli_conjugate` | `c^6 + 3c^5 + 3c^4 + 3c^3 + 2c^2 + 1` | 4 | yes | `[-21511967927/137438953472, -86047871707/549755813888] x [-141870962375/137438953472, -567483849499/549755813888]` | `[-1/64, 1/64]^2`, period 4 | ParameterRayLandingCorrespondence: rays 11/15, 4/5 | TAGGED_LOCALLY_CONNECTED | DouadyHubbardHyperbolicLocallyConnected (ACCEPTED_WITH_QUALIFICATION) | STABILIZES |
+
+- **`rabbit`** (Douady rabbit) -- Centre of the 1/3-bulb: the upper non-real root of c^3 + 2c^2 + c + 1.
+- **`co_rabbit`** (co-rabbit) -- Centre of the 2/3-bulb, the complex conjugate of the rabbit's. Conjugate of `rabbit`.
+- **`airplane`** (airplane) -- Centre of the period-3 window: the real root of c^3 + 2c^2 + c + 1. The box straddles the real axis; it is its own conjugate.
+- **`kokopelli`** (Kokopelli) -- Primitive period 4 in the 1/3-limb, internal address 1 -> 3 -> 4: a root of the degree-6 period-4 Gleason factor.
+- **`kokopelli_conjugate`** (Kokopelli conjugate) -- Its mirror in the 2/3-limb. Conjugate of `kokopelli`.
