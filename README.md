@@ -102,6 +102,18 @@ the exact oracle, so a surface can only say what was decided or what a row
 declared as an unverified tag. A hand-edited surface fails
 `make_regime_ledger.py --check` rather than drifting.
 
+Beside it, `reference/algebraic_corpus.py` holds parameters no Gaussian
+rational can name: the rabbit, co-rabbit, airplane and Kokopelli centres, and
+Kokopelli's conjugate. Each `c` is a root handle -- an integer polynomial and a
+rational box -- checked to be an exact-period Gleason factor with exactly one
+root in the box (Krawczyk, the import `KrawczykMooreUniqueness`), with a trap
+verified over the whole box so the classifier can count `IN`. The same script
+renders them into the ledger's "Algebraic parameters" section, the
+`algebraic` array of `corpus.json`, the census, and
+`kernel/algebraic_corpus.mojo`, which `kernel/algebraic_parameter.mojo`
+re-checks in the smoke suite. Which component a box sits in is the import
+`RationalRayLanding`; see `docs/algebraic-parameters.md`.
+
 Two implementations decide every row: the Mojo kernel `kernel/julia_orbit.mojo`
 over the vendored `finite_exact` and `quadratic_orbit` packages, and the
 Python reference oracle

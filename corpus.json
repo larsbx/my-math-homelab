@@ -227,5 +227,238 @@
       "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
       "j1_expectation": "NOT_APPLICABLE"
     }
+  ],
+  "algebraic": [
+    {
+      "key": "rabbit",
+      "name": "Douady rabbit",
+      "polynomial": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "box": {
+        "re": [
+          "-269514856191/2199023255552",
+          "-269514856187/2199023255552"
+        ],
+        "im": [
+          "818984173483/1099511627776",
+          "818984173485/1099511627776"
+        ]
+      },
+      "period": 3,
+      "regime": "HYPERBOLIC_CENTER",
+      "multiplier_class": "SUPERATTRACTING",
+      "trap": {
+        "re": [
+          "-1/64",
+          "1/64"
+        ],
+        "im": [
+          "-1/64",
+          "1/64"
+        ],
+        "period": 3
+      },
+      "conjugate_of": null,
+      "root_angles": [
+        "1/7",
+        "2/7"
+      ],
+      "identification_tag": "RationalRayLanding",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "co_rabbit",
+      "name": "co-rabbit",
+      "polynomial": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "box": {
+        "re": [
+          "-269514856191/2199023255552",
+          "-269514856187/2199023255552"
+        ],
+        "im": [
+          "-818984173485/1099511627776",
+          "-818984173483/1099511627776"
+        ]
+      },
+      "period": 3,
+      "regime": "HYPERBOLIC_CENTER",
+      "multiplier_class": "SUPERATTRACTING",
+      "trap": {
+        "re": [
+          "-1/64",
+          "1/64"
+        ],
+        "im": [
+          "-1/64",
+          "1/64"
+        ],
+        "period": 3
+      },
+      "conjugate_of": "rabbit",
+      "root_angles": [
+        "5/7",
+        "6/7"
+      ],
+      "identification_tag": "RationalRayLanding",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "airplane",
+      "name": "airplane",
+      "polynomial": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "box": {
+        "re": [
+          "-3859016798727/2199023255552",
+          "-3859016798723/2199023255552"
+        ],
+        "im": [
+          "-1/1099511627776",
+          "1/1099511627776"
+        ]
+      },
+      "period": 3,
+      "regime": "HYPERBOLIC_CENTER",
+      "multiplier_class": "SUPERATTRACTING",
+      "trap": {
+        "re": [
+          "-1/64",
+          "1/64"
+        ],
+        "im": [
+          "-1/64",
+          "1/64"
+        ],
+        "period": 3
+      },
+      "conjugate_of": null,
+      "root_angles": [
+        "3/7",
+        "4/7"
+      ],
+      "identification_tag": "RationalRayLanding",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "kokopelli",
+      "name": "Kokopelli",
+      "polynomial": [
+        1,
+        0,
+        2,
+        3,
+        3,
+        3,
+        1
+      ],
+      "box": {
+        "re": [
+          "-21511967927/137438953472",
+          "-86047871707/549755813888"
+        ],
+        "im": [
+          "567483849499/549755813888",
+          "141870962375/137438953472"
+        ]
+      },
+      "period": 4,
+      "regime": "HYPERBOLIC_CENTER",
+      "multiplier_class": "SUPERATTRACTING",
+      "trap": {
+        "re": [
+          "-1/64",
+          "1/64"
+        ],
+        "im": [
+          "-1/64",
+          "1/64"
+        ],
+        "period": 4
+      },
+      "conjugate_of": null,
+      "root_angles": [
+        "1/5",
+        "4/15"
+      ],
+      "identification_tag": "RationalRayLanding",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "kokopelli_conjugate",
+      "name": "Kokopelli conjugate",
+      "polynomial": [
+        1,
+        0,
+        2,
+        3,
+        3,
+        3,
+        1
+      ],
+      "box": {
+        "re": [
+          "-21511967927/137438953472",
+          "-86047871707/549755813888"
+        ],
+        "im": [
+          "-141870962375/137438953472",
+          "-567483849499/549755813888"
+        ]
+      },
+      "period": 4,
+      "regime": "HYPERBOLIC_CENTER",
+      "multiplier_class": "SUPERATTRACTING",
+      "trap": {
+        "re": [
+          "-1/64",
+          "1/64"
+        ],
+        "im": [
+          "-1/64",
+          "1/64"
+        ],
+        "period": 4
+      },
+      "conjugate_of": "kokopelli",
+      "root_angles": [
+        "11/15",
+        "4/5"
+      ],
+      "identification_tag": "RationalRayLanding",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    }
   ]
 }

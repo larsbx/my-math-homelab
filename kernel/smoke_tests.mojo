@@ -16,6 +16,7 @@ from corpus_replay import corpus_replay_smoke, rejected_configuration_smoke
 from box_classifier import box_classifier_smoke
 from enclosure_bound import enclosure_bound_smoke
 from jet import jet_smoke
+from algebraic_parameter import algebraic_corpus_smoke
 from kneading import kneading_smoke
 from markov import markov_smoke
 from taylor import taylor_smoke
@@ -81,6 +82,7 @@ def run_smoke_tests() -> Bool:
     _ = report.record("permanent non-separation", permanent_witness_smoke())
     _ = report.record("real-axis ray witnesses", ray_witness_smoke())
     _ = report.record("taylor jets", jet_smoke())
+    _ = report.record("algebraic corpus root handles", algebraic_corpus_smoke())
     _ = report.record("taylor models", taylor_smoke())
     _ = report.record("real markov partition", markov_smoke())
     _ = report.record("kneading data and tuning", kneading_smoke())

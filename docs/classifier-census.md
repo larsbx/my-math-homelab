@@ -30,3 +30,10 @@ parabolic basin has no strictly invariant box.
 | `parabolic_i` | `1/4 + 1/2i` | PARABOLIC | -- | 148 | 0 | 108 |
 | `niven` | `37/100 + 4/25i` | IRRATIONALLY_INDIFFERENT | -- | 148 | 0 | 108 |
 | `escaping` | `1` | ESCAPING | -- | 180 | 0 | 76 |
+| `rabbit` | root of `c^3 + 2c^2 + c + 1` in its box | HYPERBOLIC_CENTER | `[-1/64, 1/64]^2`, period 3 | 154 | 0 | 102 |
+| `co_rabbit` | root of `c^3 + 2c^2 + c + 1` in its box | HYPERBOLIC_CENTER | `[-1/64, 1/64]^2`, period 3 | 154 | 0 | 102 |
+| `airplane` | root of `c^3 + 2c^2 + c + 1` in its box | HYPERBOLIC_CENTER | `[-1/64, 1/64]^2`, period 3 | 172 | 0 | 84 |
+| `kokopelli` | root of `c^6 + 3c^5 + 3c^4 + 3c^3 + 2c^2 + 1` in its box | HYPERBOLIC_CENTER | `[-1/64, 1/64]^2`, period 4 | 160 | 0 | 96 |
+| `kokopelli_conjugate` | root of `c^6 + 3c^5 + 3c^4 + 3c^3 + 2c^2 + 1` in its box | HYPERBOLIC_CENTER | `[-1/64, 1/64]^2`, period 4 | 160 | 0 | 96 |
+
+The algebraic rows are classified with `c` ranging over the whole root box of `reference/algebraic_corpus.py`, so every verdict holds at the irrational centre.
