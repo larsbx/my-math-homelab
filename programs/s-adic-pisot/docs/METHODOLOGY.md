@@ -119,7 +119,7 @@ G0 is done in `docs/literature-gate-2026-10-09.md`: hypothesis table, status mat
   - Theorem B places every primitive Brun composite, in any dimension, in
     the mirror Barge class. So every Pisot periodic Brun point has a tiling
     flow with pure discrete spectrum (Corollary B′).
-  - Theorem C: for Brun with `d = 5, 6`, the Pisot condition is the only
+  - Theorem C: for Brun with `d = 5, 6, 7`, the Pisot condition is the only
     missing input of BST23 Theorem 3.1. A periodic point that passes the
     balanced pair algorithm is pinned for each `d`.
   - Corollary B″: Sirvent–Solomyak 2002 Corollary 5.2 (gate §9) transfers

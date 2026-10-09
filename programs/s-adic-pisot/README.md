@@ -28,8 +28,8 @@ Then read:
   of BST23's Brun `d = 4` certificate, and the periodic-point census;
 - [`docs/sadic-g6-brun-higher-census.md`](docs/sadic-g6-brun-higher-census.md):
   Brun in every dimension. Every primitive composite is in the mirror Barge
-  class (Theorem B). For `d = 5, 6` only the Pisot condition is missing
-  (Theorem C). Every such Pisot point also has symbolic pure discrete spectrum
+  class (Theorem B). For `d = 5, 6, 7` only the Pisot condition is missing,
+  with a balanced-pair certificate per dimension (Theorem C). Every such Pisot point also has symbolic pure discrete spectrum
   (Corollary B″), so for every `5 ≤ d ≤ 10` the Pisot condition is the only
   missing input (Theorem C′). Census for `d = 5, 6`;
 - [`docs/t1-uniform-overlap-finiteness.md`](docs/t1-uniform-overlap-finiteness.md):

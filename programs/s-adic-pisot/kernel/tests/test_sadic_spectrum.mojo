@@ -10,7 +10,7 @@ from substitution_dynamics.substitution import Substitution
 from sadic.cocycle import prefix_matrix
 from sadic.directive import DirectiveShift, words_of_length
 from sadic.periodic import (
-    brun_orbit_words,
+    brun_classes, brun_orbit_words, is_pip,
     BPA_CAPPED, BPA_FAILS, BPA_TERMINATES, brun_unordered, bpa_verdict, is_lyndon,
     periodic_admissible, periodic_verdict, periodic_words, primitivity_exponent,
 )
@@ -246,6 +246,17 @@ def test_brun_six_periodic_point() raises:
     require_claim("BrunSixPeriodicPointBPA")
 
 
+def test_brun_seven_periodic_point() raises:
+    # Theorem C, d = 7: beta_12 beta_23 beta_31 beta_14 beta_45 beta_51
+    # beta_16 beta_62 beta_24 beta_47 beta_71 (1-based) passes the balanced
+    # pair algorithm
+    var w: List[Int] = [0, 7, 12, 2, 21, 24, 4, 31, 8, 23, 36]
+    var b = brun_unordered(7)
+    assert_true(periodic_admissible(b, w))
+    assert_equal(periodic_verdict(b, w, 100000, 10000), "bpa:terminates")
+    require_claim("BrunSevenPeriodicPointBPA")
+
+
 def test_brun_pisot_periodic_points() raises:
     # Corollary B'' and Theorem C' (docs/sadic-g6-brun-higher-census.md §5):
     # for d = 7..10 a periodic Brun point whose composite is primitive, with an
@@ -274,6 +285,29 @@ def test_brun_pisot_periodic_points() raises:
     require_claim("BrunPisotPeriodicPoints")
 
 
+def test_brun_classes() raises:
+    # kernel/brun_witness.mojo `pip`: classes of periodic words using every
+    # letter under rotation and letter permutation, and those whose composite
+    # is primitive, irreducible and Pisot. The PIP counts equal the orbit
+    # census (docs/sadic-g6-brun-higher-census.md §4); the oracle pins d = 5,
+    # periods 1-7 (tests/test_sadic_spectrum.py, tools/cross_check.py)
+    var cases: List[List[Int]] = [
+        [5, 1, 0, 0], [5, 2, 0, 0], [5, 3, 0, 0], [5, 4, 0, 0], [5, 5, 1, 0],
+        [5, 6, 3, 3], [5, 7, 20, 18], [5, 8, 136, 125], [6, 7, 3, 1], [6, 8, 36, 12],
+    ]
+    for c in cases:
+        var shift = brun_unordered(c[0])
+        var classes = brun_classes(c[0], c[1])
+        var kept = 0
+        for w in classes:
+            assert_true(periodic_admissible(shift, w))
+            if is_pip(shift, w):
+                kept += 1
+        assert_equal(len(classes), c[2])
+        assert_equal(kept, c[3])
+    require_claim("BrunClassEnumeration")
+
+
 def main() raises:
     test_charpoly()
     test_disc_zero_count()
@@ -283,9 +317,11 @@ def main() raises:
     test_brun_unordered()
     test_bpa_verdict()
     test_brun_orbits()
+    test_brun_classes()
     test_theorem_b()
     test_brun_five_periodic_point()
     test_brun_six_periodic_point()
+    test_brun_seven_periodic_point()
     test_brun_pisot_periodic_points()
     test_iota_embedding_reproduces_the_psc_corpus()
     print("sadic spectrum and periodic layer: all assertions passed")

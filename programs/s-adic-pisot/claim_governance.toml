@@ -306,6 +306,15 @@ anchor = "| Brun six periodic point BPA |"
 window_lines = 0
 
 [[claim]]
+name = "BrunSevenPeriodicPointBPA"
+status = "finite-domain"
+aliases = ["Brun seven periodic point BPA"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun seven periodic point BPA |"
+window_lines = 0
+
+[[claim]]
 name = "SirventSolomyakTransfer"
 status = "imported"
 aliases = ["Sirvent Solomyak transfer"]
@@ -339,4 +348,13 @@ aliases = ["Brun Pisot condition suffices"]
 [[claim.surfaces]]
 path = "CLAIMS.md"
 anchor = "| Brun Pisot condition suffices |"
+window_lines = 0
+
+[[claim]]
+name = "BrunClassEnumeration"
+status = "finite-domain"
+aliases = ["Brun class enumeration"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun class enumeration |"
 window_lines = 0

@@ -276,3 +276,102 @@ def brun_orbit_words(d: Int, n: Int) raises -> List[List[Int]]:
             entry.append(len(orbit))
             out.append(entry^)
     return out^
+
+
+def _normal_form(ps: List[Int], qs: List[Int], s: Int, d: Int) -> List[Int]:
+    """Labels of the rotation by s, letters renumbered by first appearance."""
+    var n = len(ps)
+    var name = List[Int]()
+    for _ in range(d):
+        name.append(-1)
+    var next = 0
+    var out = List[Int]()
+    for t in range(n):
+        var p = ps[(t + s) % n]
+        var q = qs[(t + s) % n]
+        if name[p] < 0:
+            name[p] = next
+            next += 1
+        if name[q] < 0:
+            name[q] = next
+            next += 1
+        out.append(_brun_label(name[p], name[q], d))
+    return out^
+
+
+def _is_class_least(ps: List[Int], qs: List[Int], d: Int) -> Bool:
+    """No rotation renumbers to a smaller word, and w is not a proper power."""
+    var own = _normal_form(ps, qs, 0, d)
+    var n = len(ps)
+    for s in range(1, n):
+        var r = _normal_form(ps, qs, s, d)
+        var equal = True
+        for t in range(n):
+            if r[t] != own[t]:
+                equal = False
+                if r[t] < own[t]:
+                    return False
+                break
+        if equal:
+            var power = True
+            for t in range(n):
+                if ps[(t + s) % n] != ps[t] or qs[(t + s) % n] != qs[t]:
+                    power = False
+                    break
+            if power:
+                return False
+    return True
+
+
+def _extend_classes(d: Int, n: Int, mut ps: List[Int], mut qs: List[Int], used: Int, mut out: List[List[Int]]):
+    var k = len(ps)
+    if d - used > n - k:
+        return
+    var p = ps[k - 1]
+    var q = qs[k - 1]
+    if k == n:
+        # cyclic admissibility back to beta_{0,1}
+        if ((p == 0 and q == 1) or q == 0) and used == d and _is_class_least(ps, qs, d):
+            out.append(_normal_form(ps, qs, 0, d))
+        return
+    # repeat the label
+    ps.append(p)
+    qs.append(q)
+    _extend_classes(d, n, ps, qs, used, out)
+    _ = ps.pop()
+    _ = qs.pop()
+    # move to beta_{q,r}: an existing letter, or the next new one
+    var top = used + 1 if used < d else used
+    for r in range(top):
+        if r == q:
+            continue
+        ps.append(q)
+        qs.append(r)
+        _extend_classes(d, n, ps, qs, used + 1 if r == used else used, out)
+        _ = ps.pop()
+        _ = qs.pop()
+
+
+def brun_classes(d: Int, n: Int) -> List[List[Int]]:
+    """One word per class of periodic words of length n under rotation and
+    letter permutation, among those using every letter (Theorem B: a
+    primitive composite uses every letter). Letters are numbered by first
+    appearance, so each word starts with beta_{0,1}; it is the least such
+    renumbering over its rotations. Proper powers are excluded. Unlike
+    brun_orbit_words this never enumerates the d! relabellings."""
+    var out = List[List[Int]]()
+    var ps: List[Int] = [0]
+    var qs: List[Int] = [1]
+    _extend_classes(d, n, ps, qs, 2, out)
+    return out^
+
+
+def is_pip(shift: DirectiveShift, w: List[Int]) raises -> Bool:
+    """sigma_w is primitive with an irreducible Pisot characteristic polynomial."""
+    var d = shift.size()
+    var m = prefix_matrix(shift, w)
+    if primitivity_exponent(m, d) < 0:
+        return False
+    var f = charpoly(m, d)
+    return irreducibility_verdict(f).verdict == 1 and pisot_verdict(f) == 1
+

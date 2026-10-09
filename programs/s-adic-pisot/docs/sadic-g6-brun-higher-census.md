@@ -4,7 +4,7 @@
 - Theorem B and Corollary B′: repository-proved. B′ rests on the imported
   Barge 2016 Theorem 3.13 and a reversal lemma proved here.
 - Theorem C: conditional theorem. Its only open hypothesis is the Pisot
-  condition for Brun with `d = 5` or `d = 6`.
+  condition for Brun with `d = 5`, `6` or `7`.
 - §4: census evidence for `d = 5, 6`.
 - Corollary B″: repository-proved. It rests on Corollary B′ and the imported
   Sirvent–Solomyak 2002 Corollary 5.2.
@@ -88,9 +88,9 @@ transfers it to `σ_w`. ∎
 This covers every Pisot composite the census caps, including the `d = 5, 6`
 ones whose balanced-pair graphs exceed every budget tried.
 
-## 3. Theorem C (Brun `d = 5, 6`: only the Pisot condition is missing)
+## 3. Theorem C (Brun `d = 5, 6, 7`: only the Pisot condition is missing)
 
-**Theorem C (conditional).** Let `d ∈ {5, 6}` and suppose the unordered Brun
+**Theorem C (conditional).** Let `d ∈ {5, 6, 7}` and suppose the unordered Brun
 algorithm `(Δ, T_B, A_B, ν_B)` in dimension `d` satisfies the Pisot
 condition. Then for `ν_B`-a.e. `x`, the S-adic system `(X_{φ_B(x)}, Σ)` is a
 bounded natural coding of a minimal translation on `T^{d−1}`. In particular it has pure discrete
@@ -105,22 +105,51 @@ condition are:
    `d = 4`. They are verified in the arXiv text.
 3. **A periodic Pisot point with pure discrete spectrum.**
    - Take `w = (0,5,8,2,15,16)`, that is `β₁₂β₂₃β₃₁β₁₄β₄₅β₅₁`, for `d = 5`;
-     and `w = (0,6,10,2,16,8,24,25)`, that is `β₁₂β₂₃β₃₁β₁₄β₄₂β₂₅β₅₆β₆₁`,
-     for `d = 6`. Let `x₀` be the dominant right eigenvector of `M_w`.
+     `w = (0,6,10,2,16,8,24,25)`, that is `β₁₂β₂₃β₃₁β₁₄β₄₂β₂₅β₅₆β₆₁`,
+     for `d = 6`; and `w = (0,7,12,2,21,24,4,31,8,23,36)`, that is
+     `β₁₂β₂₃β₃₁β₁₄β₄₅β₅₁β₁₆β₆₂β₂₄β₄₇β₇₁`, for `d = 7`. Let `x₀` be the
+     dominant right eigenvector of `M_w`.
    - As in BST23's argument for `τ` in §6.5, `φ_B(x₀) = w^∞` is admissible.
    - `M_w` is a Pisot matrix: irreducible and Pisot, certified by the
      kernel.
    - The balanced pair algorithm terminates on `σ_w`
-     (`test_brun_five_periodic_point` and `test_brun_six_periodic_point`, in
-     Mojo and Python).
+     (`test_brun_{five,six,seven}_periodic_point`, in Mojo and Python).
    - BST23 Proposition 6.1 then gives pure discrete spectrum of the
      *symbolic* system.
 
 Every hypothesis except the Pisot condition is therefore met. ∎
 
-The Pisot condition for Brun `d = 5, 6` has numerical support only (BST21).
-For `7 ≤ d ≤ 10` Theorem C′ (§5) replaces the balanced pair algorithm by
+The Pisot condition for Brun `d = 5, 6, 7` has numerical support only (BST21).
+
+**Finding the `d = 7` point** (`kernel/brun_witness.mojo`, enumeration
+`brun_classes` in `kernel/sadic/periodic.mojo`). The search takes
+one word per class under rotation and letter permutation. Among the words of
+period `n` that use every letter, it keeps those whose composite is
+primitive, irreducible and Pisot, all decided exactly. On `d = 5, 6` its class
+counts equal the orbit census of §4: 3, 18, 125 for `d = 5`, periods 6–8; 1, 12
+for `d = 6`, periods 7–8. For `d = 7` it finds 0, 0, 4, 142 and 2,212 such classes at
+periods 7–11. The balanced pair algorithm then gives:
+- **periods 9 and 10:** all 146 classes are capped at budgets 300,000 states
+  and length 30,000. The 16 classes with the smallest `|λ₂|/λ₁` stay capped
+  at 2,000,000 states and length 200,000; that ratio is a floating-point
+  ordering only. Every rotation of the first 8, and every reversal, stays
+  capped at the smaller budgets;
+- **period 11:** budgets 100,000 states and length 10,000; 5 classes terminate
+  and 2,207 are capped.
+
+The pinned point is the terminating class with the fewest states (2,095).
+The capped runs are inconclusive (R3).
+
+The same search for `d = 8` finds 62, 1,838 and 35,072 primitive irreducible
+Pisot classes at periods 11, 12 and 13; it finds none at period ≤ 10. Every
+one of them is capped at 100,000 states and length 10,000, so `d = 8` has no
+balanced-pair witness yet. This result is inconclusive (R3); Theorem C′
+(§5) covers `d = 8` through the transfer.
+
+For `8 ≤ d ≤ 10` Theorem C′ (§5) replaces the balanced pair algorithm by
 the gated flow-to-symbolic transfer (Sirvent–Solomyak 2002 Corollary 5.2).
+Theorem C is the import-free version, one balanced-pair certificate per
+dimension.
 
 ## 4. Census evidence (`kernel/brun_census.mojo … orbits`)
 

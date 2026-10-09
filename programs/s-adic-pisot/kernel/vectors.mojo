@@ -6,13 +6,14 @@ from sadic.balance import image_balance
 from sadic.cocycle import cross_ratio_bound, first_positive_prefix, is_positive, positive_blocks, prefix_matrix
 from sadic.directive import DirectiveShift, arnoux_rauzy, brun3, words_of_length
 from sadic.overlap import morphic_balance_bound, positive_suffix_ratio, return_overlap_bound, window_overlap_bound
-from sadic.periodic import brun_unordered, periodic_verdict, periodic_words, primitivity_exponent
+from sadic.periodic import brun_classes, brun_unordered, is_pip, periodic_verdict, periodic_words, primitivity_exponent
 from sadic.spectrum import charpoly, disc_zero_count, irreducibility_verdict, pisot_verdict
 
 comptime MAX_LEN = 5
 comptime SPECTRAL_LEN = 4
 comptime PERIODIC_LEN = 6
 comptime BRUN5_LEN = 6
+comptime BRUN5_CLASS_LEN = 7
 comptime BPA_STATES = 20000
 comptime BPA_LENGTH = 2000
 
@@ -135,3 +136,12 @@ def main() raises:
     for f in polys:
         emit_polynomial(f)
     emit_periodic_spectral(brun_unordered(5), BRUN5_LEN)
+    # brun_witness `pip`: classes using every letter, and the PIP ones
+    var brun5 = brun_unordered(5)
+    for n in range(1, BRUN5_CLASS_LEN + 1):
+        var classes = brun_classes(5, n)
+        var kept = 0
+        for w in classes:
+            if is_pip(brun5, w):
+                kept += 1
+        print("brun5|classes|" + String(n) + "|" + String(len(classes)) + "," + String(kept))

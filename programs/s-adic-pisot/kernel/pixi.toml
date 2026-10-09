@@ -16,3 +16,6 @@ vectors = "mojo run -I . vectors.mojo"
 # G3/G6: census of the Brun periodic points; arguments d L max_states max_length
 # (docs/sadic-g3-brun4-census.md, docs/sadic-g6-brun-higher-census.md).
 brun-census = "mojo run -I . brun_census.mojo"
+# Theorem C witness search; modes pip, bpa, bpa-rev
+# (docs/sadic-g6-brun-higher-census.md §3, docs/charter-theorem-c-higher-d.md).
+brun-witness = "mojo run -I . brun_witness.mojo"

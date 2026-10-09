@@ -122,3 +122,23 @@ def in_mirror_barge_class(sigma) -> bool:
     """Constant on initial letters and injective on final letters: the
     reversal of sigma is then in Barge's class (Barge 2016, Theorem 3.13)."""
     return len(set(initial_letters(sigma))) == 1 and len(set(final_letters(sigma))) == len(sigma)
+
+
+def is_pip(shift: DirectiveShift, w) -> bool:
+    """sigma_w is primitive with an irreducible Pisot characteristic polynomial."""
+    from sadic_reference import prefix_matrix
+    from sadic_reference.spectrum import charpoly, irreducibility_verdict, pisot_verdict, primitivity_exponent
+    m = prefix_matrix(shift, w)
+    if primitivity_exponent(m) < 0:
+        return False
+    f = charpoly(m)
+    return irreducibility_verdict(f)[0] == 1 and pisot_verdict(f) == 1
+
+
+def brun_full_classes(d: int, n: int) -> list[tuple[int, ...]]:
+    """One word per class of periodic words of length n under rotation and
+    letter permutation, among those using every letter (Theorem B: a
+    primitive composite uses every letter); the classes are the orbits of
+    brun_orbit_words."""
+    pairs = brun_pairs(d)
+    return [w for w, _ in brun_orbit_words(d, n) if len({x for t in w for x in pairs[t]}) == d]

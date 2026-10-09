@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "reference"))
 
-from sadic_reference.periodic import brun_unordered, periodic_verdict, periodic_words  # noqa: E402
+from sadic_reference.periodic import brun_full_classes, brun_unordered, is_pip, periodic_verdict, periodic_words  # noqa: E402
 from sadic_reference.overlap import morphic_balance_bound, positive_suffix_ratio, return_overlap_bound, window_overlap_bound  # noqa: E402
 from sadic_reference.spectrum import Inconclusive, charpoly, disc_zero_count, irreducibility_verdict, pisot_verdict, primitivity_exponent  # noqa: E402
 from sadic_reference import (  # noqa: E402
@@ -34,6 +34,7 @@ MAX_LEN = 5
 SPECTRAL_LEN = 4
 PERIODIC_LEN = 6
 BRUN5_LEN = 6
+BRUN5_CLASS_LEN = 7
 POLYNOMIALS = (
     (-1, 5, -10, 10, -6, 1),
     (1, 0, 0, 0, 1),
@@ -109,6 +110,9 @@ def battery() -> list[str]:
     for n in range(1, BRUN5_LEN + 1):
         for w in periodic_words(shift, n):
             out += spectral_lines(shift.name, ",".join(map(str, w)), prefix_matrix(shift, w))
+    for n in range(1, BRUN5_CLASS_LEN + 1):
+        classes = brun_full_classes(5, n)
+        out.append(f"brun5|classes|{n}|{len(classes)},{sum(is_pip(shift, w) for w in classes)}")
     return out
 
 
