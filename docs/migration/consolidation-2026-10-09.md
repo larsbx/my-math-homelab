@@ -31,7 +31,7 @@ This follows migration-sequence step 2 of the multi-program contract and the
 
 - Reproducing each program's original gates from the root (Mojo/pixi, Lean, Julia, Python suites).
 - Reconciling the vendored `finite-math-kernels` copies in FM, FJ, BFC, NL, PS, SAP and math-vizops with `shared/finite-math-kernels`.
-- Transferring issues, releases and authority; archiving sources. No source is archived.
+- Retiring sources: owner chose deletion (2026-10-09). `tools/retire_sources.sh` preserves unmerged branches (123 at last count) as `archive/<id>/<branch>` tags and transfers issues before deleting; it must run outside this session, whose git access cannot push tags or delete repositories.
 
 ## Verification
 

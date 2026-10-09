@@ -17,12 +17,28 @@ python3 kernel/workspace.py        # imports match their locks
 python3 -m pytest tests            # verifier conformance
 ```
 
-## Importing a source
+## Importing or refreshing a source
 
 ```sh
-# add a row to policy/source-locks.toml (commit, commits, files) and ESTATE.toml
+# add or update the row in policy/source-locks.toml (commit, commits, files);
+# new sources also need an ESTATE.toml entry
 python3 tools/import_source.py <id> https://github.com/<repository>.git
 python3 kernel/workspace.py
 ```
 
 Merge import PRs with a merge commit: squash or rebase would discard source ancestry.
+
+## Retiring the source repositories
+
+After the consolidation PR is merged, from a clean `main` checkout with
+`gh auth refresh -s delete_repo`:
+
+```sh
+tools/retire_sources.sh                    # dry run
+tools/retire_sources.sh --apply            # tag unmerged branches as archive/<id>/<branch>, transfer issues
+tools/retire_sources.sh --apply --delete   # ...then delete each source
+```
+
+A source is skipped if its `main` moved since its lock (refresh it first) or it
+has open PRs. Deletion is permanent; branches and issues survive only through
+the first two steps.
