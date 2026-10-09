@@ -1,0 +1,10 @@
+version = 1
+
+[program]
+id = "giant-fibers"
+
+[source]
+repository = "larsbx/giant-fibers-finite-fields-thin-groups"
+commit = "62bf0894997980a4a0708e3d48f81c091cbaf2c3"
+authority = "retained"
+import_status = "verified"
