@@ -139,9 +139,9 @@ id = "s-adic-pisot"
 kind = "program"
 repository = "larsbx/s-adic-pisot-conjecture-research"
 visibility = "public"
-commit = "bb73942f50b272a78c74f1d4b37d7a2636acc06f"
-commits = 29
-files = 103
+commit = "a10e5f77678feb52b327877b11738ab5475850c4"
+commits = 35
+files = 105
 import = "history"
 authority = "retained"
 
