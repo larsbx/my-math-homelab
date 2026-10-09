@@ -1,0 +1,416 @@
+{
+  "claim_status": "pending; AI audit does not supply required human review",
+  "conjugacy_counterexamples": [
+    {
+      "N_c": 0,
+      "N_g": 1,
+      "charpoly_low_to_high": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "dim_Q": 1,
+      "g": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "tau2_identity",
+      "nu": 1,
+      "p": 3,
+      "rank_D_minus_I": 0,
+      "rank_D_squared_minus_I": 0,
+      "tau": 2,
+      "x": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "y": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "N_c": 0,
+      "N_g": 1,
+      "charpoly_low_to_high": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "dim_Q": 3,
+      "g": [
+        1,
+        0,
+        2,
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
+      "name": "tau2_dim3",
+      "nu": 1,
+      "p": 3,
+      "rank_D_minus_I": 2,
+      "rank_D_squared_minus_I": 2,
+      "tau": 2,
+      "x": [
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0
+      ],
+      "y": [
+        0,
+        0,
+        1,
+        2,
+        0,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "N_c": 0,
+      "N_g": 1,
+      "charpoly_low_to_high": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "dim_Q": 4,
+      "g": [
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        0
+      ],
+      "name": "tau2_dim4_degenerate",
+      "nu": 1,
+      "p": 3,
+      "rank_D_minus_I": 4,
+      "rank_D_squared_minus_I": 4,
+      "tau": 2,
+      "x": [
+        0,
+        2,
+        0,
+        2,
+        0,
+        1,
+        2,
+        2
+      ],
+      "y": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "N_c": 1,
+      "N_g": 1,
+      "charpoly_low_to_high": [
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "dim_Q": 4,
+      "g": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "tau_minus2_semisimple",
+      "nu": 1,
+      "p": 3,
+      "rank_D_minus_I": 4,
+      "rank_D_squared_minus_I": 0,
+      "tau": 1,
+      "x": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "y": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "N_c": 1,
+      "N_g": 1,
+      "charpoly_low_to_high": [
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      "dim_Q": 4,
+      "g": [
+        2,
+        1,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "tau_minus2_nonsemisimple",
+      "nu": 1,
+      "p": 3,
+      "rank_D_minus_I": 4,
+      "rank_D_squared_minus_I": 2,
+      "tau": 1,
+      "x": [
+        2,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "y": [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "date": "2026-10-02",
+  "explicit_domain_checks": [
+    {
+      "p": 3,
+      "undefined_delta_refused": 3,
+      "zero_or_scalar_pairs": 6
+    },
+    {
+      "p": 5,
+      "undefined_delta_refused": 3,
+      "zero_or_scalar_pairs": 6
+    },
+    {
+      "p": 7,
+      "undefined_delta_refused": 3,
+      "zero_or_scalar_pairs": 6
+    },
+    {
+      "p": 11,
+      "undefined_delta_refused": 3,
+      "zero_or_scalar_pairs": 6
+    },
+    {
+      "p": 13,
+      "undefined_delta_refused": 3,
+      "zero_or_scalar_pairs": 6
+    }
+  ],
+  "files_sha256": {
+    "experiments/n2/defect_census.py": "3b035635b92a74f4a6065d3f91df7924c83c0f24b0e303bcfa1ab60e79b6b982",
+    "paper/associator-defects/main.tex": "7ea14718420457ed5e6554ac29f8c269839c50be8f21b7faaf2fd4a5e21ac316",
+    "research/ledger.json": "f58fa6fc97b182a14277d91f473d1158df8dc20f321909c68ab6d4810b1f4157",
+    "tests/test_defect_charpoly.py": "642625636863c3901ec63bfcf12c70194c7def246a5df9d41f31755ffe106f9b"
+  },
+  "head": "ce6e7c8c67d6892473e2365d91bac87afbcda842",
+  "helper": {
+    "exhaustive_2x2": 722,
+    "exhaustive_3x3_F2": 512,
+    "random_dimensions_0_through_10": 660,
+    "structured_dimensions_0_through_10": 264
+  },
+  "independent_zorn_model": [
+    {
+      "admissible_degenerate_dim4": 18,
+      "nu_zero": 54,
+      "nu_zero_nc_nonzero": 25,
+      "p": 3,
+      "pairs": 100,
+      "seed": 20261005
+    },
+    {
+      "admissible_degenerate_dim4": 11,
+      "nu_zero": 27,
+      "nu_zero_nc_nonzero": 17,
+      "p": 5,
+      "pairs": 100,
+      "seed": 20261007
+    },
+    {
+      "admissible_degenerate_dim4": 12,
+      "nu_zero": 29,
+      "nu_zero_nc_nonzero": 22,
+      "p": 7,
+      "pairs": 100,
+      "seed": 20261009
+    },
+    {
+      "admissible_degenerate_dim4": 10,
+      "nu_zero": 15,
+      "nu_zero_nc_nonzero": 13,
+      "p": 11,
+      "pairs": 100,
+      "seed": 20261013
+    },
+    {
+      "admissible_degenerate_dim4": 5,
+      "nu_zero": 9,
+      "nu_zero_nc_nonzero": 8,
+      "p": 13,
+      "pairs": 100,
+      "seed": 20261015
+    }
+  ],
+  "python": "3.12.14",
+  "repository_seeded_samples": [
+    {
+      "admissible_degenerate_dim4": 28,
+      "dim_Q_2": 50,
+      "dim_Q_3": 10,
+      "dim_Q_4": 190,
+      "nu_nonzero": 118,
+      "nu_zero": 132,
+      "nu_zero_nc_nonzero": 67,
+      "p": 3,
+      "pairs": 250,
+      "seed": 103,
+      "tau_minus2_central": 2,
+      "tau_minus2_noncentral": 36
+    },
+    {
+      "admissible_degenerate_dim4": 24,
+      "dim_Q_2": 50,
+      "dim_Q_4": 200,
+      "nu_nonzero": 154,
+      "nu_zero": 96,
+      "nu_zero_nc_nonzero": 66,
+      "p": 5,
+      "pairs": 250,
+      "seed": 105,
+      "tau_minus2_central": 1,
+      "tau_minus2_noncentral": 35
+    },
+    {
+      "admissible_degenerate_dim4": 24,
+      "dim_Q_2": 50,
+      "dim_Q_4": 200,
+      "nu_nonzero": 172,
+      "nu_zero": 78,
+      "nu_zero_nc_nonzero": 61,
+      "p": 7,
+      "pairs": 250,
+      "seed": 107,
+      "tau_minus2_noncentral": 22
+    },
+    {
+      "admissible_degenerate_dim4": 14,
+      "dim_Q_2": 50,
+      "dim_Q_4": 200,
+      "nu_nonzero": 211,
+      "nu_zero": 39,
+      "nu_zero_nc_nonzero": 26,
+      "p": 11,
+      "pairs": 250,
+      "seed": 111,
+      "tau_minus2_noncentral": 15
+    },
+    {
+      "admissible_degenerate_dim4": 11,
+      "dim_Q_2": 50,
+      "dim_Q_4": 200,
+      "nu_nonzero": 216,
+      "nu_zero": 34,
+      "nu_zero_nc_nonzero": 22,
+      "p": 13,
+      "pairs": 250,
+      "seed": 113,
+      "tau_minus2_noncentral": 18
+    }
+  ],
+  "schema": "novelty-lab/pr19-independent-ai-audit/v1",
+  "sympy": "1.14.0"
+}

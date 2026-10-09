@@ -1,0 +1,50 @@
+--- a/paper/associator-defects/main.tex
++++ b/paper/associator-defects/main.tex
+@@ -625,8 +625,9 @@
+ \cite[Ch.~1]{springer2000}, and $N(ij-ji)=4N(i)N(j)$. There, by
+ Lemma~\ref{lem:gram}, $Q$ is a nondegenerate quaternion subalgebra, and
+ $\C=Q\oplus Qv$ with $a(bv)=(ba)v$ for $a,b\in Q$ by~\ref{F:double}. Let
+-$M=L_xL_yL_{\conj{xy}}=\nu\Delta(x,y)$. On $Q$, $M=\nu I$ by
+-Theorem~\ref{thm:fixed}(a). For $u\in Q$,
++$M=L_xL_yL_{\conj{xy}}=\nu\Delta(x,y)$. On $Q$, associativity gives
++$M(w)=x(y(\conj{xy}w))=((xy)\conj{xy})w=\nu w$ for every $w\in Q$.
++For $u\in Q$,
+ \[
+   M(uv)=\bigl(u\,\conj{xy}\,yx\bigr)v=(uh)v,\qquad h=\conj{xy}\,yx\in Q,
+ \]
+@@ -652,8 +653,12 @@
+ 
+ \begin{proof}
+ (a) Divide $M(uv)=(uh)v$ by $\nu$ and use $(xy)^{-1}=\nu^{-1}\conj{xy}$.
+-Then $T(g)=\tau$ and $N(g)=1$. (b) If $\tau=2$, the characteristic polynomial
+-is $(X-1)^8$. The equivalence is Lemma~\ref{lem:gram}.
++Then $T(g)=\tau$ and $N(g)=1$. (b) If $N(c)=0$, then $\tau=2$ and the
++characteristic polynomial is $(X-1)^8$, so Cayley--Hamilton gives
++$(\Delta-I)^8=0$. Conversely, if $N(c)\neq0$, the quadratic factor at
++$X=1$ is $2-\tau=N(c)/\nu\neq0$, so the characteristic polynomial
++cannot be $(X-1)^8$ and $\Delta$ is not unipotent. The dimensional
++equivalence is Lemma~\ref{lem:gram}.
+ \end{proof}
+ 
+ \begin{remark}
+@@ -851,12 +856,14 @@
+ \section{Limitations and open problems}\label{sec:open}
+ 
+ \begin{enumerate}[label=(\arabic*)]
+-\item \emph{Distribution of the defect class.} By
+-  Theorem~\ref{thm:charpoly} and Corollary~\ref{cor:class}, the class of
+-  $\Delta$ is governed by the single scalar
+-  $\tau=2-N(xy-yx)/(N(x)N(y))$. How $\tau$ is distributed when $x$ and $y$
+-  are drawn from a prime-norm shell is open, and it is the input to the next
+-  question.
++\item \emph{Distribution of the characteristic polynomial.} By
++  Theorem~\ref{thm:charpoly}, the characteristic polynomial of $\Delta$ is
++  determined by $\tau=2-N(xy-yx)/(N(x)N(y))$. Equal $\tau$ need not imply
++  conjugacy: at $\tau=2$ the unipotent strata have different ranks, and
++  $\tau=-2$ admits distinct Jordan types even for nondegenerate $Q$.
++  The distribution of $\tau$ on prime-norm shells, and the additional
++  data needed to distinguish conjugacy classes with the same $\tau$,
++  remain open and inform the next question.
+ \item \emph{Defect-stratified statistics.} For navigation words in generators
+   drawn from a prime-norm shell modulo $\ell$, do collision moments
+   conditioned on the conjugacy class of $\Delta|_{Q^\perp}$ in $\SO(Q^\perp)$

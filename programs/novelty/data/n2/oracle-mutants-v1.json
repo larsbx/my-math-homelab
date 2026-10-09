@@ -1,0 +1,81 @@
+{
+ "schema": "novelty-lab/oracle-mutants/v1",
+ "lean_toolchain": "leanprover/lean4:v4.24.0",
+ "oracle_sha256": "a19ee3ddcc7e850fdcf24e87e40a5d5ea05487d38074c71bd48ee6d5ed86e90e",
+ "mutants": [
+  {
+   "mutant": "drop sign of [a,b,cd]",
+   "killed": true,
+   "failing_checks": [
+    "case 1: pentagon boundary closes",
+    "case 1: edges replay the Python experiment",
+    "case 1: each edge is its vertex difference",
+    "case 1: sign-flip mutants are killed",
+    "case 2: pentagon boundary closes",
+    "case 2: edges replay the Python experiment",
+    "case 2: each edge is its vertex difference",
+    "case 2: sign-flip mutants are killed"
+   ]
+  },
+  {
+   "mutant": "d[a,b,c] for [a,b,c]d",
+   "killed": true,
+   "failing_checks": [
+    "case 1: pentagon boundary closes",
+    "case 1: edges replay the Python experiment",
+    "case 1: each edge is its vertex difference",
+    "case 2: pentagon boundary closes",
+    "case 2: edges replay the Python experiment",
+    "case 2: each edge is its vertex difference"
+   ]
+  },
+  {
+   "mutant": "[bc,a,d] for [a,bc,d]",
+   "killed": true,
+   "failing_checks": [
+    "case 1: pentagon boundary closes",
+    "case 1: edges replay the Python experiment",
+    "case 1: each edge is its vertex difference",
+    "case 1: sign-flip mutants are killed",
+    "case 2: pentagon boundary closes",
+    "case 2: edges replay the Python experiment",
+    "case 2: each edge is its vertex difference",
+    "case 2: sign-flip mutants are killed"
+   ]
+  },
+  {
+   "mutant": "negated associator",
+   "killed": true,
+   "failing_checks": [
+    "F3 octonion basis witness (OctonionF3.selfCheck)",
+    "F3 witness edges are vertex differences",
+    "case 0: edges replay the Python experiment",
+    "case 0: each edge is its vertex difference",
+    "case 1: edges replay the Python experiment",
+    "case 1: each edge is its vertex difference",
+    "case 2: edges replay the Python experiment",
+    "case 2: each edge is its vertex difference"
+   ]
+  },
+  {
+   "mutant": "(ba) for (ab) in [ab,c,d]",
+   "killed": true,
+   "failing_checks": [
+    "case 1: pentagon boundary closes",
+    "case 1: edges replay the Python experiment",
+    "case 1: each edge is its vertex difference",
+    "case 2: pentagon boundary closes",
+    "case 2: edges replay the Python experiment",
+    "case 2: each edge is its vertex difference"
+   ]
+  },
+  {
+   "mutant": "transposed tensor",
+   "killed": true,
+   "failing_checks": [
+    "case 1: edges replay the Python experiment",
+    "case 2: edges replay the Python experiment"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+  "claim_status": "pending_dependency",
+  "date": "2026-10-02",
+  "github": {
+    "lean_oracle": {
+      "conclusion": "success",
+      "run": 37002526750
+    },
+    "merge_commit": "b24785c7b5e855ed55579a0c279feca74084f43e",
+    "review_threads": 0,
+    "state": "merged",
+    "verify": {
+      "conclusion": "success",
+      "run": 37002526660
+    }
+  },
+  "head": "ce6e7c8c67d6892473e2365d91bac87afbcda842",
+  "human_review_supplied": false,
+  "local_checks_passed": [
+    "python scripts/check_f3_table.py",
+    "python scripts/check_registry.py",
+    "python vendor/vendoring/check_vendored_sync.py",
+    "PYTHONPATH=vendor python -m proof_records.generate_ledgers research/ledger.json --claims claim_governance.toml --check",
+    "PYTHONPATH=vendor python -m claim_governance.cli",
+    "python paper/associator-defects/make_tables.py --check",
+    "python experiments/n2/defect_census.py --check",
+    "git apply --check recommended_corrections.patch"
+  ],
+  "not_run_locally": [
+    "full rank_law.py census",
+    "Lean oracle",
+    "manuscript build"
+  ],
+  "repo_source_modified": false,
+  "repository_unit_tests": {
+    "failed": 0,
+    "passed": 127,
+    "seconds": 68.612
+  }
+}

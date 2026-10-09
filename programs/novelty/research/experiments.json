@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-04",
+  "experiments": [
+    {
+      "id": "EXP-SG-001",
+      "title": "Exact n=6 defect and Apollonian orbit comparison over F_7",
+      "status": "exact finite computation",
+      "candidate": "NC-SG-01",
+      "parameters": {
+        "packing_dimension": 6,
+        "ambient_dimension": 8,
+        "field": "F_7",
+        "seed": [
+          1,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "certificates": {
+        "descartes_gram": "I+J",
+        "bridge_isometry": "Phi=I+J",
+        "bridge_inverse": "Phi^-1=I+3J",
+        "identities": [
+          "Phi^T Q Phi=I_8",
+          "Phi Phi^-1=I_8",
+          "v^T Q v=0",
+          "A^T Q A=Q for every enumerated generator"
+        ]
+      },
+      "results": {
+        "distinct_defect_generators": 8,
+        "apollonian_generators": 8,
+        "defect_projective_orbit": 8,
+        "apollonian_projective_orbit": 168,
+        "combined_projective_orbit": 2240
+      },
+      "claim_boundary": "The computation distinguishes the selected finite orbits only; it proves no uniform result and makes no novelty claim.",
+      "evidence": [
+        "experiments/soddy/n6_f7_orbits.py",
+        "tests/test_n6_f7_orbits.py",
+        "docs/experiments/n6-f7-orbit-comparison.md"
+      ]
+    },
+    {
+      "id": "EXP-N2-H3-002",
+      "title": "Exact operator-quotiented integral H3 conditioning",
+      "status": "bounded experiment",
+      "candidate": "NC-X-01",
+      "parameters": {
+        "order": "coordinate Z^8, cayley-dickson/v1 (-1,-1,-1)",
+        "sampled_configs": [
+          [
+            3,
+            10,
+            1,
+            4
+          ],
+          [
+            3,
+            10,
+            2,
+            4
+          ],
+          [
+            5,
+            8,
+            1,
+            4
+          ],
+          [
+            3,
+            5,
+            1,
+            5
+          ]
+        ],
+        "extra_rows": "matching length-two rows, complex-line control, all five adaptive exploratory support panels",
+        "quotient": "equal (left-comb value, integer L-product); unit class weights; first/last representatives"
+      },
+      "results": {
+        "words": 1154412,
+        "quotient_collision_pairs": 182960,
+        "sampled_quotient_pairs": 98,
+        "sampled_Gram_matched_pairs": 0,
+        "exploratory_norm3_quotient_pairs": 182512
+      },
+      "claim_boundary": "Dependent-pair descriptive comparisons in separate corpora; preselected samples lack matched support; all support-seeking panels remain exploratory. H3 open; Theorem 3.32 pending review; pending proofs unpromoted.",
+      "evidence": [
+        "experiments/n2/h3_conditioned.py",
+        "data/n2/h3-conditioned-v1.json",
+        "data/n2/h3-conditioned-certificates-v1.json.gz",
+        "tests/test_h3_conditioned.py",
+        "docs/experiments/h3-conditioned-shell.md"
+      ]
+    }
+  ]
+}

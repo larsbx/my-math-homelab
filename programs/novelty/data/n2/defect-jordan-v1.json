@@ -1,0 +1,139 @@
+{
+ "model": "cayley-dickson/v1 (-1,-1,-1) mod ell",
+ "predicted": {
+  "dimQ<=2": {
+   "ranks_delta_minus_I": [
+    0,
+    0,
+    0
+   ],
+   "ranks_delta_plus_I": [
+    8,
+    8
+   ]
+  },
+  "dimQ=3": {
+   "ranks_delta_minus_I": [
+    2,
+    0,
+    0
+   ],
+   "ranks_delta_plus_I": [
+    8,
+    8
+   ]
+  },
+  "semisimple": {
+   "ranks_delta_minus_I": [
+    4,
+    4,
+    4
+   ],
+   "ranks_delta_plus_I": [
+    8,
+    8
+   ]
+  },
+  "tau=-2 semisimple": {
+   "ranks_delta_minus_I": [
+    4,
+    4,
+    4
+   ],
+   "ranks_delta_plus_I": [
+    4,
+    4
+   ]
+  },
+  "tau=-2 split": {
+   "ranks_delta_minus_I": [
+    4,
+    4,
+    4
+   ],
+   "ranks_delta_plus_I": [
+    6,
+    4
+   ]
+  },
+  "unipotent-rank1": {
+   "ranks_delta_minus_I": [
+    4,
+    1,
+    0
+   ],
+   "ranks_delta_plus_I": [
+    8,
+    8
+   ]
+  },
+  "unipotent-rank2": {
+   "ranks_delta_minus_I": [
+    4,
+    2,
+    0
+   ],
+   "ranks_delta_plus_I": [
+    8,
+    8
+   ]
+  }
+ },
+ "quota": 150,
+ "rows": [
+  {
+   "checked": {
+    "dimQ<=2": 150,
+    "dimQ=3": 150,
+    "semisimple": 150,
+    "tau=-2 semisimple": 150,
+    "tau=-2 split": 150,
+    "unipotent-rank1": 150,
+    "unipotent-rank2": 150
+   },
+   "ell": 3,
+   "violations": 0
+  },
+  {
+   "checked": {
+    "dimQ<=2": 150,
+    "dimQ=3": 150,
+    "semisimple": 150,
+    "tau=-2 semisimple": 150,
+    "tau=-2 split": 150,
+    "unipotent-rank1": 150,
+    "unipotent-rank2": 150
+   },
+   "ell": 5,
+   "violations": 0
+  },
+  {
+   "checked": {
+    "dimQ<=2": 150,
+    "dimQ=3": 150,
+    "semisimple": 150,
+    "tau=-2 semisimple": 150,
+    "tau=-2 split": 150,
+    "unipotent-rank1": 150,
+    "unipotent-rank2": 150
+   },
+   "ell": 7,
+   "violations": 0
+  },
+  {
+   "checked": {
+    "dimQ<=2": 150,
+    "dimQ=3": 92,
+    "semisimple": 150,
+    "tau=-2 semisimple": 150,
+    "tau=-2 split": 150,
+    "unipotent-rank1": 69,
+    "unipotent-rank2": 150
+   },
+   "ell": 11,
+   "violations": 0
+  }
+ ],
+ "schema": "novelty-lab/n2-defect-jordan/v1",
+ "seed": 20261004
+}

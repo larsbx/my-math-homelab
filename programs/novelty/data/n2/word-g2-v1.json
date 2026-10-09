@@ -1,0 +1,210 @@
+{
+ "certificates": {
+  "phi_only": {
+   "ell": 3,
+   "letters": [
+    [
+     0,
+     0,
+     1,
+     1,
+     0,
+     2,
+     0,
+     1
+    ],
+    [
+     0,
+     0,
+     1,
+     2,
+     2,
+     0,
+     2,
+     0
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     0,
+     1,
+     0,
+     1
+    ],
+    [
+     0,
+     2,
+     0,
+     2,
+     2,
+     0,
+     2,
+     0
+    ]
+   ],
+   "reflections": [
+    [
+     0,
+     1,
+     0,
+     1,
+     0,
+     1,
+     0,
+     1
+    ],
+    [
+     0,
+     1,
+     0,
+     0,
+     0,
+     1,
+     2,
+     1
+    ],
+    [
+     0,
+     1,
+     1,
+     2,
+     0,
+     2,
+     2,
+     0
+    ],
+    [
+     0,
+     1,
+     0,
+     0,
+     1,
+     2,
+     1,
+     1
+    ]
+   ]
+  },
+  "psi_only": {
+   "ell": 3,
+   "letters": [
+    [
+     1,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     2
+    ],
+    [
+     1,
+     2,
+     2,
+     2,
+     2,
+     2,
+     0,
+     2
+    ],
+    [
+     0,
+     0,
+     1,
+     1,
+     2,
+     0,
+     2,
+     0
+    ],
+    [
+     1,
+     1,
+     1,
+     2,
+     2,
+     0,
+     2,
+     2
+    ]
+   ],
+   "reflections": [
+    [
+     0,
+     0,
+     1,
+     1,
+     1,
+     0,
+     2,
+     1
+    ],
+    [
+     0,
+     2,
+     0,
+     2,
+     0,
+     2,
+     2,
+     0
+    ]
+   ]
+  }
+ },
+ "model": "cayley-dickson/v1 (-1,-1,-1) mod ell",
+ "rows": [
+  {
+   "both_same": 793,
+   "ell": 3,
+   "length": 4,
+   "neither": 25636,
+   "phi_only_changed": 259,
+   "phi_only_same": 44,
+   "psi_only": 13183,
+   "psi_only_changed": 46,
+   "psi_only_same": 14,
+   "trials": 40000
+  },
+  {
+   "both_same": 47,
+   "ell": 3,
+   "length": 5,
+   "neither": 19334,
+   "phi_only_changed": 5,
+   "phi_only_same": 5,
+   "psi_only": 534,
+   "psi_only_changed": 40,
+   "psi_only_same": 20,
+   "trials": 20000
+  },
+  {
+   "both_same": 119,
+   "ell": 5,
+   "length": 4,
+   "neither": 47701,
+   "phi_only_changed": 63,
+   "phi_only_same": 3,
+   "psi_only": 12054,
+   "psi_only_changed": 59,
+   "psi_only_same": 1,
+   "trials": 60000
+  },
+  {
+   "both_same": 20,
+   "ell": 7,
+   "length": 4,
+   "neither": 51296,
+   "phi_only_changed": 17,
+   "psi_only": 8607,
+   "psi_only_changed": 57,
+   "psi_only_same": 3,
+   "trials": 60000
+  }
+ ],
+ "schema": "novelty-lab/n2-word-g2/v1",
+ "seed": 20261005
+}

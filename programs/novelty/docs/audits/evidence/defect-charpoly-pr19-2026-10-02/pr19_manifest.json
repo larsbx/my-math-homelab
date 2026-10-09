@@ -1,0 +1,8 @@
+{
+  "novelty_lab_pr19_independent_audit_2026-10-02.md": "ca99351cbe7d292884a959267d5ff5600fbfa561c7f79e9839bca68d18519991",
+  "pr19_audit_evidence.json": "5bf781c3cb1982cfbbda4eb6afe061b04bb8fe1039e00fe3711c26416e436879",
+  "pr19_audit_replay.py": "5e8ba6d7778a4734f5457d825780f9e3f28a76913d0bf6d1875780e02c3e9bb8",
+  "pr19_unittest.log": "c9b0648bb4b2c3310c97804d6a37b0493101a6c009bd9ed55a3a33bfd68aecb1",
+  "pr19_validation.json": "dc31f4e8b2c0f0d68611fa2bd834018d7206b097601f20c23bf8356f5c1b4444",
+  "recommended_corrections.patch": "01cd8ffd493bc1fb103f5011e859e9e513adaa0872b0cd30448fc4430b4815c8"
+}

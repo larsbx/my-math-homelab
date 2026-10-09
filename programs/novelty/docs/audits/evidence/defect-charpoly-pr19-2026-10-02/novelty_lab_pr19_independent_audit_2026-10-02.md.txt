@@ -1,0 +1,149 @@
+# Novelty Lab PR 19 Independent Audit
+
+Audit date: 2026-10-02. Reviewed head: `ce6e7c8c67d6892473e2365d91bac87afbcda842`.
+
+**The Gram identity, characteristic-polynomial identity, and unipotence criterion withstand this independent AI audit under the stated field assumptions. The manuscript nevertheless overstates the result when it says that one scalar governs the conjugacy class. Explicit counterexamples require correcting that sentence.** `DefectCharacteristicPolynomial` remains pending; this audit supplies no human-review evidence and sets no review flag.
+
+The [PR](https://github.com/larsbx/novelty-lab/pull/19) was already merged when inspected, at `b24785c7b5e855ed55579a0c279feca74084f43e`. Its head still matches the requested revision. Both current-head workflows succeeded: [verify](https://github.com/larsbx/novelty-lab/actions/runs/37002526660) and [lean-oracle](https://github.com/larsbx/novelty-lab/actions/runs/37002526750). No review threads were present. Repository sources and claim statuses were left unchanged.
+
+## Required correction to the conjugacy claim
+
+[Section 7, lines 855–859](https://github.com/larsbx/novelty-lab/blob/ce6e7c8c67d6892473e2365d91bac87afbcda842/paper/associator-defects/main.tex#L855-L859) says that the class of the defect is governed by the single scalar `τ`. Theorem 3.20 determines its characteristic polynomial. It does not classify conjugacy, even under general linear conjugation, and therefore cannot classify conjugacy in the special orthogonal group either.
+
+The following exact witnesses use the repository's eight coordinates, its Cayley–Dickson convention with parameters `(-1,-1,-1)`, and the field F3. Every row has `ν = 1`.
+
+| Case | x | y | dim Q | τ | rank of Δ minus I |
+| --- | --- | --- | --- | --- | --- |
+| Identity | `(1,0,0,0,0,0,0,0)` | `(1,0,0,0,0,0,0,0)` | 1 | 2 | 0 |
+| Three dimensional Q | `(0,0,0,0,2,0,2,0)` | `(0,0,1,2,0,2,2,2)` | 3 | 2 | 2 |
+| Degenerate four dimensional Q | `(0,2,0,2,0,1,2,2)` | `(0,1,0,2,1,0,2,2)` | 4 | 2 | 4 |
+
+All three have `N(c) = 0` and characteristic polynomial `(X−1)^8`. The rank of `Δ−I` is invariant under conjugation, so these defects are not conjugate.
+
+The problem persists on the nondegenerate quaternion stratum. Over F3, `−2 = 1`. Take these two pairs:
+
+| Case | x | y | rank of Δ squared minus I |
+| --- | --- | --- | --- |
+| Semisimple | `(0,1,0,0,0,0,0,0)` | `(0,0,1,0,0,0,0,0)` | 0 |
+| Nonsemisimple | `(2,0,0,1,0,0,0,0)` | `(0,0,2,2,0,0,0,0)` | 2 |
+
+Both have `dim Q = 4`, `N(c) = 1`, `τ = −2`, rank four for `Δ−I`, and characteristic polynomial `(X−1)^4(X+1)^4`. The first has `g = −1`; the second has `g = (2,1,2,1,0,0,0,0)`, with `g+1` nonzero and square zero. Their minimal polynomials are respectively `(X−1)(X+1)` and `(X−1)(X+1)^2`. This counterexample prevents repairing the claim merely by restricting to nondegenerate Q.
+
+Suggested replacement for the first open problem:
+
+> The characteristic polynomial of Δ is determined by the scalar τ. Its distribution on prime-norm shells, and the additional data needed to distinguish conjugacy classes with the same τ, remain open. Equal τ need not imply conjugacy: the unipotent strata at τ = 2 have different ranks, and τ = −2 admits distinct Jordan types even for nondegenerate Q.
+
+The accompanying `recommended_corrections.patch` proposes this wording and two proof clarifications. It has not been applied to the repository.
+
+## Hypotheses and independent proof checks
+
+The theory assumes an eight-dimensional unital composition algebra C over a field k, a nondegenerate norm N, the polar form `B(u,v) = N(u+v)−N(u)−N(v)`, and `char(k) ≠ 2`. The algebra need not be split or the field finite. The computational model is narrower: split Cayley algebras over odd prime fields. No exclusion of characteristic three is needed for these three results.
+
+### Lemma 3.19
+
+Center x and y using `x₀ = x−T(x)/2` and `y₀ = y−T(y)/2`. On the open set `N(x₀) ≠ 0`, replace y₀ by `y₀−λx₀`, where `λ = B(x₀,y₀)/(2N(x₀))`. These changes preserve the commutator and change `(1,x,y,xy)` by transformations of determinant one; the last change uses `x₀² = −N(x₀)1`.
+
+For the resulting pure orthogonal pair u,v, `uv = −vu` is pure and orthogonal to u,v. The Gram matrix is diagonal with entries `2, 2N(u), 2N(v), 2N(u)N(v)`. Its determinant is `16N(u)²N(v)²`, exactly `N(2uv)²`. This verifies the manuscript's normalization of B and its factor of sixteen.
+
+To justify extension, form the difference as a polynomial in sixteen coordinates and extend coefficients to an algebraic closure K of k. K is infinite, including when k is finite. The norm on `1⊥` is nondegenerate because `B(1,1)=2`; thus its norm polynomial is nonzero. The open set above is nonempty and dense in the irreducible affine space `C_K × C_K`. Vanishing there implies that every coefficient of the difference polynomial is zero. The injection `k → K` then descends the identity to k. No density assertion about finitely many k-rational points is required.
+
+The dimensional consequences are correct. When four spanning vectors are dependent, their Gram determinant is zero. When they form a basis of Q, the Gram determinant tests nondegeneracy of B restricted to Q.
+
+### Theorem 3.20
+
+Write `c = xy−yx`, `ν = N(x)N(y)`, and `M = L_x L_y L_conj(xy)`. Each coefficient of `det(YI−M)` is a polynomial in x,y; the right side is also polynomial. Over K, the open set `νN(c) ≠ 0` is nonempty: choose pure orthogonal quaternion generators i,j of nonzero norms, for which `N(ij−ji)=4N(i)N(j)`. A nonempty open subset of affine space is dense.
+
+On this set, Lemma 3.19 and closure of Q under products give a nondegenerate quaternion subalgebra. Doubling applies only here. For `C = Q ⊕ Qv`, the rule `a(bv)=(ba)v` gives, in the actual order of operator composition:
+
+```text
+M(uv) = (u conj(xy) y x)v = (u h)v,
+h = conj(xy) yx.
+```
+
+Associativity within Q gives `M(w)=νw` for w in Q. After scalar extension, Q is a two by two matrix algebra; right multiplication by h acts on its two rows as two copies of multiplication by h. Consequently its four dimensional characteristic polynomial is the square of the reduced quadratic polynomial. This is a characteristic-polynomial assertion, and does not assert diagonalizability.
+
+The scalar computations are correct:
+
+```text
+N(h) = ν²,
+T(h) = B(xy,yx) = 2ν−N(c),
+det(YI−M) = (Y−ν)^4 (Y²−(2ν−N(c))Y+ν²)^2.
+```
+
+Coefficientwise polynomial extension therefore covers all x,y, including `ν=0`. At `ν=0` the formula becomes `Y^6(Y+N(c))^2`; M need not be nilpotent. Only the normalized operator Δ requires `ν≠0`. Substitution `Y=νX` and division by `ν^8` give the stated polynomial of Δ. Its coefficient of degree seven gives `tr Δ = 8−2N(c)/ν`. There is no division by the matrix dimension, by three, or by any factorial.
+
+The written proof currently invokes the pending Theorem 3.4 while the new ledger record declares only `CompositionIdentities` and `QuaternionDoubling`. The direct associative calculation above removes that unnecessary reference and makes the declared dependency list transparent. Alternatively, record the dependency explicitly. This is a proof-record clarification, not a counterexample to the formula.
+
+### Corollary 3.21
+
+For `ν≠0`, division of h by ν gives `g=(xy)⁻¹yx`, `N(g)=1`, and `T(g)=τ`. The right-multiplication decomposition is valid when `N(c)≠0`. Moreover `N(g−1)=2−τ=N(c)/ν`, so the complement has no fixed vector in that case.
+
+If `N(c)=0`, the characteristic polynomial is `(X−1)^8`; Cayley–Hamilton gives `(Δ−I)^8=0`. Conversely, when `N(c)≠0`, the quadratic factor has value `N(c)/ν≠0` at X=1, so the full characteristic polynomial cannot equal `(X−1)^8`. Thus the unipotence equivalence is valid over k, without assuming an algebraic closure or diagonalizability.
+
+The exact equivalence is:
+
+```text
+N(c)=0
+  iff dim Q ≤ 3 or B restricted to Q is degenerate
+  iff Δ is unipotent, provided ν≠0.
+```
+
+Do not shorten the middle condition to degeneracy alone. For `x=y=1`, Q is the nondegenerate scalar line, while `N(c)=0` and Δ is the identity. The manuscript includes the required dimensional alternative correctly. The rank assertion in the corollary invokes the earlier pending rank law; the characteristic polynomial alone cannot recover that rank. This audit does not promote that dependency.
+
+## Assessment of the existing tests
+
+The five tests in `tests/test_defect_charpoly.py` all pass. Their characteristic-polynomial comparison uses an eight by eight operator matrix rather than the proof's quaternion decomposition, so that comparison is a meaningful check rather than a replay of the doubling proof. It shares arithmetic and the new charpoly helper with the implementation, however.
+
+The actual 250-pair seeded samples per prime reach the following boundaries:
+
+| Prime | ν zero | ν zero with N(c) nonzero | Admissible degenerate Q of dimension four | Q of dimension three |
+| --- | --- | --- | --- | --- |
+| 3 | 132 | 67 | 28 | 10 |
+| 5 | 96 | 66 | 24 | 0 |
+| 7 | 78 | 61 | 24 | 0 |
+| 11 | 39 | 26 | 14 | 0 |
+| 13 | 34 | 22 | 11 | 0 |
+
+These columns overlap; they are coverage counts, not a partition. The separate F3 test visits 1,543 dimension-three pairs, of which 720 have nonzero operand norms. Its source pool contains all 1,093 projective pure points, but its `points[i+1:i+40]` slice does not exhaust all pairs. Its `found > 50` assertion also does not ensure that the conditional Δ checks ran on any admissible pair.
+
+The standalone helper test uses one degree-eight companion matrix over F7. That matrix is already upper Hessenberg, so the fixture does not test similarity reduction, pivot swaps, or elimination. The random defect matrices exercise the helper more broadly, but their expected characteristic polynomials all belong to the theorem's special family. A separate exact oracle is appropriate for auditing a general helper.
+
+Recommended regressions are explicit fixtures for zero and scalar operands, `ν=0` with `N(c)≠0`, admissible dimension-three Q, degenerate dimension-four Q, and both `τ=−2` Jordan types; assertions that each intended stratum was reached; trace and nilpotent-power checks; and independent arbitrary-matrix tests for the helper. In the doubling test, evaluate all four Q basis vectors, assert the norm and trace of g, and choose v from combinations when every orthogonal-complement basis vector is isotropic. Testing only four random u values and skipping such bases leaves avoidable gaps. These are coverage improvements; this audit found no failing charpoly implementation.
+
+## Independent finite evidence and validation
+
+`pr19_audit_replay.py` uses SymPy's division-free integer characteristic polynomial, then reduces coefficients modulo the prime. It also implements Zorn vector-matrix multiplication separately, without the repository structure tensor, Cayley–Dickson product, doubling decomposition, or charpoly helper.
+
+| Check | Exact scope | Result |
+| --- | --- | --- |
+| General charpoly helper | All 722 two by two matrices over F2, F3 and F5; all 512 three by three matrices over F2; 660 random and 264 structured matrices of dimensions zero through ten over F2, F3, F5, F7, F11 and F13 | 2,158 comparisons passed |
+| Original seeded pairs | 250 pairs for each of 3, 5, 7, 11, 13; seeds 100 plus prime; independent Gram determinants, characteristic polynomials, traces and nilpotent-power equivalence | 1,250 pairs passed |
+| Separate Zorn model | 100 pairs per odd prime above; seeds 20261002 plus prime; unit, conjugation and composition sanity checks, Gram identity, characteristic polynomial and unipotence | 500 pairs passed |
+| Explicit domain fixtures | Six zero or scalar pairs per odd prime above | 30 passed; all 15 undefined Δ evaluations were refused |
+| Conjugacy witnesses | The five F3 pairs listed above | Equal characteristic polynomials and unequal conjugacy invariants confirmed |
+| Repository tests | `python -m unittest discover -s tests -v` | 127 passed in 68.612 seconds |
+| Governance and reproduction | F3 provenance, registry, vendored sync, generated ledger surfaces, claim governance, paper tables and defect census | Passed |
+
+Python was 3.12.14 and SymPy was 1.14.0. The helper's F2 checks verify the matrix algorithm only; they do not extend the algebraic statements to characteristic two. These finite checks do not establish a theorem or substitute for human proof review. The earlier full rank census and Lean oracle were confirmed through current-head CI rather than rerun locally. No new manuscript build was performed.
+
+To reproduce from an existing clone, create a detached checkout of the reviewed head, then run the accompanying script:
+
+```sh
+git -C /path/to/novelty-lab worktree add --detach /tmp/novelty-pr19-audit ce6e7c8c67d6892473e2365d91bac87afbcda842
+python pr19_audit_replay.py /tmp/novelty-pr19-audit > replay.json
+```
+
+The resulting JSON is deterministic for the recorded Python and SymPy versions. Its SHA-256 is `5bf781c3cb1982cfbbda4eb6afe061b04bb8fe1039e00fe3711c26416e436879`. The replay script's SHA-256 is `5e8ba6d7778a4734f5457d825780f9e3f28a76913d0bf6d1875780e02c3e9bb8`. Source-file digests are recorded in the JSON. The full unittest log is included in the evidence bundle.
+
+## Foundation sources and search limits
+
+Foundation checks on 2026-10-02 used primary mathematical sources:
+
+- A. Elduque, *Quaternions, octonions and the forms of the exceptional simple classical Lie superalgebras*, Commentarii Mathematici Helvetici 79 (2004), pp. 208–228, especially p. 209: [publisher PDF](https://ems.press/content/serial-article-files/43002?nt=1). It records the doubling rule `x(yu)=(yx)u` and quaternion splitting facts. Its standing assumption excludes characteristics two and three, so it confirms the convention but is not used as authority for the characteristic-three conclusion. That conclusion follows from the composition-algebra argument above and the repository's imported doubling fact with its stated characteristic-not-two scope.
+- J. Voight, *Quaternion Algebras*, Chapter 3, Exercise 14: [publisher chapter](https://link.springer.com/chapter/10.1007/978-3-030-56694-4_3). It states the right and left multiplication characteristic-polynomial relation to the reduced polynomial. The proof above independently reconstructs it using the two matrix rows.
+
+Queries included `octonion algebra quaternion subalgebra Cayley Dickson a(bv) = (ba)v Springer Veldkamp`, `octonion algebra characteristic not 2 right multiplication characteristic polynomial reduced trace norm`, and `John Voight quaternion algebras reduced characteristic polynomial right multiplication`. This was a bounded foundation check. It did not complete the separate prior-art dossier, bibliography audit, or novelty review.
+
+## Status after the audit
+
+`DefectCharacteristicPolynomial` remains `pending_dependency`, outside the established theorem set. No `proof_reviewed`, `independent_reviewer`, or human-review evidence was added. The required correction concerns the manuscript's conjugacy-class interpretation; the formulas themselves remain supported by this AI audit and await independent human review. The report records suggested changes without applying them or submitting a GitHub review. Native Page content can be read back, but its rendered layout has not been visually previewed.

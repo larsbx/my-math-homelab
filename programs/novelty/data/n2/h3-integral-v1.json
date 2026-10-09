@@ -1,0 +1,150 @@
+{
+ "certificate": {
+  "left": [
+   [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1
+   ],
+   [
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   [
+    -1,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    -1
+   ]
+  ],
+  "operators_equal": false,
+  "right": [
+   [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    -1,
+    0
+   ],
+   [
+    -1,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    -1,
+    0
+   ],
+   [
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0
+   ]
+  ],
+  "value": [
+   0,
+   3,
+   -3,
+   0,
+   0,
+   -3,
+   0,
+   0
+  ],
+  "values_equal": true
+ },
+ "model": "cayley-dickson/v1 (-1,-1,-1) over Z",
+ "rows": [
+  {
+   "defect_classes": 789,
+   "distinct_values": 11138,
+   "generators": 12,
+   "null_equal_trace_same_class": "828661/12261134",
+   "null_random_same_class": "3476026/127544406",
+   "operator_collisions": 14457,
+   "p": 3,
+   "reduced_words": 15972,
+   "seed": 1,
+   "value_only_collisions": 195,
+   "value_only_same_class": 97
+  },
+  {
+   "defect_classes": 584,
+   "distinct_values": 10056,
+   "generators": 12,
+   "null_equal_trace_same_class": "1008255/13186049",
+   "null_random_same_class": "3586226/127544406",
+   "operator_collisions": 20969,
+   "p": 3,
+   "reduced_words": 15972,
+   "seed": 2,
+   "value_only_collisions": 0,
+   "value_only_same_class": 0
+  },
+  {
+   "defect_classes": 197,
+   "distinct_values": 2068,
+   "generators": 12,
+   "null_equal_trace_same_class": "3129725/13170717",
+   "null_random_same_class": "7386902/127544406",
+   "operator_collisions": 176021,
+   "p": 3,
+   "reduced_words": 15972,
+   "seed": 3,
+   "value_only_collisions": 0,
+   "value_only_same_class": 0
+  },
+  {
+   "defect_classes": 1353,
+   "distinct_values": 16406,
+   "generators": 14,
+   "null_equal_trace_same_class": "2991375/47998520",
+   "null_random_same_class": "9998955/473011903",
+   "operator_collisions": 86946,
+   "p": 3,
+   "reduced_words": 30758,
+   "seed": 1,
+   "value_only_collisions": 477,
+   "value_only_same_class": 107
+  },
+  {
+   "defect_classes": 1457,
+   "distinct_values": 12220,
+   "generators": 12,
+   "null_equal_trace_same_class": "219627/4574833",
+   "null_random_same_class": "1734514/127544406",
+   "operator_collisions": 9305,
+   "p": 5,
+   "reduced_words": 15972,
+   "seed": 1,
+   "value_only_collisions": 0,
+   "value_only_same_class": 0
+  }
+ ],
+ "schema": "novelty-lab/n2-h3-integral/v1",
+ "words": "reduced words of length 4, left comb, m shell generators and their conjugates"
+}

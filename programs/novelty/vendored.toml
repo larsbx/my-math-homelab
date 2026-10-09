@@ -1,0 +1,50 @@
+# Vendored packages, checked by check_vendored_sync.py; re-pin with
+# `check_vendored_sync.py pin NAME COMMIT` after copying from upstream.
+
+[[package]]
+name = "vendoring"
+repository = "larsbx/finite-math-kernels"
+commit = "68ea134126e0d1863977e9bb1cca47465fd7bdb8"
+root = "vendor"
+
+[package.files]
+"vendoring/__init__.py" = "959cdf7a89536784da18659db7cfe4099c885f5370249eccc71ce73775f8a584"
+"vendoring/check_vendored_sync.py" = "cdcb673d92bcd0cab84574b8fbe1744253e9a935d9d779bc76066f7828e3cba1"
+
+[[package]]
+name = "proof_records"
+repository = "larsbx/finite-math-kernels"
+commit = "68ea134126e0d1863977e9bb1cca47465fd7bdb8"
+root = "vendor"
+
+[package.files]
+"proof_records/ProofArchitecture.tla" = "c1be3c712c8f9fb3df57e8caa03cd8229c1f2a30d3f61a415d1cbd5e8c756526"
+"proof_records/__init__.py" = "f6c83591674f7c07bfc0eaf70071cf199317047c8e3a4cb0ad64a8623d876ed7"
+"proof_records/generate_ledgers.py" = "06021686a513dbdb068dd0eb70034af6f83ba949bf353818b5fdc25046f287b0"
+"proof_records/graph.py" = "3295e6715e1dcd79ad2b7d846707b2f2464aa7f6ac13054df96a6bf642f7f9dd"
+"proof_records/known_answers.py" = "b6921755679fc54d475344c88e6b4df5ae157ef86d2bc31aecd66c1999923eb5"
+"proof_records/records.py" = "0088eb2e9ecac94063f766ef8c8af58af4c4858312c59b0187450317d1077ca1"
+"proof_records/self_test.py" = "638c5258ac431a635e12cecadd15f2d8a995d95c289380e33fd26e683ce3294c"
+"proof_records/vocabularies.py" = "b11199be3f39760e46d7ad61bfcc8e3e8143cb75c2ba44ad1412eb9475675a52"
+
+[[package]]
+name = "claim_governance"
+repository = "larsbx/finite-math-kernels"
+commit = "68ea134126e0d1863977e9bb1cca47465fd7bdb8"
+root = "vendor"
+
+[package.files]
+"claim_governance/__init__.py" = "64883fe16bdb5ad85b150b6625c8015de1de06a2dde2cae9e99d275b00750378"
+"claim_governance/checks/__init__.py" = "aeb4d89c1eeee260ab01df84e6576e954342c1a3a76ab126408e52bf44d7fe07"
+"claim_governance/checks/claims.py" = "35580a55a2f62e97ebeebf7128c8a255ccf5f3a12144c74dff6514ec15ef17ab"
+"claim_governance/checks/consistency.py" = "79ff0709ea01a044ddbd3941190765281b05c59c93ee91ee57dfbba484836947"
+"claim_governance/checks/coverage.py" = "7bb634c5a6a9de724c85164b65a427ac386e3dac25699b0915e0706ba68508d8"
+"claim_governance/checks/numerics.py" = "5af0bba117d7503a2ea81d1aaeb4ef6fdd83504345925779224749ddd5666598"
+"claim_governance/checks/promotion.py" = "297aced859ea014d6cbb37166b9787bcda8f74ad52bba52fef83df7be04c1840"
+"claim_governance/checks/terminology.py" = "adfa2be8c2f49e6c81aa4f661293c6a088af3624f006a901a8d1d747924baef1"
+"claim_governance/cli.py" = "122f6b5acf8d5910ded64d93b83390c64aa8ee702179b5e71d0138b988855257"
+"claim_governance/findings.py" = "a8dafbaacc963b725d3b4fa32c8ac04ba10f4d69606362f52e5858af775bf3b4"
+"claim_governance/lexing.py" = "9c93d3660fe4a8bf15e5bd7727771f9d2714574f2d78691c831ac11bc670d4e7"
+"claim_governance/policy.py" = "7b7f34419d9436ecf818c7e64093a504de7d924d8abe80de047c54e50c236095"
+"claim_governance/repo.py" = "11a603c0288f9030ec0c5990d260f2c3f593b7e44a2b86d49f13920f84348dd3"
+"claim_governance/runner.py" = "86c48c3dc677e3cacf515b852382dfc459c30bc12d8220d6171efa22a84bef89"

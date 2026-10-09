@@ -1,0 +1,645 @@
+{
+ "claim_status": "experimental descriptive statistic; not a Poisson theorem",
+ "convention": "hurwitz-mod-ell/v1",
+ "rows": [
+  {
+   "bins": 120,
+   "dispersion_index": 0.4,
+   "ell": 5,
+   "input_sha256": "cfe98244b5433101ad107564a047e8b2d73c6ebf717f5115b9bc597825beb20f",
+   "lambda": 1.6,
+   "n": 7,
+   "observed_histogram": [
+    24,
+    0,
+    96
+   ],
+   "pearson_groups": 3,
+   "pearson_pooled": 65.4352647076,
+   "shell_size": 192,
+   "total_variation": 0.3249309468,
+   "unit_action": "none"
+  },
+  {
+   "bins": 5,
+   "dispersion_index": 0.4,
+   "ell": 5,
+   "input_sha256": "18656547bfd6ccaa3c73c9a5416b72970c4337f8843b46cf4e519729ae1b8b6b",
+   "lambda": 1.6,
+   "n": 7,
+   "observed_histogram": [
+    1,
+    0,
+    4
+   ],
+   "pearson_groups": 1,
+   "pearson_pooled": 0.0,
+   "shell_size": 8,
+   "total_variation": 0.3249309468,
+   "unit_action": "left"
+  },
+  {
+   "bins": 120,
+   "dispersion_index": 0.6,
+   "ell": 5,
+   "input_sha256": "62eb04d3c3da766d9e01b85aa470718438f9d638e86a470222c85ca91c64762a",
+   "lambda": 2.4,
+   "n": 11,
+   "observed_histogram": [
+    24,
+    0,
+    0,
+    96
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 111.395004787,
+   "shell_size": 288,
+   "total_variation": 0.4789907934,
+   "unit_action": "none"
+  },
+  {
+   "bins": 5,
+   "dispersion_index": 0.6,
+   "ell": 5,
+   "input_sha256": "29f92399afc1dd72b5324ba9f092fa434b47347e5040e3cc5286068fc38c6b71",
+   "lambda": 2.4,
+   "n": 11,
+   "observed_histogram": [
+    1,
+    0,
+    0,
+    4
+   ],
+   "pearson_groups": 1,
+   "pearson_pooled": 0.0,
+   "shell_size": 12,
+   "total_variation": 0.4789907934,
+   "unit_action": "left"
+  },
+  {
+   "bins": 120,
+   "dispersion_index": 0.9142857143,
+   "ell": 5,
+   "input_sha256": "291c432d4d639adb6aecb95c2b269925c56c8539ee0894cc637d9d46fe490ae0",
+   "lambda": 2.8,
+   "n": 13,
+   "observed_histogram": [
+    0,
+    0,
+    96,
+    0,
+    0,
+    0,
+    24
+   ],
+   "pearson_groups": 7,
+   "pearson_pooled": 275.901874454,
+   "shell_size": 336,
+   "total_variation": 0.6965142411,
+   "unit_action": "none"
+  },
+  {
+   "bins": 5,
+   "dispersion_index": 0.9142857143,
+   "ell": 5,
+   "input_sha256": "fecf1a3cbe5544cc36efa1f3a0734d6ffd138ca011d30427762db20ed71c31a6",
+   "lambda": 2.8,
+   "n": 13,
+   "observed_histogram": [
+    0,
+    0,
+    4,
+    0,
+    0,
+    0,
+    1
+   ],
+   "pearson_groups": 1,
+   "pearson_pooled": 0.0,
+   "shell_size": 14,
+   "total_variation": 0.6965142411,
+   "unit_action": "left"
+  },
+  {
+   "bins": 120,
+   "dispersion_index": 0.4,
+   "ell": 5,
+   "input_sha256": "896bf684ab5f49b5287206dea925bd4c793282a7fbee49b6cd1df4dfa924ff4a",
+   "lambda": 3.6,
+   "n": 17,
+   "observed_histogram": [
+    0,
+    0,
+    0,
+    96,
+    0,
+    0,
+    24
+   ],
+   "pearson_groups": 6,
+   "pearson_pooled": 272.256671892,
+   "shell_size": 432,
+   "total_variation": 0.6316492681,
+   "unit_action": "none"
+  },
+  {
+   "bins": 5,
+   "dispersion_index": 0.4,
+   "ell": 5,
+   "input_sha256": "426512fc0f8cdd78c68cb6f0b7f9983eb9360335775f6054be98c84c11daeb5d",
+   "lambda": 3.6,
+   "n": 17,
+   "observed_histogram": [
+    0,
+    0,
+    0,
+    4,
+    0,
+    0,
+    1
+   ],
+   "pearson_groups": 1,
+   "pearson_pooled": 0.0,
+   "shell_size": 18,
+   "total_variation": 0.6316492681,
+   "unit_action": "left"
+  },
+  {
+   "bins": 336,
+   "dispersion_index": 1.0476190476,
+   "ell": 7,
+   "input_sha256": "1e171fca6a0ad632e582fff727c7282f2a7bc045a1050f1b4e822a9bd298c310",
+   "lambda": 1.2857142857,
+   "n": 17,
+   "observed_histogram": [
+    96,
+    144,
+    0,
+    96
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 133.309138228,
+   "shell_size": 432,
+   "total_variation": 0.2284969059,
+   "unit_action": "none"
+  },
+  {
+   "bins": 14,
+   "dispersion_index": 1.0476190476,
+   "ell": 7,
+   "input_sha256": "edc44be3c369daa39d4128ad538108a76ef87832eac9e1eb20d3043e40cc7515",
+   "lambda": 1.2857142857,
+   "n": 17,
+   "observed_histogram": [
+    4,
+    6,
+    0,
+    4
+   ],
+   "pearson_groups": 2,
+   "pearson_pooled": 0.4085933286,
+   "shell_size": 18,
+   "total_variation": 0.2284969059,
+   "unit_action": "left"
+  },
+  {
+   "bins": 336,
+   "dispersion_index": 1.1714285714,
+   "ell": 7,
+   "input_sha256": "61a008d95960b75ad8b97783c504d2d5c3e1cb976d6f18278bbf69529d43c5f6",
+   "lambda": 1.4285714286,
+   "n": 19,
+   "observed_histogram": [
+    144,
+    0,
+    96,
+    96
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 191.817097332,
+   "shell_size": 480,
+   "total_variation": 0.3423586235,
+   "unit_action": "none"
+  },
+  {
+   "bins": 14,
+   "dispersion_index": 1.1714285714,
+   "ell": 7,
+   "input_sha256": "581e76dad06d6d2eaf1c63258e1b1ef7a44f1c4163ccc2bb0c57d7fed1f5ac29",
+   "lambda": 1.4285714286,
+   "n": 19,
+   "observed_histogram": [
+    6,
+    0,
+    4,
+    4
+   ],
+   "pearson_groups": 2,
+   "pearson_pooled": 1.3548735525,
+   "shell_size": 20,
+   "total_variation": 0.3423586235,
+   "unit_action": "left"
+  },
+  {
+   "bins": 336,
+   "dispersion_index": 0.2857142857,
+   "ell": 7,
+   "input_sha256": "7f8e3947e312c504b4cabe468313fc15240023901299678f54b1b34f81a59272",
+   "lambda": 1.7142857143,
+   "n": 23,
+   "observed_histogram": [
+    48,
+    0,
+    288
+   ],
+   "pearson_groups": 3,
+   "pearson_pooled": 184.993868978,
+   "shell_size": 576,
+   "total_variation": 0.3459648473,
+   "unit_action": "none"
+  },
+  {
+   "bins": 14,
+   "dispersion_index": 0.2857142857,
+   "ell": 7,
+   "input_sha256": "6bcdfcccb30a3f803d1278f5595d0c44fea8c60dfa911bffb75acb4a3312f962",
+   "lambda": 1.7142857143,
+   "n": 23,
+   "observed_histogram": [
+    2,
+    0,
+    12
+   ],
+   "pearson_groups": 2,
+   "pearson_pooled": 6.7060854755,
+   "shell_size": 24,
+   "total_variation": 0.3459648473,
+   "unit_action": "left"
+  },
+  {
+   "bins": 336,
+   "dispersion_index": 0.6571428571,
+   "ell": 7,
+   "input_sha256": "37f863373d2203da2a8e63b09f13eb2831a28a8b2349974bf27ca15311b3e38a",
+   "lambda": 2.1428571429,
+   "n": 29,
+   "observed_histogram": [
+    24,
+    0,
+    288,
+    0,
+    0,
+    0,
+    24
+   ],
+   "pearson_groups": 7,
+   "pearson_pooled": 671.999871916,
+   "shell_size": 720,
+   "total_variation": 0.6369276889,
+   "unit_action": "none"
+  },
+  {
+   "bins": 14,
+   "dispersion_index": 0.6571428571,
+   "ell": 7,
+   "input_sha256": "9213dee205328449c47afa0b8530627d908e812f522af0dd3e2ebd25484404af",
+   "lambda": 2.1428571429,
+   "n": 29,
+   "observed_histogram": [
+    1,
+    0,
+    12,
+    0,
+    0,
+    0,
+    1
+   ],
+   "pearson_groups": 2,
+   "pearson_pooled": 5.3157887372,
+   "shell_size": 30,
+   "total_variation": 0.6369276889,
+   "unit_action": "left"
+  },
+  {
+   "bins": 1320,
+   "dispersion_index": 0.7090909091,
+   "ell": 11,
+   "input_sha256": "f8620e0e2420712f5215372fd0c0944e94ce96910c728160b9f0f8c44d4d8a0d",
+   "lambda": 1.0909090909,
+   "n": 59,
+   "observed_histogram": [
+    264,
+    864,
+    0,
+    192
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 666.122984939,
+   "shell_size": 1440,
+   "total_variation": 0.3357918957,
+   "unit_action": "none"
+  },
+  {
+   "bins": 55,
+   "dispersion_index": 0.7090909091,
+   "ell": 11,
+   "input_sha256": "3fbe2801a3f765529d86588eb3add171fcaace61a20798dba5ddd979624375c9",
+   "lambda": 1.0909090909,
+   "n": 59,
+   "observed_histogram": [
+    11,
+    36,
+    0,
+    8
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 27.7551243725,
+   "shell_size": 60,
+   "total_variation": 0.3357918957,
+   "unit_action": "left"
+  },
+  {
+   "bins": 1320,
+   "dispersion_index": 0.7436950147,
+   "ell": 11,
+   "input_sha256": "5e7b9d5250f03903ce7172050c025b56f38c76571fb0403cd6278d620dadfcbd",
+   "lambda": 1.1272727273,
+   "n": 61,
+   "observed_histogram": [
+    240,
+    768,
+    288,
+    0,
+    0,
+    0,
+    24
+   ],
+   "pearson_groups": 6,
+   "pearson_pooled": 416.383946578,
+   "shell_size": 1488,
+   "total_variation": 0.2461382586,
+   "unit_action": "none"
+  },
+  {
+   "bins": 55,
+   "dispersion_index": 0.7436950147,
+   "ell": 11,
+   "input_sha256": "230454017276d99e371f13d007c83cc8c0567247f84672cc94cc6ca8fed1ae30",
+   "lambda": 1.1272727273,
+   "n": 61,
+   "observed_histogram": [
+    10,
+    32,
+    12,
+    0,
+    0,
+    0,
+    1
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 14.4966361568,
+   "shell_size": 62,
+   "total_variation": 0.2461382586,
+   "unit_action": "left"
+  },
+  {
+   "bins": 1320,
+   "dispersion_index": 0.9401069519,
+   "ell": 11,
+   "input_sha256": "87480c0d3618e2346293a8851752fafb049f425f9fb15310a72e4359f5bd4489",
+   "lambda": 1.2363636364,
+   "n": 67,
+   "observed_histogram": [
+    216,
+    864,
+    96,
+    0,
+    144
+   ],
+   "pearson_groups": 5,
+   "pearson_pooled": 832.5120322,
+   "shell_size": 1632,
+   "total_variation": 0.367539418,
+   "unit_action": "none"
+  },
+  {
+   "bins": 55,
+   "dispersion_index": 0.9401069519,
+   "ell": 11,
+   "input_sha256": "9343c3519edbea4604dfb98bf5d94acf6e85f2579ccea2c3bc3f66ccf2510165",
+   "lambda": 1.2363636364,
+   "n": 67,
+   "observed_histogram": [
+    9,
+    36,
+    4,
+    0,
+    6
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 22.0961165229,
+   "shell_size": 68,
+   "total_variation": 0.367539418,
+   "unit_action": "left"
+  },
+  {
+   "bins": 1320,
+   "dispersion_index": 0.6909090909,
+   "ell": 11,
+   "input_sha256": "2b4fa5e5b797f528b1cd5c0bd6d2d453bbf77dde0e72ef6f3b159b294d4c474f",
+   "lambda": 1.3090909091,
+   "n": 71,
+   "observed_histogram": [
+    456,
+    0,
+    864
+   ],
+   "pearson_groups": 3,
+   "pearson_pooled": 765.779196498,
+   "shell_size": 1728,
+   "total_variation": 0.3535402371,
+   "unit_action": "none"
+  },
+  {
+   "bins": 55,
+   "dispersion_index": 0.6909090909,
+   "ell": 11,
+   "input_sha256": "136501dea93e0b4aa9a4eec3a5267b9528068db0d17ce390b0f9b5cf444121f4",
+   "lambda": 1.3090909091,
+   "n": 71,
+   "observed_histogram": [
+    19,
+    0,
+    36
+   ],
+   "pearson_groups": 3,
+   "pearson_pooled": 31.9074665207,
+   "shell_size": 72,
+   "total_variation": 0.3535402371,
+   "unit_action": "left"
+  },
+  {
+   "bins": 2184,
+   "dispersion_index": 1.2087912088,
+   "ell": 13,
+   "input_sha256": "7f4797e36109065b6b8f72c0a35b676a741ea9069eea36aedcb67b945a1f9f97",
+   "lambda": 1.0769230769,
+   "n": 97,
+   "observed_histogram": [
+    672,
+    1056,
+    288,
+    0,
+    144,
+    0,
+    24
+   ],
+   "pearson_groups": 6,
+   "pearson_pooled": 557.39357517,
+   "shell_size": 2352,
+   "total_variation": 0.1736345067,
+   "unit_action": "none"
+  },
+  {
+   "bins": 91,
+   "dispersion_index": 1.2087912088,
+   "ell": 13,
+   "input_sha256": "4585308690ccc7e8eb5988a830593ac7c808b421d4aa2d8dba9c8cebab12c0af",
+   "lambda": 1.0769230769,
+   "n": 97,
+   "observed_histogram": [
+    28,
+    44,
+    12,
+    0,
+    6,
+    0,
+    1
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 5.9654483033,
+   "shell_size": 98,
+   "total_variation": 0.1736345067,
+   "unit_action": "left"
+  },
+  {
+   "bins": 2184,
+   "dispersion_index": 0.8202973497,
+   "ell": 13,
+   "input_sha256": "2fe443f73150c2e4c866e3180fdec16fada87fa77f1dedc3083c6ab3b7cdae46",
+   "lambda": 1.1208791209,
+   "n": 101,
+   "observed_histogram": [
+    696,
+    720,
+    576,
+    192
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 50.378562351,
+   "shell_size": 2448,
+   "total_variation": 0.0589522994,
+   "unit_action": "none"
+  },
+  {
+   "bins": 91,
+   "dispersion_index": 0.8202973497,
+   "ell": 13,
+   "input_sha256": "be321fdaebd375f2df1056b1fbf8d7d153d0ea08e0f65e3b2c3b752c09f2c57b",
+   "lambda": 1.1208791209,
+   "n": 101,
+   "observed_histogram": [
+    29,
+    30,
+    24,
+    8
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 2.0991067646,
+   "shell_size": 102,
+   "total_variation": 0.0589522994,
+   "unit_action": "left"
+  },
+  {
+   "bins": 2184,
+   "dispersion_index": 1.0879120879,
+   "ell": 13,
+   "input_sha256": "f5bce25d52eab0748a47fbdb84d997a91c0c20d8e4d4f367c4fbe2f356869d45",
+   "lambda": 1.1428571429,
+   "n": 103,
+   "observed_histogram": [
+    792,
+    576,
+    672,
+    0,
+    144
+   ],
+   "pearson_groups": 5,
+   "pearson_pooled": 453.354597529,
+   "shell_size": 2496,
+   "total_variation": 0.1800676139,
+   "unit_action": "none"
+  },
+  {
+   "bins": 91,
+   "dispersion_index": 1.0879120879,
+   "ell": 13,
+   "input_sha256": "8b5d696205eee50a5e021f6cb7ec38aaf61d8ace8cdadebaa9671485755c6a90",
+   "lambda": 1.1428571429,
+   "n": 103,
+   "observed_histogram": [
+    33,
+    24,
+    28,
+    0,
+    6
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 8.9102746338,
+   "shell_size": 104,
+   "total_variation": 0.1800676139,
+   "unit_action": "left"
+  },
+  {
+   "bins": 2184,
+   "dispersion_index": 1.3687423687,
+   "ell": 13,
+   "input_sha256": "c7948d980cb73a8f44cb5012f1a0c84277a8e97cbbcda00487edf282df15815c",
+   "lambda": 1.1868131868,
+   "n": 107,
+   "observed_histogram": [
+    984,
+    288,
+    576,
+    192,
+    144
+   ],
+   "pearson_groups": 5,
+   "pearson_pooled": 569.718323593,
+   "shell_size": 2592,
+   "total_variation": 0.2303381224,
+   "unit_action": "none"
+  },
+  {
+   "bins": 91,
+   "dispersion_index": 1.3687423687,
+   "ell": 13,
+   "input_sha256": "b3bbea5380ae46226eeac28b96413ebafa8a13fecd5f8800828209d315a8ca9b",
+   "lambda": 1.1868131868,
+   "n": 107,
+   "observed_histogram": [
+    41,
+    12,
+    24,
+    8,
+    6
+   ],
+   "pearson_groups": 4,
+   "pearson_pooled": 21.6502485729,
+   "shell_size": 108,
+   "total_variation": 0.2303381224,
+   "unit_action": "left"
+  }
+ ],
+ "schema": "novelty-lab/n3-grid/v1"
+}

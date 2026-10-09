@@ -1,0 +1,57 @@
+name: verify
+
+# One job per authority plane (ESTATE.toml). Each job runs a gate group of
+# scripts/verify_all.sh and fails, never skips: exit status 3 (a gate skipped)
+# fails the job like 1 (a gate failed).
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  policy:
+    name: policy (estate layout)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Estate audit (pinned public artifact)
+        run: |
+          set -eu
+          dep() { python3 -c 'import sys, tomllib; print(next(d[sys.argv[2]] for d in tomllib.load(open("ESTATE.toml", "rb"))["dep"] if d["id"] == sys.argv[1]))' "$@"; }
+          rev=$(dep estate-governance rev)
+          pin=$(dep estate-governance pin)
+          test "$rev" = "0833929ed82d42cf3674a1565681625a9622827b"
+          curl --fail --location --proto '=https' --tlsv1.2 --output /tmp/estate-audit.py "https://raw.githubusercontent.com/larsbx/finite-math-kernels/4485675c1ed5da52beafad98c5118dc0ffc22456/policy/estate-audits/$rev.py"
+          printf '%s  %s\n' "${pin#sha256:}" /tmp/estate-audit.py | sha256sum --check --strict -
+          python3 /tmp/estate-audit.py --root .
+
+  calibrated-research:
+    name: kernel, proof state, evidence (Python)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: scripts/verify_all.sh python
+
+  tla:
+    name: proof-dependency models (TLC)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: TLC (tla2tools v1.7.4, pinned by SHA-256)
+        run: |
+          set -eu
+          curl --fail --location --proto '=https' --tlsv1.2 --output "$RUNNER_TEMP/tla2tools.jar" \
+            https://github.com/tlaplus/tlaplus/releases/download/v1.7.4/tla2tools.jar
+          echo "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88  $RUNNER_TEMP/tla2tools.jar" | sha256sum --check --strict -
+          TLA2TOOLS="$RUNNER_TEMP/tla2tools.jar" scripts/verify_all.sh tla

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-01",
+  "policy": "A candidate contribution is not a novelty claim until its prior-art and differentiation gates close.",
+  "contributions": [
+    {
+      "id": "NC-N2-01",
+      "title": "Associator-defect navigation observable",
+      "foundation": ["N2-T01", "N2-T02"],
+      "status": "candidate contribution",
+      "core": "Replace the failed multiplicative parametrization x->L_x by matrix generators U_x together with D(x,y)=U_x U_y U_xy^{-1}, an SO(7)-stabilizer-valued exact defect observable.",
+      "novel_delta": "Potentially new as a navigation invariant coupling word synthesis to non-associativity; the underlying octonion and triality identities are classical.",
+      "falsifiers": ["Prior work uses the same D(x,y) with the same stabilizer and navigation interpretation.", "D carries no information beyond already-tabulated associator data for the selected generating shell."],
+      "next_gate": "Compute defect conjugacy/spectral classes for prime shells and search octonion/triality literature by the exact operator formula."
+    },
+    {
+      "id": "NC-N3-01",
+      "title": "Stabilizer-certified shell collision law",
+      "foundation": ["N3-T01", "N3-T02"],
+      "status": "candidate contribution",
+      "core": "Attach a finite group-action certificate to every shell pushforward and compute quotient multiplicities by Burnside before any Poisson comparison.",
+      "novel_delta": "The group-action theorem is classical; the candidate artifact contribution is the auditable correction layer for arithmetic shell collision experiments.",
+      "falsifiers": ["Existing shell equidistribution software already exposes equivalent stabilizer certificates and factorial moments.", "The relevant Hurwitz action is free and the correction reduces identically to a known normalization."],
+      "next_gate": "Implement the actual Hurwitz unit action and certify fixed-point tables for small n and ell."
+    },
+    {
+      "id": "NC-X-01",
+      "title": "Defect-stratified arithmetic navigation statistics",
+      "foundation": ["N2-T02", "N3-T02"],
+      "status": "candidate contribution",
+      "core": "Reduce octonionic navigation words modulo ell, stratify collisions by exact associator-defect class, and test expansion and synthesis separately within defect strata.",
+      "novel_delta": "This combines non-associative defect geometry with arithmetic collision statistics; no matching construction was found in the bounded initial search.",
+      "falsifiers": ["A prior golden-gate or triality construction already uses equivalent defect-stratified quotient statistics.", "Defect strata are determined trivially by existing group conjugacy data and yield no new distributional signal."],
+      "next_gate": "Keep H3 open. Single defects are classical up to one datum: the similarity class of Delta is a function of the Gram matrix of (1, x, y) and dim Q (KILL-09 to KILL-11, paper Theorem 3.29, Corollary 3.30); semisimple ones are classical up to SO-conjugacy. Word defects of length >= 4 are not classical (WordDefectNotClassical), and their characteristic polynomials are fixed by the Aut(C)-invariant forms phi and psi of the letters (paper Theorem 3.32 by the first fundamental theorem for G2, WordDefectG2Determined; literature note docs/literature/g2-invariants-2026-10-05.md). Over definite integral shells single defects are classical (DefectClassicalAnisotropic), so the integral test concerns words: the integral pilot (H3IntegralPilot) shows that value collisions are almost all operator collisions and that value-only collisions are sporadic, sharing word-defect classes at 22 to 50 percent against an exact equal-trace null of 6 to 7 percent. H3ConditionedIntegral provides a uniform (value, operator) quotient, exact integer arithmetic, all-fibre certificates and first/last representative sensitivity: 98 quotient collisions in the four preselected shell samples have no Gram-matched support; structured norm-3 panels have 182,512 quotient collisions with panel-dependent descriptive form-sharing ratios, and all exploratory controls are retained. Historical pilot class-sharing counts, including the percentages above, include alias weights and are not quotient statistics. Next: obtain a fresh sampled integral corpus with nonzero Gram/trace-matched collision support and test replication under the declared representative conventions; explain the sporadic length-3 value-only coincidences."
+    },
+    {
+      "id": "NC-N2-02",
+      "title": "Finite associator-defect holonomy",
+      "foundation": ["N2-T03", "N3-T02", "N2-T04"],
+      "status": "candidate contribution",
+      "core": "View binary parenthesizations of an admissible navigation word as vertices of a finite rebracketing graph; label elementary rotations by square-root-free orthogonal defect transports and compute the generated holonomy strata over F_q.",
+      "novel_delta": "The proposed contribution is the finite, certificate-bearing associahedral holonomy layer connecting octonion associators to orbit-corrected arithmetic statistics; its ingredients are classical.",
+      "falsifiers": ["The edge transports fail to compose into a well-defined action on the selected state space.", "The strata depend on arbitrary coordinatization rather than conjugacy-invariant data.", "Prior literature already constructs the same finite rebracketing holonomy with arithmetic collision moments."],
+      "next_gate": "Classify when individual pentagon edges vanish and when defect-operator transports yield nontrivial conjugacy-invariant strata despite the additive boundary closing."
+    },
+    {
+      "id": "NC-SG-01",
+      "title": "Witt-stabilized defect Apollonian action",
+      "foundation": ["N2-T03", "N2-T06", "N3-T02"],
+      "status": "candidate contribution",
+      "core": "Extend finite octonion defects by identity on the minimal discriminant-matching complement, transport them to the higher-dimensional Descartes form, and compare their conjugacy-invariant orbit strata with reduced Apollonian orbits and ACC configuration fibers. In EXP-SG-001, the explicit n=6, F_7 bridge Phi=I+J gives projective seed-orbit sizes 8 (defect), 168 (Apollonian), and 2240 (combined).",
+      "novel_delta": "The quadratic-form stabilization and Apollonian actions are classical. Only the defect subgroup alone is canonical up to conjugacy: two valid bridges give combined seed orbits 2240 and 137600 with the Apollonian subgroup fixed. The surviving candidate is a framed defect-Apollonian pair up to simultaneous conjugacy, not a canonical unframed enrichment.",
+      "falsifiers": ["The transported defect subgroup has exactly the same orbits as the reduced Apollonian group in every tested admissible dimension and field.", "The action preserves the curvature null cone but does not preserve or meaningfully stratify the full ACC configuration variety.", "Prior work already constructs an equivalent octonionic defect enrichment of higher-dimensional Descartes groups."],
+      "evidence": ["EXP-SG-001"],
+      "next_gate": "Specify a relative framing or a bridge-selection rule compatible with the Apollonian normalizer before claiming canonical joint statistics; then compare subgroup orders, intersections, seed classes, and full ACC fibers across fields and dimensions."
+    }
+  ]
+}

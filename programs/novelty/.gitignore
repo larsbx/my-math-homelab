@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.lake/
+paper/**/*.pdf
+paper/**/*.aux
+paper/**/*.log
+paper/**/*.bbl
+paper/**/*.blg
+paper/**/*.fls
+paper/**/*.fdb_latexmk
+paper/**/*.out
+.claude/provision-status
