@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  policy:
+    name: policy (estate layout)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Estate audit (pinned public artifact)
+        run: |
+          set -eu
+          rev=$(python3 -c 'import tomllib; print(next(d["rev"] for d in tomllib.load(open("ESTATE.toml", "rb"))["dep"] if d["id"] == "estate-governance"))')
+          pin=$(python3 -c 'import tomllib; print(next(d["pin"] for d in tomllib.load(open("ESTATE.toml", "rb"))["dep"] if d["id"] == "estate-governance"))')
+          test "$rev" = "0833929ed82d42cf3674a1565681625a9622827b"
+          curl --fail --location --proto '=https' --tlsv1.2 --output /tmp/estate-audit.py "https://raw.githubusercontent.com/larsbx/finite-math-kernels/4485675c1ed5da52beafad98c5118dc0ffc22456/policy/estate-audits/$rev.py"
+          pin_no_prefix=$(printf '%s' "$pin" | sed 's/^sha256://')
+          printf '%s  %s\n' "$pin_no_prefix" /tmp/estate-audit.py | sha256sum --check --strict -
+          python3 /tmp/estate-audit.py --root .
+
+  exact-kernel:
+    name: exact-kernel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e '.[test]'
+      - run: python -m pytest
+      - name: Replay capped period-four census
+        run: python experiments/period4_state.py --seed-max 40 --length 120 --min-periods 3 > "$RUNNER_TEMP/period4-census.json"
+
+  proof:
+    name: claim state
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python tools/check_claims.py
