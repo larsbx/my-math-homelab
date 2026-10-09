@@ -1,0 +1,10 @@
+version = 1
+
+[program]
+id = "s-adic-pisot"
+
+[source]
+repository = "larsbx/s-adic-pisot-conjecture-research"
+commit = "a10e5f77678feb52b327877b11738ab5475850c4"
+authority = "retained"
+import_status = "verified"
