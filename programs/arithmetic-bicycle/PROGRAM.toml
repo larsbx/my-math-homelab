@@ -1,0 +1,10 @@
+version = 1
+
+[program]
+id = "arithmetic-bicycle"
+
+[source]
+repository = "larsbx/arithmetic-bicycle-conjecture-research"
+commit = "23053222c2acdf9b6ff74f0f2499b44af9c3684a"
+authority = "retained"
+import_status = "verified"
