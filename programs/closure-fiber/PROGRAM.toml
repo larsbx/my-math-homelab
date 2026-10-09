@@ -1,0 +1,10 @@
+version = 1
+
+[program]
+id = "closure-fiber"
+
+[source]
+repository = "larsbx/closure-fiber-of-multiplication-research"
+commit = "6815ebfd7ccfcb6d32b90848911be329e950576e"
+authority = "retained"
+import_status = "metadata_only"
