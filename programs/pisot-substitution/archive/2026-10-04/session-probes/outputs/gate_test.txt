@@ -1,0 +1,540 @@
+Pixi task (test): bash run_tests.sh
+[PASS] test_every_canonical_trace_closes
+[PASS] test_exact_sidewise_survivor_has_order_sensitive_trace
+[PASS] test_stale_stored_certificate_fails_closed
+[PASS] test_right_edge_affine_loops_splice_to_certified_addresses
+[PASS] test_nonrepeat_splice_fails_closed
+5 affine-ancestry-trace Mojo tests passed.
+claim-receipt: G1b2RenewalFiniteness
+[PASS] test_the_kernel_is_a_boolean_algebra_of_languages
+[PASS] test_emptiness_reports_the_instance_not_only_the_verdict
+[PASS] test_projection_discharges_one_existential_quantifier
+[PASS] test_projection_over_three_tracks_eliminates_a_real_quantifier
+[PASS] test_two_quantifiers_eliminate_in_sequence
+[PASS] test_minimisation_identifies_exactly_equal_languages
+[PASS] test_a_partial_table_is_completed_by_one_rejecting_sink
+[PASS] test_the_numeration_automaton_is_the_fixed_point
+[PASS] test_position_counts_are_the_image_lengths
+[PASS] test_letter_counts_are_the_incidence_matrix
+[PASS] test_a_power_substitution_has_the_same_fixed_point
+[PASS] test_a_count_past_the_machine_range_is_still_exact
+[PASS] test_an_impossible_length_is_refused_not_answered
+[PASS] test_a_track_condition_enters_and_leaves_a_product
+[PASS] test_a_letter_outside_the_alphabet_is_refused_not_indexed_with
+[PASS] test_the_subset_and_refinement_indices_are_order_faithful_at_scale
+16 automata and numeration tests passed.
+contract-receipt: the automata kernel decides emptiness, complement and projection over total deterministic automata, and the Dumont-Thomas numeration presents the fixed point exactly; no ledger claim rests on it, and the step to a decision procedure is gated in docs/automatic-sequence-route-literature-gate-2026-09-17.md
+[PASS] test_type_g_cycles_all_three_unordered_pairs
+[PASS] test_a_b_g_are_eliminated_c_through_f_survive_this_filter
+[PASS] test_all_27_maps_match_type_level_filter
+[PASS] test_surviving_types_have_a_proper_noncoalescing_pair_orbit
+[PASS] test_one_good_pair_forces_a_common_hub_on_every_other_edge
+5 Barge-Diamond endpoint tests passed.
+claim-receipt: GlobalEndpointSync
+[PASS] test_the_generator_is_reproducible_from_its_seed
+[PASS] test_bounded_draws_stay_inside_their_range
+[PASS] test_generic_primitivity_agrees_with_the_three_letter_kernel
+[PASS] test_the_bounded_builder_matches_the_canonical_one_when_complete
+[PASS] test_each_budget_reports_itself_and_fails_closed
+[PASS] test_productivity_and_catching_agree_on_tribonacci
+[PASS] test_the_sweep_is_reproducible_and_misses_nothing_productive
+[PASS] test_a_random_substitution_is_well_formed
+8 boundary-synchronization tests passed.
+claim-receipt: SinkSCCReduction
+contract-receipt: the seeded sweep is reproducible from its seed alone, and an exhausted budget reports itself rather than a verdict
+[PASS] test_the_candidate_images_are_the_short_words_in_order
+[PASS] test_the_arithmetic_regime_splits_by_determinant_and_discriminant
+[PASS] test_the_histogram_reports_its_keys_and_fails_closed
+[PASS] test_a_component_is_classified_by_its_two_edge_facts
+[PASS] test_relabelling_and_reversal_normal_forms
+[PASS] test_the_defect_degree_is_the_first_nonvanishing_invariant
+[PASS] test_the_degree_two_trace_sieve_is_exact
+[PASS] test_the_degree_three_taxonomy_reproduces_the_known_orbit
+[PASS] test_the_memoized_screen_accepts_exactly_what_is_pip_accepts
+[PASS] test_the_corpus_is_the_screened_corpus
+[PASS] test_the_long_images_extend_the_short_images_in_order
+[PASS] test_the_total_length_corpus_contains_the_standing_corpus
+12 census-library tests passed.
+claim-receipt: BoundedDegree3Exclusion
+claim-receipt: BoundedDegree2WedgeProductivity
+claim-receipt: ParitySieve
+claim-receipt: DefectIntertwiner
+/home/user/pisot-substitution-conjecture-research/mojo/tests/test_coincidence_elimination.mojo:100:28: warning: assignment to 'expected' was never used; assign to '_' instead?
+            var expected = False
+                           ^
+[PASS] test_the_assembled_formula_is_the_direct_automaton
+[PASS] test_the_existential_is_discharged_at_the_same_level
+[PASS] test_the_letter_conjunct_is_the_letter_map
+[PASS] test_quantifying_the_other_path_away_leaves_the_positions
+[PASS] test_malformed_input_raises
+5 coincidence elimination tests passed.
+contract-receipt: the strong coincidence formula is decided by giving each conjunct to the automaton that recognises it and eliminating the existential with the automata kernel, and the language it assembles is the one the purpose-built automaton accepts; the Parikh-equality relation is the single predicate the numeration's own signature does not supply, and deciding the condition per substitution is not deciding it for the alphabet-3 Pisot family, which stays open
+[PASS] test_a_witness_is_a_coincidence_the_substitution_confirms
+[PASS] test_the_level_is_the_least_a_search_through_the_images_finds
+[PASS] test_nothing_shorter_than_the_level_is_accepted
+[PASS] test_the_parikh_track_is_the_prefix_it_names
+[PASS] test_widening_the_pruning_bound_does_not_move_the_language
+[PASS] test_malformed_input_raises
+[PASS] test_the_search_and_the_whole_language_agree
+7 coincidence formula tests passed.
+contract-receipt: strong coincidence is decided per substitution by one automaton over synchronous Dumont-Thomas path pairs carrying the Parikh difference, whose state set is finite by the Pisot argument stated in psc/coincidence_formula.mojo rather than by an imported theorem; every witness is checked against the images themselves, and deciding the condition for a specimen is not deciding it for the alphabet-3 Pisot family, which stays open
+[PASS] test_shortest_level_is_bounded_by_coaccessible_states
+[PASS] test_unimodular_pip_inputs_have_unbounded_syntactic_parameters
+[PASS] test_height_cancels_in_explicit_level_four_witnesses
+[PASS] test_the_current_field_ceiling_refuses_instead_of_narrowing_the_theorem
+4 coincidence-level-bound tests passed.
+contract-receipt: a nonempty pair coincidence language has least level at most the coaccessible affine-state count minus one; the unbounded-height unimodular family 0->1, 1->2, 2->0 2^n has explicit pair witnesses by level four; the current powered-field ceiling refuses member 65 rather than narrowing either mathematical statement, and no uniform alphabet-three PIP bound or pair nonemptiness theorem is claimed
+[PASS] test_a_fast_contraction_floor_violates_the_ratio_laws
+[PASS] test_the_plastic_class_and_the_deepest_length_four_specimen_hold
+[PASS] test_the_affine_law_is_violated_where_it_should_be
+contract-receipt: depth laws decided exactly from a rational bracket of mu^2: a fast-contraction floor (K_V = 6, mu ~ 0.51) violates K_V <= 3.2/log(1/mu) and 4/log(1/mu); the plastic class (K_V 14) and the deepest length-4 specimen (K_V 26) hold all three; a deficient depth violates K_V <= 7 + 1/log(1/mu)
+[PASS] test_three_letter_maps_have_seven_conjugacy_classes
+[PASS] test_only_two_classes_are_globally_synchronizing
+[PASS] test_recurrent_off_diagonal_cores_are_exact
+[PASS] test_transient_nonsynchronizing_pairs_are_not_in_the_core
+[PASS] test_every_nonsynchronizing_pair_enters_the_core_within_one_step
+[PASS] test_named_types_are_the_derived_conjugacy_classes
+[PASS] test_canonicalization_is_invariant_under_relabeling
+[PASS] test_cycle_lengths_distinguish_core_cycle_shapes
+[PASS] test_synchronization_quotient_is_a_permutation_of_the_partition
+[PASS] test_endpoint_maps_read_the_image_ends
+10 endpoint-core tests passed.
+claim-receipt: EndpointCore
+claim-receipt: SignatureReduction
+/home/user/pisot-substitution-conjecture-research/mojo/tests/test_exact_interval.mojo:196:8: warning: doc string summary should begin with a capital letter or non-alpha character, but this begins with 'b'
+    """beta > 1 > 0, so a nonzero one-signed quadratic cannot change sign at it.
+       ^
+Included from /home/user/pisot-substitution-conjecture-research/mojo/tests/test_exact_interval.mojo:11:
+./psc/perron_interval.mojo:121:22: warning: assignment to 'boxed_sign' was never used; assign to '_' instead?
+    var boxed_sign = 0
+                     ^
+[PASS] test_exact_rational_normalization_and_order
+[PASS] test_natural_interval_extension_contains_point_values
+[PASS] test_interval_division_across_zero_fails_closed
+[PASS] test_unbounded_rational_arithmetic_does_not_overflow
+[PASS] test_perron_root_has_exact_rational_bracket
+[PASS] test_symbolic_zero_is_not_a_strict_interval_certificate
+[PASS] test_interval_first_perron_sign_certifies_easy_and_falls_back_near_root
+canonical overlap margins: 1256
+interval-certified margins: 1256
+algebraic-fallback margins: 0
+minimum certified rational overlap margin: 231/16384
+[PASS] test_canonical_overlap_margin_interval_calibration
+[PASS] test_coarse_overlap_audit_withholds_partial_minimum
+[PASS] test_the_two_sign_oracles_agree_wherever_both_decide
+[PASS] test_coefficients_of_one_sign_are_decided_by_positivity_alone
+[PASS] test_a_mixed_sign_element_still_goes_through_the_remainder_chain
+[PASS] test_the_perron_sign_has_no_coefficient_ceiling
+[PASS] test_the_enclosure_decides_where_the_machine_rung_cannot
+14 exact-interval Mojo tests passed.
+contract-receipt: the exact rational and closed-interval layer: an unknown containment or sign is never promoted, and a coarse audit withholds a partial minimum
+[PASS] test_cokernel_orders_match_det_power
+[PASS] test_cokernel_membership_is_exact
+[PASS] test_sidewise_prefix_reconstruction_matches_correction
+[PASS] test_fixed_window_sidewise_cokernel_staircase
+[PASS] test_exact_sidewise_countercalibration_is_present
+[PASS] test_cokernel_audit_rejects_invalid_level_and_mixed_specimens
+6 finite-cokernel-address Mojo tests passed.
+claim-receipt: G1b2RenewalFiniteness
+finite_exact vendored smoke checks passed.
+contract-receipt: the vendored finite_exact arithmetic and closed-interval kernels compile and hold under the PSC toolchain
+Included from /home/user/pisot-substitution-conjecture-research/mojo/tests/test_good_edge_system.mojo:7:
+Included from ./psc/good_edge_system.mojo:28:
+./psc/hub_selector.mojo:104:22: warning: assignment to 'child_side' was never used; assign to '_' instead?
+    var child_side = -1
+                     ^
+[PASS] test_nonpisot_control_has_one_finite_compatible_good_edge
+[PASS] test_actual_first_child_residual_is_part_of_the_contract
+[PASS] test_malformed_system_fails_before_endpoint_early_rejection
+3 system good-edge Mojo tests passed.
+claim-receipt: GlobalEndpointSync
+[PASS] test_derived_system_interns_once_and_tracks_orientation
+[PASS] test_relative_offset_is_compact_and_bounded
+[PASS] test_hot_constructor_matches_verification_wrapper
+[PASS] test_reversed_parent_swaps_physical_sides_and_orientation
+[PASS] test_context_packing_uses_one_sentinel
+5 hierarchy-offset Mojo tests passed.
+claim-receipt: OrientationMonodromy
+contract-receipt: the derived system interns each normalized state once and packs relative context with one sentinel
+Imported from /home/user/pisot-substitution-conjecture-research/mojo/tests/test_hub_cocycle.mojo:7:
+Imported from ./psc/hub_cocycle.mojo:25:
+./psc/signing.mojo:185:39: warning: transfer from an owned value has no effect and can be removed
+                    return List[Int]()^
+                                      ^
+                                      
+Included from /home/user/pisot-substitution-conjecture-research/mojo/tests/test_hub_cocycle.mojo:7:
+Included from ./psc/hub_cocycle.mojo:25:
+./psc/signing.mojo:135:9: warning: ref 'v' was never used, remove it?
+    for v in range(n):
+        ^
+[PASS] test_hub_side_is_defined_on_every_state_and_occurrence
+[PASS] test_hub_residual_is_orientation_sign_after_vertex_gauge
+[PASS] test_hub_gauge_preserves_perron_phase
+[PASS] test_scc_precondition_detects_disconnected_support
+4 hub-cocycle Mojo tests passed.
+claim-receipt: OrientationMonodromy
+Included from /home/user/pisot-substitution-conjecture-research/mojo/tests/test_hub_selector.mojo:7:
+./psc/hub_selector.mojo:104:22: warning: assignment to 'child_side' was never used; assign to '_' instead?
+    var child_side = -1
+                     ^
+[PASS] test_named_representatives_pin_selector_phases
+[PASS] test_all_cdef_maps_have_uniform_viable_phase
+[PASS] test_viability_rejects_good_edge_and_coalescence
+[PASS] test_recurrent_aligned_cycle_normal_form_is_fixed_or_alternating_e
+[PASS] test_alternating_e_cycle_is_exactly_the_good_edge_swap
+5 hub-selector Mojo tests passed.
+claim-receipt: EndpointCore
+contract-receipt: aligned recurrent hub-star pair cycle is fixed or alternating type-E
+[PASS] test_the_specialised_paths_agree_with_the_general_loop
+[PASS] test_a_dimension_that_does_not_agree_is_refused
+[PASS] test_an_intermediate_past_the_machine_range_raises_rather_than_wrapping
+[PASS] test_the_corpus_checksum_matches_the_python_oracle
+4 integer-vector kernel tests passed.
+contract-receipt: the canonical fixed-dimension integer vector kernel: a specialised path computes the general definition, a disagreeing dimension is refused, and an intermediate past the machine range raises instead of wrapping
+[PASS] test_zero_return_oracle_pins_depth_four_seed_cuts
+[PASS] test_invalid_bounds_fail_before_empty_cut_enumeration
+[PASS] test_audit_rejects_mixed_projection_bounds
+[PASS] test_window_requirement_staircase_on_bounded_seed_corpus
+[PASS] test_interned_audit_ignores_duplicate_observation_records
+[PASS] test_interned_audit_rejects_conflicting_duplicate_observation
+[PASS] test_persistent_right_edge_collisions_are_regular_loop_extensions
+[PASS] test_loop_classifier_rejects_different_insertion_levels
+8 joint-local-census Mojo tests passed.
+claim-receipt: G1b2RenewalFiniteness
+[PASS] test_full_level_one_address_still_needs_source_context
+[PASS] test_one_level_head_tail_window_misses_middle_digit_change
+[PASS] test_invalid_projection_parameters_fail_closed
+3 joint-local-type Mojo tests passed.
+claim-receipt: G1b2RenewalFiniteness
+[PASS] test_rational_normalisation
+[PASS] test_exact_nullspace
+[PASS] test_levi_civita
+[PASS] test_w3_is_eight_dimensional
+[PASS] test_certificate_basis_spans_w3
+[PASS] test_w3_invariant_basis_on_tribonacci
+[PASS] test_seeds_are_k2_zero_of_length_seven
+[PASS] test_seed_matrices_match_certificate
+[PASS] test_seed_matrix_invariants
+[PASS] test_adjugate_identity
+[PASS] test_tribonacci_is_pip
+[PASS] test_permutation_matrix_is_not_pip
+[PASS] test_equal_row_sums_forces_rational_eigenvalue
+[PASS] test_target1_on_tribonacci
+[PASS] test_bpa_tribonacci
+[PASS] test_coincidence_boundaries
+[PASS] test_smith_newborn_boundary_lineage
+[PASS] test_endpoint_map_types
+[PASS] test_full_certificate_passes
+19 kernel tests passed.
+claim-receipt: Target1
+claim-receipt: W3LowGrowth
+[PASS] test_margin_recurrence
+[PASS] test_image_length_dp_is_exact
+[PASS] test_tribonacci_two_descent_tower
+[PASS] test_unprotected_cut_is_rejected
+[PASS] test_nonpisot_strict_calibration
+5 legal-tower Mojo tests passed.
+claim-receipt: C3Locality
+[PASS] test_known_loop_quotient_removes_staircase_collisions
+[PASS] test_wrong_loop_label_preserves_known_residuals
+[PASS] test_loop_quotient_rejects_mixed_projection_bounds
+[PASS] test_loop_quotient_does_not_cross_specimen_provenance
+[PASS] test_any_synchronous_extension_allows_distinct_side_digits
+fixed-window depth-7 raw collisions: 12466
+fixed-window depth-7 nominated-loop quotiented pairs: 946
+fixed-window depth-7 nominated-loop residual collisions: 11520
+fixed-window depth-7 all-synchronous direct edges: 392
+fixed-window depth-7 all-synchronous quotiented pairs: 946
+fixed-window depth-7 all-synchronous residual collisions: 11520
+fixed-window first residual left index: 46
+fixed-window first residual right index: 1
+fixed-window first residual left depth: 5
+fixed-window first residual left cut: 53
+fixed-window first residual right depth: 2
+fixed-window first residual right cut: 6
+fixed-window first residual left source-index delta: 1
+fixed-window first residual right source-index delta: 1
+fixed-window first residual left top digits: [1, 1, 2, 0, 0, 0, 1, 1, 2, 2]
+fixed-window first residual left bottom digits: [1, 2, 1, 1, 2, 0, 0, 0, 1, 2]
+fixed-window first residual right top digits: [1, 1, 2, 2]
+fixed-window first residual right bottom digits: [1, 2, 1, 2]
+scaled-defect residue modulus: 2
+scaled-defect residue surviving residual pairs: 11520
+scaled-defect residue separated residual pairs: 0
+scaled-defect first survivor left depth: 5
+scaled-defect first survivor left cut: 53
+scaled-defect first survivor right depth: 2
+scaled-defect first survivor right cut: 6
+scaled-defect first survivor left vector: 13 15 7
+scaled-defect first survivor right vector: 1 1 1
+scaled-defect residue modulus: 4
+scaled-defect residue surviving residual pairs: 10944
+scaled-defect residue separated residual pairs: 576
+scaled-defect first survivor left depth: 7
+scaled-defect first survivor left cut: 583
+scaled-defect first survivor right depth: 7
+scaled-defect first survivor right cut: 576
+scaled-defect first survivor left vector: -84 -100 -44
+scaled-defect first survivor right vector: -84 -100 -44
+scaled-defect residue modulus: 8
+scaled-defect residue surviving residual pairs: 6694
+scaled-defect residue separated residual pairs: 4826
+scaled-defect first survivor left depth: 7
+scaled-defect first survivor left cut: 583
+scaled-defect first survivor right depth: 7
+scaled-defect first survivor right cut: 576
+scaled-defect first survivor left vector: -84 -100 -44
+scaled-defect first survivor right vector: -84 -100 -44
+scaled-defect residue modulus: 16
+scaled-defect residue surviving residual pairs: 4652
+scaled-defect residue separated residual pairs: 6868
+scaled-defect first survivor left depth: 7
+scaled-defect first survivor left cut: 583
+scaled-defect first survivor right depth: 7
+scaled-defect first survivor right cut: 576
+scaled-defect first survivor left vector: -84 -100 -44
+scaled-defect first survivor right vector: -84 -100 -44
+scaled-defect residue modulus: 32
+scaled-defect residue surviving residual pairs: 4652
+scaled-defect residue separated residual pairs: 6868
+scaled-defect first survivor left depth: 7
+scaled-defect first survivor left cut: 583
+scaled-defect first survivor right depth: 7
+scaled-defect first survivor right cut: 576
+scaled-defect first survivor left vector: -84 -100 -44
+scaled-defect first survivor right vector: -84 -100 -44
+[PASS] test_fixed_window_diagnostic_preserves_accounting
+[PASS] test_residue_modulus_one_is_rejected
+[PASS] test_invalid_residue_modulus_is_rejected_on_empty_corpus
+8 loop-quotient-census Mojo tests passed.
+claim-receipt: G1b2RenewalFiniteness
+[PASS] test_the_basis_is_the_characteristic_recurrence
+[PASS] test_the_basis_stops_where_the_machine_range_does
+[PASS] test_greedy_digits_round_trip
+[PASS] test_the_two_numerations_are_not_the_same_presentation
+[PASS] test_a_powered_substitution_builds_its_own_field
+[PASS] test_the_addition_automaton_accepts_every_true_sum_and_no_false_one
+[PASS] test_leading_zeros_change_no_verdict
+[PASS] test_a_search_out_of_budget_refuses_and_malformed_input_raises
+8 numeration and addition tests passed.
+contract-receipt: the linear numeration of a substitution round-trips its greedy digits, its agreement with the Dumont-Thomas path digits is decided per substitution rather than assumed, and the addition automaton built by exact Pisot state exploration is the addition relation on a stated bounded domain; the general recognisability of addition remains an imported theorem, gated in docs/automatic-sequence-route-literature-gate-2026-09-17.md
+[PASS] test_each_position_is_paired_with_itself_and_with_nothing_else
+[PASS] test_leading_zeros_change_no_verdict
+[PASS] test_the_letter_map_transfers_to_the_greedy_digits
+[PASS] test_the_whole_entry_point_agrees_with_the_shared_conversion
+[PASS] test_the_pruning_bound_does_not_decide_the_language
+[PASS] test_a_short_budget_refuses_and_malformed_input_raises
+[PASS] test_a_large_digit_alphabet_is_not_refused_for_the_matrix_bound
+7 numeration conversion tests passed.
+contract-receipt: the conversion automaton pairs a Dumont-Thomas path word with the digit word of the same position and with no other, on a stated bounded domain, and the letter map carried across it answers as the fixed point does; its pruning bound is measured on both sides rather than asserted, and the finiteness of the state set it explores remains an imported theorem, gated in docs/automatic-sequence-route-literature-gate-2026-09-17.md
+[PASS] test_prolongable_points_are_the_first_letter_cycles
+[PASS] test_the_fixed_point_prefix_is_long_enough_and_prolongs
+[PASS] test_prefix_sums_are_the_parikh_vectors
+[PASS] test_the_enumeration_window_is_exact_and_fails_closed
+[PASS] test_a_zero_combination_is_the_zero_translation
+[PASS] test_tribonacci_types_coincide_with_the_seed_patch
+[PASS] test_tau_needs_a_longer_prefix_than_one_letter
+7 overlap-type tests passed.
+claim-receipt: SwapOverlapFiniteness
+contract-receipt: the Sirvent-Solomyak overlap-type layer agrees with the repository seed-patch graph on the tribonacci calibration
+[PASS] test_every_recurrent_vertex_reaches_a_catch_up
+[PASS] test_q1_fails_where_no_catch_up_is_reachable
+[PASS] test_right_endpoints_do_not_rescue_q1
+contract-receipt: one-tile catch-up analysis: recurrent/in-CU/reach-CU pinned on seven specimens; Q1 holds on cube, golden pump, 210/0/110, plastic, Tribonacci; fails totally on 1/012/010 (694/0/0) and partly on 1/12/022 (14/4/12); two-sided (left/right/either), Tribonacci 14/14/14 of 14 (mirror recurrent 8), 1/12/022 12/12/12 of 14, 1/012/010 0/0/0 of 694 while PPVC holds with K_V 14
+[PASS] test_affine_edges_and_golden_pump
+[PASS] test_caps_fail_closed
+2 overlap affine-pump Mojo tests passed.
+claim-receipt: OrderedAffineCycleIdentity
+[PASS] test_collar_recursion_matches_the_inflated_periodic_patch
+[PASS] test_affine_state_alone_leaves_collisions_and_radius_one_resolves_them
+[PASS] test_golden_pump_lifts_to_an_eventually_constant_collar
+[PASS] test_most_collared_tiles_are_legal_factors
+[PASS] test_a_collision_surviving_every_radius_comes_from_a_collapsing_patch
+[PASS] test_a_non_collapsing_collision_can_need_radius_nine
+[PASS] test_fail_closed
+7 overlap-collar Mojo tests passed.
+claim-receipt: PeriodicPatchCollar
+claim-receipt: FiniteCollarDeath
+[PASS] test_golden_affine_context_mismatch
+[PASS] test_cap_fails_closed
+2 overlap-context Mojo tests passed.
+claim-receipt: OneStepContextEquality
+[PASS] test_sturm_tarski_counts_and_signs
+[PASS] test_bound_pins_exact_values
+[PASS] test_defining_inequality_not_its_relaxation
+[PASS] test_capped_graph_is_rejected
+[PASS] test_the_cache_answers_as_a_freshly_built_bound_does
+[PASS] test_the_key_separates_a_shared_cubic_with_different_digits
+[PASS] test_a_cached_bound_still_rejects_a_capped_graph
+7 contracting-bound Mojo tests passed.
+claim-receipt: OverlapBadSCCNormalForm
+contract-receipt: manuscript Proposition 5.42: the contracting bound is decided by exact Sturm-Tarski counting, and a capped graph is rejected
+[PASS] test_multiple_edges_are_occurrences_not_types
+[PASS] test_iterated_update_composes_exactly
+[PASS] test_fail_closed
+3 overlap-growth-bridge Mojo tests passed.
+contract-receipt: residual overlap multiplicities count multiple child occurrences exactly under inflation, compose across levels, and fail closed on invalid levels, caps, or capped graphs
+[PASS] test_nonunit_filter_is_nontrivial_on_golden_regression
+[PASS] test_unimodular_filter_specializes_to_trivial
+[PASS] test_word_cap_refuses_incomplete_filter
+[PASS] test_zero_class_survival_is_not_a_hit_claim
+4 strict-zipper M-adic filter tests passed.
+contract-receipt: strict-zipper level-m hit implies zero class in Z^3 / M^m Z^3
+[PASS] test_perron_order_is_exact_on_basic_elements
+canonical seed-overlap initial states: 9
+canonical seed-overlap graph states: 628
+[PASS] test_canonical_seed_overlap_graph_is_productive
+[PASS] test_capped_productivity_query_fails_closed
+[PASS] test_non_pip_substitution_is_rejected
+[PASS] test_large_incidence_is_rejected_before_unchecked_pip_arithmetic
+[PASS] test_first_coincidence_depths_pin_exact_values
+[PASS] test_left_aligned_and_strong_coincidence_depths_pin_exact_values
+[PASS] test_common_child_starts_are_exactly_zero_shift_children
+[PASS] test_nonproductive_sink_obstruction_is_extracted_exactly
+[PASS] test_the_perron_cache_rebuilds_the_tables_it_shares
+[PASS] test_the_perron_cache_refuses_what_a_bare_build_refuses
+[PASS] test_the_certified_domain_ends_at_column_sum_six
+[PASS] test_the_perron_cache_keeps_refusing_after_a_failed_build
+[PASS] test_the_cube_image_specimen_has_a_productive_depth_19_overlap_graph
+[PASS] test_the_cube_image_specimen_reaches_a_half_coincidence_by_depth_17
+15 seed-patch-overlap Mojo tests passed.
+claim-receipt: SwapOverlapFiniteness
+claim-receipt: AlignedOverlapsAreStrongCoincidence
+claim-receipt: BoundaryCoincidenceCriterion
+contract-receipt: 0 -> 1, 1 -> 222, 2 -> 0222 has an uncapped productive seed-patch overlap graph of 1142 states with maximum first-coincidence depth 19
+contract-receipt: every seed-patch overlap of 0 -> 1, 1 -> 222, 2 -> 0222 has an offset-zero descendant, with maximum first left-aligned depth 17
+[PASS] test_ordered_occurrences_preserve_all_child_occurrences
+[PASS] test_zero_shift_free_recurrence_is_one_sided_and_fail_closed
+2 ordered-overlap-zipper Mojo tests passed.
+claim-receipt: OverlapBoundaryZipperDichotomy
+[PASS] test_worker_count_does_not_change_the_record
+[PASS] test_invalid_worker_count_fails_closed
+2 parallel-census tests passed.
+contract-receipt: MAX parallel BPA census worker-count invariance
+[PASS] test_both_tail_cycles_have_the_same_exact_gain
+[PASS] test_period_gain_has_exact_norm_eleven
+[PASS] test_positive_growth_channel_is_not_a_state_potential
+[PASS] test_inflation_closure_has_index_eleven
+4 Penrose H_tail Phi-cocycle tests passed.
+contract-receipt: penrose H_tail penrose_phi_increment channel
+[PASS] test_census_pins_agree_with_the_independent_oracle
+[PASS] test_centre_offset_is_exact_and_integrality_is_decided
+[PASS] test_the_cycle_replay_refuses_a_wrong_start
+[PASS] test_a_capped_closure_is_never_a_verdict
+contract-receipt: interior-occurrence pair census: tribonacci r<=6 908/18/18 depth 3, cube r<=3 232/8/8 depth 1, golden pump r<=4 366/20/20 depth 7, no strict zipper
+contract-receipt: centre offset (M^r - I)^{-1}(pi(P) - pi(Q)) is computed over Z and replayed exactly
+contract-receipt: periodic-pair cycle replay fails closed when the chain does not close on its start
+contract-receipt: a capped periodic-pair descendant closure is reported as capped, not as a strict zipper
+contract-receipt: Exact polynomial evaluation, degree and remainder equivalence
+[PASS] test_known_pisot_minimal_polynomials
+[PASS] test_reciprocal_pisot_polynomials_are_not_refused
+[PASS] test_a_conjugate_on_the_unit_circle_is_not_pisot
+[PASS] test_non_pisot_classifications
+[PASS] test_the_screen_refuses_what_it_cannot_accept
+[PASS] test_a_refusal_is_never_a_negative_result
+[PASS] test_a_refusal_is_never_a_unit_circle_result_either
+[PASS] test_the_transform_drops_degree_exactly_at_a_root_of_minus_one
+[PASS] test_the_screen_agrees_with_the_cubic_decider
+[PASS] test_irreducibility_is_decided_below_degree_four_and_refused_above
+[PASS] test_screening_and_irreducibility_are_independent
+[PASS] test_the_cubic_decider_is_still_the_one_used_for_pip
+12 Pisot-screen Mojo tests passed.
+contract-receipt: the degree-n Pisot screen is exact and fail-closed: a refusal is never a negative result, and the cubic decider stays canonical for PIP
+[PASS] test_step_label_roundtrip
+[PASS] test_unlabelled_path_collision_keeps_distinct_labels
+[PASS] test_local_types_preserve_two_transition_window
+[PASS] test_empty_pair_is_balanced_but_not_a_first_return
+[PASS] test_reducible_balanced_pair_is_not_a_strict_first_return
+[PASS] test_unbalanced_pair_fails_closed_for_strict_contract
+6 labelled-renewal Mojo tests passed.
+claim-receipt: G1b2RenewalFiniteness
+[PASS] test_precomputed_tables_are_exact_and_reusable
+[PASS] test_pair_census_state_reuses_source_metadata
+[PASS] test_nonunimodular_level_one_certificate
+[PASS] test_inherited_level_two_certificate
+[PASS] test_nonzero_source_displacement_certificate
+[PASS] test_nonreturn_cut_fails_closed
+[PASS] test_source_pair_must_be_strict_first_return
+[PASS] test_relative_address_does_not_replace_labels
+8 renewal-address Mojo tests passed.
+claim-receipt: G1b2RenewalFiniteness
+[PASS] corrected canonical representation counts: 01/02/0
+[PASS] corrected canonical representation counts: 11/02/002
+[PASS] corrected canonical representation counts: 21/22/102
+[PASS] corrected canonical representation counts: 022/20/11
+[PASS] representation comparison refuses capped or undersized inputs
+contract-receipt: the four BPA/overlap comparison specimens have replayed canonical counts; finite-prefix OA and swap-seed graphs remain distinct and caps are inconclusive
+[PASS] test_hermite_form_index
+[PASS] test_tribonacci_factor_complexity
+[PASS] test_unimodular_returns_span_every_order
+[PASS] test_det_two_returns_shrink
+[PASS] test_exact_agrees_with_sampled_route
+[PASS] test_covering_bound
+[PASS] test_verify_accepts_valid_profiles
+[PASS] test_verify_refuses_broken_chain
+[PASS] test_verify_refuses_broken_covering_bound
+9 return-lattice Mojo tests passed.
+contract-receipt: return lattice of radius-n patches is the Rauzy-graph cycle image
+contract-receipt: return-lattice census refuses broken chain and covering-bound profiles
+[PASS] test_named_specimens_have_the_full_return_module
+[PASS] test_every_digraph_on_three_letters_has_index_zero_or_one
+[PASS] test_dekkings_height_two_substitution_has_rank_two
+[PASS] test_a_singular_specimen_has_rank_below_three
+[PASS] test_every_corpus_specimen_has_the_full_return_module
+[PASS] test_every_total_length_eight_specimen_has_the_full_return_module
+contract-receipt: return-module index: 1 on all 4554 corpus and 24486 total-length-8 PIP specimens (Theorem R), index 0 or 1 on all 512 three-letter digraphs (303/209), 0 on two singular controls
+contract-receipt: bounded total-length separation survey distinguishes exact radii, proper-power witnesses, and refused budgets
+Imported from /home/user/pisot-substitution-conjecture-research/mojo/tests/test_signing.mojo:5:
+./psc/signing.mojo:185:39: warning: transfer from an owned value has no effect and can be removed
+                    return List[Int]()^
+                                      ^
+                                      
+Included from /home/user/pisot-substitution-conjecture-research/mojo/tests/test_signing.mojo:5:
+./psc/signing.mojo:135:9: warning: ref 'v' was never used, remove it?
+    for v in range(n):
+        ^
+[PASS] test_positive_loop_is_trivial_phase
+[PASS] test_negative_loop_is_half_phase
+[PASS] test_two_cycle_with_one_negative_edge_is_half_phase
+[PASS] test_two_cycle_with_two_negative_edges_switches_to_positive
+[PASS] test_mixed_self_loop_signs_are_perron_strict
+5 signing parity tests passed.
+claim-receipt: OrientationSpectrum
+[PASS] test_swap_seed_has_discrepancy_one
+[PASS] test_blocks_inherit_the_swap_walk_bound
+[PASS] test_tribonacci_profile_is_flat
+[PASS] test_tau_profile_and_reachable_maximum
+[PASS] test_common_tile_counts_pin_exact_values
+5 swap-discrepancy tests passed.
+claim-receipt: G1b1BoundedDiscrepancy
+[PASS] target packets: addresses, orientation, cycles, depths, replay, caps
+contract-receipt: target-aware BPA diagnostics use actual ordered factorization and occurrence addresses; zero residual alone is insufficient; SCCs, shortest existential paths and monovariant counterexamples remain finite diagnostics
+[PASS] test_affine_forcing_channel_is_exact_and_occurrence_labelled
+[PASS] test_component_order_is_canonical_and_caps_fail_closed
+2 Tier-2 loop-gain fixture Mojo tests passed.
+contract-receipt: tier2-loop-gain-v1 affine_forcing fixture channel
+[PASS] test_boundaries_fail_closed
+[PASS] test_star_product_is_composition_and_dgp_parity_is_closed
+[PASS] test_kneading_prefix_is_common_to_every_image_of_the_composite
+[PASS] test_column_coincidence_reports_least_depth_with_calibrations
+4 tuning-kernel Mojo tests passed.
+contract-receipt: the vendored substitution_dynamics tuning, directive-prefix, and column-coincidence kernels hold under the PSC toolchain
+[PASS] test_unimodularity_forbids_a_collapsing_seed_patch
+[PASS] test_a_non_unit_collapse_exhibits_the_divisibility_lemma_1_forbids
+2 unimodular-route Mojo tests passed.
+claim-receipt: UnimodularNoPatchCollapse
+claim-receipt: CorpusDeterminantSplit
+[PASS] test_named_specimens_hold_for_every_r
+[PASS] test_every_integral_centre_offset_lies_in_the_box
+[PASS] test_seed_graph_cycles_lie_in_the_box_graph
+[PASS] test_a_capped_box_graph_is_never_a_verdict
+[PASS] test_census_slices_are_pinned
+contract-receipt: box-graph vertex coincidence (Proposition V): tribonacci 14/3, cube 1166/17, golden pump 716/15 hold for every r; every integral centre offset and every seed-graph cycle vertex lies in the box; a capped box graph is not a verdict; census slices pinned: first 300 standing specimens 59372 recurrent, K_V 17, 5221392 states; first 100 images-of-length-4 specimens 14180 recurrent, K_V 15, 1116030 states
+[PASS] test_streamed_n2_exact_coordinates
+[PASS] test_streamed_n3_exact_coordinates
+[PASS] test_repeated_letter_mass
+3 streaming word-kernel tests passed.
+claim-receipt: DefectIntertwiner
+
+54 Mojo test files run; receipts in build/claim-receipts.tsv.
+All passed.

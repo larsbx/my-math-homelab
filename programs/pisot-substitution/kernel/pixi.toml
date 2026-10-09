@@ -1,0 +1,71 @@
+[workspace]
+name = "psc-mojo"
+version = "0.1.0"
+description = "Canonical exact Mojo implementation for the PSC balanced-pair research program"
+channels = ["https://conda.modular.com/max-nightly/", "conda-forge"]
+platforms = ["linux-64", "osx-arm64"]
+
+[dependencies]
+modular = ">=26.6.0.dev2026090805,<27"
+
+[tasks]
+# Every regression test: one loop over tests/test_*.mojo (see run_tests.sh).
+# A single test needs no task of its own:  pixi run mojo run -I . tests/test_words_streaming.mojo
+test = "bash run_tests.sh"
+verify = "mojo run -I . verify.mojo"
+check = "bash run_tests.sh && mojo run -I . verify.mojo"
+
+# Exhaustive censuses and catalogues over the standing alphabet-3 PIP corpus.
+census = "mojo run -I . census.mojo"
+c3-census = "mojo run -I . c3_census.mojo"
+c4-census = "mojo run -I . c4_census.mojo"
+defect-degree-census = "mojo run -I . defect_degree_census.mojo"
+degree2-three-state-census = "mojo run -I . degree2_three_state_census.mojo"
+degree3-catalog = "mojo run -I . degree3_catalog.mojo"
+wedge-productivity-catalog = "mojo run -I . wedge_productivity_catalog.mojo"
+swap-discrepancy-census = "mojo run -I . swap_discrepancy_census.mojo"
+swap-overlap-census = "mojo run -I . swap_overlap_census.mojo"
+overlap-contracting-census = "mojo run -I . overlap_contracting_census.mojo"
+vertex-coincidence-census = "mojo run -I . vertex_coincidence_census.mojo"
+one-tile-census = "mojo run -I . one_tile_census.mojo"
+leftmost-chain-census = "mojo run -I . leftmost_chain_census.mojo"
+symbolic-line-certificate = "mojo run -I . symbolic_line_certificate.mojo"
+class-b-cone-certificate = "mojo run -I . class_b_cone_certificate.mojo"
+a1-normal-form-census = "mojo run -I . a1_normal_form_census.mojo"
+catch-up-free-ppvc-census = "mojo run -I . catch_up_free_ppvc_census.mojo"
+swap-family-certificate = "mojo run -I . swap_family_certificate.mojo"
+odd-letter-family-certificate = "mojo run -I . odd_letter_family_certificate.mojo 7"
+odd-letter-shape-catalog = "mojo run -I . odd_letter_family_certificate.mojo 8 catalog"
+odd-letter-run-tree = "mojo run -I . odd_letter_family_certificate.mojo 7 runs"
+odd-letter-reveal-census = "mojo run -I . odd_letter_family_certificate.mojo 10 reveal"
+odd-letter-cell-plus-one = "mojo run -I . odd_letter_family_certificate.mojo 2 cell 1 1 30000"
+odd-letter-cell-minus-one = "mojo run -I . odd_letter_family_certificate.mojo 2 cell -1 -1 30000"
+valuation-ascent-census = "mojo run -I . valuation_ascent_census.mojo"
+barge-class-census = "mojo run -I . barge_class_census.mojo"
+strong-coincidence-census = "mojo run -I . strong_coincidence_census.mojo"
+one-tile-anatomy = "mojo run -I . one_tile_anatomy.mojo"
+hit-witness-census = "mojo run -I . catch_up_witness_census.mojo"
+return-lattice-census = "mojo run -I . return_lattice_census.mojo"
+
+# Finite classifications with no substitution input.
+endpoint-core-catalog = "mojo run -I . endpoint_core_catalog.mojo"
+
+# Exploratory searches: reproducible from their seed or stride, but evidence
+# only about the substitutions they actually visit.
+boundary-sync-sweep = "mojo run -I . boundary_sync_sweep.mojo"
+oa-type-inclusion-census = "mojo run -I . oa_type_inclusion_census.mojo"
+oa-failures-probe = "mojo run -I . oa_failures_probe.mojo"
+automatic-route-census = "mojo run -I . automatic_route_census.mojo"
+numeration-addition-census = "mojo run -I . numeration_addition_census.mojo"
+numeration-conversion-census = "mojo run -I . numeration_conversion_census.mojo"
+coincidence-formula-census = "mojo run -I . coincidence_formula_census.mojo"
+swap-overlap-total-length-sweep = "mojo run -I . swap_overlap_total_length_sweep.mojo"
+bpa-total-length-sweep = "mojo run -I . bpa_total_length_sweep.mojo"
+
+# Kernel micro-benchmarks: both paths print the same checksum, so a faster
+# path that computes something else shows up as a differential, not a win.
+integer-vector-bench = "mojo run -I . integer_vector_bench.mojo"
+separation-radius-total-length-sweep = "mojo run -I . separation_radius_total_length_sweep.mojo"
+target-aware-bpa = "mojo run -I . target_aware_bpa.mojo"
+ordered-hub-packets = "mojo run -I . ordered_hub_packets.mojo"
+formal-overlap-census = "mojo run -I . formal_overlap_census.mojo"

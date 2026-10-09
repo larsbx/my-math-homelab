@@ -1,0 +1,5 @@
+Hit-witness census domain: standing  population: 4554  slice: 0 4554  cap: 4000000
+specimens: 4554  complete: 4554  capped: 0
+recurrent nonzero vertices: 1154040  catch-up left/right/either: 1056816 1056816 1056816
+simultaneous-only vertices: 97224  failing specimens: 360  total failures: 210
+vertices without any new hit: 0  maximum endpoint catch-up depth: 17

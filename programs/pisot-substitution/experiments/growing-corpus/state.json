@@ -1,0 +1,11 @@
+{
+  "alphabet": 3,
+  "last_shard": null,
+  "last_shard_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "max_image_length_cap": 8,
+  "next_band_offset": 0,
+  "next_max_image_length": 4,
+  "schema": "psc-growing-corpus-state/v1",
+  "total_accepted": 0,
+  "total_screened": 0
+}

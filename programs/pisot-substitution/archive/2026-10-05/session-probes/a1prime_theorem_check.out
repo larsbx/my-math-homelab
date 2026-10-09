@@ -1,0 +1,5 @@
+class A: lemma witnesses verified 444, failed 0; PIP residual 3 == predicted
+class B: lemma witnesses verified 441, failed 0; PIP residual 12 == predicted
+class C: lemma witnesses verified 221, failed 0; PIP residual 4 == predicted
+class D: lemma witnesses verified 882, failed 0; PIP residual 8 == predicted
+all classes: 1988 explicit lemma witnesses checked, 1404 PIP points satisfy f(1)<0 and f(-1)<0

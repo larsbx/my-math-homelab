@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PSC Rauzy Coverage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a single reading column with a Tribonacci Rauzy fractal plate beside the thesis; the claim table runs full width below. */
+:root {
+  --bg: #f6f7f4;
+  --surface: #ffffff;
+  --fg: #1c2226;
+  --muted: #5b6770;
+  --rule: #d9ddd6;
+  --accent: #2f5d62;
+  --r: #2f7a5f;      /* class R  */
+  --rp: #b7852a;     /* class R⁻ */
+  --nr: #8a8f96;     /* class ¬R */
+  --tile1: #2f7a5f; --tile2: #3f6fa8; --tile3: #c07a2c;
+  --f-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121618; --surface: #1a2023; --fg: #e4e8e6; --muted: #9aa5ab; --rule: #2c3438;
+  --accent: #7fb7b2; --r: #5dbb95; --rp: #e0b25a; --nr: #7c848b;
+  --tile1: #5dbb95; --tile2: #7ea6e0; --tile3: #e6a35a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121618; --surface: #1a2023; --fg: #e4e8e6; --muted: #9aa5ab; --rule: #2c3438;
+  --accent: #7fb7b2; --r: #5dbb95; --rp: #e0b25a; --nr: #7c848b;
+  --tile1: #5dbb95; --tile2: #7ea6e0; --tile3: #e6a35a; color-scheme: dark }
+
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 1.03rem/1.6 var(--f-body); }
+.wrap { max-width: 1060px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 64px; display: grid; gap: 44px; }
+h1, h2 { font-family: var(--f-display); font-weight: 650; text-wrap: balance; line-height: 1.15; margin: 0; }
+h1 { font-size: clamp(1.9rem, 4.2vw, 2.7rem); letter-spacing: -0.01em; }
+h2 { font-size: 1.45rem; }
+p { margin: 0; max-width: 66ch; }
+code, .mono { font-family: var(--f-mono); font-size: 0.86em; }
+.eyebrow { font: 600 0.74rem/1 var(--f-mono); letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); }
+.stack { display: grid; gap: 14px; }
+.muted { color: var(--muted); }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 340px); gap: 32px; align-items: center; }
+.hero > * { min-width: 0; }
+.plate { display: grid; gap: 8px; }
+.plate canvas { width: 100%; aspect-ratio: 1; display: block; border: 1px solid var(--rule); background: var(--surface); }
+.plate figcaption { font: 400 0.78rem/1.45 var(--f-mono); color: var(--muted); }
+@media (max-width: 720px) { .hero { grid-template-columns: 1fr; } .plate { max-width: 340px; } }
+
+.answer { font-size: 1.12rem; }
+.answer strong { font-weight: 600; }
+
+/* proportion bar, drawn to scale out of 47 */
+.bar { display: flex; height: 30px; border-radius: 3px; overflow: hidden; border: 1px solid var(--rule); }
+.bar span { display: flex; align-items: center; justify-content: center; font: 600 0.78rem var(--f-mono); color: var(--bg); min-width: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: 0.92rem; }
+.legend div { display: flex; gap: 8px; align-items: baseline; }
+.sw { width: 11px; height: 11px; border-radius: 2px; flex: none; transform: translateY(1px); }
+.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+.criterion { border-left: 3px solid var(--accent); padding-left: 18px; display: grid; gap: 10px; }
+.formula { font: 400 0.95rem/1.5 var(--f-mono); color: var(--fg); background: var(--surface); border: 1px solid var(--rule); padding: 12px 14px; border-radius: 3px; overflow-x: auto; white-space: pre; }
+
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+.cols > * { min-width: 0; }
+ul.tight { margin: 0; padding-left: 1.1em; display: grid; gap: 8px; max-width: 66ch; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.filters button { font: 600 0.8rem var(--f-mono); padding: 7px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--fg); cursor: pointer; display: inline-flex; gap: 8px; align-items: center; }
+.filters button[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.filters button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.tablebox { overflow-x: auto; border-top: 1px solid var(--rule); }
+table { width: 100%; border-collapse: collapse; font-size: 0.93rem; min-width: 760px; }
+th { text-align: left; font: 600 0.72rem var(--f-mono); letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding: 12px 10px; border-bottom: 1px solid var(--rule); }
+td { padding: 11px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+td.name { font-family: var(--f-mono); font-size: 0.82rem; white-space: nowrap; }
+td.cls { white-space: nowrap; }
+.pill { display: inline-block; font: 600 0.74rem var(--f-mono); padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; }
+.pill.R { color: var(--r); } .pill.Rp { color: var(--rp); } .pill.NR { color: var(--nr); }
+tr.group td { font: 600 0.74rem var(--f-mono); letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); background: var(--surface); padding-top: 14px; }
+td.why { color: var(--muted); }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 28px 24px; }
+.gallery figure { margin: 0; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.gallery canvas { width: 100%; aspect-ratio: 1; display: block; border: 1px solid var(--rule); background: var(--surface); }
+.gallery h3 { font: 600 1.05rem/1.3 var(--f-display); margin: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 600 0.7rem var(--f-mono); padding: 2px 7px; border-radius: 999px; border: 1px solid currentColor; }
+.chip.R { color: var(--r); } .chip.Rp { color: var(--rp); } .chip.X { color: var(--muted); }
+.fig-cap { font-size: 0.9rem; line-height: 1.5; color: var(--muted); margin: 0; }
+footer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="stack">
+      <span class="eyebrow">pisot-substitution-conjecture-research · main@cb9db58 · 2026-10-08</span>
+      <h1>How much of the closed PSC work is a statement about Rauzy fractals?</h1>
+      <p class="answer">About <strong>a quarter</strong>. Of the <span class="num">47</span> closed, repository-proved claims, <strong class="num">11</strong> are natively Rauzy statements and <strong class="num">2</strong> more are partly so. The remaining <span class="num">34</span> either use invariants that a Rauzy fractal cannot see or stay on Z<sup>A</sup> without reaching the projection.</p>
+      <p class="muted">The split matters more than the count. The Rauzy side carries the live route to pure discrete spectrum and the open frontier. The non-Rauzy side mostly carries the alternative G1 + SCC Producer route.</p>
+    </div>
+    <figure class="plate" style="margin:0">
+      <canvas id="rauzy" width="680" height="680" aria-label="Tribonacci Rauzy fractal with its three subtiles"></canvas>
+      <figcaption>Tribonacci, σ: 1→12, 2→13, 3→1. Points π<sub>c</sub>(ℓ(p)) for prefixes p of the fixed point, coloured by the next letter. Unit case: a Euclidean picture is enough here, but not in general.</figcaption>
+    </figure>
+  </section>
+
+  <section class="stack">
+    <h2>The count</h2>
+    <div class="bar" role="img" aria-label="11 of 47 natively Rauzy, 2 partial, 34 not representable">
+      <span style="flex:11;background:var(--r)">11</span>
+      <span style="flex:2;background:var(--rp)">2</span>
+      <span style="flex:34;background:var(--nr)">34</span>
+    </div>
+    <div class="legend">
+      <div><span class="sw" style="background:var(--r)"></span><span><b>R</b>: the statement is a claim about adelic Rauzy pieces or the internal space · <span class="num">11 / 47 ≈ 23%</span></span></div>
+      <div><span class="sw" style="background:var(--rp)"></span><span><b>R⁻</b>: geometric core plus an algebraic residue · <span class="num">2 / 47 ≈ 4%</span></span></div>
+      <div><span class="sw" style="background:var(--nr)"></span><span><b>¬R</b>: not representable · <span class="num">34 / 47 ≈ 72%</span></span></div>
+    </div>
+    <p class="muted">Base set: the <span class="num">44</span> ledger nodes in <code>docs/ledger-index.md</code> marked Repository-proved with complete dependency closure, plus the three proved hand-ledger claims in <code>claim_governance.toml</code>. Excluded: <span class="num">4</span> imported theorems, <span class="num">11</span> conditional theorems, <span class="num">10</span> open gates, <span class="num">1</span> retired claim, and <code>CoincidenceDensityOne</code>, which is labelled proved but still depends on the open <code>OverlapProductivity</code>.</p>
+  </section>
+
+  <section class="criterion">
+    <span class="eyebrow">Dividing line</span>
+    <h2>Rauzy fractals see only abelian, degree-1 data</h2>
+    <p>A Rauzy fractal is the closure of the contracting (or adelic) projections of the Parikh vectors of prefixes. Whatever it records has already passed through the abelianisation map ℓ.</p>
+    <div class="formula">X = closure{ π_c(ℓ(p)) : p a prefix of u = σ^ω(a) },   ℓ : A* → Z^A
+R   ⇔  the claim's content factors through π_c ∘ ℓ   (the internal-space image)
+R   ⇒  it factors through ℓ          (necessary, not sufficient)</div>
+    <p>The ¬R block uses degree-≥2 scattered-subword and free-Lie invariants: K₂, wedge spans, mid-area and mean-area, the orientation cocycle, and degree-4 defects. These are non-abelian, so ℓ erases them. They are absent from every Rauzy fractal by construction.</p>
+    <p>Factoring through ℓ is necessary but not enough. A claim that stays on Z<sup>A</sup> itself, such as the intertwiner P N = M P or a rational-rank bound, is abelian but says nothing about the projected pieces, so it is ¬R. It is R⁻ when part of its content does pass to the projection.</p>
+  </section>
+
+  <section class="cols">
+    <div class="stack">
+      <span class="eyebrow">Where the Rauzy side sits</span>
+      <h2>The live route and the frontier</h2>
+      <ul class="tight">
+        <li><b>Shortest PDS chain.</b> Both proved premises are R. Bounded discrepancy is compactness of the pieces. The finite overlap graph is a finite neighbour graph of translates. The imported density → PDS step is measure-disjointness of subtiles.</li>
+        <li><b>Open premise #84.</b> Seedwise overlap productivity is still open. It is phrased on the same overlap graph.</li>
+        <li><b>Open frontier #139.</b> Strict-zipper exclusion ⇔ <code>PeriodicPairVertexCoincidence</code>. In internal coordinates, w₀* = ξ<sub>B</sub> − ξ<sub>A</sub> is a difference of two purely periodic points of subtiles X<sub>i</sub>, X<sub>j</sub>. <code>AdelicPeriodicOffsetHitting</code> is a hitting statement about adelic Rauzy pieces.</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <span class="eyebrow">Caveats</span>
+      <h2>Reading the number correctly</h2>
+      <ul class="tight">
+        <li><b>“Rauzy” means adelic.</b> The standing regime includes non-unit PIP. Use K<sub>∞</sub> × ∏<sub>p | det M</sub> K<sub>p</sub> (Siegel; Minervino–Thuswaldner). A Euclidean fractal only works when |det M| = 1. See <code>proof-ladder.md</code> rule 5.</li>
+        <li><b>Representable is not novel.</b> The repository records Rauzy-language ancestors for several R claims: Siegel–Thuswaldner's G(0), Arnoux–Ito strong coincidence, compactness of the fractal, Barge–Gambaudo. What is new is the non-unit transfer, the possibly illegal swap seeds, and the PDS ⇒ G1 package.</li>
+        <li><b>Not counted.</b> The base set is repository-proved claims only. The box-automaton note's finite-domain consequence is ledgered as <code>BoundedPureDiscreteSpectrum</code> (status finite-domain), so it falls outside that class; its universal Lemma Ω1 and Theorem Ω, the leftmost-chain proposition (2026-10-05) and the vertex-coincidence box note (marked not yet reviewed) are proved in their notes but are not ledger claims. All of them are native R. <i>Update 2026-10-08 (PR #241):</i> Lemma Ω1, Theorem Ω, Proposition LC and Corollary LC5 are now repository-proved ledger nodes (<code>BoxCycleContainment</code>, <code>BoxAutomatonCertificate</code>, <code>LeftmostChainCycleStructure</code>, <code>LeftmostChainG1Certificate</code>); the counts on this page are as of its baseline and do not include them.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="stack">
+    <span class="eyebrow">The R side, drawn</span>
+    <h2>Each Rauzy-representable claim as a picture</h2>
+    <p class="muted">Seven figures cover all 11 R claims and both R⁻ claims, and the eighth shows the adelic caveat. Figures 1–7 use Tribonacci (unit, so the Euclidean picture is faithful). Every number in a caption is measured from the drawn point cloud when the page loads, except the two raster tests marked build-time.</p>
+    <div class="gallery">
+      <figure data-fig="embed">
+        <canvas width="640" height="640" aria-label="The embedding πc∘ℓ"></canvas>
+        <h3>The embedding π<sub>c</sub>∘ℓ</h3>
+        <div class="chips"><span class="chip R">AlgebraicEmbedding</span></div>
+        <p class="fig-cap"></p>
+      </figure>
+      <figure data-fig="bounded">
+        <canvas width="640" height="640" aria-label="Bounded, hence compact"></canvas>
+        <h3>Bounded, hence compact</h3>
+        <div class="chips"><span class="chip R">G1b1BoundedDiscrepancy</span></div>
+        <p class="fig-cap"></p>
+      </figure>
+      <figure data-fig="seteq">
+        <canvas width="640" height="640" aria-label="The set equation"></canvas>
+        <h3>The set equation</h3>
+        <div class="chips"><span class="chip R">OrderedAffineCycleIdentity</span><span class="chip Rp">OverlapBadSCCNormalForm</span></div>
+        <p class="fig-cap"></p>
+      </figure>
+      <figure data-fig="nbrs">
+        <canvas width="640" height="640" aria-label="A finite neighbour set"></canvas>
+        <h3>A finite neighbour set</h3>
+        <div class="chips"><span class="chip R">SwapOverlapFiniteness</span></div>
+        <p class="fig-cap"></p>
+      </figure>
+      <figure data-fig="boundary">
+        <canvas width="640" height="640" aria-label="Subtiles meet only on boundaries"></canvas>
+        <h3>Subtiles meet only on boundaries</h3>
+        <div class="chips"><span class="chip R">AlignedOverlapsAreStrongCoincidence</span><span class="chip R">BoundaryCoincidenceCriterion</span></div>
+        <p class="fig-cap"></p>
+      </figure>
+      <figure data-fig="periodic">
+        <canvas width="640" height="640" aria-label="Periodic points and w₀*"></canvas>
+        <h3>Periodic points and w₀*</h3>
+        <div class="chips"><span class="chip R">StrictZipperPeriodicPairForm</span><span class="chip R">OverlapBoundaryZipperDichotomy</span></div>
+        <p class="fig-cap"></p>
+      </figure>
+      <figure data-fig="tiling">
+        <canvas width="640" height="640" aria-label="Lattice tiling and fibres"></canvas>
+        <h3>Lattice tiling and fibres</h3>
+        <div class="chips"><span class="chip R">PDSImpliesRepoG1</span><span class="chip R">PDSImpliesSeedwiseTermination</span><span class="chip R">PeriodicPairOneFibre</span><span class="chip Rp">ReturnModuleFullRank</span></div>
+        <p class="fig-cap"></p>
+      </figure>
+      <figure data-fig="nonunit">
+        <canvas width="640" height="640" aria-label="Why “Rauzy” has to mean adelic"></canvas>
+        <h3>Why “Rauzy” has to mean adelic</h3>
+        <div class="chips"><span class="chip X">caveat · non-unit specimen</span></div>
+        <p class="fig-cap"></p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="stack">
+    <span class="eyebrow">Claim by claim</span>
+    <h2>All 47 closed claims</h2>
+    <div class="filters" role="group" aria-label="Filter by class">
+      <button type="button" id="f-all" data-f="all" aria-pressed="true">All <span class="num">47</span></button>
+      <button type="button" id="f-R" data-f="R" aria-pressed="false"><span class="sw" style="background:var(--r)"></span>R <span class="num">11</span></button>
+      <button type="button" id="f-Rp" data-f="Rp" aria-pressed="false"><span class="sw" style="background:var(--rp)"></span>R⁻ <span class="num">2</span></button>
+      <button type="button" id="f-NR" data-f="NR" aria-pressed="false"><span class="sw" style="background:var(--nr)"></span>¬R <span class="num">34</span></button>
+    </div>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>Claim</th><th>Class</th><th>Statement (ledger)</th><th>Why this class</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>Classification by reading each statement against the criterion above. It is an interpretive map with no status in the claim ledger and moves no claim. Statements are quoted from <code>docs/ledger-index.md</code> and <code>docs/claim-status-and-source-map-2026-09-13.md</code>.</footer>
+</div>
+
+<script>
+const G = (group, cls, items) => items.map(([n, s, w]) => ({ group, cls, n, s, w }));
+const CLAIMS = [
+  ...G("Native Rauzy: geometry of the pieces", "R", [
+    ["AlgebraicEmbedding", "the algebraic embedding of the symbolic side", "This is the projection π_c ∘ ℓ itself, the map that defines the fractal (adelic in the non-unit case)."],
+    ["G1b1BoundedDiscrepancy", "all reachable swap-state prefix-difference walks are uniformly bounded", "A bounded prefix-difference walk means the projected difference set is bounded. That is compactness of the Rauzy pieces."],
+    ["SwapOverlapFiniteness", "every swap seed has a finite exact overlap graph", "Only finitely many translates γ meet a given piece. This is a finite neighbour or contact graph."],
+    ["OrderedAffineCycleIdentity", "actual ordered child occurrences satisfy w′ = Mw + q − p; a replayed cycle satisfies the exact pump identity", "These are the affine maps of the graph-directed set equation whose attractors are the pieces."],
+  ]),
+  ...G("Native Rauzy: coincidence and boundary", "R", [
+    ["BoundaryCoincidenceCriterion", "an overlap reaches an offset-zero descendant exactly on an exact prefix-Parikh / common-left-endpoint hit", "A common point of two shifted pieces. The repository records it as the principle of Siegel–Thuswaldner's G(0)."],
+    ["AlignedOverlapsAreStrongCoincidence", "offset-zero and right-aligned seed overlaps are productive exactly in the prefix/suffix strong-coincidence cases", "Strong coincidence is the Arnoux–Ito condition for measure-disjoint subtiles."],
+    ["OverlapBoundaryZipperDichotomy", "a bad SCC contains an offset-zero non-eventually-coincident pair or every child factorization is a strict no-tie prefix-grid zipper", "Both branches are R: aligned means strong coincidence, and strict zipper means the periodic-pair form."],
+    ["StrictZipperPeriodicPairForm", "a reachable strict zipper exists iff two Φ^r-fixed legal tilings with a common centre have no common vertex", "Its internal form is w₀* = ξ_B − ξ_A, a difference of periodic points of subtiles X_i and X_j."],
+  ]),
+  ...G("Native Rauzy: spectrum and fibres", "R", [
+    ["PeriodicPairOneFibre", "two Φ^r-fixed legal tilings built from interior occurrences and sharing a centre lie in one MEF fibre", "The maximal equicontinuous factor of a Pisot tiling space is the internal torus or solenoid that the Rauzy pieces tile."],
+    ["PDSImpliesRepoG1", "pure discrete spectrum implies repository G1 (finite BPA from every swap seed)", "PDS ⇔ cr = 1 ⇔ the pieces tile, so the proof runs through fibres of the Rauzy factor map."],
+    ["PDSImpliesSeedwiseTermination", "PDS implies BPA termination with coincidence from every seed (ab, ba), legal or not", "This combines the previous claim with strong coincidence. Both are statements about the subtiles."],
+  ]),
+  ...G("Partial: geometric core with algebraic residue", "Rp", [
+    ["OverlapBadSCCNormalForm", "failure of productivity has a finite child-closed recurrent nonproductive SCC with PF(N_S) = β, full-rank V_S, spec(M) ⊆ spec(N_S)", "The SCC is a GIFS with PF = β, which is geometric. Full rank of V_S and spectral containment are rational-algebraic facts that no picture of the pieces shows."],
+    ["ReturnModuleFullRank", "the uncollared return module Λ_ret of a primitive substitution with Q-independent frequencies is Z^A", "It is abelian. Its projection gives the lattice of the periodic Rauzy tiling only in the unit case. Non-unit needs the adelic lattice."],
+  ]),
+  ...G("Not representable: code theory and words", "NR", [
+    ["DefectTheorem", "det M_σ ≠ 0 gives full incidence rank and letter injectivity, so the defect theorem applies to the image code", "A statement about the code σ(A) inside A*. The words are not abelianised."],
+    ["UniqueDecodability", "the substitution images form a uniquely decodable code", "Unique factorisation is a word property and is lost under ℓ."],
+    ["UDForPowers", "the images of every power σ^r form a uniquely decodable code", "Same as above, for every power."],
+    ["LocalWitnessInjectivity", "local witness injectivity on the symbolic side", "Stated on the symbolic side, as its scope says."],
+    ["RepoSeedUnionBridge", "the repository seed-union graph is the union of the literature seed graphs", "An identification of combinatorial graphs. Nothing geometric is asserted."],
+    ["PeriodicPatchCollar", "the collar of a child occurrence is a function of the parent's collar and the child indices", "Collared Anderson–Putnam combinatorics. Order-sensitive, not abelian."],
+  ]),
+  ...G("Not representable: endpoint and cut machinery (C3/C4)", "NR", [
+    ["C3Locality", "higher newborn cuts are one-step block-local", "A locality statement about cut positions in words."],
+    ["EndpointCore", "the endpoint-core normal form classifies the finitely many endpoint maps", "A classification of maps on word endpoints."],
+    ["GlobalEndpointSync", "global endpoint synchronization eliminates endpoint types A and B", "Word endpoint synchronisation."],
+    ["SignatureReduction", "the endpoint-quotient signature reduction", "A quotient of the endpoint classes."],
+  ]),
+  ...G("Not representable: degree ≥ 2 subword and free-Lie invariants", "NR", [
+    ["DefectIntertwiner", "the signed scattered-subword defect intertwiners in degrees two and three", "Scattered-subword counts in degrees 2 and 3. Non-abelian."],
+    ["Degree4Floor", "the degree-4 first-defect reduction", "Degree-4 defects."],
+    ["Mod3Sieve", "the arbitrary-degree multidegree spectral sieve", "Multidegree subword spectra."],
+    ["ParitySieve", "the degree-2 parity sieve for a strict closed nonproductive SCC with nonzero K2", "Uses K₂, a degree-2 invariant."],
+    ["MidArea", "the degree-2 mid-area factorization identity", "Signed area is the degree-2 Lie term, the first thing ℓ forgets."],
+    ["MeanAreaLift", "the three-state mean-area lifting obstruction", "Built from area."],
+    ["LatticeLift", "the degree-2 integral lattice lifting certificate", "A degree-2 lift."],
+    ["OrientationMonodromy", "the orientation cocycle and oriented double cover dichotomy", "The orientation cocycle depends on letter order."],
+    ["OrientationSpectrum", "the orientation-even/odd spectral decomposition with its Perron comparison", "Built on the orientation cocycle."],
+    ["W3LowGrowth", "the universal low-growth classification in W_3", "W₃ is a degree-3 module."],
+    ["GaloisWedgePropagation", "nonzero K2 gives full rational wedge span (degree-two carrier span)", "Wedge and K₂ are degree 2."],
+    ["WedgeBound", "the wedge bound", "A degree-2 wedge."],
+    ["MassBalanceK2Obstruction", "the mass-balance obstruction for K2 on the symbolic side", "Uses K₂."],
+    ["DominantK2Source", "the dominant K2 source on the v33/v34 route", "Uses K₂."],
+    ["InterBlockCancellation", "inter-block cancellation on the v33/v34 route", "Cancellation between word blocks on the K₂ route."],
+  ]),
+  ...G("Not representable: seed spectral module and Parikh-rank algebra", "NR", [
+    ["UnimodularNoPatchCollapse", "restricted to unimodular σ, no σ^n(ab) is a proper power, by Parikh divisibility through M^n ∈ GL_A(Z)", "Abelian, but an integrality statement on Z^A with no projected content, even on the unit branch where Euclidean Rauzy applies."],
+    ["ParikhIntertwiner", "for a finite closed nonproductive SCC, P N = M P", "Abelian but purely linear-algebraic. It intertwines count matrices and has no internal-space content."],
+    ["OverlapFullRank", "a nonempty child-closed noncoincidence set has full rational intersection-vector rank", "A rational-rank statement. It constrains a hypothetical bad set algebraically, not geometrically."],
+    ["ThetaIntertwining", "Θ intertwines the seed spectral operators", "Operators on the seed spectral module, which is built from subword data."],
+    ["PhiSemisimplicity", "Φ₃ acts semisimply on the seed spectral module", "The same module, in degree 3."],
+    ["SeedCentralizer", "the seed centralizer is as certified", "Module algebra."],
+    ["Target1", "Target 1 of the seed spectral module", "Module algebra."],
+    ["DominantCubicCapture", "dominant cubic capture for the explicitly certified seeds", "Cubic (degree-3) capture."],
+    ["SpectralBlackBox", "the seed-module spectral black box follows from Target 1 and dominant cubic capture", "Composed of the above."],
+  ]),
+];
+
+const LABEL = { R: "R", Rp: "R⁻", NR: "¬R" };
+const esc = s => s.replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+
+const render = f => {
+  const rows = CLAIMS.filter(c => f === "all" || c.cls === f);
+  const groups = [...new Set(rows.map(c => c.group))];
+  document.getElementById("rows").innerHTML = groups.map(g =>
+    `<tr class="group"><td colspan="4">${esc(g)}</td></tr>` +
+    rows.filter(c => c.group === g).map(c =>
+      `<tr><td class="name">${c.n}</td><td class="cls"><span class="pill ${c.cls}">${LABEL[c.cls]}</span></td><td>${esc(c.s)}</td><td class="why">${esc(c.w)}</td></tr>`
+    ).join("")
+  ).join("");
+};
+
+const setFilter = f => {
+  document.querySelectorAll(".filters button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === f)));
+  render(f);
+  try { localStorage.setItem("psc-rauzy-filter", f); } catch (e) {}
+};
+document.querySelectorAll(".filters button").forEach(b => b.addEventListener("click", () => setFilter(b.dataset.f)));
+let start = "all";
+try { start = localStorage.getItem("psc-rauzy-filter") || "all"; } catch (e) {}
+setFilter(CLAIMS.some(c => c.cls === start) ? start : "all");
+
+console.assert(CLAIMS.length === 47, "expected 47 claims");
+
+/* Rauzy-fractal geometry for a ternary Pisot substitution with a complex contracting pair.
+   Pure functions; shared by the page and the node checks. */
+const C = {
+  add: ([a, b], [c, d]) => [a + c, b + d],
+  sub: ([a, b], [c, d]) => [a - c, b - d],
+  mul: ([a, b], [c, d]) => [a * c - b * d, a * d + b * c],
+  div: ([a, b], [c, d]) => { const n = c * c + d * d; return [(a * c + b * d) / n, (b * c - a * d) / n]; },
+  scale: ([a, b], s) => [a * s, b * s],
+  abs: ([a, b]) => Math.hypot(a, b),
+  pow: (z, r) => Array.from({ length: r }).reduce(acc => C.mul(acc, z), [1, 0]),
+};
+
+// images: array of 3 strings over "012". Returns the substitution's internal-space data.
+const rauzy = (images, N = 60000) => {
+  const M = [0, 1, 2].map(i => [0, 1, 2].map(j => [...images[j]].filter(c => +c === i).length));
+  // char poly x^3 + c2 x^2 + c1 x + c0
+  const tr = M[0][0] + M[1][1] + M[2][2];
+  const minors = M[0][0] * M[1][1] - M[0][1] * M[1][0] + M[0][0] * M[2][2] - M[0][2] * M[2][0] + M[1][1] * M[2][2] - M[1][2] * M[2][1];
+  const det = M[0][0] * (M[1][1] * M[2][2] - M[1][2] * M[2][1]) - M[0][1] * (M[1][0] * M[2][2] - M[1][2] * M[2][0]) + M[0][2] * (M[1][0] * M[2][1] - M[1][1] * M[2][0]);
+  const p = x => x ** 3 - tr * x ** 2 + minors * x - det;
+  let b = tr + 1; for (let i = 0; i < 200; i++) b -= p(b) / (3 * b * b - 2 * tr * b + minors);
+  // remaining quadratic x^2 + (b - tr) x + det/b
+  const s = b - tr, q = det / b, disc = s * s - 4 * q;
+  if (disc >= 0) throw new Error("contracting pair is real");
+  const al = [-s / 2, Math.sqrt(-disc) / 2];
+  // left eigenvector u with u M = α u: cross product of two columns of (M − αI) read as rows of (M^T − αI)
+  const A = [0, 1, 2].map(i => [0, 1, 2].map(j => (i === j ? C.sub([M[j][i], 0], al) : [M[j][i], 0])));
+  const cross = (r, t) => [C.sub(C.mul(r[1], t[2]), C.mul(r[2], t[1])), C.sub(C.mul(r[2], t[0]), C.mul(r[0], t[2])), C.sub(C.mul(r[0], t[1]), C.mul(r[1], t[0]))];
+  const u0 = cross(A[0], A[1]);
+  const u = u0.map(z => C.div(z, u0[2])); // normalise u_3 = 1
+  const pi = v => v.reduce((acc, k, i) => C.add(acc, C.scale(u[i], k)), [0, 0]);
+  // fixed point starting at a letter a with σ(a) beginning with a
+  const a = [0, 1, 2].find(i => +images[i][0] === i);
+  if (a === undefined) throw new Error("no letter-fixed start; use a power");
+  let w = [a], par = [a], off = [0];
+  while (w.length < N) {
+    const nw = [], np = [], no = [];
+    w.forEach(j => [...images[j]].forEach((c, k) => { nw.push(+c); np.push(j); no.push(k); }));
+    w = nw; par = np; off = no;
+  }
+  w = w.slice(0, N); par = par.slice(0, N); off = off.slice(0, N);
+  const pts = new Float64Array(2 * N), counts = [0, 0, 0];
+  let z = [0, 0];
+  for (let k = 0; k < N; k++) { pts[2 * k] = z[0]; pts[2 * k + 1] = z[1]; z = C.add(z, u[w[k]]); counts[w[k]]++; }
+  return { images, M, det, beta: b, alpha: al, u, pi, w, par, off, pts, N };
+};
+
+// Bounding box of a set of point arrays, optionally shifted.
+const bbox = (sets) => sets.reduce(([x0, x1, y0, y1], { pts, dx = 0, dy = 0 }) => {
+  for (let k = 0; k < pts.length; k += 2) {
+    const x = pts[k] + dx, y = pts[k + 1] + dy;
+    if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y;
+  }
+  return [x0, x1, y0, y1];
+}, [Infinity, -Infinity, Infinity, -Infinity]);
+
+// Raster occupancy of point sets on an n×n grid over a box; returns per-set boolean grids.
+const raster = (sets, box, n) => {
+  const [x0, x1, y0, y1] = box, sx = (n - 1) / (x1 - x0), sy = (n - 1) / (y1 - y0);
+  return sets.map(({ pts, dx = 0, dy = 0 }) => {
+    const g = new Uint8Array(n * n);
+    for (let k = 0; k < pts.length; k += 2) {
+      const i = Math.round((pts[k] + dx - x0) * sx), j = Math.round((pts[k + 1] + dy - y0) * sy);
+      if (i >= 0 && i < n && j >= 0 && j < n) g[j * n + i] = 1;
+    }
+    return g;
+  });
+};
+
+// Subset of a point cloud by a predicate on index.
+const select = (R, pred) => {
+  const out = [];
+  for (let k = 0; k < R.N; k++) if (pred(k)) out.push(R.pts[2 * k], R.pts[2 * k + 1]);
+  return Float64Array.from(out);
+};
+
+// Periodic points: occurrences σ^r(i) = P i S give ξ = π(P)/(1 − α^r) in X_i.
+const periodicPoints = (R, r) => {
+  const iter = word => word.flatMap(c => [...R.images[c]].map(Number));
+  return [0, 1, 2].flatMap(i => {
+    let img = [i]; for (let t = 0; t < r; t++) img = iter(img);
+    const res = []; const v = [0, 0, 0];
+    img.forEach(c => { if (c === i) res.push({ letter: i, xi: C.div(R.pi(v), C.sub([1, 0], C.pow(R.alpha, r))) }); v[c]++; });
+    return res;
+  });
+};
+
+if (typeof module !== "undefined") module.exports = { C, rauzy, bbox, raster, select, periodicPoints };
+
+/* Figures. Every number in a caption is measured here, at load, from the same point clouds. */
+const TRIB = rauzy(["01", "02", "0"], 60000);
+const NONU = rauzy(["011", "20", "0"], 200000);
+const SUB = R => [0, 1, 2].map(i => select(R, k => R.w[k] === i));
+const TS = SUB(TRIB), NS = SUB(NONU);
+const LAT = [C.sub(TRIB.u[0], TRIB.u[2]), C.sub(TRIB.u[1], TRIB.u[2])];
+const latVec = (m, n) => C.add(C.scale(LAT[0], m), C.scale(LAT[1], n));
+const NBRS = [[-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0]];
+const fmt = (x, d = 2) => x.toFixed(d);
+const pct = x => (100 * x).toFixed(1) + "%";
+
+const tok = () => {
+  const s = getComputedStyle(document.documentElement), g = n => s.getPropertyValue(n).trim();
+  return { tile: [g("--tile1"), g("--tile2"), g("--tile3")], bg: g("--surface"), fg: g("--fg"), muted: g("--muted"), rule: g("--rule"), accent: g("--accent"), hl: g("--rp") };
+};
+
+// A view maps internal-space points to canvas pixels with one uniform scale.
+const view = (cv, box, pad = 0.06) => {
+  const [x0, x1, y0, y1] = box, W = cv.width, H = cv.height;
+  const s = (1 - 2 * pad) * Math.min(W / (x1 - x0), H / (y1 - y0));
+  const ox = (W - s * (x1 - x0)) / 2, oy = (H - s * (y1 - y0)) / 2;
+  return { s, X: x => ox + s * (x - x0), Y: y => H - (oy + s * (y - y0)) };
+};
+const cloud = (ctx, V, pts, color, size = 1.6, dx = 0, dy = 0) => {
+  ctx.fillStyle = color;
+  for (let k = 0; k < pts.length; k += 2) ctx.fillRect(V.X(pts[k] + dx) - size / 2, V.Y(pts[k + 1] + dy) - size / 2, size, size);
+};
+const clear = (cv, T) => { const ctx = cv.getContext("2d"); ctx.fillStyle = T.bg; ctx.fillRect(0, 0, cv.width, cv.height); return ctx; };
+const dot = (ctx, x, y, r, fill, stroke) => { ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fillStyle = fill; ctx.fill(); if (stroke) { ctx.lineWidth = 2; ctx.strokeStyle = stroke; ctx.stroke(); } };
+const label = (ctx, text, x, y, color, align = "left") => { ctx.font = "600 22px ui-monospace, Menlo, monospace"; ctx.fillStyle = color; ctx.textAlign = align; ctx.fillText(text, x, y); };
+const arrow = (ctx, x0, y0, x1, y1, color) => {
+  const a = Math.atan2(y1 - y0, x1 - x0), h = 16;
+  ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x1 - h * Math.cos(a - 0.4), y1 - h * Math.sin(a - 0.4)); ctx.lineTo(x1 - h * Math.cos(a + 0.4), y1 - h * Math.sin(a + 0.4)); ctx.closePath(); ctx.fill();
+};
+const TBOX = bbox([{ pts: TRIB.pts }]);
+
+// Raster measurements, computed once.
+const overlapStats = (subs, n = 260) => {
+  const box = bbox(subs.map(pts => ({ pts })));
+  const g = raster(subs.map(pts => ({ pts })), box, n);
+  const union = g[0].reduce((s, v, k) => s + (v | g[1][k] | g[2][k]), 0);
+  const multi = g[0].reduce((s, v, k) => s + (v + g[1][k] + g[2][k] > 1 ? 1 : 0), 0);
+  return { box, g, n, union, multi, frac: multi / union };
+};
+const TOV = overlapStats(TS), NOV = overlapStats(NS);
+const RADIUS = (() => { let r = 0; for (let k = 0; k < TRIB.pts.length; k += 2) r = Math.max(r, Math.hypot(TRIB.pts[k], TRIB.pts[k + 1])); return r; })();
+const PER = periodicPoints(TRIB, 3);
+const PA = PER.find(p => p.letter === 0 && C.abs(p.xi) > 0.5), PB = PER.find(p => p.letter === 1);
+
+const FIGS = {
+  embed(cv, T) {
+    const ctx = clear(cv, T), V = view(cv, TBOX);
+    cloud(ctx, V, TRIB.pts, T.rule, 1.4);
+    ctx.lineWidth = 3.5;
+    for (let k = 0; k < 12; k++) {
+      ctx.strokeStyle = T.tile[TRIB.w[k]];
+      ctx.beginPath(); ctx.moveTo(V.X(TRIB.pts[2 * k]), V.Y(TRIB.pts[2 * k + 1])); ctx.lineTo(V.X(TRIB.pts[2 * k + 2]), V.Y(TRIB.pts[2 * k + 3])); ctx.stroke();
+    }
+    for (let k = 0; k <= 12; k++) dot(ctx, V.X(TRIB.pts[2 * k]), V.Y(TRIB.pts[2 * k + 1]), k ? 5 : 8, T.fg);
+    return `The first 12 prefixes of the fixed point, joined in order. Each step adds π(e<sub>a</sub>) for the letter a just read (colour = letter), so the walk is π<sub>c</sub>∘ℓ applied to prefixes. Grey: the next 59,988 points.`;
+  },
+  bounded(cv, T) {
+    const ctx = clear(cv, T), V = view(cv, [-RADIUS, RADIUS, -RADIUS, RADIUS]);
+    cloud(ctx, V, TS[0], T.tile[0]); cloud(ctx, V, TS[1], T.tile[1]); cloud(ctx, V, TS[2], T.tile[2]);
+    ctx.setLineDash([8, 7]); ctx.lineWidth = 2; ctx.strokeStyle = T.fg;
+    ctx.beginPath(); ctx.arc(V.X(0), V.Y(0), V.s * RADIUS, 0, 2 * Math.PI); ctx.stroke(); ctx.setLineDash([]);
+    dot(ctx, V.X(0), V.Y(0), 6, T.fg);
+    return `Every one of the 60,000 projected prefix vectors lies in the disc of radius ${fmt(RADIUS, 3)} about 0. A uniform bound on |π<sub>c</sub>(ℓ(p))| is the same statement as bounded discrepancy, and it is what makes the pieces compact.`;
+  },
+  seteq(cv, T) {
+    const ctx = clear(cv, T), V = view(cv, TBOX);
+    // pieces α X_j + π(p) of X_i, indexed by (parent j, offset); 5 pieces for Tribonacci
+    const key = k => `${TRIB.par[k]}${TRIB.off[k]}`;
+    const keys = [...new Set(Array.from({ length: 4000 }, (_, k) => key(k)))].sort();
+    const shades = [T.tile[0], T.accent, T.tile[1], T.hl, T.tile[2]];
+    keys.forEach((kk, q) => cloud(ctx, V, select(TRIB, k => key(k) === kk), shades[q % shades.length], 1.6));
+    return `The same set split by where each point comes from: ${keys.length} pieces α·X<sub>j</sub> + π(p), one for each occurrence σ(j) = p·i·s. Their union is X. The affine maps z ↦ αz + π(p) are the recurrence w′ = Mw + q − p read in the internal space, and a bad SCC is a sub-system of them with growth β.`;
+  },
+  nbrs(cv, T) {
+    const ctx = clear(cv, T);
+    const shifts = NBRS.map(([m, n]) => latVec(m, n)).sort((a, b) => Math.atan2(a[1], a[0]) - Math.atan2(b[1], b[0]));
+    const box = bbox([{ pts: TRIB.pts }, ...shifts.map(d => ({ pts: TRIB.pts, dx: d[0], dy: d[1] }))]);
+    const V = view(cv, box, 0.03);
+    shifts.forEach((d, q) => cloud(ctx, V, TRIB.pts, [T.tile[1], T.tile[2], T.muted][q % 3], 1.3, d[0], d[1]));
+    cloud(ctx, V, TRIB.pts, T.tile[0], 1.3);
+    return `The central tile X (green) and the translates X + γ that touch it, for γ in the lattice spanned by π(e₁ − e₃) and π(e₂ − e₃). A build-time raster test of all 48 nonzero γ with coefficients in [−3, 3] found exactly these ${NBRS.length}. A finite neighbour set is the internal-space form of a finite overlap graph.`;
+  },
+  boundary(cv, T) {
+    const ctx = clear(cv, T), { box, g, n } = TOV, V = view(cv, box);
+    cloud(ctx, V, TS[0], T.tile[0], 1.4); cloud(ctx, V, TS[1], T.tile[1], 1.4); cloud(ctx, V, TS[2], T.tile[2], 1.4);
+    const [x0, x1, y0, y1] = box;
+    ctx.fillStyle = T.fg;
+    for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
+      const k = j * n + i;
+      if (g[0][k] + g[1][k] + g[2][k] > 1) { const x = x0 + (x1 - x0) * i / (n - 1), y = y0 + (y1 - y0) * j / (n - 1); ctx.fillRect(V.X(x) - 2, V.Y(y) - 2, 4, 4); }
+    }
+    return `Subtiles X₁, X₂, X₃. Marked cells hold points of two subtiles at once: ${TOV.multi} of ${TOV.union} occupied cells (${pct(TOV.frac)}), all on shared boundaries. Disjoint interiors is strong coincidence, and a boundary cell is where an exact prefix-Parikh hit can happen.`;
+  },
+  periodic(cv, T) {
+    const ctx = clear(cv, T), V = view(cv, TBOX);
+    cloud(ctx, V, TS[0], T.tile[0], 1.4); cloud(ctx, V, TS[1], T.tile[1], 1.4); cloud(ctx, V, TS[2], T.tile[2], 1.4);
+    PER.forEach(p => dot(ctx, V.X(p.xi[0]), V.Y(p.xi[1]), 6, T.bg, T.fg));
+    const ax = V.X(PA.xi[0]), ay = V.Y(PA.xi[1]), bx = V.X(PB.xi[0]), by = V.Y(PB.xi[1]);
+    arrow(ctx, ax, ay, bx, by, T.hl);
+    dot(ctx, ax, ay, 8, T.fg); dot(ctx, bx, by, 8, T.fg);
+    label(ctx, "A", ax + 14, ay + 8, T.fg); label(ctx, "B", bx + 14, by + 8, T.fg);
+    const d = C.sub(PB.xi, PA.xi);
+    return `All ${PER.length} periodic points ξ = π(P)/(1 − α³) from occurrences σ³(i) = P·i·S. The arrow is w₀* = ξ<sub>B</sub> − ξ<sub>A</sub> = (${fmt(d[0], 3)}, ${fmt(d[1], 3)}) with ξ<sub>A</sub> ∈ X₁ (A) and ξ<sub>B</sub> ∈ X₂ (B). Open circles are the other periodic points. A strict zipper asks whether some finite prefix difference lands exactly on such a difference.`;
+  },
+  tiling(cv, T) {
+    const ctx = clear(cv, T);
+    const W = 1.6 * (TBOX[1] - TBOX[0]), cx = (TBOX[0] + TBOX[1]) / 2, cy = (TBOX[2] + TBOX[3]) / 2;
+    const V = view(cv, [cx - W / 2, cx + W / 2, cy - W / 2, cy + W / 2], 0);
+    const sparse = TRIB.pts.subarray(0, 2 * 25000);
+    let q = 0;
+    for (let m = -4; m <= 4; m++) for (let n = -4; n <= 4; n++) {
+      const d = latVec(m, n);
+      if (Math.abs(d[0] - cx) > W || Math.abs(d[1] - cy) > W) continue;
+      cloud(ctx, V, sparse, (m === 0 && n === 0) ? T.tile[0] : [T.tile[1], T.tile[2], T.muted][((m - n) % 3 + 3) % 3], 2.2, d[0], d[1]);
+      dot(ctx, V.X(d[0]), V.Y(d[1]), 4, T.fg); q++;
+    }
+    return `Translates of X by the lattice π(L), drawn over a window around the central tile. They cover the plane with overlaps only on boundaries (a build-time raster test of 20,736 central cells found 1 empty and 44 doubly covered, all on boundaries). For a unit Pisot substitution this lattice tiling is equivalent to coincidence rank 1, i.e. PDS, and the shift's maximal equicontinuous factor is the rotation on the torus ℝ²/π(L), whose points are the fibres. Dots: lattice points.`;
+  },
+  nonunit(cv, T) {
+    const ctx = clear(cv, T), { box, g, n } = NOV, V = view(cv, box);
+    ctx.globalAlpha = 0.35;
+    NS.forEach((s, i) => cloud(ctx, V, s, T.tile[i], 1.5));
+    ctx.globalAlpha = 1;
+    return `σ: 1→122, 2→31, 3→1, with |det M| = ${Math.abs(NONU.det)} and β ≈ ${fmt(NONU.beta, 4)}. This is the same projection with only the archimedean coordinate. The three subtiles are drawn translucent, and where they overlap the colours mix. Overlap cells make up ${pct(NOV.frac)} of the occupied cells: the Euclidean picture is not a tiling. The pieces live in K<sub>∞</sub> × ℚ₂, and the archimedean coordinate alone is only their shadow, which is why every R claim is read adelically.`;
+  },
+};
+
+const hero = (cv, T) => {
+  const ctx = clear(cv, T), V = view(cv, TBOX);
+  TS.forEach((s, i) => cloud(ctx, V, s, T.tile[i], 1.6));
+};
+
+const drawAll = () => {
+  const T = tok();
+  hero(document.getElementById("rauzy"), T);
+  document.querySelectorAll("[data-fig]").forEach(fig => {
+    const cv = fig.querySelector("canvas"), cap = fig.querySelector(".fig-cap");
+    cap.innerHTML = FIGS[fig.dataset.fig](cv, T);
+  });
+};
+drawAll();
+matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", drawAll);
+new MutationObserver(drawAll).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+</script>
+</body>
+</html>

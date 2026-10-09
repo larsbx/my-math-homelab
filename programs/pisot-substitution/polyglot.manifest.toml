@@ -1,0 +1,27 @@
+version = 1
+repository = "larsbx/pisot-substitution-conjecture-research"
+boundary_id = "psc-bpa-census"
+fail_closed = true
+authority_change = false
+ci_wiring = false  # CI runs polyglot-check: .polyglot/ must equal the rendered FMK template; no conformance runner is wired
+
+[estate]
+manifest = "ESTATE.toml"
+
+[authority]
+primary_languages = ["Mojo"]
+supporting_languages = ["Lean", "Python", "TLA+"]
+canonical_status = "existing-authority-preserved"
+
+[roles]
+proof = "machine-checked claims only"
+kernel = "canonical executable validation only when designated"
+reference = "pure executable semantics and vector generation"
+oracle = "non-authoritative research and differential checking"
+adapter = "generated or mechanically constrained translation"
+
+[compatibility]
+unknown_critical_fields = "reject"
+schema_mismatch = "reject"
+authority_mismatch = "reject"
+normalization_mismatch = "reject"

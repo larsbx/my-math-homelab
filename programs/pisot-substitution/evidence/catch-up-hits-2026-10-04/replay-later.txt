@@ -1,0 +1,16 @@
+REPLAY specimen: 1 2 17  vertex: 1,2,-1,0,0
+{"schema":1,"i":1,"j":2,"k":17,"vertex":[1,2,-1,0,0],"catch_left":3,"catch_right":3,"new_left":2,"new_right":2}
+PATH endpoint: left  target: new-hit  depth: 2  relative births (0 means already present): 2 2
+STEP 1,2,-1,0,0  occurrence 0 2  child 2,2,1,0,0  hit-kind 0
+STEP 2,2,1,0,0  occurrence 2 1  child 2,1,0,0,0  hit-kind 2
+PATH endpoint: right  target: new-hit  depth: 2  relative births (0 means already present): 2 2
+STEP 1,2,-1,0,0  occurrence 0 2  child 2,2,1,0,0  hit-kind 0
+STEP 2,2,1,0,0  occurrence 1 0  child 1,0,-1,1,0  hit-kind 2
+PATH endpoint: left  target: catch-up  depth: 3  relative births (0 means already present): 0 3
+STEP 1,2,-1,0,0  occurrence 0 1  child 2,1,1,-1,0  hit-kind 0
+STEP 2,1,1,-1,0  occurrence 0 0  child 0,2,0,1,-1  hit-kind 0
+STEP 0,2,0,1,-1  occurrence 0 2  child 1,2,0,0,0  hit-kind 3
+PATH endpoint: right  target: catch-up  depth: 3  relative births (0 means already present): 0 3
+STEP 1,2,-1,0,0  occurrence 0 2  child 2,2,1,0,0  hit-kind 0
+STEP 2,2,1,0,0  occurrence 2 2  child 2,2,0,1,0  hit-kind 0
+STEP 2,2,0,1,0  occurrence 2 1  child 2,1,0,-1,1  hit-kind 3

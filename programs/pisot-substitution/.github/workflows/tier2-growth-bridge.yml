@@ -1,0 +1,41 @@
+name: Tier 2 Growth Bridge
+
+on:
+  push:
+    paths:
+      - "kernel/psc/tier2_loop_gain_fixture.mojo"
+      - "kernel/tests/test_tier2_loop_gain_fixture.mojo"
+      - "kernel/psc/penrose_phi_tail.mojo"
+      - "kernel/tests/test_penrose_phi_tail.mojo"
+      - "docs/tier2-penrose-phi-cocycle.md"
+      - "schemas/tier2-loop-gain-fixture.schema.json"
+      - ".github/workflows/tier2-growth-bridge.yml"
+  pull_request:
+    paths:
+      - "kernel/psc/tier2_loop_gain_fixture.mojo"
+      - "kernel/tests/test_tier2_loop_gain_fixture.mojo"
+      - "kernel/psc/penrose_phi_tail.mojo"
+      - "kernel/tests/test_penrose_phi_tail.mojo"
+      - "docs/tier2-penrose-phi-cocycle.md"
+      - "schemas/tier2-loop-gain-fixture.schema.json"
+      - ".github/workflows/tier2-growth-bridge.yml"
+
+jobs:
+  tier2-exact-fixture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: prefix-dev/setup-pixi@v0.9.1
+        with:
+          pixi-version: latest
+          manifest-path: kernel/pixi.toml
+
+      - name: Run Tier 2 Mojo regressions
+        working-directory: kernel
+        run: |
+          pixi run mojo run -I . tests/test_tier2_loop_gain_fixture.mojo
+          pixi run mojo run -I . tests/test_penrose_phi_tail.mojo
+
+      - name: Validate Tier 2 fixture schema JSON
+        run: python -m json.tool schemas/tier2-loop-gain-fixture.schema.json >/dev/null

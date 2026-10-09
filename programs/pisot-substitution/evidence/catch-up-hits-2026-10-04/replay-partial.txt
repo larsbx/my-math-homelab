@@ -1,0 +1,10 @@
+REPLAY specimen: 1 8 20  vertex: 2,1,0,-2,1
+{"schema":1,"i":1,"j":8,"k":20,"vertex":[2,1,0,-2,1],"catch_left":-1,"catch_right":-1,"new_left":1,"new_right":1}
+PATH endpoint: left  target: new-hit  depth: 1  relative births (0 means already present): 1 1
+STEP 2,1,0,-2,1  occurrence 2 1  child 2,2,0,0,0  hit-kind 2
+PATH endpoint: right  target: new-hit  depth: 1  relative births (0 means already present): 1 1
+STEP 2,1,0,-2,1  occurrence 1 0  child 2,1,0,-2,1  hit-kind 2
+SIMULTANEOUS-ONLY closed certificate, vertices: 2
+EDGE 2,1,0,-2,1  occurrence 1 0  child 2,1,0,-2,1  left/right kinds 0 2
+EDGE 2,1,0,-2,1  occurrence 2 1  child 2,2,0,0,0  left/right kinds 2 1
+ABSORBING identical tiles 2,2,0,0,0

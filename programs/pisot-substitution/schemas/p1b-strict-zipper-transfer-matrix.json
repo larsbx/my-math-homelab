@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "issue": 139,
+  "target": "exists m >= 0 such that M^m w is in P_m(i) - P_m(j)",
+  "standing_regime": {
+    "primitive": true,
+    "irreducible_pisot": true,
+    "unimodular_required": false,
+    "determinant_absolute_value_may_exceed_one": true,
+    "strong_coincidence_dependency": "P1a; not proved by this baseline",
+    "realized_overlaps_required": true
+  },
+  "residual_obligation": {
+    "name": "AdelicPeriodicOffsetHitting",
+    "status": "open",
+    "uniformity": "existence uniform in the chosen closed recurrent SCC; no progressive necessary-condition surrogate",
+    "requires_archimedean_factor": true,
+    "requires_finite_place_factor_when_nonunit": true,
+    "implies_pds": false,
+    "proved_by_sources": false
+  },
+  "sources": [
+    {
+      "key": "ItoRao2006",
+      "citation": "doi:10.1007/BF02771781",
+      "unit_only": true,
+      "unimodular_only": false,
+      "class_specific": false,
+      "transfer_status": "partial",
+      "transfers": [
+        "prefix-suffix graph-directed equations",
+        "super-coincidence dictionary"
+      ],
+      "does_not_transfer": [
+        "Euclidean-only closure step",
+        "periodic-offset hit in the non-unit regime"
+      ]
+    },
+    {
+      "key": "BargeKwapisz2006",
+      "citation": "doi:10.1353/ajm.2006.0035",
+      "unit_only": false,
+      "unimodular_only": true,
+      "class_specific": false,
+      "transfer_status": "partial",
+      "transfers": [
+        "geometric coincidence comparison",
+        "persistent-residual geometric picture"
+      ],
+      "does_not_transfer": [
+        "hyperbolic toral automorphism carrier",
+        "Corollary 9.4 or Proposition 17.2 without unimodularity",
+        "periodic-offset hit"
+      ]
+    },
+    {
+      "key": "AkiyamaLee2011",
+      "citation": "doi:10.1016/j.aim.2010.07.019",
+      "unit_only": false,
+      "unimodular_only": false,
+      "class_specific": false,
+      "transfer_status": "diagnostic",
+      "transfers": [
+        "complete overlap-coincidence algorithm under representable Meyer tiling hypotheses",
+        "residual component Perron-criticality"
+      ],
+      "does_not_transfer": [
+        "uniform first-hit bound",
+        "forcing a specified periodic offset to hit"
+      ]
+    },
+    {
+      "key": "MinervinoThuswaldner2014",
+      "citation": "doi:10.5802/aif.2884",
+      "unit_only": false,
+      "unimodular_only": false,
+      "class_specific": false,
+      "transfer_status": "ambient_space",
+      "transfers": [
+        "adelic representation space",
+        "finite-place factors over primes dividing the beta ideal",
+        "graph-directed non-unit Rauzy subtiles"
+      ],
+      "does_not_transfer": [
+        "general coincidence theorem",
+        "property F",
+        "exclusive tiling",
+        "pointwise periodic-offset hit"
+      ]
+    },
+    {
+      "key": "Barge2016",
+      "citation": "arXiv:1403.7826",
+      "unit_only": false,
+      "unimodular_only": false,
+      "class_specific": true,
+      "transfer_status": "positive_control",
+      "transfers": [
+        "PDS under initial-letter injectivity and common-final-letter hypotheses"
+      ],
+      "does_not_transfer": [
+        "arbitrary PIP substitutions",
+        "arbitrary strict-zipper SCCs"
+      ]
+    },
+    {
+      "key": "Barge2018",
+      "citation": "arXiv:1505.04408",
+      "unit_only": false,
+      "unimodular_only": false,
+      "class_specific": true,
+      "transfer_status": "positive_control",
+      "transfers": [
+        "PDS for Pisot beta-substitutions through class-specific structure"
+      ],
+      "does_not_transfer": [
+        "general PIP theorem",
+        "generic periodic-address hitting lemma"
+      ]
+    }
+  ],
+  "forbidden_promotions": [
+    "strong coincidence implies the residual hitting theorem in the standing class",
+    "Perron-criticality contradicts a bad closed component",
+    "Euclidean contracting projection is complete when abs(det M) > 1",
+    "multiple tiling implies the distinguished periodic point is hit",
+    "the finite corpus is a uniform theorem"
+  ]
+}

@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "psc-research"
+version = "0.1.0"
+description = "Automated research tools for the balanced-pair route to the Pisot Substitution Conjecture"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pypdf==6.19.0"]
+
+[tool.pytest.ini_options]
+pythonpath = ["reference"]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.setuptools.packages.find]
+where = ["reference"]

@@ -1,0 +1,34 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+.DS_Store
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.synctex.gz
+build/
+dist/
+*.egg-info/
+
+# Mojo / pixi
+kernel/.pixi/
+kernel/.magic/
+*.mojopkg
+
+# Lean / lake
+proof/PscVerif/.lake/
+
+# TLC scratch
+proof/tla/states/
+proof/tla/*.jar
+proof/tla/MC*.out
+archive/**/refs-local/
+
+# Archived records are verbatim: never drop them by extension.
+!archive/**/*.log
+!archive/**/*.out

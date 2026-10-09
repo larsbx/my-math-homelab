@@ -1,0 +1,1793 @@
+# Claim-governance policy for larsbx/pisot-substitution-conjecture-research.
+#
+# Read by the vendored `tools/claim_governance` package (larsbx/finite-math-kernels
+# audit/, pinned in vendored.toml).  This file is the repository's whole policy: the
+# status vocabulary its surfaces use, the claim ledger that every status
+# surface must agree with, the phrases that may not promote an open claim,
+# and the numerical primitives banned from the exact kernel.  It states no
+# mathematics.  The classification of each claim below mirrors
+# docs/claim-status-and-source-map-2026-09-13.md; when a status changes,
+# change it here and on every surface in the same commit, which is what
+# docs/README.md asks reviewers to do by hand.
+#
+# Run: PYTHONPATH=tools python -m claim_governance.cli --root .
+
+[repository]
+name = "larsbx/pisot-substitution-conjecture-research"
+
+[scan]
+prose = ["README.md", "docs/**/*.md", "manuscripts/*.tex", "manuscripts/*.md"]
+source = ["kernel/psc/**/*.mojo", "kernel/*.mojo", "kernel/tests/*.mojo", "reference/psc_research/*.py"]
+exclude = ["archive/**", "sources/**"]
+
+# ---------------------------------------------------------------------------
+# Status vocabulary: docs/claim-status-and-source-map-2026-09-13.md section
+# "Status vocabulary", the [TAG] chains of the ledgers and README, and the
+# \Status{...} macro of the manuscript.
+# ---------------------------------------------------------------------------
+[status]
+classes = ["proved", "imported", "historical", "finite-domain", "conditional", "open", "bridge", "evidence", "retired", "missing-source"]
+
+[status.synonyms]
+"Repository-proved" = "proved"
+"repository-proved" = "proved"
+"[PROVED]" = "proved"
+"[PROVED equivalence]" = "proved"
+"\\Status{Theorem}" = "proved"
+"Imported theorem" = "imported"
+"imported theorem" = "imported"
+"[IMPORTED theorem]" = "imported"
+"[IMPORTED: Barge–Štimac–Williams]" = "imported"
+"\\Status{Imported}" = "imported"
+"\\begin{importedtheorem}" = "imported"
+"Historical restricted theorem" = "historical"
+"Finite-domain theorem" = "finite-domain"
+"finite-domain theorem" = "finite-domain"
+"Exact finite negative calibration" = "finite-domain"
+"\\Status{Finite computation}" = "finite-domain"
+"\\begin{computation}" = "finite-domain"
+"Conditional theorem" = "conditional"
+"\\Status{Conditional}" = "conditional"
+"\\begin{hypothesis}" = "conditional"
+"Open conjectural gate" = "open"
+"Open theorem target" = "open"
+"[OPEN]" = "open"
+"OPEN" = "open"
+"**Open**" = "open"
+"\\Status{Open}" = "open"
+"\\begin{problem}" = "open"
+"\\begin{conjecture}" = "open"
+"Open bridge" = "bridge"
+"OPEN bridge" = "bridge"
+"\\Status{Conjectural bridge}" = "bridge"
+"Empirical evidence" = "evidence"
+"\\Status{Empirical}" = "evidence"
+"Retired claim" = "retired"
+"Historical source missing" = "missing-source"
+
+# ---------------------------------------------------------------------------
+# Terminology.  PSC keeps no terminology registry; only the bridge-phrase
+# discipline applies, so that no analogy is written as an identification.
+# ---------------------------------------------------------------------------
+[terminology]
+# "corresponds exactly" is not listed: in this repository it states exact
+# algebraic equalities inside proofs, not analogies.
+risky_phrases = ["obvious isomorphism", "canonical analogy", "essentially the same", "nothing but", "proof by analogy"]
+negating_context = ["not ", "no ", "without ", "unless ", "must not", "cannot", "does not", "is not", "never"]
+
+# ---------------------------------------------------------------------------
+# Statements need a status label.  A proof note declares its status once in
+# a **Status:** line near its top; the claim map and ledgers label headings
+# with **Status: ...** or table cells; the state-of-program manuscript labels
+# environments with \Status{...} or uses a self-labelling environment.
+#
+# Known debt, allowlisted so that the check stays on for everything else:
+#   manuscripts/PSC_balanced_pair_state_2026-09-13.tex   four lemmas of the
+#       G1b-1 reconstruction (Summable decay, Prefix decomposition, Bounded
+#       contracting component, Zero symbolic length) carry no \Status{...}
+#   manuscripts/PSC_PROOF_next_source_audit.tex          source-audit note
+#       written before the \Status{...} convention; no environment is labelled
+# ---------------------------------------------------------------------------
+[claims]
+paths = ["docs/*.md", "manuscripts/*.tex"]
+statement_kinds = ["Theorem", "Proposition", "Lemma", "Corollary", "Conjecture", "Hypothesis", "Open Problem", "Imported Theorem", "Computational Proposition"]
+window_lines = 6
+file_status_marker = "**Status:**"
+file_status_lines = 10
+allow = ["manuscripts/PSC_balanced_pair_state_2026-09-13.tex", "manuscripts/PSC_PROOF_next_source_audit.tex"]
+
+# ---------------------------------------------------------------------------
+# Coverage: every Mojo test names what it guards.  The vendored
+# `kernel/mojo_smoke/claims.mojo` supplies the two declarations; `kernel/run_tests.sh` collects the receipts of
+# the tests that passed, so a declaration no run reached guards nothing and a
+# red suite credits nothing.  The required classes are the two whose warrant
+# *is* an exact finite computation: a finite-domain theorem and an empirical
+# evidence claim have no other source, so an unguarded one has no live
+# warrant.  A repository-proved claim is not required here: its warrant is a
+# manuscript proof, a Lean proof, or an archived certificate, and demanding a
+# Mojo test for it would manufacture a link the repository does not have.
+# Which proved claims happen to be guarded anyway is readable from the
+# declarations and from docs/claim-relationship-graph.json.
+# ---------------------------------------------------------------------------
+[coverage]
+tests = ["kernel/tests/test_*.mojo"]
+require_classes = ["finite-domain", "evidence"]
+receipts = "kernel/build/claim-receipts.tsv"
+
+# ---------------------------------------------------------------------------
+# Promotion: an unsettled claim must not be described as proved.
+# ---------------------------------------------------------------------------
+[promotion]
+proving_phrases = ["is proved", "are proved", "is now proved", "has been proved", "have been proved", "we prove", "we have proved", "is a theorem", "is now a theorem", "is established", "completes the proof", "settles", "is closed"]
+negating_context = ["not ", "no ", "remains open", "remain open", "open premise", "open gate", "open problem", "OPEN", "would", "conditional", "without", "if ", "once ", "unless", "cannot", "suffic", "assum", "requir", "needs", "target", "obligation", "must", "does not", "do not", "unproved", "premise", "stronger", "evidence", "issue #", "\\Status{Open}"]
+settled_classes = ["proved", "imported", "historical", "finite-domain", "conditional"]
+radius = 120
+# The state-of-program manuscript names G1 and SCC Producer in its abstract
+# next to "We prove the reduction" and only says that both remain open in
+# its last sentence, beyond any useful radius; its status discipline is the
+# \Status{...} macro, which the claims check and the ledger surfaces enforce.
+allow = ["manuscripts/PSC_balanced_pair_state_2026-09-13.tex"]
+
+# ---------------------------------------------------------------------------
+# Numerics: the exact kernel and its oracle compute over unbounded integers
+# and rationals only (docs/exact-arithmetic-binding.md, criterion C1).
+# ---------------------------------------------------------------------------
+[[numerics.rule]]
+name = "no-float-in-kernel"
+pattern = '\b(?:Float16|Float32|Float64|BFloat16|FloatLiteral|Float|float)\b|(?<![\w.])(?:\d(?:_?\d)*\.(?:\d(?:_?\d)*)?|\.\d(?:_?\d)*)(?:[eE][+-]?\d(?:_?\d)*)?(?![\w.])|(?<![\w.])\d(?:_?\d)*[eE][+-]?\d(?:_?\d)*(?![\w.])'
+paths = ["kernel/psc/**/*.mojo", "kernel/*.mojo", "kernel/tests/*.mojo"]
+message = "floating point in exact kernel scope (binding criterion C1)"
+
+[[numerics.rule]]
+name = "no-float-in-oracle"
+pattern = '\bfloat\b|\bmath\.(?:sqrt|log|exp|sin|cos|pow)\b|\bnumpy\b'
+paths = ["reference/psc_research/*.py"]
+message = "the Python oracle must stay exact (fractions.Fraction and int only)"
+
+# ---------------------------------------------------------------------------
+# Claim ledger.  Two parts.  The hand-written entries below cover load-bearing
+# claims that are not nodes of the TLA+ proof-dependency ledger (finite-domain
+# certificates, historical and bridge claims, PSC itself).  Every node of the
+# TLA+ ledger has a generated entry between the markers at the end of this
+# file, written by tools/make_ledger.py from the proof-record table it
+# holds (serialized to proof/tla/ledger.json, itself generated) through the vendored
+# tools/proof_records/generate_ledgers.py; do not edit that block or
+# ledger.json, edit the table in tools/make_ledger.py and regenerate.  Surfaces:
+#   map    = docs/claim-status-and-source-map-2026-09-13.md (the live claim map)
+#   ledger = docs/conjecture-ledger.md (prose dependency ledger)
+#   ladder = docs/proof-ladder.md (live theorem chain)
+#   roadmap = docs/research-roadmap-2026-09-21.md (live priority table)
+#   README = README.md (headline chain)
+#   index  = docs/ledger-index.md (generated; one row per TLA+ node)
+#   tla    = proof/tla/Ledger.tla (ProvedDef / ImportedDef / WithdrawnDef membership;
+#            a node whose implication is proved but whose premises are open,
+#            such as G1 or SCCProducer, is in ProvedDef and carries a
+#            status override recorded in the ledger's status_note evidence)
+# ---------------------------------------------------------------------------
+
+[[claim]]
+name = "HistoricalDegree3Capture"
+status = "historical"
+aliases = ["historical degree-three dominant capture"]
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Historical degree-three dominant capture |"
+window_lines = 0
+
+[[claim]]
+name = "BoundedDegree3Exclusion"
+status = "finite-domain"
+aliases = ["bounded degree-three exclusion"]
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Bounded degree-three exclusion |"
+window_lines = 0
+
+[[claim]]
+name = "BoundedDegree2WedgeProductivity"
+status = "finite-domain"
+aliases = ["bounded degree-two wedge productivity"]
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Bounded degree-two wedge productivity |"
+window_lines = 0
+
+[[claim]]
+name = "UnimodularNoPatchCollapse"
+status = "proved"
+aliases = ["unimodular seed-patch non-collapse"]
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Unimodular seed-patch non-collapse |"
+window_lines = 0
+
+[[claim]]
+name = "CorpusDeterminantSplit"
+status = "finite-domain"
+aliases = ["corpus determinant split"]
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Corpus determinant split |"
+window_lines = 0
+
+[[claim]]
+name = "BoundedPureDiscreteSpectrum"
+status = "finite-domain"
+aliases = ["finite-domain pure discrete spectrum"]
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Finite-domain pure discrete spectrum |"
+window_lines = 0
+
+[[claim]]
+name = "OrderedAffineCycleIdentity"
+status = "proved"
+aliases = ["ordered affine overlap-cycle identity"]
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Ordered affine overlap-cycle identity |"
+window_lines = 0
+
+[[claim]]
+name = "OneStepContextEquality"
+status = "finite-domain"
+aliases = ["one-step overlap context equality"]
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| One-step overlap context equality |"
+window_lines = 0
+
+[[claim]]
+name = "PeriodicPatchCollar"
+status = "proved"
+aliases = ["radius-m periodic-patch collar", "collar recursion lemma"]
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Radius-`m` periodic-patch collar |"
+window_lines = 0
+
+[[claim]]
+name = "RealizationCoincidenceRankBridge"
+status = "bridge"
+aliases = ["realization / coincidence-rank chain", "realization/coincidence-rank bridge"]
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Realization / coincidence-rank chain |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "## F. Realization / MEF bridge"
+window_lines = 2
+
+[[claim]]
+name = "FiniteCollarDeath"
+status = "evidence"
+aliases = ["finite collar death"]
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Finite collar death |"
+window_lines = 0
+
+[[claim]]
+name = "BPATerminationInterface"
+status = "imported"
+aliases = ["BPA termination"]
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| BPA termination / literature interface |"
+window_lines = 0
+
+[[claim]]
+name = "PSC"
+status = "open"
+aliases = ["Pisot substitution conjecture"]
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Pisot substitution conjecture in the standing regime |"
+window_lines = 0
+
+# BEGIN generated claims (proof_records/generate_ledgers.py); do not edit between the markers
+# Generated by proof_records/generate_ledgers.py from ledger.json; do not edit.
+
+[[claim]]
+name = "AlgebraicEmbedding"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"AlgebraicEmbedding"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| AlgebraicEmbedding |'
+window_lines = 0
+
+[[claim]]
+name = "AlignedOverlapsAreStrongCoincidence"
+status = "proved"
+aliases = ["endpoint-aligned overlaps"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"AlignedOverlapsAreStrongCoincidence"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| AlignedOverlapsAreStrongCoincidence |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Endpoint-aligned overlaps = strong-coincidence boundary cases |"
+window_lines = 0
+
+[[claim]]
+name = "AllSeedOverlapProductivity"
+status = "open"
+aliases = ["all-seed overlap productivity"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"AllSeedOverlapProductivity"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| AllSeedOverlapProductivity |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| All-seed overlap productivity |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### All-seed overlap productivity"
+window_lines = 2
+
+[[claim]]
+name = "AllSeedStrictZipperExclusion"
+status = "open"
+aliases = ["all-seed strict-zipper exclusion"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"AllSeedStrictZipperExclusion"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| AllSeedStrictZipperExclusion |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| All-seed strict-zipper exclusion |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### All-seed strict-zipper exclusion"
+window_lines = 2
+
+[[claim]]
+name = "AllStatesProductiveViaOverlaps"
+status = "conditional"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"AllStatesProductiveViaOverlaps"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| AllStatesProductiveViaOverlaps |'
+window_lines = 0
+
+[[claim]]
+name = "BoundaryCoincidenceCriterion"
+status = "proved"
+aliases = ["boundary-hitting criterion"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"BoundaryCoincidenceCriterion"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| BoundaryCoincidenceCriterion |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Boundary-hitting criterion |"
+window_lines = 0
+
+[[claim]]
+name = "BoxAutomatonCertificate"
+status = "proved"
+aliases = ["Theorem Ω", "box-automaton certificate"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"BoxAutomatonCertificate"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| BoxAutomatonCertificate |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Box-automaton certificate for formal productivity |"
+window_lines = 0
+
+[[claim]]
+name = "BoxAutomatonPDSCertificate"
+status = "proved"
+aliases = ["per-specimen box PDS certificate"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"BoxAutomatonPDSCertificate"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| BoxAutomatonPDSCertificate |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Box-automaton PDS certificate |"
+window_lines = 0
+
+[[claim]]
+name = "BoxCycleContainment"
+status = "proved"
+aliases = ["Lemma Ω1"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"BoxCycleContainment"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| BoxCycleContainment |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Cycle vertices lie in the box automaton |"
+window_lines = 0
+
+[[claim]]
+name = "C2"
+status = "conditional"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"C2"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| C2 |'
+window_lines = 0
+
+[[claim]]
+name = "C3Local"
+status = "conditional"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"C3Local"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| C3Local |'
+window_lines = 0
+
+[[claim]]
+name = "C3Locality"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"C3Locality"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| C3Locality |'
+window_lines = 0
+
+[[claim]]
+name = "C4"
+status = "open"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"C4"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| C4 |'
+window_lines = 0
+
+[[claim]]
+name = "CoincidenceDensityOne"
+status = "proved"
+aliases = ["coincidence density one"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"CoincidenceDensityOne"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| CoincidenceDensityOne |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Coincidence density / dense-good-set equivalence |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/proof-ladder.md"
+anchor = "=> coincidence density one / dense good set"
+window_lines = 0
+[[claim.surfaces]]
+path = "README.md"
+anchor = "=> coincidence density one / dense good set"
+window_lines = 0
+
+[[claim]]
+name = "CoincidenceRankFibreTheorems"
+status = "imported"
+aliases = ["coincidence-rank fibre theorems"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"CoincidenceRankFibreTheorems"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| CoincidenceRankFibreTheorems |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Coincidence-rank fibre theorems |"
+window_lines = 0
+
+[[claim]]
+name = "ConcentrationAuxB"
+status = "open"
+aliases = ["aux-B", "general concentration"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"ConcentrationAuxB"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| ConcentrationAuxB |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Concentration / aux-B |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### Concentration / aux-B"
+window_lines = 2
+[[claim.surfaces]]
+path = "docs/research-roadmap-2026-09-21.md"
+anchor = "| **P3a** | Concentration, `K2=0` |"
+window_lines = 0
+
+[[claim]]
+name = "DefectIntertwiner"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"DefectIntertwiner"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DefectIntertwiner |'
+window_lines = 0
+
+[[claim]]
+name = "DefectTheorem"
+status = "proved"
+aliases = ["FullIncidenceRank", "full incidence rank"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"DefectTheorem"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DefectTheorem |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Full incidence rank from"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### Full incidence rank and unique decodability"
+window_lines = 2
+
+[[claim]]
+name = "Degree4Floor"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"Degree4Floor"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| Degree4Floor |'
+window_lines = 0
+
+[[claim]]
+name = "DensityToPDSBridge"
+status = "imported"
+aliases = ["density-to-PDS bridge", "Barge–Štimac–Williams theorem"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"DensityToPDSBridge"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DensityToPDSBridge |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Density-to-PDS bridge |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/proof-ladder.md"
+anchor = "=> pure discrete spectrum"
+window_lines = 0
+[[claim.surfaces]]
+path = "README.md"
+anchor = "=> pure discrete spectrum"
+window_lines = 0
+
+[[claim]]
+name = "DominantCubicCapture"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"DominantCubicCapture"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DominantCubicCapture |'
+window_lines = 0
+
+[[claim]]
+name = "DominantK2Source"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"DominantK2Source"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| DominantK2Source |'
+window_lines = 0
+
+[[claim]]
+name = "EndpointCore"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"EndpointCore"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| EndpointCore |'
+window_lines = 0
+
+[[claim]]
+name = "FormalProductivity"
+status = "open"
+aliases = ["formal productivity"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"FormalProductivity"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| FormalProductivity |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Formal productivity |"
+window_lines = 0
+
+[[claim]]
+name = "G1"
+status = "open"
+aliases = ["finite BPA"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"G1"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| G1 |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Finite BPA, G1 |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "## C. Parallel programme — G1 / renewal finiteness"
+window_lines = 4
+
+[[claim]]
+name = "G1FormalProductivityRoute"
+status = "conditional"
+aliases = ["consequence (c)"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"G1FormalProductivityRoute"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| G1FormalProductivityRoute |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Formal productivity implies finite BPA |"
+window_lines = 0
+
+[[claim]]
+name = "G1FromRenewal"
+status = "conditional"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"G1FromRenewal"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| G1FromRenewal |'
+window_lines = 0
+
+[[claim]]
+name = "G1HalfCoincidenceRoute"
+status = "conditional"
+aliases = ["half-coincidence route to finite BPA"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"G1HalfCoincidenceRoute"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| G1HalfCoincidenceRoute |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Strict-zipper exclusion implies finite BPA |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### Half-coincidence route to finite BPA"
+window_lines = 2
+[[claim.surfaces]]
+path = "docs/proof-ladder.md"
+anchor = "## Half-coincidence route to G1"
+window_lines = 2
+
+[[claim]]
+name = "G1OverlapRoute"
+status = "conditional"
+aliases = ["overlap-depth route to finite BPA"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"G1OverlapRoute"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| G1OverlapRoute |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| All-seed overlap productivity implies finite BPA |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### Overlap-depth route to finite BPA"
+window_lines = 2
+[[claim.surfaces]]
+path = "docs/proof-ladder.md"
+anchor = "## Overlap-depth route to G1"
+window_lines = 2
+
+[[claim]]
+name = "G1b1BoundedDiscrepancy"
+status = "proved"
+aliases = ["G1b-1", "bounded discrepancy"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"G1b1BoundedDiscrepancy"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| G1b1BoundedDiscrepancy |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| G1b-1 bounded discrepancy |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### G1b-1 bounded discrepancy"
+window_lines = 2
+[[claim.surfaces]]
+path = "docs/proof-ladder.md"
+anchor = "=> bounded discrepancy"
+window_lines = 0
+[[claim.surfaces]]
+path = "README.md"
+anchor = "=> bounded discrepancy"
+window_lines = 0
+
+[[claim]]
+name = "G1b2RenewalFiniteness"
+status = "open"
+aliases = ["G1b-2", "renewal finiteness"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"G1b2RenewalFiniteness"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| G1b2RenewalFiniteness |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| G1b-2 renewal finiteness |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### G1b-2"
+window_lines = 2
+[[claim.surfaces]]
+path = "docs/proof-ladder.md"
+anchor = "## G1b-2 — renewal finiteness"
+window_lines = 2
+[[claim.surfaces]]
+path = "docs/research-roadmap-2026-09-21.md"
+anchor = "| **P2** | G1b-2 renewal finiteness |"
+window_lines = 0
+
+[[claim]]
+name = "GaloisWedgePropagation"
+status = "proved"
+aliases = ["degree-two carrier span"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"GaloisWedgePropagation"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| GaloisWedgePropagation |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Degree-two carrier span / wedge dichotomy |"
+window_lines = 0
+
+[[claim]]
+name = "GlobalEndpointSync"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"GlobalEndpointSync"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| GlobalEndpointSync |'
+window_lines = 0
+
+[[claim]]
+name = "InterBlockCancellation"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"InterBlockCancellation"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| InterBlockCancellation |'
+window_lines = 0
+
+[[claim]]
+name = "LatticeLift"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"LatticeLift"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| LatticeLift |'
+window_lines = 0
+
+[[claim]]
+name = "LeftmostChainCycleStructure"
+status = "proved"
+aliases = ["Proposition LC"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"LeftmostChainCycleStructure"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| LeftmostChainCycleStructure |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Leftmost-chain cycles are prefix-vs-interior pairs |"
+window_lines = 0
+
+[[claim]]
+name = "LeftmostChainG1Certificate"
+status = "proved"
+aliases = ["Corollary LC5"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"LeftmostChainG1Certificate"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| LeftmostChainG1Certificate |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| No terminal leftmost cycle implies finite BPA |"
+window_lines = 0
+
+[[claim]]
+name = "LoadBearingSCC"
+status = "conditional"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"LoadBearingSCC"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| LoadBearingSCC |'
+window_lines = 0
+
+[[claim]]
+name = "LocalWitnessInjectivity"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"LocalWitnessInjectivity"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| LocalWitnessInjectivity |'
+window_lines = 0
+
+[[claim]]
+name = "MassBalanceK2Obstruction"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"MassBalanceK2Obstruction"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| MassBalanceK2Obstruction |'
+window_lines = 0
+
+[[claim]]
+name = "MeanAreaLift"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"MeanAreaLift"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| MeanAreaLift |'
+window_lines = 0
+
+[[claim]]
+name = "MidArea"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"MidArea"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| MidArea |'
+window_lines = 0
+
+[[claim]]
+name = "Mod3Sieve"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"Mod3Sieve"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| Mod3Sieve |'
+window_lines = 0
+
+[[claim]]
+name = "OrientationMonodromy"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"OrientationMonodromy"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| OrientationMonodromy |'
+window_lines = 0
+
+[[claim]]
+name = "OrientationSpectrum"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"OrientationSpectrum"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| OrientationSpectrum |'
+window_lines = 0
+
+[[claim]]
+name = "OverlapBadSCCNormalForm"
+status = "proved"
+aliases = ["closed irreducible bad-overlap normal form"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"OverlapBadSCCNormalForm"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| OverlapBadSCCNormalForm |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Closed irreducible bad-overlap normal form |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### Closed irreducible bad-overlap normal form"
+window_lines = 2
+
+[[claim]]
+name = "OverlapBoundaryZipperDichotomy"
+status = "proved"
+aliases = ["strict zipper dichotomy"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"OverlapBoundaryZipperDichotomy"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| OverlapBoundaryZipperDichotomy |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Boundary obstruction / strict zipper dichotomy |"
+window_lines = 0
+
+[[claim]]
+name = "OverlapCoincidenceCriterion"
+status = "imported"
+aliases = ["Lee–Moody–Solomyak overlap-coincidence criterion"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"OverlapCoincidenceCriterion"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| OverlapCoincidenceCriterion |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Overlap-coincidence criterion |"
+window_lines = 0
+
+[[claim]]
+name = "OverlapFullRank"
+status = "proved"
+aliases = ["full-rank child-closed overlap constraint"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"OverlapFullRank"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| OverlapFullRank |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Full-rank child-closed overlap constraint |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### Full-rank constraint on a bad set"
+window_lines = 2
+
+[[claim]]
+name = "OverlapProductivity"
+status = "open"
+aliases = ["seedwise overlap productivity", "overlap productivity", "Open Problem 5.35"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"OverlapProductivity"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| OverlapProductivity |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Seedwise overlap productivity / Open Problem 5.35 |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### Overlap productivity / Open Problem 5.35"
+window_lines = 2
+[[claim.surfaces]]
+path = "docs/proof-ladder.md"
+anchor = "=> one swap seed has only productive reachable overlaps"
+window_lines = 0
+[[claim.surfaces]]
+path = "README.md"
+anchor = "=> one swap seed has only productive reachable overlaps"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/research-roadmap-2026-09-21.md"
+anchor = "| **P1** | Seedwise overlap productivity (#84) |"
+window_lines = 0
+
+[[claim]]
+name = "PDS"
+status = "conditional"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"PDS"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| PDS |'
+window_lines = 0
+
+[[claim]]
+name = "PDSFormalProductivityRoute"
+status = "conditional"
+aliases = ["consequence (a)"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"PDSFormalProductivityRoute"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| PDSFormalProductivityRoute |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Formal productivity implies PDS (overlap coincidence) |"
+window_lines = 0
+
+[[claim]]
+name = "PDSFormalProductivitySeedRoute"
+status = "conditional"
+aliases = ["consequence (b)"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"PDSFormalProductivitySeedRoute"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| PDSFormalProductivitySeedRoute |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Formal productivity implies PDS (seed route) |"
+window_lines = 0
+
+[[claim]]
+name = "PDSImpliesRepoG1"
+status = "proved"
+aliases = ["Theorem S", "PDS implies G1"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"PDSImpliesRepoG1"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| PDSImpliesRepoG1 |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| PDS implies G1 |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### PDS implies G1"
+window_lines = 2
+[[claim.surfaces]]
+path = "docs/proof-ladder.md"
+anchor = "## PDS implies G1, so G1 is necessary"
+window_lines = 2
+
+[[claim]]
+name = "PDSImpliesSeedwiseTermination"
+status = "proved"
+aliases = ["seedwise bridge"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"PDSImpliesSeedwiseTermination"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| PDSImpliesSeedwiseTermination |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| PDS implies seedwise termination |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### PDS implies seedwise termination"
+window_lines = 2
+[[claim.surfaces]]
+path = "docs/proof-ladder.md"
+anchor = "## PDS implies seedwise termination (former Open Problem 4.24)"
+window_lines = 2
+
+[[claim]]
+name = "PDSOverlapRoute"
+status = "conditional"
+aliases = ["Theorem 5.38"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"PDSOverlapRoute"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| PDSOverlapRoute |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| One-seed overlap productivity implies PDS |"
+window_lines = 0
+
+[[claim]]
+name = "PDSSpectralRoute"
+status = "conditional"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"PDSSpectralRoute"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| PDSSpectralRoute |'
+window_lines = 0
+
+[[claim]]
+name = "ParikhIntertwiner"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"ParikhIntertwiner"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| ParikhIntertwiner |'
+window_lines = 0
+
+[[claim]]
+name = "ParitySieve"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"ParitySieve"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| ParitySieve |'
+window_lines = 0
+
+[[claim]]
+name = "PeriodicPairOneFibre"
+status = "proved"
+aliases = ["periodic pairs in one fibre", "Proposition F"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"PeriodicPairOneFibre"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| PeriodicPairOneFibre |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Periodic pairs lie in one fibre |"
+window_lines = 0
+
+[[claim]]
+name = "PhiSemisimplicity"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"PhiSemisimplicity"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| PhiSemisimplicity |'
+window_lines = 0
+
+[[claim]]
+name = "PisotMeyerProperty"
+status = "imported"
+aliases = ["Pisot Meyer property"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"PisotMeyerProperty"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| PisotMeyerProperty |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Pisot Meyer property |"
+window_lines = 0
+
+[[claim]]
+name = "RepoSeedUnionBridge"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"RepoSeedUnionBridge"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| RepoSeedUnionBridge |'
+window_lines = 0
+
+[[claim]]
+name = "ReturnModuleFullRank"
+status = "proved"
+aliases = ["full-rank return module", "Theorem R"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"ReturnModuleFullRank"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| ReturnModuleFullRank |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Full-rank return module |"
+window_lines = 0
+
+[[claim]]
+name = "SCCProducer"
+status = "open"
+aliases = ["SCC Producer"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"SCCProducer"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| SCCProducer |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| SCC Producer / C1 |"
+window_lines = 0
+
+[[claim]]
+name = "SeedCentralizer"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"SeedCentralizer"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| SeedCentralizer |'
+window_lines = 0
+
+[[claim]]
+name = "SignatureReduction"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"SignatureReduction"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| SignatureReduction |'
+window_lines = 0
+
+[[claim]]
+name = "SinkSCCReduction"
+status = "conditional"
+aliases = ["sink-SCC reduction"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"SinkSCCReduction"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| SinkSCCReduction |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Sink-SCC reduction under G1 |"
+window_lines = 0
+
+[[claim]]
+name = "SpanRichProductivity"
+status = "open"
+aliases = ["general wedge productivity"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"SpanRichProductivity"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| SpanRichProductivity |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| General wedge productivity |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### Wedge productivity"
+window_lines = 2
+[[claim.surfaces]]
+path = "docs/research-roadmap-2026-09-21.md"
+anchor = "| **P3b** | Wedge productivity, `K2!=0` |"
+window_lines = 0
+
+[[claim]]
+name = "SpectralBlackBox"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"SpectralBlackBox"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| SpectralBlackBox |'
+window_lines = 0
+
+[[claim]]
+name = "SpectralSCCProducer"
+status = "open"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"SpectralSCCProducer"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| SpectralSCCProducer |'
+window_lines = 0
+
+[[claim]]
+name = "StandardBPAEquivalence"
+status = "imported"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"StandardBPAEquivalence"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| StandardBPAEquivalence |'
+window_lines = 0
+
+[[claim]]
+name = "StrictZipperPeriodicPairForm"
+status = "proved"
+aliases = ["periodic-pair form of a strict zipper", "Theorem B"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"StrictZipperPeriodicPairForm"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| StrictZipperPeriodicPairForm |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Periodic-pair form of a strict zipper |"
+window_lines = 0
+
+[[claim]]
+name = "StrongCoincidenceFromPDS"
+status = "imported"
+aliases = ["overlap coincidence to strong coincidence"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"StrongCoincidenceFromPDS"'
+section = "ImportedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| StrongCoincidenceFromPDS |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Strong coincidence from PDS |"
+window_lines = 0
+
+[[claim]]
+name = "SwapOverlapFiniteness"
+status = "proved"
+aliases = ["seed-patch overlap graph finiteness", "seed-patch overlap finiteness"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"SwapOverlapFiniteness"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| SwapOverlapFiniteness |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Seed-patch overlap graph finiteness |"
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/conjecture-ledger.md"
+anchor = "### Seed-patch overlap finiteness"
+window_lines = 2
+[[claim.surfaces]]
+path = "docs/proof-ladder.md"
+anchor = "=> finite seed-patch overlap graph"
+window_lines = 0
+[[claim.surfaces]]
+path = "README.md"
+anchor = "=> finite seed-patch overlap graph"
+window_lines = 0
+
+[[claim]]
+name = "Target1"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"Target1"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| Target1 |'
+window_lines = 0
+
+[[claim]]
+name = "ThetaIntertwining"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"ThetaIntertwining"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| ThetaIntertwining |'
+window_lines = 0
+
+[[claim]]
+name = "UDForPowers"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"UDForPowers"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| UDForPowers |'
+window_lines = 0
+
+[[claim]]
+name = "UniqueDecodability"
+status = "proved"
+aliases = ["unique decodability"]
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"UniqueDecodability"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| UniqueDecodability |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/claim-status-and-source-map-2026-09-13.md"
+anchor = "| Unique decodability of substitution images and powers |"
+window_lines = 0
+[[claim.surfaces]]
+path = "README.md"
+anchor = "**Unique decodability:**"
+window_lines = 0
+
+[[claim]]
+name = "V5Thm51"
+status = "retired"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"V5Thm51"'
+section = "WithdrawnDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| V5Thm51 |'
+window_lines = 0
+
+[[claim]]
+name = "W3LowGrowth"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"W3LowGrowth"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| W3LowGrowth |'
+window_lines = 0
+
+[[claim]]
+name = "WedgeBound"
+status = "proved"
+[[claim.surfaces]]
+path = "proof/tla/Ledger.tla"
+anchor = '"WedgeBound"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/ledger-index.md"
+anchor = '| WedgeBound |'
+window_lines = 0
+# END generated claims

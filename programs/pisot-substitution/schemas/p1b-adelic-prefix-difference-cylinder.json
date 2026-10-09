@@ -1,0 +1,58 @@
+{
+  "schema_version": 2,
+  "issue": 139,
+  "name": "AdelicPrefixDifferenceCylinder",
+  "status": "specified_not_proved",
+  "carrier": {
+    "field": "Q(beta)",
+    "offset_module": "L_sigma",
+    "intertwiner_required": "lambda(M*z) = beta*lambda(z)",
+    "internal_places": [
+      "all non-dominant Archimedean places",
+      "all finite places dividing (beta)"
+    ],
+    "finite_places_required_when_nonunit": true
+  },
+  "level_target": {
+    "digit_difference": "D_m(i,j) = P_m(i) - P_m(j)",
+    "formula": "C_m(i,j) = beta^(-m) * Phi'_sigma(lambda(D_m(i,j)))",
+    "acceptance_equivalence": "Phi'_sigma(lambda(w)) in C_m(i,j) iff M^m*w in D_m(i,j)",
+    "authoritative_acceptance": "exact integer equality on M^m*w and occurrence-labelled prefix differences"
+  },
+  "affine_orbit": {
+    "recurrence": "w_(t+1) = M*w_t + d_t",
+    "accumulated_forcing": "q_t = sum_(k=0)^(t-1) M^(t-1-k)*d_k",
+    "replayed_offset": "w_t = M^t*w_0 + q_t",
+    "cycle_identity": "(I-M^r)*w_0 = sum_(k=0)^(r-1) M^(r-1-k)*d_k",
+    "periodicity": "w_r = w_0",
+    "forbidden_homogeneous_substitute": "M^t*w_0 without accumulated forcing"
+  },
+  "witness_fields": [
+    "substitution_images",
+    "incidence_matrix",
+    "ordered_vertex",
+    "cycle_edge_occurrences",
+    "cycle_digits",
+    "replayed_affine_offsets",
+    "cycle_identity",
+    "realization_provenance",
+    "child_closed",
+    "no_offset_zero",
+    "prefix_occurrence_pair",
+    "hit_level"
+  ],
+  "residual_lemma": {
+    "name": "AffinePeriodicOrbitCylinderRecurrence",
+    "status": "open",
+    "must_be_uniform_in_component": true,
+    "must_preserve_occurrence_compatibility": true
+  },
+  "forbidden_acceptance": [
+    "Archimedean projection equality in the non-unit case",
+    "membership in the closure of the cumulative target",
+    "positive measure or almost-everywhere coverage",
+    "finite corpus or depth cap without a completeness theorem",
+    "floating or truncated local-coordinate equality",
+    "homogeneous powers M^t*w_0 substituted for affine replay offsets"
+  ]
+}

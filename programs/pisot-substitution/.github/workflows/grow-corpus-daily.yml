@@ -1,0 +1,106 @@
+name: Grow PIP research corpus daily
+
+on:
+  schedule:
+    - cron: "17 10 * * *"
+  workflow_dispatch:
+    inputs:
+      candidates:
+        description: "Number of previously unseen substitution candidates to screen"
+        required: false
+        default: "50000"
+      workers:
+        description: "MAX worker count"
+        required: false
+        default: "4"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: psc-growing-corpus
+  cancel-in-progress: false
+
+jobs:
+  grow:
+    runs-on: ubuntu-latest
+    env:
+      DAILY_CANDIDATES: ${{ inputs.candidates || '50000' }}
+      MAX_WORKERS: ${{ inputs.workers || '4' }}
+      GROWTH_BRANCH: corpus/daily-growth
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+
+      - name: Continue the append-only corpus branch
+        run: |
+          set -euo pipefail
+          git config user.name "psc-corpus-bot"
+          git config user.email "1158952+larsbx@users.noreply.github.com"
+          git fetch origin main
+          if git ls-remote --exit-code --heads origin "$GROWTH_BRANCH" >/dev/null 2>&1; then
+            git fetch origin "$GROWTH_BRANCH"
+            git checkout -B "$GROWTH_BRANCH" "origin/$GROWTH_BRANCH"
+            git merge --no-edit origin/main
+          else
+            git checkout -b "$GROWTH_BRANCH"
+          fi
+
+      - name: Verify the deterministic band kernel
+        working-directory: kernel
+        run: pixi run mojo run -I . tests/test_growing_corpus.mojo
+
+      - name: Screen the next daily shard
+        run: |
+          set -euo pipefail
+          python3 tools/grow_corpus.py \
+            --state experiments/growing-corpus/state.json \
+            --shard-root experiments/growing-corpus/shards \
+            --budget "$DAILY_CANDIDATES" \
+            --workers "$MAX_WORKERS" \
+            --kernel-revision "$GITHUB_SHA"
+
+      - name: Commit the validated corpus growth
+        id: commit
+        run: |
+          set -euo pipefail
+          git add experiments/growing-corpus
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "data: grow exact PIP research corpus"
+          git push origin "HEAD:$GROWTH_BRANCH"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Keep a reviewable corpus-growth PR open
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          number=$(gh pr list \
+            --base main \
+            --head "$GROWTH_BRANCH" \
+            --state open \
+            --json number \
+            --jq '.[0].number // empty')
+          if [[ -z "$number" ]]; then
+            gh pr create \
+              --draft \
+              --base main \
+              --head "$GROWTH_BRANCH" \
+              --title "Daily growing PIP research corpus" \
+              --body "Append-only exact PIP research-corpus growth. This data does not widen the frozen 4,554-member theorem corpus; see experiments/growing-corpus/README.md." \
+              || echo "::warning::Corpus branch grew, but this repository does not permit Actions to create pull requests."
+          else
+            echo "Corpus growth continues in PR #$number"
+          fi

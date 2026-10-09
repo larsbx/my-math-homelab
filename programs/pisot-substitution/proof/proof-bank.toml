@@ -1,0 +1,64 @@
+# Extra evidence locators and exact Lean support bindings. Claim statuses and
+# dependency edges remain owned by claim_governance.toml / tools/make_ledger.py.
+format = "psc-proof-bank-bindings-v1"
+
+[[evidence]]
+claim = "HistoricalDegree3Capture"
+source = "archive/2026-09-08/certificates_patched/PROOF_CERTIFICATE.md, sections 8-10"
+[[evidence]]
+claim = "BoundedDegree3Exclusion"
+source = "docs/p1a-degree3-partial-theorem.md, bounded PIP corpus theorem"
+[[evidence]]
+claim = "BoundedDegree2WedgeProductivity"
+source = "docs/p1a-degree2-wedge-productivity.md"
+[[evidence]]
+claim = "UnimodularNoPatchCollapse"
+source = "docs/unimodular-route-gate-2026-09-17.md, Lemma 1"
+[[evidence]]
+claim = "CorpusDeterminantSplit"
+source = "docs/unimodular-route-gate-2026-09-17.md, Computational Proposition 2"
+[[evidence]]
+claim = "BoundedPureDiscreteSpectrum"
+source = "docs/pds-certificate-from-the-box-automaton-2026-10-07.md, section 5; domain-specific Mojo receipts, not a universal theorem"
+[[evidence]]
+claim = "OrderedAffineCycleIdentity"
+source = "docs/p1-overlap-affine-pump-2026-09-15.md, Lemma 1"
+[[evidence]]
+claim = "OneStepContextEquality"
+source = "docs/p1-overlap-context-equality-2026-09-15.md"
+[[evidence]]
+claim = "PeriodicPatchCollar"
+source = "docs/p1-overlap-collar-2026-09-16.md, Lemmas 1-2"
+[[evidence]]
+claim = "RealizationCoincidenceRankBridge"
+source = "sources/issue-45/realization-coincidence-rank-audit.md, open obligations G0-G6"
+[[evidence]]
+claim = "FiniteCollarDeath"
+source = "docs/p1-overlap-collar-2026-09-16.md, finite evidence only; no collar-completeness theorem"
+[[evidence]]
+claim = "BPATerminationInterface"
+source = "docs/bpa-literature-bridge.md"
+[[evidence]]
+claim = "PSC"
+source = "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, abstract and unresolved statements; open"
+
+[[lean_support]]
+claim = "SeedCentralizer"
+coverage = "partial"
+declarations = ["Psc.no_commuting_of_no_eigenvalue", "Psc.Aq_mulVec_ones", "Psc.Aq_eigenspace"]
+note = "The rational centralizer contradiction is formalized. The tensor intertwining and semisimplicity bridge are manuscript results."
+[[lean_support]]
+claim = "Target1"
+coverage = "partial"
+declarations = ["Psc.target1", "Psc.no_equal_row_sums"]
+note = "Lean assumes NoEigenvalue M and proves noncommutation. The full tensor-sector statement additionally uses the unformalized intertwining and semisimplicity results."
+[[lean_support]]
+claim = "DominantCubicCapture"
+coverage = "partial"
+declarations = ["Psc.trace_sq_A", "Psc.trace_sq_Aq", "Psc.Aq_not_conj_cyclicPlus", "Psc.Aq_not_conj_cyclicMinus"]
+note = "The trace obstruction is formalized; the splitting-field/Galois and dominant-projection passage is not."
+[[lean_support]]
+claim = "HistoricalDegree3Capture"
+coverage = "partial"
+declarations = ["Psc.Aq_not_conj_cyclicPlus", "Psc.Aq_not_conj_cyclicMinus"]
+note = "Restricted historical result: Lean supports its trace obstruction, not the whole spectral argument."

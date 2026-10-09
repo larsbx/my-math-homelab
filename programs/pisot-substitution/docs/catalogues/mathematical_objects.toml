@@ -1,0 +1,265 @@
+schema_version = 1
+title = "PSC mathematical-object catalogue"
+description = "Canonical registry of the mathematical objects used by the live PSC research program."
+
+[[taxonomy]]
+id = "dynamics"
+name = "Substitution dynamics"
+description = "Substitutions, words, tilings, and their finite symbolic dynamics."
+
+[[taxonomy]]
+id = "automata"
+name = "Finite-state objects"
+description = "Graphs, automata, components, and finite carriers used in exact reductions."
+
+[[taxonomy]]
+id = "algebra"
+name = "Exact algebra"
+description = "Finite-dimensional exact arithmetic and algebraic invariants."
+
+[[taxonomy]]
+id = "certificates"
+name = "Certificates and evidence"
+description = "Replayable bounded-domain objects; never general theorems by themselves."
+
+[[object]]
+id = "substitution"
+name = "Substitution"
+taxonomy = "dynamics"
+status = "definition"
+scope = "A non-erasing morphism on the finite alphabet, with the standing program usually restricted to primitive irreducible Pisot substitutions."
+definition = "The generating morphism sigma; its incidence matrix controls abelianized growth."
+canonical = "kernel/substitution_dynamics/substitution.mojo"
+oracle = "reference/psc_research/bpa.py"
+related = ["incidence-matrix", "balanced-pair-automaton", "seed-patch-overlap-automaton"]
+
+[[object]]
+id = "incidence-matrix"
+name = "Incidence matrix"
+taxonomy = "algebra"
+status = "definition"
+scope = "Exact integer matrix of letter counts in substitution images."
+definition = "M[i,j] counts occurrences of letter i in sigma(j)."
+canonical = "kernel/substitution_dynamics/substitution.mojo"
+oracle = "reference/psc_research/pisot_screen.py"
+related = ["substitution", "perron-cubic-field", "wedge-defect"]
+
+[[object]]
+id = "balanced-pair-state"
+name = "Balanced-pair state"
+taxonomy = "dynamics"
+status = "definition"
+scope = "A normalized ordered word pair with equal Parikh vector."
+definition = "A state (u,v) satisfying pi(u)=pi(v), reduced according to the BPA normalization contract."
+canonical = "kernel/substitution_dynamics/balanced_pairs.mojo"
+oracle = "reference/psc_research/bpa.py"
+related = ["balanced-pair-automaton", "producer", "wedge-defect"]
+
+[[object]]
+id = "balanced-pair-automaton"
+name = "Balanced-pair automaton"
+taxonomy = "automata"
+status = "open-boundary"
+scope = "Exact reachable normalized balanced-pair graph; general finiteness remains open."
+definition = "Inflate, factor at coincidences, normalize, and retain the directed child relation."
+canonical = "kernel/substitution_dynamics/automaton.mojo"
+oracle = "reference/psc_research/bpa.py"
+related = ["balanced-pair-state", "recurrent-scc", "producer"]
+
+[[object]]
+id = "seed-patch-overlap-state"
+name = "Seed-patch overlap state"
+taxonomy = "dynamics"
+status = "definition"
+scope = "An oriented interior overlap of two prototiles with exact displacement in Z[beta]."
+definition = "The triple (top tile, bottom tile, displacement), with coincidence exactly (i,i,0)."
+canonical = "kernel/psc/overlap_seed_patch.mojo"
+oracle = "reference/psc_research/overlap_graph.py"
+related = ["seed-patch-overlap-automaton", "coincidence", "perron-cubic-field"]
+
+[[object]]
+id = "seed-patch-overlap-automaton"
+name = "Seed-patch overlap automaton"
+taxonomy = "automata"
+status = "proved-finite"
+scope = "Reachable graph from legal two-letter swap seed superpositions; finiteness follows from bounded discrepancy."
+definition = "Inflation graph of exact seed-patch overlap states. Capped construction is inconclusive and fails closed."
+canonical = "kernel/psc/overlap_seed_patch.mojo"
+oracle = "reference/psc_research/overlap_graph.py"
+related = ["seed-patch-overlap-state", "coincidence", "overlap-productivity"]
+
+[[object]]
+id = "coincidence"
+name = "Coincidence"
+taxonomy = "dynamics"
+status = "definition"
+scope = "Equal tile types with equal support origin inside an overlap automaton."
+definition = "The terminal overlap state (i,i,0)."
+canonical = "kernel/psc/overlap_seed_patch.mojo"
+oracle = "reference/psc_research/overlap_graph.py"
+related = ["seed-patch-overlap-state", "overlap-productivity", "producer"]
+
+[[object]]
+id = "overlap-productivity"
+name = "Overlap productivity"
+taxonomy = "automata"
+status = "open-general"
+scope = "Reachability of a coincidence from an overlap state; the general one-seed theorem remains the primary open gate."
+definition = "An overlap is productive when some directed descendant is a coincidence."
+canonical = "kernel/psc/overlap_seed_patch.mojo"
+oracle = "reference/psc_research/overlap_graph.py"
+related = ["seed-patch-overlap-automaton", "coincidence", "finite-corpus-certificate"]
+
+[[object]]
+id = "recurrent-scc"
+name = "Recurrent strongly connected component"
+taxonomy = "automata"
+status = "definition"
+scope = "A recurrent component of a finite directed carrier; use in BPA arguments is conditional on the required finiteness and realization hypotheses."
+definition = "A strongly connected component supporting a directed cycle and the stated closure property."
+canonical = "kernel/substitution_dynamics/automaton.mojo"
+oracle = "reference/psc_research/bpa.py"
+related = ["balanced-pair-automaton", "producer", "wedge-defect"]
+
+[[object]]
+id = "producer"
+name = "Producer state"
+taxonomy = "automata"
+status = "open-general"
+scope = "A balanced-pair state whose inflation and factorization produces a coincidence sibling under the repository definition."
+definition = "The local productive witness used in the SCC Producer program."
+canonical = "kernel/psc/bpa.mojo"
+oracle = "reference/psc_research/bpa.py"
+related = ["balanced-pair-state", "recurrent-scc", "coincidence"]
+
+[[object]]
+id = "perron-cubic-field"
+name = "Cubic Perron field element"
+taxonomy = "algebra"
+status = "definition"
+scope = "Exact rank-three representation a0+a1 beta+a2 beta^2 modulo the irreducible characteristic cubic."
+definition = "The exact coordinate type used for ternary overlap displacement and sign decisions."
+canonical = "kernel/psc/perron_field3.mojo"
+oracle = "reference/psc_research/overlap_graph.py"
+related = ["incidence-matrix", "seed-patch-overlap-state"]
+
+[[object]]
+id = "wedge-defect"
+name = "Wedge defect"
+taxonomy = "algebra"
+status = "definition"
+scope = "Alternating tensor invariant used to stratify finite balanced-pair carriers by first nonzero defect degree."
+definition = "The exact exterior-algebra obstruction represented by K2, K3, and their higher-degree analogues."
+canonical = "kernel/psc/w3.mojo"
+oracle = "reference/psc_research/defect_intertwiner.py"
+related = ["incidence-matrix", "balanced-pair-state", "recurrent-scc"]
+
+[[object]]
+id = "finite-corpus-certificate"
+name = "Finite-corpus certificate"
+taxonomy = "certificates"
+status = "finite-domain"
+scope = "Replayable exact result over an explicitly enumerated domain; caps or incomplete enumeration are inconclusive."
+definition = "A bounded-domain witness with enough metadata to replay the exact computation and audit its completeness contract."
+canonical = "kernel/swap_overlap_census.mojo"
+oracle = "oracles/python/swap_overlap_census.py"
+related = ["seed-patch-overlap-automaton", "overlap-productivity"]
+
+[[object]]
+id = "dumont-thomas-numeration"
+name = "Dumont-Thomas numeration"
+taxonomy = "dynamics"
+status = "definition"
+scope = "Positions of the fixed point of a substitution prolongable at a letter, written along the prefix tree of its images."
+definition = "n < |tau^k(c)| decomposes into digits d_(k-1) ... d_0, each the index of the child block containing what is left of the position; the letter reached after the last digit is u_n."
+canonical = "kernel/substitution_dynamics/dumont_thomas.mojo"
+oracle = "kernel/automatic_route_census.mojo"
+related = ["substitution", "numeration-automaton", "incidence-matrix"]
+
+[[object]]
+id = "numeration-automaton"
+name = "Numeration automaton"
+taxonomy = "automata"
+status = "definition"
+scope = "The Dumont-Thomas digits read as a deterministic automaton: states are letters, and a digit past the end of an image is inadmissible."
+definition = "delta(a, j) is the j-th letter of tau(a); admissible digit words of length k are in bijection with the positions of tau^k(c), and the words ending at a letter are counted by the incidence matrix power. Deciding a first-order statement over this numeration needs recognisability of addition, which is not supplied here (docs/automatic-sequence-route-literature-gate-2026-09-17.md)."
+canonical = "kernel/substitution_dynamics/dumont_thomas.mojo"
+oracle = "kernel/automatic_route_census.mojo"
+related = ["dumont-thomas-numeration", "substitution", "incidence-matrix"]
+
+[[object]]
+id = "linear-numeration"
+name = "Linear numeration system"
+taxonomy = "dynamics"
+status = "definition"
+scope = "The basis U_k = |tau^k(c)| a substitution carries, with greedy digits written against it."
+definition = "The image lengths obey the characteristic recurrence of the incidence matrix by Cayley-Hamilton, and a position is written greedily against them. This is a different presentation from the Dumont-Thomas path: a path digit weighs a child block, a greedy digit weighs U_j, and whether the two coincide is decided per substitution."
+canonical = "kernel/psc/linear_numeration.mojo"
+oracle = "kernel/numeration_addition_census.mojo"
+related = ["dumont-thomas-numeration", "addition-automaton", "incidence-matrix"]
+
+[[object]]
+id = "addition-automaton"
+name = "Addition automaton"
+taxonomy = "automata"
+status = "open-boundary"
+scope = "Digit triples (x, y, z) with val(x) + val(y) = val(z) in the linear numeration of a substitution."
+definition = "Built by exact state exploration over a window vector, pruned by a Pisot reachability test decided with sign_at_perron. Finiteness of the state set is an imported theorem, so the construction carries a cap and refuses past it; a built automaton is verified against the arithmetic on a stated bounded domain. It is the third automaton a first-order decision procedure needs, after admissibility and the letter map."
+canonical = "kernel/psc/numeration_addition.mojo"
+oracle = "kernel/numeration_addition_census.mojo"
+related = ["linear-numeration", "numeration-automaton", "perron-cubic-field"]
+
+[[object]]
+id = "numeration-conversion-automaton"
+name = "Numeration conversion automaton"
+taxonomy = "automata"
+status = "open-boundary"
+scope = "Pairs (P, G) of equal length with val_path(P) = val_greedy(G): a Dumont-Thomas path word and a digit word of the linear numeration naming one position."
+definition = "A synchronous two-track automaton whose state is the running difference, kept as a coefficient vector against the current level of the length vector and stepped by the incidence matrix, since |tau^(m+1)| = M^T |tau^m|. Pruned by a Pisot reachability test decided with sign_at_perron over the left Perron eigenvector, whose entries lie in Z[beta] and differ between letters. Finiteness of the state set is an imported theorem, so the construction carries a cap and refuses past it; a built automaton is verified on a stated bounded domain. The two presentations are not equal in general, so this is what lets one formula quantify over both."
+canonical = "kernel/psc/numeration_conversion.mojo"
+oracle = "kernel/numeration_conversion_census.mojo"
+related = ["dumont-thomas-numeration", "linear-numeration", "addition-automaton", "greedy-letter-automaton"]
+
+[[object]]
+id = "greedy-letter-automaton"
+name = "Letter map over the linear numeration"
+taxonomy = "automata"
+status = "open-boundary"
+scope = "Digit words of the linear numeration whose value is a position of the fixed point carrying a given letter."
+definition = "The Dumont-Thomas letter map placed on the path track of the conversion automaton and the path then discharged by the subset construction, leaving a condition on the digit word alone. It puts the letter map and the addition relation in one numeration, which is what a first-order formula over positions needs. It accepts every representation of such a position, not only the greedy one: greedy-normality is a separate language and is not built."
+canonical = "kernel/psc/numeration_conversion.mojo"
+oracle = "kernel/numeration_conversion_census.mojo"
+related = ["numeration-conversion-automaton", "numeration-automaton", "addition-automaton"]
+
+[[object]]
+id = "coincidence-formula-automaton"
+name = "Coincidence formula automaton"
+taxonomy = "automata"
+status = "open-boundary"
+scope = "Pairs of Dumont-Thomas paths of one length that reach one letter after prefixes of one Parikh vector: the strong coincidence condition SC(i, j) for a pair of letters."
+definition = "A synchronous two-track automaton whose state is the two letters reached and the Parikh difference of the two prefixes, stepped by the incidence matrix as delta <- M delta + (s_top - s_bottom), accepting where the difference is zero and the letters agree. SC(i, j) is the language being non-empty, and the shortest accepted word is the least level at which the pair coincides, naming the position in both images. The state set is finite by the Pisot property alone -- the contracting eigencoordinates are bounded from zero and the expanding one by the exact reserve of psc.pisot_state at slack 1 -- so the cap guards against a defect rather than budgeting a search. Deciding the condition for a specimen is not deciding it for the family, which is open."
+canonical = "kernel/psc/coincidence_formula.mojo"
+oracle = "kernel/coincidence_formula_census.mojo"
+related = ["dumont-thomas-numeration", "numeration-conversion-automaton", "balanced-pair-automaton", "seed-patch-overlap-automaton"]
+
+[[object]]
+id = "parikh-equality-automaton"
+name = "Parikh equality relation"
+taxonomy = "automata"
+status = "open-boundary"
+scope = "Pairs of admissible Dumont-Thomas paths of one length whose prefixes carry the same Parikh vector, saying nothing about the letters they reach."
+definition = "The one predicate the strong coincidence formula needs beyond the numeration's own signature. A counting function n -> |u[0..n)|_a is not in general first-order definable from addition and the letter predicates, but the equality of two such counts is recognisable, because the difference of two Parikh vectors over prefixes reached by the same number of substitution steps is bounded by the Pisot property. Adding a recognisable relation to the structure leaves the first-order theory decidable, which is what licenses assembling the formula over it."
+canonical = "kernel/psc/coincidence_formula.mojo"
+oracle = "kernel/coincidence_formula_census.mojo"
+related = ["coincidence-formula-automaton", "numeration-automaton", "dumont-thomas-numeration"]
+
+[[object]]
+id = "coincidence-quantifier-elimination"
+name = "Coincidence formula by quantifier elimination"
+taxonomy = "automata"
+status = "open-boundary"
+scope = "The strong coincidence formula assembled conjunct by conjunct from the automata that recognise its parts, with its existential discharged by emptiness."
+definition = "Admissibility from numeration-automaton on each track, the shared-letter conjunct as a union of products of letter-automaton, the Parikh conjunct from parikh-equality-automaton, the connectives from the kernel's intersection and union, and the quantifier from emptiness with a shortest witness. The language it assembles is the one the purpose-built coincidence automaton accepts, which is checked rather than assumed: the two read the letters from different places. Projecting the second path away leaves the recognisable set of positions at which the pair coincides, which is a formula's answer rather than a search's. It decides one substitution; the family statement is Pi_1 over an infinite recursively enumerable family and needs a uniform argument, not more computation."
+canonical = "kernel/psc/coincidence_elimination.mojo"
+oracle = "kernel/coincidence_formula_census.mojo"
+related = ["coincidence-formula-automaton", "parikh-equality-automaton", "numeration-automaton"]

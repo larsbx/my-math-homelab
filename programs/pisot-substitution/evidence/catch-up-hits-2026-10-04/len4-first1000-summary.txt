@@ -1,0 +1,5 @@
+Hit-witness census domain: len4  population: 135990  slice: 0 1000  cap: 4000000
+specimens: 1000  complete: 1000  capped: 0
+recurrent nonzero vertices: 291686  catch-up left/right/either: 259918 259918 259918
+simultaneous-only vertices: 31768  failing specimens: 47  total failures: 29
+vertices without any new hit: 0  maximum endpoint catch-up depth: 24

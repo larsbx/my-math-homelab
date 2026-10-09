@@ -1,0 +1,1222 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\NC}{N_{C}}
+\title{Geometric mass balance on the overlap graph and a two-anchor
+reduction of the coincidence conjecture\thanks{Companion section to the
+consolidated PSC manuscript (v13 lineage). All spectral claims herein are
+conditional content in the sense of v13: nothing in this note proves the Pisot
+substitution conjecture; it reorganizes the open core.}}
+\author{}
+\date{June 12, 2026 (v9 cross-reference revision, September 8, 2026)}
+\begin{document}
+\maketitle
+
+\section{Setup}
+
+Let $\sigma$ be a primitive irreducible Pisot substitution on
+$\mathcal{A}=\{1,\dots,k\}$ with incidence data $A_{ab}=|\sigma(a)|_b$,
+Perron value $\beta>1$ of degree $k$, and tile lengths
+$L=(L_1,\dots,L_k)>0$ with $AL=\beta L$. Irreducibility of the
+characteristic polynomial makes $L_1,\dots,L_k$ linearly independent over
+$\Q$. A \emph{genuine overlap} is a triple $s=(i,\delta,j)$ with
+$\delta\in\Z^k$, $t(s)=\langle\delta,L\rangle$, such that the tiles
+$[0,L_i)$ and $[t,t+L_j)$ intersect with nonempty interior; write
+$o(s)$ for the intersection and $w(s)=|o(s)|>0$. Inflation sends $s$ to
+the cells of the common refinement of the $\sigma(i)$- and
+$\sigma(j)$-subdivisions restricted to $\beta\cdot o(s)$; each cell is a
+genuine overlap $(i',\delta',j')$ with
+$\delta'=A^{\!\top}\delta+\mathrm{pp}_i(p)-\mathrm{pp}_j(q)$ for
+prefix-Parikh vectors $\mathrm{pp}$. A \emph{coincidence} is a state
+$(i,0,i)$. Overlap coincidence is equivalent to pure discreteness of the
+suspension tiling dynamics \cite{Sol97,AL11}. The state space reachable
+from return-vector seeds is finite (Meyer-set arguments; cf.\
+\cite{AL11}), so no balanced-pair termination input is used anywhere
+below.
+
+\section{Mass balance}
+
+\begin{theorem}[Partition identity]\label{thm:partition}
+For every genuine overlap $s$, counting children with multiplicity,
+$\beta\,w(s)=\sum_{c\,\mathrm{child\,of}\,s}w(c)$.
+\end{theorem}
+
+\begin{proof}
+$\beta\cdot[0,L_i)$ is partitioned (up to endpoints) by the sub-tile
+intervals of $\sigma(i)$, and $\beta\cdot[t,t+L_j)$ by those of
+$\sigma(j)$. The common refinement of the two partitions, restricted to
+$\beta\cdot o(s)$, is an interval partition of $\beta\cdot o(s)$ whose
+cells of nonempty interior are exactly the child overlaps. Sum lengths.
+\end{proof}
+
+Let $C$ be a recurrent noncoincident strongly connected component (SCC)
+of the genuine overlap graph, $\NC$ its internal child-count matrix
+(nonnegative, integer, irreducible), $w|_C>0$, and
+$\mathrm{leak}(s)\ge 0$ the total measure of children of $s$ outside
+$C$. Theorem~\ref{thm:partition} restricts to
+\begin{equation}\label{eq:mb}
+\beta\,w \;=\; \NC\,w+\mathrm{leak}\qquad\text{on }C.
+\end{equation}
+
+\begin{theorem}[Ceiling and leak dichotomy]\label{thm:dichotomy}
+$\rho(\NC)\le\beta$, with equality iff $\mathrm{leak}\equiv 0$ on $C$.
+\end{theorem}
+
+\begin{proof}
+$\NC w\le\beta w$ entrywise with $w>0$ gives $\rho(\NC)\le\beta$
+(Collatz--Wielandt). If $\mathrm{leak}\equiv0$ then $w$ is a positive
+eigenvector, hence the Perron eigenvector, and $\rho(\NC)=\beta$. If
+$\mathrm{leak}\not\equiv0$, pair \eqref{eq:mb} with the left Perron
+eigenvector $u>0$ of $\NC$:
+$(\beta-\rho(\NC))\langle u,w\rangle=\langle u,\mathrm{leak}\rangle>0$.
+\end{proof}
+
+\begin{theorem}[Exact gap formula]\label{thm:gap}
+$\displaystyle \beta-\rho(\NC)
+ \;=\;\frac{\langle u,\mathrm{leak}\rangle}{\langle u,w\rangle}.$
+\end{theorem}
+
+\begin{remark}
+Theorem~\ref{thm:partition} is elementary and implicit in the framework
+of \cite{AL11}; we record it because \eqref{eq:mb} and
+Theorems~\ref{thm:dichotomy}--\ref{thm:gap} follow from it in two lines
+each, and because the identical pairing applied to the balanced-pair
+mass-balance identity of the consolidated manuscript yields the same gap
+formula on the symbolic side. The spectral gap of a recurrent overlap
+SCC \emph{is} its eigenvector-weighted coincidence-production rate. For
+a \emph{closed} $C$ (no noncoincident child outside $C$), leak is
+coincidence mass only, so $\rho(\NC)<\beta$ iff some state of $C$ has a
+coincidence child. The open core of the conjecture is therefore the same
+statement on both the symbolic and geometric sides: \emph{a closed
+recurrent noncoincident component must leak}.
+\end{remark}
+
+\begin{theorem}[Size floor for the counterexample shape]\label{thm:floor}
+If $C$ is closed, recurrent, noncoincident with $\mathrm{leak}\equiv0$,
+then $\beta\in\mathrm{spec}(\NC)$, hence the characteristic polynomial
+of $A$ divides that of $\NC$ and $|C|\ge k$. Moreover, writing
+$w=VL$ with the integer matrix $V$ determined by the four overlap cases
+$v_s\in\{e_j,\,e_i-\delta_s,\,\delta_s+e_j,\,e_i\}$, linear independence
+of the $L_a$ upgrades \eqref{eq:mb} to the integer intertwining
+$\NC V=VA$ with $V$ injective.
+\end{theorem}
+
+\begin{proof}
+$\NC w=\beta w$ with $w\ne0$, $w\in\Q(\beta)^{|C|}$, exhibits $\beta$ as
+an eigenvalue of an integer matrix; the minimal polynomial of $\beta$ is
+the (irreducible) characteristic polynomial of $A$, of degree $k$.
+Independence of the $L_a$ converts $\NC VL=VAL$ into $\NC V=VA$; since
+$\Q^k$ is a simple $\Q[A]$-module, $V\ne0$ is injective.
+\end{proof}
+
+\section{The two anchors}
+
+Call $s=(i,\delta,j)$ \emph{prefix-aligned} if $\delta=0$ (the tiles
+share their left endpoint) and \emph{suffix-aligned} if
+$\delta=e_i-e_j$ (then $t=L_i-L_j$: the tiles share their right
+endpoint). The prefix-aligned children of a prefix-aligned state are the
+equal-prefix-Parikh cells (the Barge--Diamond graph
+\cite{BD02,AI01}); the suffix-aligned children of a suffix-aligned
+state are the equal-suffix-Parikh cells, i.e.\ the Barge--Diamond graph
+of the reversed substitution $\tilde\sigma$ (same incidence matrix).
+
+\begin{theorem}[Prefix channel]\label{thm:B}
+Let $C$ be closed, recurrent, noncoincident, containing a prefix-aligned
+state $(i,0,j)$. If $(i,j)$ satisfies strong coincidence (some
+$\sigma^n(i)$, $\sigma^n(j)$ share a letter at equal prefix-Parikh),
+then $C$ produces a coincidence child.
+\end{theorem}
+
+\begin{theorem}[Suffix channel]\label{thm:Bp}
+Same statement with a suffix-aligned anchor $(i,e_i-e_j,j)$ and strong
+coincidence at equal \emph{suffix}-Parikh (equivalently, strong
+coincidence of $\tilde\sigma$ for $(i,j)$).
+\end{theorem}
+
+\begin{proof}[Proof of both]
+Anchor the two inflation towers at the common endpoint. For each level
+$m\le n$, the sub-tile pairs containing the depth-$n$ coincidence tile
+both contain its interior, hence form genuine overlaps; by closedness
+this nested chain lies in $C$ until its final step exhibits a
+coincidence child of a state of $C$.
+\end{proof}
+
+\begin{remark}[$\gamma$-channel]\label{rem:gchannel}
+The proofs of Theorems~\ref{thm:B}--\ref{thm:Bp} use only that the two
+towers are anchored at a common point realized by matching control
+points. The same nested-chain argument proves: if a closed recurrent
+noncoincident SCC contains a state $(i,\delta,j)$ with
+$\langle\delta,L\rangle=c_j-c_i$ for an admissible control-point system
+$(c_a)$ arising from a tile map of some power of the substitution, and
+$(i,j)$ satisfies strong coincidence with respect to that system, then
+the SCC produces. Theorems~\ref{thm:B} and~\ref{thm:Bp} are the
+instances given by the first-letter and last-letter tile maps; we
+single them out because Conjecture~\ref{conj:H3} asserts that these two
+anchors always occur, whereas \cite{Ak16} manufactures the anchor per
+trapped component (Remark~\ref{rem:calib}).
+\end{remark}
+
+\begin{lemma}[Cycle pinning]\label{lem:pin}
+A directed cycle of the overlap graph with edge digit word
+$(d_1,\dots,d_n)\subset\Z^k$ carries the uniquely determined integer
+offset orbit
+$\delta_1=(I-(A^{\!\top})^n)^{-1}\sum_{i=1}^{n}(A^{\!\top})^{n-i}d_i$,
+since $\det(I-(A^{\!\top})^n)=\prod_m(1-\beta_m^n)\neq0$ for Pisot
+$\beta$.
+\end{lemma}
+
+\begin{lemma}[Shared cut]\label{lem:cut}
+Let $s$ belong to a closed recurrent noncoincident SCC $C$ and suppose a
+refinement window of $s$ contains an interior cut point common to both
+grids. Then $C$ contains a prefix- or suffix-aligned state.
+\end{lemma}
+
+\begin{proof}
+At a common cut both grids end one sub-tile and begin another; the cell
+ending there is right-aligned, the cell beginning there is left-aligned.
+A coincident cell is both, and its endpoints are again common cuts, so
+the maximal coincidence run through the cut is bounded by common cuts
+whose outside-adjacent cells are aligned and noncoincident, hence in $C$
+by closedness. If the run is flush against one window edge, the aligned
+noncoincident cell at its boundary on the \emph{other} side serves; a
+run flush against both edges fills the window and leaves $s$ without
+noncoincident children, contradicting recurrence.
+\end{proof}
+
+\begin{theorem}[Anchors from production]\label{thm:C}
+Every producing closed recurrent noncoincident SCC contains a prefix- or
+suffix-aligned state.
+\end{theorem}
+
+\begin{proof}
+A coincidence cell is aligned on both sides, so its endpoints are common
+cuts; apply Lemma~\ref{lem:cut}.
+\end{proof}
+
+By Theorem~\ref{thm:C}, anchoring is automatic for producing components;
+the conjectural content concerns only the trapped shape of
+Theorems~\ref{thm:dichotomy} and~\ref{thm:floor}:
+
+\begin{conjecture}[Trapped anchoring, H3$'$]\label{conj:H3}
+Every closed recurrent noncoincident SCC with $\mathrm{leak}\equiv0$
+contains a prefix-aligned or a suffix-aligned state.
+\end{conjecture}
+
+In a $\mathrm{leak}\equiv0$ component no coincidence cells exist, so by
+Lemma~\ref{lem:cut} \emph{any} common interior cut anchors it
+immediately. Under the hypotheses of
+Theorem~\ref{thm:reduction} a surviving counterexample must therefore
+keep its two cut grids totally disjoint at every refinement level, in
+windows growing like $\beta^n$ --- an alignment-avoidance condition at
+all scales, layered on the size floor and intertwining of
+Theorem~\ref{thm:floor}. The Pisot property places $\beta^n t$ at
+bounded distance from the cut module; ``bounded'' versus ``zero'' is the
+residue, in contact with Property~(F)-type finiteness statements of
+$\beta$-numeration.
+
+\begin{theorem}[Two-anchor reduction]\label{thm:reduction}
+If $\sigma$ and its reversal $\tilde\sigma$ satisfy the strong
+coincidence condition and Conjecture~\ref{conj:H3} (trapped anchoring) holds for $\sigma$,
+then every closed recurrent noncoincident SCC produces; consequently
+overlap coincidence holds and the tiling dynamical system of $\sigma$
+has pure discrete spectrum.
+\end{theorem}
+
+\begin{proof}
+Theorems~\ref{thm:B}--\ref{thm:Bp} on the anchor supplied by
+Conjecture~\ref{conj:H3}; every closed recurrent SCC leaks, and
+nonclosed recurrent SCCs leak by definition through their escapes
+together with Theorem~\ref{thm:dichotomy}; conclude by
+\cite{Sol97,AL11}.
+\end{proof}
+
+\begin{remark}[Calibration against the literature]\label{rem:calib}
+Akiyama--Lee \cite{AL14} prove overlap coincidence $\Rightarrow$
+(generalized) strong coincidence when the height group is trivial,
+which holds for one-dimensional irreducible Pisot substitutions
+\cite{BK06,Sing06}. Akiyama \cite[Thm.~3.2, Cor.~3.3]{Ak16} proves:
+\emph{multiple strong coincidence of level $n$} (strong coincidence for
+all admissible control-point systems of $\Omega^n$ with
+$\Lambda-\Lambda\subset\langle G\rangle$) is equivalent to overlap
+coincidence for the suspension tiling, with $n$ bounded by the number
+of overlap classes. His proof shows the hypothetical trapped component
+has spectral radius $|\det Q|=\beta$ --- precisely the
+$\mathrm{leak}\equiv0$ shape of Theorems~\ref{thm:dichotomy}
+and~\ref{thm:floor} --- and then \emph{constructs} a tile map
+(\cite[Lem.~3.5]{Ak16}) whose control points match the offset of a
+mixed-letter state of the trapped component: the anchor is moved to
+the offset. Thus $\gamma$-generalized anchoring of the trapped
+component is unconditional in \cite{Ak16}, and the residue of his
+reduction is strong coincidence for the manufactured systems.
+Prefix- and suffix-strong coincidence are the control-point systems of
+the first-letter and last-letter tile maps (by
+Lemma~\ref{lem:pin}, these are exactly the tile maps whose cycles carry
+zero digit corrections, pinning $\delta$ to the two endpoint anchors).
+Theorem~\ref{thm:reduction} is therefore a sharpening proposal for the
+minimization question of \cite[Rem.~3.4]{Ak16} (``can we take
+$n=1$?''): conditional on Conjecture~\ref{conj:H3}, the two endpoint
+systems suffice. Conjecture~\ref{conj:H3} is strictly stronger than
+what \cite{Ak16} needs --- its failure shape, a closed component whose
+pinned offsets avoid $\{0\}\cup\{L_i-L_j\}$, is exactly what his
+construction routes around, and exactly what the censuses below never
+exhibit.
+\end{remark}
+
+\section{The $\ell$-fixed reduction of Conjecture~\ref{conj:H3}}
+
+For a state of a $\mathrm{leak}\equiv0$ component every refinement cell
+is noncoincident and in the component, so the leftmost- and
+rightmost-cell maps are self-maps of the component; being eventually
+periodic on a finite set, \emph{every trapped component contains an
+$\ell$-cycle and an $r$-cycle}, and a period-$p$ $\ell$-cycle state is
+$\ell$-fixed for $\sigma^p$ (the leftmost cell of the level-$p$
+refinement is the $p$-fold leftmost cell). Trappedness persists under
+powers and descendant cones are power-independent.
+
+\begin{lemma}[Telescoping]\label{lem:tel}
+Let $s^*=(i^*,\delta^*,j^*)$ be $\ell$-fixed with $t^*>0$, so that
+$\sigma(j^*)$ begins with $j^*$, $\sigma(i^*)=u^*\,i^*\,v^*$, and
+$(A^{\!\top}-I)\delta^*=\pi(u^*)$ (the matrix is invertible since $1$ is
+not an eigenvalue of $A$; $v^*\neq\varepsilon$ is forced by
+$t^*<L_{i^*}$). Then, exactly,
+$(A^{\!\top})^n\delta^*=\delta^*+\pi(Q_n)$ where
+$Q_n=\sigma^{n-1}(u^*)\cdots\sigma(u^*)u^*$ is the prefix of
+$\sigma^n(i^*)$ preceding the tracked central occurrence of $i^*$.
+\end{lemma}
+
+Consequently a level-$n$ shared cut for $s^*$ is the \emph{static}
+membership $\delta^*\in\{\pi(a)-\pi(v)\}$ over factors $a$ anchored at
+the central occurrence and prefixes $v$ of $\sigma^n(j^*)$; in the limit,
+over prefixes of the two $\sigma$-fixed half-tilings
+$\omega_I=i^*v^*\sigma(v^*)\cdots$ and $\omega_J=\lim\sigma^n(j^*)$ at
+offset $t^*$. This is the algebraic coincidence of Lee \cite{Lee07}
+localized at the single vector $\delta^*$; an unconditional proof would
+prove the Pisot conjecture.
+
+\begin{theorem}[$\ell$-fixed reduction]\label{thm:lfix}
+Conjecture~\ref{conj:H3} holds if for every $p\ge1$ the finite statement
+$Q(p)$ holds: every in-window, integral, $\ell$- or $r$-fixed state of
+$\sigma^p$ contains an anchor or a coincidence in its descendant cone.
+\end{theorem}
+
+Two unconditional fences accompany this: $\delta^*=(A^{\!\top}-I)^{-1}
+\pi(u^*)$ must be \emph{integral} to host a state at all (the fence
+removes $20\%$, $55\%$, $85\%$, $97\%$ of candidate data at
+$p=1,2,3,6$ in the censuses below), and nearest-vertex difference
+vectors have bounded Perron coordinate and bounded conjugates, hence
+form a finite set per specimen.
+
+\begin{lemma}[Norm floor]\label{lem:floor}
+An integral $\ell$-fixed state of any power $\sigma^p$ with
+$\delta^*\neq0$ satisfies
+$|\langle\delta^*,L^{(m)}\rangle|\le R'_m:=B_m/(1-|\beta_m|)^2$
+uniformly in $p$ (Dumont--Thomas prefix bound \cite{DT89} over
+$|\beta_m^p-1|\ge1-|\beta_m|$), and
+$|t^*|\ge\kappa(\sigma):=1/(D^k\prod_{m\ge2}R'_m)>0$, where $D$ clears
+the denominators of $L$, since the field norm of $t^*$ is a nonzero
+rational of bounded denominator. In particular no genuine integral
+state has offset in $(0,\kappa)$: the small-offset regime is empty, and
+the integrality fence observed in the censuses is this floor in action.
+\end{lemma}
+
+\begin{theorem}[Finite equivalence]\label{thm:qinf}
+Let $\Delta(\sigma)=\{\delta\in\Z^k\setminus\{0\}:
+|\langle\delta,L\rangle|<L_{\max},\
+|\langle\delta,L^{(m)}\rangle|\le R'_m\}$, a finite explicit set
+containing every $\ell$- or $r$-fixed offset of every power. If
+$Q_\infty(\sigma)$ holds --- \emph{every genuine state
+$(i,\delta,j)$ with $\delta\in\Delta(\sigma)$ contains an anchor or a
+coincidence in its (finite) descendant cone} --- then
+Conjecture~\ref{conj:H3} holds for $\sigma$; conversely, failure of
+$Q_\infty$ exhibits an anchor-free trapped component, refuting
+Conjecture~\ref{conj:H3}. Thus $Q_\infty(\sigma)$ is \emph{equivalent}
+to trapped anchoring, and the quantifier over powers in
+Theorem~\ref{thm:lfix} is eliminated: Conjecture~\ref{conj:H3} is a
+single finite, effective check per substitution.
+\end{theorem}
+
+\begin{proof}
+($\Rightarrow$) A trapped component contains an $\ell$-cycle,
+$\ell$-fixed for $\sigma^p$; its offset is integral, conjugate-bounded
+and norm-floored by Lemma~\ref{lem:floor}, hence in $\Delta(\sigma)$.
+$Q_\infty$ places an anchor or coincidence in its cone, which lies in
+$C\cup\{\text{coincidences}\}$ by closedness; a coincidence contradicts
+$\mathrm{leak}\equiv0$. ($\Leftarrow$) If some $\Delta$-state's cone
+avoids anchors and coincidences, the cone is finite (conjugates contract
+under inflation with bounded corrections), every state has a child, and
+a bottom SCC of its condensation has all children inside itself: closed,
+recurrent, with $\mathrm{leak}\equiv0$ and no anchor --- an anchor-free
+trapped component. Note also that such a component is \emph{totally
+cut-disjoint unconditionally}: by Lemma~\ref{lem:cut} with empty
+coincidence runs, any common interior cut would place a noncoincident
+aligned cell in it.
+\end{proof}
+
+Per-specimen certificates (tail-corrected radius; an earlier
+under-converged radius computation was caught in audit and its outputs
+superseded, and a subsequent exact tail-corrected suffix radius---the
+superseding instrument---shrinks $\Delta$ a further $\sim2.5\times$ with
+identical verdicts, e.g.\ flipped Tribonacci $|\Delta|=402\to144$,
+plastic $2{,}504\to1{,}134$, re-certified states $2{,}868\to1{,}050$ and
+$17{,}460\to7{,}920$ respectively): $Q_\infty$ is verified for the
+\emph{complete exhaustive} $k=3$, $|\sigma(a)|\le3$ corpus --- all
+$4{,}554$ primitive irreducible Pisot specimens of the $59{,}319$-index
+enumeration, coverage confirmed by set equality against the directly
+enumerated PIP index family (a $47$-index shard hole inside previously
+claimed coverage was exposed by exactly this reconciliation and
+gap-filled) --- with $0$ failures, $0$ capped, $0$ timeouts. The deepest
+specimens were closed by the optimal-slab and core certificates of
+\S\ref{sec:core} (largest retained closure $193{,}563$ states; the
+former multi-million-state band collapses under the core slab). A
+further $24$ random $k=4$ specimens
+($|\sigma(a)|\le3$, $|\beta_2|$ up to $0.976$) certify with $0$
+failures, the five deepest via the core certificate of
+Theorem~\ref{thm:corered} (closures to $11.4$ million states).
+Conjecture~\ref{conj:H3} therefore holds unconditionally for each
+certified specimen. Per-specimen decidability of pure
+discreteness is of course already given by \cite{AL11}; the content
+here is the uniform target: the conjecture now reads ``$Q_\infty(\sigma)$
+for all primitive irreducible Pisot $\sigma$'', a statement about a
+norm-floor-bounded finite offset family, with no powers and no
+dynamics over $p$.
+
+\section{The saturated core}\label{sec:core}
+
+For $m\ge2$ let $B_m$ denote the one-step prefix-conjugate bound of
+Lemma~\ref{lem:floor},
+\[
+B_m \;=\; \max_{a\in\mathcal{A}}\ \max_{p\ \text{prefix of}\
+\sigma(a)}\ \bigl|\langle\pi(p),L^{(m)}\rangle\bigr|,
+\]
+and for $\varepsilon\ge0$ define the \emph{saturated core}
+\[
+\mathcal{C}_\varepsilon(\sigma)\;=\;\Bigl\{\,\text{genuine }(i,\delta,j)
+\;:\;\bigl|\langle\delta,L^{(m)}\rangle\bigr|\;\le\;
+\frac{2B_m}{1-|\beta_m|}+\varepsilon\ \ \text{for all }m\ge2\,\Bigr\}.
+\]
+
+\begin{lemma}[Core invariance]\label{lem:coreinv}
+$\mathcal{C}_\varepsilon$ is forward-invariant under overlap inflation
+for every $\varepsilon\ge0$.
+\end{lemma}
+
+\begin{proof}
+A child offset is $\delta'=A^{\!\top}\delta\pm
+(\mathrm{pp\ difference})$, so
+$\langle\delta',L^{(m)}\rangle=\beta_m\langle\delta,L^{(m)}\rangle+
+\rho$ with $|\rho|\le2B_m$. Writing $F_m=2B_m/(1-|\beta_m|)$: if
+$|\langle\delta,L^{(m)}\rangle|\le F_m+\varepsilon$ then
+$|\langle\delta',L^{(m)}\rangle|\le|\beta_m|(F_m+\varepsilon)+2B_m=
+F_m+|\beta_m|\varepsilon\le F_m+\varepsilon$.
+\end{proof}
+
+\begin{lemma}[Entry]\label{lem:entry}
+Let $\varepsilon>0$ and let $S$ be any family of genuine states with
+$|\langle\delta,L^{(m)}\rangle|\le R_m$ for all $m$. Every descendant
+chain of every $s\in S$ enters $\mathcal{C}_\varepsilon$ within
+$h(\varepsilon)=\max_m\lceil\log((R_m-F_m)/\varepsilon)/
+\log(1/|\beta_m|)\rceil$ inflation levels.
+\end{lemma}
+
+\begin{proof}
+Every genuine state has at least one child by
+Theorem~\ref{thm:partition} ($w(s)>0$). Along any chain the recursion of
+Lemma~\ref{lem:coreinv} gives
+$|\langle\delta_n,L^{(m)}\rangle|-F_m\le|\beta_m|^n(R_m-F_m)$.
+\end{proof}
+
+\begin{lemma}[Recurrent states are core]\label{lem:reccore}
+Every state lying on a directed cycle of the genuine overlap graph
+belongs to $\mathcal{C}_0$ (the \emph{closed} ball; no $\varepsilon$).
+\end{lemma}
+
+\begin{proof}
+If $s$ lies on a cycle of length $c$, it is its own $nc$-step
+descendant for every $n$; iterating the recursion around the cycle,
+$|\langle\delta_s,L^{(m)}\rangle|\,(1-|\beta_m|^{nc})\le
+2B_m\,(1-|\beta_m|^{nc})/(1-|\beta_m|)$; divide.
+\end{proof}
+
+\begin{theorem}[Core reduction]\label{thm:corered}
+For every $\varepsilon>0$ the \emph{core certificate}
+$Q^{\mathrm{core}}_\infty(\sigma)$ --- every state of
+$\mathcal{C}_\varepsilon(\sigma)$ contains an anchor or a coincidence
+in its descendant cone --- is equivalent to trapped anchoring
+(Conjecture~\ref{conj:H3} for $\sigma$), and the cone may be searched
+inside $\mathcal{C}_\varepsilon$ alone: anchors and coincidences lie in
+$\mathcal{C}_0$ (for $\delta=0$ the conjugates vanish; for
+$\delta=e_i-e_j$ they are bounded by $2B_m$), and
+$\mathcal{C}_\varepsilon$ is invariant, so the certificate is
+self-contained.
+\end{theorem}
+
+\begin{proof}
+If a trapped component exists, its states are recurrent, hence in
+$\mathcal{C}_0\subseteq\mathcal{C}_\varepsilon$ by
+Lemma~\ref{lem:reccore}; the core certificate places an anchor or
+coincidence in such a state's cone, which lies in
+$C\cup\{\text{coincidences}\}$ by closedness --- either contradicts
+$\mathrm{leak}\equiv0$ exactly as in Theorem~\ref{thm:qinf}.
+Conversely, if some $\mathcal{C}_\varepsilon$-state's cone avoids
+anchors and coincidences, the cone is finite (its conjugates are
+bounded by invariance and its Perron coordinates by the window), every
+state has a child, and a bottom SCC of its condensation is an
+anchor-free trapped component, as in Theorem~\ref{thm:qinf}.
+\end{proof}
+
+\begin{remark}[Optimal slab; norm-floor upgrade]\label{rem:optslab}
+Lemma~\ref{lem:reccore} pins every cycle state --- in particular the
+$\ell$-cycle witness of any trapped component --- to conjugate radius
+$2B_m/(1-|\beta_m|)$, improving the bound of Lemma~\ref{lem:floor} from
+quadratic to linear in $(1-|\beta_m|)^{-1}$ whenever $|\beta_m|>1/2$,
+with the offset floor $\kappa(\sigma)$ rising correspondingly. Neither
+bound dominates globally ($B_m/(1-|\beta_m|)^2$ is smaller for
+$|\beta_m|<1/2$); the optimal certificate slab takes
+$\min\bigl(B_m/(1-|\beta_m|)^2,\;2B_m/(1-|\beta_m|)\bigr)$ per
+embedding. Per cycle, the pinned orbit of Lemma~\ref{lem:pin}
+satisfies the exact refinement
+$|\langle\delta_s,L^{(m)}\rangle|\le
+2B_m\sum_{i<c}|\beta_m|^{\,i}/\,|1-\beta_m^{\,c}|$; for complex
+$\beta_m$ away from resonance ($\arg\beta_m^{\,c}$ away from $0$) this
+is $O(B_m\,c)$, and the Pisot property excludes exact resonance
+($\prod_m(1-\beta_m^{\,n})\ne0$, Lemma~\ref{lem:pin}) but not
+near-resonance, so no uniform $O(B_m)$ bound follows; the
+near-resonant regime is the identified hard case. Conjecture~\ref{conj:H3}
+in its sharpest form now reads: \emph{every recurrent noncoincident
+state with conjugates at the one-step-saturated scale
+$2B_m/(1-|\beta_m|)$ lies in a producing component.}
+\end{remark}
+
+\begin{remark}[Computational verification; the core as enabling step]
+\label{rem:coreverif}
+Exact verification (no tolerance beyond $10^{-9}$ slab fattening):
+core invariance holds with zero escapees on all $29$ computed core
+closures ($5$ at $k=3$, $24$ at $k=4$); on the largest $k=3$ specimen
+the closed-ball bound is realized to four decimals (maximal conjugate
+$39.1870$ against radius $39.1880$). Lemma~\ref{lem:reccore} verified
+on all $24$ evaluable closures ($k=3$ and $k=4$): all recurrent states
+inside the core in every embedding. The recurrent skeleton is
+consistently minuscule ($0.01$--$2.9\%$ of the closure; $557$ of
+$600{,}357$ states on a representative deep specimen). The reduction
+factor of the core certificate scales like $(1-|\beta_2|)^{-2}$ and
+reaches $87\times$ at $k=3$, $|\beta_2|=0.94$; at $k=4$ it is an
+\emph{enabling} step rather than an optimization --- the
+$R'$-slab certificate exhausts a $4$\,GB working set at
+$|\beta_2|\approx0.946$ while the core certificate completes at
+$|\beta_2|=0.976$ with an $11{,}434{,}672$-state closure. As throughout,
+these verifications are elimination, not validation: no census bears on
+the uniform statement.
+\end{remark}
+
+\section{Powers, period, and the trapped shape}\label{sec:power}
+
+\begin{lemma}[Pisot field identity]\label{lem:field}
+For every Pisot number $\beta$ and every $p\ge1$,
+$\mathbb{Q}(\beta^p)=\mathbb{Q}(\beta)$. Consequently the $k$ values
+$\beta_m^{\,p}$ are pairwise distinct, and the characteristic polynomial
+of $A^p$ is the (irreducible) minimal polynomial of $\beta^p$.
+\end{lemma}
+
+\begin{proof}
+If an embedding $\sigma$ fixes $\beta^p$ but moves $\beta$, then
+$\sigma(\beta)=\beta\zeta$ with $\zeta^p=1$, $\zeta\ne1$, so
+$|\sigma(\beta)|=\beta>1$, contradicting the Pisot property. Hence
+$\deg\beta^p=k$, so the Galois orbit of $\beta^p$ has $k$ distinct
+elements; these lie among the $k$ values $\beta_m^{\,p}$, which are
+therefore pairwise distinct, and
+$\chi_{A^p}=\prod_m(x-\beta_m^{\,p})$ is the minimal polynomial of
+$\beta^p$.
+\end{proof}
+
+\begin{corollary}[Power closure of the PIP class]\label{cor:power}
+If $\sigma$ is primitive irreducible Pisot, so is $\sigma^p$ for every
+$p\ge1$. Moreover, when $\beta$ has a complex conjugate pair,
+$\arg\beta_2\notin\pi\mathbb{Q}$: a rational angle would give
+$\beta_2^{\,2b}=\beta_3^{\,2b}$ for some $b$, collapsing the Galois
+orbit of $\beta^{2b}$ below degree $k$.
+\end{corollary}
+
+\begin{theorem}[Period-scaled size floor]\label{thm:periodfloor}
+Let $C$ be a closed recurrent noncoincident component with
+$\mathrm{leak}\equiv0$ and period $p$, with the integer intertwining
+$N_CV=VA$, $V$ injective, of Theorem~\ref{thm:floor}. Write
+$V_t=P_tV$ for the coordinate projection $P_t$ onto the cyclic class
+$C_t$. Then $N_CV_t=V_{t+1}A$ (indices mod $p$), every $V_t$ is
+injective, $|C_t|\ge k$ for every $t$, and $|C|\ge p\,k$. The
+mass-balance eigen-relation refines classwise:
+$N_C\,w_t=\beta\,w_{t+1}$ with $w_t=V_tL>0$.
+\end{theorem}
+
+\begin{proof}
+$N_C$ maps class $t$ into class $t+1$, so projecting $N_CV=VA$ gives
+$N_CV_t=V_{t+1}A$. If some $V_t=0$ then $V_{t+1}A=0$ and $A$ is
+invertible, so $V_{t+1}=0$; around the cycle $V=0$, a contradiction.
+Composing $p$ steps, $N_C^{\,p}V_t=V_tA^p$, so $\ker V_t$ is
+$A^p$-invariant. By Lemma~\ref{lem:field}, $\mathbb{Q}[A^p]$ acts on
+$\mathbb{Q}^k\cong\mathbb{Q}(\beta)$ as multiplication by $\beta^p$
+with $\mathbb{Q}(\beta^p)=\mathbb{Q}(\beta)$, so $\mathbb{Q}^k$ is a
+simple $\mathbb{Q}[A^p]$-module; $V_t\ne0$ forces $V_t$ injective.
+\end{proof}
+
+\begin{theorem}[Power reduction; aperiodicity without loss of
+generality]\label{thm:powerred}
+Let $C$ be a trapped component of period $p$ for $\sigma$. Then each
+cyclic class $C_t$ is a trapped component for $\sigma^p$ --- closed
+(all $p$-step descendants of $C_t$ remain in $C_t$), recurrent with
+\emph{primitive} internal matrix $B_t=N_C^{\,p}|_{C_t}$, noncoincident,
+$\mathrm{leak}\equiv0$, and anchor-free if $C$ is. Since $\sigma^p$ is
+again primitive irreducible Pisot (Corollary~\ref{cor:power}),
+Conjecture~\ref{conj:H3} for all primitive irreducible Pisot
+substitutions is equivalent to its restriction to trapped components
+with primitive (aperiodic) internal matrix. Every attack on, or hunt
+for a counterexample to, uniform trapped anchoring may therefore assume
+$N_C$ primitive.
+\end{theorem}
+
+\begin{proof}
+Closedness with $\mathrm{leak}\equiv0$ means every one-step descendant
+of $C$ lies in $C$; $p$-step descendants of $C_t$ lie in
+$C_{t+p}=C_t$. $B_t$ is irreducible and aperiodic by the
+Perron--Frobenius cyclic-class theory; the remaining properties are
+inherited state-by-state, and the anchor set
+$\{\delta=0\}\cup\{\delta=e_i-e_j\}$ does not depend on the
+substitution. Conversely, an aperiodic trapped component is a trapped
+component, so the restricted conjecture implies nothing weaker.
+\end{proof}
+
+\begin{theorem}[Frozen rays]\label{thm:frozen}
+Up to replacing $\sigma$ by a power (preserving the primitive irreducible
+Pisot class by Corollary~\ref{cor:power} and trappedness with primitive
+$N_C$ by Theorem~\ref{thm:powerred}), every trapped component contains
+an $\ell$-fixed state $s^{*}_{\ell}$ and an $r$-fixed state
+$s^{*}_{r}$, both with $t^{*}\ne0$. For each, the associated pair of
+$\sigma$-fixed half-tilings at offset $t^{*}$ (the setting of
+Lemma~\ref{lem:tel}) is cut-disjoint along the \emph{entire} ray:
+no level ever produces a common cut.
+\end{theorem}
+
+\begin{proof}
+The leftmost-cell map $\ell$ is a self-map of $C$ (closedness with
+$\mathrm{leak}\equiv0$), hence has a cycle of some length $q_\ell$; a
+cycle state is $\ell$-fixed for $\sigma^{q_\ell}$, and likewise for
+$r$. Pass to $\sigma^{q}$, $q=\mathrm{lcm}(q_\ell,q_r)$: this is again
+primitive irreducible Pisot, $C$ is again trapped with
+$N_C^{\,q}$ primitive, and the chosen cycle states are $\ell$- and
+$r$-fixed. Anchor-freeness excludes $\delta=0$, and
+$\langle\delta,L\rangle=0$ iff $\delta=0$ by linear independence of the
+$L_a$, so $t^{*}\ne0$. A common cut at any refinement level places, by
+Lemma~\ref{lem:cut}, an aligned (anchor) state in $C$, contradicting
+anchor-freeness.
+\end{proof}
+
+\begin{remark}[Honest placement]\label{rem:frozenplacement}
+Theorem~\ref{thm:frozen} localizes the open core to two concrete
+infinite objects per hypothetical counterexample: two pairs of
+$\sigma$-fixed rays, offset by core-bounded $t^{*}_{\ell},t^{*}_{r}$,
+whose cut sets are disjoint forever --- equivalently, whose
+prefix-Parikh difference walk, confined to the finite saturated core of
+\S\ref{sec:core}, avoids the fixed lattice point $\delta^{*}$ at every
+step. This is Lee's algebraic coincidence localized as in
+Lemma~\ref{lem:tel}, now with the avoidance walk's range pinned
+to the core and the substitution normalized to be aperiodic with
+$\ell$- and $r$-fixed witnesses. It is a sharpening of the
+counterexample shape, not progress on the avoidance question itself:
+forever avoiding one point of a finite visited set is a positional
+constraint that no count-level or marginal argument can refute.
+\end{remark}
+
+\begin{theorem}[Transversal substitution]\label{thm:transversal}
+Let $C$ be a trapped component, normalized as in
+Theorem~\ref{thm:frozen} ($N_C$ primitive, $s^{*}_{\ell}$
+$\ell$-fixed). The map $\Sigma_C\colon s\mapsto(\text{children of }s
+\text{ in left-to-right order})$ is a well-defined substitution on the
+finite alphabet $C$ (trappedness excludes coincidence letters), with
+abelianization $N_C$, primitive, admitting the one-sided fixed point
+$\tau=\lim\Sigma_C^{\,n}(s^{*}_{\ell})$; and $\tau$ is exactly the
+transversal sequence of the frozen ray pair of
+Theorem~\ref{thm:frozen} --- the left-to-right sequence of overlap
+cells of the two rays' common refinement, every cell of which lies in
+$C$. The natural tile lengths $w(s)$ realize $\tau$ as a self-similar
+tiling of the ray with inflation $\beta$. Consequently a trapped
+component is equivalent to the following package: a primitive
+substitution $\Sigma$ on $|C|\ge k$ letters with reducible
+characteristic polynomial $\chi_A\cdot q(x)$ and Pisot--Perron
+expansion $\beta$ of algebraic degree $k<|C|$, equipped with the
+integer valuation $s\mapsto v_s$ intertwining $N_C$ with $A$
+(Theorem~\ref{thm:floor}), whose fixed point never meets the
+coincidence diagonal.
+\end{theorem}
+
+\begin{proof}
+Children of a state, being the cells of an interval partition of
+$\beta\cdot o(s)$, carry a canonical left-to-right order, and by
+closedness with $\mathrm{leak}\equiv0$ all lie in $C$, so $\Sigma_C$
+is a substitution over $C$ with abelianization $N_C$, primitive by
+normalization. $\ell$-fixedness says $\Sigma_C(s^{*}_{\ell})$ begins
+with $s^{*}_{\ell}$, so the one-sided fixed point $\tau$ exists. Each
+cell of the rays' common refinement occurs, suitably translated, in
+every sufficiently deep refinement of $s^{*}_{\ell}$ along the tracked
+anchoring of Lemma~\ref{lem:tel}, hence lies in $C$, and the level-$n$
+cell sequences are by construction $\Sigma_C^{\,n}(s^{*}_{\ell})$;
+pass to the limit. The width vector $w$ is the Perron eigenvector of
+$N_C$ (Theorem~\ref{thm:floor}), giving the self-similar realization
+with inflation $\beta$. The degree statement is
+Lemma~\ref{lem:field}; injectivity of $V$ gives the intertwining.
+\end{proof}
+
+\begin{remark}[Placement and contact surface]\label{rem:transplace}
+Theorem~\ref{thm:transversal} moves the counterexample shape into a
+classical-looking category: primitive substitutions with reducible
+Pisot--Perron expansion, fibered over an irreducible Pisot
+substitution, with a diagonal-avoidance property along the fixed
+point. The avoidance itself remains positional --- it is the
+cut-disjointness of Theorem~\ref{thm:frozen} re-expressed --- but the
+package now sits where the reducible-Pisot and Property~(F) /
+bounded-remainder literatures have tools, and where any rigidity
+statement for reducible expansions with irreducible Pisot degree would
+bear directly on Conjecture~\ref{conj:H3}.
+\end{remark}
+
+\begin{lemma}[Unit step]\label{lem:unitstep}
+Let $s_1,s_2$ be consecutive cells (left to right) of the common
+refinement of two tile grids, with $s_1=(i_1,\delta_1,j_1)$,
+$s_2=(i_2,\delta_2,j_2)$, and suppose their common boundary is not a
+shared cut of the two grids. Then exactly one letter changes, and
+\[
+\delta_2-\delta_1=
+\begin{cases}
+-e_{i_1}, & j_2=j_1 \ \text{(an $I$-grid cut: the $i_1$-tile ends)},\\
++e_{j_1}, & i_2=i_1 \ \text{(a $J$-grid cut: the $j_1$-tile ends)}.
+\end{cases}
+\]
+At a shared cut both letters change and
+$\delta_2-\delta_1=e_{j_1}-e_{i_1}$ (the double step), and the
+configuration produces aligned cells as in Lemma~\ref{lem:cut}.
+\end{lemma}
+
+\begin{proof}
+Crossing an $I$-cut increments the prefix-Parikh vector of the $I$-grid
+by $e_{i_1}$, which enters the offset with a minus sign; a $J$-cut
+enters with a plus sign; both formulas are immediate from
+$\delta=A^{\!\top}\delta_{\mathrm{parent}}+\pi(\mathrm{pp}_J)-\pi(\mathrm{pp}_I)$
+read across one cut. A simultaneous cut composes the two.
+(Machine validation: $1{,}148$ consecutive-cell boundaries across three
+certified specimens; the rule holds at every boundary that is not a
+shared cut, and all six exceptions decode exactly as shared-cut
+configurations adjacent to coincidence cells.)
+\end{proof}
+
+\begin{corollary}[The avoidance walk is a substitutive unit-step
+walk]\label{cor:walk}
+For a trapped component, normalized as in Theorem~\ref{thm:frozen},
+the offset sequence $(\delta_n)$ along the transversal fixed point
+$\tau$ of Theorem~\ref{thm:transversal} is a walk with steps in
+$\{-e_a\}\cup\{+e_b\}$ --- the sign recording which ray's tile ends at
+the $n$-th cut, the letter recording which tile --- with no double
+steps (cut-disjointness), confined to the closed saturated core
+$\mathcal{C}_0$, generated by the primitive substitution $\Sigma_C$,
+and avoiding $\{0\}\cup\{e_i-e_j\}$ at every step, forever. The open
+core of the conjecture, in its most concrete form to date: such a
+substitutive unit-step walk in a finite region with these forbidden
+points cannot exist. Its impossibility remains positional --- the walk
+simply never lists the forbidden points among its finitely many
+visited values --- and is untouched here.
+\end{corollary}
+
+\begin{lemma}[Type preservation; fibering over the Barge--Diamond
+complex]\label{lem:type}
+In a trapped transversal, call a cell boundary \emph{type $I$} or
+\emph{type $J$} according to which ray's grid has a vertex there
+(exactly one does, by cut-disjointness). The substitution dynamics on
+transitions --- sending the boundary between $\tau_n,\tau_{n+1}$ to the
+boundary between the last child of $\tau_n$ and the first child of
+$\tau_{n+1}$ --- preserves type. On type-$I$ transitions it acts on the
+underlying $I$-letter pair by $(i,i')\mapsto(\mathrm{last}\,\sigma(i),
+\mathrm{first}\,\sigma(i'))$, i.e.\ it fibers over the classical
+Barge--Diamond two-letter dynamics of $\sigma$; symmetrically for
+type~$J$.
+\end{lemma}
+
+\begin{proof}
+The boundary at $x$ maps to the boundary at $\beta x$ under the
+self-similarity of the frozen pair. If $x$ is an $I$-vertex, $\beta x$
+is a vertex of the refined $I$-grid; it cannot also be a vertex of the
+refined $J$-grid, for that would be a shared cut of the pair --- which
+is self-similar, hence cut-disjoint at every level
+(Theorem~\ref{thm:frozen}). The $I$-letters at the image boundary are
+the last letter of $\sigma(i)$ (the refined $I$-tile ending at
+$\beta x$) and the first letter of $\sigma(i')$, while the ambient
+$J$-letter is unchanged across $\beta x$.
+\end{proof}
+
+\begin{remark}[Localization of the homological-Pisot question for
+$\Sigma_C$]\label{rem:QA}
+By Lemma~\ref{lem:type}, the transition subcomplex of $\Sigma_C$
+decomposes edge-wise into an $I$-part and a $J$-part, each carrying
+dynamics fibered over the Barge--Diamond complex of $\sigma$ itself
+(whose eventual-range structure, for irreducible $\sigma$ without
+asymptotic cycles, is the classical loop-free object). Whether
+$\Sigma_C$ is homological Pisot --- which by the structural fact of
+Barge--Bruin--Jones--Sadun would force every eigenvalue of $N_C$
+outside $\chi_A$ to be zero or a root of unity, a spectral shape
+realized by no recurrent component in the certified corpus ---
+therefore reduces to: (1)~the spectral condition on $N_C$ itself,
+(2)~the component count of the eventual range against the multiplicity
+of the eigenvalue~$1$, and (3)~loop-freeness of the eventual range,
+now a question about cycles in a complex fibered over a known
+loop-free base, settled by the orientation/reducedness argument of
+Lemma~\ref{lem:redproj}. Section~\ref{sec:trans}
+resolves (3) affirmatively over loop-free bases
+(Theorem~\ref{thm:inherit}) and converts (2) into an unconditional
+spectral constraint (Corollary~\ref{cor:rootofunity}); the residue of
+the rigidity question is the spectral condition (1) in the sharpened
+form of Corollary~\ref{cor:QAresidue}.
+\end{remark}
+
+\begin{remark}\label{rem:powerverif}
+Computational sanity (elimination-grade): $\deg\beta^p=3$ verified for
+sampled specimens across $p\in\{2,3,6,12,24\}$, and the full PIP
+closure of $\sigma^p$ (primitivity, irreducibility, distinctness of
+$\beta_m^{\,p}$) for six specimens across $p\in\{2,3,4,6,8,12\}$.
+Corollary~\ref{cor:power} explains a feature of the recurrent-cycle
+census: the resonance quantity $|1-\beta_2^{\,c}|$ over realized cycle
+lengths is bounded below by $0.347$ across $3{,}145$ certified
+specimens and never approaches $0$ through angular near-resonance ---
+as it cannot exactly, $\arg\beta_2$ being an irrational angle. The
+hypothetical counterexample to Conjecture~\ref{conj:H3} is now
+simultaneously constrained in size ($|C|\ge p\,k$, and WLOG $p=1$ with
+$N_C$ primitive), location (the saturated core of \S\ref{sec:core}),
+spectrum ($\rho(N_C)=\beta$ exactly, $\chi_A\mid\chi_{N_C}$), and
+geometry (totally cut-disjoint at all scales).
+\end{remark}
+
+\section{The transition complex of $\Sigma_C$: decomposition, inherited
+loop-freeness, and the coincidence rank of the pair system}\label{sec:trans}
+
+Throughout this section $C$ is a trapped component, normalized as in
+Theorem~\ref{thm:transversal}, and --- except in
+Lemma~\ref{lem:legfactor} and its corollaries, which need no such
+hypothesis --- $C$ is \emph{anchor-free} (the H3$'$-counterexample
+shape), so that by Theorem~\ref{thm:frozen} no state has offset $0$ or
+$L_i-L_j$ and the transversal is totally cut-disjoint.
+
+We use the exact transition-complex conventions of
+Barge--Diamond~\cite{BD08} as stated in
+Barge--Bruin--Jones--Sadun~\cite{BBJS12}: for a primitive aperiodic
+substitution $\varphi$ on an alphabet $\mathcal B$, the complex $G_0$
+has one edge $v_{ab}$ per legal two-letter word $ab$, running from the
+vertex $\mathrm{out}_a$ (the end of the letter edge $e_a$) to the
+vertex $\mathrm{in}_b$ (the beginning of $e_b$); since the letter
+edges are not part of $G_0$, the vertices $\mathrm{out}_a$ and
+$\mathrm{in}_a$ are \emph{distinct} and $G_0$ is bipartite.
+Substitution acts by $v_{ab}\mapsto
+v_{\mathrm{last}\,\varphi(a),\,\mathrm{first}\,\varphi(b)}$ and
+permutes the edges of the eventual range $G_0^{ER}$. With $b_1=E-V+C$
+the first Betti number of $G_0^{ER}$ and $\mathcal C$ its component
+count, the exact sequence of \cite{BD08,BBJS12} (for a power fixing
+the $ER$ edges, whose image of $\widetilde H^0(G_0^{ER})$ lies in the
+$+1$ eigenspace of the transposed abelianization) gives
+$\dim\check H^1(\Omega_\varphi,\mathbb Q)=\dim\varinjlim
+M_\varphi^{\!\top}-(\mathcal C-1)+b_1$.
+
+\begin{lemma}[Connectivity for irreducible Pisot]\label{lem:connect}
+If $\varphi$ is irreducible Pisot of degree $k$ then $G_0^{ER}(\varphi)$
+is connected and $\dim\check H^1(\Omega_\varphi)=k+b_1(G_0^{ER})$;
+$\varphi$ is homological Pisot iff $b_1=0$ iff $\varphi$ has no
+asymptotic cycles.
+\end{lemma}
+
+\begin{proof}
+$1$ is not an eigenvalue of any power of the abelianization: the
+eigenvalues of the $q$-th power are $\beta^q$ and $\beta_m^{\,q}$ with
+$\beta^q>1$ and $|\beta_m|<1$. So $\widetilde H^0(G_0^{ER})$ injects
+into the trivial $+1$ eigenspace, forcing $\mathcal C=1$, and
+$\dim\varinjlim A^{\!\top}=k$ since $\det A\ne 0$.
+\end{proof}
+
+(Machine validation: $\mathcal C=1$ on all $4{,}554$ exhaustive $k=3$
+PIP specimens and $1{,}190$ random $k=4$ specimens, exact-convention
+instrument gated against the calibration examples of \cite{BBJS12},
+including the asymptotic-cycle specimen $1\mapsto 21112$, $2\mapsto
+121$ with $b_1=1$ and the coincidence-rank-$3$ triple cover with
+$\mathcal C=3$, $b_1=0$.)
+
+\begin{remark}\label{rem:convention}
+The integers $\mathcal C$ and $b_1$ are invariants of the pair
+$(\Omega,$ chosen Barge--Diamond complex$)$, not of $\Omega$ alone: a
+collared presentation can change both while preserving $\check
+H^1(\Omega)$ (e.g.\ the uncollared Fibonacci $S_0^{ER}$ is contractible
+with $\mathcal C=1$, a collared one has $\mathcal C=2$; both give
+$\check H^1=\mathbb Z^2$). We fix the uncollared one-edge-per-legal-
+two-word convention of \cite{BD08,BBJS12} throughout, so all reported
+$b_1$ are mutually comparable; every statement of this section uses
+$\mathcal C$ and $b_1$ of that fixed complex and is set against the
+homeomorphism invariant $\dim\check H^1$ (cf.\ the general
+$1$-dimensional sequence as recorded in \cite{Sa14}).
+\end{remark}
+
+\begin{lemma}[Boundary-type determinacy]\label{lem:typedet}
+Let $c=(i,\delta,j)$ be any genuine overlap with $t=\langle\delta,
+L\rangle$, so $o(c)=[\max(0,t),\,\min(L_i,t+L_j))$. The left endpoint
+of $o(c)$ is a vertex of the $I$-grid iff $t<0$, of the $J$-grid iff
+$t>0$, and of both iff $t=0$ (the prefix anchor); the right endpoint
+is a vertex of the $I$-grid iff $t>L_i-L_j$, of the $J$-grid iff
+$t<L_i-L_j$, and of both iff $t=L_i-L_j$ (the suffix anchor). In
+particular, for an anchor-free trapped component every cell has a
+well-defined left type and right type, intrinsic to its state, and the
+type of the boundary between consecutive transversal cells equals the
+right type of the left cell and the left type of the right cell.
+\end{lemma}
+
+\begin{proof}
+Immediate from $o(c)=[0,L_i)\cap[t,t+L_j)$: the left endpoint is
+$0$ (an $I$-tile vertex, interior to the $J$-tile) when $t<0$ and $t$
+(a $J$-tile vertex, interior to the $I$-tile) when $t>0$; symmetrically
+on the right. By irreducibility, $t=0$ iff $\delta=0$ and $t=L_i-L_j$
+iff $\delta=e_i-e_j$, the two anchors. Consistency across a boundary is
+Lemma~\ref{lem:unitstep} read geometrically. (Machine validation:
+$9{,}945$ consecutive-cell boundaries across $24$ PIP specimens,
+exact integer-vector cut positions; the sign predicates match the
+geometric type at all $9{,}660$ non-shared boundaries, and all $285$
+shared cuts are anchor-adjacent.)
+\end{proof}
+
+\begin{theorem}[Type decomposition]\label{thm:decomp}
+For an anchor-free trapped $C$, every edge of $G_0(\Sigma_C)$ into
+$\mathrm{in}_t$ has type equal to the left type of $t$, and every edge
+out of $\mathrm{out}_s$ has type equal to the right type of $s$.
+Consequently $G_0(\Sigma_C)$, and hence $G_0^{ER}(\Sigma_C)$, is the
+\emph{vertex-disjoint} union of its type-$I$ part $G_I$ and type-$J$
+part $G_J$; in particular $b_1(G_0^{ER}(\Sigma_C)) = b_1(G_I) +
+b_1(G_J)$. Both parts meet the eventual range, so
+\[
+\mathcal C\bigl(G_0^{ER}(\Sigma_C)\bigr)\;\ge\;2 .
+\]
+\end{theorem}
+
+\begin{proof}
+The first sentence is Lemma~\ref{lem:typedet}: the type of an edge
+$(s,t)$ is the type of the shared boundary, which is determined by
+either incident state. A vertex is therefore incident to edges of one
+type only, and an edge joins an out-vertex and an in-vertex of its own
+type: the two parts share no vertices. Both parts are nonempty in the
+eventual range: type-$I$ and type-$J$ legal two-words exist at every
+level (each ray's tiles are finite, so each grid cuts the transversal
+syndetically), the substitution map preserves type
+(Lemma~\ref{lem:type}), and the eventual range is the image of the
+full legal set under a high power.
+\end{proof}
+
+\begin{corollary}[Root-of-unity spectrum; size-floor upgrade]
+\label{cor:rootofunity}
+Write $\chi_{N_C}=\chi_A\cdot q(x)$ (Theorem~\ref{thm:floor}). For an
+anchor-free trapped $C$, at least $\mathcal C(G_0^{ER}(\Sigma_C))-1\ge
+1$ roots of $q$, counted with multiplicity, are roots of unity. In
+particular $\deg q\ge1$, so $|C|\ge k+1$, strictly improving
+Theorem~\ref{thm:floor}; and $\operatorname{spec}(N_C)$ must contain a
+root of unity. Containment of \emph{a} root of unity is not by itself
+rare --- it occurs in $225$ of $358$ productive recurrent components of
+the certified corpus. The trapped fingerprint is the \emph{exhaustive}
+clause of Corollary~\ref{cor:QAresidue}, that \emph{every} nonzero root
+of $q$ be a root of unity (equivalently $\dim\check
+H^1(\Omega_{\Sigma_C})=k$); this is realized by no productive
+component, $226$ of $245$ sampled carrying an off-unit-circle Perron
+root $\rho(N_C)>1$.
+\end{corollary}
+
+\begin{proof}
+In the exact sequence for the edge-fixing power $\Sigma_C^{\,q}$, the
+group $\widetilde H^0(G_0^{ER})\cong\mathbb Q^{\mathcal C-1}$ injects
+into the fixed space of the limit automorphism, so the eigenvalue $1$
+of $N_C^{\,q}$ has geometric multiplicity at least $\mathcal C-1$;
+each such eigenvalue comes from a root $\zeta$ of $\chi_{N_C}$ with
+$\zeta^q=1$, and no root of $\chi_A$ is a root of unity (Pisot).
+Theorem~\ref{thm:decomp} gives $\mathcal C\ge2$.
+\end{proof}
+
+\begin{lemma}[Reduced projection]\label{lem:redproj}
+Every simple cycle of $G_0^{ER}(\Sigma_C)$ is type-pure
+(Theorem~\ref{thm:decomp}) and projects, via the letter coordinate of
+its type ($s\mapsto i(s)$ for type $I$, $s\mapsto j(s)$ for type $J$),
+to a \emph{reduced} closed edge-path in $G_0^{ER}(\sigma)$; hence its
+existence forces $b_1(G_0^{ER}(\sigma))\ge1$.
+\end{lemma}
+
+\begin{proof}
+Take the cycle type-$I$ (type $J$ is symmetric in the other
+coordinate). A type-$I$ edge $(s,t)$ projects to the legal
+$\sigma$-two-word $(i(s),i(t))$ of consecutive $I$-tiles; by
+Lemma~\ref{lem:type} the projection intertwines the two-word
+dynamics, and since $ER$ edges lie on cycles of the edge permutation,
+the projected edge lies on a cycle of $\sigma$'s two-word map, hence
+in $G_0^{ER}(\sigma)$. By Lemma~\ref{lem:unitstep}, a type-$I$
+predecessor of $t$ is determined by its $i$-letter
+($s=(i(s),\,\delta_t+e_{i(s)},\,j(t))$) and a type-$I$ successor of
+$s$ by its $i$-letter; so two distinct cycle edges sharing
+$\mathrm{in}_t$ (resp.\ $\mathrm{out}_s$) project to \emph{distinct}
+base edges sharing $\mathrm{in}_{i(t)}$ (resp.\
+$\mathrm{out}_{i(s)}$). Consecutive edges of the alternating chain
+always share an $\mathrm{in}$- or $\mathrm{out}$-vertex, so the
+projected closed walk never traverses a base edge and immediately
+retraverses it: it is reduced in the free-group sense (the only
+relevant one, since edge reduction is a local, consecutive-pair
+operation; non-consecutive coincidences of projected vertices are
+irrelevant). Each type-$I$ edge advances the $i$-coordinate by one
+$I$-tile (Lemma~\ref{lem:unitstep}), so the walk has positive length.
+A reduced nontrivial closed edge-walk represents a nontrivial element
+of $\pi_1(G_0^{ER}(\sigma))$; a graph with nontrivial fundamental
+group is not a tree, so $b_1(G_0^{ER}(\sigma))\ge1$. (The argument is
+through $\pi_1$, not the homology class of the projected loop itself,
+which may vanish in $H_1$; existence of \emph{any} reduced nontrivial
+closed walk already forces a cycle in the graph.)
+\end{proof}
+
+\begin{theorem}[Inherited loop-freeness]\label{thm:inherit}
+If $\sigma$ has no asymptotic cycles ($b_1(G_0^{ER}(\sigma))=0$;
+equivalently, by Lemma~\ref{lem:connect}, $\dim\check
+H^1(\Omega_\sigma)=k$), then for every anchor-free trapped component
+$C$ of $\sigma$,
+\[
+b_1\bigl(G_0^{ER}(\Sigma_C)\bigr)=0 .
+\]
+Condition (3) of Remark~\ref{rem:QA} is therefore automatic over
+loop-free bases.
+\end{theorem}
+
+\begin{proof}
+$b_1>0$ produces a simple cycle; Lemma~\ref{lem:redproj} contradicts
+$b_1(G_0^{ER}(\sigma))=0$.
+\end{proof}
+
+\begin{corollary}[The Q-A residue]\label{cor:QAresidue}
+Over a loop-free base, $\Sigma_C$ is homological Pisot if and only if
+the number of nonzero roots of $q$, with multiplicity, equals
+$\mathcal C(G_0^{ER}(\Sigma_C))-1$; in that case every nonzero root of
+$q$ is a root of unity. The rigidity question for the trapped shape is
+thus exactly a counting identity between the extra spectrum of $N_C$
+and the components of its transition complex.
+\end{corollary}
+
+\begin{remark}[The residue is irreducible to the base loop-freeness]
+\label{rem:cond1-irreducible}
+On the loop-free base stratum Theorem~\ref{thm:inherit} supplies
+$b_1(G_0^{ER}(\Sigma_C))=0$, and Corollary~\ref{cor:rootofunity}
+supplies the lower half of Corollary~\ref{cor:QAresidue}: at least
+$\mathcal C-1$ of the nonzero roots of $q$ are roots of unity. The
+entire residue is then the matching \emph{upper} bound, that the number
+$r$ of nonzero roots of $q$ does not exceed $\mathcal C-1$. This upper
+bound is not a consequence of loop-freeness: for a producing within-SCC
+matrix the nonzero spectrum is essentially full (across $152$ recurrent
+components the ratio of nonzero spectrum to size has median $1.000$,
+and only $7.9\%$ have at most $k-1$ nonzero eigenvalues), so
+$r\le\mathcal C-1$ is a strongly non-generic spectral collapse ---
+precisely the homological-Pisot hypothesis itself, not a corollary of
+$b_1=0$. Equivalently, for connected $G_0^{ER}(\Sigma_C)$ it demands
+$q(x)=x^{|C|-k}$ (all extra spectrum nilpotent), the spectrally minimal
+trapped shape. The identity $r=(\mathcal C-1)-b_1$ and the
+root-of-unity clause are confirmed on the two homological-Pisot triple
+covers of \cite{BBJS12}: there $q=x^{a}(x-1)^2$ with $\mathcal C=3$,
+$b_1=0$, $r=2$.
+\end{remark}
+
+\begin{proof}
+$\dim\check H^1(\Omega_{\Sigma_C})
+=\dim\varinjlim N_C^{\!\top}-(\mathcal C-1)+b_1
+=\bigl(k+\#\{\text{nonzero roots of }q\}\bigr)-(\mathcal C-1)$ by
+Theorem~\ref{thm:inherit}; set this equal to $k=\deg\beta$. Equality
+forces all nonzero roots of $q$ to be roots of unity by
+Corollary~\ref{cor:rootofunity}.
+\end{proof}
+
+\begin{lemma}[Leg factor]\label{lem:legfactor}
+For any trapped component $C$ (no anchor-freeness needed),
+$(\Omega_{\Sigma_C},\mathbb R)$ factors onto $(\Omega_\sigma,\mathbb
+R)$.
+\end{lemma}
+
+\begin{proof}
+A tiling $S\in\Omega_{\Sigma_C}$ assigns to $\mathbb R$ a bi-infinite
+cell sequence with widths $w(s)$; merge maximal runs of cells between
+consecutive $I$-grid vertices (well defined by
+Lemma~\ref{lem:typedet}, shared or not) and label each merged tile by
+the common $i$-letter. $I$-vertices are syndetic (each $I$-tile has
+length at most $L_{\max}$ and cells have width at least $\min_s
+w(s)>0$), every patch of $S$ is a translate of a patch of $\tau$,
+where the merged tiles are precisely the $I$-grid tiles of the frozen
+ray of length $L_{i}$, so the merged object is locally allowed for
+$\sigma$ and $\pi_1(S)\in\Omega_\sigma$. The local rule $\pi_1$ is
+continuous and translation-equivariant; its image is a nonempty closed
+invariant subset of the minimal $\Omega_\sigma$, hence everything.
+\end{proof}
+
+\begin{corollary}[Coincidence rank of the pair system]\label{cor:cr}
+$\mathrm{cr}(\Sigma_C)\ge2$ for every trapped component. If moreover
+$\sigma$ is unimodular and $\Sigma_C$ is homological Pisot, then
+$\mathrm{cr}(\Sigma_C)\ge3$; and if $\mathrm{cr}(\Sigma_C)=2$ (for
+unimodular $\sigma$) then $\dim\check H^1(\Omega_{\Sigma_C})\ge2k-1$.
+\end{corollary}
+
+\begin{proof}
+$\Sigma_C$ is a primitive, non-periodic, FLC substitution on letters
+with Pisot dilatation $\beta$ (flow-periodicity of a transversal would
+push to flow-periodicity of $\pi_1(S)$, impossible), so
+$\mathrm{cr}(\Sigma_C)=1$ iff $\Omega_{\Sigma_C}$ has pure discrete
+spectrum~\cite[Thm.~4(5)]{B15}. Pure discreteness passes to factors,
+and $\Omega_\sigma$ is a factor (Lemma~\ref{lem:legfactor}); but
+$\sigma$ carries a trapped component, hence fails overlap coincidence
+and pure discreteness~\cite{Sol97,AL11}. So $\mathrm{cr}(\Sigma_C)\ge
+2$. (The trapped component here is the \emph{overlap-graph} object, for which
+overlap coincidence $\Leftrightarrow$ pure discreteness is a genuine equivalence.
+Its identification with the balanced-pair closed nonproductive SCC of the main
+manuscript is the ``bridge converse'' made explicit there (PSC\_PROOF v15,
+\S6.5): balanced-pair non-termination implies overlap non-coincidence only through
+that identification, which the main manuscript therefore states as a hypothesis.) The norm of $\beta$ is $\pm\det A=\pm1$, odd; if
+$\mathrm{cr}(\Sigma_C)=2$ then $\dim\check
+H^1(\Omega_{\Sigma_C})\ge2k-1$ by~\cite[Thm.~22]{B15} (whose
+hypotheses are exactly: Pisot substitution on letters, odd norm,
+coincidence rank two --- reducibility of $\Sigma_C$ is permitted),
+which exceeds $k$ for $k\ge2$, contradicting homological-Pisotness.
+\end{proof}
+
+\begin{theorem}[Conditional placement: the unimodular conjecture in the
+topological orbit]\label{thm:QACRC}
+Let Q-A denote the statement that $\Sigma_C$ is homological Pisot for
+every trapped component of every unimodular irreducible Pisot
+substitution, and CRC the Coincidence Rank Conjecture
+of~\cite{BBJS12,B15}. Then
+\[
+\text{Q-A}\;+\;\text{CRC}\;\Longrightarrow\;\text{unimodular PSC}.
+\]
+\end{theorem}
+
+\begin{proof}
+Suppose $\sigma$ is unimodular irreducible Pisot without pure discrete
+spectrum. Failure of overlap coincidence produces a closed recurrent
+noncoincident component with $\rho(N_C)=\beta$ and $\mathrm{leak}
+\equiv0$ (Theorem~\ref{thm:dichotomy} with the Akiyama--Lee criterion
+\cite{AL11}; cf.\ Remark~\ref{rem:calib}), i.e.\ a trapped component,
+which persists under the power normalization of
+Theorem~\ref{thm:powerred} (pure discreteness is power-invariant). By
+Q-A, $\dim\check H^1(\Omega_{\Sigma_C})=\deg\beta$, and the norm of
+$\beta$ is $\pm1$, so CRC gives $\mathrm{cr}(\Sigma_C)\mid 1$, i.e.\
+pure discreteness of $\Omega_{\Sigma_C}$~\cite[Thm.~4(5)]{B15}, hence
+of its factor $\Omega_\sigma$ (Lemma~\ref{lem:legfactor}) ---
+contradicting the hypothesis.
+\end{proof}
+
+\begin{remark}[Honest placement; adjudication of the branching
+question]\label{rem:adjud}
+(i) CRC is open precisely in the regime $\mathrm{cr}\ge3$ that
+Corollary~\ref{cor:cr} lands in (it is proved for degree one
+\cite{BBJS12} and for coincidence rank two \cite{B15}), and Q-A is
+open; Theorem~\ref{thm:QACRC} transfers the unimodular conjecture into
+the orbit of the homological-Pisot/CRC program rather than resolving
+anything. (ii) All results of this section are count- and
+topology-level constraints on the hypothetical trapped shape; the
+positional avoidance residue of Corollary~\ref{cor:walk} is untouched,
+as the no-coarse-quotient obstruction requires. (iii) A formulation of
+the loop question as ``backward branching of the avoidance walk''
+(two trapped pasts of one tail) has no content: asymptotic pairs exist
+in every primitive aperiodic substitution subshift, every point of the
+hull of $\tau$ decodes to a trapped pair, and recognizability of
+$\Sigma_C$ constrains desubstitution, not backward determinism of the
+shift; the refutable object is exactly $b_1(G_0^{ER}(\Sigma_C))$ ---
+by Theorem~\ref{thm:decomp} a type-pure alternating cycle of
+asymptotic branchings --- and over loop-free bases it is now excluded.
+(iv) Barge's dichotomy \cite[Cor.~25]{B15} (a PSC counterexample has
+an asymptotic cycle or coincidence rank at least three) calibrates the
+base-level census: in the exhaustive $k=3$, $|\sigma(a)|\le3$ corpus,
+$3{,}102$ of $4{,}554$ specimens (including $1{,}740$ of the $2{,}628$
+unimodular ones) are loop-free, hence homological Pisot with the
+$\mathrm{cr}\ge3$ alternative; the $b_1>0$ stratum, exactly
+quantified ($b_1\in\{1,2,4\}$ at $k=3$; $b_1$ up to the complete
+bipartite ceiling at $k=4$, where $b_1=3$ also occurs), is where the
+asymptotic-cycle alternative lives. As always, no census bears on the
+uniform statements.
+\end{remark}
+
+\section{Computational evidence (elimination, not validation)}
+
+All computations use the validated instrument
+(\texttt{overlap\_residual.py}; partition identity verified to
+$5.6\times10^{-16}$, per-SCC restriction to $4.8\times10^{-14}$, gap
+formula to $2.1\times10^{-14}$ including an SCC of size $5068$).
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+corpus & closed SCCs & nonproducers & H3 violators & notes\\
+\midrule
+$k=3$, $|\sigma(a)|\le3$, exhaustive (4{,}554 PIP) & 1{,}386 & 0 & 0 &
+zero-free $\Rightarrow$ suffix-aligned, $324/324$\\
+$k=3$, $|\sigma(a)|\le4$, random & 105 & 0 & 0 & \\
+$k=3$, $|\sigma(a)|\le6$, random & 35 & 0 & 0 & 12 capped excluded\\
+$k=4$, $|\sigma(a)|\le4$, random & $\sim$60 & 0 & 0 & \\
+$k=5$, $|\sigma(a)|\le3$, random & 12 & 0 & 0 & \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$Q(p)$ census (abstract states; no reachability or pure-discreteness
+input): collisions in $3{,}216/3{,}216$ cases over $p\in\{1,2,3,6\}$,
+with maximal cone depth $6,3,3,1$ respectively --- the small-offset
+regime $t^*=c/(\beta^p-1)\to0^+$ is the easy one, and the difficulty of
+$Q(p)$ concentrates at small $p$ (sampled pattern, $k=3$).
+
+Both anchor-only classes occur (prefix-only and suffix-only closed SCCs
+exist), so the disjunction in Theorem~\ref{thm:C} cannot be strengthened
+to a single anchor type. By Theorem~\ref{thm:C} the anchoring counts in
+the table are implied by the production counts; they are therefore
+consistency checks, and \emph{no census evidence bears directly on
+Conjecture~\ref{conj:H3}} --- necessarily, since a trapped specimen
+would refute the Pisot conjecture. Sampled minima/maxima are not proved
+bounds; capped specimens are inconclusive and excluded; image length is
+a cap throughout.
+
+\begin{thebibliography}{99}
+\bibitem{AI01} P.~Arnoux, S.~Ito, \emph{Pisot substitutions and Rauzy
+fractals}, Bull. Belg. Math. Soc. Simon Stevin 8 (2001), 181--207.
+\bibitem{Ak16} S.~Akiyama, \emph{Strong coincidence and overlap
+coincidence}, Discrete Contin. Dyn. Syst. 36 (2016), 5223--5230.
+\bibitem{AL11} S.~Akiyama, J.-Y.~Lee, \emph{Algorithm for determining
+pure pointedness of self-affine tilings}, Adv. Math. 226 (2011),
+2855--2883.
+\bibitem{AL14} S.~Akiyama, J.-Y.~Lee, \emph{Overlap coincidence to
+strong coincidence in substitution tiling dynamics}, European J.
+Combin. 39 (2014), 233--243.
+\bibitem{DT89} J.-M.~Dumont, A.~Thomas, \emph{Syst\`emes de
+num\'eration et fonctions fractales relatifs aux substitutions},
+Theoret. Comput. Sci. 65 (1989), 153--169.
+\bibitem{Lee07} J.-Y.~Lee, \emph{Substitution Delone sets with pure
+point spectrum are inter-model sets}, J. Geom. Phys. 57 (2007),
+2263--2285.
+\bibitem{BD02} M.~Barge, B.~Diamond, \emph{Coincidence for substitutions
+of Pisot type}, Bull. Soc. Math. France 130 (2002), 619--626.
+\bibitem{BK06} M.~Barge, J.~Kwapisz, \emph{Geometric theory of
+unimodular Pisot substitutions}, Amer. J. Math. 128 (2006), 1219--1282.
+\bibitem{Sing06} B.~Sing, \emph{Pisot substitutions and beyond}, PhD
+thesis, Univ. Bielefeld, 2006.
+\bibitem{Sol97} B.~Solomyak, \emph{Dynamics of self-similar tilings},
+Ergodic Theory Dynam. Systems 17 (1997), 695--738.
+\bibitem{BD08} M.~Barge, B.~Diamond, \emph{Cohomology in one-dimensional
+substitution tiling spaces}, Proc. Amer. Math. Soc. 136 (2008),
+2183--2191.
+\bibitem{BBJS12} M.~Barge, H.~Bruin, L.~Jones, L.~Sadun,
+\emph{Homological Pisot substitutions and exact regularity}, Israel J.
+Math. 188 (2012), 281--300.
+\bibitem{B15} M.~Barge, \emph{Factors of Pisot tiling spaces and the
+Coincidence Rank Conjecture}, Bull. Soc. Math. France 143 (2015),
+357--381; arXiv:1301.7094.
+\bibitem{Sa14} L.~Sadun, \emph{Cohomology of hierarchical tilings},
+in \emph{Mathematics of Aperiodic Order}, Progr. Math. 309,
+Birkh\"auser (2015), 73--104; arXiv:1406.0882.
+\end{thebibliography}
+\end{document}

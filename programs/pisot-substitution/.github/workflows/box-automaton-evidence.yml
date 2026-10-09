@@ -1,0 +1,80 @@
+name: Box-automaton PDS evidence
+# Guards the two larger rows of docs/pds-certificate-from-the-box-automaton-2026-10-07.md
+# section 5: on every specimen of total image length <= 8 and of images of length
+# <= 4, every box-automaton vertex reaches a coincidence (Theorem Omega) and an
+# offset-zero vertex (Proposition V), with no capped graph. The images <= 4 row
+# (about 5.8 worker-hours) runs as twelve slices, each inside the job limit.
+on:
+  pull_request:
+    # The census's full import closure: a change anywhere in it can move the
+    # surveyed domains, the box radii, the edges or the reachability verdicts.
+    paths:
+      - 'kernel/pixi.toml'
+      - 'kernel/pixi.lock'
+      - 'kernel/vertex_coincidence_census.mojo'
+      - 'kernel/psc/bpa.mojo'
+      - 'kernel/psc/corpus.mojo'
+      - 'kernel/psc/exact.mojo'
+      - 'kernel/psc/field3.mojo'
+      - 'kernel/psc/overlap_contracting.mojo'
+      - 'kernel/psc/overlap_obstruction.mojo'
+      - 'kernel/psc/overlap_seed_patch.mojo'
+      - 'kernel/psc/perron_field3.mojo'
+      - 'kernel/psc/perron_root_sign.mojo'
+      - 'kernel/psc/pisot.mojo'
+      - 'kernel/psc/pisot_screen.mojo'
+      - 'kernel/psc/real_root_sign.mojo'
+      - 'kernel/psc/vertex_coincidence.mojo'
+      - 'kernel/psc/words.mojo'
+      - 'kernel/finite_exact/**'
+      - 'kernel/finite_graph/**'
+      - 'kernel/finite_linear_algebra/**'
+      - 'kernel/parallel_fold/**'
+      - 'kernel/substitution_dynamics/**'
+      - 'docs/pds-certificate-from-the-box-automaton-2026-10-07.md'
+      - '.github/workflows/box-automaton-evidence.yml'
+  schedule:
+    - cron: '17 3 * * 0'
+  workflow_dispatch:
+jobs:
+  box-automaton:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: total-8, args: 'total', specimens: 24486 }
+          - { name: len4-00, args: 'len4 0 11333', specimens: 11333 }
+          - { name: len4-01, args: 'len4 11333 22666', specimens: 11333 }
+          - { name: len4-02, args: 'len4 22666 33999', specimens: 11333 }
+          - { name: len4-03, args: 'len4 33999 45332', specimens: 11333 }
+          - { name: len4-04, args: 'len4 45332 56665', specimens: 11333 }
+          - { name: len4-05, args: 'len4 56665 67998', specimens: 11333 }
+          - { name: len4-06, args: 'len4 67998 79331', specimens: 11333 }
+          - { name: len4-07, args: 'len4 79331 90664', specimens: 11333 }
+          - { name: len4-08, args: 'len4 90664 101997', specimens: 11333 }
+          - { name: len4-09, args: 'len4 101997 113330', specimens: 11333 }
+          - { name: len4-10, args: 'len4 113330 124663', specimens: 11333 }
+          - { name: len4-11, args: 'len4 124663 135990', specimens: 11327 }
+    name: box automaton ${{ matrix.name }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Exact box-automaton census, ${{ matrix.name }}
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          pixi run mojo run -I . vertex_coincidence_census.mojo ${{ matrix.args }} 2>&1 | tee box-${{ matrix.name }}.log
+          grep -Fx 'Vertex coincidence census (Proposition V), specimens: ${{ matrix.specimens }}' box-${{ matrix.name }}.log
+          grep -Fx 'holds for every r: ${{ matrix.specimens }}  capped: 0  fails: 0' box-${{ matrix.name }}.log
+          grep -Fx 'formally productive (Theorem Omega): ${{ matrix.specimens }}  not: 0' box-${{ matrix.name }}.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: box-automaton-${{ matrix.name }}
+          path: kernel/box-${{ matrix.name }}.log

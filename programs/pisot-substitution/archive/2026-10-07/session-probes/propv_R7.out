@@ -1,0 +1,3 @@
+tribonacci: R = ['2.07821', '2.31599', '2.86777'], r<= 7, integral pairs 164, max |w_m|/R_m = 0.481, PPVC failures 0, deepest first offset-zero 3
+cube: R = ['34.502', '35.8778', '33.6067'], r<= 5, integral pairs 1007, max |w_m|/R_m = 0.089, PPVC failures 0, deepest first offset-zero 10
+golden pump: R = ['27.9403', '16.3905', '17.0991'], r<= 7, integral pairs 730, max |w_m|/R_m = 0.122, PPVC failures 0, deepest first offset-zero 8
