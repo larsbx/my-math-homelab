@@ -7,6 +7,7 @@ history:        unsquashed subtree merge of the locked commit under its root; th
                 source head becomes the merge's second parent, so every original
                 commit keeps its id. Merge the resulting PR with a merge commit.
 metadata_only:  writes PROGRAM.toml only; no source content is fetched or published.
+                Re-running after switching the lock to history upgrades the root.
 
 Programs then receive the PROGRAM.toml rendered from the lock, in a separate commit.
 """
@@ -33,6 +34,7 @@ def import_source(root: Path, source_id: str, url: str, trailers: tuple[str, ...
     if source.imports == "history":
         run(root, "fetch", "--no-tags", url, source.commit)
         run(root, "merge", "-s", "ours", "--no-commit", "--allow-unrelated-histories", source.commit)
+        run(root, "rm", "-rq", "--ignore-unmatch", "--", source.root)  # a metadata_only root being upgraded
         run(root, "read-tree", f"--prefix={source.root}/", "-u", source.commit)
         run(root, "commit", "-m",
             f"Import {source.repository}@{source.commit[:12]} under {source.root}/\n\n"

@@ -139,3 +139,13 @@ def test_rejects_authority_transfer(workspace: Path) -> None:
 
 def test_repository_passes() -> None:
     assert verify(ROOT) == [], "the checked-in workspace must verify"
+
+
+def test_upgrades_metadata_only_root_to_history(workspace: Path) -> None:
+    locks = workspace / "policy/source-locks.toml"
+    locks.write_text(locks.read_text().replace('visibility = "private"', 'visibility = "public"')
+                     .replace('"metadata_only"', '"history"'))
+    commit_all(workspace)
+    import_source(workspace, "secret", str(workspace.parent / "secret"))
+    assert verify(workspace) == []
+    assert (workspace / "programs/secret/README.md").is_file()

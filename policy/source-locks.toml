@@ -5,6 +5,7 @@
 #                             ancestor of HEAD and its tree is byte-identical under root
 #   import = "metadata_only"  private source: only PROGRAM.toml is published here
 #                             until the owner records an explicit disclosure decision
+#                             (2026-10-09: owner decided every math source is public)
 #   import = "none"           not imported (see reason)
 #
 # authority = "retained": the source repository stays authoritative for its claims,
@@ -27,11 +28,11 @@ authority = "retained"
 id = "closure-fiber"
 kind = "program"
 repository = "larsbx/closure-fiber-of-multiplication-research"
-visibility = "private"
+visibility = "public"
 commit = "6815ebfd7ccfcb6d32b90848911be329e950576e"
 commits = 35
 files = 25
-import = "metadata_only"
+import = "history"
 authority = "retained"
 
 [[source]]
@@ -49,11 +50,11 @@ authority = "retained"
 id = "finite-julia"
 kind = "program"
 repository = "larsbx/finite-julia-set-research"
-visibility = "private"
+visibility = "public"
 commit = "e1a526722113905dde2228a8b2c64d9b76ee424c"
-commits = 108
+commits = 109
 files = 260
-import = "metadata_only"
+import = "history"
 authority = "retained"
 
 [[source]]
@@ -82,11 +83,11 @@ authority = "retained"
 id = "giant-fibers"
 kind = "program"
 repository = "larsbx/giant-fibers-finite-fields-thin-groups"
-visibility = "private"
+visibility = "public"
 commit = "62bf0894997980a4a0708e3d48f81c091cbaf2c3"
 commits = 3
 files = 9
-import = "metadata_only"
+import = "history"
 authority = "retained"
 
 [[source]]

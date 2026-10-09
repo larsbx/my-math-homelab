@@ -20,7 +20,7 @@ This follows migration-sequence step 2 of the multi-program contract and the
 | Decision | Rationale |
 | --- | --- |
 | 14 programs, 2 shared components | research repositories are programs; `finite-math-kernels` and `math-vizops` are consumed by named programs |
-| Private sources metadata-only | this repository is public; the contract forbids copying private content without an explicit disclosure decision |
+| All sources public (owner decision, 2026-10-09) | closure-fiber, finite-julia and giant-fibers were first published metadata-only, then upgraded to full history imports once the owner stated every math repository is public |
 | `finite-dynamics` superseded, not nested | a workspace inside a workspace would break the single `programs/` collection; its four programs are imported from the original sources and its pilot evidence stays at its source |
 | `oracles` excluded | empty (title-only README); a root would be an empty silo |
 | Root `acceptance_authority = false` | sources retain authority; this workspace's only owned check is import fidelity |
@@ -29,7 +29,6 @@ This follows migration-sequence step 2 of the multi-program contract and the
 
 ## Not done here
 
-- Private imports (closure-fiber, finite-julia, giant-fibers): need the disclosure decision.
 - Reproducing each program's original gates from the root (Mojo/pixi, Lean, Julia, Python suites).
 - Reconciling the vendored `finite-math-kernels` copies in FM, FJ, BFC, NL, PS, SAP and math-vizops with `shared/finite-math-kernels`.
 - Transferring issues, releases and authority; archiving sources. No source is archived.

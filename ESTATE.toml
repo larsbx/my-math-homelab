@@ -229,7 +229,6 @@ acceptance_authority = false
 mode = "boundary_first"
 mass_move = false
 next = [
-  "owner disclosure decision for private sources: closure-fiber, finite-julia, giant-fibers",
   "reproduce each imported program's original gates from the workspace root (path-aware CI)",
   "reconcile vendored finite-math-kernels copies against shared/finite-math-kernels",
   "decide finite-math-kernels estate position inside a research-class workspace (DR)",

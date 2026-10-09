@@ -23,10 +23,10 @@ shared component is locked to a source commit in
 | --- | --- | --- | --- |
 | arithmetic-bicycle | AB | arithmetic-bicycle-conjecture-research | history |
 | bulb-ford | BFC | mandelbrot-bulbs-and-ford-circles-research | history |
-| closure-fiber | CFM | closure-fiber-of-multiplication-research | metadata only (private) |
-| finite-julia | FJ | finite-julia-set-research | metadata only (private) |
+| closure-fiber | CFM | closure-fiber-of-multiplication-research | history |
+| finite-julia | FJ | finite-julia-set-research | history |
 | finite-mandelbrot | FM | finite-mandelbrot-research | history |
-| giant-fibers | GF | giant-fibers-finite-fields-thin-groups | metadata only (private) |
+| giant-fibers | GF | giant-fibers-finite-fields-thin-groups | history |
 | julia-oracle | JO | julia-oracle-lab | history |
 | langlands | LL | langlands-lab | history |
 | novelty | NL | novelty-lab | history |
@@ -59,6 +59,7 @@ repository's CI. Accordingly the root canonical language declares
 
 ## Public boundary
 
-This repository is public. Private sources contribute metadata only until the
-owner records an explicit disclosure decision; the verifier fails closed on a
-private `history` import.
+This repository is public. The owner decided on 2026-10-09 that every math
+source is public, so all programs are full history imports. The verifier still
+fails closed on a lock marked `private` with `import = "history"`, and a
+`metadata_only` root may publish nothing but its `PROGRAM.toml`.
