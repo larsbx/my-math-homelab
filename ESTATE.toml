@@ -1,0 +1,237 @@
+version = 2
+template = "estate-repository-v2"
+
+[repo]
+id = "my-math-homelab"
+slug = "larsbx/my-math-homelab"
+class = "research"
+layer = 3
+band = "EXPLORE"
+stage = "candidate"           # written by estate CI only
+default_branch = "main"
+inv = []
+
+[origin]
+decided_by = "proposed"       # agent-authored; the owner adopts it by decision record
+chats = []
+artifacts = []
+
+[[dep]]
+id = "estate-governance"
+rev = "5ea47dec8086eab6a1dad6fd239688d20ea89891"
+pin = "sha256:412a64dea58d709aae21e5a0315b8e7e96488c310a9d999267927ba3d8146a30"
+
+[exports]
+names = []
+
+[workspace]
+mode = "multi_program"
+
+# Program and shared-component rows must agree with policy/source-locks.toml;
+# kernel/workspace.py fails closed otherwise.
+
+[[program]]
+id = "arithmetic-bicycle"
+root = "programs/arithmetic-bicycle"
+manifest = "PROGRAM.toml"
+claim_namespace = "AB"
+canonical_language = "Python"
+
+[[program]]
+id = "closure-fiber"
+root = "programs/closure-fiber"
+manifest = "PROGRAM.toml"
+claim_namespace = "CFM"
+canonical_language = "Mojo"
+
+[[program]]
+id = "finite-mandelbrot"
+root = "programs/finite-mandelbrot"
+manifest = "PROGRAM.toml"
+claim_namespace = "FM"
+canonical_language = "Mojo"
+
+[[program]]
+id = "finite-julia"
+root = "programs/finite-julia"
+manifest = "PROGRAM.toml"
+claim_namespace = "FJ"
+canonical_language = "Mojo"
+
+[[program]]
+id = "bulb-ford"
+root = "programs/bulb-ford"
+manifest = "PROGRAM.toml"
+claim_namespace = "BFC"
+canonical_language = "Python"
+
+[[program]]
+id = "julia-oracle"
+root = "programs/julia-oracle"
+manifest = "PROGRAM.toml"
+claim_namespace = "JO"
+canonical_language = "Julia"
+
+[[program]]
+id = "giant-fibers"
+root = "programs/giant-fibers"
+manifest = "PROGRAM.toml"
+claim_namespace = "GF"
+canonical_language = "undeclared"   # literature-first; no executable kernel yet
+
+[[program]]
+id = "langlands"
+root = "programs/langlands"
+manifest = "PROGRAM.toml"
+claim_namespace = "LL"
+canonical_language = "Python"
+
+[[program]]
+id = "novelty"
+root = "programs/novelty"
+manifest = "PROGRAM.toml"
+claim_namespace = "NL"
+canonical_language = "Python"
+
+[[program]]
+id = "pisot-substitution"
+root = "programs/pisot-substitution"
+manifest = "PROGRAM.toml"
+claim_namespace = "PS"
+canonical_language = "Mojo"
+
+[[program]]
+id = "pisot-vijayaraghavan"
+root = "programs/pisot-vijayaraghavan"
+manifest = "PROGRAM.toml"
+claim_namespace = "PV"
+canonical_language = "Python"
+
+[[program]]
+id = "s-adic-pisot"
+root = "programs/s-adic-pisot"
+manifest = "PROGRAM.toml"
+claim_namespace = "SAP"
+canonical_language = "Mojo"
+
+[[program]]
+id = "tiling-theory"
+root = "programs/tiling-theory"
+manifest = "PROGRAM.toml"
+claim_namespace = "TT"
+canonical_language = "undeclared"   # source holds a title-only README
+
+[[program]]
+id = "vizing-domination"
+root = "programs/vizing-domination"
+manifest = "PROGRAM.toml"
+claim_namespace = "VD"
+canonical_language = "Python"
+
+[[shared_component]]
+id = "finite-math-kernels"
+root = "shared/finite-math-kernels"
+consumers = ["finite-mandelbrot", "finite-julia", "bulb-ford", "novelty", "pisot-substitution", "s-adic-pisot"]
+
+[[shared_component]]
+id = "math-vizops"
+root = "shared/math-vizops"
+consumers = ["finite-mandelbrot", "bulb-ford"]
+
+[layout]
+status = "transitional"
+
+[principles]
+ordering = ["authority", "domain", "language"]
+empty_silos = "forbidden"
+cross_language_disagreement = "fail_closed"
+generated_surfaces = "derived_only"
+vendor_code = "non_local"
+experimental_code = "non_authoritative"
+
+[[plane]]
+id = "policy"
+target = "policy"
+authority = "governance"
+required = true
+current = ["policy", "ESTATE.toml"]
+
+[[plane]]
+id = "kernel"
+target = "kernel"
+authority = "canonical_executable"
+required = true
+current = ["kernel"]
+
+[[plane]]
+id = "programs"
+target = "programs"
+authority = "program_collection"
+required = true
+current = ["programs"]
+
+[[plane]]
+id = "shared"
+target = "shared"
+authority = "shared_component_collection"
+required = true
+current = ["shared"]
+
+[[plane]]
+id = "conformance"
+target = "tests"
+authority = "evidence"
+required = true
+current = ["tests"]
+
+[[plane]]
+id = "tooling"
+target = "tools"
+authority = "repository_tooling"
+required = true
+current = ["tools"]
+
+[[plane]]
+id = "docs"
+target = "docs"
+authority = "exposition"
+required = true
+current = ["docs", "ARCHITECTURE.md", "README.md"]
+
+# While every source retains its authority this workspace owns no acceptance
+# boundary: its kernel only verifies imports. Program kernels keep their source
+# languages as supporting, non-accepting code here.
+[[language]]
+name = "Python"
+authority = "canonical"
+roles = ["kernel", "tooling"]
+acceptance_authority = false
+
+[[language]]
+name = "Mojo"
+authority = "supporting"
+roles = ["program_kernel"]
+acceptance_authority = false
+
+[[language]]
+name = "Julia"
+authority = "supporting"
+roles = ["oracle"]
+acceptance_authority = false
+
+[[language]]
+name = "Lean"
+authority = "supporting"
+roles = ["program_proof"]
+acceptance_authority = false
+
+[migration]
+mode = "boundary_first"
+mass_move = false
+next = [
+  "owner disclosure decision for private sources: closure-fiber, finite-julia, giant-fibers",
+  "reproduce each imported program's original gates from the workspace root (path-aware CI)",
+  "reconcile vendored finite-math-kernels copies against shared/finite-math-kernels",
+  "decide finite-math-kernels estate position inside a research-class workspace (DR)",
+  "transfer authority program by program, then archive sources with redirect READMEs",
+]

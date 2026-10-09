@@ -1,0 +1,209 @@
+# Source locks for the my-math-homelab consolidation (estate-repository-v2,
+# multi-program-repository-v1). One row per source repository considered.
+#
+#   import = "history"        unsquashed subtree merge; the locked commit is an
+#                             ancestor of HEAD and its tree is byte-identical under root
+#   import = "metadata_only"  private source: only PROGRAM.toml is published here
+#                             until the owner records an explicit disclosure decision
+#   import = "none"           not imported (see reason)
+#
+# authority = "retained": the source repository stays authoritative for its claims,
+# gates, releases and issues. No authority transfers by moving files.
+version = 1
+captured_at = "2026-10-09"
+
+[[source]]
+id = "arithmetic-bicycle"
+kind = "program"
+repository = "larsbx/arithmetic-bicycle-conjecture-research"
+visibility = "public"
+commit = "23053222c2acdf9b6ff74f0f2499b44af9c3684a"
+commits = 4
+files = 41
+import = "history"
+authority = "retained"
+
+[[source]]
+id = "closure-fiber"
+kind = "program"
+repository = "larsbx/closure-fiber-of-multiplication-research"
+visibility = "private"
+commit = "6815ebfd7ccfcb6d32b90848911be329e950576e"
+commits = 35
+files = 25
+import = "metadata_only"
+authority = "retained"
+
+[[source]]
+id = "finite-mandelbrot"
+kind = "program"
+repository = "larsbx/finite-mandelbrot-research"
+visibility = "public"
+commit = "47fd8ae5e88368f7b271aac6b8a3e14dc7e68721"
+commits = 750
+files = 492
+import = "history"
+authority = "retained"
+
+[[source]]
+id = "finite-julia"
+kind = "program"
+repository = "larsbx/finite-julia-set-research"
+visibility = "private"
+commit = "e1a526722113905dde2228a8b2c64d9b76ee424c"
+commits = 108
+files = 260
+import = "metadata_only"
+authority = "retained"
+
+[[source]]
+id = "bulb-ford"
+kind = "program"
+repository = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+visibility = "public"
+commit = "640496ad10998ddc5a7fade6cf52eafac16a9603"
+commits = 142
+files = 182
+import = "history"
+authority = "retained"
+
+[[source]]
+id = "julia-oracle"
+kind = "program"
+repository = "larsbx/julia-oracle-lab"
+visibility = "public"
+commit = "4eac858ef90da435df620c413ec88df4ebb0c6a5"
+commits = 68
+files = 25
+import = "history"
+authority = "retained"
+
+[[source]]
+id = "giant-fibers"
+kind = "program"
+repository = "larsbx/giant-fibers-finite-fields-thin-groups"
+visibility = "private"
+commit = "62bf0894997980a4a0708e3d48f81c091cbaf2c3"
+commits = 3
+files = 9
+import = "metadata_only"
+authority = "retained"
+
+[[source]]
+id = "langlands"
+kind = "program"
+repository = "larsbx/langlands-lab"
+visibility = "public"
+commit = "72d663ef072fb85da723990e4288ee4457117cb6"
+commits = 93
+files = 118
+import = "history"
+authority = "retained"
+
+[[source]]
+id = "novelty"
+kind = "program"
+repository = "larsbx/novelty-lab"
+visibility = "public"
+commit = "ad13b46db8b7aac8e0a062adacfea92fd6f3e726"
+commits = 104
+files = 193
+import = "history"
+authority = "retained"
+
+[[source]]
+id = "pisot-substitution"
+kind = "program"
+repository = "larsbx/pisot-substitution-conjecture-research"
+visibility = "public"
+commit = "e37d99ea6615f040208f6c079672ef4f05a23d5c"
+commits = 1145
+files = 892
+import = "history"
+authority = "retained"
+
+[[source]]
+id = "pisot-vijayaraghavan"
+kind = "program"
+repository = "larsbx/pisot-vijayaraghavan-problem-research"
+visibility = "public"
+commit = "420ebfcd6f5a4af14a949ac9c6fcd33a5785155f"
+commits = 4
+files = 35
+import = "history"
+authority = "retained"
+
+[[source]]
+id = "s-adic-pisot"
+kind = "program"
+repository = "larsbx/s-adic-pisot-conjecture-research"
+visibility = "public"
+commit = "bb73942f50b272a78c74f1d4b37d7a2636acc06f"
+commits = 29
+files = 103
+import = "history"
+authority = "retained"
+
+[[source]]
+id = "tiling-theory"
+kind = "program"
+repository = "larsbx/tiling-theory-research"
+visibility = "public"
+commit = "3e508a1864352c0ea610560d498a4c894466a995"
+commits = 1
+files = 1
+import = "history"
+authority = "retained"
+
+[[source]]
+id = "vizing-domination"
+kind = "program"
+repository = "larsbx/vizing-domination-conjecture-research"
+visibility = "public"
+commit = "b238b29dac739f33d7971265b191ef5aedd4d306"
+commits = 32
+files = 57
+import = "history"
+authority = "retained"
+
+[[source]]
+id = "finite-math-kernels"
+kind = "shared"
+repository = "larsbx/finite-math-kernels"
+visibility = "public"
+commit = "1887777d815656034d0fb9e5a68ef473b652b75b"
+commits = 349
+files = 430
+import = "history"
+authority = "retained"
+
+[[source]]
+id = "math-vizops"
+kind = "shared"
+repository = "larsbx/math-vizops"
+visibility = "public"
+commit = "a6972ac83150a361dbac022e29d0402650a2a9ff"
+commits = 75
+files = 114
+import = "history"
+authority = "retained"
+
+[[source]]
+id = "finite-dynamics"
+kind = "superseded"
+repository = "larsbx/finite-dynamics"
+visibility = "public"
+commit = "5b085c9e3c1a9cdb0a78b16276865485b3df7e0b"
+import = "none"
+authority = "retained"
+reason = "earlier four-program consolidation pilot; its programs are imported here from their original sources"
+
+[[source]]
+id = "oracles"
+kind = "excluded"
+repository = "larsbx/oracles"
+visibility = "private"
+commit = "4dc89081db49995fc251c0f93a2e485bfa4576f6"
+import = "none"
+authority = "retained"
+reason = "empty repository (title-only README); a program root would be an empty silo"
