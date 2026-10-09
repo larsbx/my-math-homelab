@@ -1,0 +1,33 @@
+# backend.toml
+#
+# Single source of truth for arithmetic backend readiness.
+#
+# The finite-regime certificate engine must not accept proof-grade
+# certificates unless this manifest declares a backend that satisfies the full
+# exact-arithmetic contract and the corresponding implementation exists in
+# kernel/. Phase 0 has a checker, a corpus, and two implementations that agree;
+# it has no certificate grammar, so nothing here is proof-grade.
+
+[backend]
+name = "VendoredFiniteExact"
+kind = "exact"
+proof_grade = false
+
+[requirements]
+unbounded_storage = true
+exact_add_sub_mul = true
+exact_order = true
+euclidean_gcd = true
+exact_divisibility = true
+normalized_serialization = true
+canonical_hash_encoding = true
+
+[policy]
+allow_demo_certificates = true
+allow_proof_grade_certificates = false
+no_analytic_trig = true
+no_analytic_points = true
+points_are_vertices_of_vertices = true
+no_float_certificate_arithmetic = true
+parameter_domain = "gaussian_rational"
+exact_arithmetic_spec = "docs/rational-interval-arithmetic-spec.md"
