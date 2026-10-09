@@ -1,0 +1,5 @@
+name = "LanglandsOracles"
+defaultTargets = ["LanglandsOracles"]
+
+[[lean_lib]]
+name = "LanglandsOracles"
