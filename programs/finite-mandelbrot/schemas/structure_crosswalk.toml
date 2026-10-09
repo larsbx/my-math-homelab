@@ -1,0 +1,1126 @@
+# Structure crosswalk: where the estate's code and data coincide with the atlas.
+#
+# Each [[occurrence]] names a file in this repository or a sibling repository,
+# a literal `anchor` in it (or a `json_row` locator for committed JSON), the
+# atlas ids of schemas/structure_names.toml it meets, and the `datum` it shares
+# with them, written in the atlas's own fields. A named Julia set answers for
+# its parameter. Checks: reference/python/atlas/structure_crosswalk_reference.py;
+# generated surface: docs/structure_crosswalk.json (tools/make_structure_crosswalk.py).
+#
+# relation:  same-datum | computes | contains   (datum required)
+#            certifies | attaches | names       (datum optional)
+# plane:     kernel | reference | oracle | schema | data | test | doc | experiment | view
+# exactness: exact | ball | float | name-only
+#
+# Convention: this repository counts a critical-orbit type from Q_0 = 0, so its
+# (ell, k) has ell one more than the atlas's critical_orbit_type preperiod
+# (c = -2 is (2, 1) here and [1, 1] in the atlas). Only atlas fields are compared.
+
+format = "finite-mandelbrot-structure-crosswalk-v1"
+
+# === larsbx/finite-mandelbrot-research ======================================
+
+# --- the atlas_dataset emitter (pixi run atlas-dataset) ---
+
+[[occurrence]]
+id = "fmr-emitter-tuning-doubling"
+label = "tunings component \"doubling\": root rays 1/3, 2/3"
+atlas = ["bulb-1/2"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = 'var names: List[String] = ["doubling", "rabbit", "airplane", "primitive period 4",'
+relation = "same-datum"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:tunings"
+datum = { root_angles = ["1/3", "2/3"] }
+
+[[occurrence]]
+id = "fmr-emitter-tuning-rabbit"
+label = "tunings component \"rabbit\": root rays 1/7, 2/7"
+atlas = ["bulb-1/3"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = 'var names: List[String] = ["doubling", "rabbit", "airplane", "primitive period 4",'
+relation = "same-datum"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:tunings"
+datum = { root_angles = ["1/7", "2/7"] }
+
+[[occurrence]]
+id = "fmr-emitter-tuning-airplane"
+label = "tunings component \"airplane\": root rays 3/7, 4/7"
+atlas = ["airplane-component"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = 'var names: List[String] = ["doubling", "rabbit", "airplane", "primitive period 4",'
+relation = "same-datum"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:tunings"
+datum = { root_angles = ["3/7", "4/7"] }
+
+[[occurrence]]
+id = "fmr-emitter-tuning-satellite-4"
+label = "tunings component \"satellite period 4\": root rays 2/5, 3/5"
+atlas = ["bulb-1/2.1/2"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = '"satellite period 4"]'
+relation = "same-datum"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:tunings"
+datum = { root_angles = ["2/5", "3/5"] }
+
+[[occurrence]]
+id = "fmr-emitter-tuning-cascade"
+label = "tunings rows: doubling x 1/3 = 2/5, doubling x 2/5 = 7/17, satellite-4 x 2/5 = 106/257"
+atlas = ["feigenbaum-cascade"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = "def tunings_section() -> String:"
+relation = "computes"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:tunings"
+datum = { levels = [["1/3"], ["2/5"], ["7/17"], ["106/257"]] }
+note = "Only the lower root angle of each level is a tuned output; 106/257 is satellite period 4 tuned by 2/5."
+
+[[occurrence]]
+id = "fmr-emitter-kneading-bulb-1/2"
+label = "kneading rows 1/3, 2/3: nu = 1*, address 1 -> 2"
+atlas = ["bulb-1/2"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = "def kneading_section() -> String:"
+relation = "contains"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:kneading"
+datum = { root_angles = ["1/3", "2/3"], internal_address = [1, 2], period = 2 }
+
+[[occurrence]]
+id = "fmr-emitter-kneading-bulb-1/3"
+label = "kneading rows 1/7, 2/7: nu = 11*, address 1 -> 3"
+atlas = ["bulb-1/3"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = "def kneading_section() -> String:"
+relation = "contains"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:kneading"
+datum = { root_angles = ["1/7", "2/7"], internal_address = [1, 3], period = 3 }
+
+[[occurrence]]
+id = "fmr-emitter-kneading-bulb-2/3"
+label = "kneading rows 5/7, 6/7: address 1 -> 3"
+atlas = ["bulb-2/3"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = "def kneading_section() -> String:"
+relation = "contains"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:kneading"
+datum = { root_angles = ["5/7", "6/7"], internal_address = [1, 3], period = 3 }
+
+[[occurrence]]
+id = "fmr-emitter-kneading-airplane"
+label = "kneading rows 3/7, 4/7: nu = 10*, address 1 -> 2 -> 3"
+atlas = ["airplane-component"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = "def kneading_section() -> String:"
+relation = "contains"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:kneading"
+datum = { root_angles = ["3/7", "4/7"], internal_address = [1, 2, 3], period = 3 }
+
+[[occurrence]]
+id = "fmr-emitter-kneading-bulb-1/4"
+label = "kneading rows 1/15, 2/15: nu = 111*, address 1 -> 4"
+atlas = ["bulb-1/4"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = "def kneading_section() -> String:"
+relation = "contains"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:kneading"
+datum = { root_angles = ["1/15", "2/15"], internal_address = [1, 4], period = 4 }
+
+[[occurrence]]
+id = "fmr-emitter-kneading-bulb-1/2.1/2"
+label = "kneading rows 6/15, 9/15 (unreduced 2/5, 3/5): nu = 101*, address 1 -> 2 -> 4"
+atlas = ["bulb-1/2.1/2"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = "def kneading_section() -> String:"
+relation = "contains"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:kneading"
+datum = { root_angles = ["6/15", "9/15"], internal_address = [1, 2, 4], period = 4 }
+note = "The emitter writes period-n angles over 2^n - 1 unreduced; a consumer keying names by angle must reduce first."
+
+[[occurrence]]
+id = "fmr-emitter-kneading-kokopelli"
+label = "kneading rows 3/15, 4/15: nu = 110*, address 1 -> 3 -> 4"
+atlas = ["kokopelli-component", "kokopelli"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = "def kneading_section() -> String:"
+relation = "contains"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:kneading"
+datum = { root_angles = ["3/15", "4/15"], internal_address = [1, 3, 4], period = 4 }
+
+[[occurrence]]
+id = "fmr-emitter-catalogue-tip"
+label = "catalogue (1, 1) = {1/2}"
+atlas = ["tip"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = "def catalogues_section() -> String:"
+relation = "contains"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:catalogues"
+datum = { angles = ["1/2"], angle_type = [1, 1] }
+
+[[occurrence]]
+id = "fmr-emitter-catalogue-c-i"
+label = "catalogue (1, 2) = {1/6, 5/6}"
+atlas = ["c-i"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = "def catalogues_section() -> String:"
+relation = "contains"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:catalogues"
+datum = { angles = ["1/6"], angle_type = [1, 2] }
+
+[[occurrence]]
+id = "fmr-emitter-catalogue-c-minus-i"
+label = "catalogue (1, 2) = {1/6, 5/6}"
+atlas = ["c-minus-i"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = "def catalogues_section() -> String:"
+relation = "contains"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:catalogues"
+datum = { angles = ["5/6"], angle_type = [1, 2] }
+
+[[occurrence]]
+id = "fmr-emitter-catalogue-m41"
+label = "catalogue (3, 3) over 56 contains 9/56, 11/56, 15/56"
+atlas = ["principal-misiurewicz-1/3"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/atlas_dataset.mojo"
+anchor = "def catalogues_section() -> String:"
+relation = "contains"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:catalogues"
+datum = { angles = ["9/56", "11/56", "15/56"], angle_type = [3, 3] }
+
+[[occurrence]]
+id = "fmr-emitter-incidence-tip"
+label = "incidence package about beta_c_minus_2, ray address 1/2"
+atlas = ["tip"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/certificates/c_minus_2/bigq_certificate_incidence.mojo"
+anchor = 'FiniteVertex("RationalBox", "beta_c_minus_2")'
+relation = "certifies"
+plane = "kernel"
+exactness = "exact"
+emits = "atlas-dataset:incidence"
+datum = { parameter = ["-2", "0"], angles = ["1/2"] }
+note = "The package is valid at every half-width and the certificate is still not emitted; proves_c1 is false."
+
+# --- the structure streams (pixi run structure-streams) ---
+
+[[occurrence]]
+id = "fmr-streams-elephant-valley"
+label = "limbs 1/(n+1) of the main cardioid, toward the cusp"
+atlas = ["elephant-valley"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/structure_streams.mojo"
+anchor = '"elephant-valley", "main-cardioid", 1, 0, 1, 0, 1, 0, 1'
+relation = "computes"
+plane = "kernel"
+exactness = "exact"
+emits = "structure-streams:valleys"
+datum = { accumulation = { parent = "main-cardioid", rotation = "0/1" } }
+
+[[occurrence]]
+id = "fmr-streams-seahorse-valley"
+label = "limbs n/(2n+1) and (n+1)/(2n+1) of the main cardioid, toward the 1/2 root"
+atlas = ["seahorse-valley"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/structure_streams.mojo"
+anchor = '"seahorse-valley", "main-cardioid", 1, 0, 1, 0, 1, 1, 2'
+relation = "computes"
+plane = "kernel"
+exactness = "exact"
+emits = "structure-streams:valleys"
+datum = { accumulation = { parent = "main-cardioid", rotation = "1/2" } }
+
+[[occurrence]]
+id = "fmr-streams-triple-spiral-valley"
+label = "main-cardioid limbs toward the 1/3 root"
+atlas = ["triple-spiral-valley"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/structure_streams.mojo"
+anchor = '"triple-spiral-valley", "main-cardioid", 1, 0, 1, 0, 1, 1, 3'
+relation = "computes"
+plane = "kernel"
+exactness = "exact"
+emits = "structure-streams:valleys"
+datum = { accumulation = { parent = "main-cardioid", rotation = "1/3" } }
+
+[[occurrence]]
+id = "fmr-streams-quad-spiral-valley"
+label = "main-cardioid limbs toward the 1/4 root"
+atlas = ["quad-spiral-valley"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/structure_streams.mojo"
+anchor = '"quad-spiral-valley", "main-cardioid", 1, 0, 1, 0, 1, 1, 4'
+relation = "computes"
+plane = "kernel"
+exactness = "exact"
+emits = "structure-streams:valleys"
+datum = { accumulation = { parent = "main-cardioid", rotation = "1/4" } }
+
+[[occurrence]]
+id = "fmr-streams-double-spiral-valley"
+label = "limbs 1/(n+1) of the 1/2-bulb toward its root: the elephant stream tuned by (1/3, 2/3)"
+atlas = ["double-spiral-valley"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/structure_streams.mojo"
+anchor = '"double-spiral-valley", "bulb-1/2", 2, 1, 3, 2, 3, 0, 1'
+relation = "computes"
+plane = "kernel"
+exactness = "exact"
+emits = "structure-streams:valleys"
+datum = { accumulation = { parent = "bulb-1/2", rotation = "0/1" } }
+
+[[occurrence]]
+id = "fmr-streams-scepter-valley"
+label = "1/2-bulb limbs toward its 1/2 root: the seahorse stream tuned by (1/3, 2/3)"
+atlas = ["scepter-valley"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/structure_streams.mojo"
+anchor = '"scepter-valley", "bulb-1/2", 2, 1, 3, 2, 3, 1, 2'
+relation = "computes"
+plane = "kernel"
+exactness = "exact"
+emits = "structure-streams:valleys"
+datum = { accumulation = { parent = "bulb-1/2", rotation = "1/2" } }
+
+[[occurrence]]
+id = "fmr-streams-golden-mean"
+label = "golden-mean convergent limbs F_n/F_{n+1}, q <= 34, consecutive pairs Farey-adjacent"
+atlas = ["golden-mean-siegel", "siegel-disk"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/entrypoints/structure_streams.mojo"
+anchor = "def convergents_section() raises -> String:"
+relation = "computes"
+plane = "kernel"
+exactness = "exact"
+emits = "structure-streams:convergents"
+datum = { convergents = ["1/2", "2/3", "3/5", "5/8", "8/13"] }
+note = "The Siegel parameter is the limit of these limbs and has no finite key; that bounded type gives a Siegel disk is the imported theorem (Siegel 1942)."
+
+[[occurrence]]
+id = "fmr-kernel-limb-streams"
+label = "main-cardioid limbs read off the rotation itinerary; limbs elsewhere by tuning"
+atlas = ["bulb-1/2", "bulb-1/3", "bulb-2/3", "bulb-1/4", "bulb-1/2.1/2"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/dynamics/limb_streams.mojo"
+anchor = "def limb_streams_smoke() -> Bool:"
+relation = "names"
+plane = "kernel"
+exactness = "exact"
+note = "Pinned in the smoke suite: 1/2, 1/3, 2/3, 1/4, 2/5, 3/8 and the 1/2-bulb's 1/2- and 1/3-limbs."
+
+# --- kernel ---
+
+[[occurrence]]
+id = "fmr-kernel-catalogue-smoke-tip"
+label = "pinned catalogue (1, 1) = [1] over 2"
+atlas = ["tip"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/certificates/misiurewicz_catalogue.mojo"
+anchor = "var one_one: List[Int] = [1]"
+relation = "contains"
+plane = "kernel"
+exactness = "exact"
+datum = { angles = ["1/2"], angle_type = [1, 1] }
+
+[[occurrence]]
+id = "fmr-kernel-catalogue-smoke-sixths"
+label = "pinned catalogue (1, 2) = [1, 5] over 6"
+atlas = ["c-i", "c-minus-i"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/certificates/misiurewicz_catalogue.mojo"
+anchor = "var one_two: List[Int] = [1, 5]"
+relation = "contains"
+plane = "kernel"
+exactness = "exact"
+datum = { angle_type = [1, 2] }
+
+[[occurrence]]
+id = "fmr-kernel-krawczyk-c-minus-2"
+label = "Krawczyk witness box about c = -2 (beta_c_minus_2)"
+atlas = ["tip"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/certificates/krawczyk_witness.mojo"
+anchor = "def c_minus_2_box(half_width_den_power: Int) -> ComplexIQ:"
+relation = "certifies"
+plane = "kernel"
+exactness = "exact"
+datum = { parameter = ["-2", "0"] }
+
+[[occurrence]]
+id = "fmr-kernel-r21"
+label = "R_{2,1}(C) = C^3 (C + 2): the type-(2,1) return polynomial, root -2"
+atlas = ["tip"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/polynomial/poly_z.mojo"
+anchor = "# R_{2,1}(C) = C^3(C+2)."
+relation = "computes"
+plane = "kernel"
+exactness = "exact"
+datum = { parameter = ["-2", "0"] }
+
+[[occurrence]]
+id = "fmr-kernel-m41-theta"
+label = "M_{4,1}: Theta = {9/56, 11/56, 15/56}, P_{4,1} degree-7 factor"
+atlas = ["principal-misiurewicz-1/3"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/dynamics/finite_mandelbrot.mojo"
+anchor = "Theta = {9/56, 11/56, 15/56}"
+relation = "same-datum"
+plane = "kernel"
+exactness = "exact"
+datum = { angles = ["9/56", "11/56", "15/56"], angle_type = [3, 3] }
+note = "This repository's M_{4,1} is the atlas's principal-misiurewicz-1/3 (atlas critical-orbit preperiod 3, period 1)."
+
+[[occurrence]]
+id = "fmr-kernel-m41-separator"
+label = "two-ray separator 9/56 | 11/56 under RationalRayLanding"
+atlas = ["principal-misiurewicz-1/3"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/c1/separator/separator_codes.mojo"
+anchor = "var left = RayAddr(9, 56)"
+relation = "same-datum"
+plane = "kernel"
+exactness = "exact"
+datum = { angles = ["9/56", "11/56"] }
+
+[[occurrence]]
+id = "fmr-kernel-m41-orbits"
+label = "doubling orbits of the ray addresses 9/56, 11/56, 15/56"
+atlas = ["principal-misiurewicz-1/3"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/certificates/certificate_sets.mojo"
+anchor = 'print_doubling_orbit("ray address 9/56", 9, 56, 6)'
+relation = "computes"
+plane = "kernel"
+exactness = "exact"
+datum = { angles = ["9/56", "11/56", "15/56"] }
+
+[[occurrence]]
+id = "fmr-kernel-carrier-cascade"
+label = "doubling_once = 2/5, doubling_twice = 7/17: tuning by (1/3, 2/3)"
+atlas = ["feigenbaum-cascade"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/c1/residual/residual_directive_carrier.mojo"
+anchor = "var doubling_twice = tuned_angle(1, 3, 2, 3, once_num, once_den)"
+relation = "computes"
+plane = "kernel"
+exactness = "exact"
+datum = { levels = [["1/3", "2/3"], ["2/5"], ["7/17"]] }
+
+[[occurrence]]
+id = "fmr-kernel-carrier-basilica"
+label = "residual directive carrier: the basilica is 1 -> 2"
+atlas = ["basilica"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/c1/residual/residual_directive_carrier.mojo"
+anchor = "# basilica is 1 -> 2, the rabbit 1 -> 3, the airplane 1 -> 2 -> 3."
+relation = "same-datum"
+plane = "kernel"
+exactness = "exact"
+datum = { internal_address = [1, 2] }
+
+[[occurrence]]
+id = "fmr-kernel-carrier-rabbit"
+label = "residual directive carrier: the rabbit is 1 -> 3"
+atlas = ["douady-rabbit"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/c1/residual/residual_directive_carrier.mojo"
+anchor = "# basilica is 1 -> 2, the rabbit 1 -> 3, the airplane 1 -> 2 -> 3."
+relation = "same-datum"
+plane = "kernel"
+exactness = "exact"
+datum = { internal_address = [1, 3] }
+
+[[occurrence]]
+id = "fmr-kernel-carrier-airplane"
+label = "residual directive carrier: the airplane is 1 -> 2 -> 3"
+atlas = ["airplane"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/c1/residual/residual_directive_carrier.mojo"
+anchor = "# basilica is 1 -> 2, the rabbit 1 -> 3, the airplane 1 -> 2 -> 3."
+relation = "same-datum"
+plane = "kernel"
+exactness = "exact"
+datum = { internal_address = [1, 2, 3] }
+
+[[occurrence]]
+id = "fmr-kernel-density-levels"
+label = "carrier density profile: wake pairs of the basilica, rabbit and airplane levels"
+atlas = ["basilica", "douady-rabbit", "airplane"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/c1/carrier/carrier_density_profile.mojo"
+anchor = "The wake pairs declared for the basilica, rabbit and airplane levels"
+relation = "names"
+plane = "kernel"
+exactness = "exact"
+
+[[occurrence]]
+id = "fmr-kernel-sieve-c2-plus-1"
+label = "type sieve: C^2 + 1 = E_{2,2}, the factor whose roots are c = i and c = -i"
+atlas = ["c-i", "c-minus-i"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "kernel/mojo/dynamics/critical_type_sieve.mojo"
+anchor = "# C^2+1 has roots 2 and 3 mod 5, but 3=-2 has lower type (2,1)."
+relation = "names"
+plane = "kernel"
+exactness = "exact"
+note = "Read over F_5; the type-(2,2) factor in this repository's convention is atlas critical-orbit type [1, 2]."
+
+# --- reference, tests, examples ---
+
+[[occurrence]]
+id = "fmr-reference-components-doubling"
+label = "kneading reference COMPONENTS[\"doubling\"]"
+atlas = ["bulb-1/2"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "reference/python/c1/kneading_reference.py"
+anchor = '"doubling": (Fraction(1, 3), Fraction(2, 3)),'
+relation = "same-datum"
+plane = "reference"
+exactness = "exact"
+datum = { root_angles = ["1/3", "2/3"] }
+
+[[occurrence]]
+id = "fmr-reference-components-rabbit"
+label = "kneading reference COMPONENTS[\"rabbit\"]"
+atlas = ["bulb-1/3"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "reference/python/c1/kneading_reference.py"
+anchor = '"rabbit": (Fraction(1, 7), Fraction(2, 7)),'
+relation = "same-datum"
+plane = "reference"
+exactness = "exact"
+datum = { root_angles = ["1/7", "2/7"] }
+
+[[occurrence]]
+id = "fmr-reference-components-airplane"
+label = "kneading reference COMPONENTS[\"airplane\"]"
+atlas = ["airplane-component"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "reference/python/c1/kneading_reference.py"
+anchor = '"airplane": (Fraction(3, 7), Fraction(4, 7)),'
+relation = "same-datum"
+plane = "reference"
+exactness = "exact"
+datum = { root_angles = ["3/7", "4/7"] }
+
+[[occurrence]]
+id = "fmr-reference-components-satellite-4"
+label = "kneading reference COMPONENTS[\"satellite period 4\"]"
+atlas = ["bulb-1/2.1/2"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "reference/python/c1/kneading_reference.py"
+anchor = '"satellite period 4": (Fraction(2, 5), Fraction(3, 5)),'
+relation = "same-datum"
+plane = "reference"
+exactness = "exact"
+datum = { root_angles = ["2/5", "3/5"] }
+
+[[occurrence]]
+id = "fmr-reference-exclusion-c-minus-2"
+label = "exclusion box [-33/16, -31/16] x [-1/16, 1/16] about c = -2"
+atlas = ["tip"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "reference/python/interval/interval_exclusion_reference.py"
+anchor = "return ComplexIQ.of(Fraction(-33, 16), Fraction(-31, 16), Fraction(-1, 16), Fraction(1, 16))"
+relation = "certifies"
+plane = "reference"
+exactness = "exact"
+datum = { parameter = ["-2", "0"] }
+
+[[occurrence]]
+id = "fmr-reference-exclusion-m41"
+label = "exclusion box about M_{4,1}, half-width 2^-25"
+atlas = ["principal-misiurewicz-1/3"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "reference/python/interval/interval_exclusion_reference.py"
+anchor = "def m41_box() -> ComplexIQ:"
+relation = "certifies"
+plane = "reference"
+exactness = "exact"
+
+[[occurrence]]
+id = "fmr-test-rabbit-wake"
+label = "prefix-graph control: RABBIT_WAKE = 3/21, 6/21"
+atlas = ["bulb-1/3"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "tests/test_misiurewicz_prefix_graph.py"
+anchor = "RABBIT_WAKE = seps((3, 6))"
+relation = "same-datum"
+plane = "test"
+exactness = "exact"
+datum = { root_angles = ["3/21", "6/21"] }
+
+[[occurrence]]
+id = "fmr-test-basilica-wake"
+label = "prefix-graph control: BASILICA_WAKE = 7/21, 14/21"
+atlas = ["bulb-1/2"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "tests/test_misiurewicz_prefix_graph.py"
+anchor = "BASILICA_WAKE = seps((7, 14))"
+relation = "same-datum"
+plane = "test"
+exactness = "exact"
+datum = { root_angles = ["7/21", "14/21"] }
+
+[[occurrence]]
+id = "fmr-example-c-minus-2"
+label = "worked example: the Misiurewicz parameter c = -2"
+atlas = ["tip"]
+repo = "larsbx/finite-mandelbrot-research"
+path = "examples/misiurewicz-c-minus-2.md"
+anchor = "c = -2"
+relation = "names"
+plane = "doc"
+exactness = "exact"
+
+# === larsbx/finite-math-kernels =============================================
+
+[[occurrence]]
+id = "fmk-quadratic-orbit-tip"
+label = "the worked antenna-tip orbit 0 -> -2 -> 2 -> 2"
+atlas = ["tip"]
+repo = "larsbx/finite-math-kernels"
+path = "tests/quadratic_orbit/test_quadratic_orbit.mojo"
+anchor = '"""0 -> -2 -> 2 -> 2: the worked antenna-tip orbit, exactly."""'
+relation = "computes"
+plane = "test"
+exactness = "exact"
+datum = { parameter = ["-2", "0"], critical_orbit_type = [1, 1] }
+
+[[occurrence]]
+id = "fmk-quadratic-orbit-c-i"
+label = "the orbit 0 -> i -> -1 + i -> -i -> -1 + i"
+atlas = ["c-i"]
+repo = "larsbx/finite-math-kernels"
+path = "tests/quadratic_orbit/test_quadratic_orbit.mojo"
+anchor = '"""0 -> i -> -1 + i -> -i -> -1 + i: preperiod 2, period 2."""'
+relation = "computes"
+plane = "test"
+exactness = "exact"
+datum = { parameter = ["0", "1"], critical_orbit_type = [1, 2] }
+note = "The test counts the preperiod from 0, the atlas from the critical value c."
+
+[[occurrence]]
+id = "fmk-tuning-rabbit"
+label = "tuning pattern of the rabbit: kneading 11, substitution 1 -> 110, 0 -> 111"
+atlas = ["bulb-1/3"]
+repo = "larsbx/finite-math-kernels"
+path = "tests/substitution_dynamics/test_tuning.mojo"
+anchor = "var rabbit = TuningPattern.continuation(eleven)"
+relation = "attaches"
+plane = "test"
+exactness = "exact"
+
+[[occurrence]]
+id = "fmk-tuning-satellite-4"
+label = "sat4 kneading prefix 101, continuation twist off"
+atlas = ["bulb-1/2.1/2"]
+repo = "larsbx/finite-math-kernels"
+path = "tests/substitution_dynamics/test_tuning.mojo"
+anchor = "var sat4: List[Int] = [1, 0, 1]"
+relation = "attaches"
+plane = "test"
+exactness = "exact"
+
+[[occurrence]]
+id = "fmk-tuning-feigenbaum"
+label = "Feigenbaum kneading prefixes 1, 101, 1011101, ... (periods 2, 4, 8, ...)"
+atlas = ["feigenbaum-cascade"]
+repo = "larsbx/finite-math-kernels"
+path = "tests/substitution_dynamics/test_tuning.mojo"
+anchor = "def test_feigenbaum_kneading_prefix() raises:"
+relation = "attaches"
+plane = "test"
+exactness = "exact"
+
+[[occurrence]]
+id = "fmk-cyclotomic-1/2"
+label = "cyclotomic germ vector q = 2: parabolic index 1/8 at the root"
+atlas = ["bulb-1/2"]
+repo = "larsbx/finite-math-kernels"
+path = "conformance/cyclotomic_germ_v1.json"
+json_row = { array = "vectors", match = { p = 1, q = 2 } }
+relation = "attaches"
+plane = "data"
+exactness = "exact"
+datum = { rotation = "1/2" }
+
+[[occurrence]]
+id = "fmk-cyclotomic-1/3"
+label = "cyclotomic germ vector p/q = 1/3"
+atlas = ["bulb-1/3"]
+repo = "larsbx/finite-math-kernels"
+path = "conformance/cyclotomic_germ_v1.json"
+json_row = { array = "vectors", match = { p = 1, q = 3 } }
+relation = "attaches"
+plane = "data"
+exactness = "exact"
+datum = { rotation = "1/3" }
+
+[[occurrence]]
+id = "fmk-cyclotomic-2/3"
+label = "cyclotomic germ vector p/q = 2/3"
+atlas = ["bulb-2/3"]
+repo = "larsbx/finite-math-kernels"
+path = "conformance/cyclotomic_germ_v1.json"
+json_row = { array = "vectors", match = { p = 2, q = 3 } }
+relation = "attaches"
+plane = "data"
+exactness = "exact"
+datum = { rotation = "2/3" }
+
+[[occurrence]]
+id = "fmk-cyclotomic-1/4"
+label = "cyclotomic germ vector p/q = 1/4"
+atlas = ["bulb-1/4"]
+repo = "larsbx/finite-math-kernels"
+path = "conformance/cyclotomic_germ_v1.json"
+json_row = { array = "vectors", match = { p = 1, q = 4 } }
+relation = "attaches"
+plane = "data"
+exactness = "exact"
+datum = { rotation = "1/4" }
+
+# === larsbx/mandelbrot-bulbs-and-ford-circles-research =====================
+
+[[occurrence]]
+id = "bulbs-center-1/2"
+label = "certified centre box of B_{1/2} (Krawczyk, 2^-64)"
+atlas = ["bulb-1/2"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "experiments/data/center_certificates.json"
+json_row = { array = "certificates", match = { p = 1, q = 2, verdict = "ACCEPTED" } }
+relation = "certifies"
+plane = "data"
+exactness = "exact"
+datum = { rotation = "1/2", period = 2 }
+note = "Box numerators over 2^prec; the label B_{p/q} is the tag SatelliteLabel, validated numerically upstream."
+
+[[occurrence]]
+id = "bulbs-center-1/3"
+label = "certified centre box of B_{1/3}"
+atlas = ["bulb-1/3"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "experiments/data/center_certificates.json"
+json_row = { array = "certificates", match = { p = 1, q = 3, verdict = "ACCEPTED" } }
+relation = "certifies"
+plane = "data"
+exactness = "exact"
+datum = { rotation = "1/3", period = 3 }
+
+[[occurrence]]
+id = "bulbs-center-2/3"
+label = "certified centre box of B_{2/3}, the co-rabbit parameter"
+atlas = ["bulb-2/3", "co-rabbit"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "experiments/data/center_certificates.json"
+json_row = { array = "certificates", match = { p = 2, q = 3, verdict = "ACCEPTED" } }
+relation = "certifies"
+plane = "data"
+exactness = "exact"
+datum = { rotation = "2/3", period = 3 }
+
+[[occurrence]]
+id = "bulbs-center-1/4"
+label = "certified centre box of B_{1/4}"
+atlas = ["bulb-1/4"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "experiments/data/center_certificates.json"
+json_row = { array = "certificates", match = { p = 1, q = 4, verdict = "ACCEPTED" } }
+relation = "certifies"
+plane = "data"
+exactness = "exact"
+datum = { rotation = "1/4", period = 4 }
+
+[[occurrence]]
+id = "bulbs-antipode-1/2"
+label = "certified rho = -1 box of B_{1/2}: c = -5/4, the root of its 1/2-satellite"
+atlas = ["bulb-1/2.1/2"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "experiments/data/antipode_certificates.json"
+json_row = { array = "certificates", match = { p = 1, q = 2, verdict = "ACCEPTED" } }
+relation = "certifies"
+plane = "data"
+exactness = "exact"
+datum = { root_parameter = "-5/4" }
+note = "The antipode of B_{p/q} is the root of its period-2q satellite; for 1/2 that is c = -5/4."
+
+[[occurrence]]
+id = "bulbs-wake-1/2"
+label = "wake(1, 2) == (1/3, 2/3)"
+atlas = ["bulb-1/2"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "tests/test_wake.py"
+anchor = "(1, 2, (F(1, 3), F(2, 3)))"
+relation = "computes"
+plane = "test"
+exactness = "exact"
+datum = { root_angles = ["1/3", "2/3"], rotation = "1/2" }
+
+[[occurrence]]
+id = "bulbs-wake-1/3"
+label = "wake(1, 3) == (1/7, 2/7)"
+atlas = ["bulb-1/3"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "tests/test_wake.py"
+anchor = "(1, 3, (F(1, 7), F(2, 7)))"
+relation = "computes"
+plane = "test"
+exactness = "exact"
+datum = { root_angles = ["1/7", "2/7"], rotation = "1/3" }
+
+[[occurrence]]
+id = "bulbs-wake-2/3"
+label = "wake(2, 3) == (5/7, 6/7)"
+atlas = ["bulb-2/3"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "tests/test_wake.py"
+anchor = "(2, 3, (F(5, 7), F(6, 7)))"
+relation = "computes"
+plane = "test"
+exactness = "exact"
+datum = { root_angles = ["5/7", "6/7"], rotation = "2/3" }
+
+[[occurrence]]
+id = "bulbs-wake-1/4"
+label = "wake(1, 4) == (1/15, 2/15)"
+atlas = ["bulb-1/4"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "tests/test_wake.py"
+anchor = "(1, 4, (F(1, 15), F(2, 15)))"
+relation = "computes"
+plane = "test"
+exactness = "exact"
+datum = { root_angles = ["1/15", "2/15"], rotation = "1/4" }
+
+[[occurrence]]
+id = "bulbs-index-cusp"
+label = "exact parabolic index 0 of z + z^2 at the cusp"
+atlas = ["main-cardioid"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "tests/vectors/parabolic_index_exact_vectors.json"
+json_row = { array = "vectors", match = { p = 1, q = 1, re_num = 0 } }
+relation = "attaches"
+plane = "data"
+exactness = "exact"
+
+[[occurrence]]
+id = "bulbs-index-1/2"
+label = "exact parabolic index 1/8 at the root of B_{1/2}"
+atlas = ["bulb-1/2"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "tests/vectors/parabolic_index_exact_vectors.json"
+json_row = { array = "vectors", match = { p = 1, q = 2, re_num = 1, re_den = 8 } }
+relation = "attaches"
+plane = "data"
+exactness = "exact"
+datum = { rotation = "1/2" }
+
+[[occurrence]]
+id = "bulbs-index-1/4"
+label = "exact parabolic index (1447 - 365i)/4624 at the root of B_{1/4}"
+atlas = ["bulb-1/4"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "tests/vectors/parabolic_index_exact_vectors.json"
+json_row = { array = "vectors", match = { p = 1, q = 4, re_num = 1447, im_num = -365 } }
+relation = "attaches"
+plane = "data"
+exactness = "exact"
+datum = { rotation = "1/4" }
+
+[[occurrence]]
+id = "bulbs-certify-tip"
+label = "type-(2,1) exclusion and joint certificate about c = -2"
+atlas = ["tip"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "tests/test_certify.py"
+anchor = "beta = Box(I(F(-33, 16), F(-31, 16)), I(F(-1, 16), F(1, 16)))"
+relation = "certifies"
+plane = "test"
+exactness = "exact"
+datum = { parameter = ["-2", "0"] }
+
+[[occurrence]]
+id = "bulbs-certify-m41"
+label = "M41 box, half-width 2^-25, type (4, 1), 18 forbidden pairs excluded"
+atlas = ["principal-misiurewicz-1/3"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "tests/test_certify.py"
+anchor = "re, im = F(-56912193317957, den), F(538341446717435, den)"
+relation = "certifies"
+plane = "test"
+exactness = "exact"
+
+
+[[occurrence]]
+id = "bulbs-center-golden-8/13"
+label = "certified centre box of B_{8/13}, a golden-mean convergent limb"
+atlas = ["golden-mean-siegel"]
+repo = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+path = "experiments/data/center_certificates.json"
+json_row = { array = "certificates", match = { p = 8, q = 13, verdict = "ACCEPTED" } }
+relation = "certifies"
+plane = "data"
+exactness = "exact"
+datum = { convergents = ["8/13"] }
+note = "Rows 1/2, 2/3, 3/5 and 5/8 of the same file certify the earlier convergents; the Siegel parameter itself is their limit and has no finite key."
+
+# === larsbx/finite-julia-set-research =======================================
+
+[[occurrence]]
+id = "fjs-corpus-c0"
+label = "corpus row c0: superattracting fixed point, c = 0"
+atlas = ["main-cardioid"]
+repo = "larsbx/finite-julia-set-research"
+path = "corpus.json"
+json_row = { array = "corpus", match = { key = "c0", c = { re = "0", im = "0" } } }
+relation = "same-datum"
+plane = "data"
+exactness = "exact"
+datum = { center = "0" }
+
+[[occurrence]]
+id = "fjs-corpus-basilica"
+label = "corpus row basilica: period-2 centre, c = -1"
+atlas = ["basilica"]
+repo = "larsbx/finite-julia-set-research"
+path = "corpus.json"
+json_row = { array = "corpus", match = { key = "basilica", c = { re = "-1", im = "0" } } }
+relation = "same-datum"
+plane = "data"
+exactness = "exact"
+datum = { center = "-1" }
+
+[[occurrence]]
+id = "fjs-corpus-cauliflower"
+label = "corpus row cauliflower: parabolic, multiplier 1, c = 1/4"
+atlas = ["cauliflower"]
+repo = "larsbx/finite-julia-set-research"
+path = "corpus.json"
+json_row = { array = "corpus", match = { key = "cauliflower", c = { re = "1/4", im = "0" } } }
+relation = "same-datum"
+plane = "data"
+exactness = "exact"
+datum = { root_parameter = "1/4" }
+
+[[occurrence]]
+id = "fjs-corpus-san-marco"
+label = "corpus row parabolic_minus_one: multiplier -1, c = -3/4"
+atlas = ["san-marco"]
+repo = "larsbx/finite-julia-set-research"
+path = "corpus.json"
+json_row = { array = "corpus", match = { key = "parabolic_minus_one", c = { re = "-3/4", im = "0" } } }
+relation = "same-datum"
+plane = "data"
+exactness = "exact"
+datum = { root_parameter = "-3/4" }
+
+[[occurrence]]
+id = "fjs-corpus-parabolic-i"
+label = "corpus row parabolic_i: multiplier i, c = 1/4 + i/2, the root of B_{1/4}"
+atlas = ["bulb-1/4"]
+repo = "larsbx/finite-julia-set-research"
+path = "corpus.json"
+json_row = { array = "corpus", match = { key = "parabolic_i", c = { re = "1/4", im = "1/2" } } }
+relation = "attaches"
+plane = "data"
+exactness = "exact"
+note = "The atlas carries no complex root parameter yet; this row pins the root of B_{1/4} exactly."
+
+[[occurrence]]
+id = "fjs-corpus-dendrite"
+label = "corpus row dendrite: Misiurewicz, c = i"
+atlas = ["dendrite"]
+repo = "larsbx/finite-julia-set-research"
+path = "corpus.json"
+json_row = { array = "corpus", match = { key = "dendrite", c = { re = "0", im = "1" } } }
+relation = "same-datum"
+plane = "data"
+exactness = "exact"
+datum = { parameter = ["0", "1"] }
+
+[[occurrence]]
+id = "fjs-corpus-dendrite-conjugate"
+label = "corpus row dendrite_conjugate: Misiurewicz, c = -i"
+atlas = ["c-minus-i"]
+repo = "larsbx/finite-julia-set-research"
+path = "corpus.json"
+json_row = { array = "corpus", match = { key = "dendrite_conjugate", c = { re = "0", im = "-1" } } }
+relation = "same-datum"
+plane = "data"
+exactness = "exact"
+datum = { parameter = ["0", "-1"] }
+
+[[occurrence]]
+id = "fjs-corpus-chebyshev"
+label = "corpus row chebyshev: Chebyshev endpoint, c = -2"
+atlas = ["chebyshev-segment"]
+repo = "larsbx/finite-julia-set-research"
+path = "corpus.json"
+json_row = { array = "corpus", match = { key = "chebyshev", c = { re = "-2", im = "0" } } }
+relation = "same-datum"
+plane = "data"
+exactness = "exact"
+datum = { parameter = ["-2", "0"] }
+
+[[occurrence]]
+id = "fjs-parabolic-index-cusp"
+label = "low-q fixture (1, q = 1): index 0 at c = 1/4"
+atlas = ["main-cardioid"]
+repo = "larsbx/finite-julia-set-research"
+path = "oracles/parabolic_index.py"
+anchor = "(ONE, 1, GQ.of(0)),"
+relation = "attaches"
+plane = "oracle"
+exactness = "exact"
+
+[[occurrence]]
+id = "fjs-parabolic-index-1/2"
+label = "low-q fixture (-1, q = 2): index 1/8 at c = -3/4"
+atlas = ["bulb-1/2"]
+repo = "larsbx/finite-julia-set-research"
+path = "oracles/parabolic_index.py"
+anchor = "(-ONE, 2, GQ.of(F(1, 8))),"
+relation = "attaches"
+plane = "oracle"
+exactness = "exact"
+
+[[occurrence]]
+id = "fjs-parabolic-index-1/4"
+label = "low-q fixture (i, q = 4): index (1447 - 365i)/4624 at c = 1/4 + i/2"
+atlas = ["bulb-1/4"]
+repo = "larsbx/finite-julia-set-research"
+path = "oracles/parabolic_index.py"
+anchor = "(I, 4, GQ(F(1447, 4624), F(-365, 4624))),"
+relation = "attaches"
+plane = "oracle"
+exactness = "exact"
+
+[[occurrence]]
+id = "fjs-kneading-airplane-root"
+label = "kneading prefix 10110110 measured at c = -7/4"
+atlas = ["airplane-component"]
+repo = "larsbx/finite-julia-set-research"
+path = "tests/test_kneading.py"
+anchor = "(F(-7, 4), (1, 0, 1, 1, 0, 1, 1, 0)),"
+relation = "attaches"
+plane = "test"
+exactness = "exact"
+datum = { root_parameter = "-7/4" }
+
+[[occurrence]]
+id = "fjs-jet-cusp"
+label = "jet vanishing order 2 at z = 1/2, c = 1/4"
+atlas = ["main-cardioid"]
+repo = "larsbx/finite-julia-set-research"
+path = "kernel/jet.mojo"
+anchor = "var c_cusp = ComplexIQ.singleton(Q(1, 4), Q.zero())"
+relation = "attaches"
+plane = "kernel"
+exactness = "exact"
+datum = { root_parameter = "1/4" }
+
+[[occurrence]]
+id = "fjs-jet-q4"
+label = "jet vanishing order 5 at c = 1/4 + i/2"
+atlas = ["bulb-1/4"]
+repo = "larsbx/finite-julia-set-research"
+path = "kernel/jet.mojo"
+anchor = "var c_q4 = ComplexIQ.singleton(Q(1, 4), Q(1, 2))"
+relation = "attaches"
+plane = "kernel"
+exactness = "exact"
+
+# === larsbx/julia-oracle-lab ================================================
+
+[[occurrence]]
+id = "jol-parabolic-index-1/4"
+label = "Julia oracle fixture: index (1447 - 365i)/4624 at root_i"
+atlas = ["bulb-1/4"]
+repo = "larsbx/julia-oracle-lab"
+path = "oracles/quadratic_dynamics/ParabolicIndexOracle.jl"
+anchor = "(root_i(), 4, gq_frac(1447, 4624, -365, 4624)),"
+relation = "attaches"
+plane = "oracle"
+exactness = "exact"
+
+# === larsbx/math-vizops =====================================================
+
+[[occurrence]]
+id = "vizops-named-root-rays"
+label = "NAMED_ROOT_RAY: the atlas page's own component names"
+atlas = ["bulb-1/2", "bulb-1/3", "airplane-component", "bulb-1/2.1/2"]
+repo = "larsbx/math-vizops"
+path = "vizops/atlas/build.py"
+anchor = "NAMED_ROOT_RAY = {"
+relation = "names"
+plane = "view"
+exactness = "name-only"
+note = "Keys (2, 5) and (3, 5) never match the emitter's unreduced (6, 15) and (9, 15), so the 1/2-satellite of the 1/2-bulb is drawn unnamed; this surface is the replacement source for these names."
+
+[[occurrence]]
+id = "vizops-view-rabbit"
+label = "atlas page view v-rabbit"
+atlas = ["douady-rabbit"]
+repo = "larsbx/math-vizops"
+path = "vizops/atlas/templates/script.html"
+anchor = '"v-rabbit":'
+relation = "names"
+plane = "view"
+exactness = "float"
+
+[[occurrence]]
+id = "vizops-view-tip"
+label = "atlas page view v-tip: 1/2 lands at -2"
+atlas = ["tip"]
+repo = "larsbx/math-vizops"
+path = "vizops/atlas/templates/script.html"
+anchor = '"v-tip":'
+relation = "names"
+plane = "view"
+exactness = "float"

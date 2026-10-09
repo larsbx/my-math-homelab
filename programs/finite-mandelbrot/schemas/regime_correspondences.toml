@@ -1,0 +1,159 @@
+schema_version = 1
+allowed_classes = ["exact_algebraic_realization", "axiom_preserving_finite_analogue", "finite_certificate_surrogate", "symbolic_encoding", "prohibited_correspondence"]
+allowed_statuses = ["defined", "implemented_tested", "theorem_dependent", "prohibited"]
+
+[[correspondence]]
+id = "rank2-coordinate-record"
+analytic_concepts = ["complex number", "complex multiplication"]
+finite_term = "rank-2 coordinate record"
+class = "exact_algebraic_realization"
+status = "implemented_tested"
+preserves = ["addition", "subtraction", "polynomial coordinate multiplication", "multiplication matrix action", "quadrance multiplicativity"]
+does_not_inherit = ["analytic topology", "limits", "polar form", "argument", "circle or disk ontology"]
+domain_conditions = ["normalized rational coordinates", "accepted Q operands"]
+symbols = ["kernel/mojo/arithmetic/rank2_operator.mojo::Coord2", "kernel/mojo/arithmetic/rank2_operator.mojo::operator_matrix", "kernel/mojo/arithmetic/rank2_operator.mojo::operator_apply_by_star"]
+evidence = ["tests/test_rank2_operator.py", "docs/rank2-coordinate-substrate.md"]
+proof_boundary = "Polynomial coordinate equivalence imports no analytic or topological conclusion."
+
+[[correspondence]]
+id = "unit-quadrance-rotor"
+analytic_concepts = ["rotation", "unit complex number"]
+finite_term = "unit-quadrance rotor action"
+class = "axiom_preserving_finite_analogue"
+status = "implemented_tested"
+preserves = ["quadrance", "composition through coordinate multiplication"]
+does_not_inherit = ["unit circle", "measured angle", "sine", "cosine", "continuous rotation group"]
+domain_conditions = ["quadrance equals one", "accepted rational coordinates"]
+symbols = ["kernel/mojo/arithmetic/rank2_operator.mojo::is_rotor"]
+evidence = ["tests/test_rank2_operator.py", "tests/test_rank2_no_circle.py"]
+proof_boundary = "A general nonzero rank-2 record is not thereby a rotation."
+
+[[correspondence]]
+id = "rational-ray-address"
+analytic_concepts = ["external angle", "angle doubling"]
+finite_term = "normalized rational ray address modulo one"
+class = "symbolic_encoding"
+status = "implemented_tested"
+preserves = ["doubling modulo one", "eventual period", "preperiod"]
+does_not_inherit = ["metric angle", "radians", "trigonometric value", "ray landing"]
+domain_conditions = ["normalized Q in the half-open interval from zero to one"]
+symbols = ["kernel/mojo/dynamics/bigq_ray_address.mojo::BigQRayAddr", "kernel/mojo/dynamics/bigq_ray_address.mojo::verify_bigq_one_half_orbit"]
+evidence = ["tests/test_ray_address_terminology.py", "tests/test_ray_address_consolidation.py"]
+proof_boundary = "Address arithmetic alone does not prove that a parameter ray lands."
+
+[[correspondence]]
+id = "rational-box-half-width"
+analytic_concepts = ["radius", "neighborhood"]
+finite_term = "rational rectangular-box half-width"
+class = "finite_certificate_surrogate"
+status = "implemented_tested"
+preserves = ["explicit enclosure", "coordinatewise containment", "finite denominator refinement"]
+does_not_inherit = ["circle", "disk", "radial distance", "open neighborhood", "square-root norm"]
+domain_conditions = ["nonnegative denominator exponent", "accepted interval endpoints"]
+symbols = ["kernel/mojo/certificates/krawczyk_witness.mojo::c_minus_2_box"]
+evidence = ["tests/test_krawczyk_joint_scaffold.py", "docs/krawczyk-native-p21.md"]
+proof_boundary = "A rectangular rational enclosure is not a metric ball or topological neighborhood."
+
+[[correspondence]]
+id = "formal-polynomial-derivative"
+analytic_concepts = ["derivative"]
+finite_term = "formal polynomial derivative"
+class = "exact_algebraic_realization"
+status = "implemented_tested"
+preserves = ["coefficientwise power rule over integer polynomials", "polynomial evaluation"]
+does_not_inherit = ["limit definition", "differentiability of a general function", "analytic continuation"]
+domain_conditions = ["finite coefficient list", "integer polynomial"]
+symbols = ["kernel/mojo/polynomial/poly_interval_eval.mojo::derivative_coeffs_ascending", "kernel/mojo/polynomial/poly_interval_eval.mojo::eval_p21_derivative"]
+evidence = ["tests/test_poly_interval_eval.py", "docs/polynomial-reference-oracle.md"]
+proof_boundary = "Only formal differentiation of the represented polynomial is asserted."
+
+[[correspondence]]
+id = "rational-box-krawczyk-replay"
+analytic_concepts = ["Krawczyk operator", "localization neighborhood"]
+finite_term = "rational-box Krawczyk inclusion replay"
+class = "finite_certificate_surrogate"
+status = "implemented_tested"
+preserves = ["finite interval inclusion calculation", "strict coordinatewise enclosure test", "arithmetic rejection distinction"]
+does_not_inherit = ["ray landing", "fiber triviality", "local connectivity", "certificate acceptance"]
+domain_conditions = ["accepted BigZ-backed Q intervals", "squarefree P_2_1 polynomial", "shared box half-width"]
+symbols = ["kernel/mojo/certificates/krawczyk_witness.mojo::verify_bigq_p21_krawczyk_c_minus_2"]
+evidence = ["tests/test_krawczyk_joint_scaffold.py", "docs/krawczyk-native-p21.md"]
+proof_boundary = "Successful arithmetic replay is not a global analytic theorem or proof-grade certificate."
+
+[[correspondence]]
+id = "landing-association-replay"
+analytic_concepts = ["external-ray landing", "landing association"]
+finite_term = "finite landing-target association replay"
+class = "finite_certificate_surrogate"
+status = "theorem_dependent"
+preserves = ["same-box composition of localization and exact-type exclusion", "rational-address orbit metadata"]
+does_not_inherit = ["landing theorem", "theorem-tag acceptance", "fiber triviality", "C1", "ResidualClosureNoMissingLinks"]
+domain_conditions = ["accepted component replays", "matching half-width exponent", "explicit correspondence metadata"]
+symbols = ["kernel/mojo/certificates/c_minus_2/bigq_landing_target_adapter.mojo::verify_bigq_c_minus_2_landing_target_association"]
+evidence = ["tests/test_bigq_landing_target_adapter.py", "docs/certificate-predicate-migration-inventory.md"]
+proof_boundary = "The imported analytic correspondence remains metadata until a checked theorem tag is bound."
+
+[[correspondence]]
+id = "unit-circle-primitive"
+analytic_concepts = ["unit circle", "circle locus"]
+finite_term = "no rank-2 finite-regime object"
+class = "prohibited_correspondence"
+status = "prohibited"
+preserves = ["nothing"]
+does_not_inherit = ["all circle and locus structure"]
+domain_conditions = ["not applicable"]
+symbols = []
+evidence = ["tests/test_rank2_no_circle.py", "docs/no-points-invariant.md"]
+proof_boundary = "The polynomial predicate quadrance equals one does not construct a circle."
+
+[[correspondence]]
+id = "angle-kneading-prefix"
+analytic_concepts = ["kneading sequence", "Douady-Hubbard tuning", "renormalization level"]
+finite_term = "residual directive carrier"
+class = "symbolic_encoding"
+status = "implemented_tested"
+preserves = ["0/1 itinerary of a periodic address under doubling", "internal-address continuation", "star product of tuning patterns"]
+does_not_inherit = ["parameter-plane shrinking", "a priori bounds", "fibre triviality", "companion address identification", "measured angle"]
+domain_conditions = ["periodic address in the open interval from zero to one with odd reduced denominator", "period at most 62", "checked Int64 arithmetic accepted"]
+symbols = ["kernel/mojo/c1/residual/residual_directive_carrier.mojo::kneading_prefix_of", "kernel/mojo/c1/residual/residual_directive_carrier.mojo::checked_kneading_prefix", "kernel/mojo/c1/residual/residual_directive_carrier.mojo::continuation_last_letter", "kernel/mojo/c1/residual/residual_directive_carrier.mojo::checked_directive_level"]
+evidence = ["tests/test_C1_residual_directive_carrier.py", "docs/C1_residual_directive_carrier.md", "reference/python/c1/kneading_reference.py"]
+proof_boundary = "A directive prefix encodes finitely many renormalization levels; it does not decide residual membership or same-fibre relations."
+
+[[correspondence]]
+id = "separated-pair-density"
+analytic_concepts = ["Lebesgue measure on external angles", "harmonic measure", "density of a decided set"]
+finite_term = "separated-pair density"
+class = "finite_certificate_surrogate"
+status = "implemented_tested"
+preserves = ["exact rational atom lengths of a finite separator set", "side signatures and their classes", "monotonicity under refinement", "orientation independence", "total measure one", "the measure each carrier level decides, along the refinement order"]
+does_not_inherit = ["harmonic measure on the boundary", "the limit over all prefixes", "fibre triviality", "local connectivity", "separation of a named pair", "any verdict on the carrier whose levels order the prefix"]
+domain_conditions = ["normalized rational cut addresses in the half-open interval from zero to one", "accepted exact rational arithmetic"]
+symbols = ["kernel/mojo/c1/separator/separated_density.mojo::separated_pair_density", "kernel/mojo/c1/carrier/carrier_density_profile.mojo::carrier_density_profile"]
+evidence = ["tests/test_C1_separated_density.py", "docs/C1_separated_pair_density.md", "tests/test_C1_carrier_density_profile.py"]
+proof_boundary = "A finite prefix density is a measure of decided pairs; a null undecided set is not an empty one and no named pair is thereby separated."
+
+[[correspondence]]
+id = "misiurewicz-exact-type"
+analytic_concepts = ["Misiurewicz parameter", "exact preperiod and period", "external angle"]
+finite_term = "exact-type catalogue"
+class = "symbolic_encoding"
+status = "implemented_tested"
+preserves = ["exact preperiod and period of a rational address under doubling", "the angle-count identity for each exact type"]
+does_not_inherit = ["parameter location", "landing theorem", "theorem-tag acceptance", "fibre triviality", "MLC", "measured angle"]
+domain_conditions = ["rational address in lowest terms with numerator below denominator", "denominator at most 2^20 for the exact type", "preperiod and period at most twenty and catalogue denominator at most 2^20 for the catalogue, which is strictly stronger"]
+symbols = ["kernel/mojo/certificates/misiurewicz_catalogue.mojo::exact_type", "kernel/mojo/certificates/misiurewicz_catalogue.mojo::catalogue", "kernel/mojo/certificates/misiurewicz_catalogue.mojo::catalogue_count"]
+evidence = ["tests/test_misiurewicz_catalogue.py", "docs/C1_misiurewicz_catalogue.md", "reference/python/c1/misiurewicz_catalogue_reference.py"]
+proof_boundary = "The catalogue enumerates ray addresses; associating a parameter with an address needs a landing tag, and the triviality of the corresponding fibres is the imported tag KnownTrivialFiberClass."
+
+[[correspondence]]
+id = "misiurewicz-prefix-obstruction"
+analytic_concepts = ["separation by rational rays", "nontrivial fibre", "obstruction to separation"]
+finite_term = "prefix obstruction"
+class = "finite_certificate_surrogate"
+status = "implemented_tested"
+preserves = ["the pairs a declared separator prefix leaves undecided under every iterate of doubling", "forward closedness of the nonproductive set", "the aligned and strict-zipper dichotomy of the overlap route", "the on-separator case as a structural equality, never a separation proof"]
+does_not_inherit = ["parameter location", "landing theorem", "co-landing of any ray pair", "fibre triviality", "persistent non-separation", "MLC", "local connectivity", "any statement about a finer prefix"]
+domain_conditions = ["denominator at most 256", "separator rays in range and distinct within each separator", "an accepted landing tag declared for every separator", "one named separator prefix"]
+symbols = ["kernel/mojo/c1/wake/misiurewicz_prefix_graph.mojo::forward_closure", "kernel/mojo/c1/wake/misiurewicz_prefix_graph.mojo::extract", "kernel/mojo/c1/wake/misiurewicz_prefix_graph.mojo::extract_catalogue"]
+evidence = ["tests/test_misiurewicz_prefix_graph.py", "docs/C1_misiurewicz_prefix_graph.md", "reference/python/c1/misiurewicz_prefix_graph_reference.py"]
+proof_boundary = "An empty obstruction set is a verdict about one declared prefix graph; every landing tag is the caller's hypothesis, a refusal at the bound is not an empty set, and neither decides persistent non-separation or fibre triviality."

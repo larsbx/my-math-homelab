@@ -1,0 +1,174 @@
+version = 1
+format = "finite-mandelbrot-c1-records-v1"
+repository = "larsbx/finite-mandlebrot-research"
+scope = "the final C1 proof object"
+root_record = "C1"
+priority_block = "ResidualClosureNoMissingLinks"
+next_block = "TheoremTagPayloadInstances"
+module = "Ledger"
+tla_dir = "proof/c1/models/tla"
+index_path = "docs/C1_ledger_index.md"
+graph_path = "docs/C1_claim_relationship_graph.json"
+
+[status_classes]
+pending_dependency = "open-frontier"
+repository_theorem = "proved-or-imported-checked"
+
+[status_labels]
+open-frontier = "OPEN_FRONTIER"
+scaffolded = "SCAFFOLDED"
+proved-or-imported-checked = "PROVED_OR_IMPORTED_CHECKED"
+research-only = "RESEARCH_ONLY"
+conditional = "CONDITIONAL"
+retired = "RETIRED"
+
+[forbidden_final_exits]
+missing_link_exit = "missing_link_exit_allowed_in_final"
+bounded_search = "bounded_search_allowed_as_final_evidence"
+label_only_equality = "label_only_equality_allowed_as_final_evidence"
+unchecked_theorem_tag = "unchecked_theorem_tag_allowed_in_final"
+rank2_locus_primitive = "rank2_locus_primitive_allowed_in_final"
+
+[[root_surface]]
+path = "README.md"
+anchor = "C1 proof work is"
+window_lines = 0
+expect = "labelled"
+
+[[root_surface]]
+path = "docs/C1_proof_definition_and_priority.md"
+anchor = "Status: PRIORITY_ZERO"
+window_lines = 0
+expect = "present"
+
+[[root_surface]]
+path = "kernel/mojo/c1/proof/theorem_status.mojo"
+anchor = "return C1Status(local, True, True, False, False)"
+window_lines = 0
+expect = "present"
+
+[[root_surface]]
+path = "kernel/mojo/c1/proof/theorem_status.mojo"
+anchor = """fn bounded_search_proves_c1() -> Bool:
+    return False"""
+window_lines = 0
+expect = "present"
+
+[[record]]
+name = "SeparatorCatalogueSoundness"
+kind = "pending_dependency"
+statement = "a finite separator certificate implies classical rational-ray separation"
+source_or_reason = "scaffolded: the side and landing checks exist as checker shapes, the proof objects do not"
+dependencies = []
+tags = ["status:scaffolded"]
+final_role = "finite separator certificate implies classical rational-ray separation"
+next_action = "convert side/landing checks into proof objects"
+
+[[record]]
+name = "SeparatorCatalogueCompleteness"
+kind = "pending_dependency"
+statement = "every admitted classical separator is eventually enumerated"
+source_or_reason = "scaffolded: fair enumeration runs, finite normalization coverage is unproved"
+dependencies = []
+tags = ["status:scaffolded"]
+final_role = "every admitted classical separator is eventually enumerated"
+next_action = "prove finite normalization and fair enumeration coverage"
+
+[[record]]
+name = "FiberDefinitionAdapter"
+kind = "pending_dependency"
+statement = "persistent finite non-separation presents the classical same-fiber relation on the covered domain"
+source_or_reason = "scaffolded: the adapter exists, the classical fiber convention and on-separator routing are not stated exactly"
+dependencies = []
+tags = ["status:scaffolded"]
+final_role = "persistent finite non-separation presents the classical same-fiber relation on the covered domain"
+next_action = "state exact classical fiber convention and on-separator routing"
+
+[[record]]
+name = "ResidualClosureNoMissingLinks"
+kind = "pending_dependency"
+statement = "persistent non-separation exits only through finite separation, boundary equality, or an established trivial-fiber tag"
+source_or_reason = "open frontier: missing-link exits are not eliminated; this is the priority-zero bottleneck"
+dependencies = []
+tags = []
+final_role = "persistent non-separation exits only through finite separation, boundary equality, or established trivial-fiber tag"
+next_action = "eliminate missing-link exits"
+
+[[record]]
+name = "ExitClosureForC1"
+kind = "pending_dependency"
+statement = "every residual exit has a finite closing payload"
+source_or_reason = "scaffolded: exit certificates exist and are not connected to the final proof object"
+dependencies = []
+tags = ["status:scaffolded"]
+final_role = "every residual exit has a finite closing payload"
+next_action = "connect exit certificates to final proof object"
+
+[[record]]
+name = "BoundaryEqualitySoundness"
+kind = "pending_dependency"
+statement = "accepted boundary equality implies equality in the adapter"
+source_or_reason = "scaffolded: label-only equality is refused, the finite or analytic payload is not required yet"
+dependencies = []
+tags = ["status:scaffolded"]
+final_role = "accepted boundary equality implies equality in the adapter"
+next_action = "reject label-only equality and require finite/analytic payload"
+
+[[record]]
+name = "TheoremTagImportSoundness"
+kind = "pending_dependency"
+statement = "accepted imported theorem tags carry valid assumptions"
+source_or_reason = "scaffolded: the tag shape is checked, the accepted families and their assumptions are not enumerated"
+dependencies = []
+tags = ["status:scaffolded"]
+final_role = "accepted imported theorem tags carry valid assumptions"
+next_action = "enumerate accepted theorem families and assumptions"
+
+[[record]]
+name = "TheoremTagPayloadInstances"
+kind = "pending_dependency"
+statement = "every imported theorem tag the final object uses has an instantiated assumption payload"
+source_or_reason = "scaffolded: the payload schema exists, the instances do not discharge final-proof obligations yet"
+dependencies = []
+tags = ["status:scaffolded"]
+final_role = "imported tags used by the final object carry instantiated payloads"
+next_action = "instantiate the payloads the import ledger and the schemas describe"
+
+[[record]]
+name = "TheoremTagImportLedger"
+kind = "repository_theorem"
+statement = "the theorem-tag import ledger names every imported theorem family with its strength class"
+source_or_reason = "kernel/mojo/c1/theorem_tags/theorem_tag_import_ledger.mojo; docs/C1_theorem_tag_import_ledger.md"
+dependencies = []
+tags = []
+final_role = "the import ledger itself exists and is checked"
+next_action = "none: the ledger is in place"
+
+[[record]]
+name = "TheoremTagAssumptionPayloads"
+kind = "repository_theorem"
+statement = "every theorem tag in the import ledger has a declared assumption-payload schema"
+source_or_reason = "kernel/mojo/c1/theorem_tags/theorem_tag_assumption_payloads.mojo"
+dependencies = []
+tags = []
+final_role = "the assumption-payload schemas exist and are checked"
+next_action = "none: the schemas are in place"
+
+[[record]]
+name = "C1"
+kind = "pending_dependency"
+statement = "the C1 proof object is accepted"
+source_or_reason = "open frontier: the required blocks are not all checked; priority zero"
+dependencies = [
+  "SeparatorCatalogueSoundness",
+  "SeparatorCatalogueCompleteness",
+  "FiberDefinitionAdapter",
+  "ResidualClosureNoMissingLinks",
+  "ExitClosureForC1",
+  "BoundaryEqualitySoundness",
+  "TheoremTagImportSoundness",
+  "TheoremTagPayloadInstances",
+]
+tags = []
+final_role = ""
+next_action = ""

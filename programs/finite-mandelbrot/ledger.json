@@ -1,0 +1,436 @@
+{
+  "format": "finite_proof_records ledger 1",
+  "repository": "larsbx/finite-mandlebrot-research",
+  "module": "Ledger",
+  "tla_dir": "proof/c1/models/tla",
+  "index_path": "docs/C1_ledger_index.md",
+  "graph_path": "docs/C1_claim_relationship_graph.json",
+  "assumption_sets": {
+    "RequiredBlocksAssumed": [
+      "SeparatorCatalogueSoundness",
+      "SeparatorCatalogueCompleteness",
+      "FiberDefinitionAdapter",
+      "ResidualClosureNoMissingLinks",
+      "ExitClosureForC1",
+      "BoundaryEqualitySoundness",
+      "TheoremTagImportSoundness",
+      "TheoremTagPayloadInstances"
+    ]
+  },
+  "status_classes": {
+    "pending_dependency": "open-frontier",
+    "repository_theorem": "proved-or-imported-checked"
+  },
+  "status_labels": {
+    "open-frontier": "OPEN_FRONTIER",
+    "scaffolded": "SCAFFOLDED",
+    "proved-or-imported-checked": "PROVED_OR_IMPORTED_CHECKED",
+    "research-only": "RESEARCH_ONLY",
+    "conditional": "CONDITIONAL",
+    "retired": "RETIRED"
+  },
+  "aliases": {},
+  "surfaces": {
+    "SeparatorCatalogueSoundness": [
+      {
+        "path": "docs/C1_final_proof_block_ledger.md",
+        "anchor": "| `SeparatorCatalogueSoundness` |",
+        "window_lines": 0,
+        "expect": "labelled"
+      },
+      {
+        "path": "kernel/mojo/c1/proof/final_proof_block_ledger.mojo",
+        "anchor": "ProofBlockStatus(\"SeparatorCatalogueSoundness\",",
+        "window_lines": 0,
+        "expect": "labelled"
+      }
+    ],
+    "SeparatorCatalogueCompleteness": [
+      {
+        "path": "docs/C1_final_proof_block_ledger.md",
+        "anchor": "| `SeparatorCatalogueCompleteness` |",
+        "window_lines": 0,
+        "expect": "labelled"
+      },
+      {
+        "path": "kernel/mojo/c1/proof/final_proof_block_ledger.mojo",
+        "anchor": "ProofBlockStatus(\"SeparatorCatalogueCompleteness\",",
+        "window_lines": 0,
+        "expect": "labelled"
+      }
+    ],
+    "FiberDefinitionAdapter": [
+      {
+        "path": "docs/C1_final_proof_block_ledger.md",
+        "anchor": "| `FiberDefinitionAdapter` |",
+        "window_lines": 0,
+        "expect": "labelled"
+      },
+      {
+        "path": "kernel/mojo/c1/proof/final_proof_block_ledger.mojo",
+        "anchor": "ProofBlockStatus(\"FiberDefinitionAdapter\",",
+        "window_lines": 0,
+        "expect": "labelled"
+      }
+    ],
+    "ResidualClosureNoMissingLinks": [
+      {
+        "path": "docs/C1_final_proof_block_ledger.md",
+        "anchor": "| `ResidualClosureNoMissingLinks` |",
+        "window_lines": 0,
+        "expect": "labelled"
+      },
+      {
+        "path": "kernel/mojo/c1/proof/final_proof_block_ledger.mojo",
+        "anchor": "ProofBlockStatus(\"ResidualClosureNoMissingLinks\",",
+        "window_lines": 0,
+        "expect": "labelled"
+      }
+    ],
+    "ExitClosureForC1": [
+      {
+        "path": "docs/C1_final_proof_block_ledger.md",
+        "anchor": "| `ExitClosureForC1` |",
+        "window_lines": 0,
+        "expect": "labelled"
+      },
+      {
+        "path": "kernel/mojo/c1/proof/final_proof_block_ledger.mojo",
+        "anchor": "ProofBlockStatus(\"ExitClosureForC1\",",
+        "window_lines": 0,
+        "expect": "labelled"
+      }
+    ],
+    "BoundaryEqualitySoundness": [
+      {
+        "path": "docs/C1_final_proof_block_ledger.md",
+        "anchor": "| `BoundaryEqualitySoundness` |",
+        "window_lines": 0,
+        "expect": "labelled"
+      },
+      {
+        "path": "kernel/mojo/c1/proof/final_proof_block_ledger.mojo",
+        "anchor": "ProofBlockStatus(\"BoundaryEqualitySoundness\",",
+        "window_lines": 0,
+        "expect": "labelled"
+      }
+    ],
+    "TheoremTagImportSoundness": [
+      {
+        "path": "docs/C1_final_proof_block_ledger.md",
+        "anchor": "| `TheoremTagImportSoundness` |",
+        "window_lines": 0,
+        "expect": "labelled"
+      },
+      {
+        "path": "kernel/mojo/c1/proof/final_proof_block_ledger.mojo",
+        "anchor": "ProofBlockStatus(\"TheoremTagImportSoundness\",",
+        "window_lines": 0,
+        "expect": "labelled"
+      }
+    ],
+    "TheoremTagPayloadInstances": [
+      {
+        "path": "docs/C1_final_proof_block_ledger.md",
+        "anchor": "| `TheoremTagPayloadInstances` |",
+        "window_lines": 0,
+        "expect": "labelled"
+      },
+      {
+        "path": "kernel/mojo/c1/proof/final_proof_block_ledger.mojo",
+        "anchor": "ProofBlockStatus(\"TheoremTagPayloadInstances\",",
+        "window_lines": 0,
+        "expect": "labelled"
+      }
+    ],
+    "TheoremTagImportLedger": [
+      {
+        "path": "docs/C1_final_proof_block_ledger.md",
+        "anchor": "| `TheoremTagImportLedger` |",
+        "window_lines": 0,
+        "expect": "labelled"
+      },
+      {
+        "path": "kernel/mojo/c1/proof/final_proof_block_ledger.mojo",
+        "anchor": "ProofBlockStatus(\"TheoremTagImportLedger\",",
+        "window_lines": 0,
+        "expect": "labelled"
+      }
+    ],
+    "TheoremTagAssumptionPayloads": [
+      {
+        "path": "docs/C1_final_proof_block_ledger.md",
+        "anchor": "| `TheoremTagAssumptionPayloads` |",
+        "window_lines": 0,
+        "expect": "labelled"
+      },
+      {
+        "path": "kernel/mojo/c1/proof/final_proof_block_ledger.mojo",
+        "anchor": "ProofBlockStatus(\"TheoremTagAssumptionPayloads\",",
+        "window_lines": 0,
+        "expect": "labelled"
+      }
+    ],
+    "C1": [
+      {
+        "path": "README.md",
+        "anchor": "C1 proof work is",
+        "window_lines": 0,
+        "expect": "labelled"
+      },
+      {
+        "path": "docs/C1_proof_definition_and_priority.md",
+        "anchor": "Status: PRIORITY_ZERO",
+        "window_lines": 0,
+        "expect": "present"
+      },
+      {
+        "path": "kernel/mojo/c1/proof/theorem_status.mojo",
+        "anchor": "return C1Status(local, True, True, False, False)",
+        "window_lines": 0,
+        "expect": "present"
+      },
+      {
+        "path": "kernel/mojo/c1/proof/theorem_status.mojo",
+        "anchor": "fn bounded_search_proves_c1() -> Bool:\n    return False",
+        "window_lines": 0,
+        "expect": "present"
+      }
+    ]
+  },
+  "records": {
+    "SeparatorCatalogueSoundness": {
+      "id": "sha256:17b59bbb79937941b8d482456df51fb18d892f41a4f5c859f107f21971aba24a",
+      "kind": "pending_dependency",
+      "statement": "a finite separator certificate implies classical rational-ray separation",
+      "scope": "the final C1 proof object",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "scaffolded: the side and landing checks exist as checker shapes, the proof objects do not"
+        ]
+      ],
+      "tags": [
+        "status:scaffolded"
+      ]
+    },
+    "SeparatorCatalogueCompleteness": {
+      "id": "sha256:56901d8c2afd8a05c74a11f73562602898d0704f523fdbc8c3a1dd1507f37a88",
+      "kind": "pending_dependency",
+      "statement": "every admitted classical separator is eventually enumerated",
+      "scope": "the final C1 proof object",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "scaffolded: fair enumeration runs, finite normalization coverage is unproved"
+        ]
+      ],
+      "tags": [
+        "status:scaffolded"
+      ]
+    },
+    "FiberDefinitionAdapter": {
+      "id": "sha256:39033ca23109eef5d38f12265fb87d02e2fcd6febb2f0233e1a7af7e2f27e9a5",
+      "kind": "pending_dependency",
+      "statement": "persistent finite non-separation presents the classical same-fiber relation on the covered domain",
+      "scope": "the final C1 proof object",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "scaffolded: the adapter exists, the classical fiber convention and on-separator routing are not stated exactly"
+        ]
+      ],
+      "tags": [
+        "status:scaffolded"
+      ]
+    },
+    "ResidualClosureNoMissingLinks": {
+      "id": "sha256:19ee092d053492b4a3c036695cd0715df7b682147a910c8ba1d39e8879ac020c",
+      "kind": "pending_dependency",
+      "statement": "persistent non-separation exits only through finite separation, boundary equality, or an established trivial-fiber tag",
+      "scope": "the final C1 proof object",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "open frontier: missing-link exits are not eliminated; this is the priority-zero bottleneck"
+        ]
+      ],
+      "tags": []
+    },
+    "ExitClosureForC1": {
+      "id": "sha256:d375fdbb70b0c89cba3a0208d3f782cbe2a0d1452a0d71c182182aabac10a180",
+      "kind": "pending_dependency",
+      "statement": "every residual exit has a finite closing payload",
+      "scope": "the final C1 proof object",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "scaffolded: exit certificates exist and are not connected to the final proof object"
+        ]
+      ],
+      "tags": [
+        "status:scaffolded"
+      ]
+    },
+    "BoundaryEqualitySoundness": {
+      "id": "sha256:b397fe4f21140de94a80c974ec9cb9d91c70066589a291952ec23a1d9952b0e7",
+      "kind": "pending_dependency",
+      "statement": "accepted boundary equality implies equality in the adapter",
+      "scope": "the final C1 proof object",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "scaffolded: label-only equality is refused, the finite or analytic payload is not required yet"
+        ]
+      ],
+      "tags": [
+        "status:scaffolded"
+      ]
+    },
+    "TheoremTagImportSoundness": {
+      "id": "sha256:446f39f6b84c449799dfb79143cea893e13d30fc8468407b0432e2d48971f9bf",
+      "kind": "pending_dependency",
+      "statement": "accepted imported theorem tags carry valid assumptions",
+      "scope": "the final C1 proof object",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "scaffolded: the tag shape is checked, the accepted families and their assumptions are not enumerated"
+        ]
+      ],
+      "tags": [
+        "status:scaffolded"
+      ]
+    },
+    "TheoremTagPayloadInstances": {
+      "id": "sha256:6f46f0ed3ee8df0fd8a66efd86e76243cd137c9dba62f34cd7372153ca3dd5e6",
+      "kind": "pending_dependency",
+      "statement": "every imported theorem tag the final object uses has an instantiated assumption payload",
+      "scope": "the final C1 proof object",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "scaffolded: the payload schema exists, the instances do not discharge final-proof obligations yet"
+        ]
+      ],
+      "tags": [
+        "status:scaffolded"
+      ]
+    },
+    "TheoremTagImportLedger": {
+      "id": "sha256:0d52e9c00cfbacdaae680245951e43a7af2269e6532792af65aadb6d7916d7c3",
+      "kind": "repository_theorem",
+      "statement": "the theorem-tag import ledger names every imported theorem family with its strength class",
+      "scope": "the final C1 proof object",
+      "depends_on": [],
+      "evidence": [
+        [
+          "proof_reviewed",
+          "true"
+        ],
+        [
+          "source",
+          "kernel/mojo/c1/theorem_tags/theorem_tag_import_ledger.mojo; docs/C1_theorem_tag_import_ledger.md"
+        ]
+      ],
+      "tags": []
+    },
+    "TheoremTagAssumptionPayloads": {
+      "id": "sha256:81e96fe865553748ebaa1242794e9c20df0928ee47b06ec10a6c64e9957c05a9",
+      "kind": "repository_theorem",
+      "statement": "every theorem tag in the import ledger has a declared assumption-payload schema",
+      "scope": "the final C1 proof object",
+      "depends_on": [],
+      "evidence": [
+        [
+          "proof_reviewed",
+          "true"
+        ],
+        [
+          "source",
+          "kernel/mojo/c1/theorem_tags/theorem_tag_assumption_payloads.mojo"
+        ]
+      ],
+      "tags": []
+    },
+    "C1": {
+      "id": "sha256:a7e826904e42f949ee8b59a5bb3b1abcbbd309492a91a06f444893ea2bdaec65",
+      "kind": "pending_dependency",
+      "statement": "the C1 proof object is accepted",
+      "scope": "the final C1 proof object",
+      "depends_on": [
+        [
+          "sha256:17b59bbb79937941b8d482456df51fb18d892f41a4f5c859f107f21971aba24a",
+          "a finite separator certificate implies classical rational-ray separation",
+          "C1/SeparatorCatalogueSoundness",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:56901d8c2afd8a05c74a11f73562602898d0704f523fdbc8c3a1dd1507f37a88",
+          "every admitted classical separator is eventually enumerated",
+          "C1/SeparatorCatalogueCompleteness",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:39033ca23109eef5d38f12265fb87d02e2fcd6febb2f0233e1a7af7e2f27e9a5",
+          "persistent finite non-separation presents the classical same-fiber relation on the covered domain",
+          "C1/FiberDefinitionAdapter",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:19ee092d053492b4a3c036695cd0715df7b682147a910c8ba1d39e8879ac020c",
+          "persistent non-separation exits only through finite separation, boundary equality, or an established trivial-fiber tag",
+          "C1/ResidualClosureNoMissingLinks",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:d375fdbb70b0c89cba3a0208d3f782cbe2a0d1452a0d71c182182aabac10a180",
+          "every residual exit has a finite closing payload",
+          "C1/ExitClosureForC1",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:b397fe4f21140de94a80c974ec9cb9d91c70066589a291952ec23a1d9952b0e7",
+          "accepted boundary equality implies equality in the adapter",
+          "C1/BoundaryEqualitySoundness",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:446f39f6b84c449799dfb79143cea893e13d30fc8468407b0432e2d48971f9bf",
+          "accepted imported theorem tags carry valid assumptions",
+          "C1/TheoremTagImportSoundness",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:6f46f0ed3ee8df0fd8a66efd86e76243cd137c9dba62f34cd7372153ca3dd5e6",
+          "every imported theorem tag the final object uses has an instantiated assumption payload",
+          "C1/TheoremTagPayloadInstances",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "open frontier: the required blocks are not all checked; priority zero"
+        ]
+      ],
+      "tags": []
+    }
+  }
+}

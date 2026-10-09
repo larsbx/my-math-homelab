@@ -1,0 +1,443 @@
+# Claim-governance policy for larsbx/finite-mandlebrot-research.
+#
+# Read by the vendored `vendor/python/claim_governance` package (audit/claim_governance in larsbx/finite-math-kernels,
+# pinned in vendored.toml).  It restates, as configuration, the repository
+# policy that `tools/audit_terminology.py`, `tools/audit_no_trig.py`,
+# `tools/audit_no_points.py`, and the banned-term half of
+# `tools/audit_paper_language.py` enforce in code, and adds the claim ledger
+# that keeps the C1 proof-block statuses of the Markdown ledger and of
+# `kernel/mojo/c1/proof/final_proof_block_ledger.mojo` in agreement.  It states no
+# mathematics; C1 remains open here as everywhere else in the repository.
+#
+# Run: PYTHONPATH=vendor/python python -m claim_governance.cli --root .
+
+[repository]
+name = "larsbx/finite-mandlebrot-research"
+
+[scan]
+prose = ["README.md", "docs/**/*.md", "kernel/**/*.md", "vendor/mojo/**/*.md"]
+source = ["kernel/**/*.mojo", "vendor/mojo/**/*.mojo"]
+exclude = []
+
+# ---------------------------------------------------------------------------
+# Status vocabulary: the proof-block ledger values, the Mojo status tuple of
+# ProofBlockStatus(name, proved_or_imported_checked, scaffolded, open_frontier,
+# research_only, required_for_final), and the planning labels.
+# ---------------------------------------------------------------------------
+[status]
+classes = ["proved-or-imported-checked", "scaffolded", "open-frontier", "research-only", "conditional", "retired"]
+
+[status.synonyms]
+"PROVED_OR_IMPORTED_CHECKED" = "proved-or-imported-checked"
+"True, False, False, False" = "proved-or-imported-checked"
+"SCAFFOLDED" = "scaffolded"
+"False, True, False, False" = "scaffolded"
+"OPEN_FRONTIER" = "open-frontier"
+"PRIORITY_ZERO" = "open-frontier"
+"False, False, True, False" = "open-frontier"
+"RESEARCH_ONLY" = "research-only"
+"False, False, False, True" = "research-only"
+# A block whose own statement is checked but whose premises are not, and a
+# withdrawn one: reachable only through the declarative proof records, never by hand.
+"CONDITIONAL" = "conditional"
+"RETIRED" = "retired"
+
+# ---------------------------------------------------------------------------
+# Terminology: docs/terminology-governance.md, the registry, and the use
+# manifest.  Mirrors the constants of tools/audit_terminology.py.
+# ---------------------------------------------------------------------------
+[terminology]
+registry = "docs/terminology-registry.md"
+registry_sections = ["## Established field terms", "## Project terms with declarations", "## Deprecated project terms"]
+declaration_marker = "Terminology declaration:"
+declaration_fields = ["Terminology declaration:", "Genealogy:", "Bridge claim:", "Known leaks:", "Use discipline:"]
+project_terms = ["PointVertex", "rank-2 coordinate record", "finite rational-ray nest", "SeparatorCatalogueAdequacy", "persistent non-separation", "persistent wake ambiguity", "Mojo theorem kernel", "residual directive carrier", "separated-pair density", "exact-type catalogue", "prefix obstruction"]
+risky_phrases = ["obvious isomorphism", "canonical analogy", "essentially the same", "same as", "just a", "nothing but", "isomorphic to", "equivalent to", "corresponds exactly", "proof by analogy"]
+negating_context = ["not ", "no ", "without ", "unless ", "forbidden", "disallow", "reject", "blocked", "must not", "cannot", "does not", "is not"]
+migration_context = ["deprecated", "legacy", "replaces", "rather than", "migration", "old term"]
+allow = ["docs/terminology-governance.md", "docs/terminology-registry.md", "docs/terminology-use-manifest.md"]
+
+[[terminology.scoped]]
+term = "finite rational-ray nest"
+home = ["docs/C1_", "kernel/mojo/c1/", "tests/test_C1_"]
+[[terminology.scoped]]
+term = "residual directive carrier"
+home = ["docs/C1_", "kernel/mojo/c1/", "tests/test_C1_", "reference/python/c1/kneading_reference.py", "schemas/regime_correspondences.toml"]
+[[terminology.scoped]]
+term = "separated-pair density"
+home = ["docs/C1_", "kernel/mojo/c1/", "tests/test_C1_", "schemas/regime_correspondences.toml"]
+[[terminology.scoped]]
+term = "persistent non-separation"
+home = ["docs/C1_", "kernel/mojo/c1/", "tests/test_C1_"]
+[[terminology.scoped]]
+term = "persistent wake ambiguity"
+home = ["docs/C1_", "kernel/mojo/c1/", "tests/test_C1_"]
+[[terminology.scoped]]
+term = "wake ambiguity"
+home = ["docs/C1_", "kernel/mojo/c1/", "tests/test_C1_"]
+[[terminology.scoped]]
+term = "SeparatorCatalogueAdequacy"
+home = ["docs/C1_", "kernel/mojo/c1/", "tests/test_C1_"]
+[[terminology.scoped]]
+term = "SeparatorCatalogueSoundness"
+home = ["docs/C1_", "kernel/mojo/c1/", "tests/test_C1_"]
+[[terminology.scoped]]
+term = "SeparatorCatalogueCompleteness"
+home = ["docs/C1_", "kernel/mojo/c1/", "tests/test_C1_"]
+[[terminology.scoped]]
+term = "side-assignment witness"
+home = ["docs/C1_", "kernel/mojo/c1/", "tests/test_C1_"]
+[[terminology.scoped]]
+term = "separator code"
+home = ["docs/C1_", "kernel/mojo/c1/", "tests/test_C1_"]
+[[terminology.scoped]]
+term = "prefix obstruction"
+home = ["docs/C1_", "kernel/mojo/c1/", "tests/test_C1_", "reference/python/c1/misiurewicz_prefix_graph_reference.py", "tests/test_misiurewicz_prefix_graph.py", "schemas/regime_correspondences.toml"]
+[[terminology.scoped]]
+term = "exact-type catalogue"
+home = ["docs/C1_", "kernel/mojo/c1/", "tests/test_C1_", "kernel/mojo/certificates/misiurewicz_catalogue.mojo", "reference/python/c1/misiurewicz_catalogue_reference.py", "tests/test_misiurewicz_catalogue.py", "schemas/regime_correspondences.toml"]
+
+[[terminology.deprecated]]
+term = "catalogue extensionality"
+replacement = "SeparatorCatalogueAdequacy, SeparatorCatalogueSoundness, or SeparatorCatalogueCompleteness"
+allow = ["docs/C1_catalogue_extensionality.md", "docs/C1_catalogue_extensionality_proof_consolidation.md", "docs/alignment_audit_deep_research_findings.md", "docs/linter_skill_paper_language.md"]
+
+# ---------------------------------------------------------------------------
+# Statements need a status label.  Repository notes declare their status in a
+# `Status:` line at the top; the field-facing paper is audited separately by
+# tools/audit_paper_language.py and is not a status surface.
+# ---------------------------------------------------------------------------
+[claims]
+paths = ["docs/*.md"]
+statement_kinds = ["Theorem", "Proposition", "Lemma", "Corollary", "Conjecture"]
+window_lines = 6
+file_status_marker = "Status:"
+file_status_lines = 10
+allow = []
+
+# ---------------------------------------------------------------------------
+# Promotion: nothing unsettled may be described as proved.
+# ---------------------------------------------------------------------------
+[promotion]
+proving_phrases = ["is proved", "are proved", "has been proved", "we prove", "we have proved", "is a theorem", "is now a theorem", "is established", "completes the proof", "settles"]
+negating_context = ["not ", "no ", "would", "conditional", "without", "if ", "once ", "unless", "cannot", "suffic", "assum", "requir", "target", "obligation", "must", "does not", "do not", "unproved", "remains", "remain ", "open", "OPEN", "frontier", "PRIORITY", "skeleton", "route", "criterion", "claim", "does *not*"]
+settled_classes = ["proved-or-imported-checked"]
+radius = 120
+allow = []
+
+# ---------------------------------------------------------------------------
+# Forbidden primitives (tools/audit_no_trig.py, tools/audit_no_points.py, the
+# rank-2 locus ban of tools/audit_terminology.py, and the banned-term table
+# of tools/audit_paper_language.py, whose positive checks stay in that script).
+# ---------------------------------------------------------------------------
+[[numerics.rule]]
+name = "no-trig"
+pattern = '(?i)\b(?:sin|cos|tan|asin|acos|atan|sinh|cosh|tanh|exp|log|sqrt|radians?)\b|unit circle|polar angle|\b(?:angle[_ ]?degrees?|degrees?[_ ]?angle)\b'
+paths = ["kernel/**/*.mojo", "vendor/mojo/**/*.mojo"]
+message = "analytic or transcendental primitive; use quadrance, spread, dot/cross determinants, algebraic rotors, or Q/Z doubling"
+
+[[numerics.rule]]
+name = "no-points"
+pattern = '\b(?:Point(?!Vertex)|point_eval|eval_point|point_value|to_point_interval)\b|(?:fn|def)\s+point\s*\(|\.point\s*\('
+paths = ["kernel/**/*.mojo", "vendor/mojo/**/*.mojo"]
+message = "analytic point API; use CoordRecord, IQ.singleton, RootHandle, or PointVertex finite incidence (docs/no-points-invariant.md)"
+
+[[numerics.rule]]
+name = "rank2-loci"
+pattern = '(?i)unit circle|circle object|circle primitive|disk object|arc object|circumference|analytic locus'
+paths = ["docs/rank2-coordinate-substrate.md", "kernel/mojo/arithmetic/rank2_operator.mojo"]
+message = "rank-2 locus phrase is not allowed"
+negating_context = ["not ", "no ", "without ", "unless ", "forbidden", "disallow", "reject", "blocked", "must not", "cannot", "does not", "is not"]
+
+[[numerics.rule]]
+name = "paper-internal-terms"
+pattern = '\bC1\b|(?i:finite-mandlebrot-research|Mojo|theorem kernel|separator-catalogue|separator catalogue|catalogue extensionality|carrier|ResidualClosureNoMissingLinks|ExitClosureForC1|ResidualFrontierRefinement|ResidualDescentContradiction|PRIORITY_ZERO|OPEN_FRONTIER)'
+paths = ["paper/*.tex"]
+message = "project-internal term in the field-facing manuscript (tools/audit_paper_language.py lists the replacements)"
+
+# ---------------------------------------------------------------------------
+# Claim ledger: the required blocks of the final C1 proof object, on the
+# Markdown ledger and its Mojo mirror, plus C1 itself.  Generated from the
+# declarative proof state in proof/c1/records.toml (serialized to ledger.json,
+# itself generated) through tools/make_ledger.py and the vendored
+# vendor/python/proof_records package; do not edit the block below or ledger.json,
+# edit records.toml and regenerate.
+# ---------------------------------------------------------------------------
+
+# BEGIN generated claims (proof_records/generate_ledgers.py); do not edit between the markers
+# Generated by proof_records/generate_ledgers.py from ledger.json; do not edit.
+
+[[claim]]
+name = "BoundaryEqualitySoundness"
+status = "scaffolded"
+[[claim.surfaces]]
+path = "proof/c1/models/tla/Ledger.tla"
+anchor = '"BoundaryEqualitySoundness"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/C1_ledger_index.md"
+anchor = '| BoundaryEqualitySoundness |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/C1_final_proof_block_ledger.md"
+anchor = "| `BoundaryEqualitySoundness` |"
+window_lines = 0
+expect = "labelled"
+[[claim.surfaces]]
+path = "kernel/mojo/c1/proof/final_proof_block_ledger.mojo"
+anchor = "ProofBlockStatus(\"BoundaryEqualitySoundness\","
+window_lines = 0
+expect = "labelled"
+
+[[claim]]
+name = "C1"
+status = "open-frontier"
+[[claim.surfaces]]
+path = "proof/c1/models/tla/Ledger.tla"
+anchor = '"C1"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/C1_ledger_index.md"
+anchor = '| C1 |'
+window_lines = 0
+[[claim.surfaces]]
+path = "README.md"
+anchor = "C1 proof work is"
+window_lines = 0
+expect = "labelled"
+[[claim.surfaces]]
+path = "docs/C1_proof_definition_and_priority.md"
+anchor = "Status: PRIORITY_ZERO"
+window_lines = 0
+expect = "present"
+[[claim.surfaces]]
+path = "kernel/mojo/c1/proof/theorem_status.mojo"
+anchor = "return C1Status(local, True, True, False, False)"
+window_lines = 0
+expect = "present"
+[[claim.surfaces]]
+path = "kernel/mojo/c1/proof/theorem_status.mojo"
+anchor = "fn bounded_search_proves_c1() -> Bool:\n    return False"
+window_lines = 0
+expect = "present"
+
+[[claim]]
+name = "ExitClosureForC1"
+status = "scaffolded"
+[[claim.surfaces]]
+path = "proof/c1/models/tla/Ledger.tla"
+anchor = '"ExitClosureForC1"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/C1_ledger_index.md"
+anchor = '| ExitClosureForC1 |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/C1_final_proof_block_ledger.md"
+anchor = "| `ExitClosureForC1` |"
+window_lines = 0
+expect = "labelled"
+[[claim.surfaces]]
+path = "kernel/mojo/c1/proof/final_proof_block_ledger.mojo"
+anchor = "ProofBlockStatus(\"ExitClosureForC1\","
+window_lines = 0
+expect = "labelled"
+
+[[claim]]
+name = "FiberDefinitionAdapter"
+status = "scaffolded"
+[[claim.surfaces]]
+path = "proof/c1/models/tla/Ledger.tla"
+anchor = '"FiberDefinitionAdapter"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/C1_ledger_index.md"
+anchor = '| FiberDefinitionAdapter |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/C1_final_proof_block_ledger.md"
+anchor = "| `FiberDefinitionAdapter` |"
+window_lines = 0
+expect = "labelled"
+[[claim.surfaces]]
+path = "kernel/mojo/c1/proof/final_proof_block_ledger.mojo"
+anchor = "ProofBlockStatus(\"FiberDefinitionAdapter\","
+window_lines = 0
+expect = "labelled"
+
+[[claim]]
+name = "ResidualClosureNoMissingLinks"
+status = "open-frontier"
+[[claim.surfaces]]
+path = "proof/c1/models/tla/Ledger.tla"
+anchor = '"ResidualClosureNoMissingLinks"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/C1_ledger_index.md"
+anchor = '| ResidualClosureNoMissingLinks |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/C1_final_proof_block_ledger.md"
+anchor = "| `ResidualClosureNoMissingLinks` |"
+window_lines = 0
+expect = "labelled"
+[[claim.surfaces]]
+path = "kernel/mojo/c1/proof/final_proof_block_ledger.mojo"
+anchor = "ProofBlockStatus(\"ResidualClosureNoMissingLinks\","
+window_lines = 0
+expect = "labelled"
+
+[[claim]]
+name = "SeparatorCatalogueCompleteness"
+status = "scaffolded"
+[[claim.surfaces]]
+path = "proof/c1/models/tla/Ledger.tla"
+anchor = '"SeparatorCatalogueCompleteness"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/C1_ledger_index.md"
+anchor = '| SeparatorCatalogueCompleteness |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/C1_final_proof_block_ledger.md"
+anchor = "| `SeparatorCatalogueCompleteness` |"
+window_lines = 0
+expect = "labelled"
+[[claim.surfaces]]
+path = "kernel/mojo/c1/proof/final_proof_block_ledger.mojo"
+anchor = "ProofBlockStatus(\"SeparatorCatalogueCompleteness\","
+window_lines = 0
+expect = "labelled"
+
+[[claim]]
+name = "SeparatorCatalogueSoundness"
+status = "scaffolded"
+[[claim.surfaces]]
+path = "proof/c1/models/tla/Ledger.tla"
+anchor = '"SeparatorCatalogueSoundness"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/C1_ledger_index.md"
+anchor = '| SeparatorCatalogueSoundness |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/C1_final_proof_block_ledger.md"
+anchor = "| `SeparatorCatalogueSoundness` |"
+window_lines = 0
+expect = "labelled"
+[[claim.surfaces]]
+path = "kernel/mojo/c1/proof/final_proof_block_ledger.mojo"
+anchor = "ProofBlockStatus(\"SeparatorCatalogueSoundness\","
+window_lines = 0
+expect = "labelled"
+
+[[claim]]
+name = "TheoremTagAssumptionPayloads"
+status = "proved-or-imported-checked"
+[[claim.surfaces]]
+path = "proof/c1/models/tla/Ledger.tla"
+anchor = '"TheoremTagAssumptionPayloads"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/C1_ledger_index.md"
+anchor = '| TheoremTagAssumptionPayloads |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/C1_final_proof_block_ledger.md"
+anchor = "| `TheoremTagAssumptionPayloads` |"
+window_lines = 0
+expect = "labelled"
+[[claim.surfaces]]
+path = "kernel/mojo/c1/proof/final_proof_block_ledger.mojo"
+anchor = "ProofBlockStatus(\"TheoremTagAssumptionPayloads\","
+window_lines = 0
+expect = "labelled"
+
+[[claim]]
+name = "TheoremTagImportLedger"
+status = "proved-or-imported-checked"
+[[claim.surfaces]]
+path = "proof/c1/models/tla/Ledger.tla"
+anchor = '"TheoremTagImportLedger"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "present"
+[[claim.surfaces]]
+path = "docs/C1_ledger_index.md"
+anchor = '| TheoremTagImportLedger |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/C1_final_proof_block_ledger.md"
+anchor = "| `TheoremTagImportLedger` |"
+window_lines = 0
+expect = "labelled"
+[[claim.surfaces]]
+path = "kernel/mojo/c1/proof/final_proof_block_ledger.mojo"
+anchor = "ProofBlockStatus(\"TheoremTagImportLedger\","
+window_lines = 0
+expect = "labelled"
+
+[[claim]]
+name = "TheoremTagImportSoundness"
+status = "scaffolded"
+[[claim.surfaces]]
+path = "proof/c1/models/tla/Ledger.tla"
+anchor = '"TheoremTagImportSoundness"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/C1_ledger_index.md"
+anchor = '| TheoremTagImportSoundness |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/C1_final_proof_block_ledger.md"
+anchor = "| `TheoremTagImportSoundness` |"
+window_lines = 0
+expect = "labelled"
+[[claim.surfaces]]
+path = "kernel/mojo/c1/proof/final_proof_block_ledger.mojo"
+anchor = "ProofBlockStatus(\"TheoremTagImportSoundness\","
+window_lines = 0
+expect = "labelled"
+
+[[claim]]
+name = "TheoremTagPayloadInstances"
+status = "scaffolded"
+[[claim.surfaces]]
+path = "proof/c1/models/tla/Ledger.tla"
+anchor = '"TheoremTagPayloadInstances"'
+section = "ProvedDef == {"
+section_end = "}"
+expect = "absent"
+[[claim.surfaces]]
+path = "docs/C1_ledger_index.md"
+anchor = '| TheoremTagPayloadInstances |'
+window_lines = 0
+[[claim.surfaces]]
+path = "docs/C1_final_proof_block_ledger.md"
+anchor = "| `TheoremTagPayloadInstances` |"
+window_lines = 0
+expect = "labelled"
+[[claim.surfaces]]
+path = "kernel/mojo/c1/proof/final_proof_block_ledger.mojo"
+anchor = "ProofBlockStatus(\"TheoremTagPayloadInstances\","
+window_lines = 0
+expect = "labelled"
+# END generated claims
