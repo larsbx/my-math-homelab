@@ -1,0 +1,342 @@
+# Claim-governance policy for larsbx/s-adic-pisot-conjecture-research.
+#
+# Read by the vendored `tools/claim_governance` package (larsbx/finite-math-kernels,
+# pinned in vendored.toml). The status vocabulary is the PSC programme's
+# (docs/METHODOLOGY.md rule R1); the ledger below must agree with CLAIMS.md,
+# and a status change goes to both in the same commit. It states no mathematics.
+#
+# Run: PYTHONPATH=tools python -m claim_governance.cli --root .
+
+[repository]
+name = "larsbx/s-adic-pisot-conjecture-research"
+
+[scan]
+prose = ["README.md", "CLAIMS.md", "docs/**/*.md"]
+source = ["kernel/sadic/**/*.mojo", "kernel/*.mojo", "kernel/tests/*.mojo", "reference/sadic_reference/*.py"]
+exclude = []
+
+[status]
+classes = ["proved", "imported", "finite-domain", "conditional", "open", "bridge", "evidence", "retired"]
+
+[status.synonyms]
+"Repository-proved" = "proved"
+"Imported theorem" = "imported"
+"Finite-domain theorem" = "finite-domain"
+"Conditional theorem" = "conditional"
+"Open theorem target" = "open"
+"Open bridge" = "bridge"
+"Empirical evidence" = "evidence"
+"Retired claim" = "retired"
+
+[terminology]
+risky_phrases = ["obvious isomorphism", "canonical analogy", "essentially the same", "nothing but", "proof by analogy"]
+negating_context = ["not ", "no ", "without ", "unless ", "must not", "cannot", "does not", "is not", "never"]
+
+[claims]
+paths = ["docs/*.md"]
+statement_kinds = ["Theorem", "Proposition", "Lemma", "Corollary", "Conjecture", "Hypothesis", "Open Problem", "Imported Theorem"]
+window_lines = 6
+file_status_marker = "**Status:**"
+file_status_lines = 10
+
+[coverage]
+tests = ["kernel/tests/test_*.mojo"]
+require_classes = ["finite-domain"]
+receipts = "kernel/build/claim-receipts.tsv"
+
+[promotion]
+proving_phrases = ["is proved", "are proved", "is now proved", "has been proved", "we prove", "is a theorem", "is established", "completes the proof", "settles"]
+negating_context = ["not ", "no ", "remains open", "remain open", "open", "would", "conditional", "without", "if ", "unless", "cannot", "assum", "requir", "needs", "target", "does not", "unproved", "evidence", "only under"]
+settled_classes = ["proved", "imported", "finite-domain", "conditional"]
+radius = 120
+
+[[numerics.rule]]
+name = "no-float-in-kernel"
+pattern = '\b(?:Float16|Float32|Float64|BFloat16|FloatLiteral|Float|float)\b|(?<![\w.])(?:\d(?:_?\d)*\.(?:\d(?:_?\d)*)?|\.\d(?:_?\d)*)(?:[eE][+-]?\d(?:_?\d)*)?(?![\w.])|(?<![\w.])\d(?:_?\d)*[eE][+-]?\d(?:_?\d)*(?![\w.])'
+paths = ["kernel/sadic/**/*.mojo", "kernel/*.mojo", "kernel/tests/*.mojo"]
+message = "floating point in exact kernel scope (methodology rule R2)"
+
+[[numerics.rule]]
+name = "no-float-in-oracle"
+pattern = '\bfloat\b|\bmath\.(?:sqrt|log|exp|sin|cos|pow)\b|\bnumpy\b'
+paths = ["reference/sadic_reference/*.py"]
+message = "the Python oracle must stay exact (fractions.Fraction and int only)"
+
+[[claim]]
+name = "SAdicPisotConjecture"
+status = "open"
+aliases = ["S-adic Pisot conjecture"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| S-adic Pisot conjecture |"
+window_lines = 0
+
+[[claim]]
+name = "BST19ConditionalTiling"
+status = "imported"
+aliases = ["BST19 conditional tiling theorem"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| BST19 conditional tiling theorem |"
+window_lines = 0
+
+[[claim]]
+name = "BST23PeriodicPointReduction"
+status = "imported"
+aliases = ["BST23 periodic-point reduction"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| BST23 periodic-point reduction |"
+window_lines = 0
+
+[[claim]]
+name = "ImageBalanceLowerBound"
+status = "proved"
+aliases = ["Image balance lower bound"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Image balance lower bound |"
+window_lines = 0
+
+[[claim]]
+name = "SturmianImageBalance"
+status = "finite-domain"
+aliases = ["Sturmian image balance"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Sturmian image balance |"
+window_lines = 0
+
+[[claim]]
+name = "BrunPositiveBlocks"
+status = "finite-domain"
+aliases = ["Brun positive blocks"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun positive blocks |"
+window_lines = 0
+
+[[claim]]
+name = "BST23BalancedPairCriterion"
+status = "imported"
+aliases = ["BST23 balanced-pair criterion"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| BST23 balanced-pair criterion |"
+window_lines = 0
+
+[[claim]]
+name = "IotaEmbeddingPSCCorpus"
+status = "finite-domain"
+aliases = ["Iota embedding PSC corpus"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Iota embedding PSC corpus |"
+window_lines = 0
+
+[[claim]]
+name = "BrunFourPeriodicPointBPA"
+status = "finite-domain"
+aliases = ["Brun four periodic point BPA"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun four periodic point BPA |"
+window_lines = 0
+
+[[claim]]
+name = "BrunFourPeriodicCensus"
+status = "finite-domain"
+aliases = ["Brun four periodic census"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun four periodic census |"
+window_lines = 0
+
+[[claim]]
+name = "SwapWalkBalanceBound"
+status = "proved"
+aliases = ["Swap walk balance bound"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Swap walk balance bound |"
+window_lines = 0
+
+[[claim]]
+name = "UniformOverlapBound"
+status = "proved"
+aliases = ["Uniform overlap bound"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Uniform overlap bound |"
+window_lines = 0
+
+[[claim]]
+name = "OverlapFinitenessReturnTimes"
+status = "proved"
+aliases = ["Overlap finiteness along return times"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Overlap finiteness along return times |"
+window_lines = 0
+
+[[claim]]
+name = "PositiveSuffixLengthRatio"
+status = "proved"
+aliases = ["Positive suffix length ratio"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Positive suffix length ratio |"
+window_lines = 0
+
+[[claim]]
+name = "AllDepthOverlapFiniteness"
+status = "open"
+aliases = ["All-depth overlap finiteness"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| All-depth overlap finiteness |"
+window_lines = 0
+
+[[claim]]
+name = "MorphicImageBalanceBound"
+status = "proved"
+aliases = ["Morphic image balance bound"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Morphic image balance bound |"
+window_lines = 0
+
+[[claim]]
+name = "DenseGrowingReturnsPeriodic"
+status = "proved"
+aliases = ["Dense growing returns force periodicity"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Dense growing returns force periodicity |"
+window_lines = 0
+
+[[claim]]
+name = "BoundedAnchorOverlapFiniteness"
+status = "conditional"
+aliases = ["Bounded anchor all-depth overlap"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Bounded anchor all-depth overlap |"
+window_lines = 0
+
+[[claim]]
+name = "BST19ArnouxRauzyTailBalance"
+status = "imported"
+aliases = ["BST19 Arnoux Rauzy tail balance"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| BST19 Arnoux Rauzy tail balance |"
+window_lines = 0
+
+[[claim]]
+name = "ThueMorseArnouxRauzyOverlap"
+status = "proved"
+aliases = ["Thue Morse Arnoux Rauzy overlap"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Thue Morse Arnoux Rauzy overlap |"
+window_lines = 0
+
+[[claim]]
+name = "BargeClassTheorem"
+status = "imported"
+aliases = ["Barge class theorem"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Barge class theorem |"
+window_lines = 0
+
+[[claim]]
+name = "BrunCompositesMirrorBargeClass"
+status = "proved"
+aliases = ["Brun composites mirror Barge class"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun composites mirror Barge class |"
+window_lines = 0
+
+[[claim]]
+name = "BrunPeriodicPointsFlowPDS"
+status = "proved"
+aliases = ["Brun periodic points flow spectrum"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun periodic points flow spectrum |"
+window_lines = 0
+
+[[claim]]
+name = "BrunFivePeriodicPointBPA"
+status = "finite-domain"
+aliases = ["Brun five periodic point BPA"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun five periodic point BPA |"
+window_lines = 0
+
+[[claim]]
+name = "BrunFiveSixPisotConditionSuffices"
+status = "conditional"
+aliases = ["Brun five six Pisot condition suffices"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun five six Pisot condition suffices |"
+window_lines = 0
+
+[[claim]]
+name = "BrunHigherPeriodicCensus"
+status = "evidence"
+aliases = ["Brun higher periodic census"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun higher periodic census |"
+window_lines = 0
+
+[[claim]]
+name = "BrunSixPeriodicPointBPA"
+status = "finite-domain"
+aliases = ["Brun six periodic point BPA"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun six periodic point BPA |"
+window_lines = 0
+
+[[claim]]
+name = "SirventSolomyakTransfer"
+status = "imported"
+aliases = ["Sirvent Solomyak transfer"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Sirvent Solomyak transfer |"
+window_lines = 0
+
+[[claim]]
+name = "BrunPeriodicPointsSymbolicPDS"
+status = "proved"
+aliases = ["Brun periodic points symbolic spectrum"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun periodic points symbolic spectrum |"
+window_lines = 0
+
+[[claim]]
+name = "BrunPisotPeriodicPoints"
+status = "finite-domain"
+aliases = ["Brun Pisot periodic points"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun Pisot periodic points |"
+window_lines = 0
+
+[[claim]]
+name = "BrunPisotConditionSuffices"
+status = "conditional"
+aliases = ["Brun Pisot condition suffices"]
+[[claim.surfaces]]
+path = "CLAIMS.md"
+anchor = "| Brun Pisot condition suffices |"
+window_lines = 0
