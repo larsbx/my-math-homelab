@@ -1,0 +1,10 @@
+version = 1
+
+[program]
+id = "finite-mandelbrot"
+
+[source]
+repository = "larsbx/finite-mandelbrot-research"
+commit = "47fd8ae5e88368f7b271aac6b8a3e14dc7e68721"
+authority = "retained"
+import_status = "verified"
