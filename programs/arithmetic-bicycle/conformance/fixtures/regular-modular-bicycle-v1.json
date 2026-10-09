@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "scope": "fixed full-row-rank TU matrices and separately labeled non-TU controls",
+  "fixtures": [
+    {"id": "rank-zero-loops", "matrix": [], "columns": 3, "smith": [], "moduli": [2, 4, 6]},
+    {"id": "identity-coloops", "matrix": [[1, 0, 0], [0, 1, 0], [0, 0, 1]], "columns": 3, "smith": [1, 1, 1], "moduli": [2, 3, 4, 6]},
+    {"id": "parallel-four-with-loop", "matrix": [[1, -1, 1, 1, 0]], "columns": 5, "smith": [4], "moduli": [2, 3, 4, 6, 8, 12]},
+    {"id": "graphic-cycle-three", "matrix": [[-1, 0, 1], [1, -1, 0]], "columns": 3, "smith": [1, 3], "moduli": [2, 3, 4, 6, 9, 12]},
+    {"id": "graphic-cycle-four", "matrix": [[-1, 0, 0, 1], [1, -1, 0, 0], [0, 1, -1, 0]], "columns": 4, "smith": [1, 1, 4], "moduli": [2, 3, 4, 6, 8, 12]},
+    {"id": "graphic-complete-four", "matrix": [[-1, -1, -1, 0, 0, 0], [1, 0, 0, -1, -1, 0], [0, 1, 0, 1, 0, -1]], "columns": 6, "smith": [1, 4, 4], "moduli": [2, 3, 4, 6, 8, 12]},
+    {"id": "cographic-k33", "matrix": [[1, -1, 0, -1, 1, 0, 0, 0, 0], [1, 0, -1, -1, 0, 1, 0, 0, 0], [1, -1, 0, 0, 0, 0, -1, 1, 0], [1, 0, -1, 0, 0, 0, -1, 0, 1]], "columns": 9, "smith": [1, 3, 3, 9], "moduli": [2, 3, 4, 6, 9]}
+  ],
+  "controls": [
+    {"id": "nonprimitive-scalar-two", "matrix": [[2]], "columns": 1, "moduli": [2, 3, 4, 6, 8, 12]},
+    {"id": "primitive-non-tu", "matrix": [[1, 2]], "columns": 2, "moduli": [2, 3, 4, 5, 6, 10]}
+  ]
+}

@@ -1,0 +1,1608 @@
+{
+  "arithmetic": "Python integers and fractions.Fraction; no external dependencies",
+  "case_count": 53,
+  "cases": [
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "b1de05ec9c1db98fd53994d90d9e7c1671348bc8fa3d53879f7c2b4f3eaec2c0",
+      "fixture": "one-vertex-loops",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 2,
+      "orders": {
+        "1": 1
+      },
+      "smith": [],
+      "torsion_factors": []
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "b1de05ec9c1db98fd53994d90d9e7c1671348bc8fa3d53879f7c2b4f3eaec2c0",
+      "fixture": "one-vertex-loops",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 4,
+      "orders": {
+        "1": 1
+      },
+      "smith": [],
+      "torsion_factors": []
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "b1de05ec9c1db98fd53994d90d9e7c1671348bc8fa3d53879f7c2b4f3eaec2c0",
+      "fixture": "one-vertex-loops",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 6,
+      "orders": {
+        "1": 1
+      },
+      "smith": [],
+      "torsion_factors": []
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "49f9276b7d051b6c3c7eecb593e618a53363a6921320bdeef33cad970fcdd6db",
+      "fixture": "path-4",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 2,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        1,
+        1,
+        1
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "49f9276b7d051b6c3c7eecb593e618a53363a6921320bdeef33cad970fcdd6db",
+      "fixture": "path-4",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 3,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        1,
+        1,
+        1
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "49f9276b7d051b6c3c7eecb593e618a53363a6921320bdeef33cad970fcdd6db",
+      "fixture": "path-4",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 4,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        1,
+        1,
+        1
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "49f9276b7d051b6c3c7eecb593e618a53363a6921320bdeef33cad970fcdd6db",
+      "fixture": "path-4",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 6,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        1,
+        1,
+        1
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "49f9276b7d051b6c3c7eecb593e618a53363a6921320bdeef33cad970fcdd6db",
+      "fixture": "path-4",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 12,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        1,
+        1,
+        1
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "49f9276b7d051b6c3c7eecb593e618a53363a6921320bdeef33cad970fcdd6db",
+      "fixture": "cycle-3",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 2,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        1,
+        3
+      ],
+      "torsion_factors": [
+        1,
+        1
+      ]
+    },
+    {
+      "bicycles": 3,
+      "distinct_mapped_classes": 3,
+      "edge_set_sha256": "9c870824d1e351056774658c863b2254ae880706745cdcba78f21cc186413e27",
+      "fixture": "cycle-3",
+      "independently_enumerated_torsion_classes": 3,
+      "modulus": 3,
+      "orders": {
+        "1": 1,
+        "3": 2
+      },
+      "smith": [
+        1,
+        3
+      ],
+      "torsion_factors": [
+        1,
+        3
+      ]
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "49f9276b7d051b6c3c7eecb593e618a53363a6921320bdeef33cad970fcdd6db",
+      "fixture": "cycle-3",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 4,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        1,
+        3
+      ],
+      "torsion_factors": [
+        1,
+        1
+      ]
+    },
+    {
+      "bicycles": 3,
+      "distinct_mapped_classes": 3,
+      "edge_set_sha256": "a6855a46214e94959ec158a636c1ac3f3d03b0f4a114de475bf0b0af03753013",
+      "fixture": "cycle-3",
+      "independently_enumerated_torsion_classes": 3,
+      "modulus": 6,
+      "orders": {
+        "1": 1,
+        "3": 2
+      },
+      "smith": [
+        1,
+        3
+      ],
+      "torsion_factors": [
+        1,
+        3
+      ]
+    },
+    {
+      "bicycles": 3,
+      "distinct_mapped_classes": 3,
+      "edge_set_sha256": "bbd9eeda75aedce31d811b5180cd58d37c294e02bc10be13f22ec0693c15de4a",
+      "fixture": "cycle-3",
+      "independently_enumerated_torsion_classes": 3,
+      "modulus": 9,
+      "orders": {
+        "1": 1,
+        "3": 2
+      },
+      "smith": [
+        1,
+        3
+      ],
+      "torsion_factors": [
+        1,
+        3
+      ]
+    },
+    {
+      "bicycles": 3,
+      "distinct_mapped_classes": 3,
+      "edge_set_sha256": "506697b0fc090c50af8a7b86681bc20ce4cd38636706b45694fff4914f7abaf9",
+      "fixture": "cycle-3",
+      "independently_enumerated_torsion_classes": 3,
+      "modulus": 12,
+      "orders": {
+        "1": 1,
+        "3": 2
+      },
+      "smith": [
+        1,
+        3
+      ],
+      "torsion_factors": [
+        1,
+        3
+      ]
+    },
+    {
+      "bicycles": 2,
+      "distinct_mapped_classes": 2,
+      "edge_set_sha256": "3d09c9697a51485b71c28563b0daeb1d7cdc55fd71a68d82232f2f1fd93c6a9f",
+      "fixture": "cycle-4",
+      "independently_enumerated_torsion_classes": 2,
+      "modulus": 2,
+      "orders": {
+        "1": 1,
+        "2": 1
+      },
+      "smith": [
+        1,
+        1,
+        4
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "c3a2f985a85153b37375c3dc968b1863849cefc4c4f0213b494906bc6cff43bb",
+      "fixture": "cycle-4",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 3,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        1,
+        1,
+        4
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "bicycles": 4,
+      "distinct_mapped_classes": 4,
+      "edge_set_sha256": "c567817c1aa37315037a5cf6a62d09d51ba9acc8e988378e3d2b6e2405b87835",
+      "fixture": "cycle-4",
+      "independently_enumerated_torsion_classes": 4,
+      "modulus": 4,
+      "orders": {
+        "1": 1,
+        "2": 1,
+        "4": 2
+      },
+      "smith": [
+        1,
+        1,
+        4
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        4
+      ]
+    },
+    {
+      "bicycles": 2,
+      "distinct_mapped_classes": 2,
+      "edge_set_sha256": "12f11c48acba044f61069f62bc69b91282a455f031ffc0c5cabf508313c6faa4",
+      "fixture": "cycle-4",
+      "independently_enumerated_torsion_classes": 2,
+      "modulus": 6,
+      "orders": {
+        "1": 1,
+        "2": 1
+      },
+      "smith": [
+        1,
+        1,
+        4
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "bicycles": 4,
+      "distinct_mapped_classes": 4,
+      "edge_set_sha256": "4a8d7a8db31516d8baedb9bb4c6db6be222c2c6ad886d6fb55e92e81065c0abb",
+      "fixture": "cycle-4",
+      "independently_enumerated_torsion_classes": 4,
+      "modulus": 8,
+      "orders": {
+        "1": 1,
+        "2": 1,
+        "4": 2
+      },
+      "smith": [
+        1,
+        1,
+        4
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        4
+      ]
+    },
+    {
+      "bicycles": 4,
+      "distinct_mapped_classes": 4,
+      "edge_set_sha256": "a45653123e0e05ea6d587035aebcf8cae7fe541ae3147b8ef521f332b92fc0eb",
+      "fixture": "cycle-4",
+      "independently_enumerated_torsion_classes": 4,
+      "modulus": 12,
+      "orders": {
+        "1": 1,
+        "2": 1,
+        "4": 2
+      },
+      "smith": [
+        1,
+        1,
+        4
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        4
+      ]
+    },
+    {
+      "bicycles": 2,
+      "distinct_mapped_classes": 2,
+      "edge_set_sha256": "9ec09c7641ced1fc11a9fd0f9510b731c7380901cf5b2bff6884501a98413e3c",
+      "fixture": "cycle-6",
+      "independently_enumerated_torsion_classes": 2,
+      "modulus": 2,
+      "orders": {
+        "1": 1,
+        "2": 1
+      },
+      "smith": [
+        1,
+        1,
+        1,
+        1,
+        6
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "bicycles": 3,
+      "distinct_mapped_classes": 3,
+      "edge_set_sha256": "2263e0f3d79521b1c28467150f3ac79e888d6ba04c20e853adbd8c3a19f1c024",
+      "fixture": "cycle-6",
+      "independently_enumerated_torsion_classes": 3,
+      "modulus": 3,
+      "orders": {
+        "1": 1,
+        "3": 2
+      },
+      "smith": [
+        1,
+        1,
+        1,
+        1,
+        6
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1,
+        1,
+        3
+      ]
+    },
+    {
+      "bicycles": 2,
+      "distinct_mapped_classes": 2,
+      "edge_set_sha256": "7399b7bbdcb797e1cf8c6046c6bfa76d4b8748acb210e214a71dd4ed90e8c898",
+      "fixture": "cycle-6",
+      "independently_enumerated_torsion_classes": 2,
+      "modulus": 4,
+      "orders": {
+        "1": 1,
+        "2": 1
+      },
+      "smith": [
+        1,
+        1,
+        1,
+        1,
+        6
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "bicycles": 6,
+      "distinct_mapped_classes": 6,
+      "edge_set_sha256": "a08ebe09c752662fd4651a78623c53c2855b457d0dcf8b152f8a691898d4381d",
+      "fixture": "cycle-6",
+      "independently_enumerated_torsion_classes": 6,
+      "modulus": 6,
+      "orders": {
+        "1": 1,
+        "2": 1,
+        "3": 2,
+        "6": 2
+      },
+      "smith": [
+        1,
+        1,
+        1,
+        1,
+        6
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1,
+        1,
+        6
+      ]
+    },
+    {
+      "bicycles": 4,
+      "distinct_mapped_classes": 4,
+      "edge_set_sha256": "6e7b1198e7c4f712351459c25e5e00a9543b369b5dd0fee93cd471ec02fac44e",
+      "fixture": "complete-4",
+      "independently_enumerated_torsion_classes": 4,
+      "modulus": 2,
+      "orders": {
+        "1": 1,
+        "2": 3
+      },
+      "smith": [
+        1,
+        4,
+        4
+      ],
+      "torsion_factors": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "a49eafe8d1b9d0716c0353f42eb8748fb00c49ff648d06e71d3bfe494e1b59c0",
+      "fixture": "complete-4",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 3,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        1,
+        4,
+        4
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "bicycles": 16,
+      "distinct_mapped_classes": 16,
+      "edge_set_sha256": "471367cf4f96cdbecf03bcf32718e742c18f1e1dffec1980e594c4bc196085c6",
+      "fixture": "complete-4",
+      "independently_enumerated_torsion_classes": 16,
+      "modulus": 4,
+      "orders": {
+        "1": 1,
+        "2": 3,
+        "4": 12
+      },
+      "smith": [
+        1,
+        4,
+        4
+      ],
+      "torsion_factors": [
+        1,
+        4,
+        4
+      ]
+    },
+    {
+      "bicycles": 4,
+      "distinct_mapped_classes": 4,
+      "edge_set_sha256": "5ca2e233e04f75d5b39ed0d483647ec87cd0c3580a1700b01233100916330c56",
+      "fixture": "complete-4",
+      "independently_enumerated_torsion_classes": 4,
+      "modulus": 6,
+      "orders": {
+        "1": 1,
+        "2": 3
+      },
+      "smith": [
+        1,
+        4,
+        4
+      ],
+      "torsion_factors": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "bicycles": 16,
+      "distinct_mapped_classes": 16,
+      "edge_set_sha256": "e1835693f4d6ac7c80aef5365b048e316e1bf800636e9b93b8c6fd74902755d7",
+      "fixture": "complete-4",
+      "independently_enumerated_torsion_classes": 16,
+      "modulus": 8,
+      "orders": {
+        "1": 1,
+        "2": 3,
+        "4": 12
+      },
+      "smith": [
+        1,
+        4,
+        4
+      ],
+      "torsion_factors": [
+        1,
+        4,
+        4
+      ]
+    },
+    {
+      "bicycles": 16,
+      "distinct_mapped_classes": 16,
+      "edge_set_sha256": "640293f861aed5026e9cb67764bdc152de087bc74611ee9684e1bc2c4b1f4d37",
+      "fixture": "complete-4",
+      "independently_enumerated_torsion_classes": 16,
+      "modulus": 12,
+      "orders": {
+        "1": 1,
+        "2": 3,
+        "4": 12
+      },
+      "smith": [
+        1,
+        4,
+        4
+      ],
+      "torsion_factors": [
+        1,
+        4,
+        4
+      ]
+    },
+    {
+      "bicycles": 2,
+      "distinct_mapped_classes": 2,
+      "edge_set_sha256": "783dc327157ef1bd11bba3da27aa818348fa37d6f76e7c007bd2b1baf2d4ceb0",
+      "fixture": "diamond",
+      "independently_enumerated_torsion_classes": 2,
+      "modulus": 2,
+      "orders": {
+        "1": 1,
+        "2": 1
+      },
+      "smith": [
+        1,
+        1,
+        8
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "babb7ab4320e7d71ea13960c562c4b6ea4a0c6c47cfbf4b036f0dbd9568ed31c",
+      "fixture": "diamond",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 3,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        1,
+        1,
+        8
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "bicycles": 4,
+      "distinct_mapped_classes": 4,
+      "edge_set_sha256": "43688970ef6ebf8946947cf7ea5ece1e4abb13dfc12dbd87309554aa09981232",
+      "fixture": "diamond",
+      "independently_enumerated_torsion_classes": 4,
+      "modulus": 4,
+      "orders": {
+        "1": 1,
+        "2": 1,
+        "4": 2
+      },
+      "smith": [
+        1,
+        1,
+        8
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        4
+      ]
+    },
+    {
+      "bicycles": 2,
+      "distinct_mapped_classes": 2,
+      "edge_set_sha256": "621235af43ea002e88acf5ac7fb1ec6799b3046eebc335934f3830efc4043d78",
+      "fixture": "diamond",
+      "independently_enumerated_torsion_classes": 2,
+      "modulus": 6,
+      "orders": {
+        "1": 1,
+        "2": 1
+      },
+      "smith": [
+        1,
+        1,
+        8
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "bicycles": 8,
+      "distinct_mapped_classes": 8,
+      "edge_set_sha256": "627309cdac60ec4c4c88b659dfe644be2dda6a23aeed43e73b049fa907c5c51e",
+      "fixture": "diamond",
+      "independently_enumerated_torsion_classes": 8,
+      "modulus": 8,
+      "orders": {
+        "1": 1,
+        "2": 1,
+        "4": 2,
+        "8": 4
+      },
+      "smith": [
+        1,
+        1,
+        8
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        8
+      ]
+    },
+    {
+      "bicycles": 4,
+      "distinct_mapped_classes": 4,
+      "edge_set_sha256": "0ee7afa505786c79ecd173c88d338ade119d280fa88211941d6992828b132d48",
+      "fixture": "diamond",
+      "independently_enumerated_torsion_classes": 4,
+      "modulus": 12,
+      "orders": {
+        "1": 1,
+        "2": 1,
+        "4": 2
+      },
+      "smith": [
+        1,
+        1,
+        8
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        4
+      ]
+    },
+    {
+      "bicycles": 2,
+      "distinct_mapped_classes": 2,
+      "edge_set_sha256": "0cf941a9ca6cf7cc3576977165783b6fb283b6fdad0022ea034885e54dd34c6c",
+      "fixture": "parallel-2",
+      "independently_enumerated_torsion_classes": 2,
+      "modulus": 2,
+      "orders": {
+        "1": 1,
+        "2": 1
+      },
+      "smith": [
+        2
+      ],
+      "torsion_factors": [
+        2
+      ]
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "b1de05ec9c1db98fd53994d90d9e7c1671348bc8fa3d53879f7c2b4f3eaec2c0",
+      "fixture": "parallel-2",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 3,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        2
+      ],
+      "torsion_factors": [
+        1
+      ]
+    },
+    {
+      "bicycles": 2,
+      "distinct_mapped_classes": 2,
+      "edge_set_sha256": "de3db75183d7b4d8ff27a1436d38a56e8458069847bfe973cb67ca896c6a26cf",
+      "fixture": "parallel-2",
+      "independently_enumerated_torsion_classes": 2,
+      "modulus": 4,
+      "orders": {
+        "1": 1,
+        "2": 1
+      },
+      "smith": [
+        2
+      ],
+      "torsion_factors": [
+        2
+      ]
+    },
+    {
+      "bicycles": 2,
+      "distinct_mapped_classes": 2,
+      "edge_set_sha256": "8fcc6438dd33831749a03456bc07f3986f4bd52d7770908d7ed6a73f203b043e",
+      "fixture": "parallel-2",
+      "independently_enumerated_torsion_classes": 2,
+      "modulus": 6,
+      "orders": {
+        "1": 1,
+        "2": 1
+      },
+      "smith": [
+        2
+      ],
+      "torsion_factors": [
+        2
+      ]
+    },
+    {
+      "bicycles": 2,
+      "distinct_mapped_classes": 2,
+      "edge_set_sha256": "3bf065f09f7fbeac5a5bcac632a4d50172365759711c70d3dc72d7b95d3497d2",
+      "fixture": "parallel-2",
+      "independently_enumerated_torsion_classes": 2,
+      "modulus": 8,
+      "orders": {
+        "1": 1,
+        "2": 1
+      },
+      "smith": [
+        2
+      ],
+      "torsion_factors": [
+        2
+      ]
+    },
+    {
+      "bicycles": 2,
+      "distinct_mapped_classes": 2,
+      "edge_set_sha256": "ee29090b2a350354070eb268e846ba75c4755c3291b592e16a04e6a419b11f39",
+      "fixture": "parallel-2",
+      "independently_enumerated_torsion_classes": 2,
+      "modulus": 12,
+      "orders": {
+        "1": 1,
+        "2": 1
+      },
+      "smith": [
+        2
+      ],
+      "torsion_factors": [
+        2
+      ]
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "49f9276b7d051b6c3c7eecb593e618a53363a6921320bdeef33cad970fcdd6db",
+      "fixture": "parallel-3",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 2,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        3
+      ],
+      "torsion_factors": [
+        1
+      ]
+    },
+    {
+      "bicycles": 3,
+      "distinct_mapped_classes": 3,
+      "edge_set_sha256": "753807c8d656cab4ad8dd3ab068d93435d5c67fd81e79a0ff5e4d45ce4ef743a",
+      "fixture": "parallel-3",
+      "independently_enumerated_torsion_classes": 3,
+      "modulus": 3,
+      "orders": {
+        "1": 1,
+        "3": 2
+      },
+      "smith": [
+        3
+      ],
+      "torsion_factors": [
+        3
+      ]
+    },
+    {
+      "bicycles": 3,
+      "distinct_mapped_classes": 3,
+      "edge_set_sha256": "9da4b0b695e15f0a5c02b55ac048eabd9d9e98bc7ed02ad9f71b081ea1e807b9",
+      "fixture": "parallel-3",
+      "independently_enumerated_torsion_classes": 3,
+      "modulus": 6,
+      "orders": {
+        "1": 1,
+        "3": 2
+      },
+      "smith": [
+        3
+      ],
+      "torsion_factors": [
+        3
+      ]
+    },
+    {
+      "bicycles": 3,
+      "distinct_mapped_classes": 3,
+      "edge_set_sha256": "0f48431df96d0765cb35bb8059ef6519c7610a777d8012437d60e0e6fbd82905",
+      "fixture": "parallel-3",
+      "independently_enumerated_torsion_classes": 3,
+      "modulus": 9,
+      "orders": {
+        "1": 1,
+        "3": 2
+      },
+      "smith": [
+        3
+      ],
+      "torsion_factors": [
+        3
+      ]
+    },
+    {
+      "bicycles": 3,
+      "distinct_mapped_classes": 3,
+      "edge_set_sha256": "0c830b63c4364b0e9be9187a0eeab5ed425a1fa8ec3d412ab95a93f460018554",
+      "fixture": "parallel-3",
+      "independently_enumerated_torsion_classes": 3,
+      "modulus": 12,
+      "orders": {
+        "1": 1,
+        "3": 2
+      },
+      "smith": [
+        3
+      ],
+      "torsion_factors": [
+        3
+      ]
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "babb7ab4320e7d71ea13960c562c4b6ea4a0c6c47cfbf4b036f0dbd9568ed31c",
+      "fixture": "triangle-tail-loop",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 2,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        1,
+        1,
+        3
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "bicycles": 3,
+      "distinct_mapped_classes": 3,
+      "edge_set_sha256": "2afd89e6d31a816e40bf724c2f1be191d71f7d5eb5a015226284d6fc5cb24833",
+      "fixture": "triangle-tail-loop",
+      "independently_enumerated_torsion_classes": 3,
+      "modulus": 3,
+      "orders": {
+        "1": 1,
+        "3": 2
+      },
+      "smith": [
+        1,
+        1,
+        3
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        3
+      ]
+    },
+    {
+      "bicycles": 1,
+      "distinct_mapped_classes": 1,
+      "edge_set_sha256": "babb7ab4320e7d71ea13960c562c4b6ea4a0c6c47cfbf4b036f0dbd9568ed31c",
+      "fixture": "triangle-tail-loop",
+      "independently_enumerated_torsion_classes": 1,
+      "modulus": 4,
+      "orders": {
+        "1": 1
+      },
+      "smith": [
+        1,
+        1,
+        3
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "bicycles": 3,
+      "distinct_mapped_classes": 3,
+      "edge_set_sha256": "9a04201337ff5e2417e890a04e43aa895a3d8a40ddb9986e055db7b01e1692ef",
+      "fixture": "triangle-tail-loop",
+      "independently_enumerated_torsion_classes": 3,
+      "modulus": 6,
+      "orders": {
+        "1": 1,
+        "3": 2
+      },
+      "smith": [
+        1,
+        1,
+        3
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        3
+      ]
+    },
+    {
+      "bicycles": 3,
+      "distinct_mapped_classes": 3,
+      "edge_set_sha256": "c5fccbbb7ab0b1de9d8fda582ea19e4294e7951e5ef3ab94bf061151dd6772dd",
+      "fixture": "triangle-tail-loop",
+      "independently_enumerated_torsion_classes": 3,
+      "modulus": 9,
+      "orders": {
+        "1": 1,
+        "3": 2
+      },
+      "smith": [
+        1,
+        1,
+        3
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        3
+      ]
+    },
+    {
+      "bicycles": 3,
+      "distinct_mapped_classes": 3,
+      "edge_set_sha256": "5ec93942fde19b140314778678c7486a37ec4cf1d77d783b91f48a7b8e8736c5",
+      "fixture": "triangle-tail-loop",
+      "independently_enumerated_torsion_classes": 3,
+      "modulus": 12,
+      "orders": {
+        "1": 1,
+        "3": 2
+      },
+      "smith": [
+        1,
+        1,
+        3
+      ],
+      "torsion_factors": [
+        1,
+        1,
+        3
+      ]
+    }
+  ],
+  "claim": "ABC-GRAPH-MODULAR-BICYCLE",
+  "fixture_count": 10,
+  "schema": 1,
+  "scope": "finite evidence for the separate arbitrary-n integral proof",
+  "sources_sha256": {
+    "conformance/fixtures/graph-modular-bicycle-v1.json": "92656040797f0dd61d4d4e525d8f28a58ccb0bc0ce52ee90f451184477f4ac8b",
+    "conformance/replay_graph_modular_bicycle.py": "a975846efa57dd05f0cc347fc3e1ea2bb180d6f3b1da4b125a23de98cc1d7a1f",
+    "conformance/test_graph_modular_bicycle.py": "738e7afcfe186e173614ed454f3f20ff2cd84ddca22b61eeaa8035f98f802b3f",
+    "kernel/graph_bicycle.py": "fe87f4f705b23f1969d6c179a7bc6f1596240142ecd4a3abc4c68752a864d40c",
+    "oracles/graph_snf.py": "89cd703517fb0b8e6568c04f98f203b04a37e6d00f53cc089c29ce352646e1bc",
+    "proof/graph-modular-bicycle.md": "ee843202806bcecf888d876b0ad48462fc38171473d0d9b7b6a8e70e35e06b59"
+  },
+  "tower_checks": [
+    {
+      "fixture": "one-vertex-loops",
+      "inflation_checks": 1,
+      "m": 4,
+      "n": 2,
+      "reduction_checks": 1
+    },
+    {
+      "fixture": "one-vertex-loops",
+      "inflation_checks": 1,
+      "m": 6,
+      "n": 2,
+      "reduction_checks": 1
+    },
+    {
+      "fixture": "path-4",
+      "inflation_checks": 1,
+      "m": 4,
+      "n": 2,
+      "reduction_checks": 1
+    },
+    {
+      "fixture": "path-4",
+      "inflation_checks": 1,
+      "m": 6,
+      "n": 2,
+      "reduction_checks": 1
+    },
+    {
+      "fixture": "path-4",
+      "inflation_checks": 1,
+      "m": 12,
+      "n": 2,
+      "reduction_checks": 1
+    },
+    {
+      "fixture": "path-4",
+      "inflation_checks": 1,
+      "m": 6,
+      "n": 3,
+      "reduction_checks": 1
+    },
+    {
+      "fixture": "path-4",
+      "inflation_checks": 1,
+      "m": 12,
+      "n": 3,
+      "reduction_checks": 1
+    },
+    {
+      "fixture": "path-4",
+      "inflation_checks": 1,
+      "m": 12,
+      "n": 4,
+      "reduction_checks": 1
+    },
+    {
+      "fixture": "path-4",
+      "inflation_checks": 1,
+      "m": 12,
+      "n": 6,
+      "reduction_checks": 1
+    },
+    {
+      "fixture": "cycle-3",
+      "inflation_checks": 1,
+      "m": 4,
+      "n": 2,
+      "reduction_checks": 1
+    },
+    {
+      "fixture": "cycle-3",
+      "inflation_checks": 1,
+      "m": 6,
+      "n": 2,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "cycle-3",
+      "inflation_checks": 1,
+      "m": 12,
+      "n": 2,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "cycle-3",
+      "inflation_checks": 3,
+      "m": 6,
+      "n": 3,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "cycle-3",
+      "inflation_checks": 3,
+      "m": 9,
+      "n": 3,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "cycle-3",
+      "inflation_checks": 3,
+      "m": 12,
+      "n": 3,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "cycle-3",
+      "inflation_checks": 1,
+      "m": 12,
+      "n": 4,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "cycle-3",
+      "inflation_checks": 3,
+      "m": 12,
+      "n": 6,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "cycle-4",
+      "inflation_checks": 2,
+      "m": 4,
+      "n": 2,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "cycle-4",
+      "inflation_checks": 2,
+      "m": 6,
+      "n": 2,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "cycle-4",
+      "inflation_checks": 2,
+      "m": 8,
+      "n": 2,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "cycle-4",
+      "inflation_checks": 2,
+      "m": 12,
+      "n": 2,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "cycle-4",
+      "inflation_checks": 1,
+      "m": 6,
+      "n": 3,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "cycle-4",
+      "inflation_checks": 1,
+      "m": 12,
+      "n": 3,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "cycle-4",
+      "inflation_checks": 4,
+      "m": 8,
+      "n": 4,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "cycle-4",
+      "inflation_checks": 4,
+      "m": 12,
+      "n": 4,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "cycle-4",
+      "inflation_checks": 2,
+      "m": 12,
+      "n": 6,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "cycle-6",
+      "inflation_checks": 2,
+      "m": 4,
+      "n": 2,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "cycle-6",
+      "inflation_checks": 2,
+      "m": 6,
+      "n": 2,
+      "reduction_checks": 6
+    },
+    {
+      "fixture": "cycle-6",
+      "inflation_checks": 3,
+      "m": 6,
+      "n": 3,
+      "reduction_checks": 6
+    },
+    {
+      "fixture": "complete-4",
+      "inflation_checks": 4,
+      "m": 4,
+      "n": 2,
+      "reduction_checks": 16
+    },
+    {
+      "fixture": "complete-4",
+      "inflation_checks": 4,
+      "m": 6,
+      "n": 2,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "complete-4",
+      "inflation_checks": 4,
+      "m": 8,
+      "n": 2,
+      "reduction_checks": 16
+    },
+    {
+      "fixture": "complete-4",
+      "inflation_checks": 4,
+      "m": 12,
+      "n": 2,
+      "reduction_checks": 16
+    },
+    {
+      "fixture": "complete-4",
+      "inflation_checks": 1,
+      "m": 6,
+      "n": 3,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "complete-4",
+      "inflation_checks": 1,
+      "m": 12,
+      "n": 3,
+      "reduction_checks": 16
+    },
+    {
+      "fixture": "complete-4",
+      "inflation_checks": 16,
+      "m": 8,
+      "n": 4,
+      "reduction_checks": 16
+    },
+    {
+      "fixture": "complete-4",
+      "inflation_checks": 16,
+      "m": 12,
+      "n": 4,
+      "reduction_checks": 16
+    },
+    {
+      "fixture": "complete-4",
+      "inflation_checks": 4,
+      "m": 12,
+      "n": 6,
+      "reduction_checks": 16
+    },
+    {
+      "fixture": "diamond",
+      "inflation_checks": 2,
+      "m": 4,
+      "n": 2,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "diamond",
+      "inflation_checks": 2,
+      "m": 6,
+      "n": 2,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "diamond",
+      "inflation_checks": 2,
+      "m": 8,
+      "n": 2,
+      "reduction_checks": 8
+    },
+    {
+      "fixture": "diamond",
+      "inflation_checks": 2,
+      "m": 12,
+      "n": 2,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "diamond",
+      "inflation_checks": 1,
+      "m": 6,
+      "n": 3,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "diamond",
+      "inflation_checks": 1,
+      "m": 12,
+      "n": 3,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "diamond",
+      "inflation_checks": 4,
+      "m": 8,
+      "n": 4,
+      "reduction_checks": 8
+    },
+    {
+      "fixture": "diamond",
+      "inflation_checks": 4,
+      "m": 12,
+      "n": 4,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "diamond",
+      "inflation_checks": 2,
+      "m": 12,
+      "n": 6,
+      "reduction_checks": 4
+    },
+    {
+      "fixture": "parallel-2",
+      "inflation_checks": 2,
+      "m": 4,
+      "n": 2,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "parallel-2",
+      "inflation_checks": 2,
+      "m": 6,
+      "n": 2,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "parallel-2",
+      "inflation_checks": 2,
+      "m": 8,
+      "n": 2,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "parallel-2",
+      "inflation_checks": 2,
+      "m": 12,
+      "n": 2,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "parallel-2",
+      "inflation_checks": 1,
+      "m": 6,
+      "n": 3,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "parallel-2",
+      "inflation_checks": 1,
+      "m": 12,
+      "n": 3,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "parallel-2",
+      "inflation_checks": 2,
+      "m": 8,
+      "n": 4,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "parallel-2",
+      "inflation_checks": 2,
+      "m": 12,
+      "n": 4,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "parallel-2",
+      "inflation_checks": 2,
+      "m": 12,
+      "n": 6,
+      "reduction_checks": 2
+    },
+    {
+      "fixture": "parallel-3",
+      "inflation_checks": 1,
+      "m": 6,
+      "n": 2,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "parallel-3",
+      "inflation_checks": 1,
+      "m": 12,
+      "n": 2,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "parallel-3",
+      "inflation_checks": 3,
+      "m": 6,
+      "n": 3,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "parallel-3",
+      "inflation_checks": 3,
+      "m": 9,
+      "n": 3,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "parallel-3",
+      "inflation_checks": 3,
+      "m": 12,
+      "n": 3,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "parallel-3",
+      "inflation_checks": 3,
+      "m": 12,
+      "n": 6,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "triangle-tail-loop",
+      "inflation_checks": 1,
+      "m": 4,
+      "n": 2,
+      "reduction_checks": 1
+    },
+    {
+      "fixture": "triangle-tail-loop",
+      "inflation_checks": 1,
+      "m": 6,
+      "n": 2,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "triangle-tail-loop",
+      "inflation_checks": 1,
+      "m": 12,
+      "n": 2,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "triangle-tail-loop",
+      "inflation_checks": 3,
+      "m": 6,
+      "n": 3,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "triangle-tail-loop",
+      "inflation_checks": 3,
+      "m": 9,
+      "n": 3,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "triangle-tail-loop",
+      "inflation_checks": 3,
+      "m": 12,
+      "n": 3,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "triangle-tail-loop",
+      "inflation_checks": 1,
+      "m": 12,
+      "n": 4,
+      "reduction_checks": 3
+    },
+    {
+      "fixture": "triangle-tail-loop",
+      "inflation_checks": 3,
+      "m": 12,
+      "n": 6,
+      "reduction_checks": 3
+    }
+  ],
+  "tower_pair_count": 70
+}
