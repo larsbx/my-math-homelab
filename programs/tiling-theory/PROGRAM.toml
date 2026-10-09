@@ -1,0 +1,10 @@
+version = 1
+
+[program]
+id = "tiling-theory"
+
+[source]
+repository = "larsbx/tiling-theory-research"
+commit = "3e508a1864352c0ea610560d498a4c894466a995"
+authority = "retained"
+import_status = "verified"
