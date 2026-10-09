@@ -1,0 +1,17 @@
+schema = "julia-oracle-vectors/v1"
+oracle_id = "finite-integer.bigz.canonical-bytes"
+checker_repository = "larsbx/finite-math-kernels"
+boundary_id = "shared-finite-kernel"
+
+[[vector]]
+name = "negative-billion-plus-one"
+value = "-1000000001"
+expected_hex = "0200000000000000043b9aca01"
+expected_outcome = "agrees"
+
+[[vector]]
+name = "negative-billion-plus-one-corrupted"
+value = "-1000000001"
+expected_hex = "0200000000000000043b9aca00"
+expected_outcome = "disagrees"
+corruption = "least-significant magnitude bit flipped"

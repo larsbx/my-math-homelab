@@ -1,0 +1,5 @@
+/Manifest.toml
+/coverage/
+*.cov
+*.mem
+.DS_Store
