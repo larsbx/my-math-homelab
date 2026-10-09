@@ -1,0 +1,10 @@
+version = 1
+
+[program]
+id = "novelty"
+
+[source]
+repository = "larsbx/novelty-lab"
+commit = "ad13b46db8b7aac8e0a062adacfea92fd6f3e726"
+authority = "retained"
+import_status = "verified"
