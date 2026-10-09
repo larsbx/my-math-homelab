@@ -1,0 +1,109 @@
+# Curated starting bibliography.  Verify theorem hypotheses against the primary source before citation in a proof.
+sources:
+  - id: casselman-finite-quadratic-forms
+    topic: quadratic-forms
+    kind: background
+    url: https://www.math.ubc.ca/~cass/siegel/FiniteFields.pdf
+
+  - id: taylor-classical-groups
+    topic: orthogonal-groups
+    kind: background
+    url: https://www.maths.usyd.edu.au/u/don/papers/gcg.pdf
+
+  - id: vakil-quadric-sections
+    topic: quadric-surfaces
+    kind: background
+    url: https://math.stanford.edu/~vakil/0708-216/216class48.pdf
+
+  - id: elkies-conics-finite-fields
+    topic: finite-conics
+    kind: background
+    url: https://people.math.harvard.edu/~elkies/M256.13/conicfq.pdf
+
+  - id: sahu-hyperbolic-quadric-planes
+    year: 2022
+    topic: finite-geometry
+    kind: paper
+    url: https://ajc.maths.uq.edu.au/pdf/84/ajc_v84_p178.pdf
+
+  - id: glmy-apollonian-number-theory
+    year: 2003
+    topic: apollonian-arithmetic
+    kind: paper
+    url: https://www.sciencedirect.com/science/article/abs/pii/S0022314X03000155
+
+  - id: sarnak-integral-apollonian
+    year: 2011
+    topic: apollonian-arithmetic
+    kind: survey
+    url: https://www.math.ias.edu/files/Sarnak_IntegralAppolonian.pdf
+
+  - id: fuchs-strong-approximation
+    topic: strong-approximation
+    kind: paper
+    url: https://www.math.ucdavis.edu/~efuchs/FuchsStrongApprox.pdf
+
+  - id: fuchs-counting-survey
+    year: 2013
+    topic: apollonian-counting
+    kind: survey
+    url: https://www.math.ucdavis.edu/~efuchs/ACPsurvey.pdf
+
+  - id: kontorovich-orbital-circle-method
+    topic: thin-groups
+    kind: survey
+    url: https://library.slmath.org/books/Book61/files/30kont.pdf
+
+  - id: bourgain-gamburd-sarnak-affine-sieve
+    year: 2010
+    topic: expansion-affine-sieve
+    kind: paper
+    url: https://web.math.princeton.edu/sarnak/sespM8.pdf
+
+  - id: bourgain-varju-expansion
+    year: 2012
+    topic: expansion
+    kind: paper
+    url: https://arxiv.org/abs/1006.3365
+
+  - id: bourgain-kontorovich-local-global
+    year: 2013
+    topic: local-global
+    kind: paper
+    url: https://arxiv.org/abs/1205.4416
+
+  - id: fuchs-stange-zhang-local-global
+    year: 2019
+    topic: local-global
+    kind: paper
+    url: https://arxiv.org/abs/1707.06708
+
+  - id: haag-kertzer-rickards-stange-counterexamples
+    year: 2024
+    topic: reciprocity-obstructions
+    kind: paper
+    url: https://arxiv.org/html/2307.02749v3
+
+  - id: fuchs-rise-and-fall
+    year: 2025
+    topic: local-global
+    kind: survey
+    url: https://www.ams.org/journals/bull/current/S0273-0979-2025-01874-1/viewer
+
+  - id: kontorovich-nakamura-crystallographic-packings
+    year: 2018
+    topic: higher-dimensional-packings
+    kind: paper
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC6329941/
+
+  - id: baragar-apollonian-seven-eight
+    year: 2022
+    topic: higher-dimensional-packings
+    kind: paper
+    url: https://arxiv.org/abs/1901.04316
+
+  - id: polytopal-generalization
+    year: 2025
+    topic: higher-dimensional-packings
+    kind: paper
+    url: https://arxiv.org/html/2107.09432v3
