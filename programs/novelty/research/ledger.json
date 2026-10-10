@@ -1,0 +1,1087 @@
+{
+  "format": "finite_proof_records ledger 1",
+  "repository": "larsbx/novelty-lab",
+  "module": "NoveltyLedger",
+  "tla_dir": "tla",
+  "index_path": "docs/ledger-index.md",
+  "status_classes": {
+    "verified_finite_computation": "finite-domain",
+    "bounded_experiment": "experimental",
+    "pending_dependency": "open"
+  },
+  "status_labels": {
+    "finite-domain": "verified finite computation",
+    "experimental": "experimental result",
+    "open": "pending",
+    "proved": "proved result",
+    "imported": "imported",
+    "conditional": "conditional",
+    "retired": "retired"
+  },
+  "records": {
+    "HilbertSymbolFormula": {
+      "id": "sha256:3f4abd8270e9432530411af2c7f5634604d42f95e6d0db9705c346c868418599",
+      "kind": "pending_dependency",
+      "statement": "(a, b)_v is given at every place v of Q by the explicit formulas implemented in kernel/n1/hilbert.py",
+      "scope": "nonzero rationals a, b; places of Q",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "imported from Serre, A Course in Arithmetic, Ch. III, Thm. 1; citation and hypotheses await human review"
+        ]
+      ],
+      "tags": []
+    },
+    "QuaternionSplitIffConic": {
+      "id": "sha256:7a0449b83512a971207bdbb7ea43e06ca5ef22ee2c31bdb57a76cd870526a7e1",
+      "kind": "pending_dependency",
+      "statement": "(a, b)_Q has a zero divisor iff z^2 = a x^2 + b y^2 has a nonzero rational solution; a local symbol -1 at any place excludes one",
+      "scope": "quaternion algebras (a, b)_Q, a, b nonzero rationals",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "classical; citation and hypotheses await human review"
+        ]
+      ],
+      "tags": []
+    },
+    "DivisionCertificateSoundness": {
+      "id": "sha256:16a03506e98ab3878d853994e875a0d7049ea7821f328b7a80e57c27fec35a0a",
+      "kind": "pending_dependency",
+      "statement": "kernel/n1/certificate.py accepts a division certificate only for a division algebra",
+      "scope": "quaternion algebras (a, b)_Q, a, b nonzero rationals",
+      "depends_on": [
+        [
+          "sha256:3f4abd8270e9432530411af2c7f5634604d42f95e6d0db9705c346c868418599",
+          "(a, b)_v is given at every place v of Q by the explicit formulas implemented in kernel/n1/hilbert.py",
+          "kernel/n1/certificate.py:_division",
+          "scope=nonzero rationals a, b; places of Q",
+          "accepted"
+        ],
+        [
+          "sha256:7a0449b83512a971207bdbb7ea43e06ca5ef22ee2c31bdb57a76cd870526a7e1",
+          "(a, b)_Q has a zero divisor iff z^2 = a x^2 + b y^2 has a nonzero rational solution; a local symbol -1 at any place excludes one",
+          "kernel/n1/certificate.py:_division",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "repository argument from the two imported results; proof not yet written or reviewed"
+        ]
+      ],
+      "tags": []
+    },
+    "ZeroDivisorCertificateSoundness": {
+      "id": "sha256:36d6916e2e717d1b44e6eec9b43834235a39a2e00458b3b95bd98b52b3833b25",
+      "kind": "pending_dependency",
+      "statement": "kernel/n1/certificate.py accepts a zero_divisor certificate only for an algebra that is not a division algebra",
+      "scope": "Cayley-Dickson algebras A_n over Q under cayley-dickson/v1, n <= 8",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "docs/theorems/bridge-theorems.md#n1-t01"
+        ],
+        [
+          "proof_reviewed",
+          "false"
+        ],
+        [
+          "reason",
+          "elementary zero-product argument is written in N1-T01; independent review of the proof and its implementation scope is not recorded"
+        ]
+      ],
+      "tags": []
+    },
+    "HurwitzShellCount": {
+      "id": "sha256:8b96a1e9ea571bd2658fa4156421175a0279ccd9f06daa287a74fc373f6a3949",
+      "kind": "pending_dependency",
+      "statement": "|S_n| = 24 sigma_1(odd part of n) for every n >= 1",
+      "scope": "Hurwitz order, convention hurwitz-mod-ell/v1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "classical (Hurwitz); citation awaits human review"
+        ]
+      ],
+      "tags": []
+    },
+    "HurwitzShellCountFinite": {
+      "id": "sha256:756cac5fc7b6aa310d4e218bba8f858f888cd7185e6736865e6f3a028bd5083e",
+      "kind": "verified_finite_computation",
+      "statement": "|S_n| = 24 sigma_1(odd part of n) for 1 <= n <= 200",
+      "scope": "Hurwitz order, convention hurwitz-mod-ell/v1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "replay",
+          "python -m unittest discover -s tests -p test_n3_hurwitz_shell.py"
+        ],
+        [
+          "digest",
+          "sha256:946ce17ea3f74cc2e3d43d1618f4cf6da768f6a5bea9ce0eeea286424d70c639"
+        ]
+      ],
+      "tags": []
+    },
+    "N3BaselineGrid": {
+      "id": "sha256:b65c0506fcc199d2031cd9635d5307a5c6771920f77a06a509f2f64bf94ab42b",
+      "kind": "bounded_experiment",
+      "statement": "descriptive collision statistics of data/n3/grid-v1.json",
+      "scope": "Hurwitz order, convention hurwitz-mod-ell/v1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "ell in {5, 7, 11, 13}; first 4 primes n >= (ell^3 - ell)/24 with ell not dividing n; unit_action in {none, left}"
+        ],
+        [
+          "replay",
+          "python experiments/n3/grid.py --check"
+        ],
+        [
+          "digest",
+          "sha256:563ef59c1ee03fb72417f4ec6de81c77c58ad66661176206b035b9391499293f"
+        ]
+      ],
+      "tags": []
+    },
+    "N3PoissonHeuristic": {
+      "id": "sha256:a7edc1e039bcc0ab0328ea6a8d98b6f62717d4d9acdc6158efc4d42d1149fbd0",
+      "kind": "pending_dependency",
+      "statement": "fiber occupancies of S_n modulo ell are asymptotically Poisson in the collision regime",
+      "scope": "Hurwitz order, convention hurwitz-mod-ell/v1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "heuristic; no theorem route established (docs/candidates/N3.md)"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectCensus": {
+      "id": "sha256:e94e001d3620e1c65ec32588c8fe3521ded6101f0774395f30b2a836140824d4",
+      "kind": "bounded_experiment",
+      "statement": "no violation of inverse, isometry, fixes_xy, kernel, det_one, fixes_Q, or rank_law in data/n2/defect-census-v1.json",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "ell in {3, 5, 7, 11}; 400 seeded random admissible pairs per ell plus degenerate pairs with y in span{1, x}"
+        ],
+        [
+          "replay",
+          "python experiments/n2/defect_census.py --check"
+        ],
+        [
+          "digest",
+          "sha256:411511f2791e7d11463a59885da1c5b42a647fe557758965a718fc4b4faeb83e"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectFixesQuaternionSubalgebra": {
+      "id": "sha256:a21c4469ae8c4a6f43f06f496154c2b2eed9bb33c9b2372bba2389843cc621a0",
+      "kind": "pending_dependency",
+      "statement": "for N(x)N(y) != 0, Delta(x, y) fixes pointwise the unital subalgebra A generated by x and y, which contains Q = span{1, x, y, xy}; Delta preserves W-perp for every subspace W of A; and rank(Delta - I) <= 8 - dim Q",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "docs/theorems/defect-fixes-subalgebra.md#proof (1), (2), (3)",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:ec65e9c7d7b6150dec25403182690e41466daf07cc9eb28555d340232cd74b0b",
+          "the subalgebra generated by any two elements of an alternative algebra is associative",
+          "docs/theorems/defect-fixes-subalgebra.md#proof (2)",
+          "scope=alternative algebras over a field",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "source",
+          "docs/theorems/defect-fixes-subalgebra.md"
+        ],
+        [
+          "proof_reviewed",
+          "false"
+        ],
+        [
+          "review",
+          "promotion directed by the repository owner (larsbx) on 2026-10-01; proof written by Claude; no independent second reviewer"
+        ],
+        [
+          "reason",
+          "proof written in docs/theorems/defect-fixes-subalgebra.md; independent proof review is missing; owner-directed promotion does not supply that review"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectSpecialOrthogonal": {
+      "id": "sha256:954eef3531c265334283599ec26002150b5a1bd5f46a0a2247582d389cd6b0a3",
+      "kind": "pending_dependency",
+      "statement": "det Delta(x, y) = 1 for N(x)N(y) != 0",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Proposition 3.5: det L_x = N(x)^4 as a polynomial identity); awaiting human review; supported by DefectCensus"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectRankLaw": {
+      "id": "sha256:983f60da617a89d199300d4f26073ff4a1ed101c4ce7408c4bb90fcdce1e70e2",
+      "kind": "pending_dependency",
+      "statement": "rank(Delta(x, y) - I) is 0, 2, 4 when dim Q is at most 2, 3, 4 respectively",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:a21c4469ae8c4a6f43f06f496154c2b2eed9bb33c9b2372bba2389843cc621a0",
+          "for N(x)N(y) != 0, Delta(x, y) fixes pointwise the unital subalgebra A generated by x and y, which contains Q = span{1, x, y, xy}; Delta preserves W-perp for every subspace W of A; and rank(Delta - I) <= 8 - dim Q",
+          "upper bound rank(Delta - I) <= 8 - dim Q",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:a8dd7d5613b22d56437fa910543be98dbae2f3c3239d72fdcd26a89cfb81b795",
+          "if dim Q = 4 then ker [x, y, -] = Q, and if dim Q = 3 then rank [x, y, -] = 2, whether or not B|Q is nondegenerate",
+          "paper/associator-defects/main.tex Theorem 3.8, cases dim Q = 3 and 4",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Theorem 3.8 from Proposition 3.9, Theorem 3.12, Theorem 3.16, Proposition 3.17); awaiting independent review; verified for every pair over F_3 (RankLawExhaustiveF3)"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectStratifiedCollisions": {
+      "id": "sha256:793e30b63b4f7c09a2f395ec7bc19e3a44ad956c7b8c259b37331b383393e2dd",
+      "kind": "pending_dependency",
+      "statement": "collision moments of navigation words modulo ell, conditioned on the class of Delta restricted to Q-perp, differ from unconditioned moments beyond ambient O(8, F_ell) conjugacy data",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "reason",
+          "research question H3 (NC-X-01, NC-N2-02); refuted if conditional moments match within sampling error or are fixed by classical invariants; the similarity class of a single defect is a function of the Gram matrix of (1, x, y) and dim Q (DefectClassGramAndDimQ, KILL-11), so single defects can add only dim Q; length-4 word defects are not classical (WordDefectNotClassical) and are fixed by the Aut(C)-invariant forms phi and psi of the letters (WordDefectG2Determined, by the first fundamental theorem for G2), so a word-defect stratification is G2 bookkeeping of the letters and phi, psi are the conditioning variables to test; over definite integral shells single defects are classical (DefectClassicalAnisotropic), and the integral pilot (H3IntegralPilot) finds value-only collisions only in sporadic configurations, where they share word-defect classes well above an equal-trace null; the F_ell pilot (H3PilotCollisions) shows that collision statistics must first quotient by operator collisions, after which the enrichment of shared word-defect classes is at most mild on small counts; H3ConditionedIntegral uses uniform (value, operator) quotient classes, exact integer arithmetic and Gram/trace-matched controls: the four preselected integral samples lack any Gram-matched collisions, and all five subsequent structured support panels are retained as exploratory evidence with panel-dependent enrichment, constant-label and zero-support controls; historical pilot class-sharing counts retain word alias weights; these dependent-pair counts neither settle H3 nor promote any pending proof"
+        ]
+      ],
+      "tags": []
+    },
+    "CompositionIdentities": {
+      "id": "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+      "kind": "imported_theorem",
+      "statement": "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+      "scope": "octonion algebras over a field of characteristic not 2",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "T. A. Springer and F. D. Veldkamp, Octonions, Jordan Algebras and Exceptional Groups (2000), Ch. 1"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "C = A_3 of cayley-dickson/v1 with nonzero parameters over F_ell, ell odd, is an octonion algebra by construction; replayed in tests/test_n2_defect_theorem.py"
+        ]
+      ],
+      "tags": []
+    },
+    "ArtinTheorem": {
+      "id": "sha256:ec65e9c7d7b6150dec25403182690e41466daf07cc9eb28555d340232cd74b0b",
+      "kind": "imported_theorem",
+      "statement": "the subalgebra generated by any two elements of an alternative algebra is associative",
+      "scope": "alternative algebras over a field",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "E. Artin; R. D. Schafer, An Introduction to Nonassociative Algebras (1966), Ch. III"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "C is alternative by CompositionIdentities"
+        ]
+      ],
+      "tags": []
+    },
+    "RankLawExhaustiveF3": {
+      "id": "sha256:6a9abd494605a68efb238b4817ddeee37db44aca607b982e9d02df1a3e331967",
+      "kind": "verified_finite_computation",
+      "statement": "rank([x, y, -]) = 2 max(0, dim span{1, x, y, xy} - 2) for every unordered pair of distinct points of the projective space of trace-zero elements",
+      "scope": "split octonions C over F_3, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "replay",
+          "python experiments/n2/rank_law.py --check"
+        ],
+        [
+          "digest",
+          "sha256:ee601624a3bb96902ea850308dbbedeb227eeb5afcb903e35eb18aae52129c7c"
+        ]
+      ],
+      "tags": []
+    },
+    "QuaternionDoubling": {
+      "id": "sha256:d1cbcdcb34a89f2dcdc63fb4e1fb113e3fa714daa201e3535bbcb06cc5b8afbe",
+      "kind": "imported_theorem",
+      "statement": "a four-dimensional unital subalgebra D of an octonion algebra with B|D nondegenerate is a quaternion algebra (associative; division or isomorphic to M_2(k) with N = det), and C = D + Dv for some v in D-perp with N(v) != 0, with a(bv) = (ba)v for a, b in D",
+      "scope": "octonion algebras over a field of characteristic not 2",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "T. A. Springer and F. D. Veldkamp, Octonions, Jordan Algebras and Exceptional Groups (2000), Ch. 1"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "applied only to D = Q = span{1, x, y, xy} with dim Q = 4 and B|Q nondegenerate; the identity a(bv) = (ba)v and v in Q-perp are replayed in tests/test_rank_law_nondegenerate.py"
+        ]
+      ],
+      "tags": []
+    },
+    "RankLawNondegenerate": {
+      "id": "sha256:5be54cb7cb4e1968630a5aae290be4502aa99968cc0a4402080fb36b255dc107",
+      "kind": "pending_dependency",
+      "statement": "if dim Q = 4 and B|Q is nondegenerate then ker [x, y, -] = Q, so rank(Delta(x, y) - I) = 4 when N(x)N(y) != 0",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Lemma 3.10, Theorem 3.12",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:d1cbcdcb34a89f2dcdc63fb4e1fb113e3fa714daa201e3535bbcb06cc5b8afbe",
+          "a four-dimensional unital subalgebra D of an octonion algebra with B|D nondegenerate is a quaternion algebra (associative; division or isomorphic to M_2(k) with N = det), and C = D + Dv for some v in D-perp with N(v) != 0, with a(bv) = (ba)v for a, b in D",
+          "paper/associator-defects/main.tex Theorem 3.12",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Lemmas 3.10, 3.11, Theorem 3.12); awaiting independent review"
+        ]
+      ],
+      "tags": []
+    },
+    "MoufangTheorem": {
+      "id": "sha256:3c383da4ec5991eb6950623fc73f8ccbf73220700864408b3a27e132bc451d83",
+      "kind": "imported_theorem",
+      "statement": "every alternative algebra satisfies x(y(xz)) = (xyx)z, and if [x, y, z] = 0 then x, y, z generate an associative subalgebra",
+      "scope": "alternative algebras over a field",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "R. Moufang (1935); R. D. Schafer, An Introduction to Nonassociative Algebras (1966), Ch. III"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "C is alternative by CompositionIdentities"
+        ]
+      ],
+      "tags": []
+    },
+    "CompositionDimensions": {
+      "id": "sha256:972b4055bb6cdaa56a7616c213aa661eba4392aa8fa3731119eb37014647ea5b",
+      "kind": "imported_theorem",
+      "statement": "a composition algebra over a field of characteristic not 2 has dimension 1, 2, 4 or 8; one of dimension 4 is a Cayley-Dickson double of one of dimension 2; an associative one has dimension at most 4",
+      "scope": "composition algebras over a field of characteristic not 2",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "A. Hurwitz (1898); T. A. Springer and F. D. Veldkamp, Octonions, Jordan Algebras and Exceptional Groups (2000), Ch. 1"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "applied to S/(S cap S-perp) for a unital subalgebra S, whose induced norm is nondegenerate and multiplicative (paper Lemma 3.15)"
+        ]
+      ],
+      "tags": []
+    },
+    "ZornPeirce": {
+      "id": "sha256:6695a3dce6997692d31b2e16d8314375f5342c2b6017f63b49676197b3d5eb83",
+      "kind": "imported_theorem",
+      "statement": "for an idempotent e not 0 or 1 of an octonion algebra there is an isomorphism onto Zorn's vector-matrix algebra taking e to diag(1, 0); hence C10 = {u : eu = u, ue = 0} has dimension 3, e(uu') = 0 for u, u' in C10, and uu' = 0 only if u, u' are linearly dependent",
+      "scope": "octonion algebras over a field of characteristic not 2",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "M. Zorn (1933); T. A. Springer and F. D. Veldkamp, Octonions, Jordan Algebras and Exceptional Groups (2000), Ch. 1"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "the three consequences are replayed at every nontrivial idempotent of the F_3 model in tests/test_rank_law_degenerate.py"
+        ]
+      ],
+      "tags": []
+    },
+    "AssociativeSubalgebraBound": {
+      "id": "sha256:62cceda3e5892ac79bb8d1c21ce93c1069c2c763619e3f9805dea5d16322252a",
+      "kind": "pending_dependency",
+      "statement": "every unital associative subalgebra of an octonion algebra has dimension at most 4",
+      "scope": "octonion algebras over a field of characteristic not 2",
+      "depends_on": [
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Lemma 3.15 (radical is an ideal; induced norm)",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:972b4055bb6cdaa56a7616c213aa661eba4392aa8fa3731119eb37014647ea5b",
+          "a composition algebra over a field of characteristic not 2 has dimension 1, 2, 4 or 8; one of dimension 4 is a Cayley-Dickson double of one of dimension 2; an associative one has dimension at most 4",
+          "paper/associator-defects/main.tex Lemma 3.15 (dim S/R in {1, 2, 4})",
+          "scope=composition algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:6695a3dce6997692d31b2e16d8314375f5342c2b6017f63b49676197b3d5eb83",
+          "for an idempotent e not 0 or 1 of an octonion algebra there is an isomorphism onto Zorn's vector-matrix algebra taking e to diag(1, 0); hence C10 = {u : eu = u, ue = 0} has dimension 3, e(uu') = 0 for u, u' in C10, and uu' = 0 only if u, u' are linearly dependent",
+          "paper/associator-defects/main.tex Lemma 3.15 case dim S/R = 2, subcase (b)",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:5be54cb7cb4e1968630a5aae290be4502aa99968cc0a4402080fb36b255dc107",
+          "if dim Q = 4 and B|Q is nondegenerate then ker [x, y, -] = Q, so rank(Delta(x, y) - I) = 4 when N(x)N(y) != 0",
+          "paper/associator-defects/main.tex Lemma 3.15 case dim S/R = 4",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Lemma 3.15); awaiting independent review; the critical case B = R-perp is checked for all 1,120 maximal isotropic R over F_3 in tests/test_rank_law_degenerate.py"
+        ]
+      ],
+      "tags": []
+    },
+    "RankLawDegenerate": {
+      "id": "sha256:a8dd7d5613b22d56437fa910543be98dbae2f3c3239d72fdcd26a89cfb81b795",
+      "kind": "pending_dependency",
+      "statement": "if dim Q = 4 then ker [x, y, -] = Q, and if dim Q = 3 then rank [x, y, -] = 2, whether or not B|Q is nondegenerate",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:3c383da4ec5991eb6950623fc73f8ccbf73220700864408b3a27e132bc451d83",
+          "every alternative algebra satisfies x(y(xz)) = (xyx)z, and if [x, y, z] = 0 then x, y, z generate an associative subalgebra",
+          "paper/associator-defects/main.tex Theorem 3.16, Proposition 3.17",
+          "scope=alternative algebras over a field",
+          "accepted"
+        ],
+        [
+          "sha256:ec65e9c7d7b6150dec25403182690e41466daf07cc9eb28555d340232cd74b0b",
+          "the subalgebra generated by any two elements of an alternative algebra is associative",
+          "paper/associator-defects/main.tex Theorem 3.16 (Q = A is associative)",
+          "scope=alternative algebras over a field",
+          "accepted"
+        ],
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Lemmas 3.13, 3.14",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:62cceda3e5892ac79bb8d1c21ce93c1069c2c763619e3f9805dea5d16322252a",
+          "every unital associative subalgebra of an octonion algebra has dimension at most 4",
+          "paper/associator-defects/main.tex Theorem 3.16, Proposition 3.17",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Lemmas 3.13-3.15, Theorem 3.16, Proposition 3.17); awaiting independent review; replayed in tests/test_rank_law_degenerate.py and confirmed for every pair over F_3 by RankLawExhaustiveF3"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectCharacteristicPolynomial": {
+      "id": "sha256:ae16277101d2dbad181d33c7dbab0dfe0b9c7456c40e7f9caf7b1078b79ee8f7",
+      "kind": "pending_dependency",
+      "statement": "det Gram_B(1, x, y, xy) = N(xy - yx)^2 and det(Y I - L_x L_y L_conj(xy)) = (Y - nu)^4 (Y^2 - (2 nu - N(xy - yx)) Y + nu^2)^2 with nu = N(x)N(y), for all x, y",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Lemma 3.19, Theorem 3.20",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:d1cbcdcb34a89f2dcdc63fb4e1fb113e3fa714daa201e3535bbcb06cc5b8afbe",
+          "a four-dimensional unital subalgebra D of an octonion algebra with B|D nondegenerate is a quaternion algebra (associative; division or isomorphic to M_2(k) with N = det), and C = D + Dv for some v in D-perp with N(v) != 0, with a(bv) = (ba)v for a, b in D",
+          "paper/associator-defects/main.tex Theorem 3.20 (Delta on Qv is right multiplication)",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Lemma 3.19, Theorem 3.20, Corollary 3.21) by a polynomial identity checked on the dense set N(x)N(y)N(xy - yx) != 0; awaiting independent review; replayed in tests/test_defect_charpoly.py"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectClassIsClassical": {
+      "id": "sha256:f0c2e2fe60e1c8eb6156dec699a4759ebbcb232e920cd9e0add79e824a5fdcc0",
+      "kind": "pending_dependency",
+      "statement": "2 N(xy - yx) = det Gram_B(1, x, y); hence the characteristic polynomial of Delta(x, y) depends only on the Gram matrix of (1, x, y), and for tau != +-2 so does its similarity class",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:ae16277101d2dbad181d33c7dbab0dfe0b9c7456c40e7f9caf7b1078b79ee8f7",
+          "det Gram_B(1, x, y, xy) = N(xy - yx)^2 and det(Y I - L_x L_y L_conj(xy)) = (Y - nu)^4 (Y^2 - (2 nu - N(xy - yx)) Y + nu^2)^2 with nu = N(x)N(y), for all x, y",
+          "paper/associator-defects/main.tex Corollary 3.22",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Corollary 3.22",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Corollary 3.22); awaiting independent review; replayed in tests/test_defect_class.py; triggers falsifier 2 of NC-X-01 at the level of similarity classes (KILL-09)"
+        ]
+      ],
+      "tags": []
+    },
+    "WallConjugacy": {
+      "id": "sha256:9b7ff0c461023eab88ba022cb206ed4a38de515a8340ea5bbe06aed105ef6f40",
+      "kind": "imported_theorem",
+      "statement": "over F_q, q odd, two semisimple elements of an orthogonal group O(V) are conjugate in O(V) iff they have the same characteristic polynomial and isometric (+1)- and (-1)-eigenspaces",
+      "scope": "orthogonal groups of nondegenerate quadratic spaces over finite fields of odd characteristic",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "G. E. Wall, On the conjugacy classes in the unitary, symplectic and orthogonal groups, J. Austral. Math. Soc. 3 (1963) 1-62"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "applied to Delta(x, y) in O(C, N) over F_ell with N(xy - yx) != 0 and Delta semisimple (paper Corollary 3.24)"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectReflectionFactorization": {
+      "id": "sha256:05a4921739a492bfc1792d0ad165a1968d1179747ed36779472c2e10a3750cc3",
+      "kind": "pending_dependency",
+      "statement": "if N(x)N(y)N(xy - yx) != 0 and v in Q-perp has N(v) != 0, then Delta(x, y) = s_xv s_v s_yv s_(xy)v, so Delta has trivial spinor norm",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:d1cbcdcb34a89f2dcdc63fb4e1fb113e3fa714daa201e3535bbcb06cc5b8afbe",
+          "a four-dimensional unital subalgebra D of an octonion algebra with B|D nondegenerate is a quaternion algebra (associative; division or isomorphic to M_2(k) with N = det), and C = D + Dv for some v in D-perp with N(v) != 0, with a(bv) = (ba)v for a, b in D",
+          "paper/associator-defects/main.tex Theorem 3.23",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:ae16277101d2dbad181d33c7dbab0dfe0b9c7456c40e7f9caf7b1078b79ee8f7",
+          "det Gram_B(1, x, y, xy) = N(xy - yx)^2 and det(Y I - L_x L_y L_conj(xy)) = (Y - nu)^4 (Y^2 - (2 nu - N(xy - yx)) Y + nu^2)^2 with nu = N(x)N(y), for all x, y",
+          "paper/associator-defects/main.tex Theorem 3.23 (Lemma 3.19, Corollary 3.21)",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Theorem 3.23); awaiting independent review; replayed in tests/test_defect_class.py"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectSOClassFinite": {
+      "id": "sha256:484257ed36b6de093035cd20f045f8ad8a6d706e3c1e00c3bffc3bee617cb5cc",
+      "kind": "pending_dependency",
+      "statement": "over F_ell with N(x)N(y) != 0: Delta(x, y) has trivial spinor norm, and if N(xy - yx) != 0 and Delta is semisimple its SO(C, N)-conjugacy class depends only on tau",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:05a4921739a492bfc1792d0ad165a1968d1179747ed36779472c2e10a3750cc3",
+          "if N(x)N(y)N(xy - yx) != 0 and v in Q-perp has N(v) != 0, then Delta(x, y) = s_xv s_v s_yv s_(xy)v, so Delta has trivial spinor norm",
+          "paper/associator-defects/main.tex Corollary 3.24(a)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:f0c2e2fe60e1c8eb6156dec699a4759ebbcb232e920cd9e0add79e824a5fdcc0",
+          "2 N(xy - yx) = det Gram_B(1, x, y); hence the characteristic polynomial of Delta(x, y) depends only on the Gram matrix of (1, x, y), and for tau != +-2 so does its similarity class",
+          "paper/associator-defects/main.tex Corollary 3.24(b)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:9b7ff0c461023eab88ba022cb206ed4a38de515a8340ea5bbe06aed105ef6f40",
+          "over F_q, q odd, two semisimple elements of an orthogonal group O(V) are conjugate in O(V) iff they have the same characteristic polynomial and isometric (+1)- and (-1)-eigenspaces",
+          "paper/associator-defects/main.tex Corollary 3.24(b)",
+          "scope=orthogonal groups of nondegenerate quadratic spaces over finite fields of odd characteristic",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Corollary 3.24); awaiting independent review; spinor norm replayed on all strata in tests/test_defect_class.py; triggers KILL-10"
+        ]
+      ],
+      "tags": []
+    },
+    "CliffordSpinTrace": {
+      "id": "sha256:7f9c3ba497e407adb6f22efc0cee84f352bff8adb7af77bd513d06ccde61f830",
+      "kind": "imported_theorem",
+      "statement": "on the spin module of the Clifford algebra of a nondegenerate quadratic space of dimension 8, the trace of a product of an even number of vectors is 16 times its scalar part, a polynomial in their pairwise inner products, and the graded trace vanishes when the vectors span less than the whole space",
+      "scope": "Clifford algebras of nondegenerate quadratic spaces over a field of characteristic not 2",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "C. Chevalley, The Algebraic Theory of Spinors (1954); H. B. Lawson and M.-L. Michelsohn, Spin Geometry (1989), Ch. I"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "C + C with x -> T_x = [[0, L_x], [L_conj(x), 0]] is a Clifford module by CompositionIdentities (paper Proposition 3.26)"
+        ]
+      ],
+      "tags": []
+    },
+    "WordDefectLengthThreeClassical": {
+      "id": "sha256:aebeff3f313146916855b1d609bcf6543de3f62d7656de1a4345af5322e82f4b",
+      "kind": "pending_dependency",
+      "statement": "in characteristic 0 or > 8 the characteristic polynomial of W(a, b, c) = L_a L_b L_c L_((ab)c)^-1 depends only on the Gram matrix of (1, a, b, c)",
+      "scope": "octonion algebras over a field of characteristic 0 or greater than 8",
+      "depends_on": [
+        [
+          "sha256:7f9c3ba497e407adb6f22efc0cee84f352bff8adb7af77bd513d06ccde61f830",
+          "on the spin module of the Clifford algebra of a nondegenerate quadratic space of dimension 8, the trace of a product of an even number of vectors is 16 times its scalar part, a polynomial in their pairwise inner products, and the graded trace vanishes when the vectors span less than the whole space",
+          "paper/associator-defects/main.tex Proposition 3.26",
+          "scope=Clifford algebras of nondegenerate quadratic spaces over a field of characteristic not 2",
+          "accepted"
+        ],
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Proposition 3.26",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Proposition 3.26); awaiting independent review; reductions and invariance replayed in tests/test_word_defects.py; also observed over F_3, F_5, F_7 in data/n2/word-defects-v1.json"
+        ]
+      ],
+      "tags": []
+    },
+    "WordDefectNotClassical": {
+      "id": "sha256:b2d55b34522fc23c0211b7e84bc9a70ad3cd7775d81761805e324432ce3bd96f",
+      "kind": "verified_finite_computation",
+      "statement": "for a1 = e1, a2 = e2, a3 = e3, a4 = 1 + e4 and h = s_e1 s_(e1 + e4) in SO(C, N) fixing 1, the word defects W(a1, ..., a4) and W(h a1, ..., h a4) have different characteristic polynomials",
+      "scope": "split octonions C over F_3, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "replay",
+          "python experiments/n2/word_defects.py --check"
+        ],
+        [
+          "digest",
+          "sha256:986fcbcaf2a21191a98e5c1d01a5d64a14b7daa7a0abe67420af742670b50cc5"
+        ]
+      ],
+      "tags": []
+    },
+    "H3PilotCollisions": {
+      "id": "sha256:77bafb744aac2bed5e650b1d45ac14c0c99efd6bfba2cec6e007e33f7f94a2b7",
+      "kind": "bounded_experiment",
+      "statement": "for reduced length-4 words in norm-1 generators over F_5 and F_7, 95 to 99 percent of value collisions are operator collisions (equal L-products, hence equal word defects); value-only collisions are within a factor 1.6 of the random-target baseline, and share their word-defect class at 1.5 to 2 times the shuffled-label rate on small counts (24 to 546 pairs)",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "(ell, generators) in {(5, 10), (7, 10), (7, 12)}; norm-1 generators with fixed seeds plus their inverses; all reduced words of length 4"
+        ],
+        [
+          "replay",
+          "python experiments/n2/h3_pilot.py --check"
+        ],
+        [
+          "digest",
+          "sha256:e203e35e3d12c2e5794f4ee1ccf6816c5aeb61810db2618488e7c2f0a9b9ef99"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectJordanType": {
+      "id": "sha256:bef89ea6a8c1d6c169334f9185d84483817c921d10280f9d04bd6a249e312cde",
+      "kind": "pending_dependency",
+      "statement": "for N(x)N(y) != 0: (Delta - I)(Delta^2 - tau Delta + I) = 0; if tau = -2, Delta is semisimple iff xy + yx = 0 iff T(x) = T(y) = B(x, y) = 0, and otherwise the restriction of Delta + I to Q-perp has rank 2 and square 0 (so Delta + I and its square have ranks 6 and 4); if N(xy - yx) = 0 then (Delta - I)^3 = 0, with Delta = I for dim Q <= 2, rank(Delta - I) = 2 and (Delta - I)^2 = 0 for dim Q = 3, and rank(Delta - I)^2 = rank B|Q in {1, 2} for dim Q = 4",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:ae16277101d2dbad181d33c7dbab0dfe0b9c7456c40e7f9caf7b1078b79ee8f7",
+          "det Gram_B(1, x, y, xy) = N(xy - yx)^2 and det(Y I - L_x L_y L_conj(xy)) = (Y - nu)^4 (Y^2 - (2 nu - N(xy - yx)) Y + nu^2)^2 with nu = N(x)N(y), for all x, y",
+          "paper/associator-defects/main.tex Theorem 3.29(a) (identity on the dense set, then everywhere)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:a8dd7d5613b22d56437fa910543be98dbae2f3c3239d72fdcd26a89cfb81b795",
+          "if dim Q = 4 then ker [x, y, -] = Q, and if dim Q = 3 then rank [x, y, -] = 2, whether or not B|Q is nondegenerate",
+          "paper/associator-defects/main.tex Theorem 3.29(c) (ker [x, y, -] for dim Q = 3, 4)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:62cceda3e5892ac79bb8d1c21ce93c1069c2c763619e3f9805dea5d16322252a",
+          "every unital associative subalgebra of an octonion algebra has dimension at most 4",
+          "paper/associator-defects/main.tex Theorem 3.29(c) (Q / rad Q is a composition algebra)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Theorem 3.29(b), (c)",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Theorem 3.29); awaiting independent review; replayed in tests/test_defect_jordan.py; every stratum sampled over F_3, F_5, F_7, F_11 in data/n2/defect-jordan-v1.json (python experiments/n2/defect_jordan.py --check)"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectClassGramAndDimQ": {
+      "id": "sha256:3f21c6fc50a81d110f451e5b696d1be7de6cd7fcf06040938547ac770871846b",
+      "kind": "pending_dependency",
+      "statement": "for N(x)N(y) != 0 the similarity class of Delta(x, y) depends only on the Gram matrix of (1, x, y) and on dim Q; dim Q matters only when N(xy - yx) = 0, where the Gram matrix does not determine it",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:bef89ea6a8c1d6c169334f9185d84483817c921d10280f9d04bd6a249e312cde",
+          "for N(x)N(y) != 0: (Delta - I)(Delta^2 - tau Delta + I) = 0; if tau = -2, Delta is semisimple iff xy + yx = 0 iff T(x) = T(y) = B(x, y) = 0, and otherwise the restriction of Delta + I to Q-perp has rank 2 and square 0 (so Delta + I and its square have ranks 6 and 4); if N(xy - yx) = 0 then (Delta - I)^3 = 0, with Delta = I for dim Q <= 2, rank(Delta - I) = 2 and (Delta - I)^2 = 0 for dim Q = 3, and rank(Delta - I)^2 = rank B|Q in {1, 2} for dim Q = 4",
+          "paper/associator-defects/main.tex Corollary 3.30",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:f0c2e2fe60e1c8eb6156dec699a4759ebbcb232e920cd9e0add79e824a5fdcc0",
+          "2 N(xy - yx) = det Gram_B(1, x, y); hence the characteristic polynomial of Delta(x, y) depends only on the Gram matrix of (1, x, y), and for tau != +-2 so does its similarity class",
+          "paper/associator-defects/main.tex Corollary 3.30 (tau is Gram data)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Corollary 3.30 (Gram matrix of (1, x, y, xy))",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Corollary 3.30; necessity of dim Q by the F_3 pair of Remark 3.25); awaiting independent review; Gram identities replayed in tests/test_defect_jordan.py; narrows the single-defect stratum of NC-X-01 to the one datum dim Q"
+        ]
+      ],
+      "tags": []
+    },
+    "WordDefectEquivariance": {
+      "id": "sha256:467ba4075363bb09a11b76b556d95cd930e509b18c0e93f2d1fc7915be5a7126",
+      "kind": "pending_dependency",
+      "statement": "for g in Aut(C), W(g a1, ..., g an) = g W(a1, ..., an) g^-1; Aut(C) fixes 1 and preserves B, phi(p, q, r) = B(pq, r) and psi(p, q, r, s) = B([p, q, r], s)",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Proposition 3.31",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Proposition 3.31); awaiting independent review; replayed for explicit automorphisms over F_3, F_5, F_7 in tests/test_word_g2.py"
+        ]
+      ],
+      "tags": []
+    },
+    "WordDefectG2Data": {
+      "id": "sha256:d04dbd3929fa5a57e45415c15d22d0b8eceefd9e3e5f15fc4da63b0830fe7bd3",
+      "kind": "bounded_experiment",
+      "statement": "for random words of length 4 over F_3, F_5, F_7 and of length 5 over F_3, all 979 sampled rotations of 1-perp that preserve every value of phi and psi on the pure parts of the letters preserve the characteristic polynomial of the word defect, while 344 of 396 rotations preserving phi only and 202 of 240 sampled rotations preserving psi only change it (corroborating paper Theorem 3.32)",
+      "scope": "split octonions C over F_ell, ell odd prime, convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "(ell, length, trials) in {(3, 4, 40000), (3, 5, 20000), (5, 4, 60000), (7, 4, 60000)}; letters of nonzero norm; rotations are products of 2 or 4 reflections in pure anisotropic vectors that move some letter"
+        ],
+        [
+          "replay",
+          "python experiments/n2/word_g2.py --check"
+        ],
+        [
+          "digest",
+          "sha256:2b16a866c0759bb6505f0429d115b1ee32159d51087abaff71966b1dbe9d2077"
+        ]
+      ],
+      "tags": []
+    },
+    "DefectClassicalAnisotropic": {
+      "id": "sha256:22d456d64efd8a88e9f3640049ac68343b5a04e9de0ade620cd4aefab3e114f7",
+      "kind": "pending_dependency",
+      "statement": "if N is anisotropic and N(x)N(y) != 0, then N(xy - yx) = 0 iff dim Q <= 2 iff Delta(x, y) = I, so the similarity class of Delta(x, y) depends only on the Gram matrix of (1, x, y)",
+      "scope": "octonion algebras with anisotropic norm over a field of characteristic not 2, in particular the definite octonions over Q of convention cayley-dickson/v1 with parameters (-1, -1, -1)",
+      "depends_on": [
+        [
+          "sha256:3f21c6fc50a81d110f451e5b696d1be7de6cd7fcf06040938547ac770871846b",
+          "for N(x)N(y) != 0 the similarity class of Delta(x, y) depends only on the Gram matrix of (1, x, y) and on dim Q; dim Q matters only when N(xy - yx) = 0, where the Gram matrix does not determine it",
+          "paper/associator-defects/main.tex Corollary 3.33",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:ae16277101d2dbad181d33c7dbab0dfe0b9c7456c40e7f9caf7b1078b79ee8f7",
+          "det Gram_B(1, x, y, xy) = N(xy - yx)^2 and det(Y I - L_x L_y L_conj(xy)) = (Y - nu)^4 (Y^2 - (2 nu - N(xy - yx)) Y + nu^2)^2 with nu = N(x)N(y), for all x, y",
+          "paper/associator-defects/main.tex Corollary 3.33 (Lemma 3.19)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:983f60da617a89d199300d4f26073ff4a1ed101c4ce7408c4bb90fcdce1e70e2",
+          "rank(Delta(x, y) - I) is 0, 2, 4 when dim Q is at most 2, 3, 4 respectively",
+          "paper/associator-defects/main.tex Corollary 3.33",
+          "same",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Corollary 3.33); awaiting independent review; replayed over Z^8 in tests/test_h3_integral.py; single defects on integral shells are classical before reduction"
+        ]
+      ],
+      "tags": []
+    },
+    "H3IntegralPilot": {
+      "id": "sha256:57b89958ee45d0561581cb0b0b349b4a3d6c9b945a3c09477f941bef2e626e09",
+      "kind": "bounded_experiment",
+      "statement": "for reduced length-4 words in m generators of the integral shell {x in Z^8 : N(x) = p} and their conjugates, with exact arithmetic, value-only collisions (equal values, different operators L_a1 ... L_a4) are absent in three of five configurations; in the other two (p = 3, 12 or 14 letters, 195 and 477 pairs) they share the characteristic polynomial of their word defect in 50 and 22 percent of pairs, against 6.8 and 6.2 percent over all pairs of words with different values and equal trace, and 2.7 and 2.1 percent over all pairs of words",
+      "scope": "definite octonions over Z, convention cayley-dickson/v1 with parameters (-1, -1, -1); characteristic polynomials compared modulo 2^61 - 1",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "(p, generators, seed) in {(3, 12, 1), (3, 12, 2), (3, 12, 3), (3, 14, 1), (5, 12, 1)}; all reduced words of length 4; nulls computed exactly over all pairs"
+        ],
+        [
+          "replay",
+          "python experiments/n2/h3_integral.py --check"
+        ],
+        [
+          "digest",
+          "sha256:678333e0a36cd7e8e62be6631eb64bc2273bbf24b0aab9579a36367af1960dea"
+        ]
+      ],
+      "tags": []
+    },
+    "H3ConditionedIntegral": {
+      "id": "sha256:6b8b264644a4bd3c1bb083bde50dc940885a69e1d74cb8066b6872c74b48f3a6",
+      "kind": "bounded_experiment",
+      "statement": "the exact integral H3 corpus enumerates 1,154,412 reduced words and certifies every one of 182,960 operator-quotiented value-only collision pairs; the four preselected shell samples have 98 quotient pairs and zero Gram-matched collisions, while exploratory norm-3 coordinate panels have 182,512 quotient pairs and panel-dependent descriptive phi/psi sharing against Gram/trace-matched different-value controls; all alias weights, zero-support panels and first/last representative sensitivity are reported, with no significance or theorem claim",
+      "scope": "cayley-dickson/v1 (-1,-1,-1) over the coordinate order Z^8; norm-3 and norm-5 shells, norm-one calibration and complex-line negative control; lengths 2, 4 and 5; integer values/operators, rational dim Q; separate prespecified and adaptive exploratory corpora",
+      "depends_on": [],
+      "evidence": [
+        [
+          "domain",
+          "four SHA-256 sampled configurations, matching length-two rows, one complex-line control and all five structured exploratory panels; exact contract in docs/experiments/h3-conditioned-shell.md"
+        ],
+        [
+          "replay",
+          "python experiments/n2/h3_conditioned.py --check && python experiments/n2/h3_conditioned.py --replay"
+        ],
+        [
+          "digest",
+          "sha256:f7430307945ae956db051283697e660e1fd6a893a2c55b397d85a225c9ef1c9e"
+        ],
+        [
+          "reason",
+          "H3 remains open; Theorem 3.32 (WordDefectG2Determined, pending review) makes phi and psi of the letters determine word-defect characteristic polynomials, so the descriptive form-sharing measured here is G2 bookkeeping of the letters; no characteristic polynomial conditions a statistic; exploratory panels were added after the preselected samples lacked Gram-matched support; every collision fibre is retained in data/n2/h3-conditioned-certificates-v1.json.gz and bound to the summary by a decompressed-content SHA-256"
+        ]
+      ],
+      "tags": []
+    },
+    "G2FirstFundamentalTheorem": {
+      "id": "sha256:ad72ec688d98ce693f31d60c40419965d1a2d735ff4eb1ee0839581176976803",
+      "kind": "imported_theorem",
+      "statement": "over an infinite field F of characteristic 0 or odd characteristic, F[O^n]^G2 is generated by the traces t(z_i) and, on the trace-zero parts x_i, by t(x_i x_j), t((x_i x_j) x_k) and the complete skew-symmetrization Q'(ijkl) of t(((x_i x_j) x_k) x_l); and every exterior power of O_0 is a tilting G2-module (char F != 2)",
+      "scope": "the split octonions (Zorn's vector-matrix algebra) and G2 = Aut over infinite fields of characteristic 0 or odd characteristic",
+      "depends_on": [],
+      "evidence": [
+        [
+          "source",
+          "A. N. Zubkov and I. P. Shestakov, Invariants of G2 and Spin(7) in positive characteristic, Transformation Groups, doi:10.1007/s00031-017-9435-8, arXiv:1512.06354v2: Prop. 3.2, Prop. 3.6, Cor. 7.11, Remark 7.12; characteristic 0: G. W. Schwarz, Invariant theory of G2 and Spin7, Comment. Math. Helv. 63 (1988) 624-663, as quoted by Zubkov and Shestakov (not read directly)"
+        ],
+        [
+          "hypotheses_checked",
+          "true"
+        ],
+        [
+          "hypotheses",
+          "applied over the algebraic closure of F_ell, ell odd, where cayley-dickson/v1 (-1,-1,-1) is isomorphic to Zorn's algebra; see docs/literature/g2-invariants-2026-10-05.md"
+        ]
+      ],
+      "tags": []
+    },
+    "WordDefectG2Determined": {
+      "id": "sha256:80139857efbf890836e1cc940270b5efc205a8acdde548513151ef2584a90210",
+      "kind": "pending_dependency",
+      "statement": "in characteristic 0 or odd characteristic, the characteristic polynomial of W(a1, ..., an) depends only on the Gram matrix of (1, a1, ..., an) and on the values of phi(p, q, r) = B(pq, r) on triples and psi(p, q, r, s) = B([p, q, r], s) on quadruples of the trace-zero parts of the letters",
+      "scope": "octonion algebras over a field of characteristic 0 or odd characteristic (split or not; the proof passes to the algebraic closure)",
+      "depends_on": [
+        [
+          "sha256:467ba4075363bb09a11b76b556d95cd930e509b18c0e93f2d1fc7915be5a7126",
+          "for g in Aut(C), W(g a1, ..., g an) = g W(a1, ..., an) g^-1; Aut(C) fixes 1 and preserves B, phi(p, q, r) = B(pq, r) and psi(p, q, r, s) = B([p, q, r], s)",
+          "paper/associator-defects/main.tex Theorem 3.32 (invariance of the coefficients)",
+          "same",
+          "accepted"
+        ],
+        [
+          "sha256:ad72ec688d98ce693f31d60c40419965d1a2d735ff4eb1ee0839581176976803",
+          "over an infinite field F of characteristic 0 or odd characteristic, F[O^n]^G2 is generated by the traces t(z_i) and, on the trace-zero parts x_i, by t(x_i x_j), t((x_i x_j) x_k) and the complete skew-symmetrization Q'(ijkl) of t(((x_i x_j) x_k) x_l); and every exterior power of O_0 is a tilting G2-module (char F != 2)",
+          "paper/associator-defects/main.tex Theorem 3.32 (generators; Q' is a nonzero multiple of psi by the tilting dimension count)",
+          "scope=infinite fields of characteristic 0 or odd characteristic; applied over the algebraic closure of F_ell",
+          "accepted"
+        ],
+        [
+          "sha256:4941b48b8bd7e041150c3a3bcfbe067a33a0c267137d869bc21dcaf596866638",
+          "C is alternative, N(ab) = N(a)N(b), conj(a) = T(a)1 - a, and a(conj(a) w) = conj(a)(a w) = N(a) w",
+          "paper/associator-defects/main.tex Theorem 3.32 (W = N(v)^-1 L_a1 ... L_an L_conj(v); t(pq) = -B(p, q))",
+          "scope=octonion algebras over a field of characteristic not 2",
+          "accepted"
+        ]
+      ],
+      "evidence": [
+        [
+          "reason",
+          "proof written in paper/associator-defects/main.tex (Theorem 3.32, formerly Conjecture 3.32); literature stop/go note docs/literature/g2-invariants-2026-10-05.md; awaiting independent review; corroborated by WordDefectG2Data (979 of 979 phi-and-psi-preserving rotations preserve the characteristic polynomial) and the psi normalization pinned in tests/test_word_g2.py"
+        ]
+      ],
+      "tags": []
+    }
+  },
+  "aliases": {
+    "ZeroDivisorCertificateSoundness": [
+      "N1-T01"
+    ]
+  },
+  "surfaces": {
+    "DefectFixesQuaternionSubalgebra": [
+      {
+        "path": "docs/theorems/defect-fixes-subalgebra.md",
+        "anchor": "**Status:**",
+        "window_lines": 0
+      },
+      {
+        "path": "docs/candidates/N2.md",
+        "anchor": "- `DefectFixesQuaternionSubalgebra`",
+        "window_lines": 0
+      }
+    ],
+    "ZeroDivisorCertificateSoundness": [
+      {
+        "path": "research/theorems.json",
+        "anchor": "\"id\": \"N1-T01\"",
+        "window_lines": 4
+      },
+      {
+        "path": "docs/theorems/bridge-theorems.md",
+        "anchor": "## N1-T01",
+        "window_lines": 2
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "novelty-lab/n1-certificate/v1",
+  "title": "N1 certificate v1 (checked by kernel/n1/certificate.py, which is authoritative)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "field", "convention", "parameters", "verdict", "witness"],
+  "$defs": {
+    "rational": {"type": "string", "pattern": "^-?(0|[1-9][0-9]*)(/[1-9][0-9]*)?$"},
+    "element": {"type": "array", "items": {"$ref": "#/$defs/rational"}, "minItems": 2, "maxItems": 256}
+  },
+  "properties": {
+    "schema": {"const": "novelty-lab/n1-certificate/v1"},
+    "field": {"const": "Q"},
+    "convention": {"const": "cayley-dickson/v1"},
+    "parameters": {"type": "array", "items": {"$ref": "#/$defs/rational"}, "minItems": 1, "maxItems": 8},
+    "verdict": {"enum": ["zero_divisor", "division"]},
+    "witness": {
+      "oneOf": [
+        {"type": "object", "additionalProperties": false, "required": ["x", "y"],
+         "properties": {"x": {"$ref": "#/$defs/element"}, "y": {"$ref": "#/$defs/element"}}},
+        {"type": "object", "additionalProperties": false, "required": ["place"],
+         "properties": {"place": {"type": "string", "pattern": "^(inf|[1-9][0-9]*)$"}}}
+      ]
+    }
+  }
+}

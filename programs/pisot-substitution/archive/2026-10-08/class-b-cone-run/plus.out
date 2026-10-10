@@ -1,0 +1,168 @@
+J+1: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+J+1: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[-3,][-1,]}{[4,][1,]}{[-1,]}
+J+1: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[-2,][2,]}{[5,][-3,]}{[-2,][1,]}
+J+1: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[-4,][2,]}{[8,][-3,]}{[-3,][1,]}
+J+1: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[6,][-2,]}{[-11,][3,]}{[4,][-1,]}
+J+1: s >= (6, 0), 121 vertices
+J+2: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+J+2: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[][-1,]}{[3,][1,]}{[-1,]}
+J+2: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[][2,]}{[4,][-3,]}{[-2,][1,]}
+J+2: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[-2,][2,]}{[7,][-3,]}{[-3,][1,]}
+J+2: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[-4,][2,]}{[10,][-3,]}{[-4,][1,]}
+J+2: s >= (6, 0), 77 vertices
+J+3: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+J+3: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[1,][-1,]}{[3,][1,]}{[-1,]}
+J+3: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[2,][2,]}{[3,][-3,]}{[-2,][1,]}
+J+3: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[3,][1,]}{[6,][-2,]}{[-3,][1,]}
+J+3: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[-2,][2,]}{[9,][-3,]}{[-4,][1,]}
+J+3: s >= (6, 0), 79 vertices
+J+4: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+J+4: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[2,][-1,]}{[3,][1,]}{[-1,]}
+J+4: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[4,][2,]}{[2,][-3,]}{[-2,][1,]}
+J+4: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[4,][1,]}{[8,][-2,]}{[-4,][1,]}
+J+4: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[4,][1,]}{[8,][-2,]}{[-4,][1,]}
+J+4: s >= (6, 0) undecided: a sign at beta is not decided on any bracket: {[-4,][2,]}{[14,][-3,]}{[-6,][1,]}
+J+4: s >= (8, 0), 76 vertices
+A+: s >= (0, 0) undecided: a sign at beta is not decided on any bracket: {[-16,-2,][-4,]}{[23,2,][6,]}{[-2,][-1,]}
+A+: s >= (1, 1) undecided: a sign at beta is not decided on any bracket: {[14,2,][4,]}{[-20,-2,][-6,]}{[1,][1,]}
+A+: s >= (2, 2), 74 vertices
+A+ s1=0: s >= (0, 0) undecided: a sign at beta is not decided on any bracket: {[10,2,]}{[-5,-3,]}{[0,1,]}
+A+ s1=0: s >= (0, 1) undecided: a sign at beta is not decided on any bracket: {[8,2,]}{[-2,-3,]}{[-1,1,]}
+A+ s1=0: s >= (0, 2), 74 vertices
+A+ s2=0: s >= (2, 0), 74 vertices
+A+ s1=1: s >= (0, 0) undecided: a sign at beta is not decided on any bracket: {[12,2,]}{[-6,-3,]}{[0,1,]}
+A+ s1=1: s >= (0, 1) undecided: a sign at beta is not decided on any bracket: {[10,2,]}{[-3,-3,]}{[-1,1,]}
+A+ s1=1: s >= (0, 2), 74 vertices
+A+ s2=1: s >= (2, 0), 74 vertices
+C+0: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][2,]
+C+0: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[-2,][-2,]}{[3,][2,]}{[-1,]}
+C+0: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[-4,][4,]}{[6,][-4,]}{[-2,][1,]}
+C+0: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[2,][-4,]}{[-3,][6,]}{[1,][-1,]}
+C+0: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[4,][-4,]}{[-6,][6,]}{[2,][-1,]}
+C+0: s >= (6, 0) undecided: a sign at beta is not decided on any bracket: {[-8,][4,]}{[12,][-6,]}{[-4,][1,]}
+C+0: s >= (8, 0), 76 vertices
+C+1: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+C+1: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[-1,]}{[3,][1,]}{[-1,]}
+C+1: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[-2,][4,]}{[5,][-4,]}{[-2,][1,]}
+C+1: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[2,][-4,]}{[-2,][6,]}{[1,][-1,]}
+C+1: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[4,][-4,]}{[-5,][6,]}{[2,][-1,]}
+C+1: s >= (6, 0), 84 vertices
+C+2: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+C+2: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {}{[3,][1,]}{[-1,]}
+C+2: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[][4,]}{[4,][-4,]}{[-2,][1,]}
+C+2: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[2,][-4,]}{[-1,][6,]}{[1,][-1,]}
+C+2: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[-4,][4,]}{[4,][-6,]}{[-2,][1,]}
+C+2: s >= (6, 0), 119 vertices
+C+3: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+C+3: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[1,]}{[3,][1,]}{[-1,]}
+C+3: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[4,][4,]}{[][-4,]}{[-1,][1,]}
+C+3: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[2,][4,]}{[3,][-4,]}{[-2,][1,]}
+C+3: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[-8,][2,]}{[12,][-3,]}{[-4,][1,]}
+C+3: s >= (6, 0), 123 vertices
+C+4: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+C+4: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[3,][1,]}{[-1,]}
+C+4: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[3,][1,]}{[-1,]}
+C+4: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[4,][4,]}{[2,][-4,]}{[-2,][1,]}
+C+4: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[-6,][-2,]}{[13,][3,]}{[-3,]}
+C+4: s >= (6, 0), 123 vertices
+C+5: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+C+5: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+5: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[3,]}{[3,][1,]}{[-1,]}
+C+5: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[6,][4,]}{[1,][-4,]}{[-2,][1,]}
+C+5: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[-6,][-2,]}{[14,][3,]}{[-3,]}
+C+5: s >= (6, 0) undecided: a sign at beta is not decided on any bracket: {[-3,][-2,]}{[17,][4,]}{[-4,]}
+C+5: s >= (8, 0), 149 vertices
+C+6: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+C+6: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+6: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[4,]}{[3,][1,]}{[-1,]}
+C+6: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[8,][4,]}{[][-4,]}{[-2,][1,]}
+C+6: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[-2,][-2,]}{[18,][4,]}{[-4,]}
+C+6: s >= (6, 0) undecided: a sign at beta is not decided on any bracket: {[-2,][-2,]}{[18,][4,]}{[-4,]}
+C+6: s >= (8, 0), 287 vertices
+C+7: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+C+7: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+7: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[5,]}{[3,][1,]}{[-1,]}
+C+7: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[5,]}{[3,][1,]}{[-1,]}
+C+7: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[4,][-2,]}{[22,][5,]}{[-5,]}
+C+7: s >= (6, 0) undecided: a sign at beta is not decided on any bracket: {[4,][-2,]}{[22,][5,]}{[-5,]}
+C+7: s >= (8, 0) undecided: a sign at beta is not decided on any bracket: {[4,][-2,]}{[22,][5,]}{[-5,]}
+C+7: s >= (12, 0), 297 vertices
+C+8: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+C+8: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+8: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+8: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[6,]}{[3,][1,]}{[-1,]}
+C+8: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[6,][-2,]}{[23,][5,]}{[-5,]}
+C+8: s >= (6, 0) undecided: a sign at beta is not decided on any bracket: {[2,][2,]}{[21,][-1,]}{[-7,][1,]}
+C+8: s >= (8, 0) undecided: a sign at beta is not decided on any bracket: {[-12,][2,]}{[-26,][-6,]}{[6,]}
+C+8: s >= (12, 0), 277 vertices
+C+9: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+C+9: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+9: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+9: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[7,]}{[3,][1,]}{[-1,]}
+C+9: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[4,]}{[30,][2,]}{[-7,][1,]}
+C+9: s >= (6, 0) undecided: a sign at beta is not decided on any bracket: {[11,][2,]}{[24,]}{[-8,][1,]}
+C+9: s >= (8, 0) undecided: a sign at beta is not decided on any bracket: {[][2,]}{[27,][-1,]}{[-9,][1,]}
+C+9: s >= (12, 0), 267 vertices
+C+10: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+C+10: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+10: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+10: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[8,]}{[3,][1,]}{[-1,]}
+C+10: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[4,]}{[34,][2,]}{[-8,][1,]}
+C+10: s >= (6, 0) undecided: a sign at beta is not decided on any bracket: {[12,][2,]}{[27,]}{[-9,][1,]}
+C+10: s >= (8, 0) undecided: a sign at beta is not decided on any bracket: {[2,][2,]}{[27,][-1,]}{[-9,][1,]}
+C+10: s >= (12, 0) undecided: a sign at beta is not decided on any bracket: {[-12,][-2,]}{[-42,][-1,]}{[14,][-1,]}
+C+10: s >= (16, 0), 254 vertices
+C+11: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+C+11: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+11: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+11: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+11: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[26,][2,]}{[-17,][-1,]}{[2,]}
+C+11: s >= (6, 0) undecided: a sign at beta is not decided on any bracket: {[4,]}{[38,][2,]}{[-9,][1,]}
+C+11: s >= (8, 0) undecided: a sign at beta is not decided on any bracket: {[13,][2,]}{[30,]}{[-10,][1,]}
+C+11: s >= (12, 0) undecided: a sign at beta is not decided on any bracket: {[-23,][-2,]}{[-48,][-2,]}{[16,][-1,]}
+C+11: s >= (16, 0), 238 vertices
+C+12: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+C+12: s >= (1, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+12: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+12: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+12: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[10,]}{[3,][1,]}{[-1,]}
+C+12: s >= (6, 0) undecided: a sign at beta is not decided on any bracket: {[4,]}{[42,][2,]}{[-10,][1,]}
+C+12: s >= (8, 0) undecided: a sign at beta is not decided on any bracket: {[14,][2,]}{[33,]}{[-11,][1,]}
+C+12: s >= (12, 0) undecided: a sign at beta is not decided on any bracket: {[-14,]}{[-63,][-4,]}{[17,][-1,]}
+C+12: s >= (16, 0) undecided: a sign at beta is not decided on any bracket: {[-12,][-2,]}{[-54,][-1,]}{[18,][-1,]}
+C+12: s >= (24, 0), 240 vertices
+C+13: s >= (0, 0) undecided: a sign is not certified on the region (0, 0): [][1,]
+C+13: s >= (1, 0) undecided: a sign is not certified on the region (1, 0): [1,][-1,]
+C+13: s >= (2, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+13: s >= (3, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+13: s >= (4, 0) undecided: a sign at beta is not decided on any bracket: {[2,]}{[5,][1,]}{[-1,]}
+C+13: s >= (6, 0) undecided: a sign at beta is not decided on any bracket: {[30,][2,]}{[-19,][-1,]}{[2,]}
+C+13: s >= (8, 0) undecided: a sign at beta is not decided on any bracket: {[4,]}{[46,][2,]}{[-11,][1,]}
+C+13: s >= (12, 0) undecided: a sign at beta is not decided on any bracket: {[][2,]}{[39,][-1,]}{[-13,][1,]}
+C+13: s >= (16, 0) undecided: a sign at beta is not decided on any bracket: {[-25,][-2,]}{[-60,][-2,]}{[20,][-1,]}
+C+13: s >= (24, 0), 228 vertices
+B+: s >= (0, 0) undecided: a sign at beta is not decided on any bracket: {[-62,-5,][-2,]}{[-102,-10,][-2,]}{[4,][-1,]}
+B+: s >= (1, 1) undecided: a sign at beta is not decided on any bracket: {[-62,-5,][-2,]}{[-102,-10,][-2,]}{[4,][-1,]}
+B+: s >= (2, 2) undecided: a sign at beta is not decided on any bracket: {[-48,-4,][-2,]}{[-84,-8,][-1,]}{[4,][-1,]}
+B+: s >= (3, 3) undecided: a sign at beta is not decided on any bracket: {[-46,-4,][-2,]}{[-87,-8,][-1,]}{[5,][-1,]}
+B+: s >= (4, 4), 226 vertices
+B+ s1=0: s >= (0, 0) undecided: a sign at beta is not decided on any bracket: {[-18,-4,]}{[119,14,]}{[-5,-1,]}
+B+ s1=0: s >= (0, 1) undecided: a sign at beta is not decided on any bracket: {[-82,-10,]}{[151,17,]}{[-5,-1,]}
+B+ s1=0: s >= (0, 2), 226 vertices
+B+ s2=0: s >= (4, 0), 226 vertices
+B+ s1=1: s >= (0, 0) undecided: a sign at beta is not decided on any bracket: {[-20,-4,]}{[124,14,]}{[-5,-1,]}
+B+ s1=1: s >= (0, 1) undecided: a sign at beta is not decided on any bracket: {[-86,-10,]}{[157,17,]}{[-5,-1,]}
+B+ s1=1: s >= (0, 2), 226 vertices
+B+ s2=1: s >= (4, 0), 226 vertices
+B+ s1=2: s >= (0, 0) undecided: a sign at beta is not decided on any bracket: {[-22,-4,]}{[129,14,]}{[-5,-1,]}
+B+ s1=2: s >= (0, 1) undecided: a sign at beta is not decided on any bracket: {[-90,-10,]}{[163,17,]}{[-5,-1,]}
+B+ s1=2: s >= (0, 2), 226 vertices
+B+ s2=2: s >= (4, 0), 226 vertices
+B+ s1=3: s >= (0, 0) undecided: a sign at beta is not decided on any bracket: {[-24,-4,]}{[134,14,]}{[-5,-1,]}
+B+ s1=3: s >= (0, 1) undecided: a sign at beta is not decided on any bracket: {[-94,-10,]}{[169,17,]}{[-5,-1,]}
+B+ s1=3: s >= (0, 2), 226 vertices
+B+ s2=3: s >= (4, 0), 226 vertices
+regions 32 finite 198 non-PIP 4 largest 297
+
+real	26m55.850s
+user	26m34.269s

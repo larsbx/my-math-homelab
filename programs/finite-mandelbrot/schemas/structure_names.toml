@@ -1,0 +1,476 @@
+# Names atlas of the Mandelbrot set: every common name keyed to exact data.
+#
+# Prose: docs/mandelbrot-structure-names-atlas.md. Checks:
+# reference/python/atlas/structure_names_reference.py and
+# tests/test_structure_names_atlas.py. Every exact field below is recomputed;
+# nothing here is a floating-point position.
+#
+# name_status: field (standard in the literature) | eponym (after a person)
+#              | folk (popular or colloquial; the source says where from)
+# Angles are rationals in [0, 1) under doubling; polynomials are integer
+# coefficient lists in c, constant term first; intervals are rational.
+
+schema_version = 1
+
+# --- classes: names for kinds of structure ---------------------------------
+
+[[entry]]
+id = "hyperbolic-component"
+kind = "class"
+names = ["hyperbolic component", "mu-atom", "atom"]
+name_status = "field"
+source = "Douady-Hubbard, Orsay notes (1984-85); mu-atom: Munafo, Mu-Ency"
+
+[[entry]]
+id = "satellite-component"
+kind = "class"
+names = ["satellite component", "bulb"]
+name_status = "field"
+source = "Milnor, Periodic orbits, external rays and the Mandelbrot set (2000)"
+
+[[entry]]
+id = "primitive-component"
+kind = "class"
+names = ["primitive component", "cardioid"]
+name_status = "field"
+source = "Milnor (2000)"
+
+[[entry]]
+id = "root"
+kind = "class"
+names = ["root", "root parameter", "parabolic parameter"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85); Milnor (2000)"
+
+[[entry]]
+id = "cusp"
+kind = "class"
+names = ["cusp"]
+name_status = "field"
+source = "Milnor (2000)"
+
+[[entry]]
+id = "center"
+kind = "class"
+names = ["center", "centre", "nucleus", "superattracting parameter"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85); nucleus: Munafo, Mu-Ency"
+
+[[entry]]
+id = "limb"
+kind = "class"
+names = ["limb", "p/q-limb"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85); Milnor (2000)"
+
+[[entry]]
+id = "wake"
+kind = "class"
+names = ["wake", "p/q-wake"]
+name_status = "field"
+source = "Milnor (2000); Schleicher, On fibers and local connectivity (2004)"
+
+[[entry]]
+id = "parameter-ray"
+kind = "class"
+names = ["parameter ray", "external ray"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85)"
+
+[[entry]]
+id = "equipotential"
+kind = "class"
+names = ["equipotential", "level curve of the Green function", "escape-time band"]
+name_status = "field"
+source = "Douady-Hubbard (1982); escape-time band: Peitgen-Richter, The Beauty of Fractals (1986)"
+
+[[entry]]
+id = "misiurewicz-parameter"
+kind = "class"
+names = ["Misiurewicz parameter", "Misiurewicz point"]
+name_status = "eponym"
+source = "Misiurewicz (1981); Douady-Hubbard (1984-85)"
+
+[[entry]]
+id = "branch-point"
+kind = "class"
+names = ["branch point", "junction"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85); Schleicher (2004)"
+
+[[entry]]
+id = "filament"
+kind = "class"
+names = ["filament", "antenna", "hair", "spoke"]
+name_status = "folk"
+source = "Peitgen-Richter (1986); Munafo, Mu-Ency"
+
+[[entry]]
+id = "main-antenna"
+kind = "class"
+names = ["main antenna", "spike", "needle"]
+name_status = "folk"
+source = "Munafo, Mu-Ency; Peitgen-Richter (1986)"
+
+[[entry]]
+id = "baby-mandelbrot-set"
+kind = "class"
+names = ["baby Mandelbrot set", "small copy", "minibrot", "midget", "island", "Mandelbrot island"]
+name_status = "field"
+source = "Douady-Hubbard, tuning (1985); midget, island: Munafo, Mu-Ency; minibrot: folk"
+
+[[entry]]
+id = "julia-island"
+kind = "class"
+names = ["Julia island", "embedded Julia set"]
+name_status = "folk"
+source = "Munafo, Mu-Ency; asymptotic similarity: Tan Lei (1990)"
+
+[[entry]]
+id = "valley"
+kind = "class"
+names = ["valley"]
+name_status = "folk"
+source = "Peitgen-Richter (1986); Munafo, Mu-Ency"
+
+[[entry]]
+id = "feigenbaum-point"
+kind = "class"
+names = ["Feigenbaum point", "Myrberg-Feigenbaum point", "Feigenbaum parameter"]
+name_status = "eponym"
+source = "Myrberg (1958-63); Feigenbaum (1978)"
+
+# --- hyperbolic components ------------------------------------------------
+
+[[entry]]
+id = "main-cardioid"
+kind = "hyperbolic-component"
+names = ["main cardioid", "period-1 component"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85)"
+period = 1
+root_angles = ["0/1"]
+internal_address = [1]
+root_parameter = "1/4"
+center_polynomial = [0, 1]
+center_interval = ["-1/2", "1/2"]
+
+[[entry]]
+id = "bulb-1/2"
+kind = "hyperbolic-component"
+names = ["period-2 bulb", "1/2-bulb"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85); R2.1/2a in Munafo, Mu-Ency"
+period = 2
+parent = "main-cardioid"
+rotation = "1/2"
+root_angles = ["1/3", "2/3"]
+internal_address = [1, 2]
+root_parameter = "-3/4"
+center_polynomial = [1, 1]
+center_interval = ["-3/2", "-1/2"]
+
+[[entry]]
+id = "bulb-1/3"
+kind = "hyperbolic-component"
+names = ["1/3-bulb", "rabbit bulb"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85)"
+period = 3
+parent = "main-cardioid"
+rotation = "1/3"
+root_angles = ["1/7", "2/7"]
+internal_address = [1, 3]
+center_polynomial = [1, 1, 2, 1]
+
+[[entry]]
+id = "bulb-2/3"
+kind = "hyperbolic-component"
+names = ["2/3-bulb", "co-rabbit bulb"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85)"
+conjugate_of = "bulb-1/3"
+period = 3
+parent = "main-cardioid"
+rotation = "2/3"
+root_angles = ["5/7", "6/7"]
+internal_address = [1, 3]
+center_polynomial = [1, 1, 2, 1]
+
+[[entry]]
+id = "bulb-1/4"
+kind = "hyperbolic-component"
+names = ["1/4-bulb"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85)"
+period = 4
+parent = "main-cardioid"
+rotation = "1/4"
+root_angles = ["1/15", "2/15"]
+internal_address = [1, 4]
+center_polynomial = [1, 0, 2, 3, 3, 3, 1]
+
+[[entry]]
+id = "bulb-1/2.1/2"
+kind = "hyperbolic-component"
+names = ["period-4 bulb of the period-2 bulb", "1/2-bulb of the 1/2-bulb"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85); R2.1/2.1/2a in Munafo, Mu-Ency"
+period = 4
+parent = "bulb-1/2"
+rotation = "1/2"
+root_angles = ["2/5", "3/5"]
+internal_address = [1, 2, 4]
+root_parameter = "-5/4"
+center_polynomial = [1, 0, 2, 3, 3, 3, 1]
+center_interval = ["-1.3108", "-1.3106"]
+
+[[entry]]
+id = "airplane-component"
+kind = "hyperbolic-component"
+names = ["period-3 window", "airplane component", "largest real island"]
+name_status = "field"
+source = "Myrberg (1963); Douady-Hubbard (1984-85)"
+period = 3
+root_angles = ["3/7", "4/7"]
+internal_address = [1, 2, 3]
+root_parameter = "-7/4"
+center_polynomial = [1, 1, 2, 1]
+center_interval = ["-1.7549", "-1.7548"]
+
+[[entry]]
+id = "kokopelli-component"
+kind = "hyperbolic-component"
+names = ["Kokopelli component"]
+name_status = "folk"
+source = "folk; attribution of the name unverified"
+period = 4
+root_angles = ["1/5", "4/15"]
+internal_address = [1, 3, 4]
+center_polynomial = [1, 0, 2, 3, 3, 3, 1]
+
+# --- cascade ----------------------------------------------------------------
+
+[[entry]]
+id = "feigenbaum-cascade"
+kind = "cascade"
+names = ["period-doubling cascade", "Feigenbaum cascade"]
+name_status = "eponym"
+source = "Myrberg (1958-63); Feigenbaum (1978); Douady-Hubbard tuning (1985)"
+generator = "bulb-1/2"
+levels = [["1/3", "2/3"], ["2/5", "3/5"], ["7/17", "10/17"], ["106/257", "151/257"]]
+
+# --- Misiurewicz parameters ------------------------------------------------
+
+[[entry]]
+id = "tip"
+kind = "misiurewicz-parameter"
+names = ["tip", "antenna tip", "c = -2"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85)"
+angles = ["1/2"]
+angle_type = [1, 1]
+parameter = ["-2", "0"]
+critical_orbit_type = [1, 1]
+landing_cycle = ["0/1"]
+limb = "1/2"
+
+[[entry]]
+id = "c-i"
+kind = "misiurewicz-parameter"
+names = ["c = i"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85); Carleson-Gamelin, Complex Dynamics (1993)"
+angles = ["1/6"]
+angle_type = [1, 2]
+parameter = ["0", "1"]
+critical_orbit_type = [1, 2]
+landing_cycle = ["1/3", "2/3"]
+limb = "1/3"
+
+[[entry]]
+id = "c-minus-i"
+kind = "misiurewicz-parameter"
+names = ["c = -i"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85)"
+conjugate_of = "c-i"
+angles = ["5/6"]
+angle_type = [1, 2]
+parameter = ["0", "-1"]
+critical_orbit_type = [1, 2]
+landing_cycle = ["1/3", "2/3"]
+limb = "2/3"
+
+[[entry]]
+id = "principal-misiurewicz-1/3"
+kind = "misiurewicz-parameter"
+names = ["principal Misiurewicz point of the 1/3-limb", "M_{3,1}"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85); Schleicher (2004)"
+angles = ["9/56", "11/56", "15/56"]
+angle_type = [3, 3]
+landing_cycle = ["1/7", "2/7", "4/7"]
+limb = "1/3"
+
+# --- boundary parameter ------------------------------------------------------
+
+[[entry]]
+id = "golden-mean-siegel"
+kind = "boundary-parameter"
+names = ["golden-mean Siegel parameter"]
+name_status = "eponym"
+source = "Siegel (1942); Douady, Disques de Siegel et anneaux de Herman (1987)"
+parent = "main-cardioid"
+convergents = ["1/1", "1/2", "2/3", "3/5", "5/8", "8/13"]
+
+# --- folk regions (valleys) ------------------------------------------------
+
+[[entry]]
+id = "seahorse-valley"
+kind = "region"
+names = ["Seahorse Valley"]
+name_status = "folk"
+source = "Peitgen-Richter (Scientific American, 1985); Munafo, Mu-Ency"
+between = ["main-cardioid", "bulb-1/2"]
+accumulation = { parent = "main-cardioid", rotation = "1/2" }
+
+[[entry]]
+id = "double-spiral-valley"
+kind = "region"
+names = ["Double Spiral Valley"]
+name_status = "folk"
+source = "Munafo, Mu-Ency"
+tuning_of = { image_of = "elephant-valley", by = "bulb-1/2" }
+between = ["main-cardioid", "bulb-1/2"]
+accumulation = { parent = "bulb-1/2", rotation = "0/1" }
+
+[[entry]]
+id = "elephant-valley"
+kind = "region"
+names = ["Elephant Valley"]
+name_status = "folk"
+source = "Peitgen-Richter (1986); Munafo, Mu-Ency"
+between = ["main-cardioid"]
+accumulation = { parent = "main-cardioid", rotation = "0/1" }
+
+[[entry]]
+id = "triple-spiral-valley"
+kind = "region"
+names = ["Triple Spiral Valley"]
+name_status = "folk"
+source = "Munafo, Mu-Ency (1997)"
+between = ["main-cardioid", "bulb-1/3"]
+accumulation = { parent = "main-cardioid", rotation = "1/3" }
+
+[[entry]]
+id = "quad-spiral-valley"
+kind = "region"
+names = ["Quad Spiral Valley"]
+name_status = "folk"
+source = "Munafo, Mu-Ency (1997)"
+between = ["main-cardioid", "bulb-1/4"]
+accumulation = { parent = "main-cardioid", rotation = "1/4" }
+
+[[entry]]
+id = "scepter-valley"
+kind = "region"
+names = ["Scepter Valley", "Seahorse Valley West"]
+name_status = "folk"
+source = "Munafo, Mu-Ency"
+tuning_of = { image_of = "seahorse-valley", by = "bulb-1/2" }
+between = ["bulb-1/2", "bulb-1/2.1/2"]
+accumulation = { parent = "bulb-1/2", rotation = "1/2" }
+
+# --- Julia sets named after their parameter --------------------------------
+
+[[entry]]
+id = "cauliflower"
+kind = "julia-set"
+names = ["cauliflower"]
+name_status = "folk"
+source = "Douady (1994); Milnor (2006)"
+parameter_of = "main-cardioid"
+at = "root"
+
+[[entry]]
+id = "basilica"
+kind = "julia-set"
+names = ["basilica"]
+name_status = "folk"
+source = "Douady-Hubbard (1984-85); Grigorchuk-Zuk, basilica group (2002)"
+parameter_of = "bulb-1/2"
+at = "center"
+
+[[entry]]
+id = "san-marco"
+kind = "julia-set"
+names = ["San Marco fractal", "San Marco dragon"]
+name_status = "folk"
+source = "Mandelbrot, The Fractal Geometry of Nature (1982)"
+parameter_of = "bulb-1/2"
+at = "root"
+
+[[entry]]
+id = "douady-rabbit"
+kind = "julia-set"
+names = ["Douady rabbit", "rabbit"]
+name_status = "eponym"
+source = "Douady-Hubbard (1984-85)"
+parameter_of = "bulb-1/3"
+at = "center"
+
+[[entry]]
+id = "co-rabbit"
+kind = "julia-set"
+names = ["co-rabbit", "anti-rabbit"]
+name_status = "folk"
+source = "Douady-Hubbard (1984-85); Bartholdi-Nekrashevych, twisted rabbit (2006)"
+conjugate_of = "douady-rabbit"
+parameter_of = "bulb-2/3"
+at = "center"
+
+[[entry]]
+id = "airplane"
+kind = "julia-set"
+names = ["airplane"]
+name_status = "folk"
+source = "Douady-Hubbard (1984-85)"
+parameter_of = "airplane-component"
+at = "center"
+
+[[entry]]
+id = "kokopelli"
+kind = "julia-set"
+names = ["Kokopelli"]
+name_status = "folk"
+source = "folk; attribution of the name unverified"
+parameter_of = "kokopelli-component"
+at = "center"
+
+[[entry]]
+id = "dendrite"
+kind = "julia-set"
+names = ["dendrite"]
+name_status = "field"
+source = "Douady-Hubbard (1984-85); Carleson-Gamelin (1993)"
+parameter_of = "c-i"
+at = "parameter"
+
+[[entry]]
+id = "chebyshev-segment"
+kind = "julia-set"
+names = ["segment Julia set", "Chebyshev Julia set"]
+name_status = "eponym"
+source = "Carleson-Gamelin (1993)"
+parameter_of = "tip"
+at = "parameter"
+
+[[entry]]
+id = "siegel-disk"
+kind = "julia-set"
+names = ["golden-mean Siegel disk"]
+name_status = "eponym"
+source = "Siegel (1942); Petersen, local connectivity of Siegel Julia sets (1996)"
+parameter_of = "golden-mean-siegel"
+at = "parameter"

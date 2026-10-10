@@ -1,0 +1,10 @@
+version = 1
+
+[program]
+id = "langlands"
+
+[source]
+repository = "larsbx/langlands-lab"
+commit = "72d663ef072fb85da723990e4288ee4457117cb6"
+authority = "retained"
+import_status = "verified"

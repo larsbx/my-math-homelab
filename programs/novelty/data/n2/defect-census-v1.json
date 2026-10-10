@@ -1,0 +1,266 @@
+{
+ "claim_status": "bounded experiment; finite evidence, not a theorem",
+ "model": "cayley-dickson/v1 (-1,-1,-1) mod ell",
+ "rank_law": {
+  "1": 0,
+  "2": 0,
+  "3": 2,
+  "4": 4
+ },
+ "rows": [
+  {
+   "ell": 3,
+   "pairs": 481,
+   "strata": [
+    {
+     "count": 82,
+     "dim_Q": 2,
+     "rank_moved": 0,
+     "trace": 2
+    },
+    {
+     "count": 4,
+     "dim_Q": 3,
+     "rank_moved": 2,
+     "trace": 2
+    },
+    {
+     "count": 146,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 0
+    },
+    {
+     "count": 103,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 1
+    },
+    {
+     "count": 146,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 2
+    }
+   ],
+   "violations": {
+    "det_one": 0,
+    "fixes_Q": 0,
+    "fixes_xy": 0,
+    "inverse": 0,
+    "isometry": 0,
+    "kernel": 0,
+    "rank_law": 0
+   }
+  },
+  {
+   "ell": 5,
+   "pairs": 480,
+   "strata": [
+    {
+     "count": 80,
+     "dim_Q": 2,
+     "rank_moved": 0,
+     "trace": 3
+    },
+    {
+     "count": 2,
+     "dim_Q": 3,
+     "rank_moved": 2,
+     "trace": 3
+    },
+    {
+     "count": 96,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 0
+    },
+    {
+     "count": 61,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 1
+    },
+    {
+     "count": 68,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 2
+    },
+    {
+     "count": 89,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 3
+    },
+    {
+     "count": 84,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 4
+    }
+   ],
+   "violations": {
+    "det_one": 0,
+    "fixes_Q": 0,
+    "fixes_xy": 0,
+    "inverse": 0,
+    "isometry": 0,
+    "kernel": 0,
+    "rank_law": 0
+   }
+  },
+  {
+   "ell": 7,
+   "pairs": 484,
+   "strata": [
+    {
+     "count": 84,
+     "dim_Q": 2,
+     "rank_moved": 0,
+     "trace": 1
+    },
+    {
+     "count": 70,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 0
+    },
+    {
+     "count": 64,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 1
+    },
+    {
+     "count": 77,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 2
+    },
+    {
+     "count": 47,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 3
+    },
+    {
+     "count": 34,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 4
+    },
+    {
+     "count": 47,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 5
+    },
+    {
+     "count": 61,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 6
+    }
+   ],
+   "violations": {
+    "det_one": 0,
+    "fixes_Q": 0,
+    "fixes_xy": 0,
+    "inverse": 0,
+    "isometry": 0,
+    "kernel": 0,
+    "rank_law": 0
+   }
+  },
+  {
+   "ell": 11,
+   "pairs": 487,
+   "strata": [
+    {
+     "count": 87,
+     "dim_Q": 2,
+     "rank_moved": 0,
+     "trace": 8
+    },
+    {
+     "count": 41,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 0
+    },
+    {
+     "count": 48,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 1
+    },
+    {
+     "count": 39,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 2
+    },
+    {
+     "count": 34,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 3
+    },
+    {
+     "count": 35,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 4
+    },
+    {
+     "count": 27,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 5
+    },
+    {
+     "count": 26,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 6
+    },
+    {
+     "count": 37,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 7
+    },
+    {
+     "count": 40,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 8
+    },
+    {
+     "count": 31,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 9
+    },
+    {
+     "count": 42,
+     "dim_Q": 4,
+     "rank_moved": 4,
+     "trace": 10
+    }
+   ],
+   "violations": {
+    "det_one": 0,
+    "fixes_Q": 0,
+    "fixes_xy": 0,
+    "inverse": 0,
+    "isometry": 0,
+    "kernel": 0,
+    "rank_law": 0
+   }
+  }
+ ],
+ "schema": "novelty-lab/n2-defect-census/v1",
+ "seed": 20261001
+}

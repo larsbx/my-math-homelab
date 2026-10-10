@@ -1,0 +1,1252 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{problem}[theorem]{Open Problem}
+\newtheorem{importedtheorem}[theorem]{Imported Theorem}
+\newtheorem{computation}[theorem]{Computational Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{convention}[theorem]{Convention}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Empirical Observation}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\NP}{\mathrm{NP}}
+\newcommand{\Disc}{\operatorname{Disc}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\spec}{\operatorname{spec}}
+\newcommand{\Sync}{\operatorname{Sync}}
+\newcommand{\red}{\operatorname{red}}
+\newcommand{\area}{\operatorname{area}}
+\newcommand{\Lie}{\operatorname{Lie}}
+\newcommand{\PDS}{pure discrete spectrum}
+\newcommand{\Status}[1]{\textup{[\textit{#1}]}}
+\newcommand{\shuffle}{\mathbin{\sqcup\mkern-7mu\sqcup}}
+
+\title[Balanced pairs and the Pisot substitution conjecture]{The balanced-pair route to the Pisot substitution conjecture:\\ finite obstructions, two open gates, and the current frontier}
+\author{Lars Bendixen}
+\thanks{Draft of 13 September 2026, revised the same day in response to an external referee report. Affiliation and correspondence address to be supplied.}
+\date{13 September 2026; revised 7 October 2026}
+
+\begin{document}
+
+\begin{abstract}
+We give a self-contained account of the balanced-pair approach to the Pisot substitution conjecture for primitive substitutions with irreducible characteristic polynomial and Pisot dilation, without any unimodularity assumption. The approach reduces \PDS{} of the associated tiling flow to two statements about the balanced-pair automaton $\B_\sigma$: finiteness of $\B_\sigma$ (G1) and productivity of every recurrent noncoincident strongly connected component (SCC Producer). We prove the reduction and then analyse both statements. On the finiteness side we show that unique decodability of the image code follows from $\det M_\sigma\neq 0$ alone, we record why it does not imply finiteness, we prove that the discrepancy of every reachable state is bounded by an explicit constant depending only on $\sigma$ (bounded discrepancy, G1b-1), so that finiteness is equivalent to a renewal-finiteness statement (G1b-2) that is open; we prove a uniform finiteness theorem for multi-level cut ancestries under the Pisot hypothesis and identify, by explicit examples, which finite invariants of return words cannot be injective. On the coincidence side we prove a sink-SCC reduction, an exact intertwining $P_\cC N_\cC=M_\sigma P_\cC$ forcing $\rho(N_\cC)=\beta$ and $|\cC|\ge|\A|$ for any finite closed nonproductive component, an unconditional endpoint-synchronization eliminator, a Barge--Diamond eliminator for three letters, a $\Z/2$ orientation cocycle with signed first-defect intertwiners $Q_rS=\Phi_rQ_r$, and spectral sieves on the first nonzero scattered-subword defect. We prove that the seed-patch overlap graph of every swap pair is finite unconditionally, and that productivity of all its vertices is equivalent to coincidence density one and implies productivity of every state of $\B_\sigma$ without any finiteness hypothesis, and also finiteness of $\B_\sigma$ (G1), which places the coincidence problem on a finite graph independently of G1; combined with a theorem of Barge, \v{S}timac and Williams on densely eventually coincident patches this gives a main theorem with no finiteness hypothesis: productivity of the overlaps reachable from one swap seed implies pure discrete spectrum. The endpoint-aligned overlaps are exactly the strong coincidence condition of Arnoux and Ito, so the overlap problem contains it, and under strong coincidence the problem reduces to a hitting problem for prefix Parikh vectors: an overlap is productive if and only if some inflation of its offset is a difference of prefix Parikh vectors of the two inflated tiles. We prove a wedge dichotomy for closed nonproductive components which shows that the ``concentration'' step of the spectral route is equivalent to the statement that no such component has vanishing degree-two defect, and that the remaining step of that route is equivalent to the statement that no such component has nonvanishing degree-two defect; both statements remain open, and together they are the coincidence problem itself. We prove the strong coincidence condition for every pair of letters on the infinite non-unimodular class of catch-up-free ternary PIP substitutions with $|\det M_\sigma|=2$, except possibly on one explicit family, large parts of which we also close by computer-assisted certificates that cover infinite parameter families. Exhaustive exact computations on all $4{,}554$ primitive irreducible Pisot substitutions on three letters with image lengths at most three are reported as finite evidence with their exact hypotheses. The Pisot substitution conjecture remains open; G1 and G1b-2 remain open; no finite computation reported here is a finiteness theorem.
+\end{abstract}
+
+\maketitle
+\tableofcontents
+
+\section{Introduction}\label{sec:intro}
+
+\subsection{The conjecture}
+Let $\sigma$ be a primitive substitution on a finite alphabet $\A$ with $|\A|=d\ge 2$, with incidence matrix $M_\sigma$. Suppose the characteristic polynomial $\chi_{M_\sigma}$ is irreducible over $\Q$ and its Perron--Frobenius eigenvalue $\beta>1$ is a Pisot number. The \emph{Pisot substitution conjecture} asserts that the substitution tiling flow $(\Omega_\sigma,\R)$, with tile lengths given by a left Perron eigenvector, has \PDS; equivalently (for irreducible Pisot substitutions) that the subshift $(X_\sigma,S)$ has \PDS{}. We refer to the survey of Akiyama, Barge, Berth\'e, Lee and Siegel~\cite{ABBLS} for the history, the equivalent formulations, and the state of the conjecture up to 2015.
+
+The conjecture originates in Rauzy's construction of the Rauzy fractal~\cite{Rauzy} and the work of Arnoux and Ito~\cite{AI} on strong coincidence. For two letters it is a theorem: Barge and Diamond~\cite{BD} proved the strong coincidence condition, and Hollander and Solomyak~\cite{HS} derived \PDS{}, with Sirvent and Solomyak~\cite{SS} relating the balanced-pair and overlap algorithms for the symbolic and the tiling actions. For larger alphabets the conjecture is known for several families: $\beta$-substitutions~\cite{Barge2018}, families treated by Ito--Rao~\cite{IR}, Barge--Kwapisz~\cite{BK}, Akiyama--Lee~\cite{AL}, and Mercat--Akiyama~\cite{MA}; large computer searches~\cite{BalchinRust} have found no counterexample. A claimed general proof by Nakaishi~\cite{Nakaishi2024} has not, to our knowledge, appeared in refereed form, and an earlier preprint by the same author was withdrawn~\cite{Nakaishi2016}; we do not rely on either. Non-unimodular (``non-unit'') Pisot substitutions require an internal space with a non-Archimedean factor~\cite{MT,BBK}; nothing below assumes $|\det M_\sigma|=1$.
+
+\subsection{Balanced pairs}
+The balanced-pair algorithm goes back to Livshits~\cite{Livshits} and was developed for Pisot substitutions by Sirvent and Solomyak~\cite{SS}; see also Martensen~\cite{Martensen} and~\cite[\S5]{ABBLS}. Starting from a pair of words with equal abelianization, one applies $\sigma$ and cuts the inflated pair at every position where the two prefix abelianizations agree, producing a finite set of irreducible balanced pairs; the algorithm \emph{terminates with coincidence} if the process generates only finitely many irreducible pairs and eventually produces a coincidence. For irreducible Pisot substitutions, termination with coincidence is equivalent to \PDS{}~\cite[Thm.~5.3]{ABBLS}, and Barge, \v{S}timac and Williams~\cite{BSW} give a form of the bridge that we use verbatim (Imported Theorem~\ref{thm:bridge}).
+
+The balanced-pair formulation splits the conjecture into a \emph{finiteness} statement and a \emph{coincidence} statement about a directed graph, the balanced-pair automaton $\B_\sigma$ (Definition~\ref{def:bpa}). This paper is an account of what is known about each half within a specific research program, with every statement labelled by its logical status.
+
+\subsection{Status vocabulary}\label{sec:vocab}
+Every numbered statement below carries one of the following tags.
+\begin{itemize}[leftmargin=*]
+\item \Status{Theorem}: proved in this paper under the stated hypotheses.
+\item \Status{Imported}: a published theorem, cited with the exact statement used.
+\item \Status{Conditional}: proved here from named hypotheses that are themselves open.
+\item \Status{Finite computation}: an exact finite calculation with stated search domain and certificate meaning; it proves nothing beyond its domain.
+\item \Status{Empirical}: a pattern observed in finite computations, not a proposition.
+\item \Status{Conjectural bridge}: a reformulation or implication that is proposed, with the missing step identified.
+\item \Status{Open}: a precisely stated statement that is neither proved nor refuted.
+\end{itemize}
+We are deliberately conservative about novelty. Several of the structural results below (unique decodability from the defect theorem, the Parikh intertwining, the sink-SCC reduction) are elementary once formulated, and closely related ideas appear in the literature on return words~\cite{Durand}, on overlap coincidence~\cite{Solomyak97,AL}, and on the balanced-pair algorithm~\cite{SS,ABBLS}; we claim only the specific formulations and proofs given here.
+
+\subsection{Explicit status of the two headline questions}\label{sec:headline-status}
+\begin{itemize}[leftmargin=*]
+\item \textbf{The Pisot substitution conjecture is open.} Theorem~\ref{thm:main-conditional} proves \PDS{} under the two hypotheses G1 (finiteness of $\B_\sigma$) and SCC Producer, and Theorem~\ref{thm:main-density} under the single hypothesis that every overlap reachable from one swap seed is productive (Open Problem~\ref{prob:overlap-productivity}), with no finiteness assumption. None of these hypotheses is proved for general $|\A|\ge 3$, and nothing in this paper reduces any of them to a proved statement.
+\item \textbf{G1b-2 (renewal finiteness, Open Problem~\ref{prob:G1b2}) is open.} Bounded discrepancy (Theorem~\ref{thm:G1b1}) is proved, and with it G1b-2 is \emph{equivalent} to G1 (Proposition~\ref{lem:G1-assembly}); it is the exact remaining obligation on the finiteness side. No bounded-norm argument can close it (Section~\ref{sec:retired-level2}); the exact computations of Section~\ref{sec:finite-level2} show why, and prove nothing about it.
+\item \textbf{The route to \PDS{} no longer needs G1 (Theorem~\ref{thm:main-density}).} The seed-patch overlap graph is finite for every PIP $\sigma$ (Theorem~\ref{thm:overlap-finite}); productivity of the overlaps reachable from one seed is equivalent to coincidence density one and to density of the good set (Lemma~\ref{lem:three-forms}), and by a theorem of Barge, \v{S}timac and Williams (Imported Theorem~\ref{thm:bsw}) it implies \PDS{} outright. The single remaining obligation on this route is Open Problem~\ref{prob:overlap-productivity}, which is open and contains the strong coincidence condition as its endpoint-aligned case (Proposition~\ref{prop:aligned-overlaps}); G1 itself remains open and is not settled by this, but its all-vertex form implies G1 (Proposition~\ref{prop:G1-from-overlaps}).
+\item \textbf{The strongest spectral route to SCC Producer contains no proved implication from wedge data to productivity.} We show (Proposition~\ref{prop:wedge-dichotomy}) that its ``concentration'' step is equivalent to excluding closed nonproductive components with $K_2\equiv0$ (Open Problem~\ref{prob:concentration}), and that its final step is equivalent to excluding those with $K_2\not\equiv0$ (Open Problem~\ref{prob:wedge-productivity}). Neither is proved; the higher-degree sieves of Section~\ref{sec:orientation} constrain the first case but do not close it.
+\item \textbf{Strong coincidence holds on an infinite non-unimodular class, with one family partly open.} Every PIP catch-up-free substitution on three letters with $|\det M|=2$ satisfies the strong coincidence condition for every pair of letters, except possibly on the explicit family $\mathcal F$ of Theorem~\ref{thm:K}, inside which Theorem~\ref{thm:K-cells} closes whole cells for words of every length (Section~\ref{sec:catchup-free}). These results are recent, partly computer-assisted, and unreviewed beyond their authors. Strong coincidence is necessary, not sufficient, for \PDS{}; nothing here bears on G1, on the strict-zipper case, or on \PDS{} for this class.
+\end{itemize}
+
+\subsection{Organisation}
+Section~\ref{sec:prelim} fixes hypotheses, proves unique decodability and aperiodicity, and defines the automaton and the bridge. Section~\ref{sec:principal} states the principal results. Sections~\ref{sec:level2} and~\ref{sec:level3} treat finiteness and coincidence respectively. Section~\ref{sec:finite} states the exact finite computations. Section~\ref{sec:obstructions} records counterexamples and retired routes. Section~\ref{sec:open} lists the unresolved statements precisely, and Section~\ref{sec:discussion} discusses what would close them.
+
+\section{Standing hypotheses and preliminaries}\label{sec:prelim}
+
+\subsection{Substitutions}
+Let $\A$ be a finite alphabet, $|\A|=d$, and let $\A^*$ be the free monoid and $\A^+=\A^*\setminus\{\varepsilon\}$. A \emph{substitution} is a monoid morphism $\sigma:\A^*\to\A^*$ with $\sigma(a)\in\A^+$ for every $a$. The \emph{Parikh map} $\pi:\A^*\to\Z^d$ sends $w$ to its vector of letter counts; the \emph{incidence matrix} $M=M_\sigma\in\mathrm{Mat}_d(\Z_{\ge0})$ has $M_{ij}=|\sigma(j)|_i$, so that $\pi(\sigma(w))=M\pi(w)$. For $w=w_1\cdots w_n$ and $0\le k\le n$ we write $w[k]=w_1\cdots w_k$ for the prefix of length $k$.
+
+\begin{definition}[Standing hypotheses]\label{def:standing}
+Throughout, unless explicitly stated otherwise, $\sigma$ satisfies:
+\begin{enumerate}[label=(H\arabic*)]
+\item\label{H1} $M_\sigma$ is primitive: $M_\sigma^k>0$ entrywise for some $k\ge1$;
+\item\label{H2} $\chi_{M_\sigma}$ is irreducible over $\Q$, and $d=|\A|\ge 2$;
+\item\label{H3} the Perron--Frobenius eigenvalue $\beta$ of $M_\sigma$ is a Pisot number: $\beta>1$ and every other root of $\chi_{M_\sigma}$ has modulus $<1$.
+\end{enumerate}
+We call such $\sigma$ \emph{PIP} (primitive, irreducible, Pisot). We do \emph{not} assume $|\det M_\sigma|=1$. The roots of $\chi_{M_\sigma}$ are written $\beta=\beta_1,\beta_2,\dots,\beta_d$ with $1>|\beta_2|\ge\cdots\ge|\beta_d|>0$.
+\end{definition}
+
+\begin{lemma}[\Status{Theorem}]\label{lem:det}
+Under \ref{H2}, $\det M_\sigma\ne0$, and $\beta\notin\Q$.
+\end{lemma}
+\begin{proof}
+If $\det M_\sigma=0$ then $x\mid\chi_{M_\sigma}(x)$, contradicting irreducibility with $d\ge2$. A rational root of an irreducible polynomial of degree $\ge2$ is impossible.
+\end{proof}
+
+Let $\ell\in\R^d_{>0}$ be a left Perron eigenvector, $\ell^{\top}M_\sigma=\beta\ell^{\top}$; its entries are the \emph{tile lengths}, and $L(w):=\langle\ell,\pi(w)\rangle$ is the geometric length of $w$. Then $L(\sigma(w))=\beta L(w)$.
+
+\begin{lemma}[$\Z$-independence of tile lengths; \Status{Theorem}]\label{lem:Zindep}
+Under \ref{H1}--\ref{H2}, the entries $\ell_a$ are linearly independent over $\Q$.
+\end{lemma}
+\begin{proof}
+If $n\in\Z^d\setminus\{0\}$ satisfies $\langle n,\ell\rangle=0$, then $\langle (M^{\top})^kn,\ell\rangle=\beta^k\langle n,\ell\rangle=0$ for all $k$. Since $\chi_{M^\top}=\chi_M$ is irreducible, the minimal polynomial of $M^\top$ equals $\chi_M$, so every nonzero vector is cyclic and $\{(M^\top)^kn\}_{k<d}$ spans $\Q^d$. Hence $\ell\perp\Q^d$, so $\ell=0$, a contradiction.
+\end{proof}
+
+Let $X_\sigma\subseteq\A^{\Z}$ be the subshift generated by $\sigma$ (the set of bi-infinite words all of whose factors are factors of some $\sigma^n(a)$), and let $\Omega_\sigma$ be the tiling space obtained by replacing letters by intervals of length $\ell_a$; both carry the natural actions. Under primitivity, $X_\sigma$ is minimal and uniquely ergodic~\cite{Queffelec}.
+
+\begin{lemma}[Aperiodicity; \Status{Theorem}]\label{lem:aperiodic}
+Under \ref{H1}--\ref{H3}, $X_\sigma$ is infinite; equivalently, no element of $X_\sigma$ is periodic.
+\end{lemma}
+\begin{proof}
+Suppose $X_\sigma$ is finite. Primitivity gives a power $\tau=\sigma^q$ and a letter $a$ with $\tau(a)\in a\A^*$; the one-sided fixed point $x=\lim_n\tau^n(a)$ has the same language as $\sigma$, so every factor of $x$ occurs in one of finitely many periodic points; hence the factor complexity of $x$ is bounded and $x$ is eventually periodic by the Morse--Hedlund theorem~\cite[Thm.~1.3.13]{Lothaire}; by uniform recurrence of $x$ (primitivity) it is purely periodic, $x=w^\infty$ with $w$ primitive (not a proper power). Then $\tau(w)^\infty=\tau(x)=x=w^\infty$, so $\tau(w)$ and $w$ are powers of a common word~\cite[Prop.~1.3.4]{Lothaire}, and primitivity of $w$ gives $\tau(w)=w^k$ for some integer $k\ge1$. Applying $\pi$, $M^q\pi(w)=k\pi(w)$ with $\pi(w)\ge0$ nonzero; since $M^q$ is primitive, a nonnegative eigenvector belongs to the Perron eigenvalue, so $k=\beta^q$. Let $\alpha=\beta_2$ and let $\iota:\Q(\beta)\to\C$ be the field embedding with $\iota(\beta)=\alpha$ (it exists since $\chi_M$ is irreducible). Then $\alpha^q=\iota(\beta^q)=\iota(k)=k\ge1$, contradicting $|\alpha|<1$.
+\end{proof}
+
+\begin{remark}
+Primitivity alone does not imply aperiodicity: $a\mapsto ab$, $b\mapsto ab$ is primitive with periodic subshift; its incidence matrix is singular and its characteristic polynomial is reducible. Lemma~\ref{lem:aperiodic} is used only to justify the next imported theorem.
+\end{remark}
+
+\begin{importedtheorem}[Moss\'e recognizability~\cite{Mosse1,Mosse2}; \Status{Imported}]\label{thm:mosse}
+Let $\sigma$ be a primitive substitution whose subshift $X_\sigma$ is aperiodic. There is $R=R(\sigma)$ such that for every $x\in X_\sigma$ the positions of the level-one supertile boundaries (the cutting points of a desubstitution $x=S^{j}\sigma(y)$, $y\in X_\sigma$) at a position $i$ are determined by the factor $x_{[i-R,i+R]}$; the desubstitution is unique. Consequently every $x\in X_\sigma$ has a unique supertile hierarchy at every level.
+\end{importedtheorem}
+
+The Pisot hypothesis plays no role in Theorem~\ref{thm:mosse}; it enters through Lemma~\ref{lem:aperiodic} and through contraction and spectral arguments below.
+
+\subsection{Unique decodability}\label{sec:UD}
+
+\begin{importedtheorem}[Defect theorem~\cite{BPPR,BPR}; \Status{Imported}]\label{thm:defect}
+Let $X\subset\A^+$ be finite. If $X$ is not a code (i.e.\ some word admits two distinct factorizations into elements of $X$), then $X\subseteq H^*$ for a code $H\subset\A^+$ with $|H|\le|X|-1$.
+\end{importedtheorem}
+
+\begin{theorem}[Unique decodability; \Status{Theorem}]\label{thm:UD}
+Let $\sigma$ be any substitution with $\det M_\sigma\ne0$. Then $X_1:=\{\sigma(a):a\in\A\}$ is a code with $|X_1|=d$, and for every $r\ge1$ the set $\{\sigma^r(a):a\in\A\}$ is a code.
+\end{theorem}
+\begin{proof}
+If $\sigma(a)=\sigma(b)$ with $a\ne b$ then two columns of $M_\sigma$ coincide, so $\det M_\sigma=0$; hence $|X_1|=d$. If $X_1$ were not a code, Theorem~\ref{thm:defect} gives a code $H$ with $|H|\le d-1$ and $X_1\subseteq H^*$; writing $\sigma(a)=h_1\cdots h_{k_a}$ and applying $\pi$, every column of $M_\sigma$ lies in the $\Z$-span of the at most $d-1$ vectors $\pi(h)$, $h\in H$, so $\rank M_\sigma\le d-1$, contradicting $\det M_\sigma\ne0$. For powers, $\det M_{\sigma^r}=(\det M_\sigma)^r\neq0$.
+\end{proof}
+
+Theorem~\ref{thm:UD} uses neither primitivity, nor aperiodicity, nor the Pisot property; it is strictly weaker than the recognizability results of~\cite{BSTY}, which cover morphisms of lower rank. Its only role below is to make hierarchies inside supertiles unique (Lemma~\ref{lem:unique-hierarchy}) and to justify Remark~\ref{rem:UD-not-finiteness}.
+
+\subsection{Balanced pairs and the automaton}\label{sec:bpa-def}
+
+\begin{definition}\label{def:balanced}
+A \emph{balanced pair} is a pair $(u,v)\in\A^n\times\A^n$, $n\ge1$, with $\pi(u)=\pi(v)$. Its \emph{prefix-difference walk} is $D_{(u,v)}(k)=\pi(u[k])-\pi(v[k])\in\Z^d$, $0\le k\le n$; a position $k$ is a \emph{zero return} if $D_{(u,v)}(k)=0$. The pair is \emph{irreducible} if its only zero returns are $k=0$ and $k=n$. A \emph{coincidence block} is an irreducible balanced pair with $u=v$; necessarily $n=1$, so coincidence blocks are the pairs $(a,a)$. Cutting a balanced pair at all its zero returns yields its \emph{reduction} $\red(u,v)=(R_1,\dots,R_m)$, an ordered sequence of irreducible balanced pairs (its \emph{blocks}). We identify $(u,v)$ with $(v,u)$ when we speak of \emph{states}; the \emph{normalized representative} of a state is the pair whose first side is lexicographically smaller (the two sides differ unless the state is a coincidence block). We write $|T|=n$ for the length of a state $T$.
+\end{definition}
+
+\begin{lemma}[\Status{Theorem}]\label{lem:inherited}
+Let $(u,v)$ be balanced and $k$ a zero return. Then $|\sigma(u[k])|=|\sigma(v[k])|=:K$ and $K$ is a zero return of $(\sigma(u),\sigma(v))$. Zero returns of $(\sigma(u),\sigma(v))$ of this form are called \emph{inherited}; all others are \emph{newborn}.
+\end{lemma}
+\begin{proof}
+$\pi(\sigma(u[k]))=M\pi(u[k])=M\pi(v[k])=\pi(\sigma(v[k]))$; equal Parikh vectors have equal lengths.
+\end{proof}
+
+\begin{definition}[Balanced-pair automaton]\label{def:bpa}
+Let $\mathrm{Seeds}=\{(ab,ba):a,b\in\A,\ a\ne b\}$ (modulo side swap). The \emph{children} of a state $T=(u,v)$ are the states of the blocks of $\red(\sigma(u),\sigma(v))$, counted with multiplicity and order. The \emph{balanced-pair automaton} $\B_\sigma$ is the directed graph whose vertex set is the set of states reachable from $\mathrm{Seeds}$ by iterating the child relation, with an edge $T\to U$ whenever $U$ is a child of $T$; coincidence blocks are terminal (their children are not formed). A state is \emph{productive} if some directed path from it reaches a coincidence block. A strongly connected component (SCC) of $\B_\sigma$ is \emph{recurrent} if it contains a directed cycle (including loops), \emph{noncoincident} if it contains no coincidence block, \emph{closed} if every \emph{noncoincident} child of every state in it lies in it (coincidence children are allowed), and \emph{nonproductive} if none of its states is productive. A closed \emph{noncoincident} SCC is nonproductive if and only if no state in it has a coincidence child (a coincidence block is itself a closed singleton SCC and is productive). The balanced-pair algorithm started at a seed $s$ \emph{terminates with coincidence} if the set of states reachable from $s$ is finite and every one of them is productive.
+\end{definition}
+
+\begin{lemma}[Depth-$n$ descendants; \Status{Theorem}]\label{lem:descendants}
+For every state $T=(u,v)$ and $n\ge0$ the blocks of $\red(\sigma^n(u),\sigma^n(v))$ are exactly the states at the ends of the directed paths of length $n$ from $T$ in the child graph (with multiplicity), and the boundaries between them are exactly the zero returns of $(\sigma^n(u),\sigma^n(v))$.
+\end{lemma}
+\begin{proof}
+Induction on $n$ using Lemma~\ref{lem:inherited}: the zero returns of $(\sigma^{n}(u),\sigma^{n}(v))$ consist of the inherited images of the zero returns of level $n-1$, which partition the pair into the inflations of the level-$(n-1)$ blocks, together with the interior zero returns of each such inflated block; the latter define exactly the children of that block. Swapping the two sides of a block swaps the sides of all its children and does not change the states.
+\end{proof}
+
+\begin{remark}[Seeds and legality]\label{rem:legality}
+The seed words $ab$, $ba$ need not be factors of the language of $\sigma$ (for the Tribonacci substitution $1\mapsto12,2\mapsto13,3\mapsto1$ the word $23$ is not a factor). Consequently $\B_\sigma$ may contain states that are not realized by pairs of points of $X_\sigma$; we return to this in Section~\ref{sec:realization}. Using all seeds, rather than a single one, is what allows the graph-theoretic reductions of Section~\ref{sec:level3}; the price is the seed-family question of Section~\ref{sec:literature-bridge}.
+\end{remark}
+
+\begin{hypothesis}[G1, finiteness; \Status{Open}]\label{hyp:G1}
+$\B_\sigma$ is finite.
+\end{hypothesis}
+
+\begin{conjecture}[SCC Producer; \Status{Open}]\label{conj:producer}
+Every recurrent noncoincident SCC of $\B_\sigma$ contains a productive state.
+\end{conjecture}
+
+Since an SCC is strongly connected, if one of its states is productive then all are. The conjecture is a component-level statement: individual states with no coincidence child are common (Section~\ref{sec:finite}), so no state-by-state argument can prove it.
+
+\subsection{The spectral bridge}\label{sec:bridge}
+
+\begin{importedtheorem}[\Status{Imported}]\label{thm:bridge}
+Let $\sigma$ be a primitive substitution with irreducible characteristic polynomial and Pisot dilation. If for some $a\ne b$ the balanced-pair algorithm started at $(ab,ba)$ terminates with coincidence, then the tiling flow $(\Omega_\sigma,\R)$ has \PDS{}. This is the one-dimensional statement of Barge--\v{S}timac--Williams~\cite[Cor.~2]{BSW}; the equivalence between termination with coincidence and \PDS{} for irreducible Pisot substitutions, with the seed clause, is recorded in~\cite[Thm.~5.3]{ABBLS}, building on~\cite{SS,HS}. For two letters, termination with coincidence follows from~\cite{BD,HS}.
+\end{importedtheorem}
+
+We use only the forward implication stated. The equivalence between \PDS{} of the flow and of the subshift for irreducible Pisot substitutions is discussed in~\cite{CS,ABBLS}; the earlier form of the bridge in~\cite[Prop.~17.4]{BK} depends on~\cite[Thm.~16.3]{BK}, whose proof is reported in~\cite[\S1]{BSW} to contain a gap; we therefore cite~\cite{BSW}.
+
+\section{Principal statements}\label{sec:principal}
+
+\begin{theorem}[Conditional main theorem; \Status{Conditional}]\label{thm:main-conditional}
+Let $\sigma$ be PIP. If $\B_\sigma$ is finite (Hypothesis~\ref{hyp:G1}) and Conjecture~\ref{conj:producer} holds for $\sigma$, then $(\Omega_\sigma,\R)$ has \PDS{}.
+\end{theorem}
+\begin{proof}
+Fix $a\ne b$. The forward orbit of the seed $(ab,ba)$ in the finite graph $\B_\sigma$ reaches only finitely many states, and every infinite forward path enters a recurrent SCC. If that SCC contains a coincidence block, the corresponding state is productive. Otherwise Conjecture~\ref{conj:producer} gives a productive state in it, and strong connectedness makes every state of the SCC productive. Since every state reachable from the seed either is a coincidence block, or leads to a recurrent SCC, or lies in one, every reachable state is productive, i.e.\ the algorithm from $(ab,ba)$ terminates with coincidence. Imported Theorem~\ref{thm:bridge} concludes.
+\end{proof}
+
+Theorem~\ref{thm:main-density} below (Section~\ref{sec:density}) replaces the two hypotheses by one: productivity of the overlaps reachable from a single seed, with no finiteness assumption.
+
+The rest of the paper concerns the two hypotheses. The following statements summarise what is proved about each; proofs are in Sections~\ref{sec:level2} and~\ref{sec:level3}.
+
+\begin{theorem}[Sink reduction; \Status{Conditional} on G1]\label{thm:sink-summary}
+If $\B_\sigma$ is finite and some state is nonproductive, then $\B_\sigma$ contains a finite closed nonproductive recurrent noncoincident SCC.
+\end{theorem}
+
+\begin{theorem}[Structure of a finite closed nonproductive component; \Status{Theorem}]\label{thm:structure-summary}
+Let $\sigma$ be PIP and $\cC$ a finite closed nonproductive recurrent noncoincident SCC. Let $P_\cC\in\mathrm{Mat}_{d\times|\cC|}(\Z_{\ge0})$ have the common Parikh vectors of the states as columns, and let $N_\cC$ count children. Then $P_\cC N_\cC=M_\sigma P_\cC$, $\rank_\Q P_\cC=d$, $|\cC|\ge d$, $\chi_{M_\sigma}\mid\chi_{N_\cC}$, and $\rho(N_\cC)=\beta$. Moreover neither endpoint map $\sigma_\pm$ (first, resp.\ last, letter of $\sigma(a)$) is globally synchronizing, and for $d=3$ neither endpoint map is a $3$-cycle.
+\end{theorem}
+
+\begin{theorem}[Signed defect intertwiners; \Status{Theorem}]\label{thm:defect-summary}
+With $\cC$ as above, child occurrences carry a $\Z/2$ orientation cocycle; if $A$, $B$ count positively and negatively oriented occurrences then $N_\cC=A+B$, $S:=A-B$ satisfies $\rho(S)\le\beta$, and at the first degree $r$ at which some scattered-subword defect $K_r$ is nonzero on $\cC$, $Q_rS=\Phi_rQ_r$ where $Q_r$ has the $K_r(T)$ as columns and $\Phi_r$ is the action of $M^{\otimes r}$ on the free Lie component $\Lie_r(\Q^d)$. For $d=3$: if $r=2$ then $\rank Q_2=3$ and $\chi_{\Lambda^2M}\mid\chi_S$; if $r=3$ then $\operatorname{im}Q_3\subseteq\ker(\Phi_3-\det M)$; if $r=4$ then $|\det M|=1$ and $\rho(S)=\beta$.
+\end{theorem}
+
+\begin{theorem}[Uniform return and ancestry finiteness; \Status{Theorem}]\label{thm:return-summary}
+Let $\sigma$ be PIP and $\cC$ a finite set of noncoincident irreducible states closed under taking children. Then zero returns of $(\sigma^n(u),\sigma^n(v))$, $(u,v)\in\cC$, occur with gaps at most $B_\cC:=\max_{T\in\cC}|T|$ for every $n$, and the multi-level Parikh-defect ancestries of all such zero returns take values in one finite subset of $\Z^d$ independent of $n$.
+\end{theorem}
+
+\begin{proposition}[Wedge dichotomy, $d=3$; \Status{Theorem}]\label{prop:wedge-summary}
+Let $\cC$ be a closed nonproductive SCC of $\B_\sigma$ (finite or not). Then either $K_2\equiv0$ on $\cC$, or the vectors $K_2(T)$, $T\in\cC$, span $\Lambda^2\Q^3$; in the second case every nonzero linear functional on $\Lambda^2\R^3$, in particular the dominant spectral projection of $\Lambda^2M$, is nonzero at some $K_2(T)$.
+\end{proposition}
+
+\section{Level 2: finiteness of the automaton}\label{sec:level2}
+
+\subsection{What unique decodability does and does not give}
+
+\begin{lemma}[Unique hierarchy inside supertiles; \Status{Theorem}]\label{lem:unique-hierarchy}
+Let $\det M_\sigma\ne0$. For $\tau\in\A$ and $1\le k\le n$, the level-$k$ supertile boundaries inside $\sigma^n(\tau)$ are determined by the word $\sigma^n(\tau)$ alone.
+\end{lemma}
+\begin{proof}
+$\sigma^n(\tau)=\sigma^k(\sigma^{n-k}(\tau))$ is a concatenation of elements of the code $\{\sigma^k(a)\}$ (Theorem~\ref{thm:UD}), whose factorization is unique.
+\end{proof}
+
+\begin{remark}[Unique decodability does not imply finiteness]\label{rem:UD-not-finiteness}
+An earlier version of this program claimed that Theorem~\ref{thm:UD} bounds the total coincidence ``padding'' inside an inflated balanced pair and hence that the geometric length of a child $s$ of a state $s'$ satisfies $\beta L(s')\le L(s)+D$ for a constant $D$, from which backward contraction would give finiteness. \emph{Both claims are withdrawn.} Unique decodability excludes only coincidence runs whose phase pattern is a legally repeatable complete-cutting cycle; runs recurring at a nonzero within-image offset are not excluded, and long coincidence runs do occur. More decisively, inflation of $s'$ may split into many noncoincident children none of which carries most of $\beta L(s')$; on the corpus of Section~\ref{sec:finite} the ratio $\beta L(s')/L(s)$ over child edges exceeds $8$ and grows with state length. No form of this argument is used below.
+\end{remark}
+
+\subsection{Discrepancy: the bounded part and the open part}\label{sec:disc}
+
+\begin{definition}\label{def:disc}
+The \emph{discrepancy} of a balanced pair $s=(u,v)$ of length $n$ is $\Disc(s):=\max_{0\le k\le n}\|D_s(k)\|_\infty$. A state is \emph{reachable} if it is a vertex of $\B_\sigma$.
+\end{definition}
+
+\begin{theorem}[G1b-1, bounded discrepancy; \Status{Theorem}]\label{thm:G1b1}
+Let $\sigma$ be primitive and suppose that every eigenvalue of $M=M_\sigma$ other than $\beta$ has modulus less than one (as is the case for PIP $\sigma$). Then $\Disc(T)\le D_\sigma:=4(d+1)C_\sigma$ for every reachable state $T$, where $C_\sigma$ is the explicit constant of \eqref{eq:Csigma}.
+\end{theorem}
+
+Throughout this subsection $r>0$ and $\ell>0$ are the right and left Perron eigenvectors of $M$, normalized by $\langle\ell,r\rangle=1$; $P_u:=r\ell^{\mathsf T}$ is the spectral projection onto $E_u:=\R r$, it commutes with $M$, and $P_s:=I-P_u$ is the projection onto $E_s:=\ker\ell^{\mathsf T}$ along $E_u$. $E_s$ is $M$-invariant and $\spec(M|_{E_s})=\spec(M)\setminus\{\beta\}$, so under the hypothesis of the theorem $\rho(M|_{E_s})<1$. Norms are $\|\cdot\|_\infty$ and the induced operator norm; $\mathbf 1$ is the all-ones vector, so $\langle\mathbf 1,\pi(w)\rangle=|w|$. Unimodularity, unique decodability and irreducibility of $\chi_M$ are not used; irreducibility enters only through the hypothesis on the eigenvalues, which Adamczewski~\cite{Adam} shows cannot be dropped in general.
+
+\begin{lemma}[Summable decay]\label{lem:decay}
+$\kappa_i:=\|M^iP_s\|$ satisfies $K_\sigma:=\sum_{i\ge0}\kappa_i<\infty$.
+\end{lemma}
+\begin{proof}
+$M^iP_s=(MP_s)^i$ for $i\ge1$, and $\spec(MP_s)=\spec(M|_{E_s})\cup\{0\}$, so $\rho(MP_s)<1$ and Gelfand's formula gives $\kappa_i\le c\mu^i$ for some $\mu<1$.
+\end{proof}
+
+\begin{lemma}[Prefix decomposition]\label{lem:prefix-decomp}
+Let $n\ge0$, $a\in\A$, and let $p$ be a prefix of $\sigma^n(a)$. There are letters $c_0,\dots,c_n$ with $c_n=a$, words $p_0,\dots,p_{n-1}$ such that $p_ic_i$ is a prefix of $\sigma(c_{i+1})$, and $e\in\{\varepsilon,c_0\}$, with
+\[p=\sigma^{n-1}(p_{n-1})\,\sigma^{n-2}(p_{n-2})\cdots\sigma^0(p_0)\,e.\]
+\end{lemma}
+\begin{proof}
+Induction on $n$; for $n=0$ take $e=p\in\{\varepsilon,a\}$. For $n\ge1$ write $\sigma(a)=b_1\cdots b_m$, so $\sigma^n(a)=\sigma^{n-1}(b_1)\cdots\sigma^{n-1}(b_m)$; let $t\le m-1$ be maximal with $|\sigma^{n-1}(b_1\cdots b_t)|\le|p|$. Then $p=\sigma^{n-1}(b_1\cdots b_t)\,p'$ with $p'$ a prefix of $\sigma^{n-1}(b_{t+1})$ (if $p=\sigma^n(a)$ then $t=m-1$ and $p'=\sigma^{n-1}(b_m)$). Put $p_{n-1}=b_1\cdots b_t$, $c_{n-1}=b_{t+1}$ and apply the induction hypothesis to $p'$.
+\end{proof}
+
+\begin{lemma}[Bounded contracting component]\label{lem:rauzy-bounded}
+Let
+\begin{equation}\label{eq:Csigma}
+B_\sigma:=\max\bigl\{\|P_s\pi(q)\|,\ \|P_se_c\|: c\in\A,\ q\text{ a prefix of }\sigma(c)\bigr\},\qquad C_\sigma:=B_\sigma(1+K_\sigma).
+\end{equation}
+Then $\|P_s\pi(p)\|\le C_\sigma$ for every $n\ge0$, every $a\in\A$ and every prefix $p$ of $\sigma^n(a)$.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:prefix-decomp}, $\pi(\sigma^i(w))=M^i\pi(w)$ and $P_sM=MP_s$, $P_s\pi(p)=\sum_{i=0}^{n-1}M^iP_s\pi(p_i)+P_s\pi(e)$, and each term is bounded by $\kappa_iB_\sigma$, resp.\ $B_\sigma$.
+\end{proof}
+
+Lemma~\ref{lem:rauzy-bounded} is the boundedness of the Rauzy fractal, equivalently Adamczewski's theorem~\cite{Adam} that fixed points of primitive substitutions whose second eigenvalue has modulus less than one are balanced; we include the argument so that the hypotheses used are visible.
+
+\begin{lemma}[Zero symbolic length controls the Perron component]\label{lem:zero-length}
+If $x\in\R^d$ and $\langle\mathbf 1,x\rangle=0$ then $\|x\|\le(d+1)\|P_sx\|$.
+\end{lemma}
+\begin{proof}
+$x=\langle\ell,x\rangle r+P_sx$; applying $\langle\mathbf 1,\cdot\rangle$ gives $|\langle\ell,x\rangle|\le d\|P_sx\|/\langle\mathbf 1,r\rangle$, and $\|r\|\le\langle\mathbf 1,r\rangle$ since $r>0$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:G1b1}]
+Fix a seed $(ab,ba)$ and $n\ge0$; put $U=\sigma^n(ab)$, $V=\sigma^n(ba)$ and $\Delta(j):=\pi(U[j])-\pi(V[j])$ for $0\le j\le|U|$. The prefix $U[j]$ is either a prefix of $\sigma^n(a)$ or $\sigma^n(a)$ followed by a prefix of $\sigma^n(b)$, so $\|P_s\pi(U[j])\|\le2C_\sigma$ by Lemma~\ref{lem:rauzy-bounded}; likewise for $V[j]$; hence $\|P_s\Delta(j)\|\le4C_\sigma$. (Legality of $ab$ is not needed.) Both prefixes have $j$ letters, so $\langle\mathbf 1,\Delta(j)\rangle=0$ and Lemma~\ref{lem:zero-length} gives $\|\Delta(j)\|\le4(d+1)C_\sigma=D_\sigma$ for all $j$ and $n$.
+
+Now let $T$ be reachable. By Lemma~\ref{lem:descendants} applied to a seed, $T$ is, up to side swap, a block $(U[i..i'),V[i..i'))$ of $\red(U,V)$ for some seed and some $n$, with $i<i'$ consecutive zero returns of $(U,V)$. Then $D_T(k)=\Delta(i+k)-\Delta(i)=\Delta(i+k)$, so $\Disc(T)\le\max_j\|\Delta(j)\|\le D_\sigma$; side swap negates $D_T$ and preserves $\Disc$.
+\end{proof}
+
+\begin{remark}\label{rem:no-contraction}
+The proof is global, not recursive: no inequality between $\Disc$ of a child and of its parent is proved or used, and route~(iii) of Section~\ref{sec:retired-level2} (the zero-sum hyperplane does not contract under $M$ in a fixed norm) is untouched; Lemma~\ref{lem:zero-length} separates the Perron and contracting components of a zero-length vector instead. A contraction estimate of the form $\Disc(\sigma\text{-child})\le c\,\Disc(\text{parent})+E$ with $c<1$ was asserted in unpublished working notes of this program; we have not reconstructed it and do not need it.
+\end{remark}
+
+\begin{problem}[G1b-2, renewal finiteness; \Status{Open}]\label{prob:G1b2}
+Prove that only finitely many reachable irreducible states $T$ satisfy $\Disc(T)\le D_\sigma$.
+\end{problem}
+
+\begin{proposition}[\Status{Theorem}]\label{lem:G1-assembly}
+Under the hypotheses of Theorem~\ref{thm:G1b1}, Hypothesis~\ref{hyp:G1} holds if and only if Open Problem~\ref{prob:G1b2} has a positive answer. More precisely, for $R_0\ge D_\sigma$ the statement ``only finitely many reachable irreducible states have $\Disc\le R_0$'' is Hypothesis~\ref{hyp:G1}, and for $R_0<D_\sigma$ it is implied by it.
+\end{proposition}
+\begin{proof}
+Every state of $\B_\sigma$ is an irreducible balanced pair (a seed, or a block of a reduction), and by Theorem~\ref{thm:G1b1} every one has $\Disc\le D_\sigma$.
+\end{proof}
+
+Theorem~\ref{thm:G1b1} gives a box, not finiteness: the difference walk of every reachable state takes values in the finite set $\{x\in\Z^d:\|x\|_\infty\le D_\sigma,\ \langle\mathbf 1,x\rangle=0\}$, but the walk of an irreducible balanced pair is a first return to $0$ of a walk avoiding $0$, and a bounded box contains arbitrarily long such walks; Computation~\ref{comp:disc} exhibits reachable states of length $48{,}020$ with discrepancy at most $14$. Finiteness must come from the substitutive structure of which labelled walks actually occur.
+
+\subsection{Labelled first returns and the information-loss example}\label{sec:labelled}
+
+For an irreducible balanced pair $(u,v)$ the sequence $(D_{(u,v)}(k))_{0\le k\le n}$ is a first-return path of a walk with steps $e_{u_k}-e_{v_k}$. The path does not determine the pair: a diagonal step $(a,a)$ contributes $0$ for every $a$.
+
+\begin{example}[\Status{Finite computation}]\label{ex:collision}
+Over $\A=\{0,1,2\}$ the irreducible balanced pairs $(001,100)$ and $(021,120)$ have the same prefix-difference path $0\to(1,-1,0)\to(1,-1,0)\to0$; their middle steps are $(0,0)$ and $(2,2)$.
+\end{example}
+
+Hence any approach to Open Problem~\ref{prob:G1b2} that quotients states to their difference paths loses information; the labelled step sequence must be retained. The following proposition shows that, conversely, retaining bounded windows of substitutive ancestry data is also insufficient, for a specific non-unimodular substitution.
+
+\begin{example}\label{ex:tau}
+Let $\tau:0\mapsto1,\ 1\mapsto021,\ 2\mapsto001$ on $\A=\{0,1,2\}$. Its incidence matrix is
+\[
+M_\tau=\begin{pmatrix}0&1&2\\1&1&1\\0&1&0\end{pmatrix},\qquad \chi_{M_\tau}(x)=x^3-x^2-2x-2,\qquad \det M_\tau=2 .
+\]
+One checks that $M_\tau^3>0$, that $\chi_{M_\tau}$ has no rational root (its possible roots $\pm1,\pm2$ give values $-4,-2,-2,-10$), and that its real root $\beta\approx2.27$ is Pisot: the remaining roots have product $2/\beta<1$ and, being complex conjugates (the discriminant of $\chi$ is $-152<0$), modulus $\sqrt{2/\beta}<1$. So $\tau$ is PIP and non-unimodular.
+\end{example}
+
+\begin{proposition}[A regular family of zero returns; \Status{Theorem}]\label{prop:regular-family}
+For $\tau$ as in Example~\ref{ex:tau} and $d\ge2$, put $U_d=\tau^d(01)$, $V_d=\tau^d(10)$, $L_d=|U_d|$. Both $U_d$ and $V_d$ end with $021$, and the three positions $L_d-3,L_d-2,L_d-1$ are interior zero returns of $(U_d,V_d)$. At each of these positions the two cuts lie, on both sides, inside the image of the source letter at index $1$ of the seed (letter $1$ on top, letter $0$ below), with source prefix defect $(1,-1,0)$, and the descent through the substitution hierarchy from level $d$ to level $0$ has, on the top side, digit sequence $(1,2)^{d-1}(1,j)$ and, on the bottom side, $(0,0)(1,2)^{d-2}(1,j)$, $j\in\{0,1,2\}$, where a digit $(a,i)$ records the source letter and the index of the child image containing the cut.
+\end{proposition}
+\begin{proof}
+$\tau^d(1)$ ends with $\tau(\text{last letter of }\tau^{d-1}(1))=\tau(1)=021$ for $d\ge2$, and $\tau^d(0)=\tau^{d-1}(1)$ ends with $021$ for $d\ge3$, while $\tau^2(0)=021$. Removing the common suffixes $021$, $21$, $1$ preserves Parikh equality, giving the three zero returns; they are interior since $L_d>3$. The remaining assertions are a direct descent through the images: the cut sits in the last child image of $\tau(1)=021$ (letter $1$, index $2$) at each level above the bottom one, and on the bottom side the seed letter $0$ contributes one initial digit $(0,0)$ because $\tau(0)=1$.
+\end{proof}
+
+\begin{corollary}[\Status{Theorem}]\label{cor:windows-not-injective}
+For every source-context radius $r$ and every digit-window size $w$, the map sending a certified interior zero return of $(U_d,V_d)$ to the tuple (relative source displacement, source prefix defect, source letters, radius-$r$ source context on both sides, first $w$ and last $w$ digits on both sides) is not injective on $\bigcup_{d\ge2}\{L_d-3,L_d-2,L_d-1\}$: the cuts at depths $d-1$ and $d$ with the same $j$ collide as soon as $w\le d-2$.
+\end{corollary}
+
+Thus the level-scaled address of a zero return (its full digit sequence) cannot be replaced by bounded end windows. What Proposition~\ref{prop:regular-family} also shows is that the offending family is \emph{regular}: it is generated by a loop $(1,2)^*$ in the digit alphabet. Whether every family of reachable states is regular in this sense, uniformly, is the content of Open Problem~\ref{prob:pump}.
+
+\subsection{Multi-level ancestry and Pisot finiteness}\label{sec:ancestry}
+
+Fix a balanced pair $T=(u,v)$ (not necessarily irreducible) and an output position $t$ in $(\sigma(u),\sigma(v))$. On the top side let $i$ be the number of complete images $\sigma(u_1)\cdots\sigma(u_i)$ preceding $t$ and $r=t-|\sigma(u[i])|$ the offset inside $\sigma(u_{i+1})$ ($0\le r<|\sigma(u_{i+1})|$, with the convention $(i,r)=(|u|,0)$ at the right end); define $(j,s)$ on the bottom side likewise. Let $q_\sigma(a,r)=\pi(\sigma(a)[r])$.
+
+\begin{lemma}[Prefix-difference inflation; \Status{Theorem}]\label{lem:inflation}
+$D_{(\sigma(u),\sigma(v))}(t)=M\bigl(\pi(u[i])-\pi(v[j])\bigr)+q_\sigma(u_{i+1},r)-q_\sigma(v_{j+1},s)$.
+\end{lemma}
+\begin{proof}
+The top prefix of length $t$ is $\sigma(u[i])\,\sigma(u_{i+1})[r]$, with Parikh vector $M\pi(u[i])+q_\sigma(u_{i+1},r)$; similarly below.
+\end{proof}
+
+Write $E=\pi(u[i])-\pi(v[j])$ (the \emph{source defect}) and $c=q_\sigma(u_{i+1},r)-q_\sigma(v_{j+1},s)$ (the \emph{correction digit}); the set $C_\sigma$ of possible corrections is finite and depends only on $\sigma$. If $t$ is a zero return then $ME+c=0$. Since $M$ is invertible over $\Q$, $E=-M^{-1}c$ is determined by $c$; in particular:
+
+\begin{corollary}[Finite one-step ancestry; \Status{Theorem}]\label{cor:one-step}
+The source defects below one-step zero returns lie in a finite set $A_1(\sigma)=\{-M^{-1}c:c\in C_\sigma\}\cap\Z^d$, and the source-index misalignment $i-j=\langle\mathbf 1,E\rangle$ is bounded by a constant depending only on $\sigma$. An interior zero return of an irreducible pair cannot have $r=s=0$: otherwise $c=0$, $E=0$, and $i=j$ would be an interior zero return of the parent.
+\end{corollary}
+
+Iterating the descent gives, for a zero return $t$ at level $n$ (in $(\sigma^n(u),\sigma^n(v))$), a sequence of source defects $x_n=0$, $x_{n-1},\dots,x_0$ with $x_{k+1}=Mx_k+c_{k+1}$, $c_{k+1}\in C_\sigma$, where $x_0$ is a difference of prefix Parikh vectors of $(u,v)$ at possibly different positions. Expanding, $M^n x_0+\sum_{k}M^{n-1-k}c_{k+1}=0$; this identity is the \emph{level-scaled address certificate} of the zero return, and it uses no inverse of $M$ and no choice of completion.
+
+\begin{theorem}[Pisot ancestry finiteness; \Status{Theorem}]\label{thm:ancestry}
+Let $\sigma$ be PIP, and let $F,D\subset\Z^d$ be finite. There is a finite set $A=A(M,F,D)\subset\Z^d$ containing every term of every sequence $x_0,\dots,x_n\in\Z^d$ (any $n$) with $x_0\in F$, $x_n=0$, and $x_{k+1}=Mx_k+d_{k+1}$, $d_{k+1}\in D$.
+\end{theorem}
+\begin{proof}
+Let $\R^d=E_u\oplus E_s$ be the splitting of Section~\ref{sec:disc}, with projections $\pi_u=P_u$, $\pi_s=P_s$; $\rho(M|_{E_s})<1$, so $\|M^m\pi_sz\|\le K q^m\|\pi_sz\|$ for constants $K$, $0<q<1$. Forward iteration gives $\pi_sx_k=M^k\pi_sx_0+\sum_{j\le k}M^{k-j}\pi_sd_j$, bounded uniformly in $k$ by $K(\max_F\|\pi_s\|+\max_D\|\pi_s\|/(1-q))$. On $E_u$ the recurrence is $\pi_ux_{k+1}=\beta\pi_ux_k+\pi_ud_{k+1}$; solving backward from $x_n=0$, $\pi_ux_k=-\sum_{j>k}\beta^{k-j}\pi_ud_j$, bounded by $\max_D\|\pi_u\|/(\beta-1)$. So all $x_k$ lie in a fixed bounded region of $\R^d$, which meets $\Z^d$ in a finite set.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:ancestry} is the matrix-radix analogue of the finiteness of digit expansions in a Pisot base; the proof is self-contained. It does not assume unimodularity and does not treat any projection of $\Z^d$ as a lattice: only discreteness of $\Z^d$ itself is used. A finite ancestry alphabet does \emph{not} by itself constrain the digit sequences: nonzero cycles occur (Example~\ref{ex:tribonacci-loop}).
+\end{remark}
+
+\subsection{Affine traces and the pump question}\label{sec:pump}
+
+Retaining, at each level $k$ of a descent, the pair of source letters $(a_k,b_k)$ containing the two cuts together with $x_k$ gives the \emph{affine trace} $\bigl((a_k,b_k,x_k)\bigr)_{0\le k\le n}$ of a zero return. For a fixed PIP $\sigma$ and a fixed finite closed set of states, the affine states range over a finite set (Theorem~\ref{thm:ancestry}), so every sufficiently deep zero return has a repeated affine state, i.e.\ a \emph{loop} in its trace.
+
+\begin{problem}[Affine pump normalization; \Status{Open}]\label{prob:pump}
+Prove (or refute): for a PIP substitution and a bound $R_0$, every reachable state with $\Disc\le R_0$ whose ancestry trace contains a loop can be shortened along the loop to another reachable state with the same labelled local data, and the loop-free traces form a finite set. Either clause, proved uniformly, would resolve Open Problem~\ref{prob:G1b2}, hence G1 (Proposition~\ref{lem:G1-assembly}).
+\end{problem}
+
+The finite computations of Section~\ref{sec:finite-level2} show that, for $\tau$ of Example~\ref{ex:tau}, every collision of a natural finite projection observed through depth seven is explained by such a loop. That is evidence for the shape of the statement, not for its truth.
+
+\subsection{Design constraints for the non-unimodular case}\label{sec:nonunit}
+
+Any contracting-space argument for Open Problem~\ref{prob:G1b2} must respect the following facts. For unimodular PIP substitutions the projection of $\Z^d$ to the contracting hyperplane $E_s$ is dense, not a lattice, so no naive discreteness argument in $E_s$ is available. For non-unimodular substitutions the natural internal space is the product of $E_s$ with a non-Archimedean factor $\prod_{p\mid\det M}K_p$ determined by the primes dividing the norm of $\beta$~\cite{MT,BBK}; a level-scaled address must retain the corresponding residue information. For $\tau$ of Example~\ref{ex:tau}, $\det M_\tau=2$ and $\beta(\beta^2-\beta-2)=2$, so the completion of $\Q(\beta)$ at the prime above $\beta$ is $\Q_2$, and the finite quotients $\Z^3/M_\tau^k\Z^3$ (of order $2^k$) are the natural finite approximations of that factor. The computations of Section~\ref{sec:finite-level2} use exactly these quotients and no floating-point or inverse-matrix arithmetic.
+
+\subsection{Geometric reformulation and the overlap algorithm}\label{sec:overlap}
+
+The overlap-coincidence algorithm of Solomyak~\cite{Solomyak97} and Akiyama--Lee~\cite{AL} decides \PDS{} for self-affine tilings with the Meyer property by iterating inflation on the finite set of \emph{realized} overlaps of two tilings in one fibre of the maximal equicontinuous factor; finiteness of that set follows from finite local complexity and the Meyer property, which holds for Pisot-family self-affine tilings~\cite{LS}. In one dimension the balanced-pair and overlap algorithms are related in~\cite{SS}. A reachable irreducible state $(u,v)$ that is realized by two tilings $\mathcal T,\mathcal T'$ in one fibre corresponds to a maximal interval between consecutive simultaneous tile boundaries, and hence to a finite chain of overlaps.
+
+\begin{conjecture}[Relative density of simultaneous boundaries; \Status{Conjectural bridge}]\label{conj:density}
+For PIP $\sigma$ and any two tilings $\mathcal T,\mathcal T'\in\Omega_\sigma$ in the same fibre of the maximal equicontinuous factor, the set of simultaneous boundaries $\partial\mathcal T\cap\partial\mathcal T'$ is relatively dense in $\R$, with a gap bound uniform in the fibre.
+\end{conjecture}
+
+A uniform gap bound would bound the length of every \emph{realized} irreducible state, giving finiteness of the realized part of $\B_\sigma$; combined with a proof that every reachable state is realized (Section~\ref{sec:realization}) it would give G1. We record this as the most natural geometric target for Open Problem~\ref{prob:G1b2}; we do not claim it, and we note that it is not implied by the Meyer property alone, which controls overlaps of tiles but not gaps between coincidences of boundaries. For the swap pairs themselves a gap bound, and with it G1, follows from productivity of the seed-patch overlap graph, with no realization step (Proposition~\ref{prop:G1-from-overlaps}).
+
+The overlap side of this picture can, however, be made unconditional for the swap pairs themselves. Fix a seed $(ab,ba)$ and $n\ge0$, let $U=\sigma^n(ab)$, $V=\sigma^n(ba)$, and tile $[0,\beta^n(\ell_a+\ell_b))$ by both words with tile lengths $\ell$. An \emph{overlap} is a pair (tile of the $U$-tiling, tile of the $V$-tiling) whose interiors meet; its \emph{type} is $(i,j,t)$ with $i,j$ the tile types and $t$ the start of the second tile minus the start of the first. Inflating both tiles and keeping the overlapping pairs of their sub-tiles gives the \emph{children} of an overlap, of types $(i',j',\beta t+q-p)$ with $p,q$ the prefix translations of the chosen sub-tiles; a \emph{coincidence} is a type $(i,i,0)$, and coincidences are terminal. The \emph{seed-patch overlap graph} $\mathcal O_\sigma$ is the graph on the types reachable from the level-$0$ overlaps of the seeds, with coincidences terminal. Every descendant of a coincidence is a coincidence, and an overlap at level $n+1$ is a child of the overlap of the two level-$n$ supertiles containing its tiles; so, by induction on the level, the vertices of $\mathcal O_\sigma$ are exactly the occurring types that are not coincidences together with the occurring coincidences that have a non-coincidence parent (or are seeds). In particular every occurring non-coincidence overlap is a vertex, and every vertex is an occurring type.
+
+\begin{theorem}[Finiteness of the seed-patch overlap graph; \Status{Theorem}]\label{thm:overlap-finite}
+Let $\sigma$ be primitive with every eigenvalue of $M$ other than $\beta$ of modulus less than one, and let $D_\sigma$ be the constant of Theorem~\ref{thm:G1b1}. Every overlap type $(i,j,t)$ occurring in a swap pair has $t=\langle\ell,w\rangle$ with $w\in\Z^d$ and
+\[\|w\|_\infty\le B_\sigma:=D_\sigma+\frac{\ell_{\max}+\|\ell\|_1D_\sigma}{\ell_{\min}}.\]
+Hence there are at most $d^2(2B_\sigma+1)^d$ occurring types, and $\mathcal O_\sigma$ has at most that many vertices.
+\end{theorem}
+\begin{proof}
+Let the two tiles start at $x=g(U[i])$ and $y=g(V[j])$, where $g(w):=\langle\ell,\pi(w)\rangle$. Then $t=y-x=\langle\ell,w\rangle$ with $w=\pi(V[j])-\pi(U[i])=(\pi(V[j])-\pi(V[i]))-\Delta(i)$, in the notation of the proof of Theorem~\ref{thm:G1b1}, so $\|\Delta(i)\|_\infty\le D_\sigma$. The $i$-th vertex of the $V$-tiling is $y_i=x-\langle\ell,\Delta(i)\rangle$, so $|x-y_i|\le\|\ell\|_1D_\sigma$, while interior overlap gives $|x-y|<\ell_{\max}$; hence $|y-y_i|<\ell_{\max}+\|\ell\|_1D_\sigma$. Between the $i$-th and $j$-th vertices of the $V$-tiling lie $|j-i|$ tiles of length at least $\ell_{\min}$, so $|j-i|<(\ell_{\max}+\|\ell\|_1D_\sigma)/\ell_{\min}$, and $\|\pi(V[j])-\pi(V[i])\|_\infty\le|j-i|$.
+\end{proof}
+
+Only primitivity and the Pisot spectrum are used, through $D_\sigma$; irreducibility, unimodularity and legality of $ab$ are not. Theorem~\ref{thm:overlap-finite} does not give G1: a reachable state of length $n$ is a chain of between $n$ and $2n-1$ consecutive overlaps with no common vertex in its interior, and G1 asks that only finitely many such chains occur, which is the swap-pair form of Conjecture~\ref{conj:density}. What the theorem does give is a finite graph on which the coincidence question can be posed without any finiteness hypothesis; we return to this in Section~\ref{sec:density}.
+
+\subsection{The seed-family bridge}\label{sec:literature-bridge}
+
+\begin{proposition}[Seed union; \Status{Theorem}]\label{prop:seed-union}
+Let $F_{a,b}$ be the set of states reachable from the single seed $(ab,ba)$. Then the vertex set of $\B_\sigma$ is $\bigcup_{a\ne b}F_{a,b}$. In particular, if every single-seed algorithm terminates with coincidence then $\B_\sigma$ is finite and every state is productive.
+\end{proposition}
+\begin{proof}
+Immediate from Definition~\ref{def:bpa}.
+\end{proof}
+
+\begin{theorem}[Seedwise bridge; \Status{Theorem}]\label{thm:seedwise}
+Let $\sigma$ be irreducible Pisot on three letters with \PDS{}. Then the balanced-pair algorithm terminates with coincidence from \emph{every} seed $(ab,ba)$, $a\ne b$, including seeds that are not legal factors.
+\end{theorem}
+This answers the question formerly recorded here as an open problem. The proof is assembled below from Proposition~\ref{prop:PDS-implies-G1} (finiteness) and the productivity of every potential overlap; the reduction is in \texttt{docs/formal-productivity-reduction-2026-10-04.md}.
+
+
+The statement in~\cite[Thm.~5.3]{ABBLS} is that termination with coincidence is equivalent to \PDS{} and that a seed of the form $(ij,ji)$ suffices; we have not verified from the proofs in~\cite{SS,HS} that the equivalence holds for an arbitrary chosen seed, nor for seeds outside the language. The finiteness part is settled first, by a route that does not pass through the balanced-pair literature.
+
+\begin{proposition}[\PDS{} implies G1; \Status{Theorem}]\label{prop:PDS-implies-G1}
+For irreducible Pisot $\sigma$ on three letters, \PDS{} implies G1: the balanced-pair algorithm terminates from every seed $(ab,ba)$, $a\ne b$, legal or not.
+\end{proposition}
+\begin{proof}[Proof sketch]
+Every reachable strict zipper yields a pair of $\Phi^r$-fixed tilings with a common interior centre, an integral centre offset and no common vertex (Theorem~B and Corollary~B$'$ of \texttt{docs/p1b-strict-zipper-periodic-pair-2026-10-02.md}). By Proposition~F and Theorem~R of \texttt{docs/p1b-periodic-pair-fibre-literature-gate-2026-10-02.md} the two tilings lie in one fibre of the maximal equicontinuous factor; sharing no tile, they force coincidence rank at least~$2$ and hence no \PDS{}, by Barge's coincidence-rank theorems for primitive non-periodic substitutions with Pisot inflation (audited in \texttt{docs/coincidence-rank-imports-literature-gate-2026-10-04.md}). So \PDS{} excludes strict zippers from every seed, and Proposition~\ref{prop:G1-from-half-coincidences} gives G1. The full argument is Theorem~S of \texttt{docs/p1b-vertex-coincidence-box-2026-10-02.md}, \S5.1; it was independently audited on 2026-10-04.
+\end{proof}
+
+Consequently G1 is a \emph{necessary} condition for \PDS{}, and Theorem~\ref{thm:main-conditional} is not merely one sufficient route.
+
+\begin{proof}[Proof of Theorem~\ref{thm:seedwise}]
+By \cite[Cor.~4.5]{AL14}, \PDS{} gives simultaneous prefix strong coincidence of all letters, hence productivity of the six aligned overlaps $(i,j,0)$; the height-group step it requires holds for every PIP $\sigma$ by Theorem~R of \texttt{docs/p1b-periodic-pair-fibre-literature-gate-2026-10-02.md} (see \texttt{docs/pds-strong-coincidence-literature-gate-2026-10-04.md}). By Theorem~S of \texttt{docs/p1b-vertex-coincidence-box-2026-10-02.md}, \PDS{} also gives PPVC, which by Proposition~V there gives an offset-zero descendant to every overlap on a cycle. Proposition~FP of \texttt{docs/formal-productivity-reduction-2026-10-04.md} then makes every potential overlap $(i,j,\langle\ell,w\rangle)$, $w\in\mathbb Z^3$, productive. The overlaps reachable from any seed $s$ are potential overlaps, so $\delta(s)=1$ by Theorem~\ref{thm:density}(iii). By Proposition~\ref{prop:PDS-implies-G1} the states reachable from $s$ are finitely many, and Theorem~\ref{thm:density}(v) gives termination with coincidence from $s$.
+\end{proof}
+
+\subsection{Retired finiteness arguments}\label{sec:retired-level2}
+The following are not valid routes to G1 and are recorded so that they are not reattempted: (i) unique decodability implies bounded total coincidence padding (Remark~\ref{rem:UD-not-finiteness}); (ii) bounded discrepancy (now Theorem~\ref{thm:G1b1}) implies finitely many states; (iii) the zero-sum hyperplane contracts under $M$ in a fixed norm (false: the Perron component of a nonzero difference vector expands); (iv) every long state contains a uniformly short irreducible core; (v) the two-letter case is a trivial one-dimensional walk (the known two-letter proof~\cite{BD,HS} uses genuine substitutive structure); (vi) the unlabelled difference path determines the state (Example~\ref{ex:collision}).
+
+\section{Level 3: coincidence}\label{sec:level3}
+
+Throughout this section $\sigma$ is PIP unless a statement says otherwise.
+
+\subsection{Sink-SCC reduction}\label{sec:sink}
+
+\begin{theorem}[\Status{Conditional} on G1; Theorem~\ref{thm:sink-summary}]\label{thm:sink}
+Let $\B$ be a finite balanced-pair automaton and $\NP$ its set of nonproductive states. If $\NP\ne\emptyset$, then $\B$ contains a closed nonproductive recurrent noncoincident SCC. Consequently Conjecture~\ref{conj:producer} for a finite $\B_\sigma$ is equivalent to the nonexistence of a closed nonproductive recurrent noncoincident SCC.
+\end{theorem}
+\begin{proof}
+$\NP$ is forward closed: a child of a nonproductive state is nonproductive. The condensation of the induced graph $\B[\NP]$ is a finite nonempty acyclic digraph and has a sink vertex, an SCC $\cC$. Every child of a state of $\cC$ lies in $\NP$ and, $\cC$ being a sink of the condensation of $\B[\NP]$, in $\cC$; so $\cC$ is closed in $\B$. Every noncoincident state has at least one child (the reduction of $(\sigma(u),\sigma(v))$ is nonempty), so an infinite forward path exists inside the finite set $\cC$, which therefore contains a cycle. $\cC$ contains no coincidence block since those are productive. Conversely a closed nonproductive SCC is a set of nonproductive states.
+\end{proof}
+
+Thus, under G1, it suffices to rule out one kind of object: a finite closed nonproductive recurrent noncoincident SCC. We call such an SCC a \emph{strict component}. Sections~\ref{sec:parikh}--\ref{sec:return-machinery} are a list of properties that every strict component must have.
+
+\subsection{Mass balance and the Parikh intertwiner}\label{sec:parikh}
+
+Let $\cC=\{T_1,\dots,T_m\}$ be a finite closed nonproductive SCC. Nonproductivity and closure mean that every block of $\red(\sigma(u_j),\sigma(v_j))$ is a state of $\cC$. Hence $\tau_\cC(T_j):=$ (ordered sequence of the states of those blocks) is a substitution on the alphabet $\cC$, the \emph{derived substitution}; its incidence matrix $N_\cC$, $(N_\cC)_{ij}=|\tau_\cC(T_j)|_{T_i}$, is irreducible because $\cC$ is strongly connected. Let $p_j=\pi(u_j)=\pi(v_j)$ and $P_\cC=[p_1\cdots p_m]\in\mathrm{Mat}_{d\times m}(\Z_{\ge0})$.
+
+\begin{theorem}[\Status{Theorem}; part of Theorem~\ref{thm:structure-summary}]\label{thm:parikh}
+$P_\cC N_\cC=M P_\cC$; $\rank_\Q P_\cC=d$ and $m\ge d$; $\chi_M\mid\chi_{N_\cC}$ in $\Z[x]$; and $\rho(N_\cC)=\beta$. If $m=d$ then $N_\cC=P_\cC^{-1}MP_\cC$.
+\end{theorem}
+\begin{proof}
+The $j$-th column of $P_\cC N_\cC$ is the sum of the Parikh vectors of the blocks of $\red(\sigma(u_j),\sigma(v_j))$, which is $\pi(\sigma(u_j))=Mp_j$. Let $W=\operatorname{im}_\Q P_\cC\ne0$; then $MW=\operatorname{im}(P_\cC N_\cC)\subseteq W$. The minimal polynomial of $M|_W$ divides the irreducible $\chi_M$, hence equals it, so $\dim W\ge d$, i.e.\ $W=\Q^d$. Since $P_\cC:\Q^m\to\Q^d$ is surjective and intertwines $N_\cC$ with $M$, $\ker P_\cC$ is $N_\cC$-invariant and the induced map on $\Q^m/\ker P_\cC$ is conjugate to $M$; block triangularization gives $\chi_{N_\cC}=\chi_{N_\cC|\ker P_\cC}\cdot\chi_M$, and Gauss's lemma upgrades divisibility to $\Z[x]$. Finally $\lambda^\top:=\ell^\top P_\cC$ is strictly positive (each $p_j\ne0$) and $\lambda^\top N_\cC=\ell^\top MP_\cC=\beta\lambda^\top$; for an irreducible nonnegative matrix a positive eigenvector belongs to the Perron root, so $\rho(N_\cC)=\beta$.
+\end{proof}
+
+\begin{remark}[Closed versus closed nonproductive]
+For a general recurrent noncoincident SCC one has instead $\beta L(s)=\sum_tN_\cC[s,t]L(t)+\text{escape}(s)+\text{leak}(s)$, where escape collects children outside $\cC$ and leak collects coincidence children; then $N_\cC L_\cC\le\beta L_\cC$ componentwise and $\rho(N_\cC)\le\beta$, with equality if and only if escape and leak vanish identically. Closed \emph{productive} SCCs with $\rho(N_\cC)<\beta$ exist; every statement below that uses $\rho(N_\cC)=\beta$ requires nonproductivity.
+\end{remark}
+
+\subsection{Boundary synchronization and locality}\label{sec:boundary}
+
+Let $\sigma_+(a)$ and $\sigma_-(a)$ be the first and last letters of $\sigma(a)$. For $h:\A\to\A$, an ordered pair $(a,b)$ is \emph{$h$-synchronizing} if $h^m(a)=h^m(b)$ for some $m\ge0$; write $\Sync_\pm$ for the $\sigma_\pm$-synchronizing pairs. For a zero return $k$ of $(u,v)$ with $0<k<n$, its \emph{right pair} is $(u_{k+1},v_{k+1})$ and its \emph{left pair} is $(u_k,v_k)$.
+
+\begin{lemma}[Boundary synchronization; \Status{Theorem}]\label{lem:boundary-sync}
+If some zero return of $(\sigma^n(u),\sigma^n(v))$, for some $n\ge0$, has right pair in $\Sync_+$ or left pair in $\Sync_-$, then the state $(u,v)$ is productive.
+\end{lemma}
+\begin{proof}
+Let $K$ be the zero return and $(a,b)$ its right pair. After $m$ further inflations $K$ is inherited to a zero return $K_m$ (Lemma~\ref{lem:inherited}) whose right pair is $(\sigma_+^m(a),\sigma_+^m(b))$. If this is $(c,c)$, then $K_m+1$ is also a zero return and the block between them is $(c,c)$, a coincidence block among the depth-$(n+m)$ descendants of $(u,v)$ (Lemma~\ref{lem:descendants}). For the left pair, use $\sigma_-$ and subtract $e_c$ from the equal prefix vectors at $K_m$.
+\end{proof}
+
+\begin{theorem}[Global endpoint synchronization; \Status{Theorem}, no PIP hypothesis]\label{thm:global-sync}
+If $\sigma_+$ (or $\sigma_-$) is globally synchronizing, i.e.\ some iterate is constant, then every balanced pair is productive and Conjecture~\ref{conj:producer} holds for $\sigma$.
+\end{theorem}
+\begin{proof}
+Position $0$ (resp.\ $n$) is a zero return of every balanced pair, with right pair $(u_1,v_1)$ (resp.\ left pair $(u_n,v_n)$); apply Lemma~\ref{lem:boundary-sync}.
+\end{proof}
+
+\begin{lemma}[Newborn locality; \Status{Theorem}]\label{lem:locality}
+Let $k$ be a newborn zero return of $(\sigma(u),\sigma(v))$. There is a unique block $T_j$ of $\red(u,v)$ and an interior zero return $r$ of $\sigma(T_j)$ with $k=B_j+r$, $B_j$ the inherited image of the left end of $T_j$, and the left and right pairs of $k$ in $\sigma(u,v)$ equal those of $r$ in $\sigma(T_j)$.
+\end{lemma}
+\begin{proof}
+$k$ lies strictly between consecutive inherited returns $B_j<k<B_{j+1}$; subtracting the prefix equalities at $B_j$ and $k$ shows $r=k-B_j$ is a zero return of $\sigma(T_j)$, and adjacent letters are unchanged by translation.
+\end{proof}
+
+\begin{definition}[Synchronization targets]\label{def:C2C3}
+For a strict component $\cC$:
+\begin{itemize}[leftmargin=*]
+\item \textbf{C2}: some state $T\in\cC$ and some $n\ge1$ give a zero return of $\sigma^n(T)$ with right pair in $\Sync_+$ or left pair in $\Sync_-$.
+\item \textbf{C3-local}: some $T\in\cC$ gives an \emph{interior} zero return of $\sigma(T)$ with right pair in $\Sync_+$ or left pair in $\Sync_-$.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}[One-way chain; \Status{Theorem}]\label{prop:chain}
+For every strict component, C3-local $\Rightarrow$ C2 $\Rightarrow$ contradiction with nonproductivity. Hence if C3-local holds for every hypothetical strict component of every PIP substitution with finite $\B_\sigma$, then Conjecture~\ref{conj:producer} holds for all of them. No converse is asserted.
+\end{proposition}
+\begin{proof}
+C3-local is the case $n=1$ of C2, and C2 contradicts nonproductivity by Lemma~\ref{lem:boundary-sync}. (Lemma~\ref{lem:locality} shows that a synchronizing newborn zero return at depth $n$ localizes to a one-step interior zero return of a depth-$(n-1)$ block, which lies in $\cC$ by closure; so for strict components C2 and C3-local are in fact equivalent, and the inherited case is covered by the boundary pairs of states of $\cC$.)
+\end{proof}
+
+The program of proving C3-local for every strict component is referred to below as the C4 program. It is open (Open Problem~\ref{prob:C4}).
+
+\subsection{Endpoint dynamics on three letters}\label{sec:endpoint}
+
+For $d=3$ the $27$ self-maps of $\A$ fall into seven conjugacy classes of functional graphs, listed with the recurrent nonsynchronizing ordered pairs of the product map $h\times h$:
+
+\begin{center}
+\begin{tabular}{@{}lllcc@{}}
+\toprule
+Type & Representative & Functional graph & Class size & Nonsync.\ core \\
+\midrule
+A & $(0,0,0)$ & fixed point with two leaves & 3 & $\emptyset$\\
+B & $(0,0,1)$ & fixed point with a tail of length two & 6 & $\emptyset$\\
+C & $(0,0,2)$ & two fixed points, one leaf & 6 & 2 pairs\\
+D & $(0,1,2)$ & identity & 1 & 6 pairs\\
+E & $(0,2,1)$ & fixed point and a $2$-cycle & 3 & 6 pairs\\
+F & $(1,0,0)$ & $2$-cycle with one leaf & 6 & 2 pairs\\
+G & $(1,2,0)$ & $3$-cycle & 2 & 6 pairs\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{proposition}[\Status{Theorem}]\label{prop:endpoint-types}
+Every self-map of a three-letter alphabet is conjugate to exactly one of A--G. Types A and B are globally synchronizing. For every $h$ and every ordered pair $(a,b)$, either the pair synchronizes, or it lies in the recurrent core of $h\times h$, or it enters that core after exactly one step; recurrent cores have periods $1$, $2$ or $3$. Let $a\sim_hb$ iff $h^n(a)=h^n(b)$ for some $n$; $h$ induces a permutation of the quotient $Q_h=\A/{\sim_h}$, and $(a,b)$ synchronizes iff $a\sim_hb$.
+\end{proposition}
+\begin{proof}
+A functional graph on three vertices is a union of cycles with in-trees; enumerating cycle types $(1)$, $(1,1)$, $(1,1,1)$, $(1,2)$, $(2)$, $(3)$ and tree attachments gives exactly the seven rows, whose class sizes sum to $27$. The remaining assertions are checked on the representatives; both the exhaustive enumeration and the checks were also carried out mechanically.
+\end{proof}
+
+\begin{corollary}[Signature bound; \Status{Theorem}]\label{cor:signature}
+Let $\cC$ be a strict component, $d=3$. For $T=(u,v)\in\cC$ the unordered pairs $\{[u_1],[v_1]\}\subset Q_{\sigma_+}$ and $\{[u_n],[v_n]\}\subset Q_{\sigma_-}$ consist of two distinct classes. The number of such \emph{endpoint signatures} is at most $\binom{|Q_+|}{2}\binom{|Q_-|}{2}\le9$, and every strict component contains a cycle of states whose signatures repeat with period at most $1$, $3$ or $9$ according as the two quotient sizes are $(2,2)$, mixed, or $(3,3)$.
+\end{corollary}
+\begin{proof}
+Equal classes would make position $0$ (resp.\ $n$) a synchronizing zero return (Lemma~\ref{lem:boundary-sync}). The signature is invariant under side swap, hence well defined on states. Along an infinite path in the finite signature graph a signature repeats.
+\end{proof}
+
+\begin{importedtheorem}[Barge--Diamond~\cite{BD}; \Status{Imported}]\label{thm:BD}
+Let $\sigma$ be a substitution of Pisot type (primitive, irreducible characteristic polynomial, Pisot dilation) on $d\ge2$ letters. There exist letters $a\ne b$ and $n\ge1$ such that $\sigma^n(a)=pcs$, $\sigma^n(b)=p'cs'$ with $c\in\A$ and $\pi(p)=\pi(p')$ (the pair $\{a,b\}$ is \emph{eventually coincident}). For $d=2$ every pair of distinct letters is eventually coincident (strong coincidence).
+\end{importedtheorem}
+
+\begin{theorem}[Barge--Diamond eliminator; \Status{Theorem}, $d=3$]\label{thm:BD-eliminator}
+Let $\cC$ be a closed nonproductive set of states of a PIP substitution on three letters (finiteness not required). Then no zero return of any $\sigma^n(T)$, $T\in\cC$, has an eventually coincident right pair; consequently neither $\sigma_+$ nor $\sigma_-$ is of type G, and, fixing one eventually coincident pair $\{a,b\}$ with complementary letter $c$, every right pair at a zero return of every $\sigma^n(T)$ is $\{a,c\}$ or $\{b,c\}$.
+\end{theorem}
+\begin{proof}
+If a zero return $K$ has right pair $(a,b)$ eventually coincident at level $n$, then after $n$ inflations the blocks $\sigma^n(a)$ and $\sigma^n(b)$ start at the inherited zero return, and the position $|p|=|p'|$ after it is a zero return followed by $(c,c)$: a coincidence block, contradicting nonproductivity (Lemma~\ref{lem:descendants}). Now let $\{a,b\}$ be the pair of Theorem~\ref{thm:BD}. The first letters of any $T\in\cC$ are distinct and form the right pair of the zero return $0$; the first block of $\red(\sigma(T))$ has first letters $(\sigma_+(u_1),\sigma_+(v_1))$ and lies in $\cC$. Iterating, every pair $\{\sigma_+^k(u_1),\sigma_+^k(v_1)\}$ is a non-eventually-coincident pair. If $\sigma_+$ were a $3$-cycle, its action on the three unordered pairs would be transitive and $\{a,b\}$ would occur, a contradiction. The suffix statement follows by applying the same argument to the reversed substitution $a\mapsto\overline{\sigma(a)}$, which has the same incidence matrix and whose balanced-pair automaton is the image of $\B_\sigma$ under word reversal, with $\sigma_-$ as its prefix map. The last assertion holds because only three unordered pairs exist.
+\end{proof}
+
+Together with Theorem~\ref{thm:global-sync}, a strict component on three letters has both endpoint maps of type C, D, E or F. This is a necessary condition; it is not asserted that these types are realizable by strict components.
+
+\subsection{Orientation and signed first-defect intertwiners}\label{sec:orientation}
+
+Fix normalized representatives $T=(u_T,v_T)$ of the states of a strict component $\cC$. The blocks of $\red(\sigma(u_T),\sigma(v_T))$ are raw pairs $R_1,\dots,R_m$; each $R_i$ equals $(u_U,v_U)$ or $(v_U,u_U)$ for its state $U$, and we set $\epsilon(T\to U_i)=+1$ or $-1$ accordingly. Let $A_{ij}$, $B_{ij}$ count the occurrences with sign $+1$, $-1$ of $T_i$ among the children of $T_j$, so $N_\cC=A+B$; put $S=A-B$.
+
+\begin{proposition}[Orientation cocycle; \Status{Theorem}]\label{prop:cocycle}
+The signs form a $\Z/2$-cocycle on the child graph. A \emph{gauge} $g:\cC\to\{\pm1\}$ with $g(U)=g(T)\epsilon(T\to U)$ on every occurrence exists iff every closed walk has sign product $+1$; then, after reorienting each state by $g$, the two side words define morphisms $U,V:\cC^*\to\A^*$ with $\sigma\circ U=U\circ\tau_\cC$, $\sigma\circ V=V\circ\tau_\cC$, $\pi\circ U=\pi\circ V$, and $U(T)\ne V(T)$ for all $T$. If no gauge exists, the oriented double cover $\cC\times\{\pm1\}$ with lifted children $(T,o)\to(U,o\epsilon)$ is strongly connected and carries a single morphism $W$ with $\sigma\circ W=W\circ\tilde\tau_\cC$ commuting with the deck involution. In all cases $\rho(S)\le\beta$; if some parent--child pair occurs with both signs then $\rho(S)<\beta$; and if $N_\cC$ is primitive then $\rho(S)=\beta$ forces $S$ to be diagonally similar to $N_\cC$ (gauge case) or to $-N_\cC$ (anti-gauge case).
+\end{proposition}
+\begin{proof}
+Swapping a parent's sides swaps all its children's sides, so signs compose along paths and the gauge equation is the standard voltage-graph condition; the word identities follow because with a gauge every raw child appears in its chosen orientation. For the spectral statements: $|S|\le N_\cC$ entrywise, and for irreducible nonnegative $N_\cC$ the Wielandt comparison gives $|\lambda|\le\rho(N_\cC)=\beta$ (Theorem~\ref{thm:parikh}) for every eigenvalue $\lambda$ of $S$, strictly if $|S|\ne N_\cC$; in the equality case, if $\lambda=\beta e^{i\varphi}$ is an eigenvalue of $S$ of maximal modulus, Wielandt's theorem~\cite[Thm.~8.4.5]{HornJohnson} gives $|S|=N_\cC$ and $S=e^{i\varphi}DN_\cC D^{-1}$ for a diagonal unitary $D=\operatorname{diag}(d_i)$, so every edge sign is $e^{i\varphi}d_id_j^{-1}$ and the sign product around a directed cycle of length $L$ is $e^{i\varphi L}\in\{\pm1\}$. If $N_\cC$ is primitive the cycle lengths have greatest common divisor $1$, so $e^{2i\varphi}=1$ and $e^{i\varphi}=\pm1$; since $S$ and $\pm N_\cC$ are real with the same support and the graph is strongly connected, the $d_i$ may then be rescaled to lie in $\{\pm1\}$.
+\end{proof}
+
+For a word $w$ and $x=x_1\cdots x_r\in\A^r$ let $N_x(w)$ be the number of occurrences of $x$ as a scattered subword of $w$, and let $N_r(w)=(N_x(w))_{x\in\A^r}\in\Z^{d^r}$. For a balanced pair define the \emph{degree-$r$ defect} $K_r(u,v)=N_r(u)-N_r(v)$; $K_1\equiv0$ on balanced pairs, and $K_r(v,u)=-K_r(u,v)$. For $r=2$ and a balanced pair with $n_a=|u|_a=|v|_a$ one has $K_{aa}=\binom{n_a}2-\binom{n_a}2=0$ and $K_{ab}+K_{ba}=n_an_b-n_an_b=0$, so $K_2$ is antisymmetric; for $d=3$ we identify it throughout with the vector $(K_{12},K_{13},K_{23})\in\Lambda^2\Z^3$, so that $K_{ji}=-K_{ij}$ (this is the instance $\Lie_2=\Lambda^2$ of Theorem~\ref{thm:defect-intertwiner} below, and the identification is used in Sections~\ref{sec:midarea} and~\ref{sec:wedge}). For a strict component let $r(\cC)=\min\{r:K_r(T)\ne0\text{ for some }T\in\cC\}$, finite since distinct words of length $n$ have different $N_n$.
+
+\begin{lemma}[Concatenation and substitution; \Status{Theorem}]\label{lem:conc-subst}
+(i) $N_r(xy)=\sum_{k=0}^{r}N_k(x)\otimes N_{r-k}(y)$ (with $N_0=1$). (ii) $N_r(\sigma(w))=M^{\otimes r}N_r(w)+\Lambda_r(N_1(w),\dots,N_{r-1}(w))$ where $\Lambda_r$ is linear with coefficients depending only on $\sigma$. (iii) The functional $x\mapsto N_x(w)$ is a character of the shuffle algebra (Ree's theorem~\cite[Thm.~3.6]{Reutenauer}): $N_{x\shuffle y}(w)=N_x(w)N_y(w)$.
+\end{lemma}
+\begin{proof}
+(i) An occurrence splits into its parts in $x$ and in $y$. (ii) Group occurrences in $\sigma(w)$ by the multiset of source positions used; the occurrences using $r$ distinct source positions contribute $\sum_{y}\prod_jM_{x_jy_j}N_y(w)=(M^{\otimes r}N_r(w))_x$, and those using fewer source positions are linear in lower-degree counts of $w$ with coefficients given by scattered-subword counts inside the images $\sigma(a)$. (iii) is Ree's theorem.
+\end{proof}
+
+\begin{theorem}[First-defect intertwiner; \Status{Theorem}; part of Theorem~\ref{thm:defect-summary}]\label{thm:defect-intertwiner}
+Let $r=r(\cC)$ and let $Q_r$ have the vectors $K_r(T)$, $T\in\cC$, as columns. Then every $K_r(T)$ lies in the free Lie component $\Lie_r(\Q^d)\subset(\Q^d)^{\otimes r}$, and $Q_rS=\Phi_rQ_r$ with $\Phi_r=M^{\otimes r}|_{\Lie_r}$. In particular $\operatorname{im}Q_r$ is a nonzero rational $\Phi_r$-invariant subspace on which the induced action is a quotient of $S$, so $\rho(\Phi_r|_{\operatorname{im}Q_r})\le\beta$.
+\end{theorem}
+\begin{proof}
+For $T\in\cC$ all $K_k(T)$, $k<r$, vanish, so Lemma~\ref{lem:conc-subst}(ii) gives $K_r(\sigma(T))=M^{\otimes r}K_r(T)$, and (i) applied to $\sigma(u_T)=R_1\cdots R_m$ (top sides) and to the bottom sides, with all lower-degree cross terms equal on both sides, gives $K_r(\sigma(T))=\sum_i\epsilon_iK_r(U_i)$, which is $Q_rS$ column by column. By (iii), $K_r(T)$ annihilates every proper shuffle $x\shuffle y$ with $|x|,|y|\ge1$, $|x|+|y|=r$; the annihilator in degree $r$ of the proper shuffles is the space of primitive elements of the concatenation Hopf algebra, which is $\Lie_r$~\cite[Thm.~3.1]{Reutenauer}. Since $M^{\otimes r}$ is an algebra automorphism preserving $\Lie_r$, the identity restricts.
+\end{proof}
+
+\begin{theorem}[Degrees two and three, $d=3$; \Status{Theorem}]\label{thm:deg23}
+Let $d=3$ and $\cC$ strict.
+\begin{enumerate}[label=(\roman*)]
+\item $\chi_{\Lambda^2M}(x)=x^3-Ux^2+\det(M)\operatorname{tr}(M)x-\det(M)^2$, where $\chi_M=x^3-\operatorname{tr}(M)x^2+Ux-\det M$, is irreducible over $\Q$, and $\rho(\Lambda^2M)=\beta|\beta_2|<\beta$.
+\item If $r(\cC)=2$ then $\rank_\Q Q_2=3$, $\chi_{\Lambda^2M}\mid\chi_S$, and $|\cC|\ge\deg\operatorname{lcm}(\overline{\chi_M},\overline{\chi_{\Lambda^2M}})\in\{3,4,5,6\}$, the reductions being taken modulo $2$; the value is $6$ whenever $\det M$ is odd and $\operatorname{tr}M\not\equiv U\pmod2$.
+\item If $r(\cC)=3$ then $\operatorname{im}Q_3\subseteq\ker(\Phi_3-\det M)$, a two-dimensional space, so $\rank Q_3\le2$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(i) The roots of $\chi_{\Lambda^2M}$ are $\beta_i\beta_j=\det M/\beta_k$; a rational one would make some $\beta_k$ rational. The moduli are $\beta|\beta_2|\ge\beta|\beta_3|$ and $|\beta_2\beta_3|<1<\beta|\beta_2|$ (as $|\det M|=\beta|\beta_2\beta_3|\ge1$), and $\beta|\beta_2|<\beta$. (ii) $\Lie_2=\Lambda^2$, so $\operatorname{im}Q_2$ is a nonzero $\Lambda^2M$-invariant rational subspace of $\Lambda^2\Q^3$, hence everything by irreducibility; then $\Lambda^2M$ is a quotient of $S$ and $\chi_{\Lambda^2M}\mid\chi_S$ in $\Z[x]$ (Gauss). Since $S\equiv N_\cC\pmod2$, $\chi_S\equiv\chi_{N_\cC}\pmod 2$ is divisible in $\F_2[x]$ by both reductions; the table of the eight parity classes is a direct computation in $\F_2[x]$, and when $\det M$ is odd the difference of the two reductions is $x(x+1)$ while neither vanishes at $0$ or $1$. (iii) For $d=3$, $\Lie_3(V)\cong S_{(2,1)}(V)$ has dimension $8$ and $\Phi_3$ has eigenvalues $\beta_i^2\beta_j$ ($i\ne j$) and $\det M$ with multiplicity two; $\Phi_3$ is semisimple since $\chi_M$ is. The Galois-stable rational constituents of the non-scalar part are one sextic factor or two cubic factors, each containing a weight of modulus $\beta^2|\beta_2|$ or $\beta^2|\beta_3|$; both exceed $\beta$ because $\beta|\beta_2|\ge\sqrt{|\det M|}\ge1$ and $\beta|\beta_3|=|\det M|/|\beta_2|>1$. A rational invariant subspace of spectral radius $\le\beta$ therefore has zero component in every non-scalar constituent, hence lies in the $\det M$-eigenspace; apply Theorem~\ref{thm:defect-intertwiner}.
+\end{proof}
+
+\begin{theorem}[Higher degrees, $d=3$; \Status{Theorem}]\label{thm:sieve}
+Let $d=3$, $\cC$ strict, $r=r(\cC)\ge4$. Every rational irreducible $\Phi_r$-constituent of $\Lie_r(\Q^3)$ is a Galois orbit of weights $\beta_1^{a}\beta_2^{b}\beta_3^{c}$ with $a+b+c=r$, and its spectral radius is at most $\beta$ only if, up to permutation, $(a,b,c)$ is one of: $(m,m,m)$ if $r=3m$; $(m+1,m,m)$, or $(m+1,m+1,m-1)$ in the case of complex conjugate $\beta_2,\beta_3$ with $|\det M|=1$, if $r=3m+1$; $(m+1,m+1,m)$ if $r=3m+2$. In particular, if $r=4$ then $|\det M|=1$ and $\rho(S)=\beta$. If moreover $|\cC|=3$: in the Perron-extremal case $\rho(S)=\beta$ one has $r\equiv1\pmod3$, $|\det M|=1$, and $\operatorname{im}Q_r$ is the constituent $\det(M)^m\otimes M$; in the case $\rho(S)<\beta$ one has $r\equiv0$ or $2\pmod3$.
+\end{theorem}
+\begin{proof}[Proof sketch]
+$\Lie_r(\Q^3)$ is a polynomial functor of $V=\Q^3$, so its weights under a semisimple $M$ with eigenvalues $\beta_i$ are the monomials $\prod\beta_i^{a_i}$ with multiplicities given by the generalized Witt formula $m(a,b,c)=\frac1r\sum_{t\mid\gcd(a,b,c)}\mu(t)\frac{(r/t)!}{(a/t)!(b/t)!(c/t)!}$~\cite[Cor.~4.15]{Reutenauer}. A rational invariant subspace is a sum of Galois orbits of weight spaces, and every orbit of an exponent vector contains an assignment with its largest exponent $a$ on $\beta$. With $x=\log\beta$, $y=-\log|\beta_2|$, $z=-\log|\beta_3|$, $\delta=\log|\det M|=x-y-z\ge0$, the logarithm of that weight's modulus relative to $\beta$ is $(a-1-b)y+(a-1-c)z+(a-1)\delta$ (or with $y,z$ exchanged), which is strictly positive unless the exponent vector has the listed shapes; the case analysis is elementary. For $r=4$ the shapes are $(2,1,1)$ (operator $\det(M)\cdot M$, spectral radius $|\det M|\beta$) and, only for complex stable roots with $|\det M|=1$, $(2,2,0)$; both have spectral radius $\ge\beta$, forcing $\rho(S)=\beta$ and $|\det M|=1$ through Theorem~\ref{thm:defect-intertwiner}. If $|\cC|=3$ then $N_\cC=P_\cC^{-1}MP_\cC$ (Theorem~\ref{thm:parikh}) is primitive, so in the extremal case $\rho(S)=\beta$ Proposition~\ref{prop:cocycle} makes $S$ diagonally similar to $\pm N_\cC$, with the irreducible cubic characteristic polynomial of $\pm M$; any nonzero $Q_r$ is then injective and its image is a three-dimensional constituent similar to $\pm M$, and comparing determinants and moduli excludes every shape except $(m+1,m,m)$ with $|\det M|=1$. In the non-extremal case $\rho(S)<\beta$, the shapes $(m+1,m,m)$ and $(m+1,m+1,m-1)$, whose spectral radius is at least $\beta$, are excluded, leaving $r\equiv0,2\pmod3$. We do not know whether a three-state strict component can have $\rho(S)<\beta$ with $r\in\{2,3\}$; Theorems~\ref{thm:deg23}(ii),(iii) constrain but do not exclude these cases.
+\end{proof}
+
+\begin{remark}
+Degree five is the first degree at which a genuinely sub-Perron higher constituent survives in the unimodular case (shape $(2,2,1)$, operator $\det(M)\Lambda^2M$, spectral radius $\beta|\beta_2|$). The sieves are necessary conditions on the algebra of a strict component; none of them, alone or jointly, has been shown inconsistent for every possible component. Their role is to shrink the hypothetical object and to calibrate the finite censuses of Section~\ref{sec:finite}.
+\end{remark}
+
+\subsection{Ordered factorization: the mid-area identity}\label{sec:midarea}
+
+For $w\in\A^*$ with $d=3$ let $\area(w)=(N_{12}-N_{21},N_{13}-N_{31},N_{23}-N_{32})(w)\in\Lambda^2\Z^3$ and let $C_\sigma$ have columns $\area(\sigma(a))$.
+
+\begin{proposition}[\Status{Theorem}]\label{prop:midarea}
+(i) $\area(\sigma(w))=(\Lambda^2M)\area(w)+C_\sigma\pi(w)$. (ii) $\area(x_1\cdots x_m)=\sum_r\area(x_r)+\sum_{r<s}\pi(x_r)\wedge\pi(x_s)$. (iii) For a balanced pair $T=(u,v)$ put $H(T)=\area(u)+\area(v)$; then, with the identification of $K_2$ with $(K_{12},K_{13},K_{23})\in\Lambda^2\Z^3$ of Section~\ref{sec:orientation}, $\area(u)-\area(v)=2K_2(T)$, $K_2(\sigma(T))=(\Lambda^2M)K_2(T)$, and if $\red(\sigma(T))=(R_1,\dots,R_m)$ then
+\[
+(\Lambda^2M)H(T)+2C_\sigma\pi(T)=\sum_rH(R_r)+2\sum_{r<s}\pi(R_r)\wedge\pi(R_s).
+\]
+\end{proposition}
+\begin{proof}
+(i) and (ii) count degree-two occurrences by whether both positions lie in one image, resp.\ one block. (iii) The cross terms in (ii) are the same on both sides since the blocks are balanced; subtracting gives block additivity of $K_2$ and, with (i), the push-forward; adding gives the displayed identity.
+\end{proof}
+
+The identity retains the \emph{order} of the children while forgetting their orientation. It is a necessary condition for a proposed derived substitution to be the actual factorization, and it is the first invariant in this paper that rejects the synthetic template of Section~\ref{sec:synthetic}. For $|\cC|=3$ the Sylvester operator $X\mapsto(\Lambda^2M)X-XN_\cC$ is invertible over $\Q$ (Theorems~\ref{thm:parikh} and~\ref{thm:deg23}(i) give $\spec N_\cC\cap\spec\Lambda^2M=\emptyset$, because $\beta_i=\beta_j\beta_k$ would force $\beta_i^2=\det M\in\Q$), so a prescribed ordered child system forces a unique rational $H$, which must be integral with $H\pm 2Q_2$ satisfying the elementary parity and magnitude bounds $|\area_{ij}(w)|\le n_in_j$, $\area_{ij}(w)\equiv n_in_j\pmod2$. We regard the three-state calculations as calibration only.
+
+\subsection{The wedge dichotomy and the spectral route}\label{sec:wedge}
+
+Let $d=3$. By Theorem~\ref{thm:deg23}(i), $\Lambda^2M$ is semisimple with a dominant eigenvalue of modulus $\beta|\beta_2|$ (simple, or a complex pair); let $\Pi_{\mathrm{dom}}$ be the corresponding real spectral projection.
+
+\begin{proposition}[Wedge dichotomy; \Status{Theorem}; Proposition~\ref{prop:wedge-summary}]\label{prop:wedge-dichotomy}
+Let $\cC$ be a closed nonproductive SCC (finite or not), $V_\cC=\operatorname{span}_\Q\{K_2(T):T\in\cC\}$. Then $(\Lambda^2M)V_\cC=V_\cC$, hence $V_\cC\in\{0,\Lambda^2\Q^3\}$. If $V_\cC\ne0$ then for every nonzero linear functional $\varphi$ on $\Lambda^2\R^3$ some $T\in\cC$ has $\varphi(K_2(T))\ne0$; in particular $\Pi_{\mathrm{dom}}K_2(T)\ne0$ for some $T\in\cC$, and the three eigencoordinates of $K_2(T)$, $T\in\cC$, are not all zero for any eigenvalue.
+\end{proposition}
+\begin{proof}
+By Proposition~\ref{prop:midarea}(iii), $(\Lambda^2M)K_2(T)=K_2(\sigma(T))=\sum_i\epsilon_iK_2(U_i)$ with $U_i\in\cC$ (closure and nonproductivity), so $(\Lambda^2M)V_\cC\subseteq V_\cC$, with equality since $\Lambda^2M$ is invertible. Irreducibility of $\chi_{\Lambda^2M}$ leaves only $0$ and $\Lambda^2\Q^3$. The rest is linear algebra.
+\end{proof}
+
+\begin{proposition}[Wedge growth in a finite closed component; \Status{Conditional} on finiteness of $\cC$]\label{prop:v34}
+Let $\cC$ be a finite closed recurrent noncoincident SCC (productive or not) and suppose $\Pi_{\mathrm{dom}}K_2(s)\ne0$ for some $s\in\cC$. Then $\rho(N_\cC)\ge\beta|\beta_2|$.
+\end{proposition}
+\begin{proof}
+By Proposition~\ref{prop:midarea}(iii) and Lemma~\ref{lem:descendants}, $(\Lambda^2M)^kK_2(s)=\sum_{c\in D_k}\pm K_2(c)$ over the depth-$k$ descendants of $s$; coincidence descendants contribute $0$, and by closure every noncoincident descendant lies in $\cC$. Since $\Pi_{\mathrm{dom}}$ commutes with $\Lambda^2M$ and the restriction of $\Lambda^2M$ to the dominant real eigenspace is $\beta|\beta_2|$ times an isometry in a suitable norm, $\|(\Lambda^2M)^kK_2(s)\|\ge c(\beta|\beta_2|)^k$. The left side is at most $\max_{T\in\cC}\|K_2(T)\|$ times the number $\|N_\cC^ke_s\|_1$ of noncoincident depth-$k$ descendants, which is $O(k^m\rho(N_\cC)^k)$.
+\end{proof}
+
+The spectral route to Conjecture~\ref{conj:producer} pursued in this program was: (a) a closed nonproductive carrier $\cC$ has some $\Pi_{\mathrm{dom}}K_2\ne0$ (``concentration''); (b) Galois conjugacy then makes all wedge eigenfunctionals nonzero on $\cC$ (``span-rich''); (c) a span-rich closed carrier is productive. Proposition~\ref{prop:wedge-dichotomy} shows that (a) is \emph{equivalent} to the statement that a closed nonproductive carrier cannot have $K_2\equiv0$, that (b) follows from (a) with no Galois argument, and that (c) is equivalent to the statement that a closed nonproductive carrier cannot have $K_2\not\equiv0$. Proposition~\ref{prop:v34} gives $\rho(N_\cC)\ge\beta|\beta_2|$, which is consistent with $\rho(N_\cC)=\beta$ (Theorem~\ref{thm:parikh}) and yields no contradiction. We have found no proof of (a) or of (c), and we formulate both as what they are:
+
+\begin{problem}[Concentration; \Status{Open}]\label{prob:concentration}
+Show that a strict component $\cC$ on three letters cannot have $K_2\equiv0$; equivalently, that every strict component has first defect degree two. Theorems~\ref{thm:deg23}(iii) and~\ref{thm:sieve} constrain the cases $r(\cC)\ge3$ but do not exclude them.
+\end{problem}
+
+\begin{problem}[Wedge productivity; \Status{Open}]\label{prob:wedge-productivity}
+Show that a strict component $\cC$ on three letters cannot have $K_2\not\equiv0$; equivalently, that every strict component has first defect degree at least three.
+\end{problem}
+
+Together, Open Problems~\ref{prob:concentration} and~\ref{prob:wedge-productivity} are exactly the nonexistence of strict components on three letters, split by first defect degree; the spectral route therefore contains no proved implication from wedge data to productivity, and we do not regard either problem as easier than the other. The exhaustive census of Section~\ref{sec:finite} finds that first defect degree two is the only case realized by reachable states except for $24$ states of degree three, so Open Problem~\ref{prob:wedge-productivity} is the case that the finite evidence points to as the main one; this is an empirical remark, not a reduction.
+
+\subsection{Uniform return and recognizability machinery}\label{sec:return-machinery}
+
+Let $\cC$ be a finite set of noncoincident irreducible states closed under children (a strict component qualifies) and $B_\cC=\max_{T\in\cC}|T|$.
+
+\begin{lemma}[Uniform return gaps; \Status{Theorem}, no Pisot hypothesis]\label{lem:return-gap}
+For every $T\in\cC$ and $n\ge0$, consecutive zero returns of $\sigma^n(T)$ are at distance at most $B_\cC$.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:descendants} the zero returns of $\sigma^n(T)$ include the boundaries of the depth-$n$ descendant blocks, all of which lie in $\cC$ and have length $\le B_\cC$.
+\end{proof}
+
+\begin{theorem}[Legal ancestry towers; \Status{Theorem}]\label{thm:towers}
+Let $\sigma$ be PIP, $\cC$ as above, $R\ge0$ and $q\ge0$. For every $T\in\cC$ and all sufficiently large $n$ there is a zero return $t$ of $\sigma^n(T)$ such that $t$ and each of its first $q$ desubstituted source cuts have, on both sides, radius-$R$ contexts contained in the image of a single letter of the base word under the appropriate power of $\sigma$; in particular these contexts are factors of the language of $\sigma$ and Moss\'e's theorem applies at each of the $q+1$ levels.
+\end{theorem}
+\begin{proof}
+Put $\Lambda=\max_a|\sigma(a)|$ and $m_0=R$, $m_{j+1}=(m_j+1)\Lambda$. A cut at distance $\ge m_{j+1}$ from the ends of an image $\sigma^{n}(a)$ has source cut at distance $\ge m_j$ from the ends of $\sigma^{n-1}(a)$. The base words $u,v$ have $|u|+|v|+2$ letter boundaries, each of which forbids at most $2m_q+1$ output positions; this number is independent of $n$, whereas by Lemma~\ref{lem:return-gap} the number of zero returns of $\sigma^n(T)$ is at least $|\sigma^n(u)|/B_\cC$, which tends to infinity. Any factor of $\sigma^k(a)$ is in the language by primitivity.
+\end{proof}
+
+\begin{theorem}[Derived recognizability; \Status{Theorem}]\label{thm:derived-recog}
+Let $\cC$ be a strict component and $h$ the period of the irreducible matrix $N_\cC$. The cyclic classes $\cC_0,\dots,\cC_{h-1}$ are preserved by $\tau_\cC^h$, each restriction $\rho_j=\tau_\cC^h|_{\cC_j}$ is a primitive substitution with Perron eigenvalue $\beta^h$, its subshift is aperiodic, and Moss\'e's theorem applies to each $\rho_j$: there is a radius $R_\cC$ such that $\tau_\cC^h$-supertile boundaries in points of the derived subshifts are determined by radius-$R_\cC$ derived context.
+\end{theorem}
+\begin{proof}
+The cyclic decomposition of an irreducible matrix and the Perron root $\beta^h$ of the diagonal blocks of $N_\cC^h$ are standard~\cite{BermanPlemmons}. If some $\rho_j$ had a periodic subshift, the argument of Lemma~\ref{lem:aperiodic} would give $\beta^{hq}\in\Z$ for some $q$, and the conjugate $\beta_2$ would satisfy $|\beta_2|^{hq}\ge1$, a contradiction. Apply Theorem~\ref{thm:mosse}.
+\end{proof}
+
+\begin{remark}
+The Pisot hypothesis is essential: $A\mapsto B$, $B\mapsto AA$ has period $2$, Perron root $\sqrt2$, and its square restricted to a cyclic class is $A\mapsto AA$, which is periodic; the non-Pisot strict component of Example~\ref{ex:nonpisot} has derived substitution $A\mapsto AB$, $B\mapsto AB$, primitive with periodic subshift.
+\end{remark}
+
+\begin{proposition}[Finite relative hierarchy-offset state; \Status{Theorem}]\label{prop:offset}
+Let $\cC$ be a strict component and fix a context radius. For a zero return of $\sigma^n(T)$ desubstituted to source depth $k$, record: the source defect $x_k$; the outgoing correction digit; the source-index difference $i-j=\langle\mathbf1,x_k\rangle$; the difference of the indices of the derived blocks of $\tau_\cC^k(T)$ containing the two cuts; the in-block offsets; the two block states with orientations; and the radius-$R$ derived context. This datum ranges over a finite set independent of $n$ and $k$, and the block-index difference is bounded by $|\langle\mathbf1,x_k\rangle|$.
+\end{proposition}
+\begin{proof}
+Theorem~\ref{thm:ancestry} bounds $x_k$; each derived block has positive physical length, so crossing a block boundary costs at least one symbol; all other coordinates are visibly finite.
+\end{proof}
+
+Theorems~\ref{thm:towers}--\ref{thm:derived-recog} and Proposition~\ref{prop:offset} make both hierarchies (that of $\sigma$ and that of $\tau_\cC$) locally recognizable at a recurrent finite-state cut. They do not force the two hierarchies to align, and the negative controls of Section~\ref{sec:obstructions} show that neither finiteness nor recurrence of the offset state contradicts strictness by itself.
+
+\begin{problem}[C4: uniform alignment; \Status{Open}]\label{prob:C4}
+Prove that a strict component of a PIP substitution cannot carry a recurrent relative hierarchy-offset state along arbitrarily long legal ancestry towers with every newborn boundary endpoint-nonsynchronizing; equivalently, prove C3-local (Definition~\ref{def:C2C3}) for every strict component, uniformly in $|\cC|$.
+\end{problem}
+
+\subsection{Coincidence density and the overlap graph}\label{sec:density}
+
+The following two lemmas translate between blocks and tiles; they use Lemma~\ref{lem:Zindep}, hence irreducibility of $\chi_M$.
+
+\begin{lemma}[Zero returns are common vertices; \Status{Theorem}]\label{lem:common-vertex}
+Let $(u,v)$ be a balanced pair, both words tiling $[0,g(u))$. A point is a vertex of both tilings if and only if it equals $g(u[k])=g(v[k])$ for a zero return $k$ of $(u,v)$.
+\end{lemma}
+\begin{proof}
+If $g(u[i])=g(v[j])$ then $\langle\ell,\pi(u[i])-\pi(v[j])\rangle=0$ with an integer vector, so $\pi(u[i])=\pi(v[j])$ by Lemma~\ref{lem:Zindep}; applying $\langle\mathbf 1,\cdot\rangle$ gives $i=j$, hence $D(i)=0$. The converse is immediate.
+\end{proof}
+
+\begin{lemma}[Common tiles are coincidence blocks; \Status{Theorem}]\label{lem:common-tile}
+A tile belongs to both tilings of a balanced pair $(u,v)$ if and only if it is the tile of a coincidence block $(c,c)$ of $\red(u,v)$. Consequently a state $T=(u,v)$ is productive if and only if for some $m$ the tilings by $\sigma^m(u)$ and $\sigma^m(v)$ share a tile.
+\end{lemma}
+\begin{proof}
+A common tile $[x,x+\ell_c)$ has both endpoints common vertices, hence by Lemma~\ref{lem:common-vertex} zero returns $k,k+1$ with $u_{k+1}=v_{k+1}=c$. The converse is clear, and the last sentence follows from Lemma~\ref{lem:descendants}.
+\end{proof}
+
+For a balanced pair $T=(u,v)$ and $m\ge0$ let $C_m(T)$ be the total length of the common tiles of the tilings by $\sigma^m(u)$ and $\sigma^m(v)$ and $f_m(T):=C_m(T)/(\beta^mg(T))$ the \emph{common fraction}. The \emph{overlaps} of a reachable state are the overlaps of the pair $(u,v)$ (Section~\ref{sec:overlap}); they are vertices of $\mathcal O_\sigma$. An overlap is \emph{productive} if some descendant is a coincidence.
+
+\begin{theorem}[Coincidence density; \Status{Theorem}]\label{thm:density}
+Let $\sigma$ be PIP, $s$ a seed and $T$ a state reachable from $s$.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=*]
+\item $f_{m+1}(T)\ge f_m(T)$; the limit $\delta(T):=\lim_mf_m(T)\in[0,1]$ exists.
+\item $T$ is productive iff $\delta(T)>0$ iff some overlap of $T$ is productive.
+\item If every vertex of $\mathcal O_\sigma$ reachable from the seed overlaps of $s$ is productive, then $\delta(T)=1$ for every $T$ reachable from $s$. Conversely, if $\delta(s)=1$ then every such vertex is productive.
+\item If $\delta(s)=1$ then every state reachable from $s$ is productive. In particular, if every vertex of $\mathcal O_\sigma$ is productive then every reachable state of $\B_\sigma$ is productive, whether or not $\B_\sigma$ is finite.
+\item If the set of states reachable from $s$ is finite, then $\delta(s)=1$ iff every state reachable from $s$ is productive iff the balanced-pair algorithm terminates with coincidence from $s$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(i) A common tile of type $c$ at level $m$ inflates to the supertile $\sigma(c)$ at level $m+1$, all of whose tiles are common, so $C_{m+1}\ge\beta C_m$.
+
+(ii) By Lemma~\ref{lem:common-tile}, $T$ is productive iff $C_m(T)>0$ for some $m$, iff $\delta(T)>0$ by (i). A common tile at level $m$ is a coincidence overlap, and its ancestors at level $0$ are the two tiles of $(u,v)$ containing it, which overlap; so it descends from an overlap of $T$. Conversely a coincidence descending from an overlap of $T$ is a common tile inside the interval of $T$.
+
+(iii) Let $S$ be the set of vertices of $\mathcal O_\sigma$ reachable from the seed overlaps of $s$; it is finite by Theorem~\ref{thm:overlap-finite}. If all are productive, there is $K$ such that every non-coincidence vertex of $S$ has a coincidence descendant within $K$ levels. Fix a level and a non-common tile $\tau$ of the first tiling, of length $\ell_\tau$. Its interior is covered by tiles of the second tiling, so $\tau$ belongs to some overlap $O$, which is not a coincidence; $O$ has a coincidence descendant within $k\le K$ levels, a common tile inside $\beta^k\tau$, and $K-k$ further inflations make it a common supertile of length at least $\ell_{\min}$ inside $\beta^K\tau$. So the non-common length inside $\beta^K\tau$ is at most $(1-\varepsilon)\beta^K\ell_\tau$ with $\varepsilon:=\ell_{\min}/(\beta^K\ell_{\max})$. Non-common tiles at level $m+K$ lie in inflations of non-common tiles at level $m$, so the non-common length $N_m$ satisfies $N_{m+K}\le(1-\varepsilon)\beta^KN_m$ and $1-f_{m+jK}(T)\le(1-\varepsilon)^j(1-f_m(T))\to0$. Conversely, let $O$ be a nonproductive overlap at level $N$ of $s$ with intersection of length $\lambda>0$. At level $N+m$ no tile of the first tiling inside the inflated intersection $\beta^m(O)$ is common, since a common tile there would be a coincidence descending from $O$; hence $1-f_{N+m}(s)\ge(\beta^m\lambda-2\ell_{\max})/(\beta^{N+m}g(s))$, whose limit $\lambda/(\beta^Ng(s))$ is positive.
+
+(iv) If $T$ is nonproductive at depth $j$ below $s$, then at depth $j+m$ every tile of the first tiling inside the interval of $T$ is non-common (Lemma~\ref{lem:common-tile}), so $1-f_{j+m}(s)\ge g(T)/(\beta^jg(s))$ for all $m$. The second sentence combines this with (iii).
+
+(v) By (iv), $\delta(s)=1$ forces productivity. If the reachable set is finite and every state is productive, there are $K$ and $\varepsilon>0$ such that every noncoincident state has coincidence blocks of total length at least $\varepsilon\beta^Kg(T)$ among its depth-$K$ descendants, and the argument of (iii) gives $\delta(s)=1$. Termination with coincidence is finiteness plus productivity of all reachable states.
+\end{proof}
+
+\begin{corollary}[Mass balance on overlaps; \Status{Theorem}]\label{cor:overlap-mass}
+For an overlap $O$ of type $(i,j,t)$ with $t=\langle\ell,w\rangle$, the intersection length is $\lambda(O)=\langle\ell,v(O)\rangle$ with $v(O)\in\{e_i,\,e_j,\,e_j+w,\,e_i-w\}$ according to the relative position of the tiles, and $\sum v=Mv(O)$ over the geometric children of $O$. Hence for every nonempty set $S$ of non-coincidence overlaps closed under children, the child-count matrix $N_S$ satisfies $N_S\lambda_S=\beta\lambda_S$ with $\lambda_S>0$, so $\rho(N_S)=\beta$, and $N_SV_S=V_SM^{\mathsf T}$ for the matrix $V_S$ with rows $v(O)^{\mathsf T}$. Since $\mathcal O_\sigma$ is finite, some overlap is nonproductive iff $\mathcal O_\sigma$ contains a closed nonproductive strongly connected component.
+\end{corollary}
+\begin{proof}
+The geometric children of $O$ partition the inflated intersection, so $\sum\lambda(\text{child})=\beta\lambda(O)=\langle\ell,Mv(O)\rangle$, and Lemma~\ref{lem:Zindep} turns this into the vector identity; for a non-coincidence $O$ the geometric children are exactly the children in $\mathcal O_\sigma$ (for a coincidence they are the coincidences of the inflated tile, which $\mathcal O_\sigma$ does not form). The rest is Perron--Frobenius and the argument of Theorem~\ref{thm:sink} applied to the finite graph $\mathcal O_\sigma$.
+\end{proof}
+
+\begin{corollary}[Full rank on closed overlap sets; \Status{Theorem}]\label{cor:overlap-rank}
+Let $S$ be a nonempty set of non-coincidence overlaps closed under children, $V_S$ the matrix with rows $v(O)^{\mathsf T}$, $O\in S$, and $N_S$ the child-count matrix. Then $\rank V_S=d$, hence $|S|\ge d$ and $\spec(M)\subseteq\spec(N_S)$; in particular every Galois conjugate of $\beta$ is an eigenvalue of the nonnegative integer matrix $N_S$.
+\end{corollary}
+\begin{proof}
+By Corollary~\ref{cor:overlap-mass}, $Mv(O)=\sum_{\text{children}}v$ lies in the row space $W$ of $V_S$ for every $O\in S$ (all children lie in $S$), so $W$ is an $M$-invariant rational subspace; it is nonzero since $\langle\ell,v(O)\rangle=\lambda(O)>0$, and $\chi_M$ is irreducible, so $W=\Q^d$. Thus $V_S$, which has $d$ columns, is injective, and for an eigenvector $y$ of $M^{\mathsf T}$ with eigenvalue $\mu$ we get $N_S(V_Sy)=V_SM^{\mathsf T}y=\mu V_Sy$ with $V_Sy\ne0$.
+\end{proof}
+
+Corollary~\ref{cor:overlap-rank} is the overlap analogue of Theorem~\ref{thm:parikh}; like it, it yields no contradiction by itself. Boundary synchronization also transfers: an overlap of type $(c,c',0)$ has the children $(\sigma_+^m(c),\sigma_+^m(c'),0)$ among its depth-$m$ descendants, so it is productive whenever $(c,c')\in\Sync_+$, and symmetrically for right-aligned overlaps and $\Sync_-$ (Lemma~\ref{lem:boundary-sync}).
+
+Theorem~\ref{thm:density}(iv) puts the coincidence side of the programme into a form that does not mention G1:
+
+\begin{problem}[Overlap productivity; \Status{Open}]\label{prob:overlap-productivity}
+Show that for PIP $\sigma$ every vertex of $\mathcal O_\sigma$ is productive; equivalently (Corollary~\ref{cor:overlap-mass}), that the finite graph $\mathcal O_\sigma$ has no closed nonproductive strongly connected component.
+\end{problem}
+
+A positive answer implies Conjecture~\ref{conj:producer} outright (every reachable state is productive) and Hypothesis~\ref{hyp:G1} (Proposition~\ref{prop:G1-from-overlaps} in Section~\ref{sec:G1-from-overlaps}), and under G1 it is equivalent to Conjecture~\ref{conj:producer}. The block-level constraints of Sections~\ref{sec:parikh}--\ref{sec:wedge} presuppose a \emph{finite} strict component; Open Problem~\ref{prob:overlap-productivity} poses the same question on a graph that is finite unconditionally, with the mass balance of Corollary~\ref{cor:overlap-mass} available. Imported Theorem~\ref{thm:bridge} alone does not turn a positive answer into \PDS{}, since it needs termination, i.e.\ finiteness as well; the bridge that does is Theorem~\ref{thm:main-density} below.
+
+For a seed $s=(ab,ba)$ let $G_m(s)\subseteq[0,g(s))$ be the union of the interiors of the intervals $\beta^{-m}I$, $I$ a common tile of the tilings by $\sigma^m(ab)$ and $\sigma^m(ba)$, and $G(s):=\bigcup_mG_m(s)$ the \emph{good set} of $s$: the set of points at which the two tilings are, after some number of inflations, covered by a common tile. Each $G_m(s)$ is open with Lebesgue measure $C_m(s)/\beta^m$. The sets are not nested: a common tile $I$ at level $m$ inflates to common tiles at level $m+1$, whose interiors cover $\beta^{-m}I^\circ$ except at the finitely many subdivision points, so $G_m(s)\setminus G_{m+1}(s)$ is finite, and by induction $G_m(s)\setminus G_{m'}(s)$ is finite for every $m'\ge m$.
+
+\begin{lemma}[Three forms of the density condition; \Status{Theorem}]\label{lem:three-forms}
+For PIP $\sigma$ and a seed $s$ the following are equivalent: \textup{(a)} every vertex of $\mathcal O_\sigma$ reachable from the seed overlaps of $s$ is productive; \textup{(b)} $\delta(s)=1$; \textup{(c)} $G(s)$ is dense in $[0,g(s))$.
+\end{lemma}
+\begin{proof}
+(a)$\Leftrightarrow$(b) is Theorem~\ref{thm:density}(iii). (b)$\Rightarrow$(c): $G(s)$ is open and its measure is $\lim_mC_m(s)/\beta^m=g(s)$, so its complement has measure zero and empty interior. (c)$\Rightarrow$(a): let $O$ be an overlap at level $N$ reachable from $s$, with intersection $J$ of positive length. The nonempty open set $U:=\beta^{-N}J^\circ$ meets $G(s)$, hence $G_m(s)$ for some $m$; $U\cap G_m(s)$ is a nonempty open set, hence infinite, while $G_m(s)\setminus G_{m'}(s)$ is finite for $m':=\max(m,N)$, so $U$ meets $G_{m'}(s)$ at a point $t$. The level-$m'$ tiles of the top and bottom tilings whose interiors contain $\beta^{m'}t$ are the same common tile; since $\beta^{m'}t$ lies in $\beta^{m'-N}J^\circ$ and the level-$m'$ tilings refine the $(m'-N)$-fold inflations of the level-$N$ tilings, this tile lies inside the inflated top tile and inside the inflated bottom tile of $O$, hence inside the inflated intersection, so it is a coincidence descending from $O$.
+\end{proof}
+
+The bridge from (c) to \PDS{} is a theorem of Barge, \v{S}timac and Williams. In their terminology two patches $Q,Q'$ are \emph{eventually coincident at $x$} if for some $k$ the tiles of $\Phi^k(Q-x)$ and of $\Phi^k(Q'-x)$ containing $0$ agree, and \emph{densely eventually coincident} if this holds on a dense set of $x$~\cite[\S3]{BSW}.
+
+\begin{importedtheorem}[\Status{Imported}; {\cite[Thm.~3.1 and proof of Thm.~3.2]{BSW}}]\label{thm:bsw}
+Let $\sigma$ be a primitive substitution whose dilation $\beta$ is a Pisot number, and let $u,v$ be words (not necessarily legal) such that $g(u)$ and $g(v)$ are linearly independent over $\Q$. Let $\bar Q$ be the periodic tiling of $\R$ by the patch $uv$ repeated with period $g(u)+g(v)$. If $\bar Q$ and $\bar Q-g(u)$ are densely eventually coincident, then $(\Omega_\sigma,\R)$ has \PDS{}.
+\end{importedtheorem}
+
+In~\cite{BSW} the statement is given for substitutions of Pisot family type in any dimension (their Theorem~3.1: a patch $Q$ whose lattice translates tile $\R^n$, a vector completely rationally independent of that lattice, and $\bar Q$, $\bar Q-v$ densely eventually coincident), under the standing assumptions of primitivity, aperiodicity and finite local complexity; the one-dimensional specialization above is exactly the argument by which their Theorem~3.2 (termination of the balanced-pair algorithm from $(uv,vu)$ implies \PDS{}) is derived from Theorem~3.1, with termination replaced by the dense coincidence it was used to produce. For PIP $\sigma$ the standing assumptions hold (Lemma~\ref{lem:aperiodic}; finite local complexity is automatic for finitely many interval prototiles), and for letters $a\ne b$ the lengths $\ell_a,\ell_b$ are $\Q$-independent by Lemma~\ref{lem:Zindep}. The translate $\bar Q-\ell_a$ is the periodic tiling by $ba$ with a vertex at $0$, so on each period the pair $(\bar Q,\bar Q-\ell_a)$ is the swap pair $(ab,ba)$, and $\Phi^k$ of the pair is the pair $(\sigma^k(ab),\sigma^k(ba))$ repeated; hence $\bar Q$ and $\bar Q-\ell_a$ are eventually coincident at $x$ whenever $x\bmod(\ell_a+\ell_b)$ lies in $G((ab,ba))$.
+
+\begin{theorem}[Main theorem without finiteness; \Status{Conditional} on one-seed overlap productivity]\label{thm:main-density}
+Let $\sigma$ be PIP and $a\ne b$ letters. If every vertex of $\mathcal O_\sigma$ reachable from the seed overlaps of $(ab,ba)$ is productive (equivalently $\delta((ab,ba))=1$, equivalently $G((ab,ba))$ is dense), then $(\Omega_\sigma,\R)$ has \PDS{}. In particular a positive answer to Open Problem~\ref{prob:overlap-productivity} for $\sigma$ implies \PDS{} for $\sigma$, and Theorem~\ref{thm:main-conditional} is the special case in which $\B_\sigma$ is finite and every state is productive (Theorem~\ref{thm:density}(v)).
+\end{theorem}
+\begin{proof}
+By Lemma~\ref{lem:three-forms} the three hypotheses agree and give a dense $G((ab,ba))$; by the paragraph above, $\bar Q$ and $\bar Q-\ell_a$ are then densely eventually coincident, and Imported Theorem~\ref{thm:bsw} applies.
+\end{proof}
+
+Theorem~\ref{thm:main-density} removes Hypothesis~\ref{hyp:G1} from the route to \PDS{}: the only hypothesis is productivity of a finite graph (Theorem~\ref{thm:overlap-finite}). It does not settle G1, which remains open: by Proposition~\ref{prop:G1-from-overlaps}, G1 follows from the all-vertex form of Open Problem~\ref{prob:overlap-productivity}, which is stronger than the hypothesis of Theorem~\ref{thm:main-density}. Nor does it bear on Theorem~\ref{thm:seedwise}. We record two remarks. First, the earlier form of the question, whether the seed-patch overlaps can be identified with the overlaps of two tilings in one fibre so that the overlap-coincidence criterion of~\cite{Solomyak97,SS,AL} applies, is no longer needed for sufficiency; exploratory computation (not reported here as a proposition) indicates that such an identification by types fails for some substitutions with short reference prefixes, so the periodic-patch form of~\cite{BSW} is the right bridge. Second, for unimodular $\sigma$ a converse (\PDS{} implies productivity of every vertex of $\mathcal O_\sigma$) can be read off~\cite[Cor.~9.4 and Prop.~17.2]{BK}, whose proofs do not pass through~\cite[Thm.~16.3]{BK}, the result reported in~\cite[\S1]{BSW} to have a gap; we do not import it. The converse now holds for every PIP $\sigma$, unimodular or not, by the proof of Theorem~\ref{thm:seedwise}.
+
+\subsubsection*{Endpoint-aligned overlaps and strong coincidence}
+
+Open Problem~\ref{prob:overlap-productivity} contains a classical open problem as a special case. Call a pair of distinct letters $\{i,j\}$ \emph{eventually coincident} if it satisfies the condition of Imported Theorem~\ref{thm:BD}: $\sigma^n(i)=pcs$, $\sigma^n(j)=p'cs'$ with $\pi(p)=\pi(p')$ for some $n\ge1$ and $c\in\A$; and \emph{eventually coincident for the reversal} if the same holds for the reversed substitution $\tilde\sigma$ ($\tilde\sigma(a)$ the reverse of $\sigma(a)$), i.e.\ $\sigma^n(i)=scp$, $\sigma^n(j)=s'cp'$ with $\pi(p)=\pi(p')$. That every pair of distinct letters is eventually coincident is the strong coincidence condition of Arnoux and Ito~\cite{AI}; it is a theorem for $d=2$~\cite{BD} and open in general for $d\ge3$.
+
+\begin{proposition}[Endpoint-aligned overlaps; \Status{Theorem}]\label{prop:aligned-overlaps}
+Let $\sigma$ be PIP and $i\ne j$. Exchanging the roles of the two tilings sends an overlap $(a,b,t)$ to $(b,a,-t)$; this bijection commutes with inflation and preserves coincidences, so $(a,b,t)$ and $(b,a,-t)$ are productive together, and the graph generated from the seed $(ij,ji)$ is the mirror image of the graph generated from $(ji,ij)$. Below, $(ij,ji)$ denotes the seed of the unordered pair $\{i,j\}$ in whichever orientation is used to generate $\mathcal O_\sigma$.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=*]
+\item The overlap $(i,j,0)$ is a seed overlap of $(ij,ji)$, and it is productive if and only if $\{i,j\}$ is eventually coincident; the same holds for $(j,i,0)$.
+\item The overlap $(j,i,\ell_j-\ell_i)$ is a seed overlap of $(ij,ji)$, and it is productive if and only if $\{i,j\}$ is eventually coincident for the reversal; the same holds for $(i,j,\ell_i-\ell_j)$.
+\item Consequently a positive answer to Open Problem~\ref{prob:overlap-productivity} for $\sigma$ implies that every pair of distinct letters is eventually coincident for $\sigma$ and for $\tilde\sigma$: the two-sided strong coincidence condition.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(i) The seed $(ij,ji)$ places tile $i$ at $0$ in the top tiling and tile $j$ at $0$ in the bottom tiling, so $(i,j,0)$ is a seed overlap. Its level-$n$ descendants are the overlapping pairs of a tile of $\sigma^n(i)$, placed from $0$, and a tile of $\sigma^n(j)$, placed from $0$; the tile of letter $c$ preceded by the prefix $p$ sits at $\langle\pi(p),\ell\rangle$. A coincidence among the descendants is a common letter $c$ at a common position, and by Lemma~\ref{lem:Zindep} two positions $\langle\pi(p),\ell\rangle$, $\langle\pi(p'),\ell\rangle$ agree if and only if $\pi(p)=\pi(p')$. Hence a coincidence descendant at level $n$ exists if and only if $\{i,j\}$ is eventually coincident at level $n$.
+
+(ii) The seed places tile $j$ at $\ell_i$ on top and tile $i$ at $\ell_j$ below, giving the overlap $(j,i,\ell_j-\ell_i)$ (the condition $-\ell_i<\ell_j-\ell_i<\ell_j$ always holds). Reflecting the line and re-normalising so that the top tile starts at $0$ sends an overlap $(a,b,t)$ of $\sigma$ to the overlap $(a,b,\ell_a-\ell_b-t)$ of $\tilde\sigma$, which has the same lengths and inflation matrix, and this bijection commutes with inflation and preserves coincidences; so $(j,i,\ell_j-\ell_i)$ is productive for $\sigma$ if and only if $(j,i,0)$ is productive for $\tilde\sigma$, and (i) applies to $\tilde\sigma$.
+
+The statements for $(j,i,0)$ and $(i,j,\ell_i-\ell_j)$ follow by exchanging the two tilings.
+
+(iii) For every unordered pair $\{i,j\}$ the two seed overlaps of its seed are vertices of $\mathcal O_\sigma$.
+\end{proof}
+
+Beyond the endpoint-aligned overlaps the problem is a hitting problem for the prefix Parikh vectors. Write the offset of an overlap $O=(i,j,t)$ as $t=\langle w,\ell\rangle$ with $w\in\Z^d$, unique by Lemma~\ref{lem:Zindep}, and for $m\ge0$ and $a\in\A$ let $P_m(a)\subseteq\Z^d$ be the set of Parikh vectors of the proper prefixes of $\sigma^m(a)$ (the empty prefix included, the whole word excluded).
+
+\begin{proposition}[Boundary coincidences; \Status{Theorem}]\label{prop:boundary-coincidence}
+Let $\sigma$ be PIP, $O=(i,j,\langle w,\ell\rangle)$ an overlap and $m\ge0$. The following are equivalent: \textup{(a)} $M^mw\in P_m(i)-P_m(j)$; \textup{(b)} some sub-tile of the level-$m$ tiling of the top tile and some sub-tile of the level-$m$ tiling of the bottom tile have the same left endpoint (equivalently, the two tilings have a common tile boundary other than the right endpoint of either inflated tile); \textup{(c)} $O$ has a level-$m$ descendant of offset $0$ (a coincidence or an overlap $(i',j',0)$ with $i'\ne j'$). Consequently:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=*]
+\item if $O$ is productive then \textup{(a)} holds for some $m$;
+\item if every pair of distinct letters is eventually coincident, then $O$ is productive if and only if \textup{(a)} holds for some $m$;
+\item if $O$ lies in a closed nonproductive set $\cC$ and \textup{(a)} holds at level $m$, then the offset-$0$ descendant of \textup{(c)} lies in $\cC$ and its letters form a pair that is not eventually coincident.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+The left endpoints of the sub-tiles of the level-$m$ tiling of the top tile are the points $\langle p,\ell\rangle$, $p\in P_m(i)$, and those of the bottom tile are $\beta^mt+\langle p',\ell\rangle$, $p'\in P_m(j)$; the right endpoint of either inflated tile is not among them, and every other tile boundary is. Since $\ell M=\beta\ell$, $\beta^mt=\langle M^mw,\ell\rangle$, so two such left endpoints agree if and only if $\langle p-p'-M^mw,\ell\rangle=0$, i.e.\ $p-p'=M^mw$ by Lemma~\ref{lem:Zindep}; this is (a)$\Leftrightarrow$(b). If $x$ is a common left endpoint as in (b), the two sub-tiles starting at $x$ overlap and have offset $0$, so they form a level-$m$ descendant of $O$ of offset $0$, which is (c). Conversely a level-$m$ descendant of offset $0$ consists of two sub-tiles with a common left endpoint, which is (b).
+
+(i) A coincidence descendant has offset $0$. (ii) By (c) and Proposition~\ref{prop:aligned-overlaps}(i), the offset-$0$ descendant is a coincidence or productive, so $O$ is productive; the converse is (i). (iii) The descendant lies in $\cC$ because $\cC$ is closed under children, it is nonproductive because $\cC$ is, and Proposition~\ref{prop:aligned-overlaps}(i) identifies its letters as a pair that is not eventually coincident.
+\end{proof}
+
+\begin{corollary}[Reduction under strong coincidence; \Status{Theorem}]\label{cor:scc-reduction}
+Suppose every pair of distinct letters of $\sigma$ is eventually coincident. Then:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=*]
+\item every noncoincident state of $\B_\sigma$ is productive, so Conjecture~\ref{conj:producer} holds for $\sigma$ and Theorem~\ref{thm:main-conditional} reads: G1 implies \PDS{} (this is the form used for $d=2$ in~\cite{HS}, with~\cite{BD} supplying the hypothesis);
+\item Open Problem~\ref{prob:overlap-productivity} for $\sigma$ is equivalent to: for every vertex $(i,j,\langle w,\ell\rangle)$ of $\mathcal O_\sigma$ there is $m\ge0$ with $M^mw\in P_m(i)-P_m(j)$;
+\item no overlap of a closed nonproductive set ever has a boundary coincidence: for every such overlap and every $m$, no sub-tile of the level-$m$ tiling of its top tile starts where a sub-tile of the level-$m$ tiling of its bottom tile starts.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+(i) A noncoincident irreducible state $(u,v)$ has $u_1\ne v_1$, since a common first letter would split off the coincidence block $(u_1,u_1)$. Eventual coincidence of $\{u_1,v_1\}$ at level $n$ gives $\sigma^n(u)=pc\cdots$, $\sigma^n(v)=p'c\cdots$ with $\pi(p)=\pi(p')$, so the position $|p|$ is a zero return of $\sigma^n(u,v)$ followed by the coincidence block $(c,c)$; this is the first sentence of the proof of Theorem~\ref{thm:BD-eliminator}. (ii) is Proposition~\ref{prop:boundary-coincidence}(ii) applied to every vertex. (iii) By Proposition~\ref{prop:boundary-coincidence}(iii) a boundary coincidence would produce a pair of letters that is not eventually coincident.
+\end{proof}
+
+The hitting level is bounded below by the size of the offset in the contracting directions. Let $F\subset\Q(\beta)$ be the finite set of offset increments $q-p$ of a single inflation (over all letters $a,b$ and all sub-tiles of $\sigma(a)$, $\sigma(b)$), so that the children of $(a,b,t)$ have offsets $\beta t+c$ with $c\in F$. A \emph{contracting embedding} is a field embedding $\varsigma\colon\Q(\beta)\to\C$ with $|\varsigma(\beta)|<1$; there are $d-1$ of them, and for $d=3$ they are either a complex conjugate pair or two real embeddings.
+
+\begin{proposition}[Contracting lower bound; \Status{Theorem}]\label{prop:contracting-bound}
+Let $O=(i,j,t)$ be an overlap with a level-$m$ descendant of offset $0$, $m\ge1$. Then $t=-\sum_{s=0}^{m-1}\beta^{-(s+1)}c_s$ with $c_s\in F$, and for every contracting embedding $\varsigma$, with $\beta'=\varsigma(\beta)$ and $C_\varsigma:=\max_{c\in F}|\varsigma(c)|$,
+\[
+|\varsigma(t)|\ \le\ C_\varsigma\sum_{s=1}^{m}|\beta'|^{-s}.
+\]
+Hence the first boundary-coincidence depth of $O$ is at least $m_0(t)$, defined as $0$ for $t=0$ and otherwise as the least $m\ge1$ for which these inequalities hold for all contracting $\varsigma$. If the contracting conjugates form a complex pair, then $D>0$, for $t\ne0$ the number $|\varsigma(t)|^2=N(t)/t$ is the value at $\beta$ of an element of $\Q(\beta)$, $|\beta'|^{-2}=\rho:=\beta/D$, and $C_\varsigma^2=K:=\max_{c\in F\setminus\{0\}}N(c)/c$ (the increment $0\in F$ contributes nothing to $C_\varsigma$ and is omitted). With $n_k:=\min(k-1,\,2m+1-k)$, $A_m:=\sum_{j=1}^{m}n_{2j}\rho^{j}$ and $B_m:=\sum_{j=1}^{m-1}n_{2j+1}\rho^{j}$, elements of $\Q(\beta)$ with $A_m>0$ and $B_m\ge0$ at $\beta$ ($B_1=0$), the inequality for the pair is equivalent to
+\[
+\frac{N(t)}{t}\ \le\ K\bigl(A_m+\rho^{1/2}B_m\bigr),
+\]
+which holds if and only if $N(t)/t\le KA_m$, or $N(t)/t>KA_m$ and $(N(t)/t-KA_m)^2\le K^2\rho B_m^2$: at most two exact sign tests at $\beta$.
+\end{proposition}
+\begin{proof}
+By induction on the level, a level-$m$ descendant of $O$ has offset $t_m=\beta^mt+\sum_{s=0}^{m-1}\beta^{m-1-s}c_s$ with $c_s\in F$; $t_m=0$ gives the expansion of $t$. Applying $\varsigma$ and the triangle inequality gives the displayed bound, since $|\varsigma(\beta)^{-(s+1)}|=|\beta'|^{-(s+1)}$ and $|\varsigma(c_s)|\le C_\varsigma$. For a complex pair $\varsigma,\bar\varsigma$ one has $N(t)=t\,\varsigma(t)\overline{\varsigma(t)}$, so $|\varsigma(t)|^2=N(t)/t$, and likewise $|\beta'|^2=D/\beta$, which forces $D>0$; the bounds for $\varsigma$ and $\bar\varsigma$ coincide, and squaring (both sides are nonnegative) turns the bound into $N(t)/t\le K(\sum_{s=1}^{m}\rho^{s/2})^2$ with $K=C_\varsigma^2=\max_{c\in F\setminus\{0\}}N(c)/c$. Expanding the square, the pairs $(s,s')\in\{1,\dots,m\}^2$ with $s+s'=k$ number $n_k$, and $\rho^{k/2}$ lies in $\Q(\beta)$ for even $k$ and equals $\rho^{1/2}\rho^{(k-1)/2}$ for odd $k$, which gives $A_m+\rho^{1/2}B_m$. Since $\rho^{1/2}B_m\ge0$, the inequality holds when $N(t)/t-KA_m\le0$ and otherwise, both sides then being positive, exactly when its square $(N(t)/t-KA_m)^2\le K^2\rho B_m^2$ holds; no inequality is relaxed. For $t=0$ the overlap is itself of offset $0$ and $m_0(0)=0$.
+\end{proof}
+
+The bound says that an overlap whose offset is large in the contracting directions cannot hit early: the memory of the offset decays like $|\beta'|^m$ and must be erased before a common sub-tile left endpoint is possible. Computation~\ref{comp:overlap} compares $m_0$ with the observed first boundary-coincidence depths over $\mathcal S$.
+
+Under strong coincidence, therefore, the balanced-pair side of the coincidence problem is trivial and the whole difficulty is either G1 or, without G1, the hitting problem of Corollary~\ref{cor:scc-reduction}(ii); for $d=2$ both are settled~\cite{BD,HS}. In the contracting embedding the condition $M^mw\in P_m(i)-P_m(j)$ asks that the projected prefix sets of the two inflated tiles, which accumulate on the Rauzy fractal pieces, meet at the required expanding offset; this is the geometric form of the coincidence problem studied in~\cite{IR,BK,MT}, and we do not pursue it here. What is gained is a separation: under strong coincidence an overlap reaches a coincidence by first reaching a boundary coincidence and then using the eventual coincidence of the letters found there, so its first-coincidence depth is at most its first boundary-coincidence depth plus the largest strong-coincidence depth of a letter pair (Computation~\ref{comp:overlap}).
+
+\subsubsection*{Normal form of a nonproductive component}
+
+A failure of Open Problem~\ref{prob:overlap-productivity} can be normalized. Call a set $S$ of vertices of $\mathcal O_\sigma$ \emph{closed} if every child of every vertex of $S$ lies in $S$, and \emph{irreducible} if it is strongly connected in $\mathcal O_\sigma$ (every vertex of $S$ reaches every other by a path of children in $S$; a single vertex with a loop is allowed).
+
+\begin{proposition}[Closed irreducible obstruction; \Status{Theorem}]\label{prop:obstruction-normal-form}
+Let $\sigma$ be PIP and $O$ a nonproductive vertex of $\mathcal O_\sigma$. Then among the descendants of $O$ there is a nonempty closed irreducible set $S$ of nonproductive non-coincidence vertices, and every such $S$ satisfies: the child-count matrix $N_S$ is irreducible, $N_S\lambda_S=\beta\lambda_S$ with $\lambda_S>0$ and $\rho(N_S)=\beta$, $N_SV_S=V_SM^{\mathsf T}$, $\rank V_S=d$, $|S|\ge d$ and $\spec(M)\subseteq\spec(N_S)$.
+\end{proposition}
+\begin{proof}
+Let $B$ be the set of nonproductive descendants of $O$ (including $O$). It consists of non-coincidences, and it is closed: a productive child would make its parent productive. Every non-coincidence vertex has at least one child, since its children are the pairs of sub-tiles partitioning the inflated intersection, which has positive length (proof of Corollary~\ref{cor:overlap-mass}). The graph induced on the finite set $B$ therefore has every out-degree at least one, so its condensation has a terminal strongly connected component $S$; every child of a vertex of $S$ lies in $B$ by closedness of $B$ and in $S$ by terminality. Hence $S$ is closed and irreducible, and $N_S$ is irreducible because $S$ is strongly connected. The remaining properties are Corollaries~\ref{cor:overlap-mass} and~\ref{cor:overlap-rank} applied to $S$.
+\end{proof}
+
+Thus a counterexample to Open Problem~\ref{prob:overlap-productivity} may be assumed finite, recurrent, closed, Perron-critical and of full rank at the same time. The graph-theoretic reduction to a recurrent non-coincidence component is standard in the overlap-coincidence algorithm of~\cite{AL}; what is specific here is that $\mathcal O_\sigma$ is finite unconditionally (Theorem~\ref{thm:overlap-finite}) and that the rank statement is available. We stress, following~\cite[Thm.~4.1]{AL}, that $\rho(N_S)=\beta$ is the hard residual case of that algorithm and not a contradiction: a recurrent component containing a genuine overlap carries the full expansion, and an argument that $S$ is ``only a boundary system'' with $\rho(N_S)<\beta$ would assume the coincidence conclusion.
+
+For a closed set $S$ let $A_+(S)$ be the set of unordered pairs $\{i,j\}$ with $(i,j,0)\in S$ or $(j,i,0)\in S$, and $A_-(S)$ the set of pairs with $(i,j,\ell_i-\ell_j)\in S$ or $(j,i,\ell_j-\ell_i)\in S$: the left- and right-aligned vertices of $S$.
+
+\begin{proposition}[Aligned obstruction or strict zipper; \Status{Theorem}]\label{prop:zipper-dichotomy}
+Let $\sigma$ be PIP and $S$ a closed set of nonproductive non-coincidence vertices of $\mathcal O_\sigma$.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=*]
+\item No pair in $A_+(S)$ is eventually coincident and no pair in $A_-(S)$ is eventually coincident for the reversal; in particular no pair in $A_+(S)$ is $\sigma_+$-synchronizing and no pair in $A_-(S)$ is $\sigma_-$-synchronizing.
+\item If $\{i,j\}\in A_+(S)$ then $\sigma_+(i)\ne\sigma_+(j)$ and $\{\sigma_+(i),\sigma_+(j)\}\in A_+(S)$; if $\{i,j\}\in A_-(S)$ then $\sigma_-(i)\ne\sigma_-(j)$ and $\{\sigma_-(i),\sigma_-(j)\}\in A_-(S)$. Hence the orbit of every pair in $A_+(S)$ under the first-letter map, and of every pair in $A_-(S)$ under the last-letter map, is eventually periodic and stays in that set; in particular a nonempty $A_+(S)$ contains a cycle of the first-letter map consisting of pairs of distinct letters, and likewise for $A_-(S)$.
+\item Exactly one of the following holds. \textup{(a)} $A_+(S)\ne\emptyset$: $S$ exhibits a pair of distinct letters that is not eventually coincident. \textup{(b)} $S$ contains no vertex of offset $0$; then for every $O\in S$ and every $m\ge0$ no sub-tile of the level-$m$ tiling of the top tile of $O$ starts where a sub-tile of the level-$m$ tiling of the bottom tile starts, so the tile boundaries of the two tilings in the interior of the inflated intersection are pairwise distinct: the cells of their common refinement (the level-$m$ descendants of $O$) are separated by boundaries each of which belongs to exactly one of the two tilings.
+\item If every pair of distinct letters is eventually coincident for $\sigma$ and for $\tilde\sigma$, then $A_+(S)=A_-(S)=\emptyset$ and \textup{(b)} holds for every such $S$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(i) is Proposition~\ref{prop:aligned-overlaps}(i),(ii) together with nonproductivity of the vertices of $S$; a $\sigma_+$-synchronizing pair is eventually coincident, and a $\sigma_-$-synchronizing pair is eventually coincident for the reversal, with empty prefixes $p=p'$.
+
+(ii) The children of $(i,j,0)$ formed by the first sub-tiles of $\sigma(i)$ and $\sigma(j)$ both start at $0$, so $(\sigma_+(i),\sigma_+(j),0)$ is a child, hence lies in $S$; it is not a coincidence, so $\sigma_+(i)\ne\sigma_+(j)$. For $(i,j,\ell_i-\ell_j)$ the two inflated tiles end at $\beta\ell_i$, so the last sub-tiles, of letters $c=\sigma_-(i)$ and $c'=\sigma_-(j)$, start at $\beta\ell_i-\ell_c$ and $\beta\ell_i-\ell_{c'}$ and form the child $(c,c',\ell_c-\ell_{c'})$, which lies in $S$ and is not a coincidence. Vertices $(j,i,0)$ and $(j,i,\ell_j-\ell_i)$ are treated by exchanging the tilings (Proposition~\ref{prop:aligned-overlaps}). The last sentence holds because the forward orbit of a point under a self-map of a finite set is eventually periodic, and $A_\pm(S)$ are forward invariant.
+
+(iii) The alternatives are exclusive and exhaustive by definition. In case (b), an offset-$0$ descendant of $O\in S$ at level $m$ would lie in $S$ because $S$ is closed, so none exists, and Proposition~\ref{prop:boundary-coincidence} (c)$\Rightarrow$(b) excludes a common left endpoint of sub-tiles at every level. A tile boundary of either tiling in the interior of the inflated intersection is the left endpoint of a sub-tile of that tiling; a boundary common to both tilings would be a common left endpoint.
+
+(iv) By (i), $A_+(S)$ and $A_-(S)$ consist of pairs that are not eventually coincident, respectively not eventually coincident for the reversal; under the hypothesis there are none.
+\end{proof}
+
+The two cases separate the classical strong coincidence problem (case (a), which by (ii) yields a cycle of the first-letter map on pairs that are not eventually coincident) from a genuinely interior obstruction (case (b), a \emph{strict zipper}: at every level the two tilings advance one boundary at a time and never together). Under two-sided strong coincidence only case (b) remains, which is the hitting form of Corollary~\ref{cor:scc-reduction}(ii),(iii). In case (b) the order of the boundaries is information that the child-count matrix $N_S$ discards; the following lemma keeps it through a cycle of $S$ and shows that the offsets of $S$ are determined by ordered cycle data.
+
+\begin{lemma}[Ordered cycle equation; \Status{Theorem}]\label{lem:ordered-cycle}
+Let $\sigma$ be PIP and $O_0\to O_1\to\dots\to O_r=O_0$ ($r\ge1$) a cycle in $\mathcal O_\sigma$, where $O_{k+1}$ is the child of $O_k=(i_k,j_k,\langle w_k,\ell\rangle)$ formed by the sub-tile of $\sigma(i_k)$ with prefix Parikh vector $p_k\in P_1(i_k)$ and the sub-tile of $\sigma(j_k)$ with prefix Parikh vector $q_k\in P_1(j_k)$; put $d_k:=q_k-p_k\in\Z^d$ and $c_k:=\langle d_k,\ell\rangle\in F$. Then
+\[
+w_{k+1}=Mw_k+d_k\quad(0\le k<r),\qquad (I-M^r)\,w_0=\sum_{k=0}^{r-1}M^{\,r-1-k}d_k,
+\]
+and $I-M^r$ is invertible over $\Q$. Consequently:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=*]
+\item the offset of $O_0$ is determined by the ordered address $(d_0,\dots,d_{r-1})$ of the cycle, namely $w_0=(I-M^r)^{-1}\sum_kM^{r-1-k}d_k$, and an ordered address is the address of a cycle of $\mathcal O_\sigma$ only if this rational vector is integral;
+\item $\langle w_0,\ell\rangle=-\sum_{s\ge0}\beta^{-(s+1)}c_{s\bmod r}$ in $\R$: the offset has the purely periodic expansion in the digit set $F$ obtained by repeating the cycle; equivalently $(1-\beta^{-r})\langle w_0,\ell\rangle=-\sum_{k<r}\beta^{-(k+1)}c_k$ in $\Q(\beta)$, an identity preserved by every embedding;
+\item if the cycle lies in a closed nonproductive set $S$ of case \textup{(b)} of Proposition~\ref{prop:zipper-dichotomy}, then no tail of this series vanishes: $\sum_{s\ge m}\beta^{-(s+1)}c_{s\bmod r}\ne0$ for every $m\ge0$.
+\end{enumerate}
+In particular every vertex of a closed irreducible set $S$ lies on a cycle of $S$, so every offset occurring in $S$ has an expansion as in \textup{(ii)}, with period the length of a cycle of $S$ through the vertex.
+\end{lemma}
+\begin{proof}
+The child has offset $\beta\langle w_k,\ell\rangle+\langle q_k,\ell\rangle-\langle p_k,\ell\rangle=\langle Mw_k+d_k,\ell\rangle$ since $\ell M=\beta\ell$, and $w_{k+1}$ is determined by Lemma~\ref{lem:Zindep}. Iterating, $w_r=M^rw_0+\sum_kM^{r-1-k}d_k$, and $w_r=w_0$ because $O_r=O_0$. The eigenvalues of $M^r$ are $\beta^r>1$ and the $r$-th powers of the conjugates of $\beta$, of modulus less than one, so $1$ is not among them and $I-M^r$ is invertible; (i) follows, integrality because $w_0\in\Z^d$.
+
+(ii) Pairing the cycle equation with $\ell$ gives $(1-\beta^r)\langle w_0,\ell\rangle=\sum_{k<r}\beta^{r-1-k}c_k$ in $\Q(\beta)$, i.e.\ $(1-\beta^{-r})\langle w_0,\ell\rangle=-\sum_{k<r}\beta^{-(k+1)}c_k$; since $\beta>1$, dividing by $1-\beta^{-r}$ sums the geometric series $-\sum_{s\ge0}\beta^{-(s+1)}c_{s\bmod r}$ in $\R$.
+
+(iii) The truncation $-\sum_{s<m}\beta^{-(s+1)}c_{s\bmod r}$ equals $\langle w_0,\ell\rangle$ if and only if the level-$m$ descendant of $O_0$ along the cycle (repeated) has offset $0$, by the computation in the proof of Proposition~\ref{prop:contracting-bound}; in case (b) no descendant of a vertex of $S$ has offset $0$. The final assertion holds because a strongly connected set contains, for each of its vertices, a cycle through that vertex.
+\end{proof}
+
+The lemma turns a closed irreducible obstruction into a finite family of ordered cycle addresses $(d_0,\dots,d_{r-1})$, each determining its offset by an exact rational formula, subject to integrality and, in case (b), to the non-vanishing of every tail. Whether these constraints, together with the full rank of Corollary~\ref{cor:overlap-rank} and the bound of Proposition~\ref{prop:contracting-bound}, exclude case (b) is not decided here; Computation~\ref{comp:overlap} reports that over $\mathcal S$ every vertex of every seed-patch overlap graph is productive, so no obstruction of either kind occurs there.
+
+\subsection{Formal recurrence versus realization}\label{sec:realization}
+
+Under Hypothesis~\ref{hyp:G1} the coincidence rank of $\sigma$~\cite{BK,Barge2016} is greater than one if and only if some fibre of the maximal equicontinuous factor contains two tilings that never coincide, and a recurrent producer-free component of $\B_\sigma$ that is \emph{globally realized} by such a pair would witness this. The converse identification of nontrivial coincidence rank with a globally realized producer-free component has been asserted in working notes of this program; we have not reconstructed a proof and record it as a \Status{Conjectural bridge}. The distinction matters in both directions: seeds and states of $\B_\sigma$ need not be legal (Remark~\ref{rem:legality}), and a formal recurrent cycle in $\B_\sigma$ is not a pair of tilings. Finite experiments that extend formal producer-free cycles by legal collars and observe that all of them die at a small radius have been carried out in this program; since no theorem bounds the collar radius at which every unrealizable cycle must die, such experiments are not reported here as propositions.
+
+\subsection{Finiteness from overlap depth}\label{sec:G1-from-overlaps}
+
+The depth argument of Theorem~\ref{thm:density}(iii) also controls the length of reachable states, and so bears on G1 directly.
+
+\begin{proposition}[Finiteness from overlap depth; \Status{Conditional} on all-vertex overlap productivity]\label{prop:G1-from-overlaps}
+Let $\sigma$ be PIP and $s=(ab,ba)$ a seed. Suppose every vertex of $\mathcal O_\sigma$ reachable from the seed overlaps of $s$ is productive, and let $K$ be the largest first-coincidence depth among those vertices, finite by Theorem~\ref{thm:overlap-finite}. Then every state at the end of a directed path of length $n\ge K$ from $s$ satisfies $g(T)\le2\beta^K\ell_{\max}$, and the set of states reachable from $s$ is finite. In particular, a positive answer to Open Problem~\ref{prob:overlap-productivity} for $\sigma$ implies Hypothesis~\ref{hyp:G1} for $\sigma$.
+\end{proposition}
+\begin{proof}
+Fix $n\ge K$ and tile $[0,\beta^ng(s))$ by $\sigma^n(ab)$ and by $\sigma^n(ba)$. By Lemma~\ref{lem:descendants} the states at the ends of paths of length $n$ from $s$ are the blocks of $\red(\sigma^n(ab),\sigma^n(ba))$, and the boundaries between them are its zero returns, which by Lemma~\ref{lem:common-vertex} are exactly the common vertices of the two tilings. Let $x$ be a point of the interval. The level-$n$ tilings refine the $K$-fold inflations of the level-$(n-K)$ tilings, so $x$ lies in the closure of $\beta^KJ$, where $J$ is the intersection of an overlap $O$ of the level-$(n-K)$ tilings; $|J|\le\ell_{\max}$. Every occurring overlap is a coincidence or a vertex of $\mathcal O_\sigma$ (Section~\ref{sec:overlap}), and $O$ descends from the seed overlaps of $s$, so $O$ has a coincidence descendant within $k\le K$ levels; by the proof of Theorem~\ref{thm:density}(i) its $K-k$ further inflations are common tiles, so the level-$n$ tilings have a common tile inside $\beta^KJ$. Its endpoints are common vertices within distance $\beta^K\ell_{\max}$ of $x$. Hence consecutive common vertices are at most $2\beta^K\ell_{\max}$ apart, which is the bound on $g(T)$, and such a state has at most $2\beta^K\ell_{\max}/\ell_{\min}$ letters on each side. The states at depth less than $K$ are finitely many, since each is a block of one of finitely many pairs, and the states at depth at least $K$ are pairs of words of bounded length; so the set of states reachable from $s$ is finite. $\B_\sigma$ is the union of these sets over the finitely many seeds.
+\end{proof}
+
+The mechanism is that of~\cite[Thm.~5.6]{SS}, where termination of the balanced-pair algorithm from a prefix of the fixed point is shown equivalent to a uniform bound on the gaps between half-coincidences (common vertices) of the corresponding pair of tilings; what is new here is its transfer to the swap seeds, which need not be legal, on the graph $\mathcal O_\sigma$ that Theorem~\ref{thm:overlap-finite} makes finite unconditionally, with an explicit bound. The hypothesis of Proposition~\ref{prop:G1-from-overlaps} for every seed is the all-vertex form of Open Problem~\ref{prob:overlap-productivity}, which is stronger than the one-seed hypothesis of Theorem~\ref{thm:main-density}. No realization statement is needed: every reachable state is a block of a swap pair, and the gap bound is proved for the swap pairs themselves. The bound $2\beta^K\ell_{\max}$ can be far larger than the longest reachable state: for $\sigma\colon0\mapsto1$, $1\mapsto222$, $2\mapsto0222$, an exact computation gives a productive $\mathcal O_\sigma$ of $1{,}142$ vertices with $K=19$, so every state has at most $2\beta^{19}\ell_{\max}/\ell_{\min}<4.52\cdot10^{10}$ letters, while direct construction of $\B_\sigma$ exhausts state-length budgets of $4\cdot10^5$ letters.
+
+A coincidence is used in the proof of Proposition~\ref{prop:G1-from-overlaps} only for the common vertex it supplies, and a common vertex alone suffices; this is the half-coincidence form of~\cite[Thm.~5.6]{SS}. It shows that finiteness needs only one branch of the dichotomy of Proposition~\ref{prop:zipper-dichotomy}.
+
+\begin{proposition}[Finiteness from half-coincidences; \Status{Conditional} on strict-zipper exclusion]\label{prop:G1-from-half-coincidences}
+Let $\sigma$ be PIP and $s$ a seed. The following are equivalent: \textup{(a)} every vertex of $\mathcal O_\sigma$ reachable from the seed overlaps of $s$ has a descendant of offset $0$ (the vertex itself included); \textup{(b)} no closed set of nonproductive non-coincidence vertices reachable from $s$ falls under case \textup{(b)} of Proposition~\ref{prop:zipper-dichotomy}\textup{(iii)}. If they hold, let $K'$ be the largest depth at which the vertices reachable from $s$ first have a descendant of offset $0$. Then every state at the end of a directed path of length $n\ge K'$ from $s$ satisfies $g(T)\le2\beta^{K'}\ell_{\max}$, and the set of states reachable from $s$ is finite. In particular, if \textup{(b)} holds for every seed, then Hypothesis~\ref{hyp:G1} holds for $\sigma$.
+\end{proposition}
+\begin{proof}
+Let $Z$ be the set of vertices reachable from $s$ with no descendant of offset $0$. A child of a vertex of $Z$ is a descendant of it, so it lies in $Z$; coincidences have offset $0$, so $Z$ contains none, and its vertices are nonproductive. Thus $Z$, if nonempty, is a closed set of nonproductive non-coincidence vertices with no vertex of offset $0$, which is case \textup{(b)}. Conversely, a closed set $S$ of nonproductive vertices in case \textup{(b)} contains every descendant of its vertices, since their noncoincidence children lie in $S$ and they have no coincidence descendants, and $S$ has no vertex of offset $0$; so $S\subseteq Z$. Hence \textup{(a)}, that is $Z=\emptyset$, is equivalent to \textup{(b)}.
+
+For the bound, run the proof of Proposition~\ref{prop:G1-from-overlaps} with $K'$ in place of $K$. The overlap $O$ of the level-$(n-K')$ tilings whose inflated intersection $\beta^{K'}J$ contains $x$ in its closure has a descendant $O'$ of offset $0$ within $k\le K'$ levels. Its two tiles start at the same point $y$, a common vertex of the level-$(n-K'+k)$ tilings lying in the closure of $\beta^{K'}J$. Inflation subdivides tiles and keeps their endpoints as vertices, so $y$ is a common vertex of the level-$n$ tilings, within $\beta^{K'}\ell_{\max}$ of $x$. The rest of the proof is unchanged.
+\end{proof}
+
+A coincidence has offset $0$, so $K'\le K$, and the hypothesis of Proposition~\ref{prop:G1-from-half-coincidences} is implied by that of Proposition~\ref{prop:G1-from-overlaps}. Case \textup{(a)} of Proposition~\ref{prop:zipper-dichotomy}\textup{(iii)}, which contains the strong coincidence problem, does not obstruct finiteness: G1 follows from excluding strict zippers alone, while productivity and \PDS{} need both cases excluded. For the substitution $0\mapsto1$, $1\mapsto222$, $2\mapsto0222$, an exact computation gives $K'=17$ on all $1{,}142$ vertices, so every state has at most $2\beta^{17}\ell_{\max}/\ell_{\min}<4.2\cdot10^{9}$ letters.
+
+\begin{remark}[The leftmost chain]\label{rem:leftmost-chain}
+Each overlap of nonzero offset has exactly one child whose region contains the left endpoint of its own region, so this \emph{leftmost child} is a self-map of the finite graph of overlaps on cycles. An overlap whose leftmost orbit reaches offset $0$ has an offset-$0$ descendant; the others are the basin of the terminal cycles of that map, and those cycles are the whole obstruction to the hypothesis of Proposition~\ref{prop:G1-from-half-coincidences}. Along a terminal cycle of length $r$ the offset keeps its sign, the tiling whose tile starts later reads a prefix occurrence $\sigma^r(i)=iU$ and the other an interior occurrence $\sigma^r(j)=QjV$ with $Q,V$ nonempty, and $(I-M^r)w_0=\pi(Q)$ (\texttt{docs/p1b-leftmost-chain-periodic-pair-2026-10-05.md}, Proposition~LC). Hence if no terminal leftmost cycle exists, strict-zipper exclusion holds for every seed and G1 follows by Proposition~\ref{prop:G1-from-half-coincidences}; on $\mathcal S$ this applies to $1{,}794$ substitutions, a cheaper certificate of a G1 already known there, and the structure statement was checked on all $10{,}584$ terminal leftmost cycles of $\mathcal S$.
+\end{remark}
+
+\subsection{Strong coincidence on the catch-up-free determinant-two class}\label{sec:catchup-free}
+
+Case (a) of Proposition~\ref{prop:zipper-dichotomy}(iii) is the strong coincidence problem, which is open for $d\ge3$. This subsection proves it, for every pair of letters, on an infinite non-unimodular class of ternary PIP substitutions, with the exception of one explicit family, and then closes large parts of that family. The results are recent. They are proved in \texttt{docs/p1a-template-collapse-2026-10-05.md} and \texttt{docs/p1a-a1-prime-2026-10-05.md}, where every step is written out; several of them are computer-assisted, in the precise sense stated at Theorem~\ref{thm:K-cells}; and none has been reviewed beyond its authors. We tag them \Status{Theorem} under that caveat. Throughout, $d=3$, $h=\sigma_+$ is the first-letter map, $H(\{i,j\})=\{h(i),h(j)\}$ is the induced map on pairs, and $\Lambda=M\Z^3$, a sublattice of index $|\det M|$.
+
+\begin{definition}\label{def:catchup-free}
+$\sigma$ is \emph{catch-up-free} if no proper nonempty prefix $u$ of an image $\sigma(a)$ has $\pi(u)\in\Lambda$.
+\end{definition}
+
+The name records the consequence that motivated it: writing $u[{:}k]$ for the length-$k$ prefix of a word $u$, the child of an overlap $(a,b,\langle w,\ell\rangle)$ through prefix indices $(p,q)$ has offset vector $Mw+\pi(\sigma(b)[{:}q])-\pi(\sigma(a)[{:}p])$ (proof of Lemma~\ref{lem:ordered-cycle}), so it has offset $0$ if and only if $Mw=\pi(\sigma(a)[{:}p])-\pi(\sigma(b)[{:}q])$; so in a catch-up-free $\sigma$ no offset-$0$ child has exactly one index equal to $0$: a common vertex of two tilings is never born in one tiling earlier than in the other, and every return to offset $0$ is a \emph{simultaneous birth}. For $|\det M|=1$ the condition is void, so the class is non-unimodular. On $\mathcal S$ it has $210$ members, all with $|\det M|=2$.
+
+\begin{proposition}[Parity normal form; \Status{Theorem}]\label{prop:parity-form}
+Let $\sigma$ be PIP with $|\det M|=2$. Then $\sigma$ is catch-up-free if and only if there is a set $O$ of letters (the \emph{odd} letters) such that every image is either a single letter outside $O$ or a letter of $O$, then letters outside $O$, then a letter of $O$. The set $O$ is unique, and $1\le|O|\le2$.
+\end{proposition}
+\begin{proof}
+Since $\Z^3/\Lambda\cong\Z/2$, $\Lambda=\ker f$ for a unique nonzero $f(v)=\sum_{c\in O}v_c\bmod2$; this defines $O$. Catch-up-freeness says every proper nonempty prefix has $f=1$, and every column of $M$ has $f=0$. In an image $x_1\cdots x_L$ with $L\ge2$ this forces $f(x_1)=1$, $f(x_k)=0$ for $1<k<L$ (differences of two odd prefixes) and $f(x_L)=1$; an image of length one is a column, so its letter is even. The converse is the same computation read backwards. If $O=\A$, every image has even length with every proper prefix of odd length, so every image has length two, $\mathbf 1^{\top}M=2\cdot\mathbf 1^{\top}$, and $\beta=2\in\Q$, contradicting irreducibility.
+\end{proof}
+
+\begin{lemma}[Prefix transfer; \Status{Theorem}]\label{lem:prefix-transfer}
+If $H(\{i,j\})$ is eventually coincident at level $n$ then $\{i,j\}$ is eventually coincident at level $n+1$; if $h(i)=h(j)$ then $\{i,j\}$ is eventually coincident at level $1$. Consequently every $\sigma$ (on any alphabet) satisfies the strong coincidence condition if and only if every cycle of $H$ on pairs of distinct letters contains an eventually coincident pair.
+\end{lemma}
+\begin{proof}
+$\sigma^{n+1}(i)$ begins with $\sigma^n(h(i))$ and $\sigma^{n+1}(j)$ with $\sigma^n(h(j))$, and a common tile reads only a prefix and the letter after it. Every $H$-orbit of a pair of distinct letters reaches a single letter or a cycle of distinct pairs; the transfer carries a coincidence backwards around the cycle and then along the orbit.
+\end{proof}
+
+The aligned case of Proposition~\ref{prop:zipper-dichotomy} leaves, for a closed nonproductive set with a nonempty aligned branch, an $H$-cycle of pairs that are not eventually coincident; by Theorem~\ref{thm:BD-eliminator} it consists of the bad edges $\{a,c\},\{b,c\}$ of a fixed eventually coincident pair $\{a,b\}$ with hub $c$, and it has period one or two. Passing to $\sigma^2$, whose first-letter map is $h\circ h$, collapses every such template to one: $h\circ h$ fixes both letters of a bad edge (\texttt{docs/p1a-template-collapse-2026-10-05.md}, Theorem~C, certified over all $81$ endpoint and good-edge placements). The remaining aligned obligation is therefore the aimed statement \emph{A1$'$}: if $h$ fixes both letters of a pair $\{x,c\}$, then $\{x,c\}$ is eventually coincident. Imported Theorem~\ref{thm:BD} does not give it: its proof produces one eventually coincident pair and cannot be aimed at a prescribed one, which is exactly why it settles $d=2$, with one pair, and not $d=3$, with three.
+
+\begin{theorem}[A1$'$ on the class; \Status{Theorem}]\label{thm:A1-class}
+Let $\sigma$ be PIP, catch-up-free, with $|\det M|=2$. If $h$ fixes two distinct letters $x$ and $c$, then $\{x,c\}$ is eventually coincident. Consequently every such $\sigma$ satisfies the strong coincidence condition for every pair of letters.
+\end{theorem}
+\begin{proof}[Sketch]
+Neither $\sigma(x)$ nor $\sigma(c)$ is a single letter (it would be a fixed column, against primitivity), so $x,c\in O$, and by Proposition~\ref{prop:parity-form} $O=\{x,c\}$ and, with $y$ the third letter,
+\[
+\sigma(x)=xy^ps_x,\qquad\sigma(c)=cy^qs_c,\qquad\sigma(y)=ty^rs_y,\qquad s_x,s_c,t,s_y\in\{x,c\}.
+\]
+The parameters occur only in the $y$-row of $M$, so $\det M$ and $f(\pm1)$, $f(t)=\det(tI-M)$, are affine in $(p,q,r)$. Eight of the sixteen endings carry no PIP member (four are not primitive, two singular, two have the eigenvalue $2$); the other eight form four classes under the mirror exchanging $x$ and $c$, on each of which $|\det M|=2$ is a linear Diophantine condition. A PIP matrix has $f(1)<0$ and $f(-1)<0$ (\emph{Lemma P1}), which are affine inequalities. Three explicit witness lemmas name a common tile of $\sigma^n(x)$ and $\sigma^n(c)$ at levels $2$ or $3$ on everything except twelve lines and two points; Lemma P1 bounds each line, and the members left are exactly $27$ explicit substitutions, each decided eventually coincident by the exact procedure of \texttt{docs/strong-coincidence-census-2026-10-04.md} at a level at most $7$. For the second sentence, $H(\{x,y\})$ and $H(\{c,y\})$ are each a single letter or $\{x,c\}$; apply Lemma~\ref{lem:prefix-transfer}.
+\end{proof}
+
+The swap family, in which $h$ exchanges $x$ and $c$, is the same problem without first-letter fixed points, and needs witnesses at level $4$ on infinite lines. It is settled by a certificate of a different kind.
+
+\begin{lemma}[Witness paths; \Status{Theorem}]\label{lem:witness-path}
+Let $a_0,b_0$ be letters and, for $0\le l<n$, let $i_l<|\sigma(a_l)|$, $k_l<|\sigma(b_l)|$ be positions with $a_{l+1}=\sigma(a_l)[i_l]$, $b_{l+1}=\sigma(b_l)[k_l]$, $\gamma_0=0$, $\gamma_{l+1}=M\gamma_l+\pi(\sigma(a_l)[{:}i_l])-\pi(\sigma(b_l)[{:}k_l])$. If $\gamma_n=0$ and $a_n=b_n$, then $\sigma^n(a_0)$ and $\sigma^n(b_0)$ share a tile.
+\end{lemma}
+\begin{proof}
+By induction $\gamma_l$ is the difference of the Parikh vectors of the prefixes of $\sigma^l(a_0)$ and $\sigma^l(b_0)$ before letters $a_l$ and $b_l$.
+\end{proof}
+
+If the run lengths are affine in parameters $n_1,\dots,n_m\ge0$ and every $\gamma_l$ along a path is constant, each condition of Lemma~\ref{lem:witness-path} is an affine identity or an affine inequality in the $n_k$, and an affine form with nonnegative constant and coefficients is nonnegative on $\Z_{\ge0}^m$. One exact check of a path therefore proves a common tile on a whole cone of parameters.
+
+\begin{theorem}[The swap family; \Status{Theorem}]\label{thm:swap-family}
+Every PIP member with $|\det M|=2$ of $\sigma(x)=cy^ps_x$, $\sigma(c)=xy^qs_c$, $\sigma(y)=ty^rs_y$ has $\{x,c\}$ eventually coincident. Consequently every PIP catch-up-free substitution on three letters with $|\det M|=2$ and $|O|=2$ satisfies the strong coincidence condition for every pair.
+\end{theorem}
+\begin{proof}[Sketch]
+Six endings carry no PIP member; on the other ten, $|\det M|=2$ and $f(-1)<0$ put every PIP member in one of twenty explicit quadrants. A fixed recursion splits each quadrant into cones closed by verified witness paths, regions on which $f(1)$ or $f(-1)$ is a nonnegative affine form (cut by Lemma P1), and single points decided exactly: $42$ cones, $6$ cuts and $20$ PIP points, all eventually coincident. For the second sentence, the $H$-cycles of the class with $|O|=2$ are, up to the mirror, the fixed pair $\{x,c\}$ of Theorem~\ref{thm:A1-class} or of the swap family; none at all; a $3$-cycle through all three pairs, closed by Imported Theorem~\ref{thm:BD}; or, when $\sigma(x)=y$, the pair $\{x,y\}$, closed by two further witness lemmas and three exactly decided points.
+\end{proof}
+
+\begin{theorem}[The catch-up-free determinant-two class; \Status{Theorem}]\label{thm:K}
+Every PIP catch-up-free substitution on three letters with $|\det M|=2$ satisfies the strong coincidence condition for every pair of letters, except possibly the members of the family
+\[
+\mathcal F:\qquad\sigma(o)=y,\qquad\sigma(y)=ow_1o,\qquad\sigma(z)=ow_2o,\qquad w_1,w_2\in\{y,z\}^*,
+\]
+where it is equivalent to $\{o,y\}$ being eventually coincident. All $210$ catch-up-free members of $\mathcal S$ lie outside $\mathcal F$, so each satisfies the strong coincidence condition by this proof and not only by enumeration.
+\end{theorem}
+\begin{proof}[Sketch]
+By Proposition~\ref{prop:parity-form}, $|O|\le2$; $|O|=2$ is Theorem~\ref{thm:swap-family}. If $O=\{o\}$, every image of length at least two begins with $o$. Counting the images of length one: with none, $h$ is constant; with one, $\sigma(a)=b$ for $a\ne o$, every $H$-orbit reaches a single letter; with two, $H$ is a $3$-cycle on pairs and Imported Theorem~\ref{thm:BD} applies; three is impossible. The case left is $\sigma(o)=y$, where $\{o,y\}$ is $H$-fixed and the other pairs reach it or a single letter (Lemma~\ref{lem:prefix-transfer}).
+\end{proof}
+
+Inside $\mathcal F$ write $Y_i,Z_i$ for the letter counts of $w_i$, $s=Z_1-Z_2$ and $\Delta=Y_1-Y_2$. Ordering the letters $o,y,z$, $M$ has rows $(0,2,2)$, $(1,Y_1,Y_2)$, $(0,Z_1,Z_2)$, and $\det M=2s$, so a member has $s=\pm1$; Lemma P1 gives $\Delta\ge0$ when $s=1$ and $\Delta\le0$, $Z_2\ge2$ when $s=-1$, through the identities $f(-1)=(1+Z_2)(Y_2-Y_1-1)$ and $f(1)=(Z_2-1)(Y_1-Y_2-1)$. If $w_1$ begins with $y$, a witness path closes $\{o,y\}$ at level $3$; it does so also when the lattice walks of $w_1$ and of $w_2$ shifted by $e_y$ \emph{cross}, that is $\pi(w_1[{:}i])=\pi(w_2[{:}k])+e_y$ for some $i,k\ge1$. What remains is the \emph{non-crossing} members, in which the $y$-count of $w_1$ never catches up with that of $w_2$ one letter behind.
+
+\begin{theorem}[Closed parts of $\mathcal F$; \Status{Theorem}, computer-assisted]\label{thm:K-cells}
+A member of $\mathcal F$ has $\{o,y\}$ eventually coincident, and hence satisfies the strong coincidence condition for every pair, in each of the following cases:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=*]
+\item $w_1$ begins with $y$, or the two walks cross;
+\item $(s,\Delta)$ is one of $(1,0)$, $(1,1)$, $(-1,0)$, $(-1,-1)$, for words of every length;
+\item the run shapes of $(w_1,w_2)$ are $(z^ay^b,\varepsilon)$, $(z^ay^b,z^c)$ or $(z^ay^b,y^cz^d)$, with $s=1$ and every $\Delta$;
+\item $s=1$ and $Z_2\le2$, or $s=-1$ and $Z_2\le3$, for every $\Delta$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}[Sketch and trust boundary]
+(i) is two witness paths, and the cell $(1,0)$ of (ii) has a proof by hand by three further witness lemmas. For non-crossing members the longer word is a prefix whose Parikh vector is tied to the shorter word followed by a suffix of bounded length ($w_1=uy^{\Delta}$ with $\pi(u)=\pi(w_2)+e_z$ when $s=1$; at least two $z$ among the last $2-\Delta$ letters of $w_2$ when $s=-1$), so each cell of (ii) is a finite union of run patterns with opaque tails. A \emph{monotone crossing lemma} (lattice paths with unit steps $e_y,e_z$ that start weakly on one side of each other and end strictly on the other share a point) closes witnesses while reading only the endpoints of a run, hence across opaque tails. A certificate-guided partition then covers each pattern by regions, each defined by its own affine inequalities, on which a witness path or a crossing closure is re-verified symbolically, or Lemma P1 leaves no member, or the region is empty; the partitions are exact. (iii) is the same cover for three shapes. For (iv), fixing $Z_2$ makes Lemma P1, quadratic only through $Z_2(\Delta-1)$, affine, so each sign and cap leaves finitely many fully revealed run patterns in which $\Delta$ is symbolic: $60$ patterns ($748$ regions) for $s=1$, $Z_2\le2$, and $56$ patterns ($1{,}329$ regions) for $s=-1$, $Z_2\le3$, all closed. The reductions, the meaning of patterns, every settling rule and every partition are proved by hand; what is trusted is the correctness of their exact Mojo implementations and that the recorded runs finished. The verifiers re-derive every state from the step data and prove each condition from the region's own inequalities, so a defective search can only fail to certify; the verifiers, provers, emptiness tests and partitions carry brute-force regressions.
+\end{proof}
+
+\begin{remark}[What this does and does not give]\label{rem:K-scope}
+Strong coincidence is necessary for \PDS{} (by~\cite[Cor.~4.5]{AL14}, used in Theorem~\ref{thm:seedwise}) but, as imported, not sufficient; Theorems~\ref{thm:A1-class}--\ref{thm:K-cells} therefore discharge case (a) of Proposition~\ref{prop:zipper-dichotomy} on their class and say nothing about case (b), about G1, or about \PDS{}. On the catch-up-free class the two cases meet: the aligned vertex $(x,c,0)$ of A1$'$ has no offset-$0$ child other than itself, so a coincidence can only arrive by a simultaneous birth, which is the statement whose general form for every recurrent vertex (\emph{T2}) remains open. Open inside $\mathcal F$ are the non-crossing members outside the cells and shapes of Theorem~\ref{thm:K-cells}; they are coincident wherever they have been decided ($1{,}267$ members with $|w_1|,|w_2|\le7$, at levels at most $6$), and where both $|\Delta|$ and $Z_2$ are unbounded the obstacle is that the number of distinct witness shapes grows with $Z_2$. Lemma P1 is needed there only through one affine form, $2Y_2\ge Z_2+2\Delta-8$ for $s=1$ (with $\Delta\ge2$, $Z_2\ge3$), and on the region it cuts out every non-crossing pair tested so far is coincident, PIP or not (finite seeded evidence, not a proposition). Outside the class nothing here applies: Proposition~\ref{prop:parity-form} needs $|\det M|=2$, and catch-up-free substitutions of other determinant exist ($84$ of $654$ at total image length at most $8$). The method, a finite exact certificate for an infinite family, follows Berth\'e, Bourdon, Jolivet and Siegel~\cite{BBJS16}, whose families are unimodular products of a fixed generating set; no source we have inspected proves strong coincidence for a prescribed pair on an infinite non-unimodular class of this kind, and that is the narrow novelty claimed.
+\end{remark}
+
+\section{Computational propositions}\label{sec:finite}
+
+All computations below are exact (integer and rational arithmetic, Sturm sequences for real-root isolation), and each is stated with its search domain and its certificate meaning. None proves a statement about any substitution outside its domain, and none proves G1, Conjecture~\ref{conj:producer}, or the Pisot substitution conjecture for any infinite family.
+
+\begin{convention}\label{conv:corpus}
+The \emph{corpus} $\mathcal S$ is the set of substitutions $\sigma$ on $\A=\{0,1,2\}$ with $1\le|\sigma(a)|\le3$ for each $a$ (there are $39^3=59{,}319$ such substitutions) that satisfy \ref{H1}--\ref{H3}, decided exactly: primitivity by positivity of a power of $M$, irreducibility of the monic cubic by the absence of rational roots, and the Pisot property by exact real-root isolation and, in the complex-conjugate case, by $|\beta_2\beta_3|=|\det M|/\beta<1$. For each $\sigma\in\mathcal S$ the automaton $\B_\sigma$ was constructed by breadth-first closure from the three seeds with a cap of $20{,}000$ states; a run reaching the cap is inconclusive.
+\end{convention}
+
+\begin{computation}[Automaton census; \Status{Finite computation}]\label{comp:bpa}
+$|\mathcal S|=4{,}554$, of which $2{,}628$ are unimodular and $1{,}926$ are not; among the unimodular ones $648$ have three real roots and $1{,}980$ a complex pair; no $\chi_M$ has zero discriminant. For every $\sigma\in\mathcal S$ the construction of $\B_\sigma$ terminated below the cap. Over $\mathcal S$ there are $5{,}022$ recurrent noncoincident SCCs containing $369{,}486$ states; each $\sigma$ has exactly one noncoincident SCC with no noncoincident exit (a \emph{noncoincident sink}), and every one of the $4{,}554$ sinks has a coincidence block among its children, hence is productive. Every sink also has a state with a one-step newborn synchronizing zero return, and $4{,}278$ sinks have an inherited synchronizing boundary. Exactly $60$ of the $5{,}022$ recurrent noncoincident SCCs have neither a newborn nor an inherited synchronizing boundary among their states; all $60$ are singletons, none has a coincidence child, and every one has a noncoincident exit. There is no closed nonproductive SCC in the corpus.
+\end{computation}
+
+\begin{computation}[Discrepancy census; \Status{Finite computation}]\label{comp:disc}
+Over $\mathcal S$, with $\B_\sigma$ built from all three seeds under a cap of $20{,}000$ states (never reached), the maximum of $\Disc(T)$ over all reachable states of all $4{,}554$ automata is $14$, and the longest reachable state has $48{,}020$ letters. The number of $\sigma\in\mathcal S$ whose maximal reachable discrepancy is $1,2,\dots,12,14$ is $1554,1356,474,330,240,240,84,108,36,60,24,36,12$ respectively (no $\sigma$ attains $13$). For the three seeds of $\tau$ (Example~\ref{ex:tau}) the quantity $\max_j\|\Delta(j)\|_\infty$ of the proof of Theorem~\ref{thm:G1b1} at levels $n=0,\dots,18$ is $1,1,2,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5$; for Tribonacci and flipped Tribonacci it is $1$ at every level.
+\end{computation}
+
+\emph{Meaning.} The values are consistent with Theorem~\ref{thm:G1b1} and illustrate its remark that a bounded box contains long reachable states. \emph{Limitation.} No computation verifies $D_\sigma$. Since a swap walk splits at its zero returns into reachable states (proof of Theorem~\ref{thm:G1b1}), $\max_j\|\Delta(j)\|_\infty$ at any level is the largest discrepancy of a depth-$n$ descendant, so for $\tau$, whose automaton is finite with maximal reachable discrepancy $5$, the profile attains $5$ at level $15$ and can never exceed it; the sharp value $5$ is to be contrasted with the analytic constant $D_\tau$, which is far larger (a floating-point evaluation, not a certificate, gives $D_\tau\approx7.6\times10^2$, the series of Lemma~\ref{lem:decay} converging slowly because the second eigenvalue has modulus $(2/\beta)^{1/2}\approx0.94$).
+
+\emph{Meaning.} For each $\sigma\in\mathcal S$ the run certifies that $\B_\sigma$ is finite and that every reachable state is productive; under Imported Theorem~\ref{thm:bridge} this is a proof of \PDS{} for that particular $\sigma$ (the seed-family question of Section~\ref{sec:literature-bridge} does not affect this direction). \emph{Limitation.} It says nothing about substitutions with longer images or larger alphabets, and finiteness of $4{,}554$ particular automata is not evidence of a uniform mechanism.
+
+\begin{computation}[First-defect census; \Status{Finite computation}]\label{comp:defect}
+Over $\mathcal S$ the $385{,}926$ reachable noncoincident states have first nonzero defect degree $2$ in $385{,}902$ cases and $3$ in $24$ cases; no reachable state has $K_2=K_3=K_4=0$. The $24$ degree-three states occur in $12$ substitutions, two per substitution, all in the noncoincident sink, with lengths $9$ and $19$; up to relabelling and reversal the substitutions are $0\mapsto011,\ 1\mapsto2,\ 2\mapsto120$ and its reversal, all with $\chi_M=x^3-2x^2-1$ and $\det M=1$; for each of the $24$ states the matrix $\Theta(K_3)\in\mathrm{Mat}_3(\Z)$ representing $K_3$ in $\Lie_3\cong\mathfrak{sl}_3\otimes\det$ has $|\det\Theta|=2$, $\operatorname{tr}\Theta^2=6$, and does not commute with $M$; every one of the $24$ states reaches a coincidence block within two inflations.
+\end{computation}
+
+\emph{Meaning.} Degree two is the only first-defect degree realized in the corpus apart from $24$ states, none of which satisfies the necessary condition $\operatorname{im}Q_3\subseteq\ker(\Phi_3-\det M)$ of Theorem~\ref{thm:deg23}(iii) for membership in a strict component. \emph{Limitation.} First defect degree four does occur for irreducible balanced pairs outside the reachable sets: the pair $(122331211223,\ 231121223312)$ over $\{1,2,3\}$ has $K_1=K_2=K_3=0$ and $K_4\ne0$ (directly checkable; we make no claim that this length is minimal). The census bounds nothing outside $\mathcal S$.
+
+\begin{computation}[Three-state templates; \Status{Finite computation}]\label{comp:threestate}
+Among $\sigma\in\mathcal S$, $1{,}716$ have $\overline{\chi_M}=\overline{\chi_{\Lambda^2M}}$ in $\F_2[x]$ (the parity condition of Theorem~\ref{thm:deg23}(ii) compatible with $|\cC|=3$); $570$ of these have both endpoint maps nonsynchronizing; $1{,}554$ of the $1{,}716$ satisfy $\operatorname{tr}(M^k)\ge\operatorname{tr}((\Lambda^2M)^k)$ for all $k\le12$ (a necessary condition for a three-state strict component with $r(\cC)=2$, since then $N_\cC\sim M$, $S\sim\Lambda^2M$ and $\operatorname{tr}N_\cC^k-\operatorname{tr}S^k\ge0$); $546$ satisfy all three conditions. For none of these $546$ does $\B_\sigma$ contain a recurrent noncoincident SCC of size $3$; the minimum size of a recurrent noncoincident SCC among them is $4$.
+\end{computation}
+
+\emph{Meaning.} Arithmetic and endpoint conditions admit hundreds of hypothetical three-state templates that the actual zero-return factorization never realizes. \emph{Limitation.} This is not a theorem excluding three-state strict components; the gap between the template count and the realized count is the object of Open Problems~\ref{prob:wedge-productivity} and~\ref{prob:C4}.
+
+\begin{computation}[Strong coincidence beyond $\mathcal S$; \Status{Finite computation}]\label{comp:strong-coincidence}
+For every PIP substitution on three letters in four domains, namely $\mathcal S$ ($4{,}554$ substitutions), total image length at most $8$ ($24{,}486$), image lengths at most $4$ ($135{,}990$) and total image length at most $10$ ($408{,}798$), every pair of distinct letters was decided for eventual coincidence by an exact procedure that is finite by the Pisot property, so a negative answer would be a verdict and not an exhausted budget. Every pair of every substitution is eventually coincident. Pairs not merged by the first-letter map ($h^n(i)\ne h^n(j)$ for all $n$) coincide at level at most $15$ in every domain, and the pairs at levels $12$ to $15$ are the same $30$ in every domain. Inside the family $\mathcal F$ of Theorem~\ref{thm:K}, all $8{,}130$ members with $|w_1|,|w_2|\le7$ were checked: the named witness paths of Theorem~\ref{thm:K-cells}(i) verify on the $6{,}863$ they cover, and the $1{,}267$ non-crossing members are eventually coincident at levels $3$ to $6$.
+\end{computation}
+
+\emph{Meaning.} No counterexample to strong coincidence exists on these domains, and the deepest coincidence level does not grow with them. \emph{Limitation.} The domains are finite; no uniform bound on the coincidence level is proved, and the census bears on case (a) of Proposition~\ref{prop:zipper-dichotomy} only.
+
+\subsection{Finite computations for Level 2}\label{sec:finite-level2}
+
+The following concern the single substitution $\tau$ of Example~\ref{ex:tau} and the single seed $(01,10)$; nothing is claimed for other substitutions or seeds.
+
+\begin{computation}[Renewal census for $\tau$; \Status{Finite computation}]\label{comp:renewal}
+Over depths $1\le d\le7$ the pairs $(\tau^d(01),\tau^d(10))$ have in total $601$ interior zero returns, each verified against the level-scaled certificate $M^d\delta+c=0$ of Section~\ref{sec:ancestry} and against the level-by-level affine recurrence $x_{t+1}=Mx_t+q_t$. Let $\Pi_{r,w}$ be the finite projection of Corollary~\ref{cor:windows-not-injective} with source radius $r=2$ and digit window $w=1$. Among the $601$ cuts, $\Pi_{2,1}$ has $12{,}466$ colliding unordered pairs. Joining two cuts when their full addresses differ by the insertion of one certified one-level synchronous digit pair on both sides identifies $946$ of these pairs; refining the remaining $11{,}520$ pairs by the classes of the two sidewise prefix translations $p_{\mathrm{top}},p_{\mathrm{bot}}\in\Z^3$ in $\Z^3/M^k\Z^3$ leaves $11{,}520$, $10{,}828$, $6{,}897$, $3{,}538$, $1{,}540$, $500$, $83$, $56$, $26$, $1$ unseparated pairs for $k=1,\dots,10$. The single surviving pair (the cut at position $14$ at depth $7$ and the cut at position $14$ at depth $5$) has \emph{equal} sidewise translations $p_{\mathrm{top}}=p_{\mathrm{bot}}=(5,6,3)$, so no function of these translations separates it; its depth-$7$ affine trace repeats the paired affine state at levels $1$ and $3$, and deleting the two edges of that loop yields, digit for digit, the certified depth-$5$ address.
+\end{computation}
+
+\emph{Meaning.} On this finite family every collision of the natural finite invariants is either separated by a residue coordinate of the $2$-adic factor or explained by a loop in the affine trace. \emph{Limitation.} A plateau or a separation at a finite $k$ is a property of this family; the pump explanation is a finite certificate of address equality, not of preservation of realizability, and Open Problem~\ref{prob:pump} is untouched.
+
+\begin{computation}[Seed-patch overlap graph for $\tau$; \Status{Finite computation}]\label{comp:overlap}
+Give the letters of $\tau$ tile lengths in $\Z[\beta]$ proportional to a left Perron eigenvector, place the patches $01$ and $10$ with a common left endpoint, and iterate the inflation $t\mapsto\beta t+q-p$ on oriented overlap states $(i,j,t)$ (top tile $[0,\ell_i]$, bottom tile $[t,t+\ell_j]$, $p,q$ the prefix translations of the selected children), keeping only states with nonempty interior overlap, decided by exact sign determination in $\Q(\beta)$. From $9$ initial overlaps, $628$ states are reachable, every one of which reaches a coincidence $(i,i,0)$. Over all of $\mathcal S$ (three seeds each, exact signs, cap $20{,}000$, never reached): every seed-patch overlap graph was built, the largest has $2{,}640$ vertices, the $4{,}554$ graphs have $1{,}118{,}850$ vertices in total, and no graph has a nonproductive vertex. The largest, over all vertices of all graphs, of the least number of inflations needed to reach a coincidence is $18$; the number of substitutions whose graph has maximal first-coincidence depth $3,4,\dots,18$ is $402,828,696,648,444,396,276,300,168,84,36,24,108,84,36,24$. With the same exact arithmetic, the largest first boundary-coincidence depth (the least number of inflations after which a vertex has an offset-$0$ descendant, Proposition~\ref{prop:boundary-coincidence}) over all vertices of all graphs is $17$, and the largest strong-coincidence depth of a letter pair (the first-coincidence depth of an endpoint-aligned vertex, the same for the two orientations of the pair by Proposition~\ref{prop:aligned-overlaps}) is $15$, for the prefix and for the suffix form alike; for every vertex of every graph the first-coincidence depth is at most the first boundary-coincidence depth plus the largest prefix strong-coincidence depth of its substitution, as Corollary~\ref{cor:scc-reduction} predicts. In particular every substitution in $\mathcal S$ satisfies the two-sided strong coincidence condition. Against the contracting lower bound $m_0$ of Proposition~\ref{prop:contracting-bound} (exact arithmetic in $\Q(\beta)$, sign tests at $\beta$ for the $3{,}906$ substitutions whose contracting conjugates form a complex pair and at each isolated real root for the other $648$): every one of the $1{,}118{,}850$ vertices satisfies $m_0\le$ its first boundary-coincidence depth, the largest value of $m_0$ is $8$ (vertices by $m_0=0,\dots,8$: $34{,}702$, $338{,}684$, $429{,}036$, $206{,}232$, $77{,}748$, $26{,}496$, $5{,}424$, $516$, $12$), and the excess of the depth over $m_0$ reaches $14$ (vertices by excess $0,\dots,14$: $116{,}542$, $144{,}998$, $199{,}672$, $207{,}832$, $174{,}120$, $119{,}662$, $77{,}088$, $44{,}568$, $21{,}036$, $8{,}988$, $2{,}856$, $1{,}008$, $360$, $96$, $24$); for the $648$ substitutions with two real contracting conjugates $m_0\le2$ and the excess is at most $4$. The comparison was carried out in exact arithmetic in two independently written implementations, one of which is asserted line by line in the continuous checks. The exact common-tile counts (common tiles over all tiles) for the seed $(12,21)$ at levels $0,\dots,10$ are $0/2,1/4,3/7,7/13,16/24,33/44,65/81,127/149,244/274,461/504,867/927$ for Tribonacci and $0/2,1/4,4/10,11/22,26/50,62/114,145/258,335/586,775/1330,1799/3018,4166/6850$ for $\tau$.
+\end{computation}
+
+\emph{Meaning.} Finiteness of every seed-patch overlap graph is Theorem~\ref{thm:overlap-finite}; the census confirms that the cap never binds. The comparison with $m_0$ says only what the executable result supports: the magnitude bound of Proposition~\ref{prop:contracting-bound}, which uses the triangle inequality over the increments, accounts for at most $8$ of the up to $17$ inflations needed before a common sub-tile left endpoint appears, and leaves a gap of up to $14$ inflations unexplained. The gap includes the slack of that inequality; whether a sharper contracting-space argument (digit correlations, the two embeddings jointly, cancellation among increments) explains part of it is not decided here. Productivity of every overlap over $\mathcal S$ is forced by Theorem~\ref{thm:density}(iii),(v) together with Computation~\ref{comp:bpa}, and the census confirms it independently; it is finite evidence for Open Problem~\ref{prob:overlap-productivity} on $\mathcal S$ only. \emph{Limitation.} This graph is generated from two seed patches, not from all realized overlaps of two tilings in a fibre; its agreement with the balanced-pair automaton on one specimen is evidence for the dictionary of Section~\ref{sec:overlap}, not a proof of it, and it bounds no chain length.
+
+\begin{observation}[\Status{Empirical}]\label{obs:empirical}
+Across $\mathcal S$: no run reached the cap; every noncoincident sink is productive by a direct coincidence child; the first defect degree is two on all but $24$ reachable states; and for $\tau$ the finite projections above separate all but a regular family. These patterns motivated the formulations of Open Problems~\ref{prob:G1b2}, \ref{prob:pump} and~\ref{prob:wedge-productivity}. They are not propositions.
+\end{observation}
+
+\section{Obstructions, counterexamples, and retired routes}\label{sec:obstructions}
+
+\begin{example}[Cycle exclusion is false; \Status{Finite computation}]\label{ex:flipped}
+For the flipped Tribonacci substitution $1\mapsto21$, $2\mapsto31$, $3\mapsto1$ (PIP, $\chi_M=x^3-x^2-x-1$), $\B_\sigma$ contains the closed recurrent noncoincident SCC $\{(12,21),(13,31),(213,312),(1213,3121)\}$ with the directed cycle $(12,21)\to(213,312)\to(1213,3121)\to(12,21)$ of period $3$ in which every child taken is the leftmost one, so the cycle displacement vanishes (the state $(13,31)$ has the single noncoincident child $(12,21)$). The component is productive: each inflation of each of its states produces the coincidence block $(1,1)$. Hence universal recurrent-cycle exclusion and universal nonzero-displacement claims are false, and productivity, not exclusion, is the correct target.
+\end{example}
+
+\begin{example}[Non-Pisot strict component; \Status{Finite computation}]\label{ex:nonpisot}
+For $1\mapsto2$, $2\mapsto123$, $3\mapsto2$ (primitive, singular incidence matrix, not Pisot: $\chi_M=x(x-2)(x+1)$, Perron root $2$) the states $A=(12,21)$, $B=(23,32)$ form a closed nonproductive recurrent SCC with signed children $A\to A^-B^+$, $B\to A^+B^-$, so $N_\cC=\begin{psmallmatrix}1&1\\1&1\end{psmallmatrix}$, $S=\begin{psmallmatrix}-1&1\\1&-1\end{psmallmatrix}$; the cocycle is nontrivial but anti-gauge, and $\rho(S)=2=\rho(N_\cC)$. Zero returns of $\sigma^n(A)$ have gap exactly $2$ at every depth, the derived substitution is $A\mapsto AB$, $B\mapsto AB$, and the relative offset state is periodic. Hence bounded return gaps, a finite offset state, legal towers, and a nontrivial cocycle are each compatible with strictness in the absence of the Pisot hypothesis, and any proof of Open Problem~\ref{prob:C4} must use it.
+\end{example}
+
+\begin{example}[Nonzero ancestry loop in a PIP substitution; \Status{Finite computation}]\label{ex:tribonacci-loop}
+For Tribonacci $1\mapsto12$, $2\mapsto13$, $3\mapsto1$ and the seed $(12,21)$, position $51$ at depth $6$ is a zero return whose source-defect ancestry is $(1,-1,0),(0,1,-1),(-1,0,1),(1,-1,0),(0,1,-1),(0,0,1),(0,0,0)$, with a repeated nonzero defect; its radius-one decorated germ repeats exactly at levels $1$ and $4$. Thus Theorem~\ref{thm:ancestry} cannot be strengthened to ``ancestry cycles are trivial'', even for productive PIP substitutions.
+\end{example}
+
+\begin{example}[Retired endpoint cone; \Status{Finite computation}]\label{ex:cone}
+The four irreducible balanced pairs over $\{0,1,2\}$ with $u_1=0,v_1=1,u_9=1,v_9=0$,
+\[
+(021020001,100002120),\ (010112021,120021110),\ (011100021,120001110),\ (022211001,100112220),
+\]
+have $K_2$ vectors $q_1=(2,-5,-2)$, $q_2=(2,3,4)$, $q_3=(-2,4,2)$, $q_4=(1,-3,-9)$ with $50q_1+8q_2+61q_3+6q_4=0$. Hence no linear functional is positive on the $K_2$ of all irreducible pairs with a prescribed outer endpoint class, and the ``positive cone'' approach to degree two is closed.
+\end{example}
+
+\subsection{Synthetic template}\label{sec:synthetic}
+There is an explicit ordered three-state child system for the PIP substitution $1\mapsto2$, $2\mapsto3$, $3\mapsto132$ (with actual irreducible balanced states as vertices and endpoint types G and F) that satisfies the Parikh intertwiner with $\rank P=3$, the signed degree-two intertwiner with $\rank Q_2=3$, nonnegative orientation counts, and the endpoint quotient constraints, yet is not the actual zero-return factorization: its mid-area residuals (Proposition~\ref{prop:midarea}(iii)) are $(0,0,-4)$, $(0,-4,-4)$, $(-4,-8,-12)$, and the unique rational solution $H$ of the Sylvester system is half-integral. The actual factorizations of the same states have zero residual. This template is the reason the order-sensitive identity is retained and the reason that no invariant coarser than the factorization itself can close the coincidence problem.
+
+\subsection{Retired coincidence routes}
+(i) Cycle exclusion and displacement nonvanishing (Example~\ref{ex:flipped}). (ii) Moss\'e desubstitution descent: a recurrent SCC is closed under inflation and desubstitution and yields no smaller state. (iii) Pure algebra on $N_\cC$: $N_\cC=M$, $P_\cC=I$ satisfies every identity of Theorem~\ref{thm:parikh}. (iv) The degree-two endpoint cone (Example~\ref{ex:cone}). (v) Stacking further fixed-size ($|\cC|=3$) sieves: each is decidable for a given $\sigma$ by constructing $\B_\sigma$ and adds proof value only with a uniform completeness statement. (vi) Requiring synchronization in \emph{every} recurrent SCC: false in the corpus ($60$ exceptions, all escaping), and unnecessary by Theorem~\ref{thm:sink}. (vii) The unsigned normalized-SCC transfer $L_\cC N_\cC=\Phi_3L_\cC$ asserted in earlier versions: incorrect when a child occurs reversed; the correct relation is $Q_3S=\Phi_3Q_3$. (viii) A local offset monovariant for Open Problem~\ref{prob:C4}: the proposal that, on an actual target-free occurrence component with a common compatible hub of constant residual phase, the cut displacement $|i-j|$ is nonincreasing, including at the selection of an interior child factor. It is false for the PIP substitution $0\mapsto1$, $1\mapsto02$, $2\mapsto202$, which has an actual two-cycle of occurrence packets on which $|i-j|$ goes from $0$ to $1$ and back, and no function of a repeating finite local offset snapshot can decrease strictly along it (\texttt{docs/c4-ordered-hub-offset-negative-2026-10-06.md}). A potential restricted by a further proved legal-tower condition is not excluded.
+
+\section{Unresolved statements}\label{sec:open}
+
+For reference we collect the open statements with their exact form and dependencies.
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{G1} (Hypothesis~\ref{hyp:G1}): $\B_\sigma$ finite. Open for general $|\A|\ge3$; known for $|\A|=2$~\cite{BD,HS} and for the verified families; certified for each $\sigma\in\mathcal S$. No longer a hypothesis of the sufficiency route (Theorem~\ref{thm:main-density}). Implied by Open Problem~\ref{prob:overlap-productivity} (Proposition~\ref{prop:G1-from-overlaps}), by the exclusion of strict zippers alone (Proposition~\ref{prop:G1-from-half-coincidences}), and by G1b-2.
+\item \textbf{G1b-2} (Open Problem~\ref{prob:G1b2}): finitely many reachable irreducible states of discrepancy at most $D_\sigma$. Open; equivalent to G1 by Theorem~\ref{thm:G1b1} (bounded discrepancy, G1b-1, which is proved). Candidate mechanisms: Open Problem~\ref{prob:pump} (symbolic) and Conjecture~\ref{conj:density} (geometric), the latter requiring also that reachable states be realized.
+\item \textbf{Overlap productivity} (Open Problem~\ref{prob:overlap-productivity}): every vertex of the finite graph $\mathcal O_\sigma$ is productive. Open; for the overlaps reachable from one seed it implies \PDS{} with no finiteness hypothesis (Theorem~\ref{thm:main-density}), it implies that every reachable state is productive (Theorem~\ref{thm:density}), and it implies G1 (Proposition~\ref{prop:G1-from-overlaps}); equivalent to SCC Producer under G1. Its endpoint-aligned case is the two-sided strong coincidence condition of Arnoux--Ito (Proposition~\ref{prop:aligned-overlaps}), itself open for $d\ge3$; under strong coincidence the remaining content is the hitting problem of Corollary~\ref{cor:scc-reduction}(ii). The former question whether coincidence density one gives \PDS{} without finiteness is answered by Imported Theorem~\ref{thm:bsw}.
+\item \textbf{Seedwise bridge} (Theorem~\ref{thm:seedwise}): settled. \PDS{} forces termination with coincidence from every seed, including illegal ones, and in particular G1 (Proposition~\ref{prop:PDS-implies-G1}), so G1 is necessary for \PDS{}.
+\item \textbf{A1$'$ and strong coincidence for $d=3$}: if the first-letter map fixes both letters of a pair, the pair is eventually coincident. Open in general. Proved on the catch-up-free class with $|\det M|=2$ (Theorem~\ref{thm:A1-class}), where all-pairs strong coincidence is proved except on the non-crossing members of $\mathcal F$ outside the cases of Theorem~\ref{thm:K-cells}, notably the cells with $|\Delta|\ge2$ and $Z_2$ beyond the stated caps. On the catch-up-free class the aligned obligation and the simultaneous-birth statement T2 of Remark~\ref{rem:K-scope} coincide.
+\item \textbf{SCC Producer} (Conjecture~\ref{conj:producer}); under G1 equivalent to nonexistence of strict components (Theorem~\ref{thm:sink}).
+\item \textbf{Concentration} (Open Problem~\ref{prob:concentration}): no strict component with $K_2\equiv0$ ($d=3$). By Proposition~\ref{prop:wedge-dichotomy} this is the ``concentration / aux-B'' step of the spectral route, and the ``span-rich'' step then follows from it. Open.
+\item \textbf{Wedge productivity} (Open Problem~\ref{prob:wedge-productivity}): no strict component with $K_2\not\equiv0$ ($d=3$). Open; equivalent to step (c) of the spectral route.
+\item \textbf{C4 / C3-local} (Open Problem~\ref{prob:C4}): every strict component has a one-step interior synchronizing zero return. Implies SCC Producer under G1 (Proposition~\ref{prop:chain}).
+\item \textbf{Higher first defects}: no proof that $r(\cC)\le3$ for strict components (this is part of Open Problem~\ref{prob:concentration}); Theorem~\ref{thm:sieve} restricts but does not exclude $r\ge5$, nor $r=4$ in the unimodular Perron-extremal case.
+\item \textbf{Realization} (Section~\ref{sec:realization}): identification of coincidence rank $>1$ with a globally realized producer-free component; and an effective bound on the collar radius at which unrealizable formal cycles die. Both open; the second is what would turn collar experiments into certificates.
+\end{enumerate}
+
+\section{Discussion}\label{sec:discussion}
+
+The balanced-pair route converts the Pisot substitution conjecture into two statements about a finite graph, and, by Theorem~\ref{thm:main-density}, into one statement about a graph that is finite unconditionally; this paper has tried to say exactly what is known about each. On the finiteness side the situation is uncomfortable: unique decodability is a five-line consequence of $\det M\ne0$ and is irrelevant to finiteness; bounded discrepancy (Theorem~\ref{thm:G1b1}) is a short consequence of the Pisot hypothesis and is, as it must be, insufficient, so that G1 is exactly Open Problem~\ref{prob:G1b2}; and the only uniform finiteness theorem we can prove (Theorem~\ref{thm:ancestry}) concerns ancestry defects, which are known to admit nonzero cycles. The finite computations show what a proof must do, namely control which labelled return words are realized by the substitutive hierarchy across all levels, and they show that bounded windows of any fixed size cannot do it. The geometric twin of G1, finiteness of overlap types, is now a theorem for the swap pairs themselves (Theorem~\ref{thm:overlap-finite}); the gap between the two is the relative density of simultaneous boundaries (Conjecture~\ref{conj:density}), and we think this is where a proof of G1b-2 should be sought, in an internal space that includes the non-Archimedean factor when $|\det M|>1$~\cite{MT}. G1 need not be proved first for \PDS{}: by Theorem~\ref{thm:main-density}, \PDS{} follows from Open Problem~\ref{prob:overlap-productivity} alone. G1 itself remains open, but it is no longer an independent question: it also follows from the all-vertex form of Open Problem~\ref{prob:overlap-productivity} (Proposition~\ref{prop:G1-from-overlaps}), and already from the exclusion of its strict-zipper case (Proposition~\ref{prop:G1-from-half-coincidences}). On the aligned side, Section~\ref{sec:catchup-free} shows that the strong coincidence part of the overlap problem yields to exact certificates over infinite families on the catch-up-free determinant-two class; the open remainder there, like the strict zipper, asks why a recurrent ordered prefix-difference system cannot avoid the diagonal forever, and on that class the two questions are literally the same one.
+
+On the coincidence side the reductions are substantial but do not close: a strict component must be a no-leakage block substitution at the Perron rate, with full Parikh rank and at least $|\A|$ states, with both endpoint maps non-synchronizing and (for three letters) not $3$-cycles, with a signed derived incidence of spectral radius at most $\beta$, with a first defect lying in a free Lie component subject to the sieves of Theorems~\ref{thm:deg23}--\ref{thm:sieve}, and with locally recognizable hierarchies on both sides. Two independent-looking routes, the spectral one and the boundary one, funnel into the same question: the spectral route splits it by first defect degree into Open Problems~\ref{prob:concentration} and~\ref{prob:wedge-productivity}, the boundary route poses it as Open Problem~\ref{prob:C4}; we regard the identification of the concentration step with the higher-degree case as a clarification, not as progress, and we keep it in the list of unresolved statements. What is missing is an argument that uses the actual ordered factorization of inflated states, not an invariant of it; the synthetic template of Section~\ref{sec:synthetic} shows how much a hypothetical component can satisfy before it fails, and it fails only at the factorization itself.
+
+We end by restating the status. The Pisot substitution conjecture is open. Hypothesis G1 is open for $|\A|\ge3$, and its remaining content is Open Problem~\ref{prob:G1b2}, which is open. Conjecture~\ref{conj:producer} is open, and so is Open Problem~\ref{prob:overlap-productivity}, which by Theorem~\ref{thm:main-density} is by itself sufficient for \PDS{}. Every computation reported here is finite and is labelled as such. Theorems~\ref{thm:main-conditional} and~\ref{thm:main-density} are conditional statements, and the conditions are the whole difficulty.
+
+\section*{Acknowledgements}
+The exact computations of Section~\ref{sec:finite} were carried out with independently written implementations and cross-checked against each other; the author thanks the reviewers of earlier versions of this program for insisting on the withdrawal recorded in Remark~\ref{rem:UD-not-finiteness}.
+
+\begin{thebibliography}{99}
+
+\bibitem{Adam} B.~Adamczewski, \emph{Balances for fixed points of primitive substitutions}, Theoret.\ Comput.\ Sci.\ \textbf{307} (2003), 47--75.
+
+\bibitem{ABBLS} S.~Akiyama, M.~Barge, V.~Berth\'e, J.-Y.~Lee, A.~Siegel, \emph{On the Pisot substitution conjecture}, in: Mathematics of Aperiodic Order, Progr.\ Math.\ \textbf{309}, Birkh\"auser, 2015, 33--72.
+
+\bibitem{AL} S.~Akiyama, J.-Y.~Lee, \emph{Algorithm for determining pure pointedness of self-affine tilings}, Adv.\ Math.\ \textbf{226} (2011), 2855--2883.
+\bibitem{AL14} S.~Akiyama, J.-Y.~Lee, \emph{Overlap coincidence to strong coincidence in substitution tiling dynamics}, European J.\ Combin.\ \textbf{39} (2014), 233--243.
+
+\bibitem{AI} P.~Arnoux, S.~Ito, \emph{Pisot substitutions and Rauzy fractals}, Bull.\ Belg.\ Math.\ Soc.\ Simon Stevin \textbf{8} (2001), 181--207.
+
+\bibitem{BBK} V.~Baker, M.~Barge, J.~Kwapisz, \emph{Geometric realization and coincidence for reducible non-unimodular Pisot tiling spaces with an application to $\beta$-shifts}, Ann.\ Inst.\ Fourier \textbf{56} (2006), 2213--2248.
+
+\bibitem{BalchinRust} S.~Balchin, D.~Rust, \emph{Computations for symbolic substitutions}, J.\ Integer Seq.\ \textbf{20} (2017), Article 17.4.1.
+
+\bibitem{Barge2016} M.~Barge, \emph{Factors of Pisot tiling spaces and the coincidence rank conjecture}, Bull.\ Soc.\ Math.\ France \textbf{143} (2015), 357--381.
+
+\bibitem{Barge2018} M.~Barge, \emph{The Pisot conjecture for $\beta$-substitutions}, Ergodic Theory Dynam.\ Systems \textbf{38} (2018), 444--472.
+
+\bibitem{BBJS} M.~Barge, H.~Bruin, L.~Jones, L.~Sadun, \emph{Homological Pisot substitutions and exact regularity}, Israel J.\ Math.\ \textbf{188} (2012), 281--300.
+
+\bibitem{BD} M.~Barge, B.~Diamond, \emph{Coincidence for substitutions of Pisot type}, Bull.\ Soc.\ Math.\ France \textbf{130} (2002), 619--626.
+
+\bibitem{BK} M.~Barge, J.~Kwapisz, \emph{Geometric theory of unimodular Pisot substitutions}, Amer.\ J.\ Math.\ \textbf{128} (2006), 1219--1282.
+
+\bibitem{BSW} M.~Barge, S.~\v{S}timac, R.~F.~Williams, \emph{Pure discrete spectrum in substitution tiling spaces}, Discrete Contin.\ Dyn.\ Syst.\ \textbf{33} (2013), 579--597.
+
+\bibitem{BermanPlemmons} A.~Berman, R.~J.~Plemmons, \emph{Nonnegative Matrices in the Mathematical Sciences}, Classics in Applied Mathematics \textbf{9}, SIAM, 1994.
+
+\bibitem{BBJS16} V.~Berth\'e, J.~Bourdon, T.~Jolivet, A.~Siegel, \emph{A combinatorial approach to products of Pisot substitutions}, Ergodic Theory Dynam.\ Systems \textbf{36} (2016), 1757--1794.
+
+\bibitem{BPPR} J.~Berstel, D.~Perrin, J.-F.~Perrot, A.~Restivo, \emph{Sur le th\'eor\`eme du d\'efaut}, J.\ Algebra \textbf{60} (1979), 169--180.
+
+\bibitem{BPR} J.~Berstel, D.~Perrin, C.~Reutenauer, \emph{Codes and Automata}, Encyclopedia of Mathematics and its Applications \textbf{129}, Cambridge University Press, 2009.
+
+\bibitem{BSTY} V.~Berth\'e, W.~Steiner, J.~M.~Thuswaldner, R.~Yassawi, \emph{Recognizability for sequences of morphisms}, Ergodic Theory Dynam.\ Systems \textbf{39} (2019), 2896--2931.
+
+\bibitem{CS} A.~Clark, L.~Sadun, \emph{When size matters: subshifts and their related tiling spaces}, Ergodic Theory Dynam.\ Systems \textbf{23} (2003), 1043--1057.
+
+\bibitem{Durand} F.~Durand, \emph{A characterization of substitutive sequences using return words}, Discrete Math.\ \textbf{179} (1998), 89--101.
+
+\bibitem{HornJohnson} R.~A.~Horn, C.~R.~Johnson, \emph{Matrix Analysis}, Cambridge University Press, 1985.
+
+\bibitem{HS} M.~Hollander, B.~Solomyak, \emph{Two-symbol Pisot substitutions have pure discrete spectrum}, Ergodic Theory Dynam.\ Systems \textbf{23} (2003), 533--540.
+
+\bibitem{IR} S.~Ito, H.~Rao, \emph{Atomic surfaces, tilings and coincidence I: irreducible case}, Israel J.\ Math.\ \textbf{153} (2006), 129--155.
+
+\bibitem{LS} J.-Y.~Lee, B.~Solomyak, \emph{Pisot family self-affine tilings, discrete spectrum, and the Meyer property}, Discrete Contin.\ Dyn.\ Syst.\ \textbf{32} (2012), 935--959.
+
+\bibitem{Livshits} A.~N.~Livshits, \emph{On the spectra of adic transformations of Markov compacta}, Russian Math.\ Surveys \textbf{42} (1987), 222--223.
+
+\bibitem{Lothaire} M.~Lothaire, \emph{Combinatorics on Words}, Cambridge Mathematical Library, Cambridge University Press, 1997.
+
+\bibitem{Martensen} B.~F.~Martensen, \emph{Generalized balanced pair algorithm}, Topology Proc.\ \textbf{28} (2004), 163--178.
+
+\bibitem{MA} P.~Mercat, S.~Akiyama, \emph{Yet another characterization of the Pisot substitution conjecture}, in: Substitution and Tiling Dynamics, Lecture Notes in Math.\ \textbf{2273}, Springer, 2020, 397--448.
+
+\bibitem{MT} M.~Minervino, J.~M.~Thuswaldner, \emph{The geometry of non-unit Pisot substitutions}, Ann.\ Inst.\ Fourier \textbf{64} (2014), 1373--1417.
+
+\bibitem{Mosse1} B.~Moss\'e, \emph{Puissances de mots et reconnaissabilit\'e des points fixes d'une substitution}, Theoret.\ Comput.\ Sci.\ \textbf{99} (1992), 327--334.
+
+\bibitem{Mosse2} B.~Moss\'e, \emph{Reconnaissabilit\'e des substitutions et complexit\'e des suites automatiques}, Bull.\ Soc.\ Math.\ France \textbf{124} (1996), 329--346.
+
+\bibitem{Nakaishi2016} K.~Nakaishi, \emph{Pisot conjecture and Rauzy fractals}, arXiv:1610.03146 (2016--2023, withdrawn).
+
+\bibitem{Nakaishi2024} K.~Nakaishi, \emph{Pisot substitution conjecture and Rauzy fractals}, arXiv:2401.07771 (2024).
+
+\bibitem{Queffelec} M.~Queff\'elec, \emph{Substitution Dynamical Systems---Spectral Analysis}, 2nd ed., Lecture Notes in Math.\ \textbf{1294}, Springer, 2010.
+
+\bibitem{Rauzy} G.~Rauzy, \emph{Nombres alg\'ebriques et substitutions}, Bull.\ Soc.\ Math.\ France \textbf{110} (1982), 147--178.
+
+\bibitem{Reutenauer} C.~Reutenauer, \emph{Free Lie Algebras}, London Math.\ Soc.\ Monographs (N.S.) \textbf{7}, Oxford University Press, 1993.
+
+\bibitem{SS} V.~F.~Sirvent, B.~Solomyak, \emph{Pure discrete spectrum for one-dimensional substitution systems of Pisot type}, Canad.\ Math.\ Bull.\ \textbf{45} (2002), 697--710.
+
+\bibitem{Solomyak97} B.~Solomyak, \emph{Dynamics of self-similar tilings}, Ergodic Theory Dynam.\ Systems \textbf{17} (1997), 695--738; corrections, ibid.\ \textbf{19} (1999), 1685.
+
+\end{thebibliography}
+
+\end{document}

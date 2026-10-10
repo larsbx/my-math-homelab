@@ -1,0 +1,23 @@
+S1 r=q+1: cones 1 (levels [3]), cut 0, points 0, FAILED 0
+    points []
+S1 r=q-1: cones 3 (levels [3, 3, 4]), cut 0, points 2, FAILED 0
+    points [(0, 1, 0), (0, 2, 1)]
+S2 r=p+1: cones 3 (levels [3, 3, 3]), cut 0, points 1, FAILED 0
+    points [(1, 0, 2)]
+S2 r=p-1: cones 3 (levels [4, 4, 4]), cut 0, points 2, FAILED 0
+    points [(1, 0, 0), (2, 0, 1)]
+S3 r=p+1: cones 3 (levels [3, 3, 3]), cut 0, points 1, FAILED 0
+    points [(1, 0, 2)]
+S3 r=p-1: cones 3 (levels [3, 4, 4]), cut 0, points 1, FAILED 0
+    points [(1, 0, 0)]
+S4 q+r=2p+1: cones 1 (levels [4]), cut 0, points 0, FAILED 0
+    points []
+S4 q+r=2p-1: cones 1 (levels [4]), cut 0, points 0, FAILED 0
+    points []
+S5 q=p+1: cones 2 (levels [3, 5]), cut 1, points 3, FAILED 0
+    cut (0, 1, 3) v f(1)
+    points [(0, 1, 0), (0, 1, 1), (0, 1, 2)]
+S5 p=q+1: cones 1 (levels [3]), cut 2, points 1, FAILED 0
+    cut (1, 0, 1) v f(1)
+    cut (2, 1, 0) u f(-1)
+    points [(1, 0, 0)]

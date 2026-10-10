@@ -1,0 +1,173 @@
+{
+ "certificate": {
+  "charpoly": [
+   1,
+   0,
+   2,
+   0,
+   0,
+   0,
+   2,
+   0,
+   1
+  ],
+  "charpoly_moved": [
+   1,
+   0,
+   0,
+   0,
+   1,
+   0,
+   0,
+   0,
+   1
+  ],
+  "differ": true,
+  "ell": 3,
+  "letters": [
+   [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  ],
+  "reflections": [
+   [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ]
+  ]
+ },
+ "model": "cayley-dickson/v1 (-1,-1,-1) mod ell",
+ "rows": [
+  {
+   "ell": 3,
+   "lengths": [
+    {
+     "charpoly_changed": 0,
+     "length": 2,
+     "samples": 120
+    },
+    {
+     "charpoly_changed": 0,
+     "length": 3,
+     "samples": 120
+    },
+    {
+     "charpoly_changed": 88,
+     "length": 4,
+     "samples": 120
+    },
+    {
+     "charpoly_changed": 92,
+     "length": 5,
+     "samples": 120
+    }
+   ]
+  },
+  {
+   "ell": 5,
+   "lengths": [
+    {
+     "charpoly_changed": 0,
+     "length": 2,
+     "samples": 120
+    },
+    {
+     "charpoly_changed": 0,
+     "length": 3,
+     "samples": 120
+    },
+    {
+     "charpoly_changed": 117,
+     "length": 4,
+     "samples": 120
+    },
+    {
+     "charpoly_changed": 112,
+     "length": 5,
+     "samples": 120
+    }
+   ]
+  },
+  {
+   "ell": 7,
+   "lengths": [
+    {
+     "charpoly_changed": 0,
+     "length": 2,
+     "samples": 120
+    },
+    {
+     "charpoly_changed": 0,
+     "length": 3,
+     "samples": 120
+    },
+    {
+     "charpoly_changed": 117,
+     "length": 4,
+     "samples": 120
+    },
+    {
+     "charpoly_changed": 117,
+     "length": 5,
+     "samples": 120
+    }
+   ]
+  }
+ ],
+ "schema": "novelty-lab/n2-word-defects/v1",
+ "seed": 20261003,
+ "statement": "count of words whose defect charpoly changes when every letter is moved by the same rotation of 1-perp"
+}

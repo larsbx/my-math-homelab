@@ -1,0 +1,10 @@
+version = 1
+
+[program]
+id = "bulb-ford"
+
+[source]
+repository = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+commit = "640496ad10998ddc5a7fade6cf52eafac16a9603"
+authority = "retained"
+import_status = "verified"

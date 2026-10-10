@@ -1,0 +1,14 @@
+[PASS] MCTribonacci  all invariants hold
+[PASS] MCFlippedTribonacci  all invariants hold
+[PASS] MCSmith  all invariants hold
+[PASS] MCNonProductive  Productive violated as expected
+[PASS] MCLedgerOpen  all invariants hold
+[PASS] MCLedgerImports  all invariants hold
+[PASS] MCLedgerG1AndProducer  all invariants hold
+[PASS] MCLedgerG1Only  all invariants hold
+[PASS] MCLedgerG1AndC4  all invariants hold
+[PASS] MCLedgerRenewalGateAssumed  all invariants hold
+[PASS] MCLedgerSpectralGateAssumed  all invariants hold
+[PASS] MCLedgerOverlapGateAssumed  all invariants hold
+[PASS] MCLedgerAllSeedOverlapGateAssumed  all invariants hold
+[PASS] MCLedgerAllSeedStrictZipperGateAssumed  all invariants hold

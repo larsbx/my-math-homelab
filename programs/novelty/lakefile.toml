@@ -1,0 +1,14 @@
+name = "novelty_lab"
+version = "0.1.0"
+defaultTargets = ["oracle-selfcheck"]
+
+[[lean_lib]]
+name = "NoveltyLab"
+
+[[lean_exe]]
+name = "oracle-selfcheck"
+root = "Main"
+
+[[lean_exe]]
+name = "export-f3"
+root = "ExportF3"

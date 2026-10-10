@@ -1,0 +1,553 @@
+name: PSC research checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  policy:
+    name: policy (estate layout)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Estate audit (pinned public artifact)
+        run: |
+          set -eu
+          rev=$(python3 -c 'import tomllib; print(next(d["rev"] for d in tomllib.load(open("ESTATE.toml", "rb"))["dep"] if d["id"] == "estate-governance"))')
+          pin=$(python3 -c 'import tomllib; print(next(d["pin"] for d in tomllib.load(open("ESTATE.toml", "rb"))["dep"] if d["id"] == "estate-governance"))')
+          test "$rev" = "0833929ed82d42cf3674a1565681625a9622827b"
+          curl --fail --location --proto '=https' --tlsv1.2 --output /tmp/estate-audit.py "https://raw.githubusercontent.com/larsbx/finite-math-kernels/4485675c1ed5da52beafad98c5118dc0ffc22456/policy/estate-audits/$rev.py"
+          printf '%s  %s\n' "${pin#sha256:}" /tmp/estate-audit.py | sha256sum --check --strict -
+          python3 /tmp/estate-audit.py --root .
+
+  source-provenance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install the pinned PDF parser used by the manuscript-source guard
+        run: python -m pip install "pypdf==6.19.0"
+      - name: Verify Issue 45 source snapshots and manuscript sources
+        run: ./tools/verify_all.sh provenance
+
+  python-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -U pip
+      - run: pip install -e .[dev]
+      - run: python tools/vendoring/check_vendored_sync.py
+      - name: Generated ledger surfaces are current (proof/tla/ledger.json, proof/tla/Ledger.tla, models, index, claims)
+        run: python tools/make_ledger.py --check
+      - name: Generated mathematical-object catalogue is current
+        run: python tools/make_math_catalogue.py --check
+      - name: The polyglot envelope is the rendering of its vendored template
+        run: python tools/polyglot_envelope/render.py --check
+      - name: Claim governance audit (claim_governance.toml)
+        run: PYTHONPATH=tools python -m claim_governance.cli --root .
+      - name: The oracle corpus matches its declared refinement
+        run: python tools/corpus_refinement.py --check
+      - run: pytest
+
+  mojo-kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | PIXI_VERSION=v0.81.0 PIXI_NO_PATH_UPDATE=1 bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: SessionStart provisioning and real bare-Mojo activation regression
+        run: |
+          python -m pip install pytest
+          PSC_SESSION_START_REAL_PIXI="$HOME/.pixi/bin/pixi" python -m pytest tests/test_session_start.py
+      - name: Canonical Mojo regression tests
+        working-directory: kernel
+        run: pixi run test
+      - name: Every claim the policy requires guarded has a passing test (run receipts)
+        run: PYTHONPATH=tools python3 -m claim_governance.cli --root . --check coverage
+      - name: Certificate checks
+        working-directory: kernel
+        run: pixi run verify
+      - name: Alphabet-3 census regression
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Eq '^PIP specimens \(images of length <= 3\):[[:space:]]+4554$' <<<"$out"
+          grep -Eq '^[[:space:]]*B_sigma construction terminated:[[:space:]]+4554[[:space:]]+capped:[[:space:]]+0$' <<<"$out"
+          grep -Eq '^[[:space:]]*productive:[[:space:]]+4554[[:space:]]+non-productive:[[:space:]]+0$' <<<"$out"
+
+  c3-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: C3 exact local census
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . c3_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Eq '^PIP specimens:[[:space:]]+4554[[:space:]]+capped:[[:space:]]+0$' <<<"$out"
+          grep -Eq '^recurrent noncoincident SCCs:[[:space:]]+5022[[:space:]]+states:[[:space:]]+369486$' <<<"$out"
+          grep -Eq '^SCCs with newborn synchronization:[[:space:]]+4962$' <<<"$out"
+          grep -Eq '^SCCs without newborn synchronization:[[:space:]]+60$' <<<"$out"
+          grep -Eq '^SCCs with inherited synchronization:[[:space:]]+4614$' <<<"$out"
+          grep -Eq '^SCCs with both lineages synchronizing:[[:space:]]+4614$' <<<"$out"
+          grep -Eq '^SCCs with neither lineage synchronizing:[[:space:]]+60$' <<<"$out"
+          grep -Eq '^SCCs with clean-newborn state:[[:space:]]+1614$' <<<"$out"
+          grep -Eq '^states with newborn synchronization:[[:space:]]+305730$' <<<"$out"
+          grep -Eq '^states with inherited synchronization:[[:space:]]+171948$' <<<"$out"
+          grep -Eq '^states with clean-newborn synchronization:[[:space:]]+141684$' <<<"$out"
+          grep -Eq '^no-sync SCCs that are singleton:[[:space:]]+60$' <<<"$out"
+          grep -Eq '^no-sync SCCs with direct coincidence sibling:[[:space:]]+0$' <<<"$out"
+          grep -Eq '^no-sync SCCs with noncoincident exit:[[:space:]]+60$' <<<"$out"
+          grep -Eq '^no-sync closed/no-direct-coincidence candidates:[[:space:]]+0$' <<<"$out"
+
+  c4-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: C4 exact endpoint-type sink-SCC census
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . c4_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'PIP specimens: 4554  capped: 0' <<<"$out"
+          grep -Fx 'degree4 unimodular PIP: 2628' <<<"$out"
+          grep -Fx 'degree4 nonunimodular PIP: 1926' <<<"$out"
+          grep -Fx 'degree4 unimodular three-real-root PIP: 648' <<<"$out"
+          grep -Fx 'degree4 unimodular complex-pair PIP: 1980' <<<"$out"
+          grep -Fx 'PIP cubics with zero discriminant: 0' <<<"$out"
+          grep -Fx 'recurrent noncoincident SCCs: 5022' <<<"$out"
+          grep -Fx 'noncoincident sink SCCs: 4554' <<<"$out"
+          grep -Fx 'uncapped PIP with zero sink SCCs: 0' <<<"$out"
+          grep -Fx 'uncapped PIP with exactly one sink SCC: 4554' <<<"$out"
+          grep -Fx 'uncapped PIP with multiple sink SCCs: 0' <<<"$out"
+          grep -Fx 'maximum sink SCCs per uncapped PIP: 1' <<<"$out"
+          grep -Fx 'sink SCCs with direct coincidence child: 4554' <<<"$out"
+          grep -Fx 'sink SCCs without direct coincidence child: 0' <<<"$out"
+          grep -Fx 'sink SCCs with newborn synchronization: 4554' <<<"$out"
+          grep -Fx 'sink SCCs with inherited synchronization: 4278' <<<"$out"
+          grep -Fx 'sink SCCs with any boundary synchronization: 4554' <<<"$out"
+          grep -Fx 'sink SCCs with no boundary synchronization: 0' <<<"$out"
+          matrix='48,192,72,6,24,84,150,192,348,198,6,120,318,138,72,198,30,0,30,228,222,6,6,0,0,0,24,24,24,120,30,0,12,42,66,84,318,228,24,42,48,90,150,138,222,24,66,90,0'
+          grep -Fx "PIP_TYPE_MATRIX $matrix" <<<"$out"
+          grep -Fx "SINK_TYPE_MATRIX $matrix" <<<"$out"
+
+  swap-discrepancy-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Exact swap-discrepancy census (G1b-1 cross-check)
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . swap_discrepancy_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Eq '^PIP specimens:[[:space:]]+4554[[:space:]]+capped:[[:space:]]+0$' <<<"$out"
+          grep -Fx 'maximum reachable discrepancy: 14' <<<"$out"
+          grep -Fx 'longest reachable state: 48020' <<<"$out"
+          grep -Fx 'discrepancy histogram: 1:1554 2:1356 3:474 4:330 5:240 6:240 7:84 8:108 9:36 10:60 11:24 12:36 14:12' <<<"$out"
+
+  swap-overlap-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Exact seed-patch overlap census (finite by theorem; productivity is evidence)
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . swap_overlap_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'PIP specimens: 4554' <<<"$out"
+          grep -Fx 'overlap graphs built: 4554  capped: 0  failed: 0' <<<"$out"
+          grep -Fx 'largest seed-patch overlap graph: 2640' <<<"$out"
+          grep -Fx 'total seed-patch overlap states: 1118850' <<<"$out"
+          grep -Fx 'nonproductive overlap specimens: 0  states: 0' <<<"$out"
+          grep -Fx 'maximum collar separation radius: 6  survivors at radius 6 : 120' <<<"$out"
+          grep -Fx 'collapsing periodic patches by level 6 : specimens: 120  survivors without collapse: 0  collapses without survivor: 0' <<<"$out"
+          grep -Fx 'specimens by collar separation radius: 1:618 2:2664 3:912 4:216 5:12 6:12' <<<"$out"
+          grep -Fx 'collared affine pumps at radius 4 : specimens: 4524  maximum preperiod: 4  maximum period: 3  nonconstant: 704' <<<"$out"
+          grep -Fx 'regime |det M| > 1: specimens: 1926 overlap states: 969030 collapsing patches: 120 zero-shift-free pumps: 1926' <<<"$out"
+          grep -Fx 'regime |det M| = 1: specimens: 2628 overlap states: 149820 collapsing patches: 0 zero-shift-free pumps: 2598' <<<"$out"
+          grep -Fx 'unimodular collapsing seed patches (must be 0): 0' <<<"$out"
+          grep -Fx 'maximum first-coincidence depth: 18' <<<"$out"
+          grep -Fx 'specimens by maximal first-coincidence depth: 3:402 4:828 5:696 6:648 7:444 8:396 9:276 10:300 11:168 12:84 13:36 14:24 15:108 16:84 17:36 18:24' <<<"$out"
+          grep -Fx 'maximum first left-aligned depth: 17' <<<"$out"
+          grep -Fx 'specimens by maximal first left-aligned depth: 2:300 3:996 4:870 5:594 6:312 7:300 8:414 9:288 10:132 11:60 12:36 13:48 14:84 15:72 16:36 17:12' <<<"$out"
+          grep -Fx 'maximum prefix strong-coincidence depth: 15' <<<"$out"
+          grep -Fx 'specimens by prefix strong-coincidence depth: 1:576 2:1416 3:654 4:858 5:666 6:252 7:102 8:18 14:6 15:6' <<<"$out"
+          grep -Fx 'maximum suffix strong-coincidence depth: 15' <<<"$out"
+          grep -Fx 'specimens by suffix strong-coincidence depth: 1:576 2:1416 3:654 4:858 5:666 6:252 7:102 8:18 14:6 15:6' <<<"$out"
+
+  overlap-contracting-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Exact contracting-bound census (Proposition 5.42; finite evidence only)
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . overlap_contracting_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'PIP specimens: 4554  failed: 0  nonproductive: 0' <<<"$out"
+          grep -Fx 'vertices checked: 1118850' <<<"$out"
+          grep -Fx 'maximum contracting lower bound m0: 8' <<<"$out"
+          grep -Fx 'vertices by contracting lower bound m0: 0:34702 1:338684 2:429036 3:206232 4:77748 5:26496 6:5424 7:516 8:12' <<<"$out"
+          grep -Fx 'maximum excess b - m0: 14' <<<"$out"
+          grep -Fx 'vertices by excess b - m0: 0:116542 1:144998 2:199672 3:207832 4:174120 5:119662 6:77088 7:44568 8:21036 9:8988 10:2856 11:1008 12:360 13:96 14:24' <<<"$out"
+          grep -Fx 'specimens by maximal excess: 1:378 2:990 3:912 4:612 5:390 6:516 7:330 8:120 9:96 10:60 11:78 12:42 13:24 14:6' <<<"$out"
+          grep -Fx 'specimens by maximal m0: 1:1878 2:1602 3:738 4:210 5:72 6:30 7:18 8:6' <<<"$out"
+          grep -Fx 'complex-pair specimens: 3906  maximal m0: 8  maximal excess: 14' <<<"$out"
+          grep -Fx 'real-conjugate specimens: 648  maximal m0: 2  maximal excess: 4' <<<"$out"
+
+  automatic-route-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Dumont-Thomas numeration against the fixed point (bounded experiment)
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . automatic_route_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'corpus: 4554  stride: 20  sampled: 228' <<<"$out"
+          grep -Fx 'letter positions checked: 68400  mismatches: 0' <<<"$out"
+          grep -Fx 'position-count mismatches: 0' <<<"$out"
+          grep -Fx 'occurrence-count mismatches: 0' <<<"$out"
+          grep -Fx 'specimens by prolongable power 1:148 2:39 3:41' <<<"$out"
+
+  numeration-addition-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Addition automata over the corpus, verified on a bounded domain
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . numeration_addition_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'corpus: 4554  stride: 25  sampled: 183' <<<"$out"
+          grep -Fx 'greedy digits equal the path digits: 3  differ: 180' <<<"$out"
+          grep -Fx 'basis recurrence mismatches: 0' <<<"$out"
+          grep -Fx 'addition automata built: 109  refused at the cap: 8  skipped for alphabet: 66' <<<"$out"
+          grep -Fx 'sums checked: 68125  false rejects: 0  false accepts: 0' <<<"$out"
+          grep -Fx 'powered images past the certified overlap domain: 67  of those, built: 1' <<<"$out"
+          grep -Fx 'largest minimised addition automaton: 494' <<<"$out"
+
+  numeration-conversion-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Conversion automata over the corpus, and the letter map carried across them
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . numeration_conversion_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'corpus: 4554  stride: 25  sampled: 183' <<<"$out"
+          grep -Fx 'basis recurrence mismatches: 0' <<<"$out"
+          grep -Fx 'conversions built: 115  refused at the cap: 1  skipped for alphabet: 67' <<<"$out"
+          grep -Fx 'pairs checked: 4600  false rejects: 0  false accepts: 0' <<<"$out"
+          grep -Fx 'letter maps carried across: 115  conversions too large to project: 0' <<<"$out"
+          grep -Fx 'letter verdicts checked: 13800  mismatches: 0' <<<"$out"
+          grep -Fx 'largest minimised conversion: 1421  largest letter map: 1015' <<<"$out"
+
+  coincidence-formula-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Strong coincidence by formula, against the overlap graph per pair
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . coincidence_formula_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'corpus: 4554  specimens decided: 4554  compare stride: 30' <<<"$out"
+          grep -Fx 'ordered pairs decided: 40986  witnesses re-derived: 40986  that did not check: 0' <<<"$out"
+          grep -Fx 'pair levels checked against the inflated images: 279  equal: 279  different: 0' <<<"$out"
+          grep -Fx 'specimens without strong coincidence: 0' <<<"$out"
+          grep -Fx 'overlap graphs compared: 152  capped: 0' <<<"$out"
+          grep -Fx 'left-aligned depths equal to the witness level: 873  different: 0' <<<"$out"
+          grep -Fx 'specimens whose formula was assembled from the kernel: 16  pair languages equal: 144  different: 0' <<<"$out"
+          grep -Fx 'deepest coincidence level: 15' <<<"$out"
+
+  return-lattice-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Return lattices of radius-n patches, exactly
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . return_lattice_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'corpus: 4554  orders: 1 .. 32' <<<"$out"
+          grep -Fx 'specimens by |det M| 1:2628 2:1926' <<<"$out"
+          grep -Fx 'Lambda_1 = Z^3: 4554  of 4554' <<<"$out"
+          grep -Fx 'profiles verified against the chain and the covering bound: 4554' <<<"$out"
+          grep -Fx 'unimodular with Lambda_1 = Z^3, hence Lambda_n = Z^3 for every n: 2628  of 2628' <<<"$out"
+          grep -Fx 'unimodular with an index > 1 at some order: 0' <<<"$out"
+          grep -Fx '|det M| = 2 still index 1 at order 32: 0' <<<"$out"
+          grep -Fx '|det M| = 2 by first order with index > 1 2:564 3:528 4:540 5:186 6:84 7:12 13:12' <<<"$out"
+          grep -Fx '|det M| = 2 by log2 index at order 32 2:288 3:1278 4:348 5:12' <<<"$out"
+          grep -Fx 'sampled cross-checks: 276  equal to exact: 276' <<<"$out"
+
+  vertex-coincidence-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: PeriodicPairVertexCoincidence for every r on the standing corpus (Proposition V, exact)
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . vertex_coincidence_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'Vertex coincidence census (Proposition V), specimens: 4554' <<<"$out"
+          grep -Fx 'holds for every r: 4554  capped: 0  fails: 0' <<<"$out"
+          grep -Fx 'formally productive (Theorem Omega): 4554  not: 0' <<<"$out"
+          grep -Fx 'deepest box first-coincidence depth: 51 specimen 1 11 17' <<<"$out"
+          grep -Fx 'largest box graph: 249385 states, specimen 6 11 13' <<<"$out"
+          grep -Fx 'most recurrent vertices: 2676 specimen 4 11 21' <<<"$out"
+          grep -Fx 'deepest recurrent first left-aligned depth: 17 specimen 1 23 21' <<<"$out"
+          grep -Fx 'recurrent vertices in total: 1174788' <<<"$out"
+          grep -Fx 'K_V by specimen, nonunimodular: 4:24 5:138 6:252 7:288 8:360 9:228 10:192 11:120 12:36 13:48 14:72 15:120 16:36 17:12' <<<"$out"
+          grep -Fx 'K_V by specimen, unimodular real: 2:108 3:198 4:234 5:102 6:6' <<<"$out"
+          grep -Fx 'K_V by specimen, unimodular complex: 2:210 3:612 4:588 5:336 6:120 7:84 8:18 14:12' <<<"$out"
+
+  one-tile-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Catch-up reachability (Q1) on the standing corpus, both endpoints (exact)
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . one_tile_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'One-tile census, specimens: 4554' <<<"$out"
+          grep -Fx 'recurrent vertices: 1154040  in CU: 561624  reach CU: 1056816' <<<"$out"
+          grep -Fx 'specimens failing Q1: 360  of which no recurrent vertex reaches CU: 210' <<<"$out"
+          grep -Fx 'catch-up-free (no proper prefix in M Z^3): 210  of which Q1 fails totally: 210  total failures not catch-up-free: 0' <<<"$out"
+          grep -Fx "Proposition P' (level = M-adic valuation to depth 5 ) iff catch-up-free, mismatches: 0" <<<"$out"
+          grep -Fx 'Proposition C (unique odd-letter shape) iff catch-up-free, mismatches: 0  one odd letter: 18' <<<"$out"
+          grep -Fx 'Q1-failing vertices outside the catch-up-free class: 348  with nonzero forward closure <= 2: 348' <<<"$out"
+          grep -Fx 'specimens failing Q1 at both endpoints: 360  of which no recurrent vertex reaches either: 210' <<<"$out"
+      - name: Anatomy of the one-tile analysis (exact)
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . one_tile_anatomy.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'One-tile anatomy, specimens: 4554' <<<"$out"
+          grep -Fx 'class |det M| 1 real : specimens 648  Q1 partial 48  Q1 total 0' <<<"$out"
+          grep -Fx 'class |det M| 1 complex : specimens 1980  Q1 partial 54  Q1 total 0' <<<"$out"
+          grep -Fx 'class |det M| 2 complex : specimens 1926  Q1 partial 48  Q1 total 210' <<<"$out"
+          grep -Fx 'Q1-failing vertices outside the catch-up-free class by nonzero closure size: 1: 276  2: 72  >2: 0' <<<"$out"
+          grep -Fx 'not catch-up-free: 4344  with a recurrent one-step catch-up: 4170  recurrent one-step vertices: 29712  without: 174' <<<"$out"
+          grep -Fx 'specimens without a recurrent one-step catch-up that fail Q1: 0' <<<"$out"
+          grep -Fx 'recurrent vertices: 1154040  reach a diagonal hit: 1080828  reach an off-diagonal hit: 1153308' <<<"$out"
+          grep -Fx 'catch-up-free: every recurrent vertex reaches a diagonal hit: 180  not: 30  vertices reaching none: 12276' <<<"$out"
+      - name: Occurrence-level all-path decision matches every committed standing failure label
+        working-directory: kernel
+        run: |
+          set -euo pipefail
+          mkdir -p build
+          if ! pixi run mojo run -I . catch_up_witness_census.mojo standing 0 4554 failures > build/hit-witness-standing.txt 2> build/hit-witness-standing.stderr; then
+            cat build/hit-witness-standing.stderr
+            exit 1
+          fi
+          head -5 build/hit-witness-standing.txt
+          python ../tools/check_hit_witness_evidence.py --live-output build/hit-witness-standing.txt
+
+  finite-classification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Exact endpoint-map conjugacy classification (finite maps; no substitution input)
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . endpoint_core_catalog.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'finite maps: 27' <<<"$out"
+          grep -Fx 'conjugacy classes: 7' <<<"$out"
+          grep -Fx 'globally synchronizing classes: 2' <<<"$out"
+          grep -Fx 'classes with nonempty recurrent core: 5' <<<"$out"
+          grep -Fx 'nonsynchronizing ordered pairs: 84' <<<"$out"
+          grep -Fx 'maximum steps into the recurrent core: 1' <<<"$out"
+          grep -Fx 'pairs by steps into the recurrent core: 0:60 1:24' <<<"$out"
+      - name: Boundary-synchronization sweep (exploratory; reproducible from its seed)
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . boundary_sync_sweep.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'trials drawn: 500' <<<"$out"
+          grep -Fx 'primitive specimens: 312' <<<"$out"
+          grep -Fx 'specimens inconclusive (state budget): 0' <<<"$out"
+          grep -Fx 'specimens inconclusive (length budget): 262' <<<"$out"
+          grep -Fx 'recurrent noncoincident SCCs: 60' <<<"$out"
+          grep -Fx 'productive SCCs: 58' <<<"$out"
+          grep -Fx 'boundary-synchronization caught SCCs: 59' <<<"$out"
+          grep -Fx 'productive but missed: 0' <<<"$out"
+
+  overlap-type-exploration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Sirvent-Solomyak type inclusion over every tenth specimen (exploratory)
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . oa_type_inclusion_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'corpus: 4554  stride: 10  sampled: 456' <<<"$out"
+          grep -Fx 'specimens with type inclusion: 434' <<<"$out"
+          grep -Fx 'specimens without inclusion up to KMAX: 22' <<<"$out"
+          grep -Fx 'literature graphs with a nonproductive type: 0' <<<"$out"
+          grep -Fx 'specimens by least k with inclusion (9 = none): 1:256 2:109 3:41 4:8 5:12 6:6 7:1 8:1 9:22' <<<"$out"
+      - name: Inclusion-failure probe over longer prefixes and every fixed point (exploratory)
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . oa_failures_probe.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'specimens without inclusion up to KMAX: 22' <<<"$out"
+          grep -Fx 'of those, inclusion found with a longer prefix or another fixed point: 9' <<<"$out"
+          grep -Fx 'of those, no inclusion up to the extended bound: 13' <<<"$out"
+          grep -Fx 'probed unions with a nonproductive type: 0' <<<"$out"
+          grep -Fx 'union noncoincidence types: 58 to 132' <<<"$out"
+          grep -Fx 'seed-patch noncoincidence vertex types: 15 to 48' <<<"$out"
+          grep -Fx 'union types outside the seed patch: 43 to 85' <<<"$out"
+          grep -Fx 'seed-patch types met by no probed family: 0 to 15' <<<"$out"
+          grep -Fx 'least extended witnesses (q,c,k): (1,0,9) (1,1,16) (1,1,16) (1,1,19) (1,1,9) (1,2,16) (1,2,2) (1,2,2) (2,0,6)' <<<"$out"
+
+  tla-models:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Fetch TLA+ tools
+        run: |
+          curl -fsSL -o proof/tla/tla2tools.jar \
+            https://github.com/tlaplus/tlaplus/releases/latest/download/tla2tools.jar
+      - name: Check all models
+        run: ./proof/tla/check.sh
+
+  lean-proofs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Provision pinned Lean, Lake and Mathlib
+        run: |
+          ./tools/setup_lean.sh
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Build the complete proof bank and replay its axiom audit
+        run: ./tools/check_lean.sh

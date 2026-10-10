@@ -1,0 +1,1190 @@
+{"images": [[3, 3, 2], [3, 0], [1, 1, 0], [0, 3, 3]], "det": 2, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[1], [1, 2, 3], [1, 3], [0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [1, 2], [2, 3], [1, 3, 0]], "det": -1, "n_two_words": 11, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 2, 1], [3, 2], [0, 2], [2, 0, 3]], "det": 1, "n_two_words": 10, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 1, 2], [2], [0, 1], [3, 2]], "det": 1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 1], [3], [1, 3], [1, 0, 2]], "det": 1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[1, 2, 0], [0, 0], [3, 2], [3, 0]], "det": -2, "n_two_words": 8, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[1], [2], [3], [0, 3, 3]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 0, 2], [3, 2, 1], [1], [2, 0]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2], [1, 2], [1, 3, 0], [0]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 1, 0], [1, 0, 2], [1], [3, 1]], "det": -1, "n_two_words": 8, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[1], [2, 1, 0], [3, 2, 2], [0, 0]], "det": -2, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[2, 3], [2, 0, 2], [2, 0], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 0, 3], [2, 0], [0], [3, 0, 1]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1], [3, 2], [1, 0, 2], [2]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [1, 2, 0], [3], [0, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1], [3], [0, 2], [2, 3, 3]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[0, 0, 2], [2, 0], [3, 0], [1, 2, 1]], "det": 2, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[2], [2, 1], [0, 3, 2], [3, 1]], "det": -1, "n_two_words": 9, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[1], [2, 3, 1], [0], [1, 2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [2, 3], [0], [3, 3, 2]], "det": 1, "n_two_words": 16, "er_edges": 16, "er_vertices": 8, "components": 1, "b1": 9, "perm_cycles": [4, 12]}
+{"images": [[0, 3, 0], [1, 0, 2], [1], [2, 2]], "det": -2, "n_two_words": 9, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[0, 0, 3], [2], [0], [3, 1]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[1, 2], [0, 3], [2, 1, 2], [1, 2, 0]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 2, 3], [1, 3], [1, 0, 1], [2, 0]], "det": 1, "n_two_words": 11, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 0, 1], [3], [0, 2], [2, 0, 1]], "det": -2, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 2, 3], [1, 0], [1, 2, 3], [3, 2]], "det": 1, "n_two_words": 10, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 3, 0], [0], [1], [3, 2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 3], [3, 1, 1], [0], [2, 1, 0]], "det": 1, "n_two_words": 9, "er_edges": 8, "er_vertices": 7, "components": 1, "b1": 2, "perm_cycles": [4, 4]}
+{"images": [[1], [2, 0, 1], [3, 2], [3, 1]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2, 0], [3, 0], [0, 1], [1]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[2, 1], [1, 0, 2], [3], [3, 1, 0]], "det": -1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 0, 3], [3, 0, 0], [0, 1, 0], [3, 0]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2, 0], [1, 2, 3], [0, 1], [3, 0, 2]], "det": -2, "n_two_words": 12, "er_edges": 12, "er_vertices": 8, "components": 1, "b1": 5, "perm_cycles": [1, 2, 3, 6]}
+{"images": [[1], [3], [1, 0, 1], [1, 3, 2]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2], [0], [0, 3, 1], [2, 3]], "det": 1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[1, 0], [2, 2, 3], [1], [0, 2]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[0, 2, 0], [1, 3], [1], [0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1, 2, 2], [1, 2], [3, 2, 1], [3, 0]], "det": 1, "n_two_words": 10, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 3], [0, 3, 2], [1, 2, 3], [0, 1, 3]], "det": 1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 1, 3], [3, 1], [1], [3, 0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2], [2, 0], [3, 0, 2], [1, 3]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2, 3], [2], [3, 3, 0], [3, 1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 1], [3], [1, 3, 0], [1, 2, 3]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 2], [0, 3, 1], [3, 2], [1, 0]], "det": 1, "n_two_words": 10, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 3, 3], [3], [0, 2, 1], [3, 0, 2]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2], [0, 2, 3], [2, 3], [3, 1, 2]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 2, 1], [1, 0, 3], [1], [1, 3]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3], [3, 0, 2], [0], [1, 2, 3]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 1], [0, 2, 3], [2, 0, 1], [3, 0]], "det": 1, "n_two_words": 12, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[0, 3, 1], [1, 2, 3], [0], [1, 2, 0]], "det": -1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[3, 2], [1, 0, 2], [0], [2, 3, 1]], "det": -1, "n_two_words": 12, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[3, 0, 2], [0, 1], [1, 2], [0, 0, 1]], "det": -1, "n_two_words": 11, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 3], [3, 3, 2], [0, 2, 3], [0, 3, 1]], "det": 1, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 3, 3]}
+{"images": [[0, 1, 0], [3, 1, 0], [0], [2, 0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 3, 0], [1, 3], [3, 1, 2], [0]], "det": -1, "n_two_words": 12, "er_edges": 7, "er_vertices": 6, "components": 1, "b1": 2, "perm_cycles": [1, 3, 3]}
+{"images": [[1, 0], [2, 3, 1], [0], [1, 2]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1], [3, 2], [1, 0, 2], [2]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2], [1, 0], [0, 3, 2], [0, 1, 3]], "det": -1, "n_two_words": 11, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[1, 3], [3, 2, 0], [0, 3], [3, 1, 0]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2], [0, 3], [1], [3, 3, 0]], "det": 1, "n_two_words": 16, "er_edges": 16, "er_vertices": 8, "components": 1, "b1": 9, "perm_cycles": [4, 12]}
+{"images": [[3, 1], [2, 1, 3], [3], [3, 0, 3]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 3, 0], [0], [0, 0, 2], [1]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1], [2, 1, 0], [0, 3, 2], [1, 2]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2], [3], [1, 2], [3, 3, 0]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1], [3], [1, 3, 0], [3, 2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2], [2, 0], [1, 3], [1, 1, 3]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 0, 1], [3, 3, 0], [1, 0], [3, 1, 2]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 3], [2], [3], [0, 2, 1]], "det": 1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 1, 3], [0, 1], [1, 2], [1]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1, 2, 3], [3], [1], [0, 3, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 1, 0], [0, 2, 1], [1, 0], [2, 1]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[1], [0, 3, 3], [2, 1], [2, 3]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3], [2, 1, 3], [0], [3, 3, 1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 0], [3], [0, 3, 1], [2, 3, 1]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2, 0, 3], [1, 2, 0], [2, 0], [1, 0]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 1], [2, 3], [3, 1, 0], [2, 3, 3]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 1, 0], [0, 1, 3], [1], [2]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[1, 3], [3, 2], [2, 0, 3], [1]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3, 1], [3], [2, 0], [2, 1, 3]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 2, 3], [0, 3, 0], [1, 0, 2], [3, 0]], "det": 1, "n_two_words": 8, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[0, 2], [0], [3, 2, 1], [2, 1]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2], [0], [2, 3], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 0], [3], [2, 1, 0], [0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 1], [2], [3, 2, 2], [0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [3, 2], [3, 0], [3, 1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3], [2, 3], [2, 0, 1], [0, 2, 3]], "det": 1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 3, 0], [0, 1], [3, 1], [2, 3]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2], [0], [2, 2, 3], [3, 1]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3, 1, 1], [1, 0], [1, 1, 0], [2, 1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 0], [0], [3, 0], [1, 3]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 0], [3, 1, 0], [3], [1]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2], [1, 3], [1], [3, 0, 3]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1], [2, 0], [3, 0, 1], [1, 3]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1, 2, 2], [1, 1, 3], [1], [1, 0]], "det": -2, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3], [3, 0], [0, 2], [2, 1, 3]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1, 3, 2], [0], [3, 2], [3, 1]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 1, 0], [0, 2], [0], [1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 3, 2], [0, 1, 2], [3, 2, 1], [0, 2]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3], [2], [2, 3, 0], [1, 0, 3]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 1], [3, 0], [1], [2, 1]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[1, 2], [2], [3, 2, 0], [0]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[0, 3, 3], [3, 0], [3, 1], [3, 2]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 3, 0], [0, 0], [1, 2, 2], [2, 1, 0]], "det": 2, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[3], [0], [0, 1, 3], [3, 2]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 1], [2, 3], [2, 3, 0], [0, 3]], "det": 1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 1], [0, 3, 2], [0, 3, 0], [2, 3]], "det": 1, "n_two_words": 10, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[1, 0], [2, 1, 1], [3, 0], [2]], "det": -2, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3], [2, 1], [3, 2], [1, 0]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[2, 3, 0], [3], [3, 1, 3], [0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 2], [2, 1, 0], [3], [1, 2, 3]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [3, 1], [2, 0, 3], [2]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 1, 3], [1, 3], [1, 0], [1, 2]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1, 0], [0, 1, 2], [2, 3], [0]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1], [3, 1], [2, 2, 0], [2]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 0], [2], [1, 1, 3], [0, 1]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[1, 0, 1], [3, 2], [3], [0, 1]], "det": -1, "n_two_words": 8, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [3, 3]}
+{"images": [[2], [0, 1], [3], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 2, 2], [0, 1, 1], [3, 2], [1, 2]], "det": -1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2, 0, 0], [0, 3], [3, 0, 1], [2]], "det": 2, "n_two_words": 12, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[2, 1, 2], [1, 0], [3], [3, 3, 1]], "det": -2, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3, 1, 3], [2, 0], [2, 3], [1, 3]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 2, 0], [3], [0], [2, 1]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1, 2, 1], [2, 1], [3, 1], [1, 0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 1], [1, 1, 2], [0], [2, 0, 1]], "det": 1, "n_two_words": 7, "er_edges": 6, "er_vertices": 7, "components": 1, "b1": 0, "perm_cycles": [3, 3]}
+{"images": [[2, 1, 1], [3, 2, 1], [3, 2, 0], [2, 3]], "det": -1, "n_two_words": 10, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 1, 2], [1, 1, 3], [0], [3, 0]], "det": -2, "n_two_words": 10, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 1], [1, 0, 3], [2, 0, 0], [0, 2, 3]], "det": -1, "n_two_words": 12, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[1], [0, 3], [0, 3, 2], [2, 0]], "det": 1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[0, 2, 3], [3], [1], [0, 3]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 1, 3], [2], [3], [0, 3, 3]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1], [2, 3], [3], [0, 3, 1]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 0], [3, 2, 0], [1], [2, 1]], "det": 1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [2, 0], [1, 2], [2, 3]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 0], [1, 2, 3], [1, 1, 2], [2, 0, 1]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[2, 3, 0], [0], [1, 0], [3, 0]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[2], [1, 0], [3, 2], [2, 1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1], [3], [0], [3, 2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[1, 0], [3, 2], [1], [0, 3]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[0, 3, 3], [2, 3, 3], [3, 0], [3, 1, 3]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2, 1], [0], [1, 2, 3], [0, 3, 1]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2, 1, 0], [1, 3], [0], [1, 0, 0]], "det": 1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 0, 0], [3], [3, 2], [0, 1]], "det": -2, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[1], [0, 2], [3], [2, 3, 1]], "det": 1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [6, 6]}
+{"images": [[1, 0, 0], [3, 1, 0], [3], [0, 0, 2]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3, 0, 1], [0, 2], [1, 0, 0], [3, 1]], "det": -1, "n_two_words": 11, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [2, 3], [0, 1, 1], [3, 2, 3]], "det": 1, "n_two_words": 9, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[2, 3], [0], [3], [1, 0, 3]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3], [0, 1], [1, 2, 3], [2]], "det": -1, "n_two_words": 9, "er_edges": 8, "er_vertices": 7, "components": 1, "b1": 2, "perm_cycles": [4, 4]}
+{"images": [[2, 1, 0], [2], [3], [0, 3, 2]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1], [2], [3, 1, 0], [3, 2]], "det": 1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [3, 0], [1, 2, 1], [2, 3]], "det": -1, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2, 0], [0, 3, 0], [1, 2], [1]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[3, 0], [2], [0], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 0], [0, 2, 3], [2, 1, 0], [1, 2]], "det": -1, "n_two_words": 12, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[3, 1], [2, 1], [3], [0, 3]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2], [0], [3], [3, 1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3], [2, 3], [0], [1, 3, 3]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 2], [3, 3], [1, 3], [0, 3, 3]], "det": -2, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 1, 3], [0, 1], [1, 2, 0], [1, 2, 2]], "det": 1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[2, 1, 3], [3, 0], [1, 2], [2]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [0, 3], [1, 1, 2], [2, 3]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 2], [1, 3, 1], [3, 1], [0, 3]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 1], [3], [0, 1, 2], [2, 1, 3]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1, 2], [3, 2], [0, 2, 2], [1]], "det": 1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1], [3, 0, 2], [0], [1, 3]], "det": 1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[1, 1, 0], [0, 3, 2], [2, 0], [0, 1]], "det": 1, "n_two_words": 11, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 2, 1], [2, 0], [2, 1, 2], [1]], "det": 2, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 2], [0, 3], [0, 1], [1]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 3], [1, 2], [0, 3, 1], [3, 1]], "det": -1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[3, 1], [3, 0, 2], [0], [3, 3, 2]], "det": 1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2], [1, 2, 3], [2, 1, 0], [0, 2, 3]], "det": -2, "n_two_words": 9, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[2], [2, 0], [3, 1, 2], [0, 3]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[3, 1, 2], [3, 1, 1], [1], [0, 2]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2], [1, 1, 2], [2, 1, 3], [0, 1]], "det": 2, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1], [1, 2], [3, 2], [2, 0, 1]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 1, 2], [0, 1], [3, 2], [1, 1, 2]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1, 0], [2, 0], [3], [2, 1, 0]], "det": 1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 2], [1, 2, 0], [1, 3], [3, 0, 1]], "det": 1, "n_two_words": 14, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[0, 2], [0], [3, 2, 0], [1, 0]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2], [2, 1, 3], [3, 0], [1]], "det": 1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [6, 6]}
+{"images": [[0, 2, 3], [0], [2, 1, 3], [0, 3, 0]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 2, 0], [2, 0], [3, 2], [0]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 2, 1], [2, 0, 3], [3, 2], [3, 0]], "det": -1, "n_two_words": 10, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[0, 3, 1], [1, 0], [1, 2], [1, 1, 2]], "det": 1, "n_two_words": 8, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[2, 0, 0], [3], [3, 2, 0], [1, 0, 0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 3, 0], [2], [3, 0], [2, 1]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2], [3], [1], [0, 3, 3]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 2, 1], [2, 1], [2, 0], [1]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 2], [2, 0, 2], [2, 3, 2], [1]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1, 3], [3, 1, 0], [1, 0, 2], [2, 0]], "det": -1, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3, 0], [2, 0, 1], [1], [2]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 0, 3], [2, 0], [0, 1, 0], [3, 1]], "det": -1, "n_two_words": 10, "er_edges": 9, "er_vertices": 7, "components": 1, "b1": 3, "perm_cycles": [3, 3, 3]}
+{"images": [[3, 1, 0], [1, 0], [0], [1, 0, 2]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 3, 2], [1, 0], [0, 1, 0], [2]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 0, 3], [0, 1], [0], [0, 2, 1]], "det": 1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 1, 3], [2, 0], [2, 1, 2], [1]], "det": 2, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[2, 0], [2], [2, 3, 0], [2, 1]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2], [1, 3, 0], [0, 2, 1], [2, 1]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2], [0], [3], [1, 3]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[1], [1, 3, 2], [0], [1, 2]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 1], [2], [3], [0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 2, 0], [3], [1, 3], [0]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 3], [3], [1, 3, 2], [3, 0]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 0], [0, 2], [3, 0, 2], [0, 3]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[3, 0, 0], [2], [0], [2, 1, 0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1, 0, 3], [2, 3], [3], [0]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 1, 3], [1, 3, 1], [2, 1], [0]], "det": -2, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[0, 2], [3, 0, 0], [3, 1], [2, 3, 1]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2, 0], [2], [2, 3, 1], [0, 3]], "det": -1, "n_two_words": 10, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[2, 3, 2], [1, 2, 3], [3, 1], [2, 0, 3]], "det": 1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 1], [3, 1], [0], [3, 1, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 0], [0], [1, 2, 3], [2]], "det": -1, "n_two_words": 9, "er_edges": 8, "er_vertices": 7, "components": 1, "b1": 2, "perm_cycles": [4, 4]}
+{"images": [[0, 2, 1], [3], [2, 0], [0]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[0, 1, 2], [3, 0], [3], [1, 0, 3]], "det": -1, "n_two_words": 11, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 2], [2, 1, 3], [1, 3], [0, 3]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1], [2, 3, 1], [2, 0, 3], [0, 1, 2]], "det": -1, "n_two_words": 12, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 0, 1], [0, 1, 3], [1], [1, 2]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[1, 3, 3], [0], [3, 0], [2, 3, 3]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[2, 0, 3], [3, 2], [0, 3], [1]], "det": 1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [6, 6]}
+{"images": [[1], [3, 0], [1, 3, 2], [2]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3], [1, 0, 2], [2, 0], [3, 0, 1]], "det": -1, "n_two_words": 15, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[2, 3], [1, 3], [0, 2, 1], [2]], "det": 1, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1], [3, 1, 3], [0, 2], [1, 2, 3]], "det": -2, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 0, 1], [1, 2, 3], [3], [0]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3], [2, 1, 1], [0], [2, 1]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 0, 0], [0, 3], [1, 2, 0], [0, 3, 2]], "det": 1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 0, 0], [2, 3, 0], [2, 0], [2, 1]], "det": -2, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2], [0, 1], [3], [2, 1, 3]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 0], [3], [0, 3, 1], [0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 0, 1], [0, 3], [1, 0], [0, 3, 2]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[1, 2], [3], [1, 2, 0], [2]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2, 3, 3], [0, 1, 1], [0, 1], [3, 1]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 0], [3, 3, 2], [3, 0], [1]], "det": 1, "n_two_words": 10, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 3, 1], [3, 0], [0], [3, 2]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 1, 3], [0], [0, 2], [1]], "det": 1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[3], [0, 1], [3, 0], [1, 2, 0]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1], [3, 1, 1], [0], [0, 2]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 0, 1], [0, 2, 3], [2, 1], [2, 3]], "det": -2, "n_two_words": 9, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 0], [2, 1], [0, 0, 3], [2]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[1, 3, 2], [2, 0, 1], [3], [1, 0, 3]], "det": -1, "n_two_words": 12, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1], [3], [0, 2], [2, 3, 1]], "det": -1, "n_two_words": 9, "er_edges": 8, "er_vertices": 7, "components": 1, "b1": 2, "perm_cycles": [4, 4]}
+{"images": [[2, 3], [3], [3, 2, 1], [2, 0, 3]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 0], [3, 1, 1], [0], [1, 2, 2]], "det": -2, "n_two_words": 10, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 2], [2, 3], [3], [2, 0, 3]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 2, 1], [2, 1], [1, 3, 1], [3, 0]], "det": 1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 3], [1, 2, 3], [0, 3, 2], [0]], "det": -1, "n_two_words": 11, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 0, 1], [1, 3], [3, 0], [2, 3]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2], [2, 0], [3, 2, 1], [1]], "det": -1, "n_two_words": 8, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [3, 3]}
+{"images": [[1, 0, 3], [2], [3], [3, 0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 3, 2], [0, 0, 3], [1, 2], [0, 3]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[0, 2, 3], [3], [2, 3, 1], [0, 3, 1]], "det": -2, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3], [1, 3], [0, 1, 2], [1, 3, 2]], "det": 1, "n_two_words": 9, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 0], [2, 1], [2, 0, 1], [0, 1, 1]], "det": -2, "n_two_words": 9, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[0, 3, 1], [2, 3], [0, 3], [3, 1]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1], [3, 1, 0], [0, 2, 1], [1, 2, 3]], "det": -2, "n_two_words": 12, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[1, 3, 2], [2, 1], [2, 3], [0, 3]], "det": -1, "n_two_words": 11, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 3, 2], [0, 3], [3], [3, 2, 1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 0], [3], [1], [3, 1, 0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 2, 1], [3, 0, 1], [0], [1, 0]], "det": 1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 0], [3, 2], [3, 2, 1], [3, 1, 0]], "det": -2, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 2, 0], [1, 2], [1, 2, 0], [1, 1]], "det": -2, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 0, 1], [2, 0, 0], [3], [1, 3]], "det": 1, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1], [3, 2, 1], [1, 0, 1], [1, 3]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3], [3, 1, 2], [0], [1, 3]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 2, 3], [3], [2, 0], [0, 2, 2]], "det": -1, "n_two_words": 10, "er_edges": 9, "er_vertices": 7, "components": 1, "b1": 3, "perm_cycles": [3, 3, 3]}
+{"images": [[1, 2, 0], [3], [0, 0, 2], [2, 3]], "det": -2, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[2, 0], [3, 2], [1, 2], [0]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3], [2, 3, 3], [2, 3, 1], [2, 0, 3]], "det": 1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3], [1, 2], [0], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2], [1, 2], [0, 3], [3, 1, 3]], "det": -2, "n_two_words": 9, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[1, 0, 3], [2], [3, 0, 0], [0]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[1, 0], [1, 3], [3, 1, 0], [0, 2]], "det": -1, "n_two_words": 9, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 3], [2, 1, 1], [0, 1], [1, 2]], "det": 1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1], [1, 3, 0], [0, 1], [2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 0, 1], [0, 3], [3, 2], [0]], "det": 1, "n_two_words": 7, "er_edges": 6, "er_vertices": 7, "components": 1, "b1": 0, "perm_cycles": [3, 3]}
+{"images": [[2, 0], [3, 2, 0], [0, 2, 1], [2, 2, 1]], "det": 2, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 3], [3, 1, 2], [0, 2, 2], [1]], "det": -1, "n_two_words": 10, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 2], [3], [1, 2, 3], [3, 0]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2], [3], [2, 3, 0], [0, 1]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[1, 0, 0], [3, 0, 3], [0, 2], [2]], "det": -2, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[1, 2], [2, 3], [2, 0], [3, 2, 2]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3], [2, 0, 1], [1], [1, 1, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 0, 0], [3, 0], [0, 3, 1], [0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 3, 0], [1, 3, 0], [1], [0, 2, 3]], "det": -1, "n_two_words": 9, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[0, 1, 2], [0], [3, 1], [3, 0]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[0, 2, 0], [3], [1, 3], [0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 1, 0], [3, 0], [0], [2, 3]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1], [3, 0, 1], [0, 2], [0, 3, 2]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[0, 0, 3], [0], [2, 1, 0], [0, 2]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1], [3, 1], [0], [1, 3, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 2, 1], [0], [3], [2, 0]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[3, 1], [1, 2], [3, 2], [2, 0, 3]], "det": -2, "n_two_words": 8, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[3, 1], [1, 0], [1], [2, 1, 1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2], [0], [2, 3], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 3, 1], [1, 3, 1], [1, 2], [0]], "det": -2, "n_two_words": 10, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2, 0], [3], [1, 3, 0], [0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 3, 3], [0, 1, 3], [1, 0], [3, 1]], "det": 1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[2], [3, 0], [1, 2], [0, 1, 2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 2, 3], [3], [3, 2, 1], [3, 0, 1]], "det": -2, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 2, 3], [2, 0], [1, 2], [1, 2, 2]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 0], [1, 2, 1], [3, 1, 1], [1, 0, 0]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 0, 2], [3], [0, 2, 2], [1, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 0], [0, 2], [0, 2, 1], [2]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3], [1, 1, 2], [3, 0], [1]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[1, 0], [3, 2], [0], [3, 0, 1]], "det": 1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 3, 1], [0, 1], [1, 3, 2], [3, 2]], "det": -2, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 2], [3], [2, 1], [0, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 0, 1], [2, 0], [0, 3], [2]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[0, 1], [1, 2, 3], [1], [0, 2]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2, 3], [1, 3], [0, 1, 1], [3, 2, 3]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[3, 0], [1, 2], [0, 3, 2], [0, 2, 1]], "det": -1, "n_two_words": 11, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[1, 2], [0], [3, 2, 2], [0, 3, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 2, 1], [3, 2], [3], [3, 0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 0, 1], [0, 2], [2, 0, 3], [2, 3, 1]], "det": 2, "n_two_words": 13, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 1, 3], [3], [0, 3, 2], [2, 3, 3]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 3, 1], [0, 3], [1, 2], [2, 1, 3]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1, 2, 3], [2, 0], [0, 2, 3], [3, 1, 3]], "det": -1, "n_two_words": 11, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[3], [3, 2], [0, 3, 2], [3, 1]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2], [0], [1, 3, 2], [1, 2]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 0], [3], [0, 1, 3], [2]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[2], [1, 3, 2], [2, 2, 1], [0]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 3, 1], [1, 0, 2], [1], [3, 1]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[3], [3, 0], [3, 2], [1, 3, 2]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1], [1, 2], [0, 3], [2, 1, 3]], "det": 1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 0, 3], [0, 2, 0], [0, 2], [0, 1, 0]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[1, 2], [1, 3], [0], [0, 3]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 3, 1], [0], [0, 0, 2], [3, 0, 2]], "det": -1, "n_two_words": 8, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[1], [0, 2, 1], [2, 3], [0]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 3, 0], [2, 0], [0, 2, 1], [2, 3, 1]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1], [0, 2, 3], [0, 1], [0, 3]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 3], [1, 3], [3], [0, 1]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[0, 2, 1], [0], [2, 3], [1]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3], [0], [2, 1], [0, 2, 3]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 1, 2], [0], [2, 3, 1], [0, 2]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1], [3], [0], [3, 2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 2], [0], [2, 3, 1], [2, 1, 0]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 1, 2], [3, 1], [3, 0], [0, 3, 2]], "det": -2, "n_two_words": 11, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 2, 0], [3, 1], [1], [1, 0, 3]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[1, 2], [3], [1, 1, 2], [2, 0, 1]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3, 1], [0, 2], [0, 2, 2], [2, 1]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 1, 0], [1, 2, 0], [3], [0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1, 2, 3], [2, 0], [2, 3, 3], [1]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 2, 0], [0], [1, 3, 0], [0, 1]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1], [3, 2], [3, 0, 1], [2, 3, 3]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2, 2, 3], [0, 2], [2, 1, 3], [2, 3]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2], [1, 3, 1], [1, 2], [1, 2, 0]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2, 2, 1], [3, 2], [2, 1], [0, 2, 3]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 3, 2], [0, 3], [3], [3, 1, 0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 3], [2], [0, 2], [1, 0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3], [0, 2], [1], [0, 3, 1]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 1, 0], [1, 0], [1, 3, 0], [1, 1, 3]], "det": -2, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2], [0], [2, 3, 1], [2, 1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [2, 0, 1], [0], [3, 0, 1]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 0, 1], [2, 3, 0], [3], [0]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[3], [3, 1, 2], [2, 2, 1], [0, 2]], "det": -1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2, 3], [1, 0], [3, 0, 2], [1, 2, 2]], "det": 2, "n_two_words": 10, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 1, 2], [1, 2], [0, 2, 0], [1, 3]], "det": -2, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 2], [2, 0], [3, 1, 2], [0, 3, 2]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3], [0], [3, 0, 1], [3, 1, 2]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 0, 1], [2], [3], [0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[1], [2], [1, 3, 2], [1, 0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1], [3], [0, 1, 3], [2, 3, 3]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[1, 0], [3, 2], [0, 2], [1]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 0], [3, 1], [0, 1], [0]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 3, 0], [0], [1], [0, 2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1, 2, 0], [3, 1], [0, 3, 0], [0]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2], [1, 3], [1], [0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[1, 3], [3, 3, 2], [3], [3, 2, 0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 2], [1, 2, 0], [1], [2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [2, 3], [1, 2], [3, 2, 0]], "det": 1, "n_two_words": 10, "er_edges": 9, "er_vertices": 7, "components": 1, "b1": 3, "perm_cycles": [1, 2, 6]}
+{"images": [[3], [2, 0, 1], [2, 1], [2]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2], [3], [0, 2, 1], [0, 2, 2]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2, 3], [2], [0, 2, 2], [1, 2, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 0, 0], [0, 3], [0, 1], [0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 3], [0, 3], [3], [3, 1, 3]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 3, 3], [2, 1], [2, 0, 2], [1]], "det": -2, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2], [0, 3, 2], [2, 1, 0], [0, 2]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 1, 2], [2, 1], [2, 2, 3], [0]], "det": -2, "n_two_words": 12, "er_edges": 10, "er_vertices": 7, "components": 1, "b1": 4, "perm_cycles": [1, 3, 6]}
+{"images": [[2, 3, 1], [0], [1, 3], [1, 1, 3]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2, 0], [2, 3], [1, 2, 0], [0, 2, 2]], "det": 1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 2, 2], [3, 1], [2, 3, 1], [2, 0, 3]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3], [2], [3, 2, 0], [1, 2]], "det": -1, "n_two_words": 8, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [3, 3]}
+{"images": [[2, 3], [3, 1], [3, 1, 0], [2]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[1, 3, 3], [0, 2], [0, 3, 1], [1, 3]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[3, 2], [0, 2, 1], [0, 2, 0], [2, 1]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3], [0, 1], [3, 1], [2, 3]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 1, 3], [3, 1], [2, 1, 0], [1, 1, 2]], "det": -1, "n_two_words": 10, "er_edges": 10, "er_vertices": 8, "components": 1, "b1": 3, "perm_cycles": [1, 1, 2, 6]}
+{"images": [[3, 2], [0, 3, 3], [2, 1], [1]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[0, 1], [2], [3, 1, 0], [1, 2]], "det": 1, "n_two_words": 10, "er_edges": 9, "er_vertices": 7, "components": 1, "b1": 3, "perm_cycles": [3, 3, 3]}
+{"images": [[2, 1], [2, 1, 3], [1, 2, 1], [0]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[3], [2, 3], [1, 2], [2, 0]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[0, 3, 2], [0, 3, 0], [1], [0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1, 0, 0], [3, 2], [0, 2], [1]], "det": -2, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 1, 3], [3, 1, 0], [3], [2, 1, 3]], "det": 1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 2], [3, 0], [3], [1, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 1, 3], [0], [3, 0], [2]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3, 2, 0], [1, 0, 0], [0, 1], [0, 2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1], [1, 3, 0], [1, 0], [0, 2]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 1], [1, 1, 2], [3, 1], [3, 0]], "det": -2, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3], [3, 2], [2, 2, 0], [1, 3, 2]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2], [2, 3], [2, 1, 2], [0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 3, 2], [0, 1], [3, 1, 2], [1, 0, 2]], "det": -1, "n_two_words": 12, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 0], [0], [1, 1, 3], [1, 3, 2]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[0, 0, 1], [2, 3], [0, 2], [1]], "det": -2, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 0, 2], [2, 1], [0, 3, 0], [1, 3, 0]], "det": 1, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3, 2, 1], [0, 3, 1], [1, 0], [2]], "det": -1, "n_two_words": 10, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 3, 2], [3, 1], [1], [0, 3, 3]], "det": -2, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[0, 1], [0, 2], [1, 3, 2], [1, 0, 1]], "det": 1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1], [1, 2, 0], [3, 0], [3, 1]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 0, 2], [3], [1, 0, 0], [2, 0]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[2], [3, 0], [3, 2, 1], [2, 3, 3]], "det": 2, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[0, 1, 3], [1, 0], [1, 1], [0, 2, 3]], "det": -2, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[0, 3, 2], [0, 3], [2, 3, 1], [0]], "det": -1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 0], [2], [0, 1, 3], [1]], "det": 1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[1], [2], [2, 3], [2, 0, 1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [3, 2], [3, 2, 3], [1, 0]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 3, 2], [2, 0], [2, 2, 1], [2, 3]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[2, 3], [0], [3], [1, 3, 3]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 2, 0], [3, 0, 0], [1, 3, 3], [2, 0]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[2], [1, 0], [1, 0, 3], [0, 2]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 2, 3], [0, 2, 3], [2, 0, 1], [1, 3]], "det": 2, "n_two_words": 10, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[2], [1, 0], [3, 1, 0], [3, 1]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 2, 3], [2, 3], [0, 2, 3], [3, 1]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[3, 1, 0], [1, 2, 0], [3, 2], [0]], "det": -2, "n_two_words": 9, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[1], [3], [1, 0, 3], [0, 3, 2]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2], [0, 2], [3, 2, 1], [1]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2], [3, 2, 0], [2, 1, 2], [0, 0]], "det": -2, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 2], [0], [3], [2, 3, 1]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[0, 3], [3, 2, 1], [0, 1, 0], [0, 2, 1]], "det": 2, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 3, 2], [1, 0, 2], [3, 0, 2], [1]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1], [1, 3, 1], [0], [3, 1, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 1, 0], [3, 1, 2], [0, 0, 1], [3, 1]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 0, 0], [2], [0, 2], [1]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3, 1, 2], [2, 1, 0], [2, 1], [2]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 3, 1], [2, 1, 0], [1], [2, 1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[0, 3], [1, 0, 2], [1], [1, 1, 2]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 1], [3], [1, 2, 2], [0]], "det": 1, "n_two_words": 16, "er_edges": 16, "er_vertices": 8, "components": 1, "b1": 9, "perm_cycles": [4, 12]}
+{"images": [[0, 2, 0], [2, 0], [3], [1]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[3], [2, 1, 3], [3, 0], [1]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2, 3, 1], [0, 0, 3], [3, 1], [1, 0, 3]], "det": -1, "n_two_words": 10, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3], [3, 2], [2, 0, 3], [3, 1, 2]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 0], [2, 1], [2, 0, 3], [2]], "det": -1, "n_two_words": 10, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[2, 1, 0], [3, 0], [2, 0], [0, 2, 0]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 0, 2], [1, 2, 3], [1, 0], [1, 2]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 3], [2], [2, 0, 3], [1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1, 1, 2], [1, 3, 1], [0], [3, 0]], "det": -2, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[1, 2, 3], [2], [2, 0], [3, 2]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2, 0], [0, 3, 1], [3], [3, 1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3], [2, 3], [0, 2, 3], [3, 1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 2, 1], [0, 3], [2, 1], [1, 2, 2]], "det": -1, "n_two_words": 10, "er_edges": 9, "er_vertices": 7, "components": 1, "b1": 3, "perm_cycles": [3, 3, 3]}
+{"images": [[0, 1], [2, 3, 0], [0, 2], [2]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3], [3, 1], [0], [1, 0, 2]], "det": 1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[2, 3, 2], [1, 2, 0], [2, 1, 3], [2, 3]], "det": 1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3], [0, 2], [2, 0, 2], [1]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[0, 1], [2, 1, 0], [1, 3], [0, 3]], "det": -2, "n_two_words": 9, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [2, 2, 2]}
+{"images": [[2, 3], [0], [2, 3, 2], [1, 3, 2]], "det": 1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 2, 3], [2, 1, 1], [3, 0, 3], [1, 1]], "det": 2, "n_two_words": 12, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[1], [3, 1, 1], [0], [2, 1, 0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 0, 1], [3, 2], [3], [1, 0]], "det": 1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[2], [1, 0], [3, 2], [3, 2, 1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2, 0, 0], [0], [2, 3], [1, 0, 2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 3], [1, 3, 0], [3, 2, 1], [0]], "det": -1, "n_two_words": 13, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[0, 2], [3, 1], [1, 1, 0], [0, 1, 3]], "det": -2, "n_two_words": 13, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[1, 0], [2], [1, 3, 2], [0, 3, 1]], "det": -1, "n_two_words": 13, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2], [3, 2, 3], [1, 2, 3], [3, 0, 3]], "det": -2, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 2, 0], [2], [2, 0, 2], [1, 0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2, 0, 1], [2, 0], [2, 3], [0, 1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 2], [2], [0, 3], [0, 3, 0]], "det": -1, "n_two_words": 8, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [3, 3]}
+{"images": [[3, 1], [2], [3], [0, 3, 1]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[1, 2, 3], [0, 1], [1, 2, 2], [2]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 2, 3], [0], [1, 2], [0, 2]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 1, 3], [1, 3, 2], [3], [0]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 0], [0, 3], [0, 2, 1], [3, 2]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 7, "components": 1, "b1": 3, "perm_cycles": [1, 2, 6]}
+{"images": [[2, 3, 3], [3, 0], [3, 2], [3, 1]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[3, 0, 1], [3], [0], [3, 1, 2]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 0], [2], [0, 1, 2], [2, 3]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 3, 3]}
+{"images": [[3, 1, 0], [0, 2], [2, 3, 0], [1, 3, 2]], "det": 2, "n_two_words": 13, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[1, 0, 3], [0, 2, 2], [2, 3], [1, 2, 0]], "det": 2, "n_two_words": 13, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[1, 0], [1, 3, 2], [3, 1], [0]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 2, 1], [0, 3, 2], [0], [3, 0]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[0, 1, 3], [1, 0, 2], [0, 0, 1], [0, 0]], "det": 2, "n_two_words": 8, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [2, 2, 2]}
+{"images": [[1, 3, 0], [2, 3], [0, 1], [0, 3]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2], [3, 2, 1], [0, 2, 1], [0, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 2, 1], [2, 3], [2, 3, 2], [2, 0, 3]], "det": 1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 1, 1]}
+{"images": [[3], [0, 1], [0, 2, 1], [2, 0, 3]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2, 3], [1, 2, 0], [1], [0]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 2], [0, 3], [3], [3, 1, 0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1, 2], [2, 1, 1], [3, 0], [1, 0]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[0, 3, 2], [3, 0], [3, 2, 1], [1]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2, 1], [1, 3], [0], [0, 3]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 1], [3, 2, 1], [1], [0, 2, 3]], "det": -1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3, 1], [3], [3, 0], [2, 3]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 2], [0], [0, 3, 2], [3, 1]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 1, 0], [3, 2], [0, 3], [2]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2], [3, 2], [1, 2, 2], [3, 0]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 1], [1, 1, 2], [3], [0]], "det": 1, "n_two_words": 16, "er_edges": 16, "er_vertices": 8, "components": 1, "b1": 9, "perm_cycles": [4, 12]}
+{"images": [[2, 3], [1, 2, 0], [1], [0]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 3, 2], [2], [2, 3], [0, 2, 1]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[0, 1, 3], [3, 2, 0], [2, 1], [2, 2, 0]], "det": 2, "n_two_words": 12, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3], [1, 2], [0], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 0, 3], [2, 0, 2], [2, 1], [1]], "det": 1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 1, 2], [1, 3], [3], [1, 3, 0]], "det": 1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 3], [0], [1], [2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 2, 3], [0], [1, 3, 2], [0, 2]], "det": -1, "n_two_words": 9, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 3, 3], [2, 0, 3], [3], [3, 2, 1]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 1], [0, 1], [3], [1, 2]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1], [2, 1, 0], [3, 0], [1, 0]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[0, 1], [3, 2, 1], [2, 0], [1, 1]], "det": -2, "n_two_words": 10, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[3, 2, 0], [2, 1, 0], [1], [2, 1]], "det": -1, "n_two_words": 10, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 2, 1], [1, 3, 0], [2, 1], [2]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[0, 3, 0], [0, 1, 2], [0, 1], [1, 2, 2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1], [1, 3], [3, 0], [3, 0, 2]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3, 1, 0], [0, 2], [2, 3, 0], [2]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 3, 1], [3], [0, 2, 2], [1, 2, 3]], "det": -2, "n_two_words": 11, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 1, 3], [2, 0, 1], [1], [1, 3]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 3, 0], [0], [1], [2]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 0, 0], [2], [0, 1], [2, 3, 0]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2], [3], [1], [0, 3]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3], [2, 0], [1, 2, 2], [2, 2, 3]], "det": -2, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 1, 0], [1, 2, 3], [1, 0, 2], [1, 2]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1, 3, 2], [3, 1], [0], [1, 2]], "det": 1, "n_two_words": 9, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[2], [2, 1, 0], [3, 2, 1], [2, 1]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2, 1], [2, 3], [2, 0], [1]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 1], [2, 1], [0, 1, 3], [0, 3]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[0, 3], [2, 1, 3], [0], [3, 1]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1], [0, 3, 1], [0], [3, 2, 0]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 0, 0], [1, 2], [3, 0, 0], [2]], "det": -2, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 0], [0, 1, 1], [3, 1], [0, 1]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2], [0], [3], [3, 3, 1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 0, 1], [3, 1, 3], [2, 1], [1, 0]], "det": -2, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1], [2, 1, 3], [2, 1], [1, 0]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [1, 2], [3, 0, 1], [1]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 3, 1], [3, 2], [1], [3, 2, 0]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 1], [2], [1, 3, 2], [0, 1, 3]], "det": -1, "n_two_words": 8, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[1, 1, 3], [3, 1], [0], [2, 3, 1]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3], [2, 1], [0], [0, 1, 3]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 0], [3, 0, 2], [3, 2, 2], [1, 0]], "det": -2, "n_two_words": 10, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 0], [2], [1, 3, 2], [1, 0]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 2], [2], [1, 3], [3, 0, 0]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[1], [0, 1, 2], [3], [1, 1, 0]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 3, 2], [0], [3, 2], [1, 3, 2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 2, 0], [0, 2], [0], [1]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [0], [1, 2], [2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 3], [2, 1, 2], [1, 2, 0], [2]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[3, 1], [2], [2, 0, 3], [3, 1, 0]], "det": -1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2], [3, 0, 1], [1, 2], [0, 1]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[0, 3, 1], [3, 2], [1], [0]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 2], [3], [0], [3, 0, 1]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[3], [2, 3, 1], [1, 0, 3], [3, 1]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2], [1, 0], [3, 2, 0], [1]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 3], [2], [2, 0, 3], [3, 1]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1, 0], [2, 1], [3, 1], [0]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3, 0, 1], [2, 1, 0], [0, 1], [3, 1, 2]], "det": -1, "n_two_words": 11, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 0, 3], [3, 0, 0], [1, 2, 0], [3, 0]], "det": 1, "n_two_words": 10, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3], [1, 3, 2], [2, 0, 3], [0, 1, 3]], "det": -2, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[3, 0], [2, 3, 3], [0, 3, 3], [3, 1]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 1, 0], [2], [0, 2, 3], [2, 1]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[3], [3, 3, 0], [2, 2, 1], [0, 2]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[3, 0], [3, 0, 2], [2, 0], [0, 3, 1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 0, 0], [3, 2], [1, 3, 0], [3, 0]], "det": -2, "n_two_words": 9, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 1], [2, 2, 1], [3, 1, 0], [1, 2]], "det": 1, "n_two_words": 10, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[0, 1], [3, 2, 0], [3], [1, 0, 0]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[0, 1], [0, 2], [0, 3], [0, 1, 3]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 1], [3], [0, 3], [2, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [3, 1, 1], [0, 1], [2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2], [3, 1], [2, 0, 1], [0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 3], [2, 0, 2], [0, 2], [0, 2, 1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 1, 3], [2], [0, 2], [2, 1, 0]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 2, 0], [0, 3], [0], [1]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2, 1, 3], [3, 2], [0, 1], [3, 3, 2]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[2, 3], [1, 2], [2, 2, 3], [0, 2, 1]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2, 0, 0], [0], [3, 1, 0], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2], [0, 0], [0, 2, 3], [3, 1, 3]], "det": -2, "n_two_words": 11, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 0, 2], [3], [3, 0], [1, 3, 0]], "det": 1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2], [0, 3, 1], [1], [1, 0]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1, 0], [1, 3], [3, 0, 1], [3, 1, 2]], "det": -1, "n_two_words": 10, "er_edges": 7, "er_vertices": 6, "components": 1, "b1": 2, "perm_cycles": [1, 3, 3]}
+{"images": [[3], [1, 0], [3, 1], [2, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 0], [3, 1, 0], [3, 1], [1, 0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 2], [3], [1, 2], [3, 0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 1], [2], [0, 3, 1], [0, 3]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[1], [3, 1, 1], [1, 3, 0], [0, 2]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [3, 2], [0], [3, 3, 1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 2], [1, 3, 0], [3, 1, 2], [1, 0]], "det": -1, "n_two_words": 9, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1], [2, 3, 3], [3, 1, 2], [3, 0]], "det": 1, "n_two_words": 9, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[3, 2], [0], [2, 3, 2], [1, 0]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[2], [3], [1, 3], [1, 3, 0]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2], [3, 2], [3, 1, 2], [2, 2, 0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 3, 2], [2, 0, 2], [1, 2, 1], [1, 1]], "det": 2, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[1, 2], [3], [0], [1, 3, 0]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 0], [0, 1, 2], [3, 2, 1], [0]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[3], [3, 2], [3, 0], [3, 1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[1], [1, 2], [1, 3, 2], [3, 0]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2, 2, 0], [2], [0, 2, 3], [1, 0, 3]], "det": 1, "n_two_words": 11, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2], [2, 0], [2, 1, 3], [3, 0]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2, 1], [2, 1, 3], [1, 0, 3], [0]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[0, 3], [3, 1, 0], [0, 1, 2], [1, 2]], "det": 1, "n_two_words": 11, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 1], [1, 3, 2], [0, 3], [2, 3]], "det": -1, "n_two_words": 12, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2], [0, 1, 3], [1, 3], [1, 0]], "det": -1, "n_two_words": 8, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [3, 3]}
+{"images": [[2, 3], [1, 0], [2, 3, 0], [2, 1]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[3, 3, 0], [0], [1, 2], [2, 3, 0]], "det": -2, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[0, 2], [2], [1, 3], [3, 0, 0]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[3, 2, 0], [2], [2, 3], [0, 3, 1]], "det": 1, "n_two_words": 12, "er_edges": 11, "er_vertices": 7, "components": 1, "b1": 5, "perm_cycles": [2, 3, 6]}
+{"images": [[1, 0], [2, 3, 2], [3, 0], [2, 3]], "det": 1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 2, 1], [2, 1], [2, 3], [1, 0]], "det": -1, "n_two_words": 9, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 3, 0], [0], [2, 3, 1], [0, 0, 3]], "det": 1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 1, 0], [1, 0, 2], [3, 1], [1, 1, 3]], "det": 1, "n_two_words": 9, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[0, 1, 2], [0, 2], [3], [0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 2, 1], [0, 2, 1], [2, 3, 1], [2]], "det": 1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 1], [1, 2, 1], [1, 3], [3, 0]], "det": -2, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2], [0], [2, 3], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 0, 3], [2, 0], [0], [3, 1, 0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[1, 3], [3], [0], [1, 3, 2]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2, 0], [2], [1, 3, 3], [3, 0]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2], [0, 1, 3], [3, 3, 1], [2, 3]], "det": 1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 2, 0], [2], [2, 0], [3, 1, 0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[0, 2, 1], [2, 3], [0, 3, 2], [2]], "det": -1, "n_two_words": 10, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3], [1, 0], [0, 3], [1, 2, 0]], "det": 1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 2], [1, 3], [1, 1, 0], [2]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 3], [0, 2, 3], [3], [2, 1]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[0, 3, 1], [2], [3], [3, 0, 3]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 0], [2, 0, 1], [1], [2, 1]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 2], [3, 2, 0], [1, 2, 2], [1]], "det": 2, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1], [0, 1, 2], [3, 2, 0], [0, 1]], "det": -1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[3, 0, 2], [2, 2, 3], [2, 0, 1], [2, 3]], "det": -1, "n_two_words": 10, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 2, 3], [0, 2], [1], [1, 2]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1], [1, 3], [0], [2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3], [0], [2, 1, 2], [2, 3]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1, 2, 3], [3], [1, 1, 2], [0, 3, 3]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[3, 0, 3], [0, 0, 2], [1, 1, 3], [1, 3]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 3, 2], [0, 0, 1], [1, 0], [3, 2]], "det": 1, "n_two_words": 12, "er_edges": 11, "er_vertices": 7, "components": 1, "b1": 5, "perm_cycles": [2, 3, 6]}
+{"images": [[1], [0, 3], [1, 2], [2, 3]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1], [3, 1], [3, 0, 3], [3, 3, 2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2], [1, 3, 0], [2, 1, 0], [0]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 3, 3], [1, 0, 3], [0, 3], [2, 0, 3]], "det": 2, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 3, 2], [0], [0, 2], [1]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 2], [3], [1], [3, 1, 0]], "det": -1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2], [1, 0, 1], [3], [1]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3], [2, 1, 3], [3, 3, 0], [1, 0, 3]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 1], [0], [3, 1, 2], [1, 3]], "det": -1, "n_two_words": 16, "er_edges": 16, "er_vertices": 8, "components": 1, "b1": 9, "perm_cycles": [4, 4, 4, 4]}
+{"images": [[3, 1], [1, 1, 2], [0, 3], [1, 0, 3]], "det": -1, "n_two_words": 9, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1], [1, 2], [1, 0, 3], [1, 3]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3], [2], [0, 2, 1], [1, 3, 2]], "det": -1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[0, 2], [2], [3, 0, 2], [2, 1]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 1, 1], [1, 0, 3], [0], [3, 2]], "det": -2, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[1, 0], [3, 1], [3, 3], [2, 0, 3]], "det": -2, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2], [0, 2], [3, 2, 0], [3, 2, 1]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 1], [3, 1, 2], [2, 2, 1], [0, 2, 3]], "det": 1, "n_two_words": 12, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3], [2], [3, 1], [1, 3, 0]], "det": 1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [6, 6]}
+{"images": [[2, 1, 0], [1, 3], [0], [2, 0]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3], [2, 0, 1], [1, 0], [1]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 0, 3], [2], [2, 0, 1], [1, 2]], "det": -1, "n_two_words": 10, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 3, 0], [1, 3, 3], [0, 1], [1, 2]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[2], [0], [0, 3, 2], [0, 0, 1]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3], [2], [2, 0, 3], [2, 1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 1], [3, 2], [3], [1, 0, 3]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 0], [1, 2, 0], [3], [1]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 0], [2, 3], [0], [3, 0, 1]], "det": 1, "n_two_words": 11, "er_edges": 10, "er_vertices": 7, "components": 1, "b1": 4, "perm_cycles": [1, 3, 6]}
+{"images": [[2], [0], [3, 2], [1, 2, 0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2], [2, 0, 3], [3, 2, 2], [3, 0, 1]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 1], [1, 2, 3], [2, 3], [3, 0, 2]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[0, 1, 3], [2], [0, 2, 1], [1]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 0, 0], [2, 1, 0], [0, 0, 3], [2]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[0, 1, 2], [1, 0, 3], [2, 0], [2]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2], [1, 2, 3], [3, 0], [0, 3, 1]], "det": 1, "n_two_words": 14, "er_edges": 14, "er_vertices": 8, "components": 1, "b1": 7, "perm_cycles": [2, 6, 6]}
+{"images": [[1], [3, 2, 1], [3, 2, 0], [1, 2, 0]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 3], [3, 2, 1], [0], [1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3], [2, 3, 0], [3, 0], [1, 3, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2], [1, 0], [3, 0, 1], [3, 1]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[3], [1, 0, 2], [1], [3, 1, 2]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 3, 0], [2, 2, 0], [3, 2, 1], [2, 1]], "det": 1, "n_two_words": 10, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 1], [1, 1, 3], [1], [2, 0, 1]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 0], [1, 2, 0], [3, 1, 0], [1, 2, 1]], "det": 2, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 3, 0], [0, 3], [1], [2, 1, 0]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 1], [0, 2, 2], [0, 3], [3, 0, 2]], "det": 1, "n_two_words": 10, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3], [2, 1, 3], [1, 0], [3, 2]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3, 2, 2], [0], [3, 2], [1, 0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 3], [1, 2, 3], [0], [1, 3, 0]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 0, 2], [3, 0], [1, 2], [2, 1, 2]], "det": 1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 3, 3], [1, 0], [1], [0, 1, 3]], "det": 1, "n_two_words": 10, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 0, 2], [1, 3, 3], [0, 1], [2, 0]], "det": 1, "n_two_words": 16, "er_edges": 16, "er_vertices": 8, "components": 1, "b1": 9, "perm_cycles": [4, 12]}
+{"images": [[3, 2], [0], [2, 1, 2], [2]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 1, 3], [2, 0], [2, 2, 3], [1]], "det": 1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [2, 0], [2, 2, 1], [2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 1], [3, 2], [1, 2, 3], [0, 3]], "det": -1, "n_two_words": 12, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 0, 3], [2, 2], [1, 0, 2], [3, 1]], "det": -2, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 1, 2], [2, 0], [2, 1, 3], [0, 1]], "det": -1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 1], [3, 0], [2, 1, 2], [0]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 2, 2], [3, 1, 1], [1], [1, 0]], "det": -2, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2], [2, 1, 2], [0, 3], [3, 3, 1]], "det": -2, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[0, 3], [1, 2], [0, 1, 3], [1, 3, 2]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 0], [0], [0, 3], [1, 3]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 1], [3, 2], [3], [0, 0, 1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 1], [2], [2, 3], [1, 1, 0]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 0], [3, 0, 0], [0, 1], [0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 0, 3], [0, 2], [0], [3, 0]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[3], [1, 2], [3, 2], [1, 0]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 3], [0, 2], [1, 3], [2, 3, 1]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [3, 3]}
+{"images": [[3], [1, 1, 2], [1, 3], [1, 0]], "det": 1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 1], [2, 1], [2, 2, 0], [2, 0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 3], [0, 1], [1, 2], [1, 1, 0]], "det": 1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[0, 2, 3], [1, 2], [0], [1, 3, 2]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2, 0], [3], [2, 1, 0], [0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 1], [3], [0, 3], [2, 3, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [1, 0, 1], [1], [1, 2]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 1, 3], [2], [1, 0], [3, 1, 2]], "det": -1, "n_two_words": 15, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[3, 2], [3], [2, 1], [3, 0]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3, 1], [0, 1], [1], [2, 3]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2], [1, 3], [1], [1, 0, 2]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 2], [0, 0, 3], [2, 1, 2], [1]], "det": -2, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[0, 1], [2], [3, 1, 2], [3, 0, 2]], "det": -2, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3], [3, 0, 2], [0, 1, 0], [3, 2]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 3, 1], [0, 3], [0], [2, 3]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 0], [0, 2], [0, 3, 2], [1, 0, 2]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[3], [0, 3], [1, 2, 2], [2]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[1, 0, 2], [3], [0, 2], [2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 1], [3, 1], [1, 0, 3], [3, 2]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[3], [0, 1, 1], [2, 1], [2]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3], [0, 2, 2], [2, 2, 1], [1, 2]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[2, 3], [1, 0, 2], [3, 2, 2], [2, 1]], "det": 1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 2, 1], [0, 3], [0, 2], [2, 3]], "det": -2, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 1], [2], [0, 1], [3, 0, 1]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 1, 1], [1, 0, 1], [3], [1, 2, 1]], "det": 2, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 0, 1], [2], [1, 0, 3], [1, 0]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[0, 2], [3, 2], [0, 1], [2]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 1, 2], [3, 1], [1, 2, 0], [2, 1, 3]], "det": -2, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[1], [2, 1], [3], [0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 0, 3], [0], [1], [2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 3, 1], [0], [1], [2, 1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1], [2, 3, 3], [1, 3], [3, 0]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3], [0, 3], [1, 3, 2], [3, 2, 0]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 2, 3], [2], [0, 2, 2], [3, 2]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[3], [2, 1], [1, 0, 3], [3, 1]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3], [2], [0, 3, 3], [0, 1, 3]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 3, 0], [2], [3, 0], [3, 2]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 2], [3, 1], [3, 1, 1], [3, 2, 0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 1], [3], [0], [0, 3, 1]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 3, 0], [0, 0, 1], [1], [3, 2]], "det": -2, "n_two_words": 8, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[2, 3], [2, 3, 0], [3], [1, 3, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 2, 1], [2], [3, 2], [0, 3, 1]], "det": -1, "n_two_words": 10, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 1], [1, 0, 3], [2, 0], [2, 3, 0]], "det": -2, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1, 3, 0], [0, 3], [3, 1, 1], [2, 3]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [2, 2, 2]}
+{"images": [[2, 3], [3], [1, 2], [2, 2, 0]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2], [3, 1, 2], [2, 1], [0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 3], [3, 3, 2], [3], [0, 3, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [1, 3, 2], [0], [1, 0, 2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [2, 1, 0], [1, 3, 2], [1, 0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[3, 2], [1, 3], [1], [0, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 2, 0], [0, 2], [3, 2, 1], [2, 3, 0]], "det": 1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2], [0, 2], [1, 2, 3], [1, 2]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2, 0], [0, 0, 2], [0, 3], [1, 3]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 2], [2, 3], [3, 2, 0], [2, 0, 1]], "det": 1, "n_two_words": 9, "er_edges": 8, "er_vertices": 7, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2, 2]}
+{"images": [[3, 2], [1, 0, 2], [1, 2, 3], [2, 1]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2], [3, 0], [3, 2, 2], [1, 3, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 3, 2], [3, 1], [0, 2], [1, 2, 2]], "det": 1, "n_two_words": 11, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1], [3, 3, 2], [0, 1], [2, 3]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[0, 1], [1, 2], [3, 0, 1], [2, 1, 1]], "det": 1, "n_two_words": 8, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [2, 2, 2]}
+{"images": [[0, 3, 1], [2], [2, 3], [0, 3, 2]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2], [3], [2, 1, 0], [2, 1]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[1, 0, 3], [3, 1], [1, 0], [2, 0, 1]], "det": 1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [0], [3, 3, 2], [2, 1, 3]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 1, 1], [3, 2], [2, 0], [3, 1, 2]], "det": 1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1, 3], [3, 3, 1], [0, 3, 2], [2]], "det": -1, "n_two_words": 12, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[1], [1, 0, 2], [1, 3, 0], [3, 1]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[0, 2, 2], [0, 2], [2, 3, 2], [2, 1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[0, 2, 3], [2], [2, 0, 0], [1, 3]], "det": -2, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1, 2], [2, 1, 1], [3, 0], [0]], "det": 1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[3, 0], [0, 2], [3, 1], [3, 0, 1]], "det": 1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 1, 3], [3, 3], [3, 3, 0], [3, 2, 3]], "det": -2, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 2], [0, 3], [2, 1], [1]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1], [1, 3], [1, 2], [1, 0, 2]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 1, 2], [3], [0], [0, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 1, 0], [1, 2, 3], [1], [0, 3, 1]], "det": -2, "n_two_words": 11, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 1, 0], [0], [1], [2, 3]], "det": -1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3, 2], [3], [2, 2, 0], [1, 2]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[2, 1, 0], [3], [0], [2, 0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3], [0], [1], [3, 2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 0, 1], [1, 0, 3], [0], [2, 1]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 2], [3], [2, 0, 2], [1, 2]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 0], [2, 0, 3], [3, 2], [1]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[2, 3, 2], [0, 2], [1, 2, 3], [2, 3]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [1, 3, 1], [1, 2, 0], [1, 2]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 2], [3], [1], [1, 0, 3]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 2, 1], [1, 2, 0], [3], [3, 0]], "det": 1, "n_two_words": 13, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 2], [0, 1, 1], [1, 2, 3], [1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1], [2, 3], [3, 0], [0, 2, 3]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 1], [3, 2, 1], [3, 0, 1], [0]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 3, 1], [2, 0], [0], [1]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 0], [3, 0, 2], [1], [3, 0]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 2], [1, 0], [2, 3, 0], [2, 1]], "det": -2, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2], [2, 2, 1], [3, 0], [1, 3, 3]], "det": -2, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[3, 0], [2, 0, 1], [1, 2], [2]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2, 0], [3], [0, 1], [3, 0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 3], [1, 2], [2, 0, 2], [2]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1, 0, 3], [0, 1], [0], [2]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[2], [2, 3], [3, 3, 1], [0, 3]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 3], [1, 0, 0], [2, 0, 3], [2, 0, 1]], "det": 1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2], [1, 3, 1], [2, 1], [2, 1, 0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1], [0, 2], [2, 3, 0], [1, 0, 3]], "det": -1, "n_two_words": 13, "er_edges": 11, "er_vertices": 7, "components": 1, "b1": 5, "perm_cycles": [2, 3, 6]}
+{"images": [[3, 0, 1], [2], [0], [0, 3, 0]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[1, 0, 0], [0, 2, 2], [3, 0], [2]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[1], [2, 3], [2, 0, 3], [2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 0, 0], [2, 3], [3], [0]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 1, 0], [3], [1, 3], [0, 3, 2]], "det": 1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2, 1], [1, 0], [3], [0, 1, 1]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[1], [0, 3, 2], [1, 0], [3, 0]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[0, 2, 1], [2, 3], [0], [1]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 0], [2, 3, 0], [2, 3, 1], [2, 1]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 3], [0, 2], [1, 2], [1, 2, 2]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 3], [2], [1, 2, 0], [2, 1]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3], [2, 2, 1], [1, 2, 0], [2]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[1, 3], [2, 2, 3], [2, 3, 0], [0]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2], [1, 3, 2], [0, 1, 2], [0, 2, 2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1], [2], [3, 2], [0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3], [2, 0, 0], [0], [3, 0, 1]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [2, 1], [0], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 2, 3], [1, 2, 0], [1, 2], [2, 0, 2]], "det": -2, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1], [3], [1, 0, 3], [0, 2, 3]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [1, 2], [3], [0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 3], [2, 1, 3], [1, 2], [2, 2, 0]], "det": -1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2], [0], [0, 3, 2], [3, 1]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 3], [3, 2], [3], [0, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [1, 2, 1], [0, 3], [1, 3]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1], [2, 0], [2, 3, 0], [1, 1, 0]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 2], [2], [3, 0, 2], [0]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 1, 1], [3, 2], [1], [0, 2, 3]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[1], [2], [3], [0, 3]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 2, 3], [3, 3, 0], [2, 1, 3], [1, 2]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[3], [0, 1], [3, 0], [3, 2, 1]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3], [2, 1], [3, 1, 0], [1]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [0, 2], [2, 0, 2], [2, 1, 0]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 0, 1], [0], [1], [2, 1]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 2, 1], [2], [3, 2], [2, 0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 2], [2, 0, 3], [3], [3, 1, 3]], "det": -2, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2], [1, 3, 1], [2, 1], [0, 0, 1]], "det": -2, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2], [2, 0], [3, 2, 0], [1]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[0, 3], [0], [2, 3, 0], [2, 1]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[3], [1, 2, 1], [0, 1], [2, 1]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[3, 2], [1, 3, 0], [3], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[1], [2, 0, 2], [3, 2, 2], [2, 1]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 0], [3, 1, 2], [2, 3, 0], [1]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 0, 3], [0, 3], [1, 3, 2], [0, 3, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 3, 2], [2, 3, 2], [3, 2], [1, 1, 0]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 1, 0], [0], [3], [1, 2]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2, 1, 3], [2, 1], [3, 0, 2], [2]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 3], [0], [3, 0, 1], [3, 2]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[1, 0, 2], [3, 0, 1], [1, 3], [1]], "det": -1, "n_two_words": 10, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1], [0, 2, 3], [0, 3], [0, 3, 3]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1], [3, 1], [0, 1], [2, 1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 0], [3], [2, 0], [2, 1]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 0], [2], [3, 2], [0, 2]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2], [3, 0, 3], [1, 2], [2, 3, 1]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1], [3, 1, 2], [0], [2, 1]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [12]}
+{"images": [[1, 0], [1, 0, 2], [3, 1], [3, 0]], "det": -2, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[1, 0, 3], [2, 1], [3, 0], [1, 0]], "det": -1, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2, 0, 3], [2], [0, 2], [1, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2], [0], [1, 2, 3], [1, 2]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2], [2, 0], [3, 0], [0, 3, 1]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[1, 0, 2], [0], [1, 0, 3], [3, 0]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2, 3], [0], [1], [2, 3, 3]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 3], [2, 1], [0, 2], [0, 1, 2]], "det": -1, "n_two_words": 10, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 0], [1, 0, 2], [1, 0], [2, 3]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 3, 1], [3], [2, 0, 2], [1, 2, 3]], "det": -1, "n_two_words": 8, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[1, 3], [3], [3, 2], [2, 0]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[1, 2, 3], [2, 1], [0, 3], [2]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[0, 1, 3], [3, 3, 0], [0, 1], [2, 3, 1]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1, 2], [3, 2], [2, 3, 1], [2, 0, 1]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 0], [2], [0], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2], [3], [1, 3], [3, 2, 0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 0, 3], [0, 1, 3], [1], [0]], "det": -1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[0, 1], [2], [3], [0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 0, 1], [0, 3, 0], [0, 1], [0, 3]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[0, 1, 3], [0, 0, 2], [0], [0, 1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2], [2, 0, 2], [3], [1, 2, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [0], [1, 2], [3, 3, 2]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 0, 2], [3], [0, 3], [3, 0, 1]], "det": 1, "n_two_words": 11, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 0, 0], [0, 2], [2, 3, 3], [0]], "det": -2, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 3, 0], [0], [0, 3], [3, 1]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 2], [2, 0, 1], [2, 2, 3], [0, 1, 0]], "det": -1, "n_two_words": 12, "er_edges": 11, "er_vertices": 7, "components": 1, "b1": 5, "perm_cycles": [2, 3, 6]}
+{"images": [[0, 2, 1], [1, 2], [0, 3], [3, 1, 0]], "det": 1, "n_two_words": 14, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[2, 0, 0], [0], [0, 2, 3], [1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 0], [2], [3], [0, 3, 1]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[1, 0], [2, 0], [3], [0, 3]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3, 0], [0], [3, 1, 0], [2, 3]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 2, 1], [3, 1, 0], [2, 3, 1], [1, 2]], "det": -1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 2, 2, 2]}
+{"images": [[0, 2, 3], [3, 0, 1], [1], [0]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 0, 3], [3], [0], [2, 0]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 0], [3, 0], [1, 0], [3, 0, 0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1], [2, 1], [1, 3], [0, 1, 1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 3, 2], [2], [2, 0], [0, 2, 3]], "det": 1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 1], [3], [2, 1, 0], [2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 3], [0], [1, 3, 0], [1, 2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [0, 2, 1], [3, 0], [0, 3, 0]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 1, 1], [3, 1, 1], [0], [0, 3]], "det": -2, "n_two_words": 10, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 0, 1], [3, 3, 1], [3, 1], [1, 0]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 0], [3, 0], [3, 1], [3, 2, 1]], "det": 1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2], [3, 0], [3, 2, 1], [3, 0, 3]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[2, 1], [3], [0, 2, 1], [3, 2, 3]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 1], [1, 2, 0], [3], [0]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2], [3], [1, 2], [0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 2], [3, 0], [1], [1, 1, 2]], "det": 1, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3, 1], [1, 0, 1], [1], [2, 1, 2]], "det": -2, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 3], [2], [0], [1, 3, 3]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 3, 2], [0], [3], [1, 3, 2]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 0, 1], [0, 2], [3, 1, 0], [1]], "det": 2, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 2, 1], [3], [2, 2, 0], [2, 0]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2], [1, 3], [1, 0, 2], [2, 3]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2, 0], [1, 2, 0], [1, 3], [0]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 0], [0, 3, 1], [1], [2, 1]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 3], [1, 0, 2], [2, 1, 1], [0]], "det": 1, "n_two_words": 8, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [2, 2, 2]}
+{"images": [[3], [1, 0, 1], [1], [2]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 1, 2], [0, 1], [1], [2, 1]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[1, 2], [2], [2, 3, 2], [2, 0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3], [0], [1], [3, 2, 3]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 0, 1], [0, 2], [3], [1, 2]], "det": 1, "n_two_words": 13, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3], [2, 1, 3], [0, 3, 1], [2, 3]], "det": 1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [2], [2, 0], [3, 3, 1]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[0, 0, 3], [0, 2, 0], [2, 1], [2]], "det": -2, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2], [3, 2, 0], [1, 2, 2], [0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 0, 1], [2], [3], [0, 3, 2]], "det": -1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2, 1], [2], [2, 0, 3], [2, 3, 1]], "det": 1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2], [0, 2, 3], [3, 2], [1, 2, 3]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2], [2, 0], [3, 2, 1], [1]], "det": -1, "n_two_words": 8, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [3, 3]}
+{"images": [[3, 0], [0], [1, 3, 2], [3, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 2], [0], [3, 2, 2], [2, 0, 1]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 1, 3], [1, 0], [0, 2, 1], [1]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1, 2], [1, 1, 2], [3, 0, 1], [2, 0, 0]], "det": 2, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[0, 2], [1, 0, 3], [3], [1, 3, 1]], "det": -2, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 2], [0], [2, 3], [1, 0, 2]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 2, 3], [3, 2], [3], [0, 3, 1]], "det": 1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 1, 2], [0, 3, 0], [3, 1], [1, 0, 3]], "det": -1, "n_two_words": 7, "er_edges": 6, "er_vertices": 7, "components": 1, "b1": 0, "perm_cycles": [3, 3]}
+{"images": [[1], [3, 2], [0, 1, 3], [3, 2, 3]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 1], [2], [3], [0, 2, 3]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 1, 3], [2, 1], [0, 1, 2], [0, 0, 2]], "det": 1, "n_two_words": 13, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1, 0, 2], [3, 0], [0, 2], [0]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [3, 0, 2], [0, 1], [2, 3]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1, 2, 1], [3, 1, 0], [1, 2], [0, 1]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3, 1], [3], [2, 1], [3, 0, 2]], "det": 1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[3], [2, 1], [3, 0, 3], [3, 0, 1]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 1], [0], [0, 2, 1], [2, 2, 1]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2, 0], [2], [1, 3, 2], [2, 0, 1]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 0, 1], [0, 2], [0, 3], [0, 0, 3]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 1, 2], [3], [1], [0, 1, 3]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [2], [1, 3], [1, 0, 3]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 0, 0], [3, 1, 2], [1, 3, 0], [0]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [2, 1, 2], [2, 0, 1], [1, 2, 3]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 0, 2], [0], [3], [1, 0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 1, 0], [0, 2], [0], [3, 0, 2]], "det": 1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 1, 2], [1, 3], [0], [3, 0]], "det": -1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2, 0], [3, 0, 3], [1, 3], [2, 3, 1]], "det": 2, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[0, 2], [3], [0, 1, 2], [0, 2, 0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3], [3, 2], [1], [0, 2, 3]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[3], [3, 0], [1], [2, 0, 3]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 0], [0], [0, 1, 3], [3, 2]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 1], [2, 0, 1], [2, 1], [1, 3, 2]], "det": -1, "n_two_words": 9, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 0, 1], [2, 1, 3], [0, 3], [3, 2]], "det": -2, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2], [1, 0], [3, 0, 2], [1]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2], [1, 1, 3], [1, 1, 0], [3, 2]], "det": -2, "n_two_words": 10, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 3], [1, 1, 2], [0, 2, 1], [0]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[3, 2, 1], [2], [3, 2], [0, 3]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 3, 3], [2, 3], [0], [1, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 0, 2], [3], [1, 1], [0, 3, 1]], "det": -2, "n_two_words": 11, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 3], [1, 0, 1], [1, 0, 3], [1]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2], [2, 1], [3, 0], [2, 1, 0]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[2, 0, 1], [3, 1], [3, 0, 0], [3, 0]], "det": -1, "n_two_words": 9, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 2, 0], [2], [0, 1, 3], [1, 0]], "det": 2, "n_two_words": 9, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 3, 2], [0], [0, 1], [2]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 0], [1, 2, 3], [1], [0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 1, 0], [2, 1, 1], [0], [1, 0, 1]], "det": -2, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3, 1, 0], [2, 3, 1], [1, 3], [1, 1, 0]], "det": 2, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2], [2, 3, 0], [3], [1, 0, 3]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [3, 1], [1, 1, 0], [1, 1, 2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1], [2, 0, 1], [3, 2], [1, 0]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[0, 3], [0, 2], [0, 2, 1], [0, 2, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3], [3, 2, 1], [1], [0, 2]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1], [3, 2], [1, 3, 0], [3, 3, 0]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 2, 2], [2], [0, 2, 2], [1, 3]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[0, 3], [1, 3, 0], [3, 1, 1], [2, 1]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[3, 1, 0], [2], [3], [3, 0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 1], [3], [1, 3], [0, 1, 2]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 0, 2], [3], [2, 1, 3], [0, 1]], "det": -1, "n_two_words": 13, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[3, 0, 0], [1, 0], [1], [2]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3], [0, 1], [1, 2], [2, 1, 0]], "det": -1, "n_two_words": 12, "er_edges": 12, "er_vertices": 8, "components": 1, "b1": 5, "perm_cycles": [4, 4, 4]}
+{"images": [[2, 1, 0], [0, 3, 1], [3], [1, 3]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[3], [1, 1, 0], [1], [2, 3]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 0], [3, 0], [3, 3, 1], [2]], "det": 1, "n_two_words": 10, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 0], [0, 1, 3], [0, 1], [2]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[1], [2, 1], [2, 3], [0, 1, 2]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1], [3, 2, 3], [3, 0], [2, 3]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3], [0], [2, 1], [2, 3, 3]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 1, 3], [2, 1, 3], [3, 1], [1, 1, 0]], "det": 2, "n_two_words": 13, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[3, 2, 1], [3, 1], [3, 3], [0, 3, 3]], "det": 2, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 0, 2], [1, 0], [3], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 3, 3], [1, 2], [2, 0, 3], [3, 2, 1]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 3, 3]}
+{"images": [[1, 1, 0], [3, 1, 0], [1], [2, 1]], "det": 1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [1, 2], [0, 1, 2], [2]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[2, 3], [0], [1, 2, 0], [2]], "det": -1, "n_two_words": 8, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [3, 3]}
+{"images": [[2, 0, 1], [3], [0], [0, 1]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 1, 3], [2, 3], [3], [0, 3]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 2, 1], [0, 1, 3], [3, 2], [1, 0]], "det": 2, "n_two_words": 13, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[3, 0, 3], [3], [2, 0], [1, 2]], "det": -1, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3], [2, 0], [0], [3, 3, 1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 2, 1], [3, 0, 0], [3, 2], [0, 3]], "det": -1, "n_two_words": 11, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 1, 2]}
+{"images": [[1, 1, 2], [3, 2, 0], [0, 2, 1], [2, 0]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [12]}
+{"images": [[1], [3, 2], [0, 3, 1], [0, 3, 0]], "det": -1, "n_two_words": 12, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[1, 0, 2], [0], [3, 0, 2], [2, 0]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[3, 2], [1, 2], [0, 2, 3], [2, 1, 3]], "det": -1, "n_two_words": 11, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[3], [0, 3, 3], [1], [2, 0, 3]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 1], [0, 3, 2], [1, 2, 0], [0, 3]], "det": 1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 3, 3]}
+{"images": [[0, 2], [3, 2, 2], [2, 3], [0, 3, 1]], "det": 1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1, 0], [2, 3], [0, 3, 2], [2]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[3, 2], [2], [1, 2, 3], [0]], "det": 1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [6, 6]}
+{"images": [[0, 3], [2, 0], [0, 2, 3], [1, 0]], "det": 1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 3], [1, 2], [2, 0, 2], [2]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[0, 2, 3], [0], [0, 3], [1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 1], [0], [2, 3, 1], [1, 0]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 0], [2, 3], [3, 0, 3], [3, 1, 0]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 0], [0], [2, 3, 2], [1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[0, 1], [3], [1, 3], [1, 2, 0]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2], [2, 3, 0], [3, 2], [0, 1, 0]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 1], [2], [3, 0, 2], [0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 1], [2, 1, 2], [3], [0, 2, 1]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1, 3], [2, 1], [2, 0, 2], [2, 0, 1]], "det": -2, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2], [3, 2, 1], [0, 3], [1]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[0, 1], [2, 1], [2, 1, 3], [0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[0, 3], [0, 3, 1], [0], [1, 2, 1]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 2, 2], [3], [3, 2], [1, 0]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 2, 1], [2], [2, 0, 3], [2, 1]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[0, 0, 3], [3, 0], [1, 0], [2, 1]], "det": 1, "n_two_words": 7, "er_edges": 6, "er_vertices": 7, "components": 1, "b1": 0, "perm_cycles": [3, 3]}
+{"images": [[2, 0], [3], [3, 0], [0, 1]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[0, 3], [1, 0, 3], [3, 2, 1], [2]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[0, 3, 1], [2, 3, 0], [0, 2], [0, 0]], "det": 2, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 2, 3], [3, 0], [3, 2], [2, 3, 1]], "det": -1, "n_two_words": 12, "er_edges": 11, "er_vertices": 7, "components": 1, "b1": 5, "perm_cycles": [2, 3, 6]}
+{"images": [[3, 0], [0], [3, 2, 1], [2]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 2], [0], [3], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 1], [3, 2, 1], [0], [0, 3]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 3], [3], [2, 1], [2, 2, 0]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 2, 3], [1, 2], [0, 1, 2], [2]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 2, 1], [1, 0, 3], [0], [1, 0]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2], [0], [0, 3, 1], [2, 3]], "det": 1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[2], [0, 1], [0, 3, 2], [1]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1], [3, 1], [2, 3, 0], [3, 2, 1]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1], [3, 1, 1], [0], [2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 0, 2], [3], [0, 1, 2], [2, 0, 3]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 1, 2], [0], [3, 1], [2]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1, 0], [3, 1, 0], [1], [2]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 2, 1], [0], [3], [3, 1]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 0, 0], [1, 0, 2], [1], [2, 2]], "det": -2, "n_two_words": 11, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 0], [2], [3, 2], [0, 2]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[1], [2, 3], [2, 1], [1, 0]], "det": 1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[0, 0, 3], [0], [1, 3, 0], [2, 0, 3]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2], [0, 2], [1, 2, 3], [1]], "det": -1, "n_two_words": 8, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [3, 3]}
+{"images": [[2, 0], [1, 0], [0, 3], [1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 2], [0], [3, 1], [2, 0, 3]], "det": 1, "n_two_words": 11, "er_edges": 10, "er_vertices": 7, "components": 1, "b1": 4, "perm_cycles": [1, 3, 6]}
+{"images": [[3, 1], [3, 1, 0], [1, 2, 3], [1, 1, 2]], "det": 2, "n_two_words": 8, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [2, 2, 2]}
+{"images": [[3, 2, 1], [2, 3], [0, 0], [2, 3, 3]], "det": 2, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [2], [2, 2, 0], [1, 3]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 3], [0, 2], [3, 0], [1, 3, 3]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[1, 2, 0], [2, 0], [0, 3], [3, 1]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[3, 1], [2], [3], [0, 1, 3]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 0, 2], [2, 0, 1], [0, 0, 1], [0, 2]], "det": 2, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2], [1, 0], [3, 2, 1], [2, 1]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2, 3], [0], [0, 2], [0, 1]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[3, 1], [2, 3, 1], [0], [0, 0, 3]], "det": 1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 2], [3], [2, 0, 2], [2]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 1], [3, 1, 3], [3, 0], [2, 0, 3]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 3], [1, 2], [1, 0], [2]], "det": 1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 0, 1], [3, 2], [0, 3], [0]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[1, 3, 0], [0, 3], [1, 3, 1], [3, 2, 0]], "det": 1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 0, 3], [0], [2, 1, 3], [3, 0]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 3, 3], [0, 1], [2, 3, 1], [1, 3, 0]], "det": 1, "n_two_words": 12, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 2], [2, 0, 0], [0, 3, 2], [1, 3, 2]], "det": -1, "n_two_words": 9, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 2], [0], [3, 0], [1, 3]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 2, 0], [2, 1], [3], [0, 2, 0]], "det": -1, "n_two_words": 12, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 1, 0], [2, 3], [2, 0, 3], [2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 0, 1], [2, 1, 0], [0, 1], [1, 2]], "det": -1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[0, 3, 1], [2, 3], [0, 3], [0]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 1], [0, 3, 2], [2, 0, 2], [0]], "det": 2, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3], [0, 3, 1], [1], [2, 1]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[0, 1], [1, 1, 2], [1, 3], [0]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[1, 3], [3], [3, 0, 2], [2]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 1, 0], [0, 1, 2], [0, 1], [1]], "det": -1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[1, 3], [1, 2, 0], [1, 3, 2], [1, 2]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3], [0, 1, 2], [2, 1], [3, 2]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 0, 2], [0, 1], [0, 3, 0], [0]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[1, 2, 3], [3], [2, 0], [2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1, 1, 0], [2, 1], [3, 0], [2]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 2, 3], [3, 3, 0], [1], [3, 0]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 2, 3], [2, 2, 0], [3, 2, 0], [3, 1]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3], [1, 0, 2], [3, 1, 0], [3, 1]], "det": -1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[2, 3], [1, 3, 0], [0], [1]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[0, 3], [3, 0, 2], [0], [3, 2, 1]], "det": -1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [4, 4]}
+{"images": [[3, 1], [0], [3, 0], [2, 3]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[1, 3, 0], [1, 0], [1, 2], [2, 0]], "det": -2, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1, 3], [3], [3, 0, 2], [3, 2]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 1, 0], [3, 0], [0], [2, 3]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2, 3], [0], [3, 0, 1], [3, 2, 1]], "det": -1, "n_two_words": 11, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1, 0, 2], [1, 2, 3], [3, 0, 1], [0]], "det": -1, "n_two_words": 11, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[1, 2, 2], [1, 2], [0, 3, 2], [0, 2]], "det": 1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[2, 3], [0, 3], [0, 3, 2], [1, 0, 3]], "det": 1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 1], [1, 3, 0], [0, 2], [1, 2]], "det": -2, "n_two_words": 9, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[1, 0, 0], [3, 2], [0, 2], [1]], "det": -2, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 2], [2, 0], [3, 2, 0], [3, 1, 0]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2], [0, 1], [3, 1, 2], [2, 0]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2], [1, 0], [3, 1, 2], [2, 0]], "det": 1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 0, 3], [2], [3, 2], [3, 0, 2]], "det": -1, "n_two_words": 9, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 0, 3], [1, 2], [1, 0], [1]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[1, 0], [3, 2], [1], [0, 3]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[2, 3, 1], [0, 2], [3], [1, 3]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 2], [0], [0, 1], [0, 3]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[2, 0], [3], [1], [0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 2], [2, 3, 1], [1, 2, 0], [1, 2]], "det": 1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2, 0], [0, 1], [1, 3, 1], [2]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2, 1, 0], [3, 2, 2], [0], [2]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 0, 2], [0, 2, 3], [2, 1, 2], [2, 1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3], [3, 2, 0], [3, 1, 2], [1, 3]], "det": 1, "n_two_words": 10, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 3], [3, 1, 0], [0], [1]], "det": 1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [6, 6]}
+{"images": [[3, 2], [1, 1, 0], [1, 1, 2], [0, 1]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[2, 1], [2, 2, 3], [0, 2, 2], [2]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 0], [1, 2], [0, 1, 3], [1, 3, 2]], "det": -1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1, 2, 3], [0], [1, 0], [3, 1]], "det": 1, "n_two_words": 11, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[0, 1], [1, 2, 3], [1, 1, 0], [0, 3]], "det": -1, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2], [0, 1, 1], [1, 3, 1], [2, 1]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1, 0], [1, 0, 3], [0], [2, 3, 1]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3], [1, 3], [0], [2, 3, 1]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[3, 1, 0], [2, 3, 1], [3, 1], [3, 0, 2]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3], [3, 3, 0], [1, 0, 2], [0, 2]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[0, 3], [2, 0], [0], [0, 2, 1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 1, 2], [2], [2, 0, 2], [1, 1]], "det": -2, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 3], [2, 1], [2, 0], [2, 2, 0]], "det": 1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 2], [2, 2], [2, 3, 2], [2, 0, 1]], "det": 2, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2], [3, 1, 1], [0, 1], [2, 3]], "det": -2, "n_two_words": 10, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[2, 3], [2, 2, 1], [2, 2, 0], [1, 2]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [1, 3]}
+{"images": [[3], [3, 1, 2], [1], [2, 0]], "det": 1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [6, 6]}
+{"images": [[3, 2], [1, 3], [2, 3, 1], [0]], "det": -1, "n_two_words": 16, "er_edges": 16, "er_vertices": 8, "components": 1, "b1": 9, "perm_cycles": [4, 4, 4, 4]}
+{"images": [[0, 2], [0, 3, 2], [3, 2], [1, 3]], "det": -1, "n_two_words": 10, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[1, 3], [3, 3, 2], [0, 2], [0, 1, 3]], "det": 2, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[0, 1], [1, 0, 3], [2, 0], [2]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[2], [1, 1, 3], [3, 1], [0, 1]], "det": 1, "n_two_words": 10, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[1, 2, 2], [3, 1], [1, 2], [0, 1, 2]], "det": -1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[3, 0, 1], [2], [0], [2, 1, 0]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [3, 3]}
+{"images": [[3, 2], [2], [3, 2, 0], [1, 3, 0]], "det": -1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2], [3, 0], [0, 1, 2], [0]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 1], [3, 2, 2], [2, 0], [2]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1, 0, 2], [3], [0, 1], [0]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [12]}
+{"images": [[2], [1, 3], [0, 1], [0, 2, 2]], "det": -1, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[3, 0, 3], [3], [3, 0, 1], [3, 2, 1]], "det": 1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[3, 1, 0], [0, 2], [0, 3, 3], [3, 0]], "det": -1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[0, 2, 1], [1, 0, 0], [3], [1, 3]], "det": -2, "n_two_words": 8, "er_edges": 5, "er_vertices": 5, "components": 1, "b1": 1, "perm_cycles": [1, 2, 2]}
+{"images": [[3, 0, 2], [0, 3], [2, 3, 1], [3, 2]], "det": 1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1], [2, 1, 1], [3, 1], [0]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 2], [0, 2], [2, 0, 3], [1, 3, 2]], "det": -1, "n_two_words": 11, "er_edges": 8, "er_vertices": 6, "components": 1, "b1": 3, "perm_cycles": [2, 6]}
+{"images": [[0, 0, 3], [0, 2, 1], [1, 0], [1]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[3, 0, 3], [3], [1, 2, 0], [2, 0, 3]], "det": 1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1, 0, 2], [0, 1], [3, 0], [1, 3]], "det": -2, "n_two_words": 9, "er_edges": 6, "er_vertices": 6, "components": 1, "b1": 1, "perm_cycles": [2, 2, 2]}
+{"images": [[2, 1, 0], [3, 2, 0], [1, 0, 1], [2, 3]], "det": 2, "n_two_words": 12, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[2, 0], [0, 1, 2], [1, 3, 2], [0]], "det": 1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[1, 0, 3], [0, 0, 2], [2, 3], [1, 0]], "det": 2, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[2], [0, 2], [1, 3], [3, 3, 1]], "det": 1, "n_two_words": 10, "er_edges": 9, "er_vertices": 7, "components": 1, "b1": 3, "perm_cycles": [3, 3, 3]}
+{"images": [[2, 3], [0], [3], [1, 2, 3]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[2, 3, 2], [1, 0], [3, 1], [2]], "det": -1, "n_two_words": 12, "er_edges": 9, "er_vertices": 6, "components": 1, "b1": 4, "perm_cycles": [3, 6]}
+{"images": [[2], [0, 2, 3], [1, 3], [1, 0, 3]], "det": -1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[3, 0], [3, 1, 0], [0, 1], [2, 0, 1]], "det": 1, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2, 1], [1, 1, 2], [0, 3], [1, 0, 2]], "det": 1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [2, 2, 2]}
+{"images": [[1, 0], [3, 1, 2], [1, 0, 2], [1]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 2, 0], [0], [3, 1], [0, 3]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 3], [1, 2, 3], [0, 2, 3], [1]], "det": -1, "n_two_words": 7, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [2]}
+{"images": [[2, 0], [1, 0, 3], [3], [1, 3]], "det": -1, "n_two_words": 8, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[3, 0, 2], [3, 0], [3, 0, 1], [2, 2, 0]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[0, 2, 0], [0], [3, 3, 0], [3, 1]], "det": -2, "n_two_words": 9, "er_edges": 2, "er_vertices": 3, "components": 1, "b1": 0, "perm_cycles": [1, 1]}
+{"images": [[2], [3, 0, 2], [3, 1, 2], [0, 1, 3]], "det": -1, "n_two_words": 11, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [3, 3]}
+{"images": [[0, 1], [3, 0], [3], [0, 2]], "det": 1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [2, 2]}
+{"images": [[3], [0, 1, 2], [1], [1, 1, 2]], "det": -1, "n_two_words": 9, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[2, 1], [0, 3, 1], [1, 3], [2, 3, 1]], "det": 1, "n_two_words": 10, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[2], [3, 2, 1], [3, 2], [1, 0, 2]], "det": 1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 3, 1], [3], [0, 1, 0], [1, 2]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[0, 2, 1], [3], [0], [0, 0, 2]], "det": -1, "n_two_words": 7, "er_edges": 4, "er_vertices": 5, "components": 1, "b1": 0, "perm_cycles": [4]}
+{"images": [[3, 2], [2, 1], [1, 3, 2], [1, 2, 0]], "det": 1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[1, 0], [2, 1], [0, 3], [2]], "det": -1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [3, 3, 6]}
+{"images": [[0, 2, 3], [2], [1, 3], [0, 1, 3]], "det": 1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[1], [2], [2, 3, 2], [0]], "det": -1, "n_two_words": 7, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}
+{"images": [[1, 0, 0], [2, 3], [3], [0, 1]], "det": 1, "n_two_words": 13, "er_edges": 12, "er_vertices": 7, "components": 1, "b1": 6, "perm_cycles": [4, 4, 4]}
+{"images": [[0, 1], [3], [0, 3], [3, 0, 2]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 1, 2], [2, 1], [3, 0, 2], [2, 1, 1]], "det": -1, "n_two_words": 9, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[3, 0], [1, 3, 0], [1, 3], [2]], "det": -1, "n_two_words": 8, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[3, 0, 2], [0, 1, 2], [3, 0], [1]], "det": -1, "n_two_words": 10, "er_edges": 6, "er_vertices": 5, "components": 1, "b1": 2, "perm_cycles": [6]}
+{"images": [[1, 3], [2, 1, 1], [0, 1], [1]], "det": -1, "n_two_words": 7, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [3]}
+{"images": [[1], [2, 0], [2, 3, 0], [3, 0]], "det": -1, "n_two_words": 8, "er_edges": 4, "er_vertices": 4, "components": 1, "b1": 1, "perm_cycles": [2, 2]}
+{"images": [[0, 3, 2], [2, 0, 1], [1, 1], [1, 0]], "det": 2, "n_two_words": 9, "er_edges": 3, "er_vertices": 4, "components": 1, "b1": 0, "perm_cycles": [1, 2]}
+{"images": [[0, 1, 0], [2], [0, 3, 0], [0, 2, 1]], "det": 1, "n_two_words": 8, "er_edges": 1, "er_vertices": 2, "components": 1, "b1": 0, "perm_cycles": [1]}

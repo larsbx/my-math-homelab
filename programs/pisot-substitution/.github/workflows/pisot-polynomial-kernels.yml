@@ -1,0 +1,22 @@
+name: Canonical Pisot polynomial kernels
+on:
+  push:
+  pull_request:
+jobs:
+  exact-kernels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: prefix-dev/setup-pixi@v0.9.1
+        with:
+          manifest-path: kernel/pixi.toml
+      - name: Exact equivalence regression
+        working-directory: kernel
+        run: pixi run mojo run -I . -I tests tests/test_pisot_polynomials.mojo
+      - name: Before and after canonical Mojo benchmark
+        working-directory: kernel
+        run: pixi run mojo run -I . -I tests pisot_polynomial_bench.mojo
+      - name: Repository verification gates
+        run: |
+          pip install -e .[dev]
+          bash tools/verify_all.sh

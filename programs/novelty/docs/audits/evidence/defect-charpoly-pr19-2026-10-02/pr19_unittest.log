@@ -1,0 +1,154 @@
+test_all_translation_groups_are_root_independent (test_affine_row_structures.TestAffineRowStructures.test_all_translation_groups_are_root_independent) ... ok
+test_complete_family_and_no_selection_promotion (test_affine_row_structures.TestAffineRowStructures.test_complete_family_and_no_selection_promotion) ... ok
+test_heap_law_and_independent_xor_reference (test_affine_row_structures.TestAffineRowStructures.test_heap_law_and_independent_xor_reference) ... ok
+test_incomplete_planes_and_invalid_labels_are_refused (test_affine_row_structures.TestAffineRowStructures.test_incomplete_planes_and_invalid_labels_are_refused) ... ok
+test_relabeling_equivariance_of_ternary_structure (test_affine_row_structures.TestAffineRowStructures.test_relabeling_equivariance_of_ternary_structure) ... ok
+test_exhaustive_small_maps (test_bridge_theorems.TestBridgeTheorems.test_exhaustive_small_maps) ... ok
+test_ordered_third_collisions (test_bridge_theorems.TestBridgeTheorems.test_ordered_third_collisions) ... ok
+test_second_factorial_moment (test_bridge_theorems.TestBridgeTheorems.test_second_factorial_moment) ... ok
+test_every_candidate_has_hypotheses_and_obligations (test_claim_gate.TestClaimGate.test_every_candidate_has_hypotheses_and_obligations) ... ok
+test_no_novelty_candidate_is_a_novelty_claim (test_claim_gate.TestClaimGate.test_no_novelty_candidate_is_a_novelty_claim) ... ok
+test_only_promoted_hypotheses_are_verified (test_claim_gate.TestClaimGate.test_only_promoted_hypotheses_are_verified) ... ok
+test_repository_ledgers_validate (test_claim_gate.TestClaimGate.test_repository_ledgers_validate) ... ok
+test_current_evidence_is_pending (test_claim_provenance.TestClaimProvenance.test_current_evidence_is_pending) ... ok
+test_missing_link_cannot_bypass_status_check (test_claim_provenance.TestClaimProvenance.test_missing_link_cannot_bypass_status_check) ... ok
+test_owner_direction_cannot_supply_review_flag (test_claim_provenance.TestClaimProvenance.test_owner_direction_cannot_supply_review_flag) ... ok
+test_pending_theorem_rejects_failed_obligation (test_claim_provenance.TestClaimProvenance.test_pending_theorem_rejects_failed_obligation) ... ok
+test_promoted_registry_with_pending_ledger_is_refused (test_claim_provenance.TestClaimProvenance.test_promoted_registry_with_pending_ledger_is_refused) ... ok
+test_repository_theorem_requires_review (test_claim_provenance.TestClaimProvenance.test_repository_theorem_requires_review) ... ok
+test_dim_three_pairs_over_f3 (test_defect_charpoly.TestCharacteristicPolynomial.test_dim_three_pairs_over_f3)
+The middle stratum, rare under random sampling, from the exhaustive projective enumeration over F_3. ... ok
+test_polynomial_identity_on_all_strata (test_defect_charpoly.TestCharacteristicPolynomial.test_polynomial_identity_on_all_strata)
+det(Y - L_x L_y L_conj(xy)) = (Y - nu)^4 (Y^2 - (2 nu - N(c)) Y + nu^2)^2, nu = N(x)N(y), c = xy - yx. ... ok
+test_against_a_companion_matrix (test_defect_charpoly.TestCharpolyHelper.test_against_a_companion_matrix) ... ok
+test_gram_determinant_is_squared_commutator_norm (test_defect_charpoly.TestGramIdentity.test_gram_determinant_is_squared_commutator_norm)
+det Gram_B(1, x, y, xy) = N(xy - yx)^2 for all x, y. ... ok
+test_delta_on_q_perp_is_right_multiplication_by_g (test_defect_charpoly.TestRightMultiplicationForm.test_delta_on_q_perp_is_right_multiplication_by_g)
+For nondegenerate Q and v in Q-perp with N(v) != 0: Delta(uv) = (u g) v, g = (xy)^-1 (yx). ... ok
+test_independent_replay_matches_lean_tensor_and_digest (test_f3_provenance.TestF3Provenance.test_independent_replay_matches_lean_tensor_and_digest) ... ok
+test_single_exported_tensor_entry_mutant_fails (test_f3_provenance.TestF3Provenance.test_single_exported_tensor_entry_mutant_fails) ... ok
+test_single_source_entry_mutants_fail_cli (test_f3_provenance.TestF3Provenance.test_single_source_entry_mutants_fail_cli) ... ok
+test_source_parser_refuses_invalid_shape_range_or_syntax (test_f3_provenance.TestF3Provenance.test_source_parser_refuses_invalid_shape_range_or_syntax) ... ok
+test_defects_are_exact_binary_translations (test_fourier_placement.TestFourierPlacement.test_defects_are_exact_binary_translations) ... ok
+test_four_centralizer_cases_and_no_uniqueness_promotion (test_fourier_placement.TestFourierPlacement.test_four_centralizer_cases_and_no_uniqueness_promotion) ... ok
+test_fourier_character_identity (test_fourier_placement.TestFourierPlacement.test_fourier_character_identity) ... ok
+test_full_configs_cannot_observe_the_defects (test_fourier_placement.TestFourierPlacement.test_full_configs_cannot_observe_the_defects) ... ok
+test_all_nonidentity_basis_defects_fail (test_intrinsic_selection.TestIntrinsicSelection.test_all_nonidentity_basis_defects_fail) ... ok
+test_census_never_promotes_trivial_survivor (test_intrinsic_selection.TestIntrinsicSelection.test_census_never_promotes_trivial_survivor) ... ok
+test_identity_and_relabelings_pass (test_intrinsic_selection.TestIntrinsicSelection.test_identity_and_relabelings_pass) ... ok
+test_lean_patterns_match_independent_cayley_dickson_replay (test_intrinsic_selection.TestIntrinsicSelection.test_lean_patterns_match_independent_cayley_dickson_replay) ... ok
+test_modified_tensor_or_certificate_fails_replay (test_intrinsic_selection.TestIntrinsicSelection.test_modified_tensor_or_certificate_fails_replay) ... ok
+test_scalar_action_passes_without_selecting_octonions (test_intrinsic_selection.TestIntrinsicSelection.test_scalar_action_passes_without_selecting_octonions) ... ok
+test_cases_have_nonzero_edges_and_kill_mutants (test_lean_fixture.TestLeanFixture.test_cases_have_nonzero_edges_and_kill_mutants)
+The Python mirror of the Lean mutation controls, so the fixture cannot be vacuous. ... ok
+test_fixture_is_current (test_lean_fixture.TestLeanFixture.test_fixture_is_current) ... ok
+test_tensor_is_non_associative (test_lean_fixture.TestLeanFixture.test_tensor_is_non_associative) ... ok
+test_tensor_reproduces_the_experiment_product (test_lean_fixture.TestLeanFixture.test_tensor_reproduces_the_experiment_product) ... ok
+test_baseline_failure_preserves_existing_report (test_lean_mutation_suite.TestMutationReportModes.test_baseline_failure_preserves_existing_report) ... ok
+test_survivor_report_is_saved_only_in_generation_mode (test_lean_mutation_suite.TestMutationReportModes.test_survivor_report_is_saved_only_in_generation_mode) ... ok
+test_every_record_validates (test_ledger_evidence.TestLedgerEvidence.test_every_record_validates) ... ok
+test_grid_digest_replays (test_ledger_evidence.TestLedgerEvidence.test_grid_digest_replays) ... ok
+test_shell_count_digest_replays (test_ledger_evidence.TestLedgerEvidence.test_shell_count_digest_replays) ... ok
+test_malformed_inputs_are_refused_not_raised (test_n1_certificates.TestCheckerRefusals.test_malformed_inputs_are_refused_not_raised) ... ok
+test_tampering (test_n1_certificates.TestCheckerRefusals.test_tampering) ... ok
+test_associative_at_two_alternative_at_three (test_n1_certificates.TestConvention.test_associative_at_two_alternative_at_three) ... ok
+test_norm_is_scalar_through_octonions (test_n1_certificates.TestConvention.test_norm_is_scalar_through_octonions) ... ok
+test_not_alternative_at_four (test_n1_certificates.TestConvention.test_not_alternative_at_four) ... ok
+test_quaternion_relations (test_n1_certificates.TestConvention.test_quaternion_relations) ... ok
+test_hamilton_quaternions_ramify_at_two_and_infinity (test_n1_certificates.TestHilbert.test_hamilton_quaternions_ramify_at_two_and_infinity) ... ok
+test_product_formula (test_n1_certificates.TestHilbert.test_product_formula)
+Falsification check: ∏_v (a, b)_v = 1 (Hilbert reciprocity) on a random sample. ... ok
+test_refuses_non_places (test_n1_certificates.TestHilbert.test_refuses_non_places) ... ok
+test_square_class_invariance (test_n1_certificates.TestHilbert.test_square_class_invariance) ... ok
+test_every_search_output_is_accepted (test_n1_certificates.TestSearchAgainstChecker.test_every_search_output_is_accepted) ... ok
+test_quaternion_pairs_are_decided (test_n1_certificates.TestSearchAgainstChecker.test_quaternion_pairs_are_decided) ... ok
+test_two_routes_never_disagree (test_n1_certificates.TestSearchAgainstChecker.test_two_routes_never_disagree)
+A ramified place and a rational isotropic vector must never coexist. ... ok
+test_census_is_current (test_n2_defect_census.TestCommittedCensus.test_census_is_current) ... ok
+test_ledger_digest_replays (test_n2_defect_census.TestCommittedCensus.test_ledger_digest_replays) ... ok
+test_no_violations_recorded (test_n2_defect_census.TestCommittedCensus.test_no_violations_recorded) ... ok
+test_checks_can_fail (test_n2_defect_census.TestDefect.test_checks_can_fail)
+Negative control: without the N(xy)^{-1} scale, Delta is not an isometry. ... ok
+test_every_property_on_fresh_samples (test_n2_defect_census.TestDefect.test_every_property_on_fresh_samples) ... ok
+test_generic_pairs_move_exactly_q_perp (test_n2_defect_census.TestDefect.test_generic_pairs_move_exactly_q_perp) ... ok
+test_scalar_pairs_are_flat (test_n2_defect_census.TestDefect.test_scalar_pairs_are_flat) ... ok
+test_conjugate_inverts_left_multiplication (test_n2_defect_census.TestModel.test_conjugate_inverts_left_multiplication) ... ok
+test_norm_is_multiplicative (test_n2_defect_census.TestModel.test_norm_is_multiplicative) ... ok
+test_alternative_multiplicative_and_conjugate (test_n2_defect_theorem.TestCompositionIdentities.test_alternative_multiplicative_and_conjugate) ... ok
+test_left_multiplication_by_conjugate (test_n2_defect_theorem.TestCompositionIdentities.test_left_multiplication_by_conjugate) ... ok
+test_defect_determinant_is_one (test_n2_defect_theorem.TestDeterminant.test_defect_determinant_is_one) ... ok
+test_left_multiplication_determinant (test_n2_defect_theorem.TestDeterminant.test_left_multiplication_determinant) ... ok
+test_delta_fixes_the_generated_subalgebra (test_n2_defect_theorem.TestTheorem.test_delta_fixes_the_generated_subalgebra)
+(2) on words of length <= 3, which lie in A. ... ok
+test_delta_preserves_q_perp (test_n2_defect_theorem.TestTheorem.test_delta_preserves_q_perp)
+(3) for W = Q: B(Delta u, w) = B(u, w) for every u and every w in Q. ... ok
+test_negative_control_outside_a (test_n2_defect_theorem.TestTheorem.test_negative_control_outside_a)
+Delta is not the identity: some basis vector outside A moves. ... ok
+test_rank_bound (test_n2_defect_theorem.TestTheorem.test_rank_bound)
+(5) rank(Delta - I) <= 8 - dim Q. ... ok
+test_constant_occupancy (test_n3_analysis.TestN3.test_constant_occupancy) ... ok
+test_digest_is_key_order_independent (test_n3_analysis.TestN3.test_digest_is_key_order_independent) ... ok
+test_refuses_bad_counts (test_n3_analysis.TestN3.test_refuses_bad_counts) ... ok
+test_zeros_are_retained (test_n3_analysis.TestN3.test_zeros_are_retained) ... ok
+test_committed_grid_is_current (test_n3_hurwitz_shell.TestOccupancy.test_committed_grid_is_current) ... ok
+test_mass_and_orbit_counts (test_n3_hurwitz_shell.TestOccupancy.test_mass_and_orbit_counts) ... ok
+test_no_collisions_below_quarter_ell_squared (test_n3_hurwitz_shell.TestOccupancy.test_no_collisions_below_quarter_ell_squared)
+x ≠ y with x − y ∈ ℓH needs ℓ² ≤ N(x − y) ≤ 4n. ... ok
+test_payload_feeds_the_analyzer (test_n3_hurwitz_shell.TestOccupancy.test_payload_feeds_the_analyzer) ... ok
+test_reduction_is_equivariant (test_n3_hurwitz_shell.TestOccupancy.test_reduction_is_equivariant) ... ok
+test_refusals (test_n3_hurwitz_shell.TestOccupancy.test_refusals) ... ok
+test_target_size_is_sl2_order (test_n3_hurwitz_shell.TestOccupancy.test_target_size_is_sl2_order) ... ok
+test_unit_quotient_scales_the_histogram_by_24 (test_n3_hurwitz_shell.TestOccupancy.test_unit_quotient_scales_the_histogram_by_24)
+Free equivariant action: each plain fiber count equals its orbit's count, so only sample size changes. ... ok
+test_count_matches_odd_divisor_sum (test_n3_hurwitz_shell.TestShell.test_count_matches_odd_divisor_sum)
+Finite check of |S_n| = 24·σ_1(odd part of n) for n ≤ 200. ... ok
+test_enumeration_against_brute_force (test_n3_hurwitz_shell.TestShell.test_enumeration_against_brute_force) ... ok
+test_hurwitz_order_is_closed (test_n3_hurwitz_shell.TestShell.test_hurwitz_order_is_closed) ... ok
+test_units_form_a_group_of_order_24 (test_n3_hurwitz_shell.TestShell.test_units_form_a_group_of_order_24) ... ok
+test_full_configuration_replacement_and_tangency_gram (test_n6_f7_configurations.TestFullConfigurations.test_full_configuration_replacement_and_tangency_gram) ... ok
+test_permutations_normalize_the_replacement_family (test_n6_f7_configurations.TestFullConfigurations.test_permutations_normalize_the_replacement_family) ... ok
+test_refuses_malformed_or_gram_inconsistent_configurations (test_n6_f7_configurations.TestFullConfigurations.test_refuses_malformed_or_gram_inconsistent_configurations) ... ok
+test_unlabeled_multigraph_and_failure_of_fixed_generator_descent (test_n6_f7_configurations.TestFullConfigurations.test_unlabeled_multigraph_and_failure_of_fixed_generator_descent) ... ok
+test_exact_projective_orbits (test_n6_f7_orbits.TestN6F7OrbitComparison.test_exact_projective_orbits) ... ok
+test_explicit_bridge_isometry (test_n6_f7_orbits.TestN6F7OrbitComparison.test_explicit_bridge_isometry) ... ok
+test_generators_preserve_descartes_form (test_n6_f7_orbits.TestN6F7OrbitComparison.test_generators_preserve_descartes_form) ... ok
+test_joint_action_requires_a_relative_framing (test_n6_f7_orbits.TestN6F7OrbitComparison.test_joint_action_requires_a_relative_framing) ... ok
+test_free_action_divides_fibers (test_orbit_collisions.TestOrbitCollisions.test_free_action_divides_fibers) ... ok
+test_nonfree_action_uses_fixed_points (test_orbit_collisions.TestOrbitCollisions.test_nonfree_action_uses_fixed_points) ... ok
+test_regression_suite (test_orbit_collisions.TestOrbitCollisions.test_regression_suite) ... ok
+test_rejects_noninvariant_labels (test_orbit_collisions.TestOrbitCollisions.test_rejects_noninvariant_labels) ... ok
+test_every_mutant_was_killed (test_paper_tables.TestPaperTables.test_every_mutant_was_killed) ... ok
+test_tables_are_current (test_paper_tables.TestPaperTables.test_tables_are_current) ... ok
+test_basis_exhaustion (test_pentagon.TestPentagon.test_basis_exhaustion) ... ok
+test_boundary_closes_on_dense_vectors (test_pentagon.TestPentagon.test_boundary_closes_on_dense_vectors) ... ok
+test_edge_terms_match_vertex_differences (test_pentagon.TestPentagon.test_edge_terms_match_vertex_differences) ... ok
+test_census_covers_every_pair_without_violation (test_rank_law.TestCommittedCensus.test_census_covers_every_pair_without_violation) ... ok
+test_ledger_digest_replays (test_rank_law.TestCommittedCensus.test_ledger_digest_replays) ... ok
+test_invariance_under_affine_scalar_changes (test_rank_law.TestReduction.test_invariance_under_affine_scalar_changes) ... ok
+test_projective_points_are_complete_and_distinct (test_rank_law.TestReduction.test_projective_points_are_complete_and_distinct) ... ok
+test_rank_law_on_other_primes_sampled (test_rank_law.TestReduction.test_rank_law_on_other_primes_sampled) ... ok
+test_no_maximal_isotropic_perp_is_associative_over_f3 (test_rank_law_degenerate.TestAssociativeSubalgebraBound.test_no_maximal_isotropic_perp_is_associative_over_f3)
+The only case of the bound not settled by dimension counting: B = R-perp, R a 3-dim isotropic subspace of Im C. ... ok
+test_dim_four_degenerate (test_rank_law_degenerate.TestDegenerateRankLaw.test_dim_four_degenerate)
+dim Q = 4 with B|Q degenerate: ker phi = Q. ... ok
+test_dim_three (test_rank_law_degenerate.TestDegenerateRankLaw.test_dim_three)
+dim Q = 3: n in rad Q with nt in kn, nC in ker phi, dim(Q + nC) >= 5, and rank phi = 2. ... ok
+test_rank_four_and_hyperbolic_anticommutator (test_rank_law_degenerate.TestIsotropicLeftMultiplication.test_rank_four_and_hyperbolic_anticommutator)
+For pure isotropic n != 0: L_n^2 = 0 and rank L_n = 4; L_n L_m + L_m L_n = -B(n, m) I. ... ok
+test_nullspace_and_radical (test_rank_law_degenerate.TestLinearAlgebra.test_nullspace_and_radical) ... ok
+test_associator_is_skew_for_the_polar_form (test_rank_law_degenerate.TestSkewAdjoint.test_associator_is_skew_for_the_polar_form)
+B([x, y, z], w) = -B(z, [x, y, w]): phi is skew-adjoint, so its rank is even. ... ok
+test_every_nontrivial_idempotent_over_f3 (test_rank_law_degenerate.TestZornPeirce.test_every_nontrivial_idempotent_over_f3)
+C10 = {u : eu = u, ue = 0} is 3-dimensional, e(C10 C10) = 0, and uu' = 0 only for dependent u, u'. ... ok
+test_singular_commutator_bounds_the_generated_algebra_exhaustively_over_f3 (test_rank_law_nondegenerate.TestCommutatorLemma.test_singular_commutator_bounds_the_generated_algebra_exhaustively_over_f3)
+Lemma 3.11 on all 81^2 pairs in M_2(F_3); the converse direction is checked too. ... ok
+test_doubling_kernel_and_commutator (test_rank_law_nondegenerate.TestNondegenerateCase.test_doubling_kernel_and_commutator) ... ok
+test_dimension_six_square_class_gate (test_witt_bridge.TestWittBridge.test_dimension_six_square_class_gate) ... ok
+test_minimal_complement (test_witt_bridge.TestWittBridge.test_minimal_complement) ... ok
+test_rejects_degenerate_characteristic (test_witt_bridge.TestWittBridge.test_rejects_degenerate_characteristic) ... ok
+test_rejects_sub_octonion_dimension (test_witt_bridge.TestWittBridge.test_rejects_sub_octonion_dimension) ... ok
+
+----------------------------------------------------------------------
+Ran 127 tests in 68.612s
+
+OK

@@ -1,0 +1,32 @@
+# backend.toml
+#
+# Single source of truth for arithmetic backend readiness.
+#
+# The finite-regime certificate engine must not accept proof-grade certificates
+# unless this manifest declares a backend that satisfies the full CertIntBackend
+# contract and the corresponding implementation exists in kernel/.
+
+[backend]
+name = "Int64DemoBackend"
+kind = "demo"
+proof_grade = false
+
+[requirements]
+unbounded_storage = false
+exact_add_sub_mul = false
+exact_order = true
+euclidean_gcd = false
+exact_divisibility = false
+normalized_serialization = false
+canonical_hash_encoding = false
+
+[policy]
+allow_demo_certificates = true
+allow_proof_grade_certificates = false
+no_analytic_trig = true
+no_analytic_points = true
+points_are_vertices_of_vertices = true
+squarefree_localization_only = true
+pointwise_exact_type_exclusion = true
+no_float_certificate_arithmetic = true
+exact_arithmetic_spec = "docs/rational-interval-arithmetic-spec.md"

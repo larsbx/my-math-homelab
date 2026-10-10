@@ -1,0 +1,6 @@
+[project]
+name = "closure-fiber-of-multiplication-research"
+version = "0.1.0"
+description = "Exact algebraic experiments for Nielsen tuples, rank-one tori, and trace-Gram invariants"
+
+[dependencies]

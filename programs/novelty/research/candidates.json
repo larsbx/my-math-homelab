@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-02",
+  "ledger": "research/ledger.json",
+  "policy": "docs/calibration.md",
+  "candidates": [
+    {
+      "id": "N1",
+      "title": "Certified division and splitting decision pipeline",
+      "status": "candidate",
+      "novelty_mode": "artifact",
+      "priority": 1,
+      "dependencies": [],
+      "gates": [
+        "mathlib-coverage-audit",
+        "hypothesis-complete-specification",
+        "independent-certificate-verifier"
+      ],
+      "claims": [
+        "Classical algorithms; formal artifact novelty is unverified.",
+        "The n>=4 universal-zero-divisor claim must be stated with exact Cayley–Dickson and characteristic hypotheses.",
+        "Sub-result N1-T01: a zero-product soundness argument is written; independent proof review is pending and completeness remains open."
+      ]
+    },
+    {
+      "id": "N3",
+      "title": "Multiset collision statistics of shells modulo ell",
+      "status": "candidate",
+      "novelty_mode": "statistics",
+      "priority": 2,
+      "dependencies": [],
+      "gates": [
+        "sample-space-and-unit-orbit-specification",
+        "reproducible-baseline",
+        "theta-series-prior-art-audit"
+      ],
+      "claims": [
+        "Poisson behavior is a heuristic, not a theorem.",
+        "All finite observations must be recorded as experimental results.",
+        "Promoted sub-result N3-T01: occupancy factorial moments equal ordered distinct same-fiber tuple counts."
+      ]
+    },
+    {
+      "id": "N2",
+      "title": "Octonionic navigation",
+      "status": "candidate",
+      "novelty_mode": "non-associative-extension",
+      "priority": 3,
+      "dependencies": [],
+      "gates": [
+        "literature-audit",
+        "generator-model-well-defined",
+        "finite-quotient-order-check"
+      ],
+      "claims": [
+        "The map x -> L_x is not multiplicative in general.",
+        "S-arithmetic, spectral-gap, and golden-gate assertions are questions.",
+        "Promoted sub-result N2-T01: normalized left multiplication lies in SO(8) under positive-definite real composition hypotheses."
+      ]
+    },
+    {
+      "id": "N4",
+      "title": "Fully explicit verified discrepancy",
+      "status": "candidate",
+      "novelty_mode": "effective-certification",
+      "priority": 4,
+      "dependencies": [
+        "N1"
+      ],
+      "gates": [
+        "explicit-source-theorem",
+        "constant-ledger",
+        "formal-or-independent-verification"
+      ],
+      "claims": [
+        "Asymptotic discrepancy is classical.",
+        "Only a fully explicit certified finite bound is in scope."
+      ]
+    },
+    {
+      "id": "N5",
+      "title": "Multiset budget signatures for Nielsen witnesses",
+      "status": "candidate",
+      "novelty_mode": "effective-certification",
+      "priority": 5,
+      "dependencies": [],
+      "gates": [
+        "exact-multiset-object-and-minimizer",
+        "full-s6-recompute-under-new-minimizer",
+        "ordered-braid-state-space-certificate",
+        "hurwitz-nielsen-prior-art-audit"
+      ],
+      "claims": [
+        "Hurwitz/Nielsen moves and braid actions are classical; no novelty claim is attached to the move set.",
+        "The prime-factor multiset and index-multiset budget object is a candidate exact instrumentation layer whose novelty is unverified.",
+        "The previous logarithmic five-regime classification does not transfer automatically; the complete S6 census must be rerun under the new minimizer.",
+        "Only the label-preserving ordered-state-space reachability claim is in scope until a larger full-B4 state space is separately defined and certified.",
+        "Reduction-calculus semantics are out of scope for this candidate and remain consumer-owned rather than shared-kernel claims."
+      ]
+    }
+  ]
+}

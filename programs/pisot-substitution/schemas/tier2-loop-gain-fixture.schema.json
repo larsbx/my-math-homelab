@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/larsbx/pisot-substitution-conjecture-research/schemas/tier2-loop-gain-fixture.schema.json",
+  "title": "Tier 2 Loop Gain Fixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "component_id",
+    "gain_channel",
+    "vertices",
+    "edges",
+    "arithmetic_basis",
+    "loop_composition"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "tier2-loop-gain-v1"
+    },
+    "component_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "vertices": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "edges": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "edge_id",
+          "source",
+          "target",
+          "occurrence_ordinal",
+          "gain_coordinates"
+        ],
+        "properties": {
+          "edge_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "occurrence_ordinal": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "gain_coordinates": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "minItems": 1
+          }
+        }
+      }
+    },
+    "arithmetic_basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "labels"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "integer_power_basis",
+            "integer_lattice_basis"
+          ]
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "minimal_polynomial": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 2
+        }
+      }
+    },
+    "cycle_basis": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1
+      }
+    },
+    "generated_module_generators": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
+        "minItems": 1
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "gain_channel": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Names the exact gain semantics; e.g. affine_forcing. Distinct cocycles must use distinct channel names."
+    },
+    "loop_composition": {
+      "enum": [
+        "additive",
+        "beta_twisted"
+      ],
+      "description": "How edge labels compose around a closed loop of edges d_0..d_{k-1}. additive: gain = sum_i d_i. beta_twisted: the labels are forcing terms of w' = beta*w + d, so the lap translation is sum_i beta^(k-1-i) d_i with beta the power-basis generator; a plain-sum module of such labels is not a loop invariant."
+    }
+  },
+  "allOf": [
+    {
+      "$comment": "affine_forcing labels the affine recurrence w' = beta*w + (q - p) in the cubic power basis (1, beta, beta^2), so loops compose beta_twisted; rank-generic checks are in tools/check_tier2_fixture.py.",
+      "if": {
+        "properties": {
+          "gain_channel": {
+            "const": "affine_forcing"
+          }
+        },
+        "required": [
+          "gain_channel"
+        ]
+      },
+      "then": {
+        "properties": {
+          "arithmetic_basis": {
+            "required": [
+              "minimal_polynomial"
+            ],
+            "properties": {
+              "kind": {
+                "const": "integer_power_basis"
+              },
+              "labels": {
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "minimal_polynomial": {
+                "minItems": 4,
+                "maxItems": 4
+              }
+            }
+          },
+          "edges": {
+            "items": {
+              "properties": {
+                "gain_coordinates": {
+                  "minItems": 3,
+                  "maxItems": 3
+                }
+              }
+            }
+          },
+          "generated_module_generators": {
+            "items": {
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "loop_composition": {
+            "const": "beta_twisted"
+          }
+        }
+      }
+    }
+  ]
+}

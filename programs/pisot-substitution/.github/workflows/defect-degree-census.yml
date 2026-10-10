@@ -1,0 +1,132 @@
+name: C4 defect-degree census
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  defect-degree-census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Exact first-defect-degree census
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          out=$(pixi run mojo run -I . defect_degree_census.mojo 2>&1) || status=$?
+          printf '%s\n' "$out"
+          (( ${status:-0} == 0 ))  # the output is printed first, so a failed run is diagnosable
+          grep -Fx 'PIP specimens: 4554  capped: 0' <<<"$out"
+          grep -Fx 'reachable noncoincident states: 385926' <<<"$out"
+          grep -Fx 'reachable degree2: 385902' <<<"$out"
+          grep -Fx 'reachable degree3: 24' <<<"$out"
+          grep -Fx 'reachable degree4: 0' <<<"$out"
+          grep -Fx 'reachable degree5plus: 0' <<<"$out"
+          grep -Fx 'recurrent noncoincident states: 369486' <<<"$out"
+          grep -Fx 'recurrent degree2: 369462' <<<"$out"
+          grep -Fx 'recurrent degree3: 24' <<<"$out"
+          grep -Fx 'recurrent degree4: 0' <<<"$out"
+          grep -Fx 'recurrent degree5plus: 0' <<<"$out"
+          grep -Fx 'sink noncoincident states: 368610' <<<"$out"
+          grep -Fx 'sink degree2: 368586' <<<"$out"
+          grep -Fx 'sink degree3: 24' <<<"$out"
+          grep -Fx 'sink degree4: 0' <<<"$out"
+          grep -Fx 'sink degree5plus: 0' <<<"$out"
+          grep -Fx 'PIP with reachable degree4plus state: 0' <<<"$out"
+          grep -Fx 'PIP with recurrent degree4plus state: 0' <<<"$out"
+          grep -Fx 'PIP with sink degree4plus state: 0' <<<"$out"
+
+  degree3-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Exact degree-3 state catalogue
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          set +e
+          pixi run mojo run -I . degree3_catalog.mojo 2>&1 | tee degree3.log
+          catalog_status=${PIPESTATUS[0]}
+          set -e
+          if grep -q '^INCONCLUSIVE_CAPPED ' degree3.log; then
+            echo 'incomplete degree-three catalogue: capped specimen retained above' >&2
+            exit 1
+          fi
+          if (( catalog_status != 0 )); then
+            exit "$catalog_status"
+          fi
+          grep -Fx 'degree3 noncentralizer states: 24' degree3.log
+          grep -Fx 'degree3 productive within two: 24' degree3.log
+          grep -Fx 'strict first-degree3 components: 0' degree3.log
+          if grep -q '^D3_COUNTERMODEL_BEGIN ' degree3.log; then
+            echo 'unexpected strict degree-three component; replay record retained above' >&2
+            exit 1
+          fi
+          # The catalogue prints the taxonomy from kernel/psc/degree3_taxonomy.mojo;
+          # kernel/tests/test_census_library.mojo guards it.
+          grep -Fx 'DEGREE3_OCCURRENCES 24' degree3.log
+          grep -Fx 'DEGREE3_STATE_RELABEL_CLASSES 4' degree3.log
+          grep -Fx 'DEGREE3_SUBSTITUTION_CONJUGACY_CLASSES 2' degree3.log
+          grep -Fx 'DEGREE3_LENGTHS 9,19' degree3.log
+          grep -Fx 'DEGREE3_SEED_ORBIT_MATCHES 0' degree3.log
+          grep -Fx 'DEGREE3_STATE_REVERSAL_CLOSED 1' degree3.log
+          grep -Fx 'DEGREE3_SIGMA_REVERSAL_CLOSED 1' degree3.log
+          grep -Fx 'DEGREE3_SIGMA_DET_VALUES 1' degree3.log
+          grep -Fx 'DEGREE3_SIGMA_CHARPOLYS -1,0,-2,1' degree3.log
+          grep -Fx 'DEGREE3_CENTRALIZER_HITS 0' degree3.log
+          grep -Fx 'DEGREE3_THETA_ABSDET2 24' degree3.log
+          grep -Fx 'DEGREE3_THETA_TRACE_SQ6 24' degree3.log
+          grep -Fx 'DEGREE3_LENGTH9_SINGLE_D3_SUCCESSOR 12' degree3.log
+          grep -Fx 'DEGREE3_LENGTH19_FIVE_CHILD_ONE_COINCIDENCE 12' degree3.log
+          grep -Fx 'DEGREE3_PRODUCTIVE_WITHIN_TWO 24' degree3.log
+          grep -Fx 'DEGREE3_STATE_CLASS 0011202220010011202|2001001120212022001' degree3.log
+          grep -Fx 'DEGREE3_STATE_CLASS 0102211211000102211|2110010201022112110' degree3.log
+          grep -Fx 'DEGREE3_STATE_CLASS 011202001|120001120' degree3.log
+          grep -Fx 'DEGREE3_STATE_CLASS 011212001|120011120' degree3.log
+          grep -Fx 'DEGREE3_SIGMA_CLASS 011/2/120' degree3.log
+          grep -Fx 'DEGREE3_SIGMA_CLASS 1/210/002' degree3.log
+
+
+  wedge-productivity-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Exact bounded K2-nonzero carrier catalogue
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          set +e
+          pixi run mojo run -I . wedge_productivity_catalog.mojo 2>&1 | tee wedge-productivity.log
+          catalog_status=${PIPESTATUS[0]}
+          set -e
+          if grep -q '^WEDGE_INCONCLUSIVE_CAPPED ' wedge-productivity.log; then
+            echo 'incomplete wedge-productivity catalogue: capped specimen retained above' >&2
+            exit 1
+          fi
+          if (( catalog_status != 0 )); then
+            exit "$catalog_status"
+          fi
+          grep -Fx 'CALIBRATION strict K2-nonzero component detected: 1' wedge-productivity.log
+          grep -Fx 'CALIBRATION coincidence-producing component rejected: 1' wedge-productivity.log
+          grep -Fx 'PIP specimens: 4554' wedge-productivity.log
+          grep -Fx 'closed nonproductive components: 0' wedge-productivity.log
+          grep -Fx 'strict K2-nonzero components: 0' wedge-productivity.log
+          if grep -q '^D2_COUNTERMODEL_BEGIN ' wedge-productivity.log; then
+            echo 'unexpected strict K2-nonzero component; replay record retained above' >&2
+            exit 1
+          fi

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "base_main": "3344a6b7d449ad17a2630307acffde55b64de31f",
+  "date": "2026-10-04",
+  "mojo": "1.1.0.dev2026090805 (34562fa1)",
+  "state_cap": 4000000,
+  "entries": [
+    {
+      "name": "standing",
+      "file": "standing-failures.jsonl.gz",
+      "sha256": "a93f6663f7e844684605686c5b129580cffbb1dc8a91637be5e54cc6ae4d290b",
+      "payload_sha256": "0d7165f8ec52582b7b3827dd7326551960347633dab1f9301bd9d3b106a7ac0c",
+      "records": 97224,
+      "failing_specimens": 360,
+      "summary": [
+        "Hit-witness census domain: standing  population: 4554  slice: 0 4554  cap: 4000000",
+        "specimens: 4554  complete: 4554  capped: 0",
+        "recurrent nonzero vertices: 1154040  catch-up left/right/either: 1056816 1056816 1056816",
+        "simultaneous-only vertices: 97224  failing specimens: 360  total failures: 210",
+        "vertices without any new hit: 0  maximum endpoint catch-up depth: 17"
+      ]
+    },
+    {
+      "name": "total8-first1000",
+      "file": "total8-first1000-failures.jsonl.gz",
+      "sha256": "93dbcd4e0dd2bdfb4bb18d406b22b7cae3bebd3895528267eacab56449e40c63",
+      "payload_sha256": "68b126cec3357a01077a9d29f5833fc3a7989bf2ef3612412276a5b247f023cd",
+      "records": 21390,
+      "failing_specimens": 64,
+      "summary": [
+        "Hit-witness census domain: total8  population: 24486  slice: 0 1000  cap: 4000000",
+        "specimens: 1000  complete: 1000  capped: 0",
+        "recurrent nonzero vertices: 352664  catch-up left/right/either: 331274 331274 331274",
+        "simultaneous-only vertices: 21390  failing specimens: 64  total failures: 29",
+        "vertices without any new hit: 0  maximum endpoint catch-up depth: 21"
+      ]
+    },
+    {
+      "name": "len4-first1000",
+      "file": "len4-first1000-failures.jsonl.gz",
+      "sha256": "7f0ee63802d9024e6edc35e311a3340d9f2bec3bb16123cc129a17ed24363485",
+      "payload_sha256": "62c2b8daaee256781c09ddb0096f25357e043787ac63a40b15054bd9b00c9d6f",
+      "records": 31768,
+      "failing_specimens": 47,
+      "summary": [
+        "Hit-witness census domain: len4  population: 135990  slice: 0 1000  cap: 4000000",
+        "specimens: 1000  complete: 1000  capped: 0",
+        "recurrent nonzero vertices: 291686  catch-up left/right/either: 259918 259918 259918",
+        "simultaneous-only vertices: 31768  failing specimens: 47  total failures: 29",
+        "vertices without any new hit: 0  maximum endpoint catch-up depth: 24"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-03",
+  "statuses": [
+    "proposed",
+    "pinned",
+    "verified",
+    "refuted"
+  ],
+  "hypotheses": [
+    {
+      "id": "N1-H01",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "The base K is a number field and char(K) != 2.",
+      "scope": "all N1 decisions",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H02",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "Every Cayley-Dickson parameter a_i is a specified nonzero element of K.",
+      "scope": "all N1 decisions",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H03",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "A single multiplication, conjugation, norm, and sign convention for CD(K; a_1,...,a_n) is fixed.",
+      "scope": "all N1 certificates",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H04",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "For n=2, the selected construction is the quaternion central simple algebra to which the cited Hilbert-symbol criterion applies.",
+      "scope": "n=2",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H05",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "The local invariant certificate includes every relevant finite and infinite place and satisfies reciprocity.",
+      "scope": "n=2",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H06",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "For n=3, the norm form is the explicitly ordered three-fold Pfister form used by the cited local-global criterion.",
+      "scope": "n=3",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H07",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "Any n>=4 universal zero-divisor identity is valid for the chosen generalized doubling convention, arbitrary admitted nonzero parameters, and every admitted base field.",
+      "scope": "n>=4",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H08",
+      "candidate": "N1",
+      "status": "proposed",
+      "statement": "A split certificate supplies nonzero operands whose exact product is zero; any search-size bound is stated separately.",
+      "scope": "split output",
+      "verified_by": []
+    },
+    {
+      "id": "N2-H01",
+      "candidate": "N2",
+      "status": "proposed",
+      "statement": "The integral octonion order, multiplication table, conjugation, and E8 norm identification are fixed exactly.",
+      "scope": "all N2 experiments",
+      "verified_by": []
+    },
+    {
+      "id": "N2-H02",
+      "candidate": "N2",
+      "status": "proposed",
+      "statement": "Each generator model states whether it is an integral similitude, real normalized map, triality triple, spin element, or projective reduction.",
+      "scope": "generator construction",
+      "verified_by": []
+    },
+    {
+      "id": "N2-H03",
+      "candidate": "N2",
+      "status": "proposed",
+      "statement": "Every reduction prime avoids the discriminant and denominators of the selected integral model.",
+      "scope": "finite reduction",
+      "verified_by": []
+    },
+    {
+      "id": "N2-H04",
+      "candidate": "N2",
+      "status": "proposed",
+      "statement": "The finite target group, quadratic-form type, center quotient, and determinant/spinor-norm conditions are fixed.",
+      "scope": "finite quotient comparison",
+      "verified_by": []
+    },
+    {
+      "id": "N2-H05",
+      "candidate": "N2",
+      "status": "proposed",
+      "statement": "The spectral operator records direction, inverse closure, generator multiplicity, and normalization.",
+      "scope": "spectral experiment",
+      "verified_by": []
+    },
+    {
+      "id": "N3-H01",
+      "candidate": "N3",
+      "status": "proposed",
+      "statement": "The Hurwitz order, norm convention, shell definition, and parity restrictions on n are fixed.",
+      "scope": "all N3 results",
+      "verified_by": []
+    },
+    {
+      "id": "N3-H02",
+      "candidate": "N3",
+      "status": "proposed",
+      "statement": "The reduction map to matrices and the passage to the stated finite projective group are well-defined.",
+      "scope": "pushforward",
+      "verified_by": []
+    },
+    {
+      "id": "N3-H03",
+      "candidate": "N3",
+      "status": "proposed",
+      "statement": "The unit action and the factor represented by the divisor 2 in the proposed intensity are derived rather than assumed.",
+      "scope": "Poisson intensity",
+      "verified_by": []
+    },
+    {
+      "id": "N3-H04",
+      "candidate": "N3",
+      "status": "proposed",
+      "statement": "The occupancy vector includes every target fiber, including zero multiplicities.",
+      "scope": "finite statistics",
+      "verified_by": []
+    },
+    {
+      "id": "N3-H05",
+      "candidate": "N3",
+      "status": "proposed",
+      "statement": "Any asymptotic specifies a joint sequence (n,ell), admissibility conditions, and the mode of convergence.",
+      "scope": "asymptotic conjecture",
+      "verified_by": []
+    },
+    {
+      "id": "N4-H01",
+      "candidate": "N4",
+      "status": "proposed",
+      "statement": "The discrepancy measure, test-function class, normalization, and finite target are fixed.",
+      "scope": "all N4 bounds",
+      "verified_by": []
+    },
+    {
+      "id": "N4-H02",
+      "candidate": "N4",
+      "status": "proposed",
+      "statement": "A source theorem with explicit constants is pinned and every source hypothesis is mapped to a verified local hypothesis.",
+      "scope": "source reduction",
+      "verified_by": []
+    },
+    {
+      "id": "N4-H03",
+      "candidate": "N4",
+      "status": "proposed",
+      "statement": "All bad primes, local factors, conductors, levels, and numerical rounding directions are recorded.",
+      "scope": "constant extraction",
+      "verified_by": []
+    },
+    {
+      "id": "N1-H09",
+      "candidate": "N1",
+      "status": "verified",
+      "statement": "A division algebra has no pair of nonzero elements with zero product.",
+      "scope": "zero-divisor certificate soundness",
+      "verified_by": [
+        "docs/theorems/bridge-theorems.md#n1-t01"
+      ]
+    },
+    {
+      "id": "N2-H06",
+      "candidate": "N2",
+      "status": "verified",
+      "statement": "A is an eight-dimensional real positive-definite composition algebra and N(xy)=N(x)N(y).",
+      "scope": "normalized left-multiplication theorem",
+      "verified_by": [
+        "docs/theorems/bridge-theorems.md#n2-t01"
+      ]
+    },
+    {
+      "id": "N3-H06",
+      "candidate": "N3",
+      "status": "verified",
+      "statement": "X and S are finite sets, r:X->S is a map, and m_s is the cardinality of the fiber r^{-1}(s).",
+      "scope": "collision-moment bridge",
+      "verified_by": [
+        "docs/theorems/bridge-theorems.md#n3-t01"
+      ]
+    },
+    {
+      "id": "N2-H07",
+      "candidate": "N2",
+      "status": "verified",
+      "statement": "A is the real division octonion algebra; x and y are nonzero, so x, y, and xy admit normalized left multiplications.",
+      "scope": "associator-defect operator",
+      "verified_by": [
+        "docs/theorems/derived-contributions.md#n2-t02"
+      ]
+    },
+    {
+      "id": "N3-H07",
+      "candidate": "N3",
+      "status": "verified",
+      "statement": "A finite group G acts on a finite set X and r:X->S is G-invariant.",
+      "scope": "orbit-corrected collision moments",
+      "verified_by": [
+        "docs/theorems/derived-contributions.md#n3-t02"
+      ]
+    },
+    {
+      "id": "N2-H08",
+      "candidate": "N2",
+      "status": "verified",
+      "statement": "C is an octonion composition algebra over a finite field F_q of odd characteristic; x and y have nonzero norm.",
+      "scope": "finite-field defect operator",
+      "verified_by": [
+        "docs/theorems/finite-defect-geometry.md#n2-t03"
+      ]
+    },
+    {
+      "id": "N2-H09",
+      "candidate": "N2",
+      "status": "verified",
+      "statement": "A is any algebra over a commutative ring and [x,y,z]=x(yz)-(xy)z.",
+      "scope": "pentagon boundary identity",
+      "verified_by": [
+        "docs/theorems/pentagon-boundary.md#n2-t04"
+      ]
+    },
+    {
+      "id": "N2-H10",
+      "candidate": "N2",
+      "status": "verified",
+      "statement": "The committed F3 multiplication tensor is interpreted with quadratic norm N(x)=sum_i x_i^2 and basis e0,...,e7.",
+      "scope": "F3 tensor certificate",
+      "verified_by": [
+        "NoveltyLab/OctonionF3.lean",
+        "docs/lean-oracle.md"
+      ]
+    },
+    {
+      "id": "N2-H11",
+      "candidate": "N2",
+      "status": "verified",
+      "statement": "F_q has odd characteristic not dividing n, n>=6, C is the split eight-dimensional octonion norm space with determinant square class 1, and Q_D,n is the normalized Descartes form.",
+      "scope": "Witt-stabilized Soddy-Gossett bridge",
+      "verified_by": [
+        "docs/theorems/witt-soddy-bridge.md#n2-t06"
+      ]
+    },
+    {
+      "id": "N5-H01",
+      "candidate": "N5",
+      "status": "proposed",
+      "statement": "The finite testbed is the ordered Nielsen class Ni(S_6,(2,2,6,6))/S_6, with conjugacy labels, product-one and S_6-generation conditions, simultaneous-conjugacy quotient, canonical inner-class representatives, and admissible balanced splits fixed exactly.",
+      "scope": "N5 degree-6 census and ordered reachability",
+      "verified_by": []
+    },
+    {
+      "id": "N5-H02",
+      "candidate": "N5",
+      "status": "proposed",
+      "statement": "For every admitted split, A=H_I(g), B=H_J(g), and K=A intersection B are exact finite subgroups; the budget records PF(|A|), PF(|B|), PF(|K|), PF([A:K]), and PF([B:K]) with multiplicities and PF(1) empty. AB denotes the set product, and the identity PF(|K|) multiset-union PF(|AB|)=PF(|A|) multiset-union PF(|B|) uses exact integer arithmetic only, without floats or transcendental primitives.",
+      "scope": "N5 multiset/index budget kernel",
+      "verified_by": []
+    },
+    {
+      "id": "N5-H03",
+      "candidate": "N5",
+      "status": "proposed",
+      "statement": "A deterministic total order, or a stated partial order with a deterministic tie-break, selects a canonical minimizing balanced split from all admitted budget records; half-ordering conventions and ties are explicit, and selection is independent of enumeration order and the presentation of the same inner class.",
+      "scope": "N5 minimizer specification before any classification",
+      "verified_by": []
+    },
+    {
+      "id": "N5-H04",
+      "candidate": "N5",
+      "status": "proposed",
+      "statement": "FixedPoint, PairBlocks, TripleBlocks, CrossBlocks, and Containment are predicates on the newly minimizing halves with separate finite certificate checkers and actual fixed-element, block-partition, or containment payloads; Other remains an explicit fallback until exhaustive evidence excludes it. The previous logarithmic five-regime classification is not an assumption of the new census.",
+      "scope": "N5 degree-6 witness classification and certificates",
+      "verified_by": []
+    },
+    {
+      "id": "N5-H05",
+      "candidate": "N5",
+      "status": "proposed",
+      "statement": "The declared Hurwitz move set preserves the ordered conjugacy labels and acts on the specified inner classes, with canonical class identifiers and deterministic BFS traversal conventions. A full-B_4 action on the earlier 12 ordered classes is not assumed; any full-B_4 claim requires a separately defined and certified enlarged state space.",
+      "scope": "N5 label-preserving ordered-state-space certificate",
+      "verified_by": []
+    },
+    {
+      "id": "N5-H06",
+      "candidate": "N5",
+      "status": "proposed",
+      "statement": "Any novelty assessment is bounded by a dated, query-recorded prior-art dossier with sources, exclusions, nearest constructions, and an exact delta for the specified budget and certificates; classical Hurwitz/Nielsen machinery remains attributed as classical, and no general wreath/flag forcing or cryptographic hardness claim is inferred from the finite testbed.",
+      "scope": "N5 literature and novelty gate",
+      "verified_by": []
+    }
+  ]
+}

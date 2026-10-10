@@ -1,0 +1,37 @@
+version = 1
+repository = "larsbx/finite-mandelbrot-research"
+branch = "polyglot/migration-v1"
+boundary_id = "finite-mandelbrot-certificate"
+fail_closed = true
+authority_change = false
+ci_wiring = false  # CI runs polyglot-check: .polyglot/ must equal the rendered FMK template; no conformance runner is wired
+
+[estate]
+manifest = "ESTATE.toml"
+template = "estate-repository-v2"
+
+[authority]
+primary_languages = ["Mojo"]
+supporting_languages = ["Lean", "Haskell", "Python", "Julia"]
+canonical_status = "existing-authority-preserved"
+
+[roles]
+proof = "machine-checked claims only"
+kernel = "canonical executable validation only when designated"
+reference = "pure executable semantics and vector generation"
+oracle = "non-authoritative research and differential checking"
+adapter = "generated or mechanically constrained translation"
+
+[compatibility]
+unknown_critical_fields = "reject"
+schema_mismatch = "reject"
+authority_mismatch = "reject"
+normalization_mismatch = "reject"
+
+[julia]
+role = "supporting-research-engine"
+oracle_path = "oracles/julia"
+spike_path = "experiments/julia"
+acceptance_authority = false
+proof_authority = false
+promotion_requires = "canonical boundary vectors and authoritative checker replay"

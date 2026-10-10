@@ -1,0 +1,469 @@
+{
+  "corpus": [
+    {
+      "key": "c0",
+      "name": "superattracting fixed",
+      "c": {
+        "re": "0",
+        "im": "0"
+      },
+      "regime": "HYPERBOLIC_CENTER",
+      "cycle": [
+        {
+          "re": "0",
+          "im": "0"
+        }
+      ],
+      "multiplier_class": "SUPERATTRACTING",
+      "critical_orbit": "PREPERIODIC(l=0, k=1)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "basilica",
+      "name": "period-2 centre",
+      "c": {
+        "re": "-1",
+        "im": "0"
+      },
+      "regime": "HYPERBOLIC_CENTER",
+      "cycle": [
+        {
+          "re": "0",
+          "im": "0"
+        },
+        {
+          "re": "-1",
+          "im": "0"
+        }
+      ],
+      "multiplier_class": "SUPERATTRACTING",
+      "critical_orbit": "PREPERIODIC(l=0, k=2)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "dendrite",
+      "name": "Misiurewicz dendrite",
+      "c": {
+        "re": "0",
+        "im": "1"
+      },
+      "regime": "MISIUREWICZ",
+      "cycle": [
+        {
+          "re": "-1",
+          "im": "1"
+        },
+        {
+          "re": "0",
+          "im": "-1"
+        }
+      ],
+      "multiplier_class": "REPELLING",
+      "critical_orbit": "PREPERIODIC(l=2, k=2)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "dendrite_conjugate",
+      "name": "Misiurewicz dendrite, conjugate",
+      "c": {
+        "re": "0",
+        "im": "-1"
+      },
+      "regime": "MISIUREWICZ",
+      "cycle": [
+        {
+          "re": "-1",
+          "im": "-1"
+        },
+        {
+          "re": "0",
+          "im": "1"
+        }
+      ],
+      "multiplier_class": "REPELLING",
+      "critical_orbit": "PREPERIODIC(l=2, k=2)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "chebyshev",
+      "name": "Chebyshev endpoint",
+      "c": {
+        "re": "-2",
+        "im": "0"
+      },
+      "regime": "MISIUREWICZ",
+      "cycle": [
+        {
+          "re": "2",
+          "im": "0"
+        }
+      ],
+      "multiplier_class": "REPELLING",
+      "critical_orbit": "PREPERIODIC(l=2, k=1)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "cauliflower",
+      "name": "parabolic, multiplier 1",
+      "c": {
+        "re": "1/4",
+        "im": "0"
+      },
+      "regime": "PARABOLIC",
+      "cycle": [
+        {
+          "re": "1/2",
+          "im": "0"
+        }
+      ],
+      "multiplier_class": "PARABOLIC",
+      "critical_orbit": "CAPPED(BIT_BUDGET, n=16)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "parabolic_minus_one",
+      "name": "parabolic, multiplier -1",
+      "c": {
+        "re": "-3/4",
+        "im": "0"
+      },
+      "regime": "PARABOLIC",
+      "cycle": [
+        {
+          "re": "-1/2",
+          "im": "0"
+        }
+      ],
+      "multiplier_class": "PARABOLIC",
+      "critical_orbit": "CAPPED(BIT_BUDGET, n=16)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "parabolic_i",
+      "name": "parabolic, multiplier i",
+      "c": {
+        "re": "1/4",
+        "im": "1/2"
+      },
+      "regime": "PARABOLIC",
+      "cycle": [
+        {
+          "re": "0",
+          "im": "1/2"
+        }
+      ],
+      "multiplier_class": "PARABOLIC",
+      "critical_orbit": "CAPPED(BIT_BUDGET, n=16)",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "TanYinGeometricallyFiniteLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "niven",
+      "name": "irrationally indifferent",
+      "c": {
+        "re": "37/100",
+        "im": "4/25"
+      },
+      "regime": "IRRATIONALLY_INDIFFERENT",
+      "cycle": [
+        {
+          "re": "3/10",
+          "im": "2/5"
+        }
+      ],
+      "multiplier_class": "IRRATIONALLY_INDIFFERENT",
+      "critical_orbit": "CAPPED(BIT_BUDGET, n=15)",
+      "local_connectivity": "OPEN",
+      "theorem_tag": null,
+      "theorem_tag_status": "NONE",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "UNDECIDED"
+    },
+    {
+      "key": "escaping",
+      "name": "escaping critical orbit",
+      "c": {
+        "re": "1",
+        "im": "0"
+      },
+      "regime": "ESCAPING",
+      "cycle": null,
+      "multiplier_class": null,
+      "critical_orbit": "ESCAPES(n=3)",
+      "local_connectivity": "NOT_APPLICABLE_DISCONNECTED",
+      "theorem_tag": "FatouJuliaEscapingCantorSet",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "NOT_APPLICABLE"
+    }
+  ],
+  "algebraic": [
+    {
+      "key": "rabbit",
+      "name": "Douady rabbit",
+      "polynomial": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "box": {
+        "re": [
+          "-269514856191/2199023255552",
+          "-269514856187/2199023255552"
+        ],
+        "im": [
+          "818984173483/1099511627776",
+          "818984173485/1099511627776"
+        ]
+      },
+      "period": 3,
+      "regime": "HYPERBOLIC_CENTER",
+      "multiplier_class": "SUPERATTRACTING",
+      "trap": {
+        "re": [
+          "-1/64",
+          "1/64"
+        ],
+        "im": [
+          "-1/64",
+          "1/64"
+        ],
+        "period": 3
+      },
+      "conjugate_of": null,
+      "root_angles": [
+        "1/7",
+        "2/7"
+      ],
+      "identification_tag": "ParameterRayLandingCorrespondence",
+      "identification_tag_status": "NOT_GATED",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "co_rabbit",
+      "name": "co-rabbit",
+      "polynomial": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "box": {
+        "re": [
+          "-269514856191/2199023255552",
+          "-269514856187/2199023255552"
+        ],
+        "im": [
+          "-818984173485/1099511627776",
+          "-818984173483/1099511627776"
+        ]
+      },
+      "period": 3,
+      "regime": "HYPERBOLIC_CENTER",
+      "multiplier_class": "SUPERATTRACTING",
+      "trap": {
+        "re": [
+          "-1/64",
+          "1/64"
+        ],
+        "im": [
+          "-1/64",
+          "1/64"
+        ],
+        "period": 3
+      },
+      "conjugate_of": "rabbit",
+      "root_angles": [
+        "5/7",
+        "6/7"
+      ],
+      "identification_tag": "ParameterRayLandingCorrespondence",
+      "identification_tag_status": "NOT_GATED",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "airplane",
+      "name": "airplane",
+      "polynomial": [
+        1,
+        1,
+        2,
+        1
+      ],
+      "box": {
+        "re": [
+          "-3859016798727/2199023255552",
+          "-3859016798723/2199023255552"
+        ],
+        "im": [
+          "-1/1099511627776",
+          "1/1099511627776"
+        ]
+      },
+      "period": 3,
+      "regime": "HYPERBOLIC_CENTER",
+      "multiplier_class": "SUPERATTRACTING",
+      "trap": {
+        "re": [
+          "-1/64",
+          "1/64"
+        ],
+        "im": [
+          "-1/64",
+          "1/64"
+        ],
+        "period": 3
+      },
+      "conjugate_of": null,
+      "root_angles": [
+        "3/7",
+        "4/7"
+      ],
+      "identification_tag": "ParameterRayLandingCorrespondence",
+      "identification_tag_status": "NOT_GATED",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "kokopelli",
+      "name": "Kokopelli",
+      "polynomial": [
+        1,
+        0,
+        2,
+        3,
+        3,
+        3,
+        1
+      ],
+      "box": {
+        "re": [
+          "-21511967927/137438953472",
+          "-86047871707/549755813888"
+        ],
+        "im": [
+          "567483849499/549755813888",
+          "141870962375/137438953472"
+        ]
+      },
+      "period": 4,
+      "regime": "HYPERBOLIC_CENTER",
+      "multiplier_class": "SUPERATTRACTING",
+      "trap": {
+        "re": [
+          "-1/64",
+          "1/64"
+        ],
+        "im": [
+          "-1/64",
+          "1/64"
+        ],
+        "period": 4
+      },
+      "conjugate_of": null,
+      "root_angles": [
+        "1/5",
+        "4/15"
+      ],
+      "identification_tag": "ParameterRayLandingCorrespondence",
+      "identification_tag_status": "NOT_GATED",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    },
+    {
+      "key": "kokopelli_conjugate",
+      "name": "Kokopelli conjugate",
+      "polynomial": [
+        1,
+        0,
+        2,
+        3,
+        3,
+        3,
+        1
+      ],
+      "box": {
+        "re": [
+          "-21511967927/137438953472",
+          "-86047871707/549755813888"
+        ],
+        "im": [
+          "-141870962375/137438953472",
+          "-567483849499/549755813888"
+        ]
+      },
+      "period": 4,
+      "regime": "HYPERBOLIC_CENTER",
+      "multiplier_class": "SUPERATTRACTING",
+      "trap": {
+        "re": [
+          "-1/64",
+          "1/64"
+        ],
+        "im": [
+          "-1/64",
+          "1/64"
+        ],
+        "period": 4
+      },
+      "conjugate_of": "kokopelli",
+      "root_angles": [
+        "11/15",
+        "4/5"
+      ],
+      "identification_tag": "ParameterRayLandingCorrespondence",
+      "identification_tag_status": "NOT_GATED",
+      "local_connectivity": "TAGGED_LOCALLY_CONNECTED",
+      "theorem_tag": "DouadyHubbardHyperbolicLocallyConnected",
+      "theorem_tag_status": "ACCEPTED_WITH_QUALIFICATION",
+      "theorem_tag_gate": "docs/literature-gate-2026-09-19.md",
+      "j1_expectation": "STABILIZES"
+    }
+  ]
+}

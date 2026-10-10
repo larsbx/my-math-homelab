@@ -1,0 +1,42 @@
+schema = "julia-oracle-registry/v1"
+
+[[oracle]]
+schema = "julia-oracle-entry/v1"
+oracle_id = "finite-integer.bigz.canonical-bytes"
+version = "0.1.0"
+domain_repository = "larsbx/finite-math-kernels"
+claim_id = "bigz-canonical-bytes"
+checker_repository = "larsbx/finite-math-kernels"
+boundary_id = "shared-finite-kernel"
+exactness = "exact"
+result_vocabulary = ["agrees", "disagrees", "inconclusive", "oracle_error"]
+julia_compat = "1.11"
+
+[[oracle]]
+schema = "julia-oracle-entry/v1"
+oracle_id = "finite-exact.zq.property-transcript"
+version = "0.1.0"
+domain_repository = "larsbx/finite-math-kernels"
+claim_id = "exact-arithmetic-property-probe-v1"
+checker_repository = "larsbx/finite-math-kernels"
+boundary_id = "shared-finite-kernel"
+exactness = "exact"
+result_vocabulary = ["agrees", "disagrees", "inconclusive", "oracle_error"]
+julia_compat = "1.11"
+
+# A domain repository pins the Julia Oracle Lab commit in its differential
+# gate. A manifest digest belongs to a release/run envelope and is never
+# guessed before that envelope exists.
+
+
+[[oracle]]
+schema = "julia-oracle-entry/v1"
+oracle_id = "psc-tier2.loop-gain-cycle-lattice"
+version = "0.1.0"
+domain_repository = "larsbx/pisot-substitution-conjecture-research"
+claim_id = "tier2-loop-gain-fixture-v1"
+checker_repository = "larsbx/pisot-substitution-conjecture-research"
+boundary_id = "tier2-loop-gain-v1"
+exactness = "exact"
+result_vocabulary = ["agrees", "disagrees", "inconclusive", "oracle_error"]
+julia_compat = "1.11"

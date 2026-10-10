@@ -1,0 +1,21 @@
+[workspace]
+name = "sadic-mojo"
+version = "0.1.0"
+description = "Canonical exact Mojo kernel for the S-adic Pisot research programme"
+channels = ["https://conda.modular.com/max-nightly/", "conda-forge"]
+platforms = ["linux-64", "osx-arm64"]
+
+[dependencies]
+modular = "==26.6.0.dev2026090805"
+
+[tasks]
+# Every regression test: one loop over tests/test_*.mojo (see run_tests.sh).
+test = "bash run_tests.sh"
+# The battery tools/cross_check.py compares against the Python oracle.
+vectors = "mojo run -I . vectors.mojo"
+# G3/G6: census of the Brun periodic points; arguments d L max_states max_length
+# (docs/sadic-g3-brun4-census.md, docs/sadic-g6-brun-higher-census.md).
+brun-census = "mojo run -I . brun_census.mojo"
+# Theorem C witness search; modes pip, bpa, bpa-rev
+# (docs/sadic-g6-brun-higher-census.md §3, docs/charter-theorem-c-higher-d.md).
+brun-witness = "mojo run -I . brun_witness.mojo"

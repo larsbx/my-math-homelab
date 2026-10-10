@@ -1,0 +1,30 @@
+[workspace]
+authors = ["larsbx"]
+channels = ["https://conda.modular.com/max", "conda-forge"]
+name = "finite-julia-set-research"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+test = "python -m pytest tests/"
+mojo-smoke = "mojo run -I vendor/mojo kernel/smoke_tests.mojo"
+mojo-build = "mojo build -I vendor/mojo kernel/smoke_tests.mojo -o .pixi/finite-julia-smoke"
+transcript = "mojo run -I vendor/mojo kernel/corpus_transcript.mojo"
+vendored = "python vendor/python/vendoring/check_vendored_sync.py"
+exact-arithmetic = "python tools/audit_exact_arithmetic.py"
+references = "python tools/check_references.py"
+terminology = "python tools/audit_terminology.py"
+ledgers = "python tools/make_regime_ledger.py"
+ledgers-check = "python tools/make_regime_ledger.py --check"
+polyglot = "python vendor/python/polyglot_envelope/render.py"
+polyglot-check = "python vendor/python/polyglot_envelope/render.py --check"
+
+[dependencies]
+# Mojo 1.0.0 release: every Modular package pinned (tests check against pixi.lock).
+mojo = "==1.0.0"
+mojo-compiler = "==1.0.0"
+mojo-python = "==1.0.0"
+mblack = "==26.5.0"
+
+[pypi-dependencies]
+pytest = "==8.3.5"

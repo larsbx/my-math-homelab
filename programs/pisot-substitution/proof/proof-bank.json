@@ -1,0 +1,2934 @@
+{
+  "format": "psc-proof-bank-v1",
+  "scope": "All governed claims, apparent source statement openings under the claim policy, and named theorems/lemmas in every local Lean module.",
+  "authority": "Inventory only; claim statuses retain their existing authority. Source openings may be proposals or repeated statements, not new reviewed theorems.",
+  "pins": {
+    "lean": "leanprover/lean4:v4.34.0-rc2",
+    "packages": [
+      {
+        "name": "mathlib",
+        "rev": "4edb0dbaa3b3cf729d86d1e2f035474d5ae2ac09",
+        "url": "https://github.com/leanprover-community/mathlib4"
+      },
+      {
+        "name": "plausible",
+        "rev": "d9598f07b1bc701f1e3aae163d2681c1fd978793",
+        "url": "https://github.com/leanprover-community/plausible"
+      },
+      {
+        "name": "LeanSearchClient",
+        "rev": "ba67e212be1197b84c1f1f6299488a10a3002713",
+        "url": "https://github.com/leanprover-community/LeanSearchClient"
+      },
+      {
+        "name": "importGraph",
+        "rev": "1681d78dd6e65e38b143f9740d829c826673807c",
+        "url": "https://github.com/leanprover-community/import-graph"
+      },
+      {
+        "name": "proofwidgets",
+        "rev": "a8acbfd87375ff4abe14ce09db5b7664d383bc7f",
+        "url": "https://github.com/leanprover-community/ProofWidgets4"
+      },
+      {
+        "name": "aesop",
+        "rev": "18889deb9e83ea7420ef51c160d6f88552e744e3",
+        "url": "https://github.com/leanprover-community/aesop"
+      },
+      {
+        "name": "Qq",
+        "rev": "507746ab8f4b643ccdacb2ec4cdb5853fa9f8ab3",
+        "url": "https://github.com/leanprover-community/quote4"
+      },
+      {
+        "name": "batteries",
+        "rev": "4cac2177c37f5530c4da76aa8e4307f3fc9e4dcb",
+        "url": "https://github.com/leanprover-community/batteries"
+      },
+      {
+        "name": "Cli",
+        "rev": "ab3a82db9fea14cf0fd7f5a2de650f4b534640af",
+        "url": "https://github.com/leanprover/lean4-cli"
+      }
+    ]
+  },
+  "claims": [
+    {
+      "name": "AlgebraicEmbedding",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, symbolic side",
+      "dependencies": [
+        "UniqueDecodability"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "AlignedOverlapsAreStrongCoincidence",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Proposition 5.39; PR #82",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "AllSeedOverlapProductivity",
+      "status": "open",
+      "source": "open conjectural gate, stronger than the one-seed gate; manuscript Open Problem 5.35 (all-vertex form)",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "AllSeedStrictZipperExclusion",
+      "status": "open",
+      "source": "open conjectural gate; the all-seed form of the strict-zipper branch of Open Problem 5.35 (manuscript Proposition 5.44(iii)(b)); issue #139",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "AllStatesProductiveViaOverlaps",
+      "status": "conditional",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, overlap route",
+      "dependencies": [
+        "OverlapProductivity",
+        "SwapOverlapFiniteness"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "BPATerminationInterface",
+      "status": "imported",
+      "source": "docs/bpa-literature-bridge.md",
+      "dependencies": [],
+      "ledger_node": false,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "BoundaryCoincidenceCriterion",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Proposition 5.40 and Corollary 5.41; PR #82",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "BoundedDegree2WedgeProductivity",
+      "status": "finite-domain",
+      "source": "docs/p1a-degree2-wedge-productivity.md",
+      "dependencies": [],
+      "ledger_node": false,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "BoundedDegree3Exclusion",
+      "status": "finite-domain",
+      "source": "docs/p1a-degree3-partial-theorem.md, bounded PIP corpus theorem",
+      "dependencies": [],
+      "ledger_node": false,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "BoundedPureDiscreteSpectrum",
+      "status": "finite-domain",
+      "source": "docs/pds-certificate-from-the-box-automaton-2026-10-07.md, section 5; domain-specific Mojo receipts, not a universal theorem",
+      "dependencies": [],
+      "ledger_node": false,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "BoxAutomatonCertificate",
+      "status": "proved",
+      "source": "docs/pds-certificate-from-the-box-automaton-2026-10-07.md, Theorem Omega; independently reviewed 2026-10-08 (docs/side-notes-ledger.md), human review pending",
+      "dependencies": [
+        "BoxCycleContainment"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "BoxAutomatonPDSCertificate",
+      "status": "proved",
+      "source": "docs/pds-certificate-from-the-box-automaton-2026-10-07.md, Theorem Omega consequence (a); docs/review-box-leftmost-ledger-2026-10-08.md, sections 1-2; tiling R-action sufficiency only",
+      "dependencies": [
+        "BoxAutomatonCertificate",
+        "PisotMeyerProperty",
+        "OverlapCoincidenceCriterion"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "BoxCycleContainment",
+      "status": "proved",
+      "source": "docs/pds-certificate-from-the-box-automaton-2026-10-07.md, Lemma Omega1 (Proposition V step 1; docs/formal-overlap-carriers-2026-10-04.md, section 2 item 5); step 1 audited in docs/audit-adversarial-prop-v-theorem-e-2026-10-07.md; independently reviewed 2026-10-08 (docs/side-notes-ledger.md), human review pending",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "C2",
+      "status": "conditional",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, boundary route",
+      "dependencies": [
+        "C3Local"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "C3Local",
+      "status": "conditional",
+      "source": "docs/c3-locality-reduction.md",
+      "dependencies": [
+        "C4",
+        "C3Locality"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "C3Locality",
+      "status": "proved",
+      "source": "docs/c3-locality-reduction.md",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "C4",
+      "status": "open",
+      "source": "open sufficiency premise of the C4 route",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "CoincidenceDensityOne",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Lemma 5.36; PR #77",
+      "dependencies": [
+        "OverlapProductivity",
+        "SwapOverlapFiniteness"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "CoincidenceRankFibreTheorems",
+      "status": "imported",
+      "source": "docs/coincidence-rank-imports-literature-gate-2026-10-04.md (Barge arXiv:1301.7094 Thm 4(5),(6); Barge arXiv:1505.04408 Sec. 1 items (2)-(3))",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "ConcentrationAuxB",
+      "status": "open",
+      "source": "open conjectural gate, not source-pending; manuscript open problem; issue #43",
+      "dependencies": [
+        "G1",
+        "SinkSCCReduction"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "CorpusDeterminantSplit",
+      "status": "finite-domain",
+      "source": "docs/unimodular-route-gate-2026-09-17.md, Computational Proposition 2",
+      "dependencies": [],
+      "ledger_node": false,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "DefectIntertwiner",
+      "status": "proved",
+      "source": "docs/c4-lowest-defect-intertwiner.md",
+      "dependencies": [
+        "OrientationMonodromy"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "DefectTheorem",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, standing algebraic setup",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "Degree4Floor",
+      "status": "proved",
+      "source": "docs/c4-degree4-free-lie.md",
+      "dependencies": [
+        "DefectIntertwiner"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "DensityToPDSBridge",
+      "status": "imported",
+      "source": "Barge, Stimac, and Williams; manuscript Imported Theorem 5.37; PR #77",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "DominantCubicCapture",
+      "status": "proved",
+      "source": "archive/2026-09-08/certificates_patched/PROOF_CERTIFICATE.md, sections 8-10 (historical restricted theorem)",
+      "dependencies": [
+        "Target1"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "claim": "DominantCubicCapture",
+        "coverage": "partial",
+        "declarations": [
+          "Psc.trace_sq_A",
+          "Psc.trace_sq_Aq",
+          "Psc.Aq_not_conj_cyclicPlus",
+          "Psc.Aq_not_conj_cyclicMinus"
+        ],
+        "note": "The trace obstruction is formalized; the splitting-field/Galois and dominant-projection passage is not."
+      }
+    },
+    {
+      "name": "DominantK2Source",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, historical route",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "EndpointCore",
+      "status": "proved",
+      "source": "docs/c4-endpoint-core-program.md",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "FiniteCollarDeath",
+      "status": "evidence",
+      "source": "docs/p1-overlap-collar-2026-09-16.md, finite evidence only; no collar-completeness theorem",
+      "dependencies": [],
+      "ledger_node": false,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "FormalProductivity",
+      "status": "open",
+      "source": "open conjectural gate; docs/formal-productivity-reduction-2026-10-04.md; docs/pds-certificate-from-the-box-automaton-2026-10-07.md; implied by PDS through Corollary FP'' and Theorem S",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "G1",
+      "status": "open",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Propositions 4.11, 5.46 and 5.47 and open-problem list; docs/pds-certificate-from-the-box-automaton-2026-10-07.md, consequence (c)",
+      "dependencies": [
+        "G1FromRenewal",
+        "G1OverlapRoute",
+        "G1HalfCoincidenceRoute",
+        "G1FormalProductivityRoute"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "G1FormalProductivityRoute",
+      "status": "conditional",
+      "source": "docs/pds-certificate-from-the-box-automaton-2026-10-07.md, consequence (c), with docs/bpa-termination-by-overlap-depth-2026-10-02.md, Proposition 1; independently reviewed 2026-10-08 (docs/side-notes-ledger.md), human review pending",
+      "dependencies": [
+        "FormalProductivity",
+        "BoxCycleContainment"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "G1FromRenewal",
+      "status": "conditional",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Proposition 4.11",
+      "dependencies": [
+        "G1b1BoundedDiscrepancy",
+        "G1b2RenewalFiniteness"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "G1HalfCoincidenceRoute",
+      "status": "conditional",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Proposition 5.47; docs/bpa-termination-by-overlap-depth-2026-10-02.md, Proposition 4 and Corollary 5; half-coincidence form of Sirvent-Solomyak 2002, Theorem 5.6",
+      "dependencies": [
+        "AllSeedStrictZipperExclusion",
+        "SwapOverlapFiniteness"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "G1OverlapRoute",
+      "status": "conditional",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Proposition 5.46; docs/bpa-termination-by-overlap-depth-2026-10-02.md, Proposition 1; mechanism of Sirvent-Solomyak 2002, Theorem 5.6 (docs/bpa-overlap-depth-literature-gate-2026-10-02.md)",
+      "dependencies": [
+        "AllSeedOverlapProductivity",
+        "SwapOverlapFiniteness"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "G1b1BoundedDiscrepancy",
+      "status": "proved",
+      "source": "sources/issue-45/g1b1-bounded-discrepancy-reconstruction.md; manuscript Theorem 4.4; PR #69",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "G1b2RenewalFiniteness",
+      "status": "open",
+      "source": "open conjectural gate; manuscript Level-2 open problem; issue #44",
+      "dependencies": [
+        "G1b1BoundedDiscrepancy"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "GaloisWedgePropagation",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Proposition 5.20; docs/galois-aux-b-source-resolution-2026-09-13.md; PR #68",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "GlobalEndpointSync",
+      "status": "proved",
+      "source": "docs/c4-barge-diamond-endpoint-eliminator.md",
+      "dependencies": [
+        "EndpointCore"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "HistoricalDegree3Capture",
+      "status": "historical",
+      "source": "archive/2026-09-08/certificates_patched/PROOF_CERTIFICATE.md, sections 8-10",
+      "dependencies": [],
+      "ledger_node": false,
+      "lean_support": {
+        "claim": "HistoricalDegree3Capture",
+        "coverage": "partial",
+        "declarations": [
+          "Psc.Aq_not_conj_cyclicPlus",
+          "Psc.Aq_not_conj_cyclicMinus"
+        ],
+        "note": "Restricted historical result: Lean supports its trace obstruction, not the whole spectral argument."
+      }
+    },
+    {
+      "name": "InterBlockCancellation",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, historical route",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "LatticeLift",
+      "status": "proved",
+      "source": "docs/c4-degree2-lattice-lift.md",
+      "dependencies": [
+        "MeanAreaLift"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "LeftmostChainCycleStructure",
+      "status": "proved",
+      "source": "docs/p1b-leftmost-chain-periodic-pair-2026-10-05.md, Lemma S, Proposition LC and Corollary LC4; 10,584 sign/shape checks, 10,128 integral replays and 456 uncomputed offsets on the standing corpus; independently reviewed 2026-10-08 (docs/side-notes-ledger.md), human review pending",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "LeftmostChainG1Certificate",
+      "status": "proved",
+      "source": "docs/p1b-leftmost-chain-periodic-pair-2026-10-05.md, Corollary LC5, with manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Proposition 5.47; independently reviewed 2026-10-08 (docs/side-notes-ledger.md), human review pending",
+      "dependencies": [
+        "BoxCycleContainment"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "LoadBearingSCC",
+      "status": "conditional",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, historical route",
+      "dependencies": [
+        "G1",
+        "DominantK2Source",
+        "InterBlockCancellation"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "LocalWitnessInjectivity",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, symbolic side",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "MassBalanceK2Obstruction",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, symbolic side",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "MeanAreaLift",
+      "status": "proved",
+      "source": "docs/c4-degree2-meanarea-integrality.md",
+      "dependencies": [
+        "MidArea",
+        "ParikhIntertwiner"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "MidArea",
+      "status": "proved",
+      "source": "docs/c4-degree2-midarea-factorization.md",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "Mod3Sieve",
+      "status": "proved",
+      "source": "docs/c4-multidegree-spectral-sieve.md",
+      "dependencies": [
+        "DefectIntertwiner"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "OneStepContextEquality",
+      "status": "finite-domain",
+      "source": "docs/p1-overlap-context-equality-2026-09-15.md",
+      "dependencies": [],
+      "ledger_node": false,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "OrderedAffineCycleIdentity",
+      "status": "proved",
+      "source": "docs/p1-overlap-affine-pump-2026-09-15.md, Lemma 1",
+      "dependencies": [],
+      "ledger_node": false,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "OrientationMonodromy",
+      "status": "proved",
+      "source": "docs/c4-orientation-monodromy.md",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "OrientationSpectrum",
+      "status": "proved",
+      "source": "docs/c4-orientation-spectrum.md",
+      "dependencies": [
+        "OrientationMonodromy",
+        "ParikhIntertwiner"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "OverlapBadSCCNormalForm",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Proposition 5.43; docs/p1-overlap-minimal-obstruction-2026-09-14.md, Proposition 2.1; PR #88",
+      "dependencies": [
+        "SwapOverlapFiniteness",
+        "OverlapFullRank"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "OverlapBoundaryZipperDichotomy",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Proposition 5.44 and Lemma 5.45; docs/p1-overlap-minimal-obstruction-2026-09-14.md, Proposition 3.1; PR #88",
+      "dependencies": [
+        "OverlapBadSCCNormalForm",
+        "AlignedOverlapsAreStrongCoincidence",
+        "BoundaryCoincidenceCriterion"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "OverlapCoincidenceCriterion",
+      "status": "imported",
+      "source": "Lee-Moody-Solomyak, arXiv:0910.4450, Theorem 4.7 and Lemmas 6.8-6.9; Akiyama-Lee, arXiv:1003.2898, Theorem 2.5; docs/review-box-leftmost-ledger-2026-10-08.md, section 1",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "OverlapFullRank",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Corollary 5.34; PR #76",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "OverlapProductivity",
+      "status": "open",
+      "source": "open conjectural gate, the current shortest-path gate; manuscript Open Problem 5.35; issue #84",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "PDS",
+      "status": "conditional",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, boundary route",
+      "dependencies": [
+        "G1",
+        "SCCProducer"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "PDSFormalProductivityRoute",
+      "status": "conditional",
+      "source": "docs/pds-certificate-from-the-box-automaton-2026-10-07.md, consequence (a); independently reviewed 2026-10-08 (docs/side-notes-ledger.md), human review pending",
+      "dependencies": [
+        "FormalProductivity",
+        "BoxAutomatonPDSCertificate"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "PDSFormalProductivitySeedRoute",
+      "status": "conditional",
+      "source": "docs/pds-certificate-from-the-box-automaton-2026-10-07.md, consequence (b), with manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Lemma 5.36 and Theorem 5.38; independently reviewed 2026-10-08 (docs/side-notes-ledger.md), human review pending",
+      "dependencies": [
+        "FormalProductivity",
+        "SwapOverlapFiniteness",
+        "DensityToPDSBridge"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "PDSImpliesRepoG1",
+      "status": "proved",
+      "source": "docs/p1b-vertex-coincidence-box-2026-10-02.md, Theorem 5.1 (Theorem S) with manuscript Proposition 5.47; independently audited 2026-10-04 (docs/side-notes-ledger.md, section 7), human review pending",
+      "dependencies": [
+        "CoincidenceRankFibreTheorems",
+        "PeriodicPairOneFibre",
+        "StrictZipperPeriodicPairForm"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "PDSImpliesSeedwiseTermination",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Theorem thm:seedwise; docs/formal-productivity-reduction-2026-10-04.md, Proposition FP and Corollary FP''; manuscript Theorem 5.33(iii),(v); independently audited 2026-10-04, human review pending",
+      "dependencies": [
+        "PDSImpliesRepoG1",
+        "StrongCoincidenceFromPDS"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "PDSOverlapRoute",
+      "status": "conditional",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Theorem 5.38",
+      "dependencies": [
+        "CoincidenceDensityOne",
+        "DensityToPDSBridge"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "PDSSpectralRoute",
+      "status": "conditional",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, spectral route",
+      "dependencies": [
+        "G1",
+        "SpectralSCCProducer"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "PSC",
+      "status": "open",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, abstract and unresolved statements; open",
+      "dependencies": [],
+      "ledger_node": false,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "ParikhIntertwiner",
+      "status": "proved",
+      "source": "docs/c4-parikh-intertwiner.md",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "ParitySieve",
+      "status": "proved",
+      "source": "docs/c4-degree2-parity-sieve.md",
+      "dependencies": [
+        "DefectIntertwiner"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "PeriodicPairOneFibre",
+      "status": "proved",
+      "source": "docs/p1b-periodic-pair-fibre-literature-gate-2026-10-02.md, Proposition F, via Solomyak's eigenvalue criterion on the full-rank return module; independently audited 2026-10-04 (docs/side-notes-ledger.md, section 7), human review pending",
+      "dependencies": [
+        "ReturnModuleFullRank"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "PeriodicPatchCollar",
+      "status": "proved",
+      "source": "docs/p1-overlap-collar-2026-09-16.md, Lemmas 1-2",
+      "dependencies": [],
+      "ledger_node": false,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "PhiSemisimplicity",
+      "status": "proved",
+      "source": "archive/2026-09-08/certificates_patched/PROOF_CERTIFICATE.md, section 3 semisimplicity lemma; not formalized in Lean",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "PisotMeyerProperty",
+      "status": "imported",
+      "source": "Lee-Solomyak, arXiv:1002.0039, Definition 2.3 and Theorem 4.3; docs/review-box-leftmost-ledger-2026-10-08.md, section 1 (scalar expansion hypotheses and return-vector transfer checked)",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "RealizationCoincidenceRankBridge",
+      "status": "bridge",
+      "source": "sources/issue-45/realization-coincidence-rank-audit.md, open obligations G0-G6",
+      "dependencies": [],
+      "ledger_node": false,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "RepoSeedUnionBridge",
+      "status": "proved",
+      "source": "docs/bpa-literature-bridge.md",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "ReturnModuleFullRank",
+      "status": "proved",
+      "source": "docs/p1b-periodic-pair-fibre-literature-gate-2026-10-02.md, Theorem R; independently audited 2026-10-04 (docs/side-notes-ledger.md, section 7), human review pending",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "SCCProducer",
+      "status": "open",
+      "source": "docs/conjecture-ledger.md; manuscript unresolved statements",
+      "dependencies": [
+        "G1",
+        "SinkSCCReduction",
+        "C2"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "SeedCentralizer",
+      "status": "proved",
+      "source": "archive/2026-09-08/certificates_patched/PROOF_CERTIFICATE.md, sections 5-7; proof/PscVerif/PscVerif/Centralizer.lean proves the centralizer contradiction only",
+      "dependencies": [
+        "ThetaIntertwining",
+        "PhiSemisimplicity"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "claim": "SeedCentralizer",
+        "coverage": "partial",
+        "declarations": [
+          "Psc.no_commuting_of_no_eigenvalue",
+          "Psc.Aq_mulVec_ones",
+          "Psc.Aq_eigenspace"
+        ],
+        "note": "The rational centralizer contradiction is formalized. The tensor intertwining and semisimplicity bridge are manuscript results."
+      }
+    },
+    {
+      "name": "SignatureReduction",
+      "status": "proved",
+      "source": "docs/c4-signature-reduction.md",
+      "dependencies": [
+        "EndpointCore"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "SinkSCCReduction",
+      "status": "conditional",
+      "source": "docs/sink-scc-reduction.md",
+      "dependencies": [
+        "G1"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "SpanRichProductivity",
+      "status": "open",
+      "source": "open conjectural gate, not source-pending; manuscript open problem; issue #85",
+      "dependencies": [
+        "ConcentrationAuxB",
+        "GaloisWedgePropagation"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "SpectralBlackBox",
+      "status": "proved",
+      "source": "archive/2026-09-08/certificates_patched/PROOF_CERTIFICATE.md, sections 8-10",
+      "dependencies": [
+        "Target1",
+        "DominantCubicCapture"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "SpectralSCCProducer",
+      "status": "open",
+      "source": "open; the spectral SCC producer is not proved even conditionally",
+      "dependencies": [
+        "G1",
+        "SinkSCCReduction",
+        "SpanRichProductivity"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "StandardBPAEquivalence",
+      "status": "imported",
+      "source": "docs/bpa-literature-bridge.md and the literature cited there",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "StrictZipperPeriodicPairForm",
+      "status": "proved",
+      "source": "docs/p1b-strict-zipper-periodic-pair-2026-10-02.md, Theorem B with Lemma C and Corollary B' (reformulation of issue #139); independently audited 2026-10-04 (docs/side-notes-ledger.md, section 7), human review pending",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "StrongCoincidenceFromPDS",
+      "status": "imported",
+      "source": "Akiyama-Lee, European J. Combin. 39 (2014), Corollary 4.5; height-group step by Theorem R; docs/pds-strong-coincidence-literature-gate-2026-10-04.md",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "SwapOverlapFiniteness",
+      "status": "proved",
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md; manuscript Theorem 4.22; PR #72",
+      "dependencies": [
+        "G1b1BoundedDiscrepancy"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "Target1",
+      "status": "proved",
+      "source": "archive/2026-09-08/certificates_patched/PROOF_CERTIFICATE.md, section 7; proof/PscVerif/PscVerif/Centralizer.lean Psc.target1 proves the rational centralizer form only",
+      "dependencies": [
+        "SeedCentralizer"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "claim": "Target1",
+        "coverage": "partial",
+        "declarations": [
+          "Psc.target1",
+          "Psc.no_equal_row_sums"
+        ],
+        "note": "Lean assumes NoEigenvalue M and proves noncommutation. The full tensor-sector statement additionally uses the unformalized intertwining and semisimplicity results."
+      }
+    },
+    {
+      "name": "ThetaIntertwining",
+      "status": "proved",
+      "source": "archive/2026-09-08/certificates_patched/PROOF_CERTIFICATE.md, section 5 certified intertwining identity; kernel/verify.mojo check C7; not formalized in Lean",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "UDForPowers",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, power corollary of Theorem 2.8",
+      "dependencies": [
+        "UniqueDecodability"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "UnimodularNoPatchCollapse",
+      "status": "proved",
+      "source": "docs/unimodular-route-gate-2026-09-17.md, Lemma 1",
+      "dependencies": [],
+      "ledger_node": false,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "UniqueDecodability",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, Theorem 2.8",
+      "dependencies": [
+        "DefectTheorem"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "V5Thm51",
+      "status": "retired",
+      "source": "retired: the v5 Theorem 5.1 argument is withdrawn",
+      "dependencies": [],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "W3LowGrowth",
+      "status": "proved",
+      "source": "docs/c4-w3-low-growth-and-interface-correction.md",
+      "dependencies": [
+        "DefectIntertwiner",
+        "PhiSemisimplicity"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    },
+    {
+      "name": "WedgeBound",
+      "status": "proved",
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex, symbolic side",
+      "dependencies": [
+        "AlgebraicEmbedding",
+        "MassBalanceK2Obstruction"
+      ],
+      "ledger_node": true,
+      "lean_support": {
+        "coverage": "none",
+        "declarations": [],
+        "note": "No complete Lean proof is registered for this claim."
+      }
+    }
+  ],
+  "lean_declarations": [
+    {
+      "name": "Psc.ind_self",
+      "module": "PscVerif.Basic",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Basic.lean",
+      "line": 26,
+      "declaration": "@[simp] theorem ind_self (a : Letter) : ind a a = 1 := by simp [ind]"
+    },
+    {
+      "name": "Psc.ind_eq_zero",
+      "module": "PscVerif.Basic",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Basic.lean",
+      "line": 28,
+      "declaration": "theorem ind_eq_zero {x a : Letter} (h : x ≠ a) : ind x a = 0 := by simp [ind, h]"
+    },
+    {
+      "name": "Psc.ind_mul",
+      "module": "PscVerif.Basic",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Basic.lean",
+      "line": 32,
+      "declaration": "theorem ind_mul (x a b : Letter) : ind x a * ind x b = ind a b * ind x a := by"
+    },
+    {
+      "name": "Psc.BalancedPair.K₁_eq_zero",
+      "module": "PscVerif.Basic",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Basic.lean",
+      "line": 73,
+      "declaration": "@[simp] theorem K₁_eq_zero (a : Letter) : s.K₁ a = 0 := by"
+    },
+    {
+      "name": "Psc.no_commuting_of_no_eigenvalue",
+      "module": "PscVerif.Centralizer",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Centralizer.lean",
+      "line": 35,
+      "declaration": "theorem no_commuting_of_no_eigenvalue"
+    },
+    {
+      "name": "Psc.ones_ne_zero",
+      "module": "PscVerif.Centralizer",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Centralizer.lean",
+      "line": 50,
+      "declaration": "theorem ones_ne_zero : (ones : Fin 3 → ℚ) ≠ 0 := by"
+    },
+    {
+      "name": "Psc.Aq_mulVec_ones",
+      "module": "PscVerif.Centralizer",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Centralizer.lean",
+      "line": 60,
+      "declaration": "theorem Aq_mulVec_ones (k : Fin 6) : (Aq k) *ᵥ ones = ((lam k : ℚ)) • ones := by"
+    },
+    {
+      "name": "Psc.Aq_eigenspace",
+      "module": "PscVerif.Centralizer",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Centralizer.lean",
+      "line": 70,
+      "declaration": "theorem Aq_eigenspace (k : Fin 6) (w : Fin 3 → ℚ)"
+    },
+    {
+      "name": "Psc.target1",
+      "module": "PscVerif.Centralizer",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Centralizer.lean",
+      "line": 86,
+      "declaration": "theorem target1 (M : Matrix (Fin 3) (Fin 3) ℚ) (hM : NoEigenvalue M) (k : Fin 6)"
+    },
+    {
+      "name": "Psc.no_equal_row_sums",
+      "module": "PscVerif.Centralizer",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Centralizer.lean",
+      "line": 94,
+      "declaration": "theorem no_equal_row_sums (M : Matrix (Fin 3) (Fin 3) ℚ) (hM : NoEigenvalue M)"
+    },
+    {
+      "name": "Psc.seed_K₂_zero",
+      "module": "PscVerif.Seeds",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Seeds.lean",
+      "line": 59,
+      "declaration": "theorem seed_K₂_zero (k : Fin 6) (i j : Letter) : (seed k).K₂ i j = 0 := by"
+    },
+    {
+      "name": "Psc.seed_length",
+      "module": "PscVerif.Seeds",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Seeds.lean",
+      "line": 63,
+      "declaration": "theorem seed_length (k : Fin 6) : (seed k).u.length = 7 := by fin_cases k <;> rfl"
+    },
+    {
+      "name": "Psc.theta_seed",
+      "module": "PscVerif.Seeds",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Seeds.lean",
+      "line": 67,
+      "declaration": "theorem theta_seed (k : Fin 6) (i j : Fin 3) : Θ (seed k).K₃ i j = Atab k i j := by"
+    },
+    {
+      "name": "Psc.trace_A",
+      "module": "PscVerif.Seeds",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Seeds.lean",
+      "line": 71,
+      "declaration": "theorem trace_A (k : Fin 6) : (Atab k).trace = 0 := by"
+    },
+    {
+      "name": "Psc.trace_sq_A",
+      "module": "PscVerif.Seeds",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Seeds.lean",
+      "line": 76,
+      "declaration": "theorem trace_sq_A (k : Fin 6) : ((Atab k) * (Atab k)).trace = 6 := by"
+    },
+    {
+      "name": "Psc.det_A_ne_zero",
+      "module": "PscVerif.Seeds",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Seeds.lean",
+      "line": 80,
+      "declaration": "theorem det_A_ne_zero (k : Fin 6) : (Atab k).det ≠ 0 := by"
+    },
+    {
+      "name": "Psc.A_ne_zero",
+      "module": "PscVerif.Seeds",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Seeds.lean",
+      "line": 84,
+      "declaration": "theorem A_ne_zero (k : Fin 6) : Atab k ≠ 0 := by"
+    },
+    {
+      "name": "Psc.seed_K₃_mem_W₃",
+      "module": "PscVerif.Seeds",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Seeds.lean",
+      "line": 93,
+      "declaration": "theorem seed_K₃_mem_W₃ (k : Fin 6) (a b c : Letter) :"
+    },
+    {
+      "name": "Psc.N_mul_N",
+      "module": "PscVerif.Shuffle",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Shuffle.lean",
+      "line": 22,
+      "declaration": "theorem N_mul_N (a c : Letter) (w : Word) :"
+    },
+    {
+      "name": "Psc.N_mul_N₂",
+      "module": "PscVerif.Shuffle",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Shuffle.lean",
+      "line": 32,
+      "declaration": "theorem N_mul_N₂ (a b c : Letter) (w : Word) :"
+    },
+    {
+      "name": "Psc.BalancedPair.K₃_shuffle_zero",
+      "module": "PscVerif.Shuffle",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/Shuffle.lean",
+      "line": 53,
+      "declaration": "theorem K₃_shuffle_zero (s : BalancedPair) (h₂ : ∀ i j, s.K₂ i j = 0)"
+    },
+    {
+      "name": "Psc.trace_sq_cyclicPlus",
+      "module": "PscVerif.TraceLemma",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/TraceLemma.lean",
+      "line": 32,
+      "declaration": "theorem trace_sq_cyclicPlus (a b c : K) :"
+    },
+    {
+      "name": "Psc.trace_sq_cyclicMinus",
+      "module": "PscVerif.TraceLemma",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/TraceLemma.lean",
+      "line": 37,
+      "declaration": "theorem trace_sq_cyclicMinus (a b c : K) :"
+    },
+    {
+      "name": "Psc.trace_sq_Aq",
+      "module": "PscVerif.TraceLemma",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/TraceLemma.lean",
+      "line": 42,
+      "declaration": "theorem trace_sq_Aq (k : Fin 6) : ((Aq k) * (Aq k)).trace = 6 := by"
+    },
+    {
+      "name": "Psc.trace_sq_conj",
+      "module": "PscVerif.TraceLemma",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/TraceLemma.lean",
+      "line": 49,
+      "declaration": "theorem trace_sq_conj (P Q X : Matrix (Fin 3) (Fin 3) ℚ) (hQP : Q * P = 1) :"
+    },
+    {
+      "name": "Psc.Aq_not_conj_cyclicPlus",
+      "module": "PscVerif.TraceLemma",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/TraceLemma.lean",
+      "line": 59,
+      "declaration": "theorem Aq_not_conj_cyclicPlus (k : Fin 6) (P Q : Matrix (Fin 3) (Fin 3) ℚ)"
+    },
+    {
+      "name": "Psc.Aq_not_conj_cyclicMinus",
+      "module": "PscVerif.TraceLemma",
+      "private": false,
+      "source": "proof/PscVerif/PscVerif/TraceLemma.lean",
+      "line": 67,
+      "declaration": "theorem Aq_not_conj_cyclicMinus (k : Fin 6) (P Q : Matrix (Fin 3) (Fin 3) ℚ)"
+    }
+  ],
+  "source_statements": [
+    {
+      "source": "docs/audit-adversarial-prop-v-theorem-e-2026-10-07.md",
+      "line": 19,
+      "statement_heading": "## 1. Theorem E"
+    },
+    {
+      "source": "docs/audit-adversarial-prop-v-theorem-e-2026-10-07.md",
+      "line": 35,
+      "statement_heading": "## 2. Proposition V"
+    },
+    {
+      "source": "docs/audit-pr197-2026-10-03.md",
+      "line": 32,
+      "statement_heading": "## Theorem R: return module"
+    },
+    {
+      "source": "docs/audit-pr197-2026-10-03.md",
+      "line": 53,
+      "statement_heading": "## Proposition V: completeness and the converse"
+    },
+    {
+      "source": "docs/bpa-termination-by-overlap-depth-2026-10-02.md",
+      "line": 59,
+      "statement_heading": "## 2. Proposition 1 (bounded gaps from finite overlap depth)"
+    },
+    {
+      "source": "docs/bpa-termination-by-overlap-depth-2026-10-02.md",
+      "line": 93,
+      "statement_heading": "## 3. Corollary 2 (the cube-image specimen)"
+    },
+    {
+      "source": "docs/bpa-termination-by-overlap-depth-2026-10-02.md",
+      "line": 129,
+      "statement_heading": "## 5. Proposition 4 (the half-coincidence strengthening)"
+    },
+    {
+      "source": "docs/bpa-termination-by-overlap-depth-2026-10-02.md",
+      "line": 154,
+      "statement_heading": "*Corollary 5 (strict-zipper exclusion suffices).* Let `Z` be the set of"
+    },
+    {
+      "source": "docs/bsw-import-literature-gate-2026-09-21.md",
+      "line": 88,
+      "statement_heading": "### 5. Corollary 3.3 and the seedwise question"
+    },
+    {
+      "source": "docs/c3-locality-reduction.md",
+      "line": 33,
+      "statement_heading": "### Lemma (newborn-cut localization)"
+    },
+    {
+      "source": "docs/c3-locality-reduction.md",
+      "line": 66,
+      "statement_heading": "### Corollary (higher escape becomes one-step escape)"
+    },
+    {
+      "source": "docs/c4-defect-degree-census.md",
+      "line": 116,
+      "statement_heading": "This does **not** prove that a general PIP BPA has no degree-4 state, that every degree-3 state belongs to the four classes above, or that degree-2 recurrent SCCs must leak. Those remain general proof obligations. It only says the statements above hold exhaustively in the stated 4,554-substitution corpus."
+    },
+    {
+      "source": "docs/c4-endpoint-core-program.md",
+      "line": 117,
+      "statement_heading": "productive. QED."
+    },
+    {
+      "source": "docs/c4-parikh-intertwiner.md",
+      "line": 90,
+      "statement_heading": "### Corollary 2.1 — no one- or two-state counterexample SCC"
+    },
+    {
+      "source": "docs/c4-parikh-intertwiner.md",
+      "line": 123,
+      "statement_heading": "### Corollary 3.1 — the three-state case is rigid"
+    },
+    {
+      "source": "docs/c4-w3-low-growth-and-interface-correction.md",
+      "line": 98,
+      "statement_heading": "### Theorem"
+    },
+    {
+      "source": "docs/formal-productivity-reduction-2026-10-04.md",
+      "line": 33,
+      "statement_heading": "**Proposition FP.**"
+    },
+    {
+      "source": "docs/formal-productivity-reduction-2026-10-04.md",
+      "line": 65,
+      "statement_heading": "**Corollary FP′** (dependencies as listed in the status line). For PIP"
+    },
+    {
+      "source": "docs/formal-productivity-reduction-2026-10-04.md",
+      "line": 83,
+      "statement_heading": "exactly all-pairs aligned strong coincidence: three letter pairs, each a"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 35,
+      "statement_heading": "**Lemma 1.1 (occurrence).** Every vertex of `O_sigma` is the type of an"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 51,
+      "statement_heading": "**Theorem 2.1 (finiteness of the seed-patch overlap graph).** Let `sigma` be"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 92,
+      "statement_heading": "the manuscript's Lemma 2.3 (`Q`-independence of the `l_a`, which needs"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 100,
+      "statement_heading": "integer vector, so `pi(u[i]) = pi(v[j])` by `Q`-independence; applying"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 123,
+      "statement_heading": "`u`); they are vertices of `O_sigma` (Lemma 1.1). An overlap is *productive*"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 188,
+      "statement_heading": "beta^K NC_m` as in (3) and `delta(s) = 1`. Termination with coincidence is,"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 201,
+      "statement_heading": "`rho(N_S) = beta`, and `N_S V_S = V_S M^T` for the matrix `V_S` with rows"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 215,
+      "statement_heading": "its depth-`m` descendants, so it is productive whenever `(c, c')` is"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 370,
+      "statement_heading": "`m` inflates to common tiles at level `m+1` whose interiors cover the"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 387,
+      "statement_heading": "`beta^{m'} t` lies in `beta^{m'-N} J°` and the level-`m'` tilings refine the"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 411,
+      "statement_heading": "`Phi^k` of it is `(sigma^k(ab), sigma^k(ba))` repeated; hence"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 442,
+      "statement_heading": "`n` (the manuscript's Imported Theorem 2.x of Barge–Diamond); the strong"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 453,
+      "statement_heading": "(reflection sends `(a, b, t)` to `(a, b, l_a - l_b - t)` and commutes with"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 467,
+      "statement_heading": "holds (the offset-zero descendant is a coincidence or productive by 9.1);"
+    },
+    {
+      "source": "docs/overlap-finiteness-and-coincidence-density-2026-09-13.md",
+      "line": 500,
+      "statement_heading": "the prescribed expanding offset, the geometric coincidence problem of"
+    },
+    {
+      "source": "docs/p1-overlap-affine-pump-2026-09-15.md",
+      "line": 28,
+      "statement_heading": "It is essential: two occurrences can have the same child overlap type while"
+    },
+    {
+      "source": "docs/p1-overlap-collar-2026-09-16.md",
+      "line": 40,
+      "statement_heading": "in `{a,b}` on both sides, starting with the partner letter."
+    },
+    {
+      "source": "docs/p1-overlap-collar-2026-09-16.md",
+      "line": 66,
+      "statement_heading": "finitely many words of length `m`; the morphism and truncation statements are"
+    },
+    {
+      "source": "docs/p1-overlap-minimal-obstruction-2026-09-14.md",
+      "line": 23,
+      "statement_heading": "**Proposition 2.1 (closed irreducible obstruction).**  Suppose an overlap"
+    },
+    {
+      "source": "docs/p1-overlap-minimal-obstruction-2026-09-14.md",
+      "line": 83,
+      "statement_heading": "letter pair, so a bad `S` contains no endpoint-aligned state at all.  More"
+    },
+    {
+      "source": "docs/p1-overlap-seed-growth-bridge-2026-09-17.md",
+      "line": 29,
+      "statement_heading": "raises and gives no result."
+    },
+    {
+      "source": "docs/p1-seed-strength-2026-10-08.md",
+      "line": 36,
+      "statement_heading": "## 2. Proposition SA (anatomy of one seed)"
+    },
+    {
+      "source": "docs/p1-seed-strength-2026-10-08.md",
+      "line": 66,
+      "statement_heading": "## 3. Theorem SC (seed collapse)"
+    },
+    {
+      "source": "docs/p1-seed-strength-2026-10-08.md",
+      "line": 121,
+      "statement_heading": "**Lemma RC (reversal closure).** *Reversing all three images maps each census"
+    },
+    {
+      "source": "docs/p1-seed-strength-2026-10-08.md",
+      "line": 134,
+      "statement_heading": "## 5. Theorem L′: fourteen more lines of class B"
+    },
+    {
+      "source": "docs/p1-seed-strength-2026-10-08.md",
+      "line": 156,
+      "statement_heading": "*Theorem L′.* For each line in the table below, every PIP member is"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 35,
+      "statement_heading": "**Theorem K: on the whole catch-up-free `|det M| = 2` class, all-pairs strong"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 116,
+      "statement_heading": "## 2. Proposition A: A1′ is the residual half of SC_all"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 122,
+      "statement_heading": "*Proposition A.* Under A1′'s hypothesis the bad edge `{x, c}` is residual, and"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 151,
+      "statement_heading": "## 3. Corollary C3: on the catch-up-free class, A1′ is T2"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 153,
+      "statement_heading": "*Lemma A* of the census (§3, proved there) says: for `sigma` catch-up-free with"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 157,
+      "statement_heading": "*Corollary C3.* Let `sigma` be PIP on three letters, catch-up-free with"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 187,
+      "statement_heading": "## 3a. Proposition D: the class forces an explicit normal form"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 196,
+      "statement_heading": "*Lemma D0.* `|O| <= 2`."
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 208,
+      "statement_heading": "*Proposition D (normal form).* Let `sigma` be PIP on three letters,"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 229,
+      "statement_heading": "*Corollary D1 (the one-odd-letter sub-class is clear).* On the 18 catch-up-free"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 233,
+      "statement_heading": "*Corollary D2 (the other two templates force a length-one image).* On the same"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 326,
+      "statement_heading": "## 3b. Theorem E: A1′ holds on the whole catch-up-free determinant-2 class"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 330,
+      "statement_heading": "*Theorem E.* Let `sigma` be PIP on three letters, catch-up-free, with"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 334,
+      "statement_heading": "*Corollary E1.* On the catch-up-free `|det M| = 2` class, **case (i) of the"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 421,
+      "statement_heading": "*Lemma P1.* If `M` is PIP then `f(1) < 0` and `f(−1) < 0`."
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 449,
+      "statement_heading": "*Lemma L_BC (classes B and C, level 2).* If `p > q`, `r >= 1` and `q >= 1`,"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 468,
+      "statement_heading": "*Lemma L_D (class D, level 2).* If `|p − q| = 1`, `min(p, q) >= 1` and"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 480,
+      "statement_heading": "*Lemma L_A (class A, level 3).* Let `p > q` and `|r − q| = 1`. Then"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 605,
+      "statement_heading": "*Lemma T (prefix transfer).* For letters `i, j` and `n >= 0`, if `{h(i), h(j)}`"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 616,
+      "statement_heading": "*Corollary T1.* The `H`-orbit of a pair of distinct letters either reaches a"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 624,
+      "statement_heading": "*Corollary E2 (strong coincidence on Theorem E's class).* Every PIP"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 664,
+      "statement_heading": "### 3c.2 Proposition Y: the two `sigma(x) = y` families"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 678,
+      "statement_heading": "*Lemma L_y (both families, level 2).* If `r >= 2`, then `sigma^2(x)` and"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 686,
+      "statement_heading": "*Lemma L_cy (family F1, level 2).* If `q > r >= 1`, then `sigma^2(c)` and"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 701,
+      "statement_heading": "*Proposition Y.* Every PIP member of families F1 and F2 satisfies the strong"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 728,
+      "statement_heading": "*Theorem G (reduction).* On the catch-up-free `|det M| = 2` class with"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 767,
+      "statement_heading": "## 3d. Theorem H: the swap family, by parametric witness paths"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 769,
+      "statement_heading": "*Theorem H.* Every PIP member with `|det M| = 2` of the swap family"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 775,
+      "statement_heading": "*Corollary H1 (strong coincidence on the two-odd-letter class).* Every PIP,"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 793,
+      "statement_heading": "*Lemma W.* Let `sigma` be a substitution with incidence matrix `M`. Take letters"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 933,
+      "statement_heading": "*Proposition O.* Let `sigma` be PIP, catch-up-free, `|det M| = 2`, with one odd"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 962,
+      "statement_heading": "*Theorem K (the catch-up-free determinant-2 class).* Every PIP, catch-up-free"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 973,
+      "statement_heading": "*Corollary K1.* **All 210 catch-up-free specimens of the standing corpus"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 994,
+      "statement_heading": "*Lemma Φ0.* `det M = 2(Z_1 − Z_2)`. So a member has `|Z_1 − Z_2| = 1`, and"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1001,
+      "statement_heading": "*Lemma Φ1.* If `w_1` begins with `y`, then `{o, y}` is coincident by level 3."
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1011,
+      "statement_heading": "*Lemma Φ2 (crossing).* If `w_1` begins with `z` and there are `i, k >= 1` with"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1033,
+      "statement_heading": "*Proposition Φ (reduction).* On Theorem K's family, `{o, y}` is eventually"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1085,
+      "statement_heading": "*Lemma Φ4 (Pisot signs).* If `s = +1` then `Delta >= 0`; if `s = −1` then"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1093,
+      "statement_heading": "*Lemma Φ5 (the `s = +1` shape).* If `s = +1` and the pair is non-crossing,"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1113,
+      "statement_heading": "*Lemma Φ6 (matched step).* At a common point with `a = b`, if `w_a` (`w_1` for"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1121,
+      "statement_heading": "*Lemma Φ7 (`delta = e_z`, unmatched start).* If `delta = e_z`, `w_1` begins"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1129,
+      "statement_heading": "*Lemma Φ8 (unmatched step).* At a common point with `(a, b) = (z, y)`, if the"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1137,
+      "statement_heading": "*Theorem Φ (the cell `delta = e_z`).* Every PIP member with `|det M| = 2`,"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1234,
+      "statement_heading": "*Theorem Ψ (closed shape families).* With `Z_1 = Z_2 + 1`, every PIP member"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1315,
+      "statement_heading": "*Theorem Ξ (the cell `(+1, 1)` up to two run patterns).* In the cell"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1362,
+      "statement_heading": "*Lemma X (monotone crossing).* Let `P: p_0 → p_1` and `Q: q_0 → q_1` be"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1390,
+      "statement_heading": "*Lemma Φ5′ (the short suffix, `s = −1`).* Suppose `Z_2 = Z_1 + 1`, `w_1`"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1529,
+      "statement_heading": "*Theorem Λ (the cell `(+1, 1)`).* Every PIP member of Theorem K's family with"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1553,
+      "statement_heading": "*Theorem Λ′ (the cell `(−1, −1)`).* Every PIP member of Theorem K's family"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1589,
+      "statement_heading": "**Theorem (closed cells).** For each `(s, Delta)` among `(+1, 0)` (Theorem Φ),"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1851,
+      "statement_heading": "*Lemma (exact imposition).* For a region `R` and an affine form `F`,"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1910,
+      "statement_heading": "*Theorem Λ″ (the cell `(−1, 0)`).* Every member of the cell `(−1, 0)` is"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 1966,
+      "statement_heading": "**Theorem Ζ (bounded `Z_2`).** Every member of Theorem K's family with"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 2028,
+      "statement_heading": "## 4. Proposition B: why A1′ is not a corollary of the import"
+    },
+    {
+      "source": "docs/p1a-a1-prime-2026-10-05.md",
+      "line": 2030,
+      "statement_heading": "*Proposition B.* The imported Barge–Diamond theorem cannot give A1′, and the"
+    },
+    {
+      "source": "docs/p1a-aligned-cycle-normal-form-2026-10-01.md",
+      "line": 40,
+      "statement_heading": "### Theorem 2.1 — fixed edge or alternating E"
+    },
+    {
+      "source": "docs/p1a-aligned-cycle-normal-form-2026-10-01.md",
+      "line": 89,
+      "statement_heading": "### Corollary 2.2 — the alternating witness is genuinely interior"
+    },
+    {
+      "source": "docs/p1a-tail-literature-gate-2026-10-07.md",
+      "line": 29,
+      "statement_heading": "**Lemma (no Barge witness).** No power `sigma^n` of a member, nor any"
+    },
+    {
+      "source": "docs/p1a-template-collapse-2026-10-05.md",
+      "line": 38,
+      "statement_heading": "## 2. Theorem C"
+    },
+    {
+      "source": "docs/p1a-template-collapse-2026-10-05.md",
+      "line": 40,
+      "statement_heading": "*Theorem C (template collapse).* Let `sigma` be PIP on three letters, `{a,b}`"
+    },
+    {
+      "source": "docs/p1a-template-collapse-2026-10-05.md",
+      "line": 90,
+      "statement_heading": "*Corollary C1 (one obligation, not two).* A2 follows from A1 restricted to"
+    },
+    {
+      "source": "docs/p1a-template-collapse-2026-10-05.md",
+      "line": 106,
+      "statement_heading": "*Corollary C2 (A1′ in classical form).* `h(x) = x` and `h(c) = c` mean"
+    },
+    {
+      "source": "docs/p1b-boundary-hitting-progress-2026-10-08.md",
+      "line": 119,
+      "statement_heading": "## 4. Theorem L″: lines of classes A, C and D"
+    },
+    {
+      "source": "docs/p1b-boundary-hitting-progress-2026-10-08.md",
+      "line": 138,
+      "statement_heading": "*Theorem L″.* For each line below, every PIP member is catch-up-free with"
+    },
+    {
+      "source": "docs/p1b-boundary-hitting-progress-2026-10-08.md",
+      "line": 197,
+      "statement_heading": "## 4b. Theorem W: two-parameter wedges of class D"
+    },
+    {
+      "source": "docs/p1b-boundary-hitting-progress-2026-10-08.md",
+      "line": 274,
+      "statement_heading": "*Theorem W.* For each sub-wedge below, every PIP member is catch-up-free with"
+    },
+    {
+      "source": "docs/p1b-boundary-hitting-progress-2026-10-08.md",
+      "line": 291,
+      "statement_heading": "*Corollary W1.* **Every PIP member of class D with `r ≥ q − 1` has pure"
+    },
+    {
+      "source": "docs/p1b-catch-up-free-ppvc-2026-10-07.md",
+      "line": 37,
+      "statement_heading": "*Proposition Z (assembled; every input already recorded).* Let `sigma` be PIP,"
+    },
+    {
+      "source": "docs/p1b-catch-up-free-ppvc-2026-10-07.md",
+      "line": 174,
+      "statement_heading": "**Theorem L**: pure discrete spectrum and G1 for every member of that line."
+    },
+    {
+      "source": "docs/p1b-leftmost-chain-periodic-pair-2026-10-05.md",
+      "line": 80,
+      "statement_heading": "*Lemma S.* Let `v` have offset `x != 0` and let `v'` be its leftmost child."
+    },
+    {
+      "source": "docs/p1b-leftmost-chain-periodic-pair-2026-10-05.md",
+      "line": 105,
+      "statement_heading": "## 4. Proposition LC"
+    },
+    {
+      "source": "docs/p1b-leftmost-chain-periodic-pair-2026-10-05.md",
+      "line": 107,
+      "statement_heading": "*Proposition LC.* Let `v` be a vertex of nonzero offset whose leftmost chain"
+    },
+    {
+      "source": "docs/p1b-leftmost-chain-periodic-pair-2026-10-05.md",
+      "line": 276,
+      "statement_heading": "*Corollary LC1 (the failure set is leftmost-stable).* `D` is closed under"
+    },
+    {
+      "source": "docs/p1b-leftmost-chain-periodic-pair-2026-10-05.md",
+      "line": 284,
+      "statement_heading": "*Corollary LC2 (\"reaches `CU`\" is an SCC invariant).* Vertices in one strongly"
+    },
+    {
+      "source": "docs/p1b-leftmost-chain-periodic-pair-2026-10-05.md",
+      "line": 292,
+      "statement_heading": "*Corollary LC3 (the obstruction is finitely parameterised).* The cycles of"
+    },
+    {
+      "source": "docs/p1b-leftmost-chain-periodic-pair-2026-10-05.md",
+      "line": 375,
+      "statement_heading": "*Corollary LC4 (cycles come in mirror pairs).* Terminal leftmost cycles are"
+    },
+    {
+      "source": "docs/p1b-leftmost-chain-periodic-pair-2026-10-05.md",
+      "line": 394,
+      "statement_heading": "*Corollary LC5 (a sufficient condition for G1).* If the box graph of `sigma`"
+    },
+    {
+      "source": "docs/p1b-madic-carry-reduction-2026-10-01.md",
+      "line": 44,
+      "statement_heading": "Thus the strict-zipper target is exactly eventual membership of its realized"
+    },
+    {
+      "source": "docs/p1b-madic-carry-reduction-2026-10-01.md",
+      "line": 73,
+      "statement_heading": "d = M^m z for a unique integral z, and the hit occurs only when z = w."
+    },
+    {
+      "source": "docs/p1b-overlap-realization-bridge.md",
+      "line": 206,
+      "statement_heading": "- fail closed on a rejected enclosure and on interval division across zero;"
+    },
+    {
+      "source": "docs/p1b-periodic-pair-fibre-literature-gate-2026-10-02.md",
+      "line": 64,
+      "statement_heading": "## 4. Proposition F (proved here)"
+    },
+    {
+      "source": "docs/p1b-periodic-pair-fibre-literature-gate-2026-10-02.md",
+      "line": 75,
+      "statement_heading": "*Proposition F.* `g(T_A) = g(T_B)` for every PIP `sigma`."
+    },
+    {
+      "source": "docs/p1b-periodic-pair-fibre-literature-gate-2026-10-02.md",
+      "line": 124,
+      "statement_heading": "## 5. Theorem R (hypothesis (R) holds)"
+    },
+    {
+      "source": "docs/p1b-periodic-pair-fibre-literature-gate-2026-10-02.md",
+      "line": 126,
+      "statement_heading": "**Theorem R.** *Let `sigma` be primitive on a finite alphabet `A`, and suppose"
+    },
+    {
+      "source": "docs/p1b-strict-zipper-periodic-pair-2026-10-02.md",
+      "line": 71,
+      "statement_heading": "## 2. Proposition A (alignment at either end)"
+    },
+    {
+      "source": "docs/p1b-strict-zipper-periodic-pair-2026-10-02.md",
+      "line": 76,
+      "statement_heading": "*Proposition A.* Suppose `Z''(s) = ∅`. Let `K''` be the largest depth, over"
+    },
+    {
+      "source": "docs/p1b-strict-zipper-periodic-pair-2026-10-02.md",
+      "line": 88,
+      "statement_heading": "*Corollary A′ (right-aligned strict zippers are suffix-coincidence"
+    },
+    {
+      "source": "docs/p1b-strict-zipper-periodic-pair-2026-10-02.md",
+      "line": 119,
+      "statement_heading": "## 3. Lemma C (cycles with interior centre)"
+    },
+    {
+      "source": "docs/p1b-strict-zipper-periodic-pair-2026-10-02.md",
+      "line": 121,
+      "statement_heading": "*Lemma C.* Let `Y` be a finite nonempty set of non-coincidence vertices that"
+    },
+    {
+      "source": "docs/p1b-strict-zipper-periodic-pair-2026-10-02.md",
+      "line": 157,
+      "statement_heading": "## 4. Theorem B (periodic-pair form of a strict zipper)"
+    },
+    {
+      "source": "docs/p1b-strict-zipper-periodic-pair-2026-10-02.md",
+      "line": 173,
+      "statement_heading": "*Theorem B.* Let `r`, `i`, `j`, `sigma^r(i) = P i U` and"
+    },
+    {
+      "source": "docs/p1b-strict-zipper-periodic-pair-2026-10-02.md",
+      "line": 223,
+      "statement_heading": "*Corollary B′ (reformulation of #139).* `Z(s) ≠ ∅` iff some interior"
+    },
+    {
+      "source": "docs/p1b-symbolic-cone-2026-10-08.md",
+      "line": 89,
+      "statement_heading": "*Lemma S′ (soundness).* If the closure finishes on the region `R`, then at"
+    },
+    {
+      "source": "docs/p1b-symbolic-cone-2026-10-08.md",
+      "line": 137,
+      "statement_heading": "## 4. Theorem C"
+    },
+    {
+      "source": "docs/p1b-symbolic-cone-2026-10-08.md",
+      "line": 139,
+      "statement_heading": "**Theorem C.** Let `sigma` be in Theorem E's class B with"
+    },
+    {
+      "source": "docs/p1b-symbolic-line-2026-10-07.md",
+      "line": 66,
+      "statement_heading": "*Lemma S (soundness).* If the run finishes with threshold `T`, then for every"
+    },
+    {
+      "source": "docs/p1b-symbolic-line-2026-10-07.md",
+      "line": 83,
+      "statement_heading": "## 3. Theorem L"
+    },
+    {
+      "source": "docs/p1b-symbolic-line-2026-10-07.md",
+      "line": 85,
+      "statement_heading": "**Theorem L.** For every `q >= 0`, the substitution"
+    },
+    {
+      "source": "docs/p1b-vertex-coincidence-box-2026-10-02.md",
+      "line": 29,
+      "statement_heading": "## 2. Proposition V (the box graph)"
+    },
+    {
+      "source": "docs/p1b-vertex-coincidence-box-2026-10-02.md",
+      "line": 45,
+      "statement_heading": "*Proposition V.* Let `sigma` be PIP and let `𝔅` be the closure under"
+    },
+    {
+      "source": "docs/p1b-vertex-coincidence-box-2026-10-02.md",
+      "line": 200,
+      "statement_heading": "*Theorem S.* For PIP `sigma`: pure discrete spectrum ⇒ PPVC(`sigma`) ⇒ G1"
+    },
+    {
+      "source": "docs/p1b-vertex-coincidence-box-2026-10-02.md",
+      "line": 409,
+      "statement_heading": "This is a sample, labelled as such, and not a census. It says nothing about"
+    },
+    {
+      "source": "docs/p1b-vertex-coincidence-box-2026-10-02.md",
+      "line": 505,
+      "statement_heading": "If every recurrent vertex had *some* catch-up hit, at any depth and not"
+    },
+    {
+      "source": "docs/p1b-vertex-coincidence-box-2026-10-02.md",
+      "line": 570,
+      "statement_heading": "The larger-domain runs there are explicitly 1,000-specimen prefix slices."
+    },
+    {
+      "source": "docs/p1b-vertex-coincidence-box-2026-10-02.md",
+      "line": 591,
+      "statement_heading": "`|det M| = 2` and every proper prefix lies in the nontrivial class of"
+    },
+    {
+      "source": "docs/p1b-vertex-coincidence-box-2026-10-02.md",
+      "line": 614,
+      "statement_heading": "the two levels, are equal. The census checks P′ exactly to"
+    },
+    {
+      "source": "docs/p1b-vertex-coincidence-box-2026-10-02.md",
+      "line": 662,
+      "statement_heading": "rational fixed point `(I − M^r)^{−1} E` of an inflation. Its denominator"
+    },
+    {
+      "source": "docs/p1b-vertex-coincidence-box-2026-10-02.md",
+      "line": 879,
+      "statement_heading": "this places T2 where the rest of this note places PPVC: in exact interleaving"
+    },
+    {
+      "source": "docs/p1b-vertex-coincidence-box-2026-10-02.md",
+      "line": 958,
+      "statement_heading": "aligned strong coincidence it is not weaker than tile coincidence of the §1"
+    },
+    {
+      "source": "docs/p1b-vertex-coincidence-box-2026-10-02.md",
+      "line": 1063,
+      "statement_heading": "substitution (no witness) and `0 -> 1, 1 -> 22, 2 -> 012`, the first total Q1"
+    },
+    {
+      "source": "docs/pds-certificate-from-the-box-automaton-2026-10-07.md",
+      "line": 72,
+      "statement_heading": "## 3. Lemma Ω1 (finite descent, and cycles in the box)"
+    },
+    {
+      "source": "docs/pds-certificate-from-the-box-automaton-2026-10-07.md",
+      "line": 107,
+      "statement_heading": "## 4. Theorem Ω (formal productivity is one automaton property)"
+    },
+    {
+      "source": "docs/prefix-translation-normal-form-2026-09-18.md",
+      "line": 47,
+      "statement_heading": "**Proposition 2.1 (characteristic-recurrence normal form).** For every"
+    },
+    {
+      "source": "docs/proof-ladder.md",
+      "line": 91,
+      "statement_heading": "child closure and nonproductivity with the exact cycle identity, not loop"
+    },
+    {
+      "source": "docs/sink-scc-reduction.md",
+      "line": 19,
+      "statement_heading": "### Lemma 1"
+    },
+    {
+      "source": "docs/sink-scc-reduction.md",
+      "line": 29,
+      "statement_heading": "### Lemma 2"
+    },
+    {
+      "source": "docs/sink-scc-reduction.md",
+      "line": 37,
+      "statement_heading": "### Lemma 3"
+    },
+    {
+      "source": "docs/sink-scc-reduction.md",
+      "line": 45,
+      "statement_heading": "### Lemma 4"
+    },
+    {
+      "source": "docs/sink-scc-reduction.md",
+      "line": 55,
+      "statement_heading": "### Theorem"
+    },
+    {
+      "source": "docs/strong-coincidence-census-2026-10-04.md",
+      "line": 50,
+      "statement_heading": "## 3. Lemma A: in the catch-up-free class the aligned route is a hitting statement"
+    },
+    {
+      "source": "docs/strong-coincidence-census-2026-10-04.md",
+      "line": 52,
+      "statement_heading": "*Lemma A (proved).* Let `sigma` be catch-up-free with `|det M| = 2`. If the"
+    },
+    {
+      "source": "docs/uniform-coincidence-level-bound-2026-09-18.md",
+      "line": 34,
+      "statement_heading": "**Proposition 2.1 (fixed-substitution graph bound).** If"
+    },
+    {
+      "source": "docs/unimodular-route-gate-2026-09-17.md",
+      "line": 31,
+      "statement_heading": "### Lemma 1 (no unimodular patch collapse). **Status: repository-proved.**"
+    },
+    {
+      "source": "docs/unimodular-route-gate-2026-09-17.md",
+      "line": 66,
+      "statement_heading": "equivalence in §3.3 is a corpus equivalence at the tested levels, not a"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 94,
+      "statement_heading": "\\begin{theorem}[Barge--\\v{S}timac--Williams~\\cite{BSW}, Corollary 2]\\label{thm:BSW}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 152,
+      "statement_heading": "\\begin{lemma}[$\\Z$-independence of tile lengths]\\label{lem:Z-indep}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 162,
+      "statement_heading": "\\begin{theorem}[Moss\\'e recognizability~\\cite{Mosse1,Mosse2}]\\label{thm:Mosse}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 176,
+      "statement_heading": "\\begin{theorem}[Defect theorem~\\cite{BPPR,BPR}]\\label{thm:defect}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 180,
+      "statement_heading": "\\begin{lemma}[Letter injectivity]\\label{lem:letter-inj}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 188,
+      "statement_heading": "\\begin{theorem}[Unique decodability]\\label{thm:UD}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 202,
+      "statement_heading": "\\begin{corollary}[\\UD\\ for powers]\\label{cor:UD-powers}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 218,
+      "statement_heading": "\\begin{theorem}[Unique periodic cutting]\\label{thm:upc}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 248,
+      "statement_heading": "\\begin{lemma}[Long coincidence run forces a phase cycle]\\label{lem:long-run-cycle}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 256,
+      "statement_heading": "\\begin{lemma}[A complete-cutting non-diagonal cycle gives two complete cuttings]\\label{lem:non-diag-cycle}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 286,
+      "statement_heading": "\\begin{hypothesis}[Finiteness, G1]\\label{thm:finiteness}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 324,
+      "statement_heading": "\\begin{lemma}[Unique hierarchy]\\label{lem:unique-hier}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 338,
+      "statement_heading": "\\begin{theorem}[Local witness injectivity]\\label{thm:winj}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 388,
+      "statement_heading": "\\begin{lemma}[Mass-balance spectral characterization]\\label{lem:mass-balance}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 413,
+      "statement_heading": "\\begin{lemma}[Algebraic structure]\\label{lem:alg-structure}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 438,
+      "statement_heading": "\\begin{lemma}[Dominant $K_2$-source]\\label{lem:dom-K2}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 446,
+      "statement_heading": "\\begin{proposition}[Spectral lower bound on $N_\\C$, closed SCC, alphabet 3]\\label{thm:v34}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 476,
+      "statement_heading": "\\begin{lemma}[Leg factor]\\label{lem:leg-factor}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 482,
+      "statement_heading": "\\begin{corollary}[Coincidence-rank floor, conditional on the bridge converse]\\label{cor:cr-floor}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 488,
+      "statement_heading": "\\begin{lemma}[Triple mass-balance ceiling]\\label{lem:triple-ceiling}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 494,
+      "statement_heading": "\\begin{proposition}[Second conditional route, unimodular case]\\label{prop:qa-crc}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 514,
+      "statement_heading": "\\begin{conjecture}[SCC Producer Theorem]\\label{conj:producer}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 520,
+      "statement_heading": "\\begin{proposition}\\label{prop:bpa-coincidence}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 554,
+      "statement_heading": "\\begin{theorem}[Conditional main theorem]\\label{thm:cond-main}"
+    },
+    {
+      "source": "manuscripts/PSC_PROOF_next_source_audit.tex",
+      "line": 566,
+      "statement_heading": "\\begin{theorem}\\label{thm:main}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 115,
+      "statement_heading": "\\begin{lemma}[\\Status{Theorem}]\\label{lem:det}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 124,
+      "statement_heading": "\\begin{lemma}[$\\Z$-independence of tile lengths; \\Status{Theorem}]\\label{lem:Zindep}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 133,
+      "statement_heading": "\\begin{lemma}[Aperiodicity; \\Status{Theorem}]\\label{lem:aperiodic}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 156,
+      "statement_heading": "\\begin{theorem}[Unique decodability; \\Status{Theorem}]\\label{thm:UD}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 171,
+      "statement_heading": "\\begin{lemma}[\\Status{Theorem}]\\label{lem:inherited}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 182,
+      "statement_heading": "\\begin{lemma}[Depth-$n$ descendants; \\Status{Theorem}]\\label{lem:descendants}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 193,
+      "statement_heading": "\\begin{hypothesis}[G1, finiteness; \\Status{Open}]\\label{hyp:G1}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 197,
+      "statement_heading": "\\begin{conjecture}[SCC Producer; \\Status{Open}]\\label{conj:producer}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 213,
+      "statement_heading": "\\begin{theorem}[Conditional main theorem; \\Status{Conditional}]\\label{thm:main-conditional}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 224,
+      "statement_heading": "\\begin{theorem}[Sink reduction; \\Status{Conditional} on G1]\\label{thm:sink-summary}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 228,
+      "statement_heading": "\\begin{theorem}[Structure of a finite closed nonproductive component; \\Status{Theorem}]\\label{thm:structure-summary}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 232,
+      "statement_heading": "\\begin{theorem}[Signed defect intertwiners; \\Status{Theorem}]\\label{thm:defect-summary}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 236,
+      "statement_heading": "\\begin{theorem}[Uniform return and ancestry finiteness; \\Status{Theorem}]\\label{thm:return-summary}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 240,
+      "statement_heading": "\\begin{proposition}[Wedge dichotomy, $d=3$; \\Status{Theorem}]\\label{prop:wedge-summary}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 248,
+      "statement_heading": "\\begin{lemma}[Unique hierarchy inside supertiles; \\Status{Theorem}]\\label{lem:unique-hierarchy}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 265,
+      "statement_heading": "\\begin{theorem}[G1b-1, bounded discrepancy; \\Status{Theorem}]\\label{thm:G1b1}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 271,
+      "statement_heading": "\\begin{lemma}[Summable decay]\\label{lem:decay}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 278,
+      "statement_heading": "\\begin{lemma}[Prefix decomposition]\\label{lem:prefix-decomp}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 286,
+      "statement_heading": "\\begin{lemma}[Bounded contracting component]\\label{lem:rauzy-bounded}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 299,
+      "statement_heading": "\\begin{lemma}[Zero symbolic length controls the Perron component]\\label{lem:zero-length}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 320,
+      "statement_heading": "\\begin{proposition}[\\Status{Theorem}]\\label{lem:G1-assembly}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 347,
+      "statement_heading": "\\begin{proposition}[A regular family of zero returns; \\Status{Theorem}]\\label{prop:regular-family}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 354,
+      "statement_heading": "\\begin{corollary}[\\Status{Theorem}]\\label{cor:windows-not-injective}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 364,
+      "statement_heading": "\\begin{lemma}[Prefix-difference inflation; \\Status{Theorem}]\\label{lem:inflation}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 373,
+      "statement_heading": "\\begin{corollary}[Finite one-step ancestry; \\Status{Theorem}]\\label{cor:one-step}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 379,
+      "statement_heading": "\\begin{theorem}[Pisot ancestry finiteness; \\Status{Theorem}]\\label{thm:ancestry}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 408,
+      "statement_heading": "\\begin{conjecture}[Relative density of simultaneous boundaries; \\Status{Conjectural bridge}]\\label{conj:density}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 416,
+      "statement_heading": "\\begin{theorem}[Finiteness of the seed-patch overlap graph; \\Status{Theorem}]\\label{thm:overlap-finite}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 429,
+      "statement_heading": "\\begin{proposition}[Seed union; \\Status{Theorem}]\\label{prop:seed-union}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 436,
+      "statement_heading": "\\begin{theorem}[Seedwise bridge; \\Status{Theorem}]\\label{thm:seedwise}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 444,
+      "statement_heading": "\\begin{proposition}[\\PDS{} implies G1; \\Status{Theorem}]\\label{prop:PDS-implies-G1}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 466,
+      "statement_heading": "\\begin{theorem}[\\Status{Conditional} on G1; Theorem~\\ref{thm:sink-summary}]\\label{thm:sink}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 479,
+      "statement_heading": "\\begin{theorem}[\\Status{Theorem}; part of Theorem~\\ref{thm:structure-summary}]\\label{thm:parikh}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 494,
+      "statement_heading": "\\begin{lemma}[Boundary synchronization; \\Status{Theorem}]\\label{lem:boundary-sync}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 501,
+      "statement_heading": "\\begin{theorem}[Global endpoint synchronization; \\Status{Theorem}, no PIP hypothesis]\\label{thm:global-sync}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 508,
+      "statement_heading": "\\begin{lemma}[Newborn locality; \\Status{Theorem}]\\label{lem:locality}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 523,
+      "statement_heading": "\\begin{proposition}[One-way chain; \\Status{Theorem}]\\label{prop:chain}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 552,
+      "statement_heading": "\\begin{proposition}[\\Status{Theorem}]\\label{prop:endpoint-types}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 559,
+      "statement_heading": "\\begin{corollary}[Signature bound; \\Status{Theorem}]\\label{cor:signature}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 570,
+      "statement_heading": "\\begin{theorem}[Barge--Diamond eliminator; \\Status{Theorem}, $d=3$]\\label{thm:BD-eliminator}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 583,
+      "statement_heading": "\\begin{proposition}[Orientation cocycle; \\Status{Theorem}]\\label{prop:cocycle}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 592,
+      "statement_heading": "\\begin{lemma}[Concatenation and substitution; \\Status{Theorem}]\\label{lem:conc-subst}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 599,
+      "statement_heading": "\\begin{theorem}[First-defect intertwiner; \\Status{Theorem}; part of Theorem~\\ref{thm:defect-summary}]\\label{thm:defect-intertwiner}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 606,
+      "statement_heading": "\\begin{theorem}[Degrees two and three, $d=3$; \\Status{Theorem}]\\label{thm:deg23}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 618,
+      "statement_heading": "\\begin{theorem}[Higher degrees, $d=3$; \\Status{Theorem}]\\label{thm:sieve}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 633,
+      "statement_heading": "\\begin{proposition}[\\Status{Theorem}]\\label{prop:midarea}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 649,
+      "statement_heading": "\\begin{proposition}[Wedge dichotomy; \\Status{Theorem}; Proposition~\\ref{prop:wedge-summary}]\\label{prop:wedge-dichotomy}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 656,
+      "statement_heading": "\\begin{proposition}[Wedge growth in a finite closed component; \\Status{Conditional} on finiteness of $\\cC$]\\label{prop:v34}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 679,
+      "statement_heading": "\\begin{lemma}[Uniform return gaps; \\Status{Theorem}, no Pisot hypothesis]\\label{lem:return-gap}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 686,
+      "statement_heading": "\\begin{theorem}[Legal ancestry towers; \\Status{Theorem}]\\label{thm:towers}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 693,
+      "statement_heading": "\\begin{theorem}[Derived recognizability; \\Status{Theorem}]\\label{thm:derived-recog}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 704,
+      "statement_heading": "\\begin{proposition}[Finite relative hierarchy-offset state; \\Status{Theorem}]\\label{prop:offset}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 721,
+      "statement_heading": "\\begin{lemma}[Zero returns are common vertices; \\Status{Theorem}]\\label{lem:common-vertex}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 728,
+      "statement_heading": "\\begin{lemma}[Common tiles are coincidence blocks; \\Status{Theorem}]\\label{lem:common-tile}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 737,
+      "statement_heading": "\\begin{theorem}[Coincidence density; \\Status{Theorem}]\\label{thm:density}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 759,
+      "statement_heading": "\\begin{corollary}[Mass balance on overlaps; \\Status{Theorem}]\\label{cor:overlap-mass}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 766,
+      "statement_heading": "\\begin{corollary}[Full rank on closed overlap sets; \\Status{Theorem}]\\label{cor:overlap-rank}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 785,
+      "statement_heading": "\\begin{lemma}[Three forms of the density condition; \\Status{Theorem}]\\label{lem:three-forms}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 800,
+      "statement_heading": "\\begin{theorem}[Main theorem without finiteness; \\Status{Conditional} on one-seed overlap productivity]\\label{thm:main-density}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 813,
+      "statement_heading": "\\begin{proposition}[Endpoint-aligned overlaps; \\Status{Theorem}]\\label{prop:aligned-overlaps}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 833,
+      "statement_heading": "\\begin{proposition}[Boundary coincidences; \\Status{Theorem}]\\label{prop:boundary-coincidence}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 847,
+      "statement_heading": "\\begin{corollary}[Reduction under strong coincidence; \\Status{Theorem}]\\label{cor:scc-reduction}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 861,
+      "statement_heading": "\\begin{proposition}[Contracting lower bound; \\Status{Theorem}]\\label{prop:contracting-bound}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 884,
+      "statement_heading": "\\begin{proposition}[Closed irreducible obstruction; \\Status{Theorem}]\\label{prop:obstruction-normal-form}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 895,
+      "statement_heading": "\\begin{proposition}[Aligned obstruction or strict zipper; \\Status{Theorem}]\\label{prop:zipper-dichotomy}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 916,
+      "statement_heading": "\\begin{lemma}[Ordered cycle equation; \\Status{Theorem}]\\label{lem:ordered-cycle}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 947,
+      "statement_heading": "\\begin{proposition}[Finiteness from overlap depth; \\Status{Conditional} on all-vertex overlap productivity]\\label{prop:G1-from-overlaps}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 958,
+      "statement_heading": "\\begin{proposition}[Finiteness from half-coincidences; \\Status{Conditional} on strict-zipper exclusion]\\label{prop:G1-from-half-coincidences}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 983,
+      "statement_heading": "\\begin{proposition}[Parity normal form; \\Status{Theorem}]\\label{prop:parity-form}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 990,
+      "statement_heading": "\\begin{lemma}[Prefix transfer; \\Status{Theorem}]\\label{lem:prefix-transfer}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 999,
+      "statement_heading": "\\begin{theorem}[A1$'$ on the class; \\Status{Theorem}]\\label{thm:A1-class}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 1012,
+      "statement_heading": "\\begin{lemma}[Witness paths; \\Status{Theorem}]\\label{lem:witness-path}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 1021,
+      "statement_heading": "\\begin{theorem}[The swap family; \\Status{Theorem}]\\label{thm:swap-family}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 1028,
+      "statement_heading": "\\begin{theorem}[The catch-up-free determinant-two class; \\Status{Theorem}]\\label{thm:K}"
+    },
+    {
+      "source": "manuscripts/PSC_balanced_pair_state_2026-09-13.tex",
+      "line": 1041,
+      "statement_heading": "\\begin{theorem}[Closed parts of $\\mathcal F$; \\Status{Theorem}, computer-assisted]\\label{thm:K-cells}"
+    }
+  ],
+  "input_digests": {
+    "claim_governance.toml": "b8760894fb2246440e0ef63524fe0f748f4a5391d34b08641072eb032d03e893",
+    "proof/PscVerif/ProofBankAudit.lean": "df46d0e65bf4aa0b6c2ca184a784974970c58f8c2c3de38eb4ed713efacce904",
+    "proof/PscVerif/PscVerif/Basic.lean": "0bc7a2dfef40ef6ab7524a1655099645abf0d0637af03ae70c8111d7df0a1d64",
+    "proof/PscVerif/PscVerif/Centralizer.lean": "a8098bb7a13d292c7480ec73a0b48a0867604a40106a2c211744e3ced52b0b3f",
+    "proof/PscVerif/PscVerif/Seeds.lean": "224a67ea3d89c8cd54747164d4e1fbbc9b733aa5eb404465119999b738dce747",
+    "proof/PscVerif/PscVerif/Shuffle.lean": "fe99c7b71174cd665633b425c0f9d1e6f6893f541387e261fb5d945bba48614c",
+    "proof/PscVerif/PscVerif/Spectral.lean": "f7a43295221c293c670593d4be8e916d87ce51f3241ec911456ef4a4ce0b39d3",
+    "proof/PscVerif/PscVerif/TraceLemma.lean": "e547fcff9131bdaaacdfa6de29445af23e14f9b8bf6132cdeb9932e4191c4e6a",
+    "proof/PscVerif/PscVerif.lean": "4287b05bebcea7f4381939e6438098438d99a38b76f192b81e819c893c8cfe19",
+    "proof/PscVerif/lake-manifest.json": "7089f781dcbac1c268efbdb6af6822c1c46bf6a03230dd47168bcdbb75718fc2",
+    "proof/PscVerif/lakefile.toml": "6e29b8d31552dad97a477c6ce60b016c3370d856886a4498a85e78a712e3489a",
+    "proof/PscVerif/lean-toolchain": "8190e75a201741065fe508b28955dd64dd72d090babe5f70ce6848879d68ae88",
+    "proof/proof-bank.toml": "9c9c0bfb430288e3ae4fbfb584fd7ee71f515da8b91ca060f5bc54d053e99d32",
+    "tools/check_lean.sh": "04078a19300533b800e2cca6f0a3573fe8b116fec0ae8ace8a2d4ffc1ae9613b",
+    "tools/make_ledger.py": "f938962a48801fdf96497c3d7b732da9220c9222133cbfb888424f342df818b4",
+    "tools/make_proof_bank.py": "d41bd8ecb4d51964b6acfb1783d3c7c6aa1fce67ad502f9b4c1c6fb94dceec13",
+    "tools/setup_lean.sh": "b2c35ccc8d0b180a75275f8234f519a00d32efcbc8a9517f8b3d74a96b3ef8da"
+  }
+}

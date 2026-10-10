@@ -1,0 +1,8 @@
+2 (np.float64(5.522), np.float64(0.602), np.float64(17.35), 413, [np.int64(3), np.int64(11), np.int64(10)])
+3 (np.float64(6.591), np.float64(0.551), np.float64(19.86), 423, [np.int64(3), np.int64(11), np.int64(11)])
+4 (np.float64(7.642), np.float64(0.512), np.float64(22.37), 415, [np.int64(3), np.int64(11), np.int64(12)])
+5 (np.float64(8.681), np.float64(0.48), np.float64(24.87), 419, [np.int64(3), np.int64(12), np.int64(12)])
+7 (np.float64(10.738), np.float64(0.432), np.float64(29.81), 425, [np.int64(3), np.int64(13), np.int64(13)])
+10 (np.float64(13.793), np.float64(0.381), np.float64(37.07), 455, [np.int64(2), np.int64(14), np.int64(14)])
+15 (np.float64(18.846), np.float64(0.326), np.float64(48.89), 517, [np.int64(2), np.int64(16), np.int64(17)])
+25 (np.float64(28.899), np.float64(0.263), np.float64(71.89), 593, [np.int64(2), np.int64(19), np.int64(19)])

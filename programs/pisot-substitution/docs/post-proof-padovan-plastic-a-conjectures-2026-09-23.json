@@ -1,0 +1,93 @@
+{
+  "program_id": "padovan_plastic_a_2026_09_23",
+  "status": "research_only",
+  "load_bearing": false,
+  "live_psc_claim_boundary_changed": false,
+  "benchmark_root": {
+    "specimen": "Plastic-A",
+    "rules": {
+      "1": "2",
+      "2": "3",
+      "3": "12"
+    },
+    "role": "canonical_stress_test",
+    "quantitative_skeleton": "Padovan / Z[beta]"
+  },
+  "conjectures": [
+    {
+      "id": "P1",
+      "name": "Plastic-A extremality",
+      "statement": "Plastic-A has maximal normalized coincidence horizon among root three-letter primitive irreducible Pisot specimens in the declared survey domain.",
+      "status": "conjecture",
+      "primary_test": "root-normalized exact horizon census"
+    },
+    {
+      "id": "P2",
+      "name": "Iterate-family exhaustion above depth four",
+      "statement": "Every three-letter coincidence depth greater than four arises, up to relabeling, from the Plastic-A iterate family.",
+      "status": "conjecture",
+      "primary_test": "quotient deep specimens by relabeling and iteration"
+    },
+    {
+      "id": "P3",
+      "name": "Threshold-horizon alignment",
+      "statement": "For canonical deep chains, n0 = H + s0 for a seed-scale offset s0.",
+      "status": "conjecture",
+      "primary_test": "compare exact threshold and horizon after seed normalization"
+    },
+    {
+      "id": "P4",
+      "name": "FM quotient universality",
+      "statement": "The canonical first radius-zero witness compression is the off-diagonal/FM quotient, and every nontrivial consecutive noncoincident transport is detected modulo some prime.",
+      "status": "conjecture",
+      "primary_test": "FM quotient atlas with exact replayable witnesses"
+    },
+    {
+      "id": "P5",
+      "name": "Small-prime detection",
+      "statement": "A small finite set of primes detects all radius-zero FM transport in the three-letter benchmark domain; p=2 is a stronger candidate on deep chains.",
+      "status": "conjecture",
+      "primary_test": "least detecting prime census"
+    },
+    {
+      "id": "P6",
+      "name": "Padovan extremal skeleton",
+      "statement": "Plastic-A is the unique three-letter extremal benchmark whose witness activation timing is governed by the Padovan recurrence, up to relabeling and iteration.",
+      "status": "conjecture",
+      "primary_test": "recurrence-family classification of root extremal specimens"
+    },
+    {
+      "id": "P7",
+      "name": "Terminal x^d=x+1 Pisot branch",
+      "statement": "The x^d=x+1 Pisot branch relevant to these benchmarks terminates at the Fibonacci/plastic cases; higher-alphabet continuations of the same extremal mechanism require a different family.",
+      "status": "conjecture_or_literature_check",
+      "primary_test": "targeted literature stop/go plus exact root analysis"
+    },
+    {
+      "id": "P8",
+      "name": "Three-letter extremal difficulty",
+      "statement": "The three-letter plastic case maximizes normalized coincidence horizon among tested root families.",
+      "status": "benchmark_conjecture",
+      "primary_test": "higher-alphabet adversarial family search"
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "Exotic-B",
+      "purpose": "active quotient may fail while FM quotient still detects transport",
+      "guards_against": "promoting specimen-dependent active/inert compression to a universal theorem"
+    }
+  ],
+  "planned_mojo_modules": [
+    "kernel/psc/horizon.mojo",
+    "kernel/psc/fm_witness.mojo",
+    "kernel/psc/iterate_family.mojo"
+  ],
+  "promotion_gate": [
+    "targeted literature stop/go check",
+    "exact theorem-domain statement",
+    "Mojo canonical implementation for executable diagnostics",
+    "regression/counter-calibration coverage",
+    "no claim beyond exact finite or proved domain"
+  ]
+}

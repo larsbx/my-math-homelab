@@ -1,0 +1,10 @@
+version = 1
+
+[program]
+id = "pisot-vijayaraghavan"
+
+[source]
+repository = "larsbx/pisot-vijayaraghavan-problem-research"
+commit = "420ebfcd6f5a4af14a949ac9c6fcd33a5785155f"
+authority = "retained"
+import_status = "verified"

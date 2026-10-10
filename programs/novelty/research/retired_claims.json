@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-01",
+  "retired_claims": [
+    {
+      "id": "KILL-01",
+      "candidate": "N1",
+      "status": "killed",
+      "claim": "For n>=4 the generalized Cayley-Dickson algebra is never division over any field, with a universal zero-divisor identity.",
+      "reason": "The located zero-divisor sources treat the standard real tower or narrower constructions and do not justify the stated arbitrary-field, arbitrary-parameter quantifiers.",
+      "salvage": "Keep n>=4 outside the decision pipeline until a convention-complete theorem or verified identity is supplied."
+    },
+    {
+      "id": "KILL-02",
+      "candidate": "N1",
+      "status": "killed",
+      "claim": "A pair of ramified places is the required n=2 division certificate.",
+      "reason": "A single verified nonsplit completion already witnesses nonsplitting of a quaternion algebra; a full local ledger is needed for a complete split decision. The pair formulation conflated parity with certificate necessity.",
+      "salvage": "Use local invariants with reciprocity and separate soundness from completeness."
+    },
+    {
+      "id": "KILL-03",
+      "candidate": "N2",
+      "status": "killed",
+      "claim": "Gamma_p as a subgroup of compact SO(8) is itself an S-arithmetic lattice.",
+      "reason": "The compact real projection alone is not the ambient locally compact product in which an S-arithmetic diagonal subgroup could be a lattice.",
+      "salvage": "Construct an algebraic group and diagonal real/p-adic embedding before asking a lattice question."
+    },
+    {
+      "id": "KILL-04",
+      "candidate": "N2",
+      "status": "killed",
+      "claim": "The generators act naturally on the D4 building at p.",
+      "reason": "Triality and an eight-dimensional quadratic representation do not by themselves construct an integral Spin_8 group, a p-adic action, or identify a building quotient.",
+      "salvage": "First prove membership in a pinned group scheme and good reduction; then determine the building."
+    },
+    {
+      "id": "KILL-05",
+      "candidate": "N3",
+      "status": "killed",
+      "claim": "The Poisson intensity is exactly 24 sigma(n)/(2 ell(ell^2-1)).",
+      "reason": "The denominator depends on the actual image, projectivization, stabilizers, and whether unit orbits or raw shell elements are sampled.",
+      "salvage": "Define lambda empirically as |X|/|S| until the orbit quotient is proved."
+    },
+    {
+      "id": "KILL-06",
+      "candidate": "N3",
+      "status": "killed",
+      "claim": "The needed second and higher moments have ready-made exact theta/Siegel formulas with the required collision-regime uniformity.",
+      "reason": "No precise level, character, diagonal removal, or uniform error term was pinned.",
+      "salvage": "Use N3-T01 to translate factorial moments into exact congruence counts, then identify the corresponding modular object."
+    },
+    {
+      "id": "KILL-07",
+      "candidate": "N4",
+      "status": "killed",
+      "claim": "N4 can be folded into N1 before an explicit discrepancy theorem and constants are pinned.",
+      "reason": "Certificate infrastructure can be reused, but the mathematical verification dependencies are independent.",
+      "salvage": "Keep N4 separate and reuse only the certificate envelope."
+    },
+    {
+      "id": "KILL-08",
+      "candidate": "N2",
+      "status": "killed",
+      "claim": "Finite hypercomplex closure is achieved exactly when navigation words are stratified by D and Burnside moments predict all quotient fibers.",
+      "reason": "Closure under multiplication is part of the algebra definition, D using square roots may not be defined over F_q, defect strata need not be group orbits, and Burnside counts orbit fibers only after a genuine action and invariant map are supplied.",
+      "salvage": "Use square-root-free Delta, define its generated finite orthogonal action, require invariance explicitly, and treat defect-flatness or holonomy as the falsifiable property."
+    },
+    {
+      "id": "KILL-09",
+      "candidate": "N2",
+      "status": "killed",
+      "claim": "The similarity class of the defect Delta(x, y) carries arithmetic information beyond the quadratic-form data of the pair (x, y).",
+      "reason": "Theorem 3.20 and Corollary 3.22 of paper/associator-defects: chi_Delta = (X-1)^4 (X^2 - tau X + 1)^2 with tau = 2 - det Gram_B(1, x, y)/(2 N(x) N(y)), and for tau != +-2 Delta is semisimple, so its similarity class is a function of the Gram matrix of (1, x, y).",
+      "salvage": "Stratify by finer data only: the SO(C, N)-class of Delta within its similarity class (spinor-norm type), the non-semisimple cases tau = +-2, or holonomy of defect products along words (NC-N2-02)."
+    },
+    {
+      "id": "KILL-10",
+      "candidate": "N2",
+      "status": "killed",
+      "claim": "The SO(C, N)-class or spinor norm of a single defect Delta(x, y) carries information beyond its similarity class.",
+      "reason": "Theorem 3.23 and Corollary 3.24 of paper/associator-defects: Delta = s_xv s_v s_yv s_(xy)v has trivial spinor norm, and over F_q a semisimple defect with N(xy - yx) != 0 has SO-class determined by tau (Wall's classification).",
+      "salvage": "Only non-semisimple single defects (tau = -2 with g != -1, unipotent strata N(xy - yx) = 0) and products of defects along words (NC-N2-02) remain as possible non-classical signals."
+    },
+    {
+      "id": "KILL-11",
+      "candidate": "N2",
+      "status": "killed",
+      "claim": "Non-semisimple single defects Delta(x, y) carry similarity-class information beyond the quadratic-form data of (x, y) other than dim Q.",
+      "reason": "Theorem 3.29 and Corollary 3.30 of paper/associator-defects: (Delta - I)(Delta^2 - tau Delta + I) = 0 everywhere, the tau = -2 Jordan type is decided by T(x) = T(y) = B(x, y) = 0, and the unipotent Jordan types are fixed by dim Q and rank B|Q, itself Gram data; so the similarity class is a function of the Gram matrix of (1, x, y) and dim Q.",
+      "salvage": "For single defects stratify by dim Q only (and, open, by the SO(C, N)-class of non-semisimple defects); the remaining non-classical signal sits in word defects of length >= 4, whose characteristic polynomials are fixed by the Aut(C)-invariant forms phi and psi of the letters (paper Theorem 3.32, WordDefectG2Determined)."
+    }
+  ]
+}

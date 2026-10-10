@@ -1,0 +1,34 @@
+{
+ "coverage": "every unordered pair of distinct projective pure points (all pairs up to the exact reduction)",
+ "model": "cayley-dickson/v1 (-1,-1,-1) mod ell",
+ "rows": [
+  {
+   "ell": 3,
+   "projective_points": 1093,
+   "strata": [
+    {
+     "Q_nondegenerate": false,
+     "dim_Q": 3,
+     "pairs": 21840,
+     "rank_phi": 2
+    },
+    {
+     "Q_nondegenerate": false,
+     "dim_Q": 4,
+     "pairs": 176904,
+     "rank_phi": 4
+    },
+    {
+     "Q_nondegenerate": true,
+     "dim_Q": 4,
+     "pairs": 398034,
+     "rank_phi": 4
+    }
+   ],
+   "unordered_pairs": 596778,
+   "violations": 0
+  }
+ ],
+ "schema": "novelty-lab/n2-rank-law/v1",
+ "statement": "rank([x,y,-]) == 2*max(0, dim span{1,x,y,xy} - 2)"
+}

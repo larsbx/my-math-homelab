@@ -1,0 +1,43 @@
+name: finite-regime-julia-audit
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: prefix-dev/setup-pixi@d3f436a425481402e6a95a1d1fc10331c708cd9e
+        with:
+          cache: true
+      - name: Build the canonical Mojo smoke binary
+        run: pixi run mojo-build
+      - name: Estate audit (pinned public artifact)
+        run: |
+          set -eu
+          rev=$(python3 -c 'import tomllib; print(next(d["rev"] for d in tomllib.load(open("ESTATE.toml", "rb"))["dep"] if d["id"] == "estate-governance"))')
+          pin=$(python3 -c 'import tomllib; print(next(d["pin"] for d in tomllib.load(open("ESTATE.toml", "rb"))["dep"] if d["id"] == "estate-governance"))')
+          test "$rev" = "0833929ed82d42cf3674a1565681625a9622827b"
+          curl --fail --location --proto '=https' --tlsv1.2 --output /tmp/estate-audit.py "https://raw.githubusercontent.com/larsbx/finite-math-kernels/4485675c1ed5da52beafad98c5118dc0ffc22456/policy/estate-audits/$rev.py"
+          printf '%s  %s\n' "${pin#sha256:}" /tmp/estate-audit.py | sha256sum --check --strict -
+          python3 /tmp/estate-audit.py --root .
+      - name: Verify vendored package digests
+        run: pixi run vendored
+      - name: Run the canonical Mojo finite-core smoke suite
+        run: pixi run mojo-smoke
+      - name: Audit the exact-arithmetic boundary
+        run: pixi run exact-arithmetic
+      - name: Every path and task reference resolves
+        run: pixi run references
+      - name: Audit the forbidden usages of the terminology registry
+        run: pixi run terminology
+      - name: Generated surfaces are current (regime ledger, corpus, Mojo corpus)
+        run: pixi run ledgers-check
+      - name: The polyglot envelope is the rendering of its vendored template
+        run: pixi run polyglot-check
+      - name: Run full tests, including the Mojo/Python differential replay
+        run: pixi run test
+      - name: Recheck vendored package digests after tests
+        run: pixi run vendored

@@ -1,0 +1,15 @@
+S1 r=q+1 numeric checks 16
+S1 r=q-1 numeric checks 24
+S2 r=p+1 numeric checks 24
+S2 r=p-1 numeric checks 24
+S3 r=p+1 numeric checks 24
+S3 r=p-1 numeric checks 24
+S4 q+r=2p+1 numeric checks 16
+S4 q+r=2p-1 numeric checks 16
+S5 q=p+1 numeric checks 20
+S5 p=q+1 numeric checks 16
+S1 PIP 133 in cones 131 residue [(0, 1, 0), (0, 2, 1)]
+S2 PIP 144 in cones 141 residue [(1, 0, 0), (1, 0, 2), (2, 0, 1)]
+S3 PIP 144 in cones 142 residue [(1, 0, 0), (1, 0, 2)]
+S4 PIP 67 in cones 67 residue []
+S5 PIP 151 in cones 148 residue [(0, 1, 0), (0, 1, 1), (0, 1, 2)]

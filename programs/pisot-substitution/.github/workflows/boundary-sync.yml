@@ -1,0 +1,25 @@
+name: Boundary synchronization layer
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  boundary-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -U pip
+      - run: pip install pytest
+      - name: Source consistency audit
+        run: python tools/audit_manuscript.py --root . --strict-current
+      - name: Boundary-sync regression tests
+        run: |
+          python -m pytest -q \
+            tests/test_audit_manuscript.py \
+            tests/test_bpa_basics.py \
+            tests/test_boundary_sync.py \
+            tests/test_birth_event.py

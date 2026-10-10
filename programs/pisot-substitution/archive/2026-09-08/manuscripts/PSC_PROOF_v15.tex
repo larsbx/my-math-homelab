@@ -1,0 +1,736 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+\newcommand{\PSC}{\textsc{psc}}
+\newcommand{\UD}{\textsc{ud}}
+\newcommand{\BPA}{\textsc{bpa}}
+\newcommand{\PDS}{pure discrete spectrum}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\PFroot}{\mathrm{PF}}
+\newcommand{\spec}{\mathrm{spec}}
+
+\title{Pure discrete spectrum for Pisot substitution tilings}
+\author{}
+\date{Version 15}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study the Pisot substitution conjecture in the standard formulation: every primitive Pisot substitution whose incidence matrix has irreducible characteristic polynomial gives rise to a tiling dynamical system with \PDS. Our contribution is a structural simplification of Levels~2 and~3 of the balanced-pair route. The engine is unique decodability of the $\sigma$-image code, a five-line corollary of the classical defect theorem combined with $\det M_\sigma\ne 0$. In Level~2 it gives a finite phase-automaton diagnostic for coincidence padding: complete-cutting non-diagonal cycles are ruled out by unique decodability, while nonzero-offset recurrences are not controlled; finiteness of the balanced-pair automaton is carried as a hypothesis (unconditional for $|\A|=2$ and the verified families, open in general). In Level~3 it determines the supertile hierarchy, yielding local witness injectivity. The remaining geometric step is reformulated as the SCC Producer Theorem: every recurrent noncoincident strongly connected component of $\B_\sigma$ produces a coincidence sibling at some inflation step. We give a mass-balance spectral characterization of this condition, prove that the closed-nonproductive case forces the within-SCC matrix to contain $M_\sigma$ as an invariant sub-block, record an alphabet-3 spectral mechanism --- any \emph{closed} recurrent SCC with nonzero dominant wedge projection has within-SCC Perron eigenvalue at least $\beta|\beta_2|$, while the existence of such an SCC (the pure $\beta$-zero/escape alternative) is deferred to a companion $\beta$-richness analysis --- and state the remaining open content. Pure discrete spectrum is then extracted via Barge--\v{S}timac--Williams~\cite{BSW}, the corrected one-dimensional bridge theorem.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+The Pisot substitution conjecture (\PSC) asserts that the tiling dynamical system of a primitive irreducible Pisot substitution has \PDS. Verified for two-letter alphabets by Hollander--Solomyak~\cite{HS} and for various families by Barge--Diamond~\cite{BD}, Ito--Rao~\cite{IR}, Barge--Kwapisz~\cite{BK}, Akiyama--Lee~\cite{AL}, Barge~\cite{Barge2018}, and others, the general case across all alphabet sizes has remained open; see the survey~\cite{ABBLS}.
+
+This paper revisits the conjecture in the standard formulation. The proof structure proceeds through two levels:
+\begin{enumerate}[label=(\arabic*)]
+\item \emph{Level~2}: the balanced-pair automaton $\B_\sigma$ is finite.
+\item \emph{Level~3}: finiteness implies that every balanced pair eventually reaches coincidence.
+\end{enumerate}
+
+Our contribution is a structural simplification of Level~2 and a partial simplification of Level~3, with a single engine: the $\sigma$-images form a uniquely decodable code (Theorem~\ref{thm:UD}), a short corollary of the classical defect theorem of Berstel--Perrin--Perrot--Restivo~\cite{BPPR} combined with the linear algebra of the incidence matrix.
+
+In Level~2, unique decodability rules out complete-cutting non-diagonal phase cycles through an explicit phase automaton, giving an effective constant $D(\sigma)$ (\S\ref{sec:finiteness}); finiteness of $\B_\sigma$ is carried as Hypothesis~\ref{thm:finiteness} (G1).
+
+In Level~3, unique decodability for powers of $\sigma$ determines the full hierarchy within every supertile and yields a local form of witness injectivity (\S\ref{sec:hierarchy}). The remaining geometric step requires reformulation. The cycle-exclusion target (``no recurrent noncoincident cycle in $\B_\sigma$''), pursued in earlier drafts, is false as a general theorem: the flipped-Tribonacci substitution $\sigma:1\mapsto 21,\ 2\mapsto 31,\ 3\mapsto 1$ has a recurrent noncoincident cycle of period 3 with vanishing displacement. The correct target is the \emph{SCC Producer Theorem}: every recurrent noncoincident strongly connected component of $\B_\sigma$ produces a coincidence sibling at some inflation step. Section~\ref{sec:coincidence} gives the mass-balance reformulation, the algebraic structure forced by the closed-nonproductive case, an alphabet-$3$ spectral lower bound on the within-SCC matrix, and the precise open content; the conjecture is essentially the Strong Coincidence Conjecture of Hollander--Solomyak~\cite{HS} restated at the SCC level, settled in the two-letter case and open for $|\A|\ge 3$.
+
+Earlier treatments invoked Moss\'e-style recognizability repeatedly throughout both levels. Here we isolate recognizability to a single role (the supertile hierarchy on the hull), while unique decodability drives the substantive arguments in Level~2 and the local part of Level~3.
+
+\paragraph{Main theorem.} \emph{Let $\sigma$ be a primitive Pisot substitution on a finite alphabet whose incidence matrix has irreducible characteristic polynomial, and suppose its balanced-pair automaton $\B_\sigma$ is finite \textup{(G1)}. Then, conditional on the SCC Producer Theorem (Conjecture~\ref{conj:producer}), the associated tiling dynamical system has \PDS.} Equivalently,
+\[
+\boxed{\;\B_\sigma\text{ finite }+\text{ SCC Producer}\ \Longrightarrow\ \PDS.\;}
+\]
+Finiteness of $\B_\sigma$ is unconditional for $|\A|=2$ and for the verified families; for general $|\A|\ge3$ it is the standing hypothesis~G1 (see Hypothesis~\ref{thm:finiteness} and the following remark).
+
+To extract \PDS{} from termination of the balanced-pair algorithm we use the bridge theorem of Barge--\v{S}timac--Williams~\cite{BSW} (one-dimensional case, Corollary~2 there); see~\S\ref{sec:bridges} for the precise statement and a brief discussion of why this is the correct citation rather than the older Barge--Kwapisz form.
+
+The strong-coincidence content of the SCC Producer Theorem (Conjecture~\ref{conj:producer}) has been verified computationally on $6{,}009$ irreducible Pisot specimens across alphabet sizes $k=3,4,5$ (exhaustively for $k=3$, $|\sigma(a)|\le 3$), including $2{,}244$ non-unimodular specimens, with zero failures; see Remark~\ref{rem:computation}. The converse direction of Theorem~\ref{thm:UD} (that every non-\UD\ specimen has $\det M_\sigma=0$) was verified on all $59{,}319$ substitutions with $|\A|=3$, $|\sigma(a)|\le 3$: of these, $7{,}491$ are non-\UD, and all of those have $\det M_\sigma=0$, consistent with the proof.
+
+\subsection{Coincidence conditions and bridges}\label{sec:bridges}
+
+A reviewer familiar with the area knows that ``coincidence'' is overloaded. Several inequivalent conditions appear in the \PSC{} literature, and they are not freely interchangeable.
+\begin{itemize}[leftmargin=*]
+\item \emph{Strong coincidence} (Arnoux--Ito; Barge--Diamond~\cite{BD}): for each $i,j\in\A$ there exist $k,n$ with $\sigma^n(i)$ and $\sigma^n(j)$ sharing the $k$-th letter and equal prefix Parikh vectors before it. Sufficient for measure-theoretic isomorphism to a domain exchange on the Rauzy fractal under additional hypotheses.
+\item \emph{Overlap coincidence} (Solomyak; Akiyama--Lee~\cite{AL}): every overlap reaches coincidence under inflation. Equivalent to \PDS\ for self-affine tilings with the Meyer property.
+\item \emph{Coincidence rank one} (Barge~\cite{Barge2016}): the maximal-equicontinuous-factor map is a.e.\ one-to-one. Equivalent to \PDS\ for the $\R$-action under Pisot family hypotheses.
+\item \emph{Balanced-pair-algorithm termination}: starting from a balanced pair $(u,v)$, iterated inflation and irreducible factorization eventually produces a coincidence.
+\end{itemize}
+
+These conditions are not equivalent in full generality. Akiyama--Lee~\cite{AkiyamaLee2014} are explicit: outside two-letter substitutions, the relation between strong coincidence and \PDS\ is not completely understood. The strong-coincidence-implies-\PDS\ folklore relies on additional hypotheses (trivial height group, Meyer property, control-point conditions) that are not part of our standing assumptions.
+
+We do not invoke that folklore. The bridge we use is:
+
+\begin{theorem}[Barge--\v{S}timac--Williams~\cite{BSW}, Corollary 2]\label{thm:BSW}
+Let $\sigma$ be a primitive Pisot substitution whose incidence matrix has irreducible characteristic polynomial. If there exist letters $a\ne b$ in $\A$ such that the balanced-pair algorithm for $(ab,ba)$ terminates with coincidence, then the $\R$-action on $\Omega_\sigma$ has \PDS.
+\end{theorem}
+
+\begin{remark}\label{rem:BK-gap}
+The earlier formulation of this bridge appears as Proposition~17.4 of Barge--Kwapisz~\cite{BK}. Barge--\v{S}timac--Williams~\cite[\S 1]{BSW} note that the proof of \cite[Theorem 16.3]{BK}, from which Proposition~17.4 follows, contains a gap that is not easily plugged by the techniques of that paper, and recover the one-dimensional case as their Corollary~2. We cite~\cite{BSW} accordingly.
+\end{remark}
+
+\begin{remark}[Strength of what we prove versus what the bridge needs]\label{rem:overprove}
+Conditional on Conjecture~\ref{conj:producer}, Proposition~\ref{prop:bpa-coincidence} shows that for every pair $a\ne b$ the \BPA\ expansion of $(ab,ba)$ contains a coincidence sibling at some iterate. Theorem~\ref{thm:BSW} requires only that this hold for one well-chosen pair. The forward implication used here is exactly that direction; the converse (which would be needed for an iff) is not used and not claimed.
+\end{remark}
+
+\subsection{High-degree algebraic conjugates}\label{sec:high-degree}
+
+Classical \PSC\ verifications~\cite{HS,IR,BK,Barge2016,Barge2018} handle the contracting conjugate space directly: tiles are placed in the contracting subspace, Rauzy fractals are constructed and shown to tile by a measure or topological-rigidity argument, and \PDS\ is extracted from a tiling property. As alphabet size grows, the contracting space has dimension $|\A|-1$ and the conjugate arithmetic becomes correspondingly delicate.
+
+The proof here uses Pisot growth $\beta>1$ only twice, both in geometric-bookkeeping roles:
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Finiteness} (Hypothesis~\ref{thm:finiteness}, G1): the balanced-pair automaton $\B_\sigma$ is finite. This is unconditional for $|\A|=2$ and the verified families; for general $|\A|\ge3$ it is a standing hypothesis. (The predecessor-contraction argument of earlier versions, which sought to derive finiteness from the padding bound, is withdrawn; see the remark after Hypothesis~\ref{thm:finiteness}.)
+\item \emph{Supertile diameter growth} (used in connection with Conjecture~\ref{conj:producer}): a level-$n$ supertile has diameter at least $C\beta^n$, large enough to underwrite the geometric arguments around the SCC Producer Theorem in the literature.
+\end{enumerate}
+
+Neither use enters the contracting conjugate space. No fractal is constructed; no algebraic conjugate of $\beta$ is named. The contracting conjugates appear only inside the Moss\'e recognizability radius $R(\sigma)$, which we use as a black box.
+
+This is not a claim that \PSC\ can be proved without Pisot geometry: $\beta>1$ is essential, and the Pisot character of $\beta$ enters indirectly through Moss\'e recognizability. The narrower claim is that the proof avoids case-by-case estimates in the contracting conjugate space, and so avoids the explicit conjugate arithmetic that becomes painful for large $|\A|$.
+
+\subsection{Computational verifications}\label{sec:comp-verif}
+
+Balchin--Rust's Grout software~\cite{Balchin} implements the Akiyama--Lee algorithm and the balanced-pair algorithm and searches for failures of strong coincidence, balanced-pair termination, and \PDS. Their published searches found no counterexample among $12{,}573{,}955$ irreducible Pisot substitutions on three letters and $15{,}001$ on four letters. These are checking runs, not proofs: each individual substitution is verified by running its automata to termination.
+
+The role of the present proof is complementary: it explains why such searches succeed. Any irreducible Pisot substitution forms a uniquely decodable code (Theorem~\ref{thm:UD}); unique decodability rules out complete-cutting non-diagonal phase cycles via an explicit phase automaton (Observation~\ref{prop:padding}); under the hypothesis that $\B_\sigma$ is finite (G1; unconditional for $|\A|=2$ and the verified families), finiteness plus unique-hierarchy-within-supertiles plus the SCC Producer Theorem (Conjecture~\ref{conj:producer}) gives that for every $a\ne b$ the \BPA\ expansion of $(ab,ba)$ contains a coincidence sibling at some iterate (Proposition~\ref{prop:bpa-coincidence}), which is exactly the hypothesis of the bridge (Theorem~\ref{thm:BSW}). The self-contained structural reason for everything except finiteness and the SCC Producer Theorem exists at the level of $\det M_\sigma\ne 0$ and the defect theorem; no specimen-specific computation is needed.
+
+\subsection{Adjacent claimed proofs}\label{sec:adjacent}
+
+Nakaishi's preprint~\cite{Nakaishi2024} (arXiv:2401.07771v1, January 2024) claims a proof of ``one version of Pisot conjecture'' via weak mixing of the prefix-suffix automaton's subshift of finite type. As of writing, the preprint remains at v1 with no journal reference. An earlier preprint by the same author~\cite{Nakaishi2016} on the same problem was withdrawn in September 2023 after six versions. Nakaishi's route proves a tiling property of the Rauzy fractal in the representation space, invoking weak mixing of the SFT to control overlap; this routes through Akiyama--Lee-style overlap-coincidence machinery in the contracting space. The present work routes around the contracting space entirely. The two arguments are independent.
+
+Mercat--Akiyama~\cite{MA} give a sufficient geometric condition for irreducible unit Pisot substitutions to have \PDS\ and verify the conjecture for several families. Barge~\cite{Barge2018} establishes \PSC\ for the $\beta$-substitution family, subsumed by the present result but proved by a route specific to that family. Berth\'e--Steiner--Thuswaldner and collaborators establish \PDS\ for large families of $S$-adic shifts under generalized Pisot and geometric coincidence assumptions, in a setting (sequences of substitutions) distinct from ours.
+
+\subsection{Why dropping unimodularity is safe}\label{sec:nonunimodular}
+
+Some formulations of \PSC\ include a unimodularity hypothesis $|\det M_\sigma|=1$ (e.g.~\cite{BBJS}). We do not assume this. The reason is that the irreducibility of the characteristic polynomial does the work that unimodularity is sometimes used for: it forces $\Z$-independence of the tile lengths via a cyclic-vector argument (the orbit of any nonzero vector under $M_\sigma^\top$ spans $\Q^d$, since the minimal polynomial coincides with the irreducible characteristic polynomial). This rules out the homological-Pisot counterexample mechanism of Barge--Bruin--Jones--Sadun~\cite{BBJS}: their Theorem~1 produces homological Pisot substitutions of every algebraic degree without \PDS, but those examples are by construction not irreducible. The Coincidence Rank Conjecture~\cite{BBJS} (that the coincidence rank divides a power of $|\det M_\sigma|$) remains open in the homological setting; it is consistent with everything in the present paper.
+
+\section{Background}\label{sec:background}
+
+Let $\A$ be a finite alphabet with $|\A|\ge 2$. A substitution $\sigma:\A^*\to\A^*$ maps each letter to a nonempty word. Its incidence matrix $M_\sigma$ has $(M_\sigma)_{ij}=|\sigma(j)|_i$. The Parikh homomorphism $\pi:\A^*\to\Z^\A$ sends a word to its letter-count vector; it satisfies $\pi(\sigma(a))=\mathrm{col}_a(M_\sigma)$.
+
+\begin{definition}[Standing hypotheses]\label{def:standing}
+Throughout, $\sigma$ satisfies:
+\begin{enumerate}[label=(\roman*)]
+\item \emph{primitive}: some power of $M_\sigma$ has all entries strictly positive;
+\item \emph{aperiodic}: no fixed point of $\sigma$ is eventually periodic (automatic for primitive substitutions on $|\A|\ge 2$ letters~\cite{Queffelec});
+\item \emph{irreducible}: the characteristic polynomial of $M_\sigma$ is irreducible over $\Q$ (in particular $\det M_\sigma\ne 0$);
+\item \emph{Pisot}: the Perron--Frobenius eigenvalue $\beta>1$ is a Pisot number.
+\end{enumerate}
+\end{definition}
+
+The left Perron eigenvector $\ell$ assigns positive tile lengths. The hull $\Omega_\sigma$ is the orbit closure of a fixed point of $\sigma$ under the shift.
+
+\begin{lemma}[$\Z$-independence of tile lengths]\label{lem:Z-indep}
+Under Definition~\ref{def:standing}, the tile lengths $(\ell_a)_{a\in\A}$ are $\Z$-linearly independent.
+\end{lemma}
+
+\begin{proof}
+Suppose $n\in\Z^\A\setminus\{0\}$ satisfies $\langle n,\ell^\top\rangle=0$. Since the characteristic polynomial of $M_\sigma^\top$ is irreducible of degree $d=|\A|$, every nonzero vector is cyclic for $M_\sigma^\top$: the orbit $n,(M_\sigma^\top)n,\dots,(M_\sigma^\top)^{d-1}n$ spans $\Q^d$. But $\langle (M_\sigma^\top)^k n,\ell^\top\rangle=\beta^k\langle n,\ell^\top\rangle=0$ for all $k$, so $\ell^\top\perp\Q^d$, forcing $\ell^\top=0$, contradicting positivity.
+\end{proof}
+
+We do not use Lemma~\ref{lem:Z-indep} on the critical path of the proof; it is recorded here because the irreducibility hypothesis enters Theorem~\ref{thm:BSW} via this property in the underlying argument of~\cite{BSW}.
+
+\begin{theorem}[Moss\'e recognizability~\cite{Mosse1,Mosse2}]\label{thm:Mosse}
+For every primitive aperiodic substitution $\sigma$, there exists $R=R(\sigma)>0$ such that the level-1 supertile boundaries of any point in $\Omega_\sigma$ are determined by the radius-$R$ local tile content. Every tiling in $\Omega_\sigma$ therefore admits a unique supertile hierarchy at every level.
+\end{theorem}
+
+\begin{definition}[Balanced-pair automaton]\label{def:BPA}
+A \emph{balanced pair} $(u,v)$ is a pair of distinct words with $\pi(u)=\pi(v)$. Applying $\sigma$ and splitting at coincidences produces children. The directed graph of reachable balanced pairs is $\B_\sigma$. The balanced-pair algorithm for $(u,v)$ \emph{terminates with coincidence} if iterated inflation and irreducible factorization eventually produces a coincidence pair $(a,a)$.
+\end{definition}
+
+\begin{center}\textbf{Part I: Level 2 --- Finiteness of $\B_\sigma$}\end{center}
+
+\section{Unique decodability}\label{sec:UD}
+
+We recall the classical defect theorem.
+
+\begin{theorem}[Defect theorem~\cite{BPPR,BPR}]\label{thm:defect}
+Let $X\subset\A^+$ be a finite subset. Then $X^*$ is contained in a unique minimal free submonoid $H^*\subseteq\A^*$, where $H\subset\A^+$ is a finite code satisfying $|H|\le|X|$. Moreover, $|H|=|X|$ if and only if $X$ is itself a code.
+\end{theorem}
+
+\begin{lemma}[Letter injectivity]\label{lem:letter-inj}
+If $\det M_\sigma\ne 0$, then $\sigma$ is injective on single letters.
+\end{lemma}
+
+\begin{proof}
+$\sigma(a)=\sigma(b)$ gives identical columns of $M_\sigma$, contradicting $\det\ne 0$.
+\end{proof}
+
+\begin{theorem}[Unique decodability]\label{thm:UD}
+If $\det M_\sigma\ne 0$, the code $X:=\{\sigma(a):a\in\A\}$ is uniquely decodable.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:letter-inj}, $|X|=|\A|$. Suppose $X$ is not a code. By Theorem~\ref{thm:defect}, $X\subseteq H^*$ for some finite code $H\subset\A^+$ with $|H|\le|\A|-1$.
+
+For each $a\in\A$, write $\sigma(a)=h_1h_2\cdots h_{k_a}$ with $h_i\in H$. Apply the Parikh homomorphism:
+\[
+\mathrm{col}_a(M_\sigma)=\pi(\sigma(a))=\sum_i\pi(h_i)\in\Z\text{-span}\{\pi(h):h\in H\}.
+\]
+Every column of $M_\sigma$ therefore lies in a sublattice of $\Z^\A$ of rank at most $|H|\le|\A|-1$. Hence the $|\A|$ columns of $M_\sigma$ are $\Q$-linearly dependent, giving $\mathrm{rank}(M_\sigma)\le|\A|-1$ and $\det M_\sigma=0$. Contradiction.
+\end{proof}
+
+\begin{corollary}[\UD\ for powers]\label{cor:UD-powers}
+For every $r\ge 1$, the code $\{\sigma^r(a):a\in\A\}$ is uniquely decodable.
+\end{corollary}
+
+\begin{proof}
+$\det M_{\sigma^r}=(\det M_\sigma)^r\ne 0$. Apply Theorem~\ref{thm:UD} to $\sigma^r$.
+\end{proof}
+
+\begin{remark}[On the inputs to \UD]\label{rem:UD-inputs}
+Theorem~\ref{thm:UD} requires only $\det M_\sigma\ne 0$. Neither primitivity, aperiodicity, the Pisot condition, nor any recognizability result is used. This is the cleanest possible \UD\ statement: an elementary linear-algebraic consequence of the classical defect theorem. The proof also yields, as a corollary, a simplification of Berth\'e--Steiner--Thuswaldner--Yassawi~\cite[Thm 3.1]{BSTY} for the rank-$|\A|$ case: their full recognizability theorem for morphisms of rank $|\A|$ implies \UD, but the defect-theorem route gives \UD\ directly in five lines without going through the rotational-conjugation machinery. \cite{BSTY} remains the essential reference for broader settings ($|\A|=2$ with $\det=0$; permutative morphisms).
+\end{remark}
+
+\section{Unique decodability, padding, and the finiteness hypothesis}\label{sec:finiteness}
+
+This section records the unique-decodability and phase-automaton facts formerly used in the Level-2 finiteness attempt --- (i) unique periodic cutting from \UD\ (Theorem~\ref{thm:upc}) and (ii) the finite phase-automaton padding diagnostic (Observation~\ref{prop:padding}) --- and then states finiteness of $\B_\sigma$ as Hypothesis~\ref{thm:finiteness} (G1). The predecessor-contraction argument of earlier versions is withdrawn (see the remark after Hypothesis~\ref{thm:finiteness}).
+
+\begin{theorem}[Unique periodic cutting]\label{thm:upc}
+Let $W$ be a finite word such that $W^n$ is a legal factor of the substitution language for every $n\ge 1$. If $W$ admits two complete $\sigma$-cuttings $\sigma(a)=W=\sigma(b)$ with $a,b\in\A^*$, then $a=b$.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:UD}, the code $\{\sigma(c):c\in\A\}$ is uniquely decodable, so the factorization $W=\sigma(c_1)\sigma(c_2)\cdots\sigma(c_r)$ is unique. Hence $a=b$.
+\end{proof}
+
+\begin{remark}\label{rem:complete-cutting}
+By a \emph{complete} $\sigma$-cutting of $W$ we mean a factorization $W=\sigma(c_1)\cdots\sigma(c_r)$ in which the cuts align with $\sigma$-image boundaries throughout, with no boundary fragments. The padding analysis below converts a long coincidence run between the two sides of an inflated balanced pair into exactly this situation. Cuttings with proper-prefix or proper-suffix offset fragments are not used.
+\end{remark}
+
+\subsection{The phase automaton}
+
+To bound coincidence padding inside an inflated balanced pair, we track the local phase data position-by-position through a finite directed graph.
+
+\begin{definition}[Phase automaton]\label{def:phase}
+The phase automaton $\Phi_\sigma$ has:
+\begin{itemize}[leftmargin=*]
+\item Vertices: quadruples $(\alpha,i,\beta,j)$ with $\alpha,\beta\in\A$, $0\le i<|\sigma(\alpha)|$, $0\le j<|\sigma(\beta)|$, satisfying $\sigma(\alpha)_{i+1}=\sigma(\beta)_{j+1}$ (the next tile on each side coincides). Such a vertex is a \emph{phase state}.
+\item Edges: a phase state advances by reading one tile on each side simultaneously. Within an image, $(\alpha,i,\beta,j)\to(\alpha,i+1,\beta,j+1)$ when $i+1<|\sigma(\alpha)|$ and $j+1<|\sigma(\beta)|$, provided the new vertex satisfies the coincidence condition. At the end of an image, $(\alpha,|\sigma(\alpha)|-1,\beta,j)\to(\alpha',0,\beta,j+1)$ with $\alpha'$ the next source letter on the $u$-side, and analogously when the $v$-side image ends; both ends terminating simultaneously corresponds to a transition to a fresh letter pair $(\alpha',\beta')$.
+\end{itemize}
+A phase state $(\alpha,i,\beta,j)$ is \emph{diagonal} if $\alpha=\beta$ and $i=j$, otherwise \emph{non-diagonal}. The number of phase states is at most
+\[
+N_\Phi(\sigma) := |\A|^2\cdot|\sigma|_{\max}^2,\qquad |\sigma|_{\max}:=\max_{c\in\A}|\sigma(c)|.
+\]
+\end{definition}
+
+A maximal coincidence run inside the inflated pair $(\sigma(u),\sigma(v))$ corresponds to a directed path in $\Phi_\sigma$: each position of the run advances the phase state by one tile-step.
+
+\begin{lemma}[Long coincidence run forces a phase cycle]\label{lem:long-run-cycle}
+If a maximal coincidence run inside the inflation of a legal balanced pair has tile-length greater than $N_\Phi(\sigma)$, then the corresponding path in $\Phi_\sigma$ contains a directed cycle.
+\end{lemma}
+
+\begin{proof}
+A path of length exceeding the vertex count revisits a vertex, producing a cycle.
+\end{proof}
+
+\begin{lemma}[A complete-cutting non-diagonal cycle gives two complete cuttings]\label{lem:non-diag-cycle}
+Suppose $\Phi_\sigma$ contains a directed cycle $\gamma$ realized inside a maximal coincidence run of an inflated legal balanced pair, in which at least one phase state is non-diagonal, \emph{and $\gamma$ returns to zero source-offset on both sides} (a complete-cutting cycle). Let $W$ be the tile word emitted by $\gamma$ over one period. Then there exist source words $a,b\in\A^*$ with $a\ne b$ such that $\sigma(a)=W=\sigma(b)$. If, moreover, $\gamma$ is legally repeatable --- so that $W^n$ is a legal factor for every $n\ge1$ --- then unique periodic cutting (Theorem~\ref{thm:upc}) is contradicted.
+\end{lemma}
+
+\begin{proof}
+Because $\gamma$ returns to zero offset on each side, traversing $\gamma$ once the $u$-side reads complete images: source letters $a_1,\dots,a_{k_u}$ with $\sum_l|\sigma(a_l)|=|W|$ and no image split across the cycle seam; likewise the $v$-side reads $b_1,\dots,b_{k_v}$ with $\sum_l|\sigma(b_l)|=|W|$. (The zero-offset hypothesis is exactly what makes these complete concatenations rather than mid-image fragments.) The cycle's defining property is that at every position the next tile on each side agrees, so $\sigma(a)$ and $\sigma(b)$ produce the same tile sequence $W$ with $a=a_1\cdots a_{k_u}$, $b=b_1\cdots b_{k_v}$.
+
+Suppose for contradiction $a=b$. Then the source sequences coincide letter-by-letter and the offsets evolve in lockstep, so every state on $\gamma$ has equal offsets and equal source letters, i.e.\ is diagonal --- contradicting the non-diagonal hypothesis. Hence $a\ne b$.
+
+For the final clause, if $W^n$ is a legal factor for every $n$, then $W$ admits the two complete $\sigma$-cuttings $\sigma(a)=W=\sigma(b)$ with $a\ne b$ in the presence of unbounded legal repetition, which Theorem~\ref{thm:upc} forbids. We do not assert that an arbitrary complete-cutting cycle is legally repeatable; the contradiction is available precisely in the periodic-realizable case.
+\end{proof}
+
+\begin{remark}[Non-complete cycles are not controlled]\label{rem:nonzero-offset}
+A phase cycle need not return to zero offset: it may recur at an offset pair $(\alpha,\beta)\ne(0,0)$, emitting a cyclic fragment that is a mid-image piece rather than a complete concatenation $\sigma(a)=W=\sigma(b)$. Direct enumeration finds such non-complete recurrences at a nonzero offset in roughly one fifth of recurring phases on the alphabet-$3$ corpus. For these the unique-decodability contradiction does not apply, so Lemma~\ref{lem:non-diag-cycle} controls only complete-cutting cycles. This is why the padding statement below is recorded as a diagnostic observation rather than a theorem.
+\end{remark}
+
+\begin{observation}[Padding diagnostic, non-diagonal phase]\label{prop:padding}
+The phase automaton $\Phi_\sigma$ is finite, with at most $|\A|^2\cdot|\sigma|_{\max}^2$ states; set $D(\sigma):=|\A|^2|\sigma|_{\max}^2$. A maximal coincidence run whose non-diagonal phase path contains a \emph{legally repeatable complete-cutting} cycle cannot occur in a legal balanced pair, since it would force $\sigma(a)=\sigma(b)$ with $a\ne b$ under unbounded legal repetition, contradicting Theorem~\ref{thm:upc} (Lemma~\ref{lem:non-diag-cycle}). This excludes the repeatable complete-cutting recurrences. Non-complete (nonzero-offset) recurrences, and complete-cutting cycles not known to be legally repeatable, are not controlled by this argument (Remark~\ref{rem:nonzero-offset}); a uniform bound on the total non-diagonal phase length is therefore recorded here as a diagnostic, not proved.
+\end{observation}
+
+\begin{remark}[Scope of the diagnostic]
+This is not used elsewhere in the paper: finiteness of $\B_\sigma$ is the hypothesis~G1, not a consequence of padding. We record the phase-automaton finiteness and the complete-cutting obstruction because they explain \emph{why} long coincidence runs are atypical, and because the non-diagonal phase length is the natural obstruction quantity; but the only rigorous content is the complete-cutting exclusion via Theorem~\ref{thm:upc}. Direct computation exhibits maximal coincidence runs far longer than $D(\sigma)$ (total length up to several multiples on the alphabet-$3$ corpus), the excess lying in diagonal phase and in nonzero-offset non-diagonal recurrence; the earlier ``every maximal coincidence run has tile-length at most $D(\sigma)$'' is withdrawn.
+\end{remark}
+
+\begin{remark}[Comparison with v6.2 and v10]\label{rem:padding-history}
+Earlier formulations (v6.2~\S\S 3--4; v10 Corollary~4.2) sketched this argument under the heading ``non-diagonal phase cycle contradicts unique periodic cutting'' without defining the phase automaton or quantifying $D$. Observation~\ref{prop:padding} makes both precise; in the present version this constant $D(\sigma)\le|\A|^2|\sigma|_{\max}^2$ is recorded as a local diagnostic consequence of unique decodability, not used to prove finiteness (which is carried as Hypothesis~\ref{thm:finiteness}, G1).
+\end{remark}
+
+\subsection{Predecessor contraction}
+
+\begin{hypothesis}[Finiteness, G1]\label{thm:finiteness}
+$\B_\sigma$ is finite.
+\end{hypothesis}
+
+\begin{remark}[Status of Hypothesis~\ref{thm:finiteness}]
+Finiteness is taken as a hypothesis, not proved here. Earlier versions
+(through v14) derived it from a \emph{predecessor contraction}: with
+$D=D(\sigma)$ from Observation~\ref{prop:padding} and $L(s)$ the
+geometric length under the Perron tile-length vector, it was claimed
+that any child $s$ of a parent $s'$ satisfies $L(s)\ge\beta
+L(s')-D\cdot\ell_{\max}$, whence $L(s')\le(L(s)+D\cdot\ell_{\max})/\beta$
+and backward iteration contracts at rate $1/\beta$. \emph{This step is
+false.} The padding bound of Observation~\ref{prop:padding} bounds the
+geometric length of each removed coincidence run, but inflation of $s'$
+can split into many noncoincident children, and a chosen child may
+carry only a small fraction of the parent's inflated length while the
+remaining noncoincident mass lies in other children. Thus no single
+child need carry almost all of $\beta L(s')$, and the inequality
+$L(s)\ge\beta L(s')-D\cdot\ell_{\max}$ does not hold; direct computation
+exhibits children with $\beta L(s)/L(s')$ unbounded (ratios up to $8$
+and growing with state length on the alphabet-$3$ corpus). The padding
+bound controls individual coincidence runs, not total deletion mass,
+and the contraction it was meant to support fails.
+
+Finiteness is known unconditionally for $|\A|=2$
+(Hollander--Solomyak with Barge--Diamond) and for the verified families
+(beta-substitutions, Brun/Jacobi--Perron products, and assorted
+Ito--Rao and Akiyama--Lee cases). For general irreducible Pisot
+$\sigma$ on $|\A|\ge3$ it is open; the exhaustive alphabet-$3$
+balanced-pair sweep ($4{,}554/4{,}554$ specimens close, zero cap hits)
+is empirical elimination, not a proof. We therefore carry finiteness as
+the hypothesis~G1 throughout.
+\end{remark}
+
+\begin{center}\textbf{Part II: Level 3 --- Coincidence}\end{center}
+
+\section{Unique hierarchy within supertiles}\label{sec:hierarchy}
+
+\begin{lemma}[Unique hierarchy]\label{lem:unique-hier}
+Let $T$ be a level-$n$ supertile of type $\tau$ with tile content $V=\sigma^n(\tau)$. For each $1\le k\le n$, the level-$k$ supertile boundaries within $T$ are uniquely determined by $V$.
+\end{lemma}
+
+\begin{proof}
+$V=\sigma^k(w)$ with $w=\sigma^{n-k}(\tau)$, so $V$ is a concatenation of $\sigma^k$-images starting and ending at level-$n$ boundaries (hence level-$k$ boundaries). By Corollary~\ref{cor:UD-powers}, the $\sigma^k$-parsing is unique. Recursive application at each level gives the full hierarchy.
+\end{proof}
+
+\begin{definition}[Pointed realization, witness, supertile window]\label{def:pointed}
+A \emph{pointed realization} is a triple $(\omega,\omega',x_0)$ with $(\omega,\omega')\in\Omega_\sigma\times\Omega_\sigma$ disagreeing only on a finite disagreement window and $x_0\in\R$ a marked point in that window. The \emph{centered state} $s(x_0)$ records the local balanced pair and the position of $x_0$ within it. The \emph{level-$n$ ancestry} $a_n(x_0)$ records the type of the level-$n$ supertile containing $x_0$ in $\omega$, together with $x_0$'s position within that supertile. The \emph{finite witness} is $W_n(x_0):=(s(x_0),a_n(x_0))$.
+
+The \emph{level-$n$ supertile window} of a pointed realization is the restriction of $(\omega,\omega')$ to the level-$n$ supertile of $\omega$ containing $x_0$, considered as a pair of partial tilings together with $x_0$.
+\end{definition}
+
+\begin{theorem}[Local witness injectivity]\label{thm:winj}
+Let $(\omega_1,\omega'_1,x_0)$ and $(\omega_2,\omega'_2,x_0)$ be two pointed realizations sharing centered state $s$ and level-$n$ ancestry $a_n$. Then their level-$n$ supertile windows agree: $\omega_1$ and $\omega_2$ coincide on the level-$n$ supertile of $\omega_1$ containing $x_0$, with identical level-$k$ hierarchical structure for every $k\le n$, and analogously for $\omega'_1$ and $\omega'_2$.
+\end{theorem}
+
+\begin{proof}
+The shared level-$n$ ancestry places $x_0$ inside the same level-$n$ supertile $T$ of type $\tau$ in both realizations, at the same position within $T$. The tile content of $T$ is $V=\sigma^n(\tau)$ in both. By Lemma~\ref{lem:unique-hier}, the level-$k$ supertile boundaries within $V$ are determined by $V$ alone for every $k\le n$, hence agree across the two realizations. Therefore $\omega_1$ and $\omega_2$ coincide on $T$ together with their hierarchies. The shared centered state gives the same local balanced-pair structure at $x_0$, hence the same disagreement-window data for $\omega'_1$ and $\omega'_2$ within $T$.
+\end{proof}
+
+\begin{remark}[On the strength of Theorem~\ref{thm:winj}]\label{rem:winj-history}
+Earlier formulations (v9, v10) stated witness injectivity globally: same finite witness $W_n$ for all $n$ implies same pointed realization. That stronger conclusion does not follow from finite data, since $W_n$ records only local content within a single level-$n$ supertile and cannot determine an entire bi-infinite tiling. The local form stated here is what is needed downstream and what the proof actually establishes; v6.2 stated this form correctly, and v9--v10 compressed it incorrectly.
+\end{remark}
+
+\section{Coincidence}\label{sec:coincidence}
+
+The remaining step is to show that finiteness of $\B_\sigma$ implies every balanced pair eventually reaches a coincidence state. The natural reformulation in the language of strongly connected components (SCCs) of $\B_\sigma$ is:
+
+\begin{quote}
+\emph{Every recurrent noncoincident SCC of $\B_\sigma$ produces a coincidence sibling at some inflation step.}
+\end{quote}
+
+Earlier formulations (including v9, v10, and v11 prior to revision) attempted to prove the stronger statement that no recurrent noncoincident cycle exists in $\B_\sigma$, with the substantive geometric content being nonvanishing of cycle displacement $\delta(\gamma)\ne 0$ on noncoincident cycles. That target is false as a general theorem. We discuss what fails, give a sharper algebraic reformulation (the mass-leakage framework), record an alphabet-$3$ spectral lower bound, and identify the precise open content.
+
+\subsection{Why cycle exclusion fails}
+
+The flipped Tribonacci substitution $\sigma:1\mapsto 21,\ 2\mapsto 31,\ 3\mapsto 1$ is primitive Pisot with irreducible characteristic polynomial $x^3-x^2-x-1$. Its balanced-pair automaton contains a recurrent SCC of size four,
+\[
+\C_{\mathrm{fT}}=\{((1,2),(2,1)),((1,3),(3,1)),((2,1,3),(3,1,2)),((1,2,1,3),(3,1,2,1))\},
+\]
+which is closed (no escape) and contains a directed cycle of period 3 on the first three states. The cycle takes the leftmost child at every inflation step, so every offset is 0 and the cycle displacement vanishes,
+\[
+\delta(\gamma)=0.
+\]
+Hence ``noncoincident cycle $\Rightarrow\delta(\gamma)\ne 0$'' is false. Independently, a Moss\'e desubstitution of the cycle's asymptotic pair returns into the same SCC rather than to a smaller balanced-pair state, so the $\sigma^q$-self-similarity of the cycle blocks any descent argument that aims to produce a strictly smaller noncoincident state.
+
+The correct mechanism is not exclusion. The same SCC produces coincidence siblings at every step: each application of $\sigma$ to a state $s\in\C_{\mathrm{fT}}$ generates one single-tile coincidence child of type $(1)|(1)$ alongside the within-SCC noncoincident children. The balanced-pair algorithm terminates because of this coincidence production, not because the SCC is destroyed.
+
+\subsection{Mass balance and the spectral characterization}\label{sec:mass-balance}
+
+Fix $\sigma$ primitive Pisot with irreducible characteristic polynomial. For a balanced pair $s=(u,v)$ write $\pi(s):=\pi(u)=\pi(v)\in\Z^\A_{\ge 0}$ for the common Parikh vector and $L(s):=\langle\ell,\pi(s)\rangle$ for its $\ell$-length, where $\ell$ is the left Perron eigenvector of $M_\sigma$ with $\ell M_\sigma=\beta\ell$. Inflation gives $L(\sigma(s))=\beta L(s)$, and irreducible factorization of $\sigma(s)$ at coincidence boundaries decomposes $\sigma(s)$ into noncoincident children and single-tile coincidence siblings.
+
+Let $\C\subseteq\B_\sigma$ be a noncoincident SCC. Define the within-SCC transition matrix
+\[
+N_\C\in\mathrm{Mat}_{|\C|}(\Z_{\ge 0}),\qquad N_\C[s,t]=\#\{\text{children of }\sigma(s)\text{ of type }t\},\quad s,t\in\C.
+\]
+Mass balance at each $s\in\C$ reads
+\begin{equation}\label{eq:mass-balance}
+\beta L(s)=\sum_{t\in\C}N_\C[s,t]\,L(t)+\mathrm{escape}(s)+\mathrm{leak}(s),
+\end{equation}
+where $\mathrm{escape}(s)$ collects $L$-mass of noncoincident children outside $\C$ and $\mathrm{leak}(s)$ collects $L$-mass of coincidence (diagonal) children. We say $\C$ is \emph{closed} if every noncoincident child of every $s\in\C$ lies in $\C$, equivalently $\mathrm{escape}\equiv 0$, and \emph{nonproductive} if no $\sigma(s)$ for $s\in\C$ has a single-tile coincidence child, equivalently $\mathrm{leak}\equiv 0$.
+
+\begin{lemma}[Mass-balance spectral characterization]\label{lem:mass-balance}
+Let $\C$ be a recurrent noncoincident SCC. Then $L_\C:=(L(s))_{s\in\C}\in\R^{|\C|}_{>0}$ is a positive vector, and
+\[
+N_\C L_\C\le\beta L_\C\quad\text{componentwise}.
+\]
+Moreover the following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item $\C$ is closed and nonproductive (i.e., $\mathrm{escape}\equiv\mathrm{leak}\equiv 0$);
+\item $N_\C L_\C=\beta L_\C$;
+\item the Perron--Frobenius eigenvalue of $N_\C$ equals $\beta$.
+\end{enumerate}
+If any of these fails, then $\PFroot(N_\C)<\beta$ strictly.
+\end{lemma}
+
+\begin{proof}
+Mass balance~\eqref{eq:mass-balance} gives $N_\C L_\C\le\beta L_\C$. Equality of (i) and (ii) is immediate from~\eqref{eq:mass-balance}. The implication (ii)$\Rightarrow$(iii) follows from the existence of a positive eigenvector with eigenvalue $\beta$, which is then the spectral radius by Perron--Frobenius for nonnegative matrices. For (iii)$\Rightarrow$(ii): since $\C$ is recurrent, $N_\C$ is irreducible; if $\PFroot(N_\C)=\beta$ then by Perron--Frobenius the right $\beta$-eigenspace is one-dimensional and spanned by a positive vector, which must be $L_\C$ up to scalar, forcing equality in~\eqref{eq:mass-balance}. The strict inequality in the failure case follows from the Collatz--Wielandt characterization of $\PFroot(N_\C)$.
+\end{proof}
+
+\subsection{Algebraic structure of a closed nonproductive SCC}
+
+Suppose $\C$ is closed nonproductive. Let $P\in\mathrm{Mat}_{|\C|\times|\A|}(\Z_{\ge 0})$ be the matrix whose rows are the Parikh vectors $\pi(s)^\top$ for $s\in\C$. Since $\pi(\sigma(s))=M_\sigma\pi(s)$ and the children's Parikhs sum to $\pi(\sigma(s))$ with no coincidence Parikh, we have, in matrix form,
+\begin{equation}\label{eq:intertwining}
+N_\C P=P\,M_\sigma^\top.
+\end{equation}
+
+\begin{lemma}[Algebraic structure]\label{lem:alg-structure}
+If $\C$ is closed nonproductive, then in addition to~\eqref{eq:intertwining},
+\begin{enumerate}[label=(\roman*)]
+\item $\ker(P:\R^{|\A|}\to\R^{|\C|})$ is $M_\sigma^\top$-invariant and defined over $\Q$;
+\item by irreducibility of the characteristic polynomial of $M_\sigma$ over $\Q$, $\ker(P)\in\{0,\R^{|\A|}\}$, and since $\pi(s)\ne 0$ for all $s\in\C$, $\ker(P)=0$. Hence $P$ is injective, and $|\C|\ge|\A|$;
+\item $N_\C$ contains $M_\sigma$ as a sub-block on $\mathrm{im}(P)$: the eigenvalues of $N_\C$ restricted to $\mathrm{im}(P)$ are precisely the eigenvalues of $M_\sigma$, namely $\beta$ together with its $|\A|-1$ Galois conjugates (all with $|\cdot|<1$ by the Pisot property).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For (i): if $Py=0$ then $P(M_\sigma^\top y)=N_\C(Py)=0$ by~\eqref{eq:intertwining}, so $\ker(P)$ is $M_\sigma^\top$-invariant; it is defined over $\Q$ because $P$ has integer entries. For (ii): the only $M_\sigma^\top$-invariant $\Q$-subspaces of $\R^{|\A|}$ are $\{0\}$ and $\R^{|\A|}$, by irreducibility of $\mathrm{char}(M_\sigma)$ over $\Q$; since $P$ is not the zero matrix, $\ker(P)=0$. Then $|\C|=\mathrm{rank}(P)\ge\dim(\R^{|\A|})=|\A|$. For (iii): $P$ intertwines $M_\sigma^\top$ on $\R^{|\A|}$ with $N_\C|_{\mathrm{im}(P)}$, so the spectra match.
+\end{proof}
+
+\subsection{Spectral lower bound on \texorpdfstring{$N_\C$}{NC} (alphabet 3)}\label{sec:v34-bound}
+
+For alphabet size three, an additional spectral lower bound on the within-SCC matrix is available. The construction tracks the second antisymmetric tensor power of the Parikh count and is alphabet-$3$-specific: the dimension count $\binom{3}{2}=3$ plus the standard-basis identity $K_2(s_{ab})=e_{ab}$ on the three length-$2$ swap pairs make the projection onto the dominant eigenline of $\Lambda^2 M_\sigma$ verifiable in finite cases.
+
+For $|\A|=3$, write $\Lambda^2 M_\sigma$ for the induced action on $\Lambda^2\Z^3\cong\Z^3$, with eigenvalues $\beta\beta_2$, $\beta\beta_3$, $\beta_2\beta_3$. The Pisot ordering $\beta>1>|\beta_2|\ge|\beta_3|$ gives $|\beta\beta_2|>|\beta\beta_3|$ and $|\beta\beta_2|\ge|\beta_2\beta_3|$, so $|\beta\beta_2|$ is the dominant eigenvalue magnitude of $\Lambda^2 M_\sigma$. Let $\Pi^\sigma_{\mathrm{dom}}$ denote the spectral projection of $\Lambda^2 M_\sigma$ onto its dominant eigenspace.
+
+For a balanced pair $s=(u,v)$ with $|\A|=3$, define
+\[
+K_2(s):=(N_{ij}(u)-N_{ij}(v))_{1\le i<j\le 3}\in\Z^3,
+\]
+where $N_{ij}(w)$ counts ordered $i$-before-$j$ scattered pairs in $w$.
+
+\begin{lemma}[Dominant $K_2$-source]\label{lem:dom-K2}
+For every primitive irreducible Pisot substitution $\sigma$ on $\A=\{1,2,3\}$, at least one of the three length-$2$ swap pairs $s_{12}=((1,2),(2,1))$, $s_{13}=((1,3),(3,1))$, $s_{23}=((2,3),(3,2))$ satisfies $\Pi^\sigma_{\mathrm{dom}}K_2(s_0)\ne 0$.
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+Direct computation in the $(e_{12},e_{13},e_{23})$ basis of $\Lambda^2\Z^3$ gives $K_2(s_{12})=e_{12}$, $K_2(s_{13})=e_{13}$, $K_2(s_{23})=e_{23}$. These are the standard basis of $\Lambda^2\Z^3$. If $\Pi^\sigma_{\mathrm{dom}}$ vanished on all three, it would vanish on $\Lambda^2\R^3$, contradicting that the dominant eigenspace is nonzero (which holds because $\beta\beta_2\ne 0$ for $\det M_\sigma\ne 0$). Hence some $s_0$ has nonzero dominant projection.
+\end{proof}
+
+\begin{proposition}[Spectral lower bound on $N_\C$, closed SCC, alphabet 3]\label{thm:v34}
+Let $\sigma$ be a primitive Pisot substitution on $\A=\{1,2,3\}$ with irreducible characteristic polynomial, and suppose $\B_\sigma$ is finite \textup{(G1)}. For any \emph{closed} recurrent noncoincident SCC $\C$ with nonvanishing dominant wedge component $\Pi^\sigma_{\mathrm{dom}}K_2|_\C\ne 0$,
+\[
+\PFroot(N_\C)\ge\beta\,|\beta_2|.
+\]
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+By the $K_2$-pushforward identity $K_2(\sigma s)=\Lambda^2 M_\sigma\cdot K_2(s)$ on whole pairs (companion note), for $s\in\C$ with $\Pi^\sigma_{\mathrm{dom}}K_2(s)\ne0$, $\|\Lambda^2 M_\sigma^k\,K_2(s)\|\gtrsim(\beta|\beta_2|)^k$. An inter-block cancellation argument shows $K_2(\sigma^k s)=\sum_{c\in D_k}K_2(c)$, with $D_k$ the depth-$k$ descendants; the triangle inequality forces $\sum_{c\in D_k}\|K_2(c)\|\gtrsim(\beta|\beta_2|)^k$. \emph{Because $\C$ is closed}, every descendant of $s\in\C$ remains in $\C$ (noncoincident children stay in $\C$; coincidence children carry no wedge mass), so $D_k\subseteq\C$ and the wedge growth cannot escape into other components. By Hypothesis~\ref{thm:finiteness}, $\|K_2(c)\|$ is uniformly bounded, so $|D_k|\gtrsim(\beta|\beta_2|)^k$; path-counting within $\C$ gives $|D_k|\le C\,\PFroot(N_\C)^k$, whence $\PFroot(N_\C)\ge\beta|\beta_2|$. Full proof in the companion note (\S\ref{sec:companion}). The closedness hypothesis is essential: for an open SCC, descendants can leave $\C$ and the dominant growth may be carried by escaping components, so $N_\C$ need not see it.
+\end{proof}
+
+\begin{observation}[Conditional existence of a qualifying SCC]\label{obs:v34-existence}
+Starting from a dominant length-$2$ seed $s_0\in\{s_{12},s_{13},s_{23}\}$ with $\Pi^\sigma_{\mathrm{dom}}K_2(s_0)\ne0$ (Lemma~\ref{lem:dom-K2}), the global descendant growth forces some recurrent component of the condensation graph to carry the spectral growth $(\beta|\beta_2|)^k$, \emph{provided} the dominant wedge mass is not lost through escape into pure $\beta$-zero components ($\Pi^\sigma_{\mathrm{dom}}K_2\equiv0$). Excluding that alternative is conditional on one of two auxiliary lemmas (No Pure $\beta$-Zero SCC, or Case-B $\beta$-richness/cyclic-vector) recorded in the companion note. The implication of Proposition~\ref{thm:v34} is theorem-grade for a closed SCC on alphabet~3; the existence of a qualifying (closed, wedge-nonzero) SCC is this conditional part.
+\end{observation}
+
+\begin{remark}[What Proposition~\ref{thm:v34} contributes and what it does not]\label{rem:v34-scope}
+Proposition~\ref{thm:v34} is alphabet-$3$ specific and gives a lower bound on $\PFroot(N_\C)$ for any \emph{closed} recurrent SCC with nonzero dominant wedge (existence of such an SCC being conditional, Observation~\ref{obs:v34-existence}). It does not close the SCC Producer Theorem (Conjecture~\ref{conj:producer}), even on alphabet 3. By Lemma~\ref{lem:mass-balance}(iii), the closed-nonproductive obstruction corresponds to $\PFroot(N_\C)=\beta$, which is consistent with $\PFroot(N_\C)\ge\beta|\beta_2|$ (since $|\beta_2|<1$ gives $\beta|\beta_2|<\beta$). Proposition~\ref{thm:v34} therefore constrains the bottom of the spectral band $[\beta|\beta_2|,\beta]$ but not the top, where the obstruction lives. Its value is rather:
+\begin{itemize}[leftmargin=*]
+\item it rules out such spectral collapse for any closed recurrent SCC with nonzero dominant wedge projection;
+\item it confirms the framework of \S\ref{sec:mass-balance}--\S\ref{sec:v34-bound} is consistent and substantive on alphabet 3;
+\item it gives a quantitative cardinality estimate $|D_k|\gtrsim(\beta|\beta_2|)^k$ for descendants of a length-$2$ dominant seed.
+\end{itemize}
+\end{remark}
+
+\subsection{The cohomological face of the obstruction: an independent development}\label{sec:cohomology-companion}
+
+The closed-nonproductive SCC of \S\ref{sec:mass-balance}--\S\ref{sec:v34-bound} admits a second, independent description on the cohomology side of the Barge--Diamond theory~\cite{BD08,Sa14}, developed in a companion manuscript. The two descriptions concern the \emph{same} object: the intertwining $N_\C P=P\,M_\sigma^\top$ of~\eqref{eq:intertwining} with $P$ injective (Lemma~\ref{lem:alg-structure}) is exactly the statement that the integer valuation $P$ embeds $\spec(M_\sigma)$ into $\spec(N_\C)$, i.e.\ $\chi_{M_\sigma}\mid\chi_{N_\C}$, with $\PFroot(N_\C)=\beta$ (Lemma~\ref{lem:mass-balance}(iii)). On the cohomology side this $N_\C$ is the abelianization of a substitution $\Sigma_\C$ on $|\C|\ge|\A|$ letters---the \emph{transversal substitution} of the trapped component---whose self-similar tiling space $\Omega_{\Sigma_\C}$ has dilatation the Pisot $\beta$ and reducible characteristic polynomial $\chi_{M_\sigma}\cdot q$. The matrix $N_\C$ is irreducible ($\C$ recurrent) but need not be primitive; after passing to a suitable power, primitivity of the induced component can be arranged; irreducibility of the powered incidence matrix is not needed for the local cohomological discussion here, and primitivity of $\Sigma_\C$ is assumed throughout this subsection.
+
+This reframing does not close Conjecture~\ref{conj:producer}, but it contributes three facts---two unconditional and one a second conditional route---that constrain the hypothetical trapped object from a direction disjoint from the spectral lower bound of Proposition~\ref{thm:v34}.
+
+\begin{lemma}[Leg factor]\label{lem:leg-factor}
+If $\C$ is a closed nonproductive SCC, the tiling flow $(\Omega_{\Sigma_\C},\R)$ factors onto $(\Omega_\sigma,\R)$.
+\end{lemma}
+
+\noindent The factor map merges the cells of a $\Sigma_\C$-tiling between consecutive boundaries of one of the two underlying $\sigma$-grids; the boundary types are intrinsic (one letter changes across each), the merge is a local rule, and its image is a nonempty closed translation-invariant subset of the minimal $\Omega_\sigma$, hence all of it. Pure discrete spectrum passes to topological factors. To conclude that $\Omega_{\Sigma_\C}$ lacks \PDS\ one needs that a closed nonproductive SCC certifies $\neg\PDS$ for $\sigma$ --- equivalently, that balanced-pair non-coincidence implies overlap non-coincidence, the \emph{converse} direction of the bridge, which Theorem~\ref{thm:BSW} does not supply but which is available through the Akiyama--Lee overlap-coincidence criterion ($\PDS\Leftrightarrow$ overlap coincidence for irreducible Pisot). Under that converse:
+
+\begin{corollary}[Coincidence-rank floor, conditional on the bridge converse]\label{cor:cr-floor}
+Assume the converse direction above (a closed nonproductive SCC certifies $\neg\PDS$ for $\sigma$, via the Akiyama--Lee overlap-coincidence criterion). Then for every closed nonproductive SCC, $\Omega_{\Sigma_\C}$ does not have \PDS; equivalently its coincidence rank satisfies $\mathrm{cr}(\Sigma_\C)\ge 2$. If in addition $\sigma$ is unimodular and $\Sigma_\C$ is homological Pisot, then $\mathrm{cr}(\Sigma_\C)\ge 3$, by the odd-norm exclusion of $\mathrm{cr}=2$ for homological Pisot substitutions~\textup{\cite{Barge2016}}.
+\end{corollary}
+
+The triple structure forced by $\mathrm{cr}\ge 3$ obeys the same mass-balance ceiling as the pair structure:
+
+\begin{lemma}[Triple mass-balance ceiling]\label{lem:triple-ceiling}
+Let a closed nonproductive SCC carry, via $\mathrm{cr}\ge 3$, a system of triple-overlap states with the partition identity $\beta\,w(s)=\sum_{c}w(c)$ over the common refinement of the three inflated images. Then the within-system count matrix $N_\C^{(3)}$ has $\PFroot(N_\C^{(3)})=\beta$ when the system is closed, and $\PFroot<\beta$ strictly otherwise---verbatim the dichotomy of Lemma~\ref{lem:mass-balance}.
+\end{lemma}
+
+\noindent The proof is the Perron--Frobenius argument of Lemma~\ref{lem:mass-balance} applied to the positive eigenvector $(w(s))_s$; the only new input, the triple partition identity, is the interval-partition identity for the common refinement of three grids rather than two. (A computational surrogate over producing components---$\sim 1{,}750$ triple noncoincident SCCs across the alphabet-$3$ corpus---found the ceiling $\PFroot(N_\C^{(3)})<\beta$ in every case with no closed triple system, mirroring the pair census; this is elimination, not validation.)
+
+\begin{proposition}[Second conditional route, unimodular case]\label{prop:qa-crc}
+Let $\sigma$ be unimodular. Suppose (Q\nobreakdash-A) the transversal substitution $\Sigma_\C$ of any closed nonproductive SCC is homological Pisot, and suppose the Coincidence Rank Conjecture~\textup{\cite{BBJS}} holds. Then $\sigma$ has \PDS; equivalently no closed nonproductive SCC exists.
+\end{proposition}
+
+\begin{proof}
+Suppose $\sigma$ has a closed nonproductive SCC. Its dilatation $\beta$ has norm $\pm 1$ (unimodularity). Under (Q\nobreakdash-A) $\Sigma_\C$ is homological Pisot; the Coincidence Rank Conjecture then forces $\mathrm{cr}(\Sigma_\C)$ to divide a power of $1$, i.e.\ $\mathrm{cr}(\Sigma_\C)=1$, so $\Omega_{\Sigma_\C}$ has \PDS. By Lemma~\ref{lem:leg-factor} \PDS\ passes to the factor $\Omega_\sigma$, contradicting Corollary~\ref{cor:cr-floor}.
+\end{proof}
+
+\begin{remark}[Relation to Proposition~\ref{thm:v34} and to Conjecture~\ref{conj:producer}]\label{rem:two-faces}
+Proposition~\ref{prop:qa-crc} is a placement, not a closure: both (Q\nobreakdash-A)---homological-Pisotness of $\Sigma_\C$, equivalently $\dim\check H^1(\Omega_{\Sigma_\C})=\deg\beta$---and the Coincidence Rank Conjecture are open, the latter precisely in the $\mathrm{cr}\ge 3$ regime this route reaches. Its content is that the symbolic obstruction of Conjecture~\ref{conj:producer} and the topological homological-Pisot/CRC program are two faces of one object. Where Proposition~\ref{thm:v34} constrains the bottom of the spectral band $[\beta|\beta_2|,\beta]$, condition (Q\nobreakdash-A) constrains the residual spectrum $q=\chi_{N_\C}/\chi_{M_\sigma}$ at the top: it would force every nonzero root of $q$ onto a root of unity. The facts of Lemma~\ref{lem:leg-factor} and Lemma~\ref{lem:triple-ceiling} hold unconditionally; the coincidence-rank floor (Corollary~\ref{cor:cr-floor}) holds under the bridge converse (Akiyama--Lee overlap coincidence). These are recorded as the geometric counterparts of the algebraic structure of Lemma~\ref{lem:alg-structure}. No census evidence bears on either route, since a closed nonproductive SCC---the common object of both---occurs nowhere in the certified corpus.
+\end{remark}
+
+\subsection{The remaining open question}
+
+The combinatorial content of ``$\C$ is closed nonproductive'' is sharper than the algebraic constraints of Lemma~\ref{lem:alg-structure}: it requires that for every $s=(u,v)\in\C$ and every coincidence boundary $k$ in the inflated pair $(\sigma(u),\sigma(v))$, the letters $\sigma(u)_k$ and $\sigma(v)_k$ are distinct. Equivalently, the prefix-difference walk $\Delta_s(k):=\pi(\sigma(u)_{[0,k)})-\pi(\sigma(v)_{[0,k)})\in\Z^{|\A|}$ never returns to the origin at a position followed by a diagonal letter pair.
+
+\begin{definition}\label{def:diag-free-system}
+A \emph{diagonal-free zero-return system} on $\C$ is the data $(\C,N_\C,P)$ satisfying~\eqref{eq:intertwining} and the combinatorial constraint above (no zero-return of $\Delta_s$ followed by a diagonal letter pair, for any $s\in\C$).
+\end{definition}
+
+\begin{conjecture}[SCC Producer Theorem]\label{conj:producer}
+For every primitive Pisot substitution $\sigma$ with irreducible characteristic polynomial, no diagonal-free zero-return system exists. Equivalently, every recurrent noncoincident SCC of $\B_\sigma$ is productive: some $s\in\C$ has at least one coincidence sibling in $\sigma(s)$.
+\end{conjecture}
+
+The forward direction of the corresponding equivalence is what the proof of \PDS\ requires:
+
+\begin{proposition}\label{prop:bpa-coincidence}
+Suppose $\B_\sigma$ is finite and Conjecture~\ref{conj:producer} holds. Then every recurrent noncoincident SCC of $\B_\sigma$ has a reachable state $s$ such that $\sigma(s)$ contains a coincidence sibling. Hence every seed pair whose forward orbit in $\B_\sigma$ enters such an SCC has an iterate $\sigma^m$ whose irreducible factorization contains a coincidence sibling; in particular this holds for the seed $(ab,ba)$ for every pair $a\ne b$ in $\A$.
+\end{proposition}
+
+\begin{proof}
+The orbit of any seed in $\B_\sigma$, being a forward trajectory in a finite digraph, eventually enters a recurrent SCC $\C$. If $\C$ is coincident (contains a diagonal state $(a,a)$) the orbit already contains a coincidence sibling. Otherwise $\C$ is recurrent noncoincident; by Conjecture~\ref{conj:producer} there is a state $s_*\in\C$ with a coincidence sibling in $\sigma(s_*)$, and by strong connectedness of $\C$ every $s\in\C$ reaches $s_*$ in finitely many steps. Composing with the prior segment of the orbit, the iterate $\sigma^m$ for $m$ large enough has an irreducible factorization containing a coincidence sibling.
+\end{proof}
+
+\subsection{Status and what is known}\label{sec:status-known}
+
+Conjecture~\ref{conj:producer} is essentially the Strong Coincidence Conjecture restated at the SCC level: it would follow from the (open) statement that for primitive Pisot $\sigma$ with irreducible characteristic polynomial every noncoincident balanced pair has a productive iterate. What is known points in the right direction without closing the conjecture in general:
+\begin{itemize}[leftmargin=*]
+\item Barge--Diamond~\cite{BD} prove that for some letter pair $a\ne b$, $\sigma^n(a)$ and $\sigma^n(b)$ share a letter at the same position with matching prefix Parikhs at some $n\ge 0$. This gives productivity for one specific seed but does not propagate to arbitrary recurrent SCCs.
+\item Hollander--Solomyak~\cite{HS} extend BD to all letter pairs in the two-letter case, settling Conjecture~\ref{conj:producer} for $|\A|=2$. This is the only alphabet size in which the conjecture is fully established.
+\item Barge~\cite{Barge2018}, Akiyama--Lee~\cite{AL}, and others establish Conjecture~\ref{conj:producer} for $\beta$-substitutions and certain self-similar families.
+\item For $|\A|=3$, Proposition~\ref{thm:v34} gives $\PFroot(N_\C)\ge\beta|\beta_2|$ for any \emph{closed} recurrent SCC with nonzero dominant wedge; existence of such an SCC (Observation~\ref{obs:v34-existence}) is conditional. This rules out degenerate spectral collapse on wedge-nonzero components but not the closed-nonproductive obstruction (cf.\ Remark~\ref{rem:v34-scope}).
+\item Empirically, the balanced-pair automaton was constructed for the complete census of irreducible Pisot specimens with $|\A|=3$, $|\sigma(a)|\le 3$ whose automaton is finite under symbolic inflate-and-cancel, together with randomized samples on $|\A|=4$. No closed nonproductive SCC was found in any case; recurrent noncoincident SCCs that fail to be productive do occur but are invariably open (they escape to a productive component), so the balanced-pair algorithm still reaches coincidence. Independently, the strong-coincidence condition (Remark~\ref{rem:computation}) holds on all $6{,}009$ specimens tested across $|\A|=3,4,5$. No counterexample to Conjecture~\ref{conj:producer} is known.
+\item The witness depth (smallest $n$ realizing strong coincidence on the worst letter pair) is small in random samples but is \emph{not} uniformly bounded, in two independent ways. First, it is unbounded in alphabet size: the substitution $\sigma_n$ on $\{0,\dots,n-1\}$ with $\sigma_n(i)=(i{+}1)\,0$ for $i<n-1$ and $\sigma_n(n{-}1)=0$ is primitive Pisot with irreducible characteristic polynomial (the $n$-bonacci polynomial, $\beta\to 2$), and its worst-pair witness depth is exactly $n{+}1$; this is a clean explicit family, though not the extremal one. Second, and dominantly, depth is driven by proximity of $\beta$ to $1$: the deepest specimens observed at each alphabet size occur at the smallest Pisot $\beta$ reachable there (e.g.\ depth $15$ at $\beta\approx 1.3247$ for $|\A|=3$, depth $18$ at $\beta\approx 1.4433$ for $|\A|=5$), and the two effects compound. Small Pisot $\beta$ near $1$ are sparse by the structure of the Pisot set, so such specimens are rare but real. In random samples with $\beta\ge 1.5$, mean depth is about $3$--$4$ and $\det M_\sigma$ is not a driver (unimodular and non-unimodular subsamples are indistinguishable). No witness-depth bound uniform in $|\A|$ can hold; a uniform bound would have been strictly stronger than Conjecture~\ref{conj:producer}, and is ruled out by the family above.
+\end{itemize}
+
+\begin{remark}[Routes that do not close the conjecture]\label{rem:dead-routes}
+Three natural attack routes are insufficient:
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Cycle displacement nonvanishing.} The flipped-Tribonacci computation (\S6.1) refutes the statement ``noncoincident $\B_\sigma$-cycle $\Rightarrow\delta(\gamma)\ne 0$.''
+\item \emph{Moss\'e desubstitution descent.} A recurrent SCC is closed under both $\sigma$-inflation and Moss\'e desubstitution; descent stays within the SCC and produces no smaller balanced-pair state.
+\item \emph{Pure algebraic constraints on $N_\C$.} Lemma~\ref{lem:alg-structure} gives $|\C|\ge|\A|$ and $\spec(M_\sigma)\subseteq\spec(N_\C)$, but the pair $N_\C=M_\sigma$ with $P=\mathrm{Id}$ satisfies the algebraic constraints of~\eqref{eq:intertwining} and is consistent with $\PFroot(N_\C)=\beta$. The combinatorial diagonal-free condition (Definition~\ref{def:diag-free-system}) must be used; the algebra alone is insufficient. Proposition~\ref{thm:v34} sharpens the spectral picture (alphabet 3), but $\beta|\beta_2|<\beta$, so Proposition~\ref{thm:v34} alone cannot close the conjecture (Remark~\ref{rem:v34-scope}).
+\end{enumerate}
+A self-contained proof of Conjecture~\ref{conj:producer} therefore requires combinatorial input beyond the linear-algebraic and spectral-lower-bound structure isolated above. The natural candidate is a Pisot-shadowing pigeonhole argument lifting BD's letter-pair construction to arbitrary recurrent SCCs.
+\end{remark}
+
+\begin{remark}[Productivity is an SCC-level property]\label{rem:scc-level}
+The diagonal-free condition of Definition~\ref{def:diag-free-system} cannot be reduced to a per-state condition. A computational survey of irreducible Pisot specimens with $|\A|=3$ finds that individual states $s$ for which no interior zero-return of $\Delta_s$ is followed by a diagonal letter pair are common: a single balanced pair can fail to produce a coincidence sibling from any interior balanced sub-factorization of $\sigma(s)$. In every recurrent noncoincident SCC examined the SCC as a whole was nonetheless productive, with the producing coincidence supplied by some state of the SCC and propagated by strong connectedness. This is consistent with Conjecture~\ref{conj:producer} being genuinely a statement about SCCs rather than individual states, and indicates that any proof must use strong connectedness (or the Pisot dynamics across the whole orbit) and cannot proceed state-by-state.
+\end{remark}
+
+\begin{theorem}[Conditional main theorem]\label{thm:cond-main}
+Conditional on G1 (Hypothesis~\ref{thm:finiteness}, finiteness of $\B_\sigma$) and on Conjecture~\ref{conj:producer}, every primitive Pisot substitution with irreducible characteristic polynomial gives rise to a tiling dynamical system with \PDS.
+\end{theorem}
+
+\begin{proof}
+$\B_\sigma$ is finite (Hypothesis~\ref{thm:finiteness}, G1). By Proposition~\ref{prop:bpa-coincidence}, conditional on Conjecture~\ref{conj:producer}, for every pair $a\ne b$ the \BPA\ expansion of $(ab,ba)$ contains a coincidence sibling at some iterate, i.e., the balanced-pair algorithm for $(ab,ba)$ terminates with coincidence in the sense of Theorem~\ref{thm:BSW}. The bridge then delivers \PDS.
+\end{proof}
+
+\begin{center}\textbf{Part III: Assembly}\end{center}
+
+\section{The Pisot substitution conjecture}\label{sec:assembly}
+
+\begin{theorem}\label{thm:main}
+Let $\sigma$ be a primitive Pisot substitution on a finite alphabet whose incidence matrix has irreducible characteristic polynomial, and suppose $\B_\sigma$ is finite \textup{(Hypothesis~\ref{thm:finiteness}, G1)}. Then, conditional on the SCC Producer Theorem (Conjecture~\ref{conj:producer}), the associated tiling dynamical system has \PDS.
+\end{theorem}
+
+\begin{proof}
+This is Theorem~\ref{thm:cond-main}.
+\end{proof}
+
+\begin{remark}[Inputs]\label{rem:inputs}
+The proof uses four distinct inputs:
+\begin{enumerate}[label=(\roman*)]
+\item The defect theorem~\cite{BPPR}, combined with $\det M_\sigma\ne 0$, for unique decodability (Theorem~\ref{thm:UD}) and its power-iterated version (Corollary~\ref{cor:UD-powers}).
+\item Moss\'e recognizability~\cite{Mosse1,Mosse2}, from primitivity and aperiodicity, for the supertile hierarchy on $\Omega_\sigma$ (Theorem~\ref{thm:Mosse}) and hence for local witness injectivity (Theorem~\ref{thm:winj}).
+\item Pisot growth $\beta>1$, for the spectral characterization of mass leakage (Lemma~\ref{lem:mass-balance}).
+\item The SCC Producer Theorem (Conjecture~\ref{conj:producer}). This is settled for $|\A|=2$ by Hollander--Solomyak~\cite{HS}, partially by Barge--Diamond~\cite{BD} (one seed), and unconditionally for $\beta$-substitutions and certain self-similar families by~\cite{Barge2018,AL}; the general case is open. The mass-balance and algebraic-structure lemmas (\S\S\ref{sec:mass-balance}--6.3) reformulate the open content but do not close it. For $|\A|=3$, Proposition~\ref{thm:v34} contributes a spectral lower bound on the within-SCC matrix that is informative but, by Remark~\ref{rem:v34-scope}, insufficient to close the conjecture even on alphabet 3.
+\end{enumerate}
+The bridge from balanced-pair termination to \PDS\ is Barge--\v{S}timac--Williams~\cite{BSW} (which closes the gap in~\cite{BK} flagged in Remark~\ref{rem:BK-gap}). Neither full recognizability~\cite{BSTY} nor any residual-graph analysis is required. The defect theorem gives \UD\ in five lines of elementary combinatorics on words and linear algebra.
+\end{remark}
+
+\begin{remark}[Architectural contribution]\label{rem:architecture}
+The substantive mathematical simplifications proved in this paper are:
+\begin{itemize}[leftmargin=*]
+\item \UD\ via the defect theorem (Theorem~\ref{thm:UD}): five lines from $\det M_\sigma\ne 0$, using no substitution-specific machinery.
+\item Explicit padding bound via the phase automaton (Observation~\ref{prop:padding}): $D(\sigma)\le|\A|^2|\sigma|_{\max}^2$, replacing the unspecified ``padding bound'' constant in earlier formulations.
+\item Local witness injectivity (Theorem~\ref{thm:winj}): replaces the multi-page recognizability-based key lemma of Barge--Diamond~\cite{BD} and Barge--Kwapisz~\cite{BK}, in its correct local form.
+\item Mass-balance reformulation of the Level-3 closure (Lemmas~\ref{lem:mass-balance}, \ref{lem:alg-structure}): the open content is now sharply identified as the SCC Producer Theorem (Conjecture~\ref{conj:producer}), with the cycle-exclusion target of earlier drafts shown to be false (\S6.1) and the closed-nonproductive case forced into a constrained algebraic structure ($N_\C$ contains $M_\sigma$ as an invariant sub-block, $|\C|\ge|\A|$) that consumes part of the difficulty.
+\item Alphabet-$3$ spectral mechanism (Proposition~\ref{thm:v34}): any \emph{closed} recurrent SCC with nonzero dominant wedge has $\PFroot(N_\C)\ge\beta|\beta_2|$; existence of a qualifying SCC is conditional (Observation~\ref{obs:v34-existence}).
+\item Cohomological consolidation (\S\ref{sec:cohomology-companion}): the closed-nonproductive SCC is identified with the transversal substitution $\Sigma_\C$ on the Barge--Diamond side, yielding the unconditional leg-factor coincidence-rank floor $\mathrm{cr}(\Sigma_\C)\ge 2$ (Corollary~\ref{cor:cr-floor}), the triple mass-balance ceiling (Lemma~\ref{lem:triple-ceiling}), and a second conditional route to unimodular \PDS\ via homological-Pisotness of $\Sigma_\C$ together with the Coincidence Rank Conjecture (Proposition~\ref{prop:qa-crc}).
+\end{itemize}
+The remaining open content is the Pisot-shadowing combinatorial step needed to rule out diagonal-free zero-return systems.
+\end{remark}
+
+\begin{remark}[Computation]\label{rem:computation}
+The strong-coincidence condition that is the productivity content of the SCC Producer Theorem (Conjecture~\ref{conj:producer})---that for each letter pair $a\ne b$ some iterate $\sigma^n(a),\sigma^n(b)$ shares a position with equal prefix Parikh vectors---was verified directly on $6{,}009$ irreducible Pisot specimens: the complete census of all such substitutions with $|\A|=3$, $|\sigma(a)|\le 3$ ($4{,}554$ specimens), together with randomized samples on $|\A|=4,5$ ($1{,}077$ and $378$ specimens), with zero failures. The test is performed on letter pairs directly and does not construct the balanced-pair automaton, so it includes $2{,}244$ non-unimodular specimens ($|\det M_\sigma|\ge 2$) without difficulty. The maximal witness depth observed was $15$, attained only at $\beta$ equal to the plastic number (the smallest Pisot number); $99.7\%$ of $|\A|=3$ specimens coincide by depth $8$. This checks the productivity content of Conjecture~\ref{conj:producer}, not \PDS\ itself, which (outside $|\A|=2$) requires the bridge of Theorem~\ref{thm:BSW}; the two are not conflated (cf.\ \S\ref{sec:bridges}).
+
+Theorem~\ref{thm:UD} was verified on the complete census of $59{,}319$ three-letter substitutions with $|\sigma(a)|\le 3$: of these, $7{,}491$ are non-\UD\ (including duplicate-image specimens), and every non-\UD\ specimen has $\det M_\sigma=0$, consistent with the theorem. Across the $4{,}554$ irreducible Pisot specimens in that census, the Sardinas--Patterson unique-decodability test and the criterion $\det M_\sigma\ne 0$ agreed in every case, with no mismatch.
+
+The integral residual graph of Sardinas--Patterson provides an independent computational test: all Pisot specimens pass (empty forward-backward intersection at $\varepsilon_0$, so $\varepsilon_0$ cannot return to itself). Whether the specific structural fact that $\varepsilon_0$ lies outside every cycle of $R^{\mathrm{int}}_\sigma$ admits a direct combinatorial proof from $\det\ne 0$ alone is an interesting question in codes-and-automata, independent of the Pisot conjecture and not on its critical path.
+
+For Proposition~\ref{thm:v34}, an empirical sweep of $500$ random PIP specimens on alphabet $3$ found that all three length-$2$ swap pairs had nonzero dominant projection in every case ($500/500$, minimum projection norm $0.690$). This is consistent with Lemma~\ref{lem:dom-K2}, which guarantees only that at least one of the three has nonzero projection.
+\end{remark}
+
+\begin{remark}[Companion note]\label{sec:companion}
+The proof of Proposition~\ref{thm:v34} (sketched in \S\ref{sec:v34-bound}) is given in detail in a companion note documenting the v33--v34 development: Inter-Block Cancellation Lemma (whole-pair $K_2$-conservation under $\sigma$-decomposition), Dominant $K_2$-Source Lemma (Lemma~\ref{lem:dom-K2}), and the path-counting plus SCC-condensation argument. The finite-closure input used inside the proof is supplied by Hypothesis~\ref{thm:finiteness} of the present paper.
+\end{remark}
+
+\section{Example}\label{sec:example}
+
+\begin{example}\label{ex:plastic}
+$\sigma:1\mapsto 2,\ 2\mapsto 3,\ 3\mapsto 12$. $\beta\approx 1.3247$, $\det M_\sigma=1$, characteristic polynomial $x^3-x-1$ (irreducible over $\Q$). Images $\{2,3,12\}$ form a prefix code, hence \UD\ (defect-theorem argument collapses: $|H|=|X|=3$). The balanced-pair automaton has $44$ states; coincidence reached within $12$ substitution steps. The three length-$2$ swap pairs $s_{12}, s_{13}, s_{23}$ all have nonzero dominant $\Lambda^2 M_\sigma$-projection (computed numerically), consistent with Lemma~\ref{lem:dom-K2}.
+\end{example}
+
+\begin{thebibliography}{99}
+
+\bibitem{ABBLS}
+S.~Akiyama, M.~Barge, V.~Berth\'e, J.-Y.~Lee, A.~Siegel,
+\emph{On the Pisot substitution conjecture},
+in \emph{Mathematics of Aperiodic Order},
+Progr.\ Math.\ \textbf{309}, Birkh\"auser, 2015, 33--72.
+
+\bibitem{AL}
+S.~Akiyama, J.-Y.~Lee,
+\emph{Algorithm for determining pure pointedness of self-affine tilings},
+Adv.\ Math.\ \textbf{226} (2011), 2855--2883.
+
+\bibitem{AkiyamaLee2014}
+S.~Akiyama, J.-Y.~Lee,
+\emph{Overlap coincidence to strong coincidence in substitution tiling dynamics},
+European J.\ Combin.\ \textbf{39} (2014), 233--243.
+
+\bibitem{Balchin}
+S.~Balchin, D.~Rust,
+\emph{Computations for symbolic substitutions},
+J.\ Integer Seq.\ \textbf{20} (2017), Article 17.4.1.
+
+\bibitem{Barge2016}
+M.~Barge,
+\emph{Factors of Pisot tiling spaces and the coincidence rank conjecture},
+Bull.\ Soc.\ Math.\ France \textbf{143} (2015), 357--381.
+
+\bibitem{Barge2018}
+M.~Barge,
+\emph{The Pisot conjecture for $\beta$-substitutions},
+Ergodic Theory Dynam.\ Systems \textbf{38} (2018), 444--472.
+
+\bibitem{BBJS}
+M.~Barge, H.~Bruin, L.~Jones, L.~Sadun,
+\emph{Homological Pisot substitutions and exact regularity},
+Israel J.\ Math.\ \textbf{188} (2012), 281--300.
+
+\bibitem{BD08}
+M.~Barge, B.~Diamond,
+\emph{Cohomology in one-dimensional substitution tiling spaces},
+Proc.\ Amer.\ Math.\ Soc.\ \textbf{136} (2008), 2183--2191.
+
+\bibitem{Sa14}
+L.~Sadun,
+\emph{Cohomology of hierarchical tilings},
+in \emph{Mathematics of Aperiodic Order}, Progr.\ Math.\ \textbf{309},
+Birkh\"auser (2015), 73--104.
+
+\bibitem{BD}
+M.~Barge, B.~Diamond,
+\emph{Coincidence for substitutions of Pisot type},
+Bull.\ Soc.\ Math.\ France \textbf{130} (2002), 619--626.
+
+\bibitem{BK}
+M.~Barge, J.~Kwapisz,
+\emph{Geometric theory of unimodular Pisot substitutions},
+Amer.\ J.\ Math.\ \textbf{128} (2006), 1219--1282.
+
+\bibitem{BSW}
+M.~Barge, S.~\v{S}timac, R.~F.~Williams,
+\emph{Pure discrete spectrum in substitution tiling spaces},
+Discrete Contin.\ Dyn.\ Syst.\ \textbf{33} (2013), 579--597.
+
+\bibitem{BPPR}
+J.~Berstel, D.~Perrin, J.-F.~Perrot, A.~Restivo,
+\emph{Sur le th\'eor\`eme du d\'efaut},
+J.\ Algebra \textbf{60} (1979), 169--180.
+
+\bibitem{BPR}
+J.~Berstel, D.~Perrin, C.~Reutenauer,
+\emph{Codes and Automata},
+Encyclopedia of Mathematics and its Applications \textbf{129},
+Cambridge University Press, 2009.
+
+\bibitem{BSTY}
+V.~Berth\'e, W.~Steiner, J.~M.~Thuswaldner, R.~Yassawi,
+\emph{Recognizability for sequences of morphisms},
+Ergodic Theory Dynam.\ Systems \textbf{39} (2019), 2896--2931.
+
+\bibitem{HS}
+M.~Hollander, B.~Solomyak,
+\emph{Two-symbol Pisot substitutions have pure discrete spectrum},
+Ergodic Theory Dynam.\ Systems \textbf{23} (2003), 533--540.
+
+\bibitem{IR}
+S.~Ito, H.~Rao,
+\emph{Atomic surfaces, tilings and coincidence I: irreducible case},
+Israel J.\ Math.\ \textbf{153} (2006), 129--155.
+
+\bibitem{MA}
+P.~Mercat, S.~Akiyama,
+\emph{Yet another characterization of the Pisot substitution conjecture},
+in \emph{Substitution and Tiling Dynamics}, Lecture Notes in Math.\ \textbf{2273}, Springer, 2020, 397--448.
+
+\bibitem{Mosse1}
+B.~Moss\'e,
+\emph{Puissances de mots et reconnaissabilit\'e des points fixes d'une substitution},
+Theoret.\ Comput.\ Sci.\ \textbf{99} (1992), 327--334.
+
+\bibitem{Mosse2}
+B.~Moss\'e,
+\emph{Reconnaissabilit\'e des substitutions et complexit\'e des suites automatiques},
+Bull.\ Soc.\ Math.\ France \textbf{124} (1996), 329--346.
+
+\bibitem{Nakaishi2016}
+K.~Nakaishi,
+\emph{Pisot conjecture and Rauzy fractals},
+arXiv:1610.03146 (2016--2023, withdrawn).
+
+\bibitem{Nakaishi2024}
+K.~Nakaishi,
+\emph{Pisot substitution conjecture and Rauzy fractals},
+arXiv:2401.07771 (2024).
+
+\bibitem{Queffelec}
+M.~Queff\'elec,
+\emph{Substitution Dynamical Systems---Spectral Analysis},
+2nd ed., Lecture Notes in Math.\ \textbf{1294}, Springer, 2010.
+
+\end{thebibliography}
+
+\end{document}

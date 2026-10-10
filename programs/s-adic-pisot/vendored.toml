@@ -1,0 +1,114 @@
+# Vendored packages, checked by check_vendored_sync.py; re-pin with
+# `check_vendored_sync.py pin NAME COMMIT` after copying from upstream.
+
+[[package]]
+name = "finite_exact"
+repository = "larsbx/finite-math-kernels"
+commit = "1887777d815656034d0fb9e5a68ef473b652b75b"
+root = "kernel"
+
+[package.files]
+"finite_exact/__init__.mojo" = "97e07962648a1ff270483ecbd59c8c65d4ed1049b5a11f79e48ce86e877511a5"
+"finite_exact/bigint_z.mojo" = "d02a0c033042661161a24f0b31f1e89fbf3ed908ccc86e42b5b80b8df4240df1"
+"finite_exact/checked_int.mojo" = "22bb031f2b1e9c19486d1ae9829e7924f9c57f90364dc3235a39184a6ef9a882"
+"finite_exact/closed_interval.mojo" = "f7eef73466857a2079841de96c1bf02353a507311145cd1fed37d3f89a722816"
+"finite_exact/closed_q.mojo" = "58d538dd14b605bfb4d7cdb0b8398ae6ad62fbaa4a2ee79c336898bcb6a49350"
+"finite_exact/enclosure_width.mojo" = "49fae8690e6573797a5e41d563673bd202a8a98cad55cad7b10a2af2ea26c4b1"
+"finite_exact/exact_decimal.mojo" = "f2f7626ae0ae994b431604cd2b7cbd8eb0d05f2f942ede8e00cb586f911226ef"
+"finite_exact/field.mojo" = "0df44aa51aaf0ad4f352761041ba2d521c00f0e10cbca5b640e62b31a41da54e"
+"finite_exact/fp.mojo" = "7d216ce1f213b9a3049f4bff230338d7130c77fd44c5b0cb1048f5169802f7a6"
+"finite_exact/integer_gcd.mojo" = "8585681c664bfadce075f90eeeb2ebf71a0c21647dd077dd78d84e2733244160"
+"finite_exact/rat_q.mojo" = "d7f8cc3a3879d76bfc242304a13d4f2c9d4cf2cdeeba586fa4af95980a4b9fa6"
+"finite_exact/rational.mojo" = "6d84b8f4c3b1699648eee2512f49c7736dd5d4c8f7236809585b09cf1b5631c0"
+
+[[package]]
+name = "finite_automata"
+repository = "larsbx/finite-math-kernels"
+commit = "1887777d815656034d0fb9e5a68ef473b652b75b"
+root = "kernel"
+
+[package.files]
+"finite_automata/__init__.mojo" = "415b559b5c1f54ec157d0f3598ec7a5fee974f672460046ffb4b4196154bd53e"
+"finite_automata/dfa.mojo" = "b8ba057d7a1071b673ffb2fee87675aa292c56860c0bb74737c9961c7aa75a41"
+"finite_automata/moore_minimisation.mojo" = "2278a9e8f766452e15b620188c6c1c235dbf70d8f0614517972bb1b25f86ee9e"
+"finite_automata/subset_construction.mojo" = "2f298eeb62551faf57d7bbbb6836b6461037cb650413cc76d9be65a12d608190"
+
+[[package]]
+name = "finite_graph"
+repository = "larsbx/finite-math-kernels"
+commit = "1887777d815656034d0fb9e5a68ef473b652b75b"
+root = "kernel"
+
+[package.files]
+"finite_graph/__init__.mojo" = "723f6d6f301027ff9942586fff3fc1ae333ec99eb8f38fa707d7b57f89d01cd2"
+"finite_graph/scc.mojo" = "23b53776636a84bf8f1617348f2c9bf8fc110c359277cf69b0f8d2b05a88ad45"
+"finite_graph/signing.mojo" = "437be9ac21f0255ad60e85cba39e69926c353cf0a5b723605b011e646cadf46c"
+"finite_graph/union_find.mojo" = "b64744842afbf6f74863a8d685c6c884fe66f2c1af1b14e0c0884926f650d22a"
+
+[[package]]
+name = "substitution_dynamics"
+repository = "larsbx/finite-math-kernels"
+commit = "1887777d815656034d0fb9e5a68ef473b652b75b"
+root = "kernel"
+
+[package.files]
+"substitution_dynamics/__init__.mojo" = "e53facf94d13e856fc0671329185197585c825908abc6a4fbe59c0efacae8986"
+"substitution_dynamics/automaton.mojo" = "a1d05636fdd4b7c2668901d0819be6e6a5833f3127aef3b3420714ea6908822f"
+"substitution_dynamics/balanced_pair_algorithm.mojo" = "02f45a6823038ddadc121f8282d09e5a34e9d2039e867f5b1544375fc9c4b8a7"
+"substitution_dynamics/balanced_pairs.mojo" = "8be78a124f6898bde665c4da38cd0110e843c16404f70804b0d700f385d37618"
+"substitution_dynamics/barge_class.mojo" = "599dbbe932e39e4b1246181cce30e48deb481eb0793b402274a8e456aa9481c5"
+"substitution_dynamics/coincidence.mojo" = "21281695f41185fbe3e063b5ec3b903991e05f4c04f8910801103271e4a137ec"
+"substitution_dynamics/discrepancy.mojo" = "f8498d3538b0e0aba1897633326942b2452ec3ad7ebe904bb174c6f53b43fbda"
+"substitution_dynamics/dumont_thomas.mojo" = "26183599d32538647dd52c517fc9fd9d0a7cb5c46701aa82fc89edcacee7c46a"
+"substitution_dynamics/endpoint_maps.mojo" = "9652789ae452b4311488b664c555e43fd66bf1c78cba0a502f1f2f1106de2b2c"
+"substitution_dynamics/internal_address.mojo" = "5e4a8283898e7c4a2b36aa4a9afa03ecce4ee2a610c4598d1471d707ffd34e39"
+"substitution_dynamics/return_lattice.mojo" = "43f3c003a7d88f0a089b3f30fd27e48bd0d3e61a41bc2ac438fe0ef0f29532e7"
+"substitution_dynamics/sadic.mojo" = "371b6f1b502adf23df159508f92b5891c7bca7752cf343687acc53f6b419b004"
+"substitution_dynamics/strong_coincidence.mojo" = "56719840f68b117399dbdf5df8b153d81c143de7d26e977e67501c8e74f4a81b"
+"substitution_dynamics/substitution.mojo" = "9dc5b2efaaba196e10fae8213f80db566a6d4d11c64b5a209c5c133679e000e7"
+"substitution_dynamics/symmetry.mojo" = "28275fec0cb02308e1a9a04f3b7e443ac0941c29b9d8ed997a3b0a170f4cf3b5"
+"substitution_dynamics/tuning.mojo" = "af035cbb59eb54e0a7e8d7d7cd295f6ffe2bdb504b9722a22a2ed3f81eace5f4"
+"substitution_dynamics/words.mojo" = "59eb2caefe20138da2a7d410a2e38db5b8d30c144759570e26501a7ed521442d"
+
+[[package]]
+name = "mojo_smoke"
+repository = "larsbx/finite-math-kernels"
+commit = "1887777d815656034d0fb9e5a68ef473b652b75b"
+root = "kernel"
+
+[package.files]
+"mojo_smoke/__init__.mojo" = "260759167f3a04edb4680dba5bb5b99ad2a52baac8838f2725708c499fb5e9b2"
+"mojo_smoke/claims.mojo" = "4fca317fc0ad6c710030c8e2494106d07358adb4673868c3393dcad15dcc32e6"
+"mojo_smoke/report.mojo" = "aea279f9c9fefc2edea5c32175a328e57f3e098582eadfea23eac4ca566b2e33"
+
+[[package]]
+name = "claim_governance"
+repository = "larsbx/finite-math-kernels"
+commit = "1887777d815656034d0fb9e5a68ef473b652b75b"
+root = "tools"
+
+[package.files]
+"claim_governance/__init__.py" = "64883fe16bdb5ad85b150b6625c8015de1de06a2dde2cae9e99d275b00750378"
+"claim_governance/checks/__init__.py" = "aeb4d89c1eeee260ab01df84e6576e954342c1a3a76ab126408e52bf44d7fe07"
+"claim_governance/checks/claims.py" = "35580a55a2f62e97ebeebf7128c8a255ccf5f3a12144c74dff6514ec15ef17ab"
+"claim_governance/checks/consistency.py" = "79ff0709ea01a044ddbd3941190765281b05c59c93ee91ee57dfbba484836947"
+"claim_governance/checks/coverage.py" = "78dc02b66132a562e741978654fd7fd41256558072b94233c1db619920fc13cc"
+"claim_governance/checks/numerics.py" = "5af0bba117d7503a2ea81d1aaeb4ef6fdd83504345925779224749ddd5666598"
+"claim_governance/checks/promotion.py" = "297aced859ea014d6cbb37166b9787bcda8f74ad52bba52fef83df7be04c1840"
+"claim_governance/checks/terminology.py" = "adfa2be8c2f49e6c81aa4f661293c6a088af3624f006a901a8d1d747924baef1"
+"claim_governance/cli.py" = "122f6b5acf8d5910ded64d93b83390c64aa8ee702179b5e71d0138b988855257"
+"claim_governance/findings.py" = "a8dafbaacc963b725d3b4fa32c8ac04ba10f4d69606362f52e5858af775bf3b4"
+"claim_governance/lexing.py" = "2a7c163bedf51f86c6074c887d2ba0d3cf9116c0955dc62e71c4b7bedfcb1499"
+"claim_governance/policy.py" = "7b7f34419d9436ecf818c7e64093a504de7d924d8abe80de047c54e50c236095"
+"claim_governance/repo.py" = "11a603c0288f9030ec0c5990d260f2c3f593b7e44a2b86d49f13920f84348dd3"
+"claim_governance/runner.py" = "86c48c3dc677e3cacf515b852382dfc459c30bc12d8220d6171efa22a84bef89"
+
+[[package]]
+name = "vendoring"
+repository = "larsbx/finite-math-kernels"
+commit = "1887777d815656034d0fb9e5a68ef473b652b75b"
+root = "tools"
+
+[package.files]
+"vendoring/__init__.py" = "959cdf7a89536784da18659db7cfe4099c885f5370249eccc71ce73775f8a584"
+"vendoring/check_vendored_sync.py" = "0e38721b19fcad261692f5424a4d580d82968a91f4baef01080486da372b4570"

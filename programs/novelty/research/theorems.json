@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-01",
+  "theorems": [
+    {
+      "id": "N1-T01",
+      "candidate": "N1",
+      "statement": "If A is a division algebra and a,b in A are nonzero, then ab is nonzero. Equivalently, an exact witness a!=0, b!=0, ab=0 certifies that A is not a division algebra.",
+      "claim_class": "pending",
+      "novelty_status": "classical; not novel",
+      "hypotheses": [
+        "N1-H09"
+      ],
+      "obligations": [
+        "N1-V06"
+      ],
+      "proof_artifact": "docs/theorems/bridge-theorems.md#n1-t01",
+      "ledger_record": "ZeroDivisorCertificateSoundness"
+    },
+    {
+      "id": "N2-T01",
+      "candidate": "N2",
+      "statement": "For nonzero x in an eight-dimensional real positive-definite composition algebra, L_x/sqrt(N(x)) is in SO(8).",
+      "claim_class": "proved result",
+      "novelty_status": "classical consequence; not novel",
+      "hypotheses": [
+        "N2-H06"
+      ],
+      "obligations": [
+        "N2-V04"
+      ],
+      "proof_artifact": "docs/theorems/bridge-theorems.md#n2-t01"
+    },
+    {
+      "id": "N3-T01",
+      "candidate": "N3",
+      "statement": "For finite r:X->S with fiber sizes m_s, sum_s (m_s)_k equals the number of ordered k-tuples of pairwise distinct elements of X having equal r-image.",
+      "claim_class": "proved result",
+      "novelty_status": "bridge novelty unassessed; identity is elementary",
+      "hypotheses": [
+        "N3-H06"
+      ],
+      "obligations": [
+        "N3-V04"
+      ],
+      "proof_artifact": "docs/theorems/bridge-theorems.md#n3-t01"
+    },
+    {
+      "id": "N2-T02",
+      "candidate": "N2",
+      "statement": "For nonzero real division octonions x,y, D(x,y)=U_x U_y U_xy^{-1} lies in SO(8), fixes the normalized xy direction, and equals I exactly when [x,y,z]=0 for every z.",
+      "claim_class": "proved result",
+      "novelty_status": "bridge novelty unassessed; operator packaging may be new",
+      "hypotheses": [
+        "N2-H06",
+        "N2-H07"
+      ],
+      "obligations": [
+        "N2-V05"
+      ],
+      "proof_artifact": "docs/theorems/derived-contributions.md#n2-t02"
+    },
+    {
+      "id": "N3-T02",
+      "candidate": "N3",
+      "statement": "For a finite G-set X and G-invariant r:X->S, quotient occupancies are given fiberwise by Burnside averages and their falling-factorial sums count ordered distinct G-orbits with common r-image.",
+      "claim_class": "proved result",
+      "novelty_status": "bridge novelty unassessed; arithmetic certificate application may be new",
+      "hypotheses": [
+        "N3-H06",
+        "N3-H07"
+      ],
+      "obligations": [
+        "N3-V05"
+      ],
+      "proof_artifact": "docs/theorems/derived-contributions.md#n3-t02"
+    },
+    {
+      "id": "N2-T03",
+      "candidate": "N2",
+      "statement": "For nonzero-norm x,y in an octonion composition algebra over F_q with q odd, Delta(x,y)=L_x L_y L_xy^{-1} belongs to O(C,N), fixes xy, and is identity exactly when [x,y,z]=0 for every z.",
+      "claim_class": "proved result",
+      "novelty_status": "classical ingredients; finite defect-geometry packaging unassessed",
+      "hypotheses": [
+        "N2-H08"
+      ],
+      "obligations": [
+        "N2-V06"
+      ],
+      "proof_artifact": "docs/theorems/finite-defect-geometry.md#n2-t03"
+    },
+    {
+      "id": "N2-T04",
+      "candidate": "N2",
+      "statement": "In any algebra, [a,b,c]d+[a,bc,d]+a[b,c,d]-[a,b,cd]-[ab,c,d]=0; equivalently, the signed associator defects around the five parenthesizations of a four-letter word form an exact closed boundary.",
+      "claim_class": "proved result",
+      "novelty_status": "classical associator identity; finite boundary interpretation unassessed",
+      "hypotheses": [
+        "N2-H09"
+      ],
+      "obligations": [
+        "N2-V07"
+      ],
+      "proof_artifact": "docs/theorems/pentagon-boundary.md#n2-t04"
+    },
+    {
+      "id": "N2-T05",
+      "candidate": "N2",
+      "statement": "The committed eight-dimensional multiplication tensor over F3 passes the executable certificate for a unital alternative composition algebra and the recorded nonflat pentagon witness.",
+      "claim_class": "artifact contribution",
+      "novelty_status": "verified finite artifact; novelty not claimed",
+      "hypotheses": [
+        "N2-H10"
+      ],
+      "obligations": [
+        "N2-V08"
+      ],
+      "proof_artifact": "docs/lean-oracle.md"
+    },
+    {
+      "id": "N2-T06",
+      "candidate": "N2",
+      "statement": "For every n>6 over an odd finite field with char not dividing n, the split octonion norm admits a minimal (n-6)-dimensional discriminant-matching complement whose orthogonal sum is isometric to the n-dimensional Descartes curvature space; octonion defect operators extended by identity yield an embedding into its orthogonal group canonical up to conjugacy. For n=6 this holds exactly when -2/6 is a square.",
+      "claim_class": "proved result",
+      "novelty_status": "classical Witt construction; defect-to-packing application unassessed",
+      "hypotheses": [
+        "N2-H11"
+      ],
+      "obligations": [
+        "N2-V09"
+      ],
+      "proof_artifact": "docs/theorems/witt-soddy-bridge.md#n2-t06"
+    }
+  ]
+}

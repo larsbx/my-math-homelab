@@ -1,0 +1,115 @@
+version = 2
+template = "estate-repository-v2"
+
+# SPEC_estate v0.1 §3 fields, then this template's layout sections.
+
+[repo]
+id = "s-adic-pisot-conjecture-research"
+slug = "larsbx/s-adic-pisot-conjecture-research"
+class = "research"
+layer = 3
+band = "EXPLORE"
+stage = "candidate"           # written by estate CI only (no estate CI ledger exists yet)
+inv = []                      # INV families: registration pending
+default_branch = "main"
+
+[origin]
+decided_by = "proposed"       # agent-authored; the owner adopts it by decision record
+chats = []
+artifacts = []
+
+[[dep]]
+id = "estate-governance"
+rev = "0833929ed82d42cf3674a1565681625a9622827b"
+pin = "sha256:7dff31575b2834b937395f3ff6f7ce2e2d1d7927b893cf8229c682ad7f3a99d2"
+
+# vendored.toml: metadata and file contents of every package vendored from
+# larsbx/finite-math-kernels, hashed together; derived by
+# tools/vendoring/check_vendored_sync.py, never hand-written.
+[[dep]]
+id = "finite-math-kernels"
+pin = "sha256:4193c2f20471edc9e6193a4749c6200c732329b627f4318a4a2f6073a30e43a9"
+
+[exports]
+names = []
+
+[layout]
+status = "canonical"
+
+[principles]
+ordering = ["authority", "domain", "language"]
+empty_silos = "forbidden"
+cross_language_disagreement = "fail_closed"
+generated_surfaces = "derived_only"
+vendor_code = "non_local"
+experimental_code = "non_authoritative"
+
+[[plane]]
+id = "policy"
+target = "ESTATE.toml"
+authority = "governance"
+required = true
+current = ["ESTATE.toml", "claim_governance.toml", "vendored.toml"]
+
+# Mojo include root (-I .) and pixi workspace. Vendored packages sit beside sadic/ (vendored.toml root = "kernel").
+[[plane]]
+id = "kernel"
+target = "kernel"
+authority = "canonical_executable"
+required = true
+current = ["kernel"]
+
+# The claim register is the claim-state plane; Lean and TLA+ join it at G7.
+[[plane]]
+id = "proof"
+target = "CLAIMS.md"
+authority = "claim_state"
+required = true
+current = ["CLAIMS.md"]
+
+[[plane]]
+id = "reference"
+target = "reference"
+authority = "non_authoritative_reference"
+required = true
+current = ["reference"]
+
+[[plane]]
+id = "conformance"
+target = "tests"
+authority = "evidence"
+required = true
+current = ["tests"]
+
+# claim_governance and vendoring under tools/ are vendored (vendored.toml);
+# the repository tooling sits beside them at the tools/ root.
+[[plane]]
+id = "tooling"
+target = "tools"
+authority = "repository_tooling"
+required = true
+current = ["tools"]
+
+[[plane]]
+id = "docs"
+target = "docs"
+authority = "exposition"
+required = true
+current = ["docs", "README.md", "ARCHITECTURE.md", "AGENTS.md"]
+
+[[language]]
+name = "Mojo"
+authority = "canonical"
+roles = ["kernel"]
+acceptance_authority = true
+
+[[language]]
+name = "Python"
+authority = "supporting"
+roles = ["reference", "oracle", "audit", "generation"]
+acceptance_authority = false
+
+[migration]
+mode = "boundary_first"
+mass_move = false
+next = []

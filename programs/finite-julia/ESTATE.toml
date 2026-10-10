@@ -1,0 +1,131 @@
+version = 2
+template = "estate-repository-v2"
+
+# SPEC_estate v0.1 §3 fields, then this template's layout sections.
+
+[repo]
+id = "finite-julia-set-research"
+slug = "larsbx/finite-julia-set-research"
+class = "research"
+layer = 3
+band = "EXPLORE"
+stage = "candidate"           # written by estate CI only (no estate CI ledger exists yet)
+inv = []                      # INV families: registration pending
+default_branch = "main"
+
+[origin]
+decided_by = "proposed"       # agent-authored; the owner adopts it by decision record
+chats = []
+artifacts = []
+
+[[dep]]
+id = "estate-governance"
+rev = "0833929ed82d42cf3674a1565681625a9622827b"
+pin = "sha256:7dff31575b2834b937395f3ff6f7ce2e2d1d7927b893cf8229c682ad7f3a99d2"
+
+[[dep]]                       # vendored packages, pinned by digest in vendored.toml
+id = "finite-math-kernels"
+pin = "sha256:e3dad4a57b3f8d87b68b811aadbd84d7bc246ba57fb51996d661a702ace07213"
+
+[exports]
+names = []
+
+[layout]
+status = "canonical"
+
+[principles]
+ordering = ["authority", "domain", "language"]
+empty_silos = "forbidden"
+cross_language_disagreement = "fail_closed"
+generated_surfaces = "derived_only"
+vendor_code = "non_local"
+experimental_code = "non_authoritative"
+
+# Policy is four root manifests; no policy/ silo is created for them.
+[[plane]]
+id = "policy"
+target = "ESTATE.toml"
+authority = "governance"
+required = true
+current = ["ESTATE.toml", "backend.toml", "polyglot.manifest.toml", "vendored.toml"]
+
+[[plane]]
+id = "kernel"
+target = "kernel"
+authority = "canonical_executable"
+required = true
+current = ["kernel"]
+
+[[plane]]
+id = "reference"
+target = "reference"
+authority = "non_authoritative_reference"
+required = true
+current = ["reference"]
+
+[[plane]]
+id = "oracles"
+target = "oracles"
+authority = "non_authoritative_oracle"
+required = true
+current = ["oracles"]
+
+# The polyglot boundary envelope and its conformance vectors.
+[[plane]]
+id = "schemas"
+target = ".polyglot"
+authority = "contract"
+required = true
+current = [".polyglot"]
+
+[[plane]]
+id = "conformance"
+target = "tests"
+authority = "evidence"
+required = true
+current = ["tests", "corpus.json"]
+
+# vendor/mojo and vendor/python are the include roots named in vendored.toml.
+[[plane]]
+id = "vendor"
+target = "vendor"
+authority = "pinned_external"
+required = true
+current = ["vendor"]
+
+[[plane]]
+id = "tooling"
+target = "tools"
+authority = "repository_tooling"
+required = true
+current = ["tools"]
+
+[[plane]]
+id = "docs"
+target = "docs"
+authority = "exposition"
+required = true
+current = ["docs", "README.md", "ROADMAP.md", "ARCHITECTURE.md"]
+
+[[language]]
+name = "Mojo"
+authority = "canonical"
+roles = ["kernel"]
+acceptance_authority = true
+
+[[language]]
+name = "Python"
+authority = "supporting"
+roles = ["reference", "audit", "generation"]
+acceptance_authority = false
+
+[[language]]
+name = "Lean"
+authority = "supporting"
+roles = ["formal_proof_target"]
+acceptance_authority = false
+
+[migration]
+mode = "boundary_first"
+mass_move = false
+next = []

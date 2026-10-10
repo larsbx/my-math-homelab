@@ -1,0 +1,16 @@
+class B wedge, branch 1 cone A family [0, 2, 3, 0, 1, 2, 1] :
+  symbolic graph on the quadrant ( 9 , 9 ) and up: 74 vertices, all hitting; 1687 certified sign reads
+  cross-check at four quadrant points: symbolic graph = exact graph
+  pinned verdict reproduced
+class B wedge, branch 1 cone B family [0, 3, 1, 0, 2, 1, 1] :
+  symbolic graph on the quadrant ( 9 , 1 ) and up: 74 vertices, all hitting; 1687 certified sign reads
+  cross-check at four quadrant points: symbolic graph = exact graph
+  pinned verdict reproduced
+class B wedge, branch -1 cone A family [0, 2, 3, 0, 1, 2, -1] :
+  symbolic graph on the quadrant ( 9 , 9 ) and up: 171 vertices, all hitting; 4087 certified sign reads
+  cross-check at four quadrant points: symbolic graph = exact graph
+  pinned verdict reproduced
+class B wedge, branch -1 cone B family [0, 3, 1, 0, 2, 1, -1] :
+  symbolic graph on the quadrant ( 9 , 5 ) and up: 123 vertices, all hitting; 2751 certified sign reads
+  cross-check at four quadrant points: symbolic graph = exact graph
+  pinned verdict reproduced

@@ -1,0 +1,96 @@
+version = 2
+template = "estate-repository-v2"
+
+[repo]
+id = "pisot-vijayaraghavan-problem-research"
+slug = "larsbx/pisot-vijayaraghavan-problem-research"
+class = "research"
+layer = 3
+band = "EXPLORE"
+stage = "candidate"
+inv = []
+default_branch = "main"
+
+[origin]
+decided_by = "proposed"
+chats = []
+artifacts = []
+
+[[dep]]
+id = "estate-governance"
+rev = "0833929ed82d42cf3674a1565681625a9622827b"
+pin = "sha256:7dff31575b2834b937395f3ff6f7ce2e2d1d7927b893cf8229c682ad7f3a99d2"
+
+[exports]
+names = []
+
+[layout]
+status = "canonical"
+
+[principles]
+ordering = ["authority", "domain", "language"]
+empty_silos = "forbidden"
+cross_language_disagreement = "fail_closed"
+generated_surfaces = "derived_only"
+vendor_code = "non_local"
+experimental_code = "non_authoritative"
+
+[[plane]]
+id = "policy"
+target = "ESTATE.toml"
+authority = "governance"
+required = true
+current = ["ESTATE.toml"]
+
+[[plane]]
+id = "experiments"
+target = "experiments"
+authority = "non_authoritative_experiment"
+required = true
+current = ["experiments"]
+
+[[plane]]
+id = "kernel"
+target = "kernel"
+authority = "canonical_executable"
+required = true
+current = ["kernel"]
+
+[[plane]]
+id = "proof"
+target = "proof"
+authority = "claim_state"
+required = true
+current = ["proof"]
+
+[[plane]]
+id = "conformance"
+target = "tests"
+authority = "evidence"
+required = true
+current = ["tests"]
+
+[[plane]]
+id = "tooling"
+target = "tools"
+authority = "repository_tooling"
+required = true
+current = ["tools"]
+
+[[plane]]
+id = "docs"
+target = "docs"
+authority = "exposition"
+required = true
+current = ["docs", "README.md", "ARCHITECTURE.md"]
+
+[[language]]
+name = "Python"
+authority = "canonical"
+roles = ["kernel", "audit"]
+acceptance_authority = true
+
+[migration]
+mode = "boundary_first"
+mass_move = false
+next = []

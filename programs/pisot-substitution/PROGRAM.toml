@@ -1,0 +1,10 @@
+version = 1
+
+[program]
+id = "pisot-substitution"
+
+[source]
+repository = "larsbx/pisot-substitution-conjecture-research"
+commit = "e37d99ea6615f040208f6c079672ef4f05a23d5c"
+authority = "retained"
+import_status = "verified"

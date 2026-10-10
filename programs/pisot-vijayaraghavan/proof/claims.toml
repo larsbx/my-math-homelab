@@ -1,0 +1,142 @@
+version = 1
+
+[[claim]]
+id = "PV-REDUCTION-FWD"
+status = "PROVED"
+statement = "A PV witness gives an eventual quadratic-rounding integer sequence with c_n=o(a_n)."
+does_not_establish = "The converse direction or algebraicity of alpha."
+
+[[claim]]
+id = "PV-REDUCTION-CONVERSE"
+status = "PROVED"
+statement = "An integer tail with a_n>0, a_(n+1)/a_n>=b>1, and delta_n=c_n/a_n->0 has unique alpha>=b and lambda>0 with a_n=lambda alpha^n+e_n and |e_n|<=sup_(j>=n)|delta_j|/((b-1)(alpha-1)). Quadratic rounding is an eventual consequence."
+proof = "docs/defect-reconstruction.md"
+does_not_establish = "Recurrence or algebraicity; unbounded growth without a uniform expansion gap is insufficient."
+
+[[claim]]
+id = "PV-DODGSON-H3"
+status = "PROVED"
+statement = "H_n^(2)=c_n and a_{n+2} H_n^(3) = c_n c_{n+2} - c_{n+1}^2."
+does_not_establish = "Any asymptotic vanishing by itself."
+
+[[claim]]
+id = "PV-SQRT-BARRIER"
+status = "PROVED"
+statement = "For a positive integer tail with fixed-shift growth comparability, |c_n|=o(a_n^(1/2)) gives D_3(n)=0 eventually and a rational tail recurrence of order at most two. A uniform ratio floor b>1 suffices to obtain the comparisons, a PV witness, and a Pisot endpoint of degree at most two."
+proof = "docs/square-root-barrier.md"
+does_not_establish = "The big-O square-root boundary, or the general subexponential defect frontier."
+
+[[claim]]
+id = "PV-EXP-WINDOW"
+status = "PROVED"
+statement = "For integer a_n positive on a tail with a_{n+1}/a_n -> alpha>1 and |c_n|=O(alpha^(gamma n)), gamma<1, one has a_n=lambda alpha^n+O(alpha^((gamma-1)n)) and D_k(n)=0 for every late n whenever (k-1)(1-gamma)>1. The least size guaranteed by this bound is floor(1/(1-gamma))+2."
+proof = "docs/exponential-window-hankel.md"
+does_not_establish = "Vanishing at equality under big-O, or collapse for gamma=1 or merely subexponential saving."
+
+[[claim]]
+id = "PV-HANKEL-RANK-BRIDGE"
+status = "PROVED"
+statement = "Over any field, D_K(n)=0 for one fixed K and every n>=N gives a tail recurrence of order r<K and tail Hankel rank r, on a tail starting no later than N+K-1. Singular lower layers and r=0 are included."
+proof = "docs/exponential-window-hankel.md"
+does_not_establish = "Recurrence from a single moving minor, sparse shifts, or finite-prefix vanishing."
+
+[[claim]]
+id = "PV-H3"
+status = "PROVED"
+statement = "Under PV-EXP-WINDOW's expanding integer hypotheses, the contiguous-layer bridge gives an integer constant-coefficient tail recurrence; alpha is Pisot of degree at most floor(1/(1-gamma))+1 and lambda is in Q(alpha). This is the audited composition of PV-EXP-WINDOW and PV-HANKEL-RANK-BRIDGE, retaining bootstrap #1's identifier."
+proof = "docs/exponential-window-hankel.md"
+does_not_establish = "The general PV problem, the polynomial/subexponential defect frontier, or other candidate reductions."
+
+[[claim]]
+id = "PV-POLY-EQUIV"
+status = "PROVED"
+statement = "For real A>0 and integer a_n positive on a tail with a_(n+1)/a_n->alpha>1, c_n=O(alpha^n n^-A) is equivalent to a_n=lambda alpha^n+O(n^-A) for a unique lambda>0. At the witness/nearest-integer-sequence existence level this is equivalent to ||lambda alpha^n||=O(n^-A)."
+proof = "docs/defect-reconstruction.md"
+does_not_establish = "Recurrence from the fixed-size polynomial rank-one bound, or the general PV problem."
+
+[[claim]]
+id = "PV-GCD-NORMALIZATION"
+status = "PROVED"
+statement = "With g_n=gcd(a_n,a_{n+1}), one has g_n g_{n+1} | c_n and the exact b_n,d_n gcd decomposition."
+does_not_establish = "Boundedness of gcds or termination of the frontier."
+
+[[claim]]
+id = "PV-FRESHNESS"
+status = "PROVED"
+statement = "If g_n and g_{n+1} are bounded by G, every prime p>G dividing c_n divides none of a_n,a_{n+1},a_{n+2} at that index."
+does_not_establish = "Freshness at nonlocal return positions or a contradiction in the mesoscopic regime."
+
+[[claim]]
+id = "PV-TRANSPORT"
+status = "PROVED"
+statement = "a_n^2 c_{n+1}+c_n^2 is divisible by a_{n+1}."
+does_not_establish = "Independent leverage past the square-root threshold."
+
+[[claim]]
+id = "PV-TWO-STEP-RETURN"
+status = "PROVED"
+statement = "Under exact g_n=g_{n+2}=g, the four terms a_n through a_{n+3} scale by g to integer pairs with primitive endpoint pairs; the quadratic-defect shape and valid local freshness conditions transplant."
+does_not_establish = "The coprime-tail quadratic-residue problem, which remains open."
+
+[[claim]]
+id = "PV-SIGMA-CONCAVITY"
+status = "WITHDRAWN"
+statement = "Separate limsup Hankel profiles satisfy unconditional discrete concavity by taking limsups in Dodgson."
+does_not_establish = "Nothing; the limsup-additivity step is invalid."
+
+[[claim]]
+id = "PV-THREE-STATE-MINIMAL"
+status = "WITHDRAWN"
+statement = "No two-step returns force at least three gcd states."
+does_not_establish = "Nothing; A,A,B,B periodic states are a two-state counterexample."
+
+[[claim]]
+id = "PV-BETA-CASCADE"
+status = "HEURISTIC"
+statement = "Under a smooth regularly varying ansatz, subexponential Hankel deficits obey beta_k=(k-1)(k+A-2)."
+does_not_establish = "Any theorem, fixed-rank collapse, or recurrence."
+
+[[claim]]
+id = "PV-PLUCKER-PATH"
+status = "CANDIDATE"
+statement = "Repeated finite-state path and cycle hypotheses yield exact Plucker/common-core divisibility identities."
+does_not_establish = "That such paths are the minimal or exhaustive residual branch."
+
+[[claim]]
+id = "PV-BOUND-GCD-FRONTIER"
+status = "OPEN"
+statement = "The next exact bounded-gcd target is the two-state no-two-step-return period-4 family AABB and shifts, using full b_n,d_n transitions."
+does_not_establish = "A solution of the coprime-tail or full PV problem."
+
+[[claim]]
+id = "PV-SALEM-EXCLUSION"
+status = "PROVED"
+statement = "An integer tail a_n=lambda alpha^n+o(1), lambda>0 and alpha>1, with an independently established rational constant-coefficient recurrence has minimal polynomial in Z[X], alpha Pisot, and lambda in Q(alpha). Equivalently this applies to an expanding integer tail with c_n/a_n->0 and a rational recurrence."
+proof = "docs/defect-reconstruction.md"
+does_not_establish = "Recurrence from merely vanishing errors; bounded errors do not exclude unit roots."
+
+[[claim]]
+id = "PV-COPRIME-TAIL"
+status = "OPEN"
+statement = "Resolve the coprime-tail mesoscopic quadratic-residue dynamics and determine how local return instances glue."
+does_not_establish = "Local scaling identities or finite experiments do not solve this branch."
+
+[[claim]]
+id = "PV-PERIOD4-CENSUS"
+status = "COMPUTED"
+statement = "The length-120 exact E-sequence from seed (9,38) has three six-period AABB-type gcd runs, interrupted by spikes."
+does_not_establish = "An eventual period-four tail, persistent witness family, or contradiction in the PV residual regime."
+
+[[claim]]
+id = "PV-L2-RECURRENCE"
+status = "IMPORTED"
+statement = "If u_n satisfies a constant-coefficient linear recurrence, a_n are rational integers, and sum |u_n-a_n|^2 is finite, then a_n satisfies a constant-coefficient linear recurrence."
+source = "Charles Pisot (1938), La repartition modulo 1 et les nombres algebriques, Chapter III, Theorem I, pp. 230-232; https://www.numdam.org/item/ASNSP_1938_2_7_3-4_205_0.pdf"
+does_not_establish = "Recurrence from errors that merely tend to zero or have an unverified square-sum bound."
+
+[[claim]]
+id = "PV-POLY-L2-RANGE"
+status = "PROVED"
+statement = "Under PV-POLY-EQUIV's integer ratio-limit hypotheses, A>1/2 implies alpha Pisot and lambda in Q(alpha), by the imported square-summability recurrence theorem and the proved recurrent endpoint. More generally any square-summable PV witness has this conclusion."
+proof = "docs/defect-reconstruction.md"
+does_not_establish = "The conclusion for 0<A<=1/2 or merely vanishing errors without an independent recurrence or summability hypothesis; no PV counterexample is asserted."

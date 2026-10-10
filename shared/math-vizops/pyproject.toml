@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vizops"
+version = "0.1.0"
+description = "Animated surfaces for this estate's research artifacts, derived from them and authorizing nothing."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest"]
+# 3b1b/manim. Not a hard dependency: everything but the last step -- reading an
+# artifact, refusing a malformed one, laying the figure out -- runs without a
+# renderer, and a run with no renderer reports `inconclusive` rather than
+# passing. See README, "Fail-closed has a direction".
+# ManimGL 1.7.2 imports pkg_resources at runtime, even without setuptools build work.
+render = ["manimgl==1.7.2", "setuptools==80.9.0"]
+
+[project.scripts]
+vizops = "vizops.__main__:main"
+
+[tool.setuptools]
+# `rational_dynamics_py` is finite-math-kernels' exact doubling-map package,
+# vendored byte-for-byte under vendor/python/ and pinned in vendored.toml. It is
+# installed under its own name from there, so this mapping is the one place
+# that makes it importable; nothing edits sys.path.
+packages = ["vizops", "vizops.atlas", "vizops.wake", "vizops.bulbs", "vizops.rauzy", "rational_dynamics_py"]
+package-dir = {"rational_dynamics_py" = "vendor/python/rational_dynamics_py"}
+
+[tool.setuptools.package-data]
+vizops = ["*.toml"]
+"vizops.atlas" = ["templates/*.html"]
+"vizops.wake" = ["templates/*.html"]
+"vizops.bulbs" = ["templates/*.html"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

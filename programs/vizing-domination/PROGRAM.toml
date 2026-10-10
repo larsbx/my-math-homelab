@@ -1,0 +1,10 @@
+version = 1
+
+[program]
+id = "vizing-domination"
+
+[source]
+repository = "larsbx/vizing-domination-conjecture-research"
+commit = "b238b29dac739f33d7971265b191ef5aedd4d306"
+authority = "retained"
+import_status = "verified"

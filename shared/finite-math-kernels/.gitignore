@@ -1,0 +1,10 @@
+.pixi/
+.pytest_cache/
+__pycache__/
+*.pyc
+
+pixi.lock
+experiments/frontier/.build/
+experiments/frontier/results/
+experiments/frontier/ff_orbit_census/rust/target/
+.build/

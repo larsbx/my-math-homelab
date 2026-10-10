@@ -1,0 +1,14 @@
+[project]
+name = "bulbford"
+version = "0.1.0"
+description = "Satellite-bulb geometry of unicritical families vs Ford circles"
+requires-python = ">=3.11"
+dependencies = ["numpy", "python-flint", "sympy", "pytest"]
+
+[tool.setuptools.packages.find]
+# The vendored packages bulbford imports ship beside it.
+where = ["kernel", "vendor/python"]
+include = ["bulbford*", "rational_dynamics_py*", "closed_interval*", "root_isolation_py*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["kernel", "experiments/scripts", "vendor/python"]

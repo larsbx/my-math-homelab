@@ -1,0 +1,211 @@
+name: Theorem E line and wedge certificates
+# Guards Theorems L, L', L'' and W (docs/p1b-symbolic-line-2026-10-07.md,
+# docs/p1-seed-strength-2026-10-08.md section 5,
+# docs/p1b-boundary-hitting-progress-2026-10-08.md sections 4 and 4b): every
+# line listed in certified_lines() and every wedge listed in certified_wedges()
+# of kernel/symbolic_line_certificate.mojo is certified again
+# and must reproduce its pinned verdict (the driver raises otherwise). One job
+# per line or wedge; the slowest lines take about half an hour, the slowest
+# wedges a few hours.
+on:
+  pull_request:
+    # The driver's full import closure, the pixi pins, and this file.
+    paths:
+      - 'kernel/pixi.toml'
+      - 'kernel/pixi.lock'
+      - 'kernel/a1_normal_form_census.mojo'
+      - 'kernel/psc/bpa.mojo'
+      - 'kernel/psc/coincidence_formula.mojo'
+      - 'kernel/psc/dumont_thomas.mojo'
+      - 'kernel/psc/exact.mojo'
+      - 'kernel/psc/field3.mojo'
+      - 'kernel/psc/histogram.mojo'
+      - 'kernel/psc/linear_numeration.mojo'
+      - 'kernel/psc/numeration_addition.mojo'
+      - 'kernel/psc/overlap_contracting.mojo'
+      - 'kernel/psc/overlap_obstruction.mojo'
+      - 'kernel/psc/overlap_seed_patch.mojo'
+      - 'kernel/psc/param_poly.mojo'
+      - 'kernel/psc/perron_field3.mojo'
+      - 'kernel/psc/perron_root_sign.mojo'
+      - 'kernel/psc/pisot.mojo'
+      - 'kernel/psc/pisot_screen.mojo'
+      - 'kernel/psc/pisot_state.mojo'
+      - 'kernel/psc/real_root_sign.mojo'
+      - 'kernel/psc/symbolic_line.mojo'
+      - 'kernel/psc/vertex_coincidence.mojo'
+      - 'kernel/psc/words.mojo'
+      - 'kernel/symbolic_line_certificate.mojo'
+      - 'kernel/finite_automata/**'
+      - 'kernel/finite_exact/**'
+      - 'kernel/finite_graph/**'
+      - 'kernel/finite_linear_algebra/**'
+      - 'kernel/substitution_dynamics/**'
+      - '.github/workflows/class-b-lines-evidence.yml'
+  schedule:
+    - cron: '41 4 * * 0'
+  workflow_dispatch:
+jobs:
+  line:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { line: 'B 2 2 1 0 1 1' }
+          - { line: 'B 1 1 1 0 1 1' }
+          - { line: 'B 1 2 1 0 1 1' }
+          - { line: 'B 1 3 1 0 1 1' }
+          - { line: 'B 1 1 1 0 1 -1' }
+          - { line: 'B 1 2 1 0 1 -1' }
+          - { line: 'B 1 3 1 0 1 -1' }
+          - { line: 'B 2 0 1 0 1 1' }
+          - { line: 'B 2 1 1 0 1 1' }
+          - { line: 'B 2 3 1 0 1 1' }
+          - { line: 'B 2 4 1 0 1 1' }
+          - { line: 'B 2 0 1 0 1 -1' }
+          - { line: 'B 2 1 1 0 1 -1' }
+          - { line: 'B 2 2 1 0 1 -1' }
+          - { line: 'B 2 3 1 0 1 -1' }
+          - { line: 'A 2 0 1 0 1 -1' }
+          - { line: 'A 2 0 1 0 1 1' }
+          - { line: 'A 2 1 1 0 1 -1' }
+          - { line: 'A 2 1 1 0 1 1' }
+          - { line: 'A 2 2 1 0 1 -1' }
+          - { line: 'A 2 2 1 0 1 1' }
+          - { line: 'A 2 3 1 0 1 -1' }
+          - { line: 'A 2 3 1 0 1 1' }
+          - { line: 'C 1 1 1 0 1 -2' }
+          - { line: 'C 1 1 1 0 1 0' }
+          - { line: 'C 1 2 1 0 1 -3' }
+          - { line: 'C 1 2 1 0 1 -1' }
+          - { line: 'C 1 3 1 0 1 -4' }
+          - { line: 'C 1 3 1 0 1 -2' }
+          - { line: 'D 1 -1 1 0 1 -1' }
+          - { line: 'D 1 -1 1 0 1 0' }
+          - { line: 'D 1 -1 1 0 1 1' }
+          - { line: 'D 1 -1 1 0 1 2' }
+          - { line: 'D 1 -1 1 0 1 3' }
+          - { line: 'D 1 -1 1 0 1 4' }
+          - { line: 'D 1 -1 1 0 2 -3' }
+          - { line: 'D 1 -1 1 0 2 -2' }
+          - { line: 'D 1 1 1 0 1 -1' }
+          - { line: 'D 1 1 1 0 1 0' }
+          - { line: 'D 1 1 1 0 1 1' }
+          - { line: 'D 1 1 1 0 1 2' }
+          - { line: 'D 1 1 1 0 1 3' }
+          - { line: 'D 1 1 1 0 1 4' }
+          - { line: 'D 1 1 1 0 2 -1' }
+          - { line: 'D 1 1 1 0 2 0' }
+          - { line: 'D 1 1 1 0 2 1' }
+          - { line: 'D 1 1 1 0 2 2' }
+          - { line: 'norm D 3 4 3 5 4 7' }
+          - { line: 'norm D 3 5 3 6 4 8' }
+          - { line: 'norm D 3 6 3 7 4 9' }
+          - { line: 'norm D 3 7 3 8 4 10' }
+          - { line: 'norm D 3 8 3 9 4 11' }
+          - { line: 'norm D 3 9 3 10 4 12' }
+          - { line: 'norm D 3 10 3 11 4 13' }
+          - { line: 'norm D 3 11 3 12 4 14' }
+          - { line: 'norm D 3 12 3 13 4 15' }
+          - { line: 'norm D 3 13 3 14 4 16' }
+          - { line: 'norm D 3 14 3 15 4 17' }
+          - { line: 'norm D 3 15 3 16 4 18' }
+          - { line: 'norm D 3 16 3 17 4 19' }
+          - { line: 'norm D 3 17 3 18 4 20' }
+          - { line: 'norm D 3 18 3 19 4 21' }
+          - { line: 'norm D 1 4 1 5 1 7' }
+          - { line: 'norm D 1 7 1 8 1 11' }
+          - { line: 'norm D 1 10 1 11 1 15' }
+          - { line: 'norm D 1 13 1 14 1 19' }
+          - { line: 'norm D 1 16 1 17 1 23' }
+          - { line: 'norm D 1 19 1 20 1 27' }
+          - { line: 'norm D 1 22 1 23 1 31' }
+          - { line: 'norm D 2 12 2 13 3 18' }
+          - { line: 'norm D 1 3 1 4 2 5' }
+          - { line: 'norm D 1 5 1 6 2 8' }
+          - { line: 'norm D 1 7 1 8 2 11' }
+          - { line: 'norm D 1 9 1 10 2 14' }
+          - { line: 'norm D 1 11 1 12 2 17' }
+          - { line: 'norm D 1 13 1 14 2 20' }
+          - { line: 'norm D 1 15 1 16 2 23' }
+          - { line: 'norm D 2 3 2 4 3 5' }
+          - { line: 'norm D 2 4 2 5 3 7' }
+          - { line: 'norm D 2 5 2 6 3 9' }
+          - { line: 'norm D 2 6 2 7 3 11' }
+          - { line: 'norm D 2 7 2 8 3 13' }
+          - { line: 'norm D 2 8 2 9 3 15' }
+          - { line: 'norm D 2 9 2 10 3 17' }
+          - { line: 'norm D 3 12 3 11 4 15' }
+          - { line: 'norm D 1 12 1 11 1 15' }
+          - { line: 'norm D 1 15 1 14 1 19' }
+          - { line: 'norm D 1 18 1 17 1 23' }
+          - { line: 'norm D 2 14 2 13 3 18' }
+          - { line: 'norm D 2 17 2 16 3 22' }
+          - { line: 'norm D 2 20 2 19 3 26' }
+          - { line: 'norm D 2 23 2 22 3 30' }
+          - { line: 'norm D 2 26 2 25 3 34' }
+          - { line: 'norm D 2 29 2 28 3 38' }
+          - { line: 'norm D 2 32 2 31 3 42' }
+          - { line: 'norm D 2 35 2 34 3 46' }
+          - { line: 'norm D 2 38 2 37 3 50' }
+          - { line: 'norm D 2 41 2 40 3 54' }
+          - { line: 'norm D 2 44 2 43 3 58' }
+          - { line: 'norm D 2 47 2 46 3 62' }
+          - { line: 'norm D 2 50 2 49 3 66' }
+          - { line: 'norm D 2 53 2 52 3 70' }
+          - { line: 'norm D 2 56 2 55 3 74' }
+          - { line: 'norm D 3 14 3 13 4 18' }
+          - { line: 'norm D 3 16 3 15 4 21' }
+          - { line: 'norm D 3 18 3 17 4 24' }
+          - { line: 'norm D 3 20 3 19 4 27' }
+          - { line: 'norm D 3 22 3 21 4 30' }
+          - { line: 'norm D 3 24 3 23 4 33' }
+          - { line: 'norm D 3 26 3 25 4 36' }
+          - { line: 'norm D 3 28 3 27 4 39' }
+          - { line: 'norm D 3 30 3 29 4 42' }
+          - { line: 'norm D 3 32 3 31 4 45' }
+          - { line: 'norm D 3 34 3 33 4 48' }
+          - { line: 'norm D 3 36 3 35 4 51' }
+          - { line: 'norm D 3 38 3 37 4 54' }
+          - { line: 'norm D 3 40 3 39 4 57' }
+          - { line: 'norm D 3 42 3 41 4 60' }
+          - { line: 'norm D 1 -1 1 -2 2 -4' }
+          - { line: 'norm D 1 1 1 0 2 -1' }
+          - { line: 'norm D 1 3 1 2 2 2' }
+          - { line: 'norm D 2 -1 2 -2 3 -4' }
+          - { line: 'norm D 2 0 2 -1 3 -2' }
+          - { line: 'norm D 2 1 2 0 3 0' }
+          - { line: 'norm D 2 2 2 1 3 2' }
+          - { line: 'norm D 2 3 2 2 3 4' }
+          - { line: 'norm D 2 4 2 3 3 6' }
+          - { line: 'norm D 2 5 2 4 3 8' }
+          - { line: 'norm D 2 6 2 5 3 10' }
+          - { line: 'norm D 2 7 2 6 3 12' }
+          - { line: 'norm D 2 8 2 7 3 14' }
+          - { line: 'norm D 2 9 2 8 3 16' }
+          - { line: 'norm D 2 10 2 9 3 18' }
+          - { line: 'norm D 2 11 2 10 3 20' }
+          - { line: 'norm D 2 12 2 11 3 22' }
+          - { line: 'norm D 2 13 2 12 3 24' }
+          - { line: 'wedge D 4 1 3 5 1 3 7 1 4' }
+          - { line: 'wedge D 12 3 2 13 3 2 18 4 3' }
+          - { line: 'wedge D 3 2 1 4 2 1 5 3 2' }
+          - { line: 'wedge D 12 1 3 11 1 3 15 1 4' }
+          - { line: 'wedge D 14 3 2 13 3 2 18 4 3' }
+          - { line: 'wedge D -1 2 1 -2 2 1 -4 3 2' }
+    name: ${{ matrix.line }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pixi
+        run: |
+          set -o pipefail
+          curl --retry 5 --retry-all-errors --retry-delay 3 -fsSL https://pixi.sh/install.sh | bash
+          echo "$HOME/.pixi/bin" >> "$GITHUB_PATH"
+      - name: Certify against the pinned verdict
+        working-directory: kernel
+        run: |
+          set -o pipefail
+          pixi run mojo run -I . symbolic_line_certificate.mojo ${{ matrix.line }} 2>&1 | tee line.log
+          grep -Fx '  pinned verdict reproduced' line.log

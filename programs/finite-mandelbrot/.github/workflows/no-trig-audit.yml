@@ -1,0 +1,109 @@
+# One job per authority plane (ESTATE.toml): a red lane names the plane.
+name: finite-regime-core-audit
+on:
+  push:
+  pull_request:
+jobs:
+  policy:
+    name: Policy (estate, governance, backend, vendoring)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: prefix-dev/setup-pixi@d3f436a425481402e6a95a1d1fc10331c708cd9e
+      with:
+        cache: true
+    - name: Estate audit (pinned public artifact)
+      run: |
+        set -eu
+        rev=$(python3 -c 'import tomllib; print(next(d["rev"] for d in tomllib.load(open("ESTATE.toml", "rb"))["dep"] if d["id"] == "estate-governance"))')
+        pin=$(python3 -c 'import tomllib; print(next(d["pin"] for d in tomllib.load(open("ESTATE.toml", "rb"))["dep"] if d["id"] == "estate-governance"))')
+        test "$rev" = "0833929ed82d42cf3674a1565681625a9622827b"
+        curl --fail --location --proto '=https' --tlsv1.2 --output /tmp/estate-audit.py "https://raw.githubusercontent.com/larsbx/finite-math-kernels/4485675c1ed5da52beafad98c5118dc0ffc22456/policy/estate-audits/$rev.py"
+        printf '%s  %s\n' "${pin#sha256:}" /tmp/estate-audit.py | sha256sum --check --strict -
+        python3 /tmp/estate-audit.py --root .
+    - name: Verify vendored package digests
+      run: pixi run vendored
+    - name: The polyglot envelope is the rendering of its vendored template
+      run: pixi run polyglot-check
+    - name: Audit governed theorem/claim usage
+      env:
+        PYTHONPATH: vendor/python
+      run: python3 -m claim_governance.cli --root .
+    - name: Audit backend manifest and proof-grade boundary
+      run: python3 tools/audit_backend_manifest.py
+    - name: Audit governed terminology
+      run: python3 tools/audit_terminology.py
+  kernel:
+    name: Kernel (canonical Mojo)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: prefix-dev/setup-pixi@d3f436a425481402e6a95a1d1fc10331c708cd9e
+      with:
+        cache: true
+    - name: Build the canonical Mojo smoke binary
+      run: pixi run mojo-build
+    - name: Run the canonical Mojo finite-core smoke suite
+      run: pixi run mojo-smoke
+    - name: Audit executable core for forbidden analytic primitives
+      run: python3 tools/audit_no_trig.py
+    - name: Audit executable core for forbidden analytic point APIs
+      run: python3 tools/audit_no_points.py
+    - name: Audit exact arithmetic boundary
+      run: python3 tools/audit_exact_arithmetic.py
+  proof:
+    name: Proof (C1 claim state)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: prefix-dev/setup-pixi@d3f436a425481402e6a95a1d1fc10331c708cd9e
+      with:
+        cache: true
+    - name: Generated ledger surfaces are current (Mojo mirror, block table, claims, index, TLA+, graph)
+      run: python3 tools/make_ledger.py --check
+    - name: Structure crosswalk surface is current (docs/structure_crosswalk.json)
+      run: python3 tools/make_structure_crosswalk.py --check
+  reference:
+    name: Reference and oracles (non-authoritative)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: prefix-dev/setup-pixi@d3f436a425481402e6a95a1d1fc10331c708cd9e
+      with:
+        cache: true
+    - name: Run exact-arithmetic property oracle
+      run: pixi run property
+    - name: Validate exact polynomial reference identities
+      run: python3 reference/python/polynomial/poly_reference.py
+    - name: Validate interval exclusion reference checks
+      run: python3 reference/python/interval/interval_exclusion_reference.py
+    - name: Declared input distributions of the differential oracles
+      run: python3 reference/python/arithmetic/exact_arithmetic_property_oracle.py --distribution
+  paper:
+    name: Paper (publication language)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: prefix-dev/setup-pixi@d3f436a425481402e6a95a1d1fc10331c708cd9e
+      with:
+        cache: true
+    - name: Audit manuscript claim language
+      run: python3 tools/audit_paper_language.py
+  integration:
+    name: Integration (full tests)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: prefix-dev/setup-pixi@d3f436a425481402e6a95a1d1fc10331c708cd9e
+      with:
+        cache: true
+    - name: Run full tests
+      run: pixi run test
+    - name: Recheck vendored package digests after tests
+      run: python3 vendor/python/vendoring/check_vendored_sync.py
+    needs:
+    - policy
+    - kernel
+    - proof
+    - reference
+    - paper

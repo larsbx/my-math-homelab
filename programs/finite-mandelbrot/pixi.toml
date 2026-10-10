@@ -1,0 +1,34 @@
+[workspace]
+authors = ["Codex <codex@openai.com>"]
+channels = ["https://conda.modular.com/max", "conda-forge"]
+name = "finite-mandelbrot-research"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+test = "python -m pytest tests/"
+mojo-smoke = "mojo run -I kernel/mojo -I vendor/mojo kernel/mojo/smoke/smoke_tests.mojo"
+atlas-dataset = "mojo run -I kernel/mojo -I vendor/mojo kernel/mojo/entrypoints/atlas_dataset.mojo"
+structure-streams = "mojo run -I kernel/mojo -I vendor/mojo kernel/mojo/entrypoints/structure_streams.mojo"
+type-sieve = "mojo run -I kernel/mojo -I vendor/mojo kernel/mojo/entrypoints/critical_type_sieve.mojo"
+mojo-build = "mojo build -I kernel/mojo -I vendor/mojo kernel/mojo/smoke/smoke_tests.mojo -o .pixi/finite-mandelbrot-smoke"
+property = "python reference/python/arithmetic/exact_arithmetic_property_oracle.py"
+distribution = "python reference/python/arithmetic/exact_arithmetic_property_oracle.py --distribution"
+regime-audit = "python tools/audit_regime_correspondences.py"
+vendored = "python vendor/python/vendoring/check_vendored_sync.py"
+ledgers = "python tools/make_ledger.py"
+ledgers-check = "python tools/make_ledger.py --check"
+crosswalk = "python tools/make_structure_crosswalk.py"
+crosswalk-check = "python tools/make_structure_crosswalk.py --check"
+polyglot = "python vendor/python/polyglot_envelope/render.py"
+polyglot-check = "python vendor/python/polyglot_envelope/render.py --check"
+
+[dependencies]
+# Mojo 1.0.0 release: every Modular package pinned (tests check against pixi.lock).
+mojo = "==1.0.0"
+mojo-compiler = "==1.0.0"
+mojo-python = "==1.0.0"
+mblack = "==26.5.0"
+
+[pypi-dependencies]
+pytest = "==8.3.5"

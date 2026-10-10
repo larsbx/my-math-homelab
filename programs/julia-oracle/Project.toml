@@ -1,0 +1,13 @@
+name = "JuliaOracleLab"
+uuid = "40f24ca4-b965-4a2f-a9d6-3c27f57f1410"
+authors = ["larsbx"]
+version = "0.1.0"
+
+[compat]
+julia = "1.11"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]

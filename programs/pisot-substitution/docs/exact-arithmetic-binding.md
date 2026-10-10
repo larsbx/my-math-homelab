@@ -1,0 +1,20 @@
+# Exact arithmetic binding (PSC)
+
+**Status:** this repository's binding table for the rational and interval arithmetic specification in `larsbx/finite-math-kernels`. It states no theorem: exactness removes one class of error, and the epistemic status of every computation is governed by `verification-architecture.md` and the claim-status documents.
+
+Classes: CONFORMS (criteria C1 to C7 with an unbounded backend), CONFORMS-CHECKED, DEMO, QUARANTINED, as defined in the specification.
+
+| Spec item | Module | Class | Notes |
+| --- | --- | --- | --- |
+| 1.1–1.3 exact field adapter | `kernel/finite_exact/field.mojo` (`ExactField`, `QField`) | CONFORMS | vendored whole-package snapshot; `QField` delegates to unbounded `Q` with sticky rejection. Unused by PSC |
+| finite prime field | `kernel/finite_exact/fp.mojo` (`Fp`, `FpField`) | DEMO | vendored whole-package snapshot; compile-time prime bound below `2^31` keeps canonical-residue operations within Int64, and division by zero rejects. Unused by PSC |
+| 1 checked fixed width and support decision | `kernel/finite_linear_algebra/integer_matrix.mojo`, consumed by `kernel/psc/boundary_sync.mojo` | CONFORMS-CHECKED | square dimensions, products and accumulation are checked and raise on refusal; the PSC wrapper propagates refusal. Primitivity uses exact Boolean support powers rather than weighted products |
+| 1.1 integer backend, 1.1–1.3 ℚ | `kernel/finite_exact/bigint_z.mojo`, `kernel/finite_exact/rational.mojo` | CONFORMS | vendored from the one monorepo commit pinned in `vendored.toml`; per-file SHA-256 drift fails CI |
+| 2.1–2.5 I_Q and rank-2 boxes | `kernel/finite_exact/closed_interval.mojo` | CONFORMS | same repository, commit, and digest discipline |
+| PSC conventions over the packages | `kernel/psc/exact.mojo` | CONFORMS | a rejected enclosure raises, a rejected scalar in integer-seeded polynomial arithmetic aborts as an impossible state; Horner helpers, midpoint, diagnostic rendering; integer lifts re-exported from `finite_linear_algebra.scalar` |
+| 1–2 direct consumers | `kernel/finite_linear_algebra/{matrix,rational_elimination,tensor3,w3,qpoly}.mojo`, `kernel/psc/pisot.mojo`, `kernel/psc/pisot_screen.mojo`, `kernel/psc/real_root_sign.mojo` | CONFORMS | exact linear algebra, Sturm sequences, and the PIP screen over unbounded rationals; the former machine-width `Rat` and `CheckedRat` are deleted. The PSC polynomial modules take derivative, product, remainder, gcd, Cauchy root bound and sign variations from the vendored `qpoly`; `real_root_sign` checks its inputs are accepted and raises otherwise, before any vendored call can abort |
+| 2.3 enclosure of `β ∉ ℚ` | `kernel/psc/perron_interval.mojo` (`perron_root_interval`) | CONFORMS | integer bracket by exact sign changes, then bisection with unbounded endpoints |
+| 3.2 filter-then-exact | `kernel/psc/perron_interval.mojo` (`perron_sign_decision`) with oracle `psc.perron_field3.sign_at_perron` | CONFORMS | R1: fallback on `0`; R2: `interval_certified` flag |
+| 3.3 skeleton/margin split | `kernel/psc/overlap_interval_audit.mojo`, `kernel/psc/overlap_contracting.mojo` | CONFORMS | overlap graph exact; margins interval-first with exact fallback; uniform minimum reported only when every margin is interval-certified |
+
+Hook (specification section 7, consumer side): the vendoring pin in `vendored.toml` checked in CI and by `tools/verify_all.sh`; the law and smoke checks of the packages re-run under the PSC toolchain by `kernel/tests/test_finite_exact.mojo`; the PSC-specific interval tests in `kernel/tests/test_exact_interval.mojo` (natural Horner extension containment, division across zero fails closed, Perron-root enclosure), which are the first external consumer test named by the `interval_q` package. The floating-point ban of criterion C1 is enforced by the `no-float-in-kernel` rule of `claim_governance.toml` (vendored `tools/claim_governance`, run in CI, `pytest`, and `verify_all.sh`) over `kernel/psc/`, the census and certificate programs, and the Mojo tests; `audit-2026-09-15.md` recorded the same fact by inspection before the rule existed.

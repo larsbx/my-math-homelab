@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "scope": "finite connected undirected multigraphs; explicitly constructed fixtures",
+  "fixtures": [
+    {"id": "one-vertex-loops", "vertices": 1, "edges": [[0, 0], [0, 0]], "smith": [], "moduli": [2, 4, 6]},
+    {"id": "path-4", "vertices": 4, "edges": [[0, 1], [1, 2], [2, 3]], "smith": [1, 1, 1], "moduli": [2, 3, 4, 6, 12]},
+    {"id": "cycle-3", "vertices": 3, "edges": [[0, 1], [1, 2], [2, 0]], "smith": [1, 3], "moduli": [2, 3, 4, 6, 9, 12]},
+    {"id": "cycle-4", "vertices": 4, "edges": [[0, 1], [1, 2], [2, 3], [3, 0]], "smith": [1, 1, 4], "moduli": [2, 3, 4, 6, 8, 12]},
+    {"id": "cycle-6", "vertices": 6, "edges": [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0]], "smith": [1, 1, 1, 1, 6], "moduli": [2, 3, 4, 6]},
+    {"id": "complete-4", "vertices": 4, "edges": [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]], "smith": [1, 4, 4], "moduli": [2, 3, 4, 6, 8, 12]},
+    {"id": "diamond", "vertices": 4, "edges": [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3]], "smith": [1, 1, 8], "moduli": [2, 3, 4, 6, 8, 12]},
+    {"id": "parallel-2", "vertices": 2, "edges": [[0, 1], [0, 1]], "smith": [2], "moduli": [2, 3, 4, 6, 8, 12]},
+    {"id": "parallel-3", "vertices": 2, "edges": [[0, 1], [1, 0], [0, 1]], "smith": [3], "moduli": [2, 3, 6, 9, 12]},
+    {"id": "triangle-tail-loop", "vertices": 4, "edges": [[0, 1], [1, 2], [2, 0], [2, 3], [3, 3]], "smith": [1, 1, 3], "moduli": [2, 3, 4, 6, 9, 12]}
+  ]
+}

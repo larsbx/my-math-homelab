@@ -1,0 +1,365 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-03",
+  "obligations": [
+    {
+      "id": "N1-V01",
+      "candidate": "N1",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N1-H01",
+        "N1-H02",
+        "N1-H03",
+        "N1-H04",
+        "N1-H05"
+      ],
+      "description": "Pin and verify the complete n=2 local criterion and certificate completeness.",
+      "evidence": []
+    },
+    {
+      "id": "N1-V02",
+      "candidate": "N1",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N1-H01",
+        "N1-H02",
+        "N1-H03",
+        "N1-H06"
+      ],
+      "description": "Pin the exact n=3 Pfister local-global theorem and sign/place certificate.",
+      "evidence": []
+    },
+    {
+      "id": "N1-V03",
+      "candidate": "N1",
+      "class": "formal",
+      "status": "open",
+      "depends_on": [
+        "N1-H03",
+        "N1-H07"
+      ],
+      "description": "Prove or refute the claimed parameter-uniform n>=4 zero-divisor identity.",
+      "evidence": []
+    },
+    {
+      "id": "N1-V04",
+      "candidate": "N1",
+      "class": "certificate",
+      "status": "open",
+      "depends_on": [
+        "N1-H03",
+        "N1-H08"
+      ],
+      "description": "Implement an independent exact zero-divisor certificate checker.",
+      "evidence": []
+    },
+    {
+      "id": "N1-V05",
+      "candidate": "N1",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [],
+      "description": "Audit current Lean/mathlib coverage without inferring absence from search failure.",
+      "evidence": []
+    },
+    {
+      "id": "N2-V01",
+      "candidate": "N2",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N2-H01",
+        "N2-H02"
+      ],
+      "description": "Record nearest prior art for integral octonion actions, triality, buildings, and golden gates.",
+      "evidence": []
+    },
+    {
+      "id": "N2-V02",
+      "candidate": "N2",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N2-H01",
+        "N2-H02",
+        "N2-H03",
+        "N2-H04"
+      ],
+      "description": "Verify exact form preservation, group membership, and generated subgroup orders on small primes.",
+      "evidence": []
+    },
+    {
+      "id": "N2-V03",
+      "candidate": "N2",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N2-H05"
+      ],
+      "description": "Cross-check eigenvalues by independent dense and character/random-walk calculations.",
+      "evidence": []
+    },
+    {
+      "id": "N3-V01",
+      "candidate": "N3",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N3-H01"
+      ],
+      "description": "Check exact shell counts against the selected theta-series coefficient on small n.",
+      "evidence": []
+    },
+    {
+      "id": "N3-V02",
+      "candidate": "N3",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N3-H01",
+        "N3-H02",
+        "N3-H03",
+        "N3-H04"
+      ],
+      "description": "Generate complete occupancy vectors and verify mass conservation before fitting.",
+      "evidence": []
+    },
+    {
+      "id": "N3-V03",
+      "candidate": "N3",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N3-H05"
+      ],
+      "description": "Identify exact level, character, and uniformity available for the moment theta series.",
+      "evidence": []
+    },
+    {
+      "id": "N4-V01",
+      "candidate": "N4",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N4-H01",
+        "N4-H02",
+        "N4-H03"
+      ],
+      "description": "Complete a source-to-local hypothesis and constant ledger for one concrete bound.",
+      "evidence": []
+    },
+    {
+      "id": "N4-V02",
+      "candidate": "N4",
+      "class": "certificate",
+      "status": "open",
+      "depends_on": [
+        "N4-H01",
+        "N4-H02",
+        "N4-H03"
+      ],
+      "description": "Independently recompute the finite inequality with outward-safe exact rounding.",
+      "evidence": []
+    },
+    {
+      "id": "N1-V06",
+      "candidate": "N1",
+      "class": "proof",
+      "status": "open",
+      "depends_on": [
+        "N1-H09"
+      ],
+      "description": "Independently review the written zero-product soundness proof and its correspondence to the exact certificate checker.",
+      "evidence": []
+    },
+    {
+      "id": "N2-V04",
+      "candidate": "N2",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N2-H06"
+      ],
+      "description": "Derive the determinant and orthogonality of normalized left multiplication.",
+      "evidence": [
+        "docs/theorems/bridge-theorems.md#n2-t01"
+      ]
+    },
+    {
+      "id": "N3-V04",
+      "candidate": "N3",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N3-H06"
+      ],
+      "description": "Prove factorial collision moments by fiber decomposition and exhaust finite regressions.",
+      "evidence": [
+        "docs/theorems/bridge-theorems.md#n3-t01",
+        "scripts/verify_bridge_theorems.py",
+        "tests/test_bridge_theorems.py"
+      ]
+    },
+    {
+      "id": "N2-V05",
+      "candidate": "N2",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N2-H06",
+        "N2-H07"
+      ],
+      "description": "Prove the associator-defect operator is orthogonal, orientation-preserving, fixes the normalized xy direction, and vanishes exactly on the left-nucleus condition for x,y.",
+      "evidence": [
+        "docs/theorems/derived-contributions.md#n2-t02"
+      ]
+    },
+    {
+      "id": "N3-V05",
+      "candidate": "N3",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N3-H06",
+        "N3-H07"
+      ],
+      "description": "Derive orbit occupancy through Burnside and prove quotient factorial moments count same-image orbit tuples.",
+      "evidence": [
+        "docs/theorems/derived-contributions.md#n3-t02",
+        "scripts/verify_orbit_collisions.py",
+        "tests/test_orbit_collisions.py"
+      ]
+    },
+    {
+      "id": "N2-V06",
+      "candidate": "N2",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N2-H08"
+      ],
+      "description": "Derive the square-root-free finite defect operator, its isometry, fixed vector, and associator kernel.",
+      "evidence": [
+        "docs/theorems/finite-defect-geometry.md#n2-t03"
+      ]
+    },
+    {
+      "id": "N2-V07",
+      "candidate": "N2",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N2-H09"
+      ],
+      "description": "Expand the five associator terms and verify cancellation; independently replay finite instances from an explicit multiplication table.",
+      "evidence": [
+        "docs/theorems/pentagon-boundary.md#n2-t04",
+        "experiments/n2/pentagon.py",
+        "NoveltyLab/Oracle.lean",
+        "NoveltyLab/Fixture.lean",
+        "NoveltyLab/SelfCheck.lean",
+        "experiments/n2/lean_fixture.py"
+      ]
+    },
+    {
+      "id": "N2-V08",
+      "candidate": "N2",
+      "class": "certificate",
+      "status": "verified",
+      "depends_on": [
+        "N2-H10"
+      ],
+      "description": "Execute Lean checks for primality of 3, unit laws, alternativity by trilinear coefficient identities, norm composition by quadratic coefficient identities, the nonflat pentagon witness, and cross-language tensor provenance.",
+      "evidence": [
+        "NoveltyLab/OctonionF3.lean",
+        "scripts/check_f3_table.py",
+        ".github/workflows/lean-oracle.yml"
+      ]
+    },
+    {
+      "id": "N2-V09",
+      "candidate": "N2",
+      "class": "proof",
+      "status": "verified",
+      "depends_on": [
+        "N2-H11"
+      ],
+      "description": "Compute the Descartes determinant, construct the minimal discriminant-matching complement, apply finite-field quadratic-form classification, and prove choice independence up to orthogonal conjugacy.",
+      "evidence": [
+        "docs/theorems/witt-soddy-bridge.md#n2-t06",
+        "experiments/soddy/witt_bridge.py",
+        "tests/test_witt_bridge.py"
+      ]
+    },
+    {
+      "id": "N5-V01",
+      "candidate": "N5",
+      "class": "structural",
+      "status": "open",
+      "depends_on": [
+        "N5-H01",
+        "N5-H02",
+        "N5-H03"
+      ],
+      "description": "Specify the exact ordered testbed, balanced-split convention, multiset/index encoding, minimizer key, half ordering, and canonical tie-break before running the new census. Check the set-product multiset identity and selection under reordered split lists and equivalent inner-class presentations; include unit-order, tied-budget, invalid-index, and altered-multiplicity controls. Stop while the objective or canonical selection is underspecified.",
+      "evidence": []
+    },
+    {
+      "id": "N5-V02",
+      "candidate": "N5",
+      "class": "computational",
+      "status": "open",
+      "depends_on": [
+        "N5-H01",
+        "N5-H02",
+        "N5-H03"
+      ],
+      "description": "After the N5-V01 specification is fixed, rerun the complete ordered S_6,(2,2,6,6) census under the new minimizer. Commit every canonical inner-class representative and all balanced splits with exact subgroup, intersection, and set-product orders, prime-factor/index multisets, minimizer keys and selected splits, plus replay commands, parameters, code revision, and a canonical complete-result digest. Check completeness and reject missing or tampered records; compare with the old logarithmic census without assuming its class count or five-regime table transfers. Record finite observations in research/ledger.json only after replayable evidence exists.",
+      "evidence": []
+    },
+    {
+      "id": "N5-V03",
+      "candidate": "N5",
+      "class": "certificate",
+      "status": "open",
+      "depends_on": [
+        "N5-H01",
+        "N5-H02",
+        "N5-H03",
+        "N5-H04"
+      ],
+      "description": "Recompute and independently check FixedPoint, PairBlocks (2+2+2), TripleBlocks (3+3), CrossBlocks, and Containment certificates for the newly selected halves, keeping classification labels separate from checking predicates. Replay actual singleton orbits, preserved partitions, different block types for the two halves, and subgroup inclusion as applicable; reject missing or forged payloads and retain Other unless the complete new census rules it out. A changed classification requires revising any old table rather than promoting the earlier logarithmic result.",
+      "evidence": []
+    },
+    {
+      "id": "N5-V04",
+      "candidate": "N5",
+      "class": "certificate",
+      "status": "open",
+      "depends_on": [
+        "N5-H01",
+        "N5-H05"
+      ],
+      "description": "Declare the label-preserving Hurwitz move set and commit the full ordered-state-space adjacency list, canonical class identifiers, deterministic BFS traversal, and result digest. Independently replay move closure, quotient canonicalization, and reachable components without assuming transitivity; reject moves that leave the ordered conjugacy labels and missing or tampered edges. Do not infer a full-B_4 orbit theorem on the earlier 12 ordered classes; an enlarged full-B_4 state space needs a separate specification and exhaustive certificate.",
+      "evidence": []
+    },
+    {
+      "id": "N5-V05",
+      "candidate": "N5",
+      "class": "literature",
+      "status": "open",
+      "depends_on": [
+        "N5-H01",
+        "N5-H02",
+        "N5-H03",
+        "N5-H04",
+        "N5-H05",
+        "N5-H06"
+      ],
+      "description": "Perform a dated prior-art search recording queries, sources, exclusions, nearest results, and the exact delta for Hurwitz actions/Nielsen classes, braid-orbit and component certificates, subgroup-intersection/index invariants, imprimitive/wreath subgroups of symmetric groups, discrete or normalized tuple-overlap observables, and finite-horizon Hurwitz/Nielsen walks. Attribute classical machinery and stop or revise if an equivalent invariant or classification is found. N5 remains a candidate; closing this literature obligation alone does not establish novelty, and any novel-result promotion requires the human review specified in docs/calibration.md.",
+      "evidence": []
+    }
+  ]
+}

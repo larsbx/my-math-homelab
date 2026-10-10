@@ -1,0 +1,89 @@
+# Conservative claim registry for Arithmetic Bicycle Conjecture research.
+
+[meta]
+namespace = "ABC"
+status_values = ["open", "working", "computed", "proved", "retracted"]
+
+[[claim]]
+id = "ABC-MAIN"
+title = "Arithmetic Bicycle Conjecture"
+status = "open"
+statement = "For a torsion-free representable arithmetic matroid, the compatible modular bicycle tower is independent of the chosen integral realization."
+authority = "principal_open_problem"
+notes = "No proof claimed. The bootstrap's asserted equivalent universal finite-group torsion model is withdrawn separately as ABC-UNIVERSAL-TORSION-MODEL; the A=[2] obstruction does not decide realization invariance."
+
+[[claim]]
+id = "ABC-GRAPH-MODULAR-BICYCLE"
+title = "Graph modular bicycle theorem"
+status = "proved"
+statement = "For every finite nonempty connected undirected multigraph G and integer n >= 2, K(G)[n] is naturally isomorphic to im(B^T mod n) intersect ker(B mod n), equivariantly under graph isomorphisms and compatibly with reduction and inflation across dividing moduli."
+authority = "repository_integral_proof_record"
+proof_record = "proof/graph-modular-bicycle.md"
+audit_record = "docs/audits/graph-modular-bicycle-2026-10-09.md"
+evidence = [
+  "oracles/graph_snf.py",
+  "conformance/fixtures/graph-modular-bicycle-v1.json",
+  "conformance/test_graph_modular_bicycle.py",
+  "conformance/test_graph_modular_bicycle_audit.py",
+  "conformance/replay_graph_modular_bicycle.py",
+  "conformance/receipts/graph-modular-bicycle-v1.json"
+]
+notes = "Arbitrary-n integral proof with both inverse directions and representative independence. Composite-modulus evidence uses independent all-minors Smith factors and critical quotient enumeration. This promotes the graph case only."
+
+[[claim]]
+id = "ABC-REGULAR-MODULAR-BICYCLE"
+title = "Fixed-TU modular bicycle theorem"
+status = "proved"
+statement = "For a fixed full-row-rank TU representation A and every integer n >= 2, the n-torsion of coker(AA^T) is naturally isomorphic to im(A^T mod n) intersect ker(A mod n), compatibly with reduction and inflation across dividing moduli and equivariantly under specified unimodular row changes and signed column permutations."
+authority = "repository_integral_proof_record"
+proof_record = "proof/regular-modular-bicycle.md"
+audit_record = "docs/audits/regular-modular-bicycle-independent-2026-10-09.md"
+evidence = [
+  "oracles/regular_snf.py",
+  "oracles/graph_snf.py",
+  "conformance/fixtures/regular-modular-bicycle-v1.json",
+  "conformance/test_regular_modular_bicycle.py",
+  "conformance/test_regular_modular_bicycle_audit.py",
+  "conformance/replay_regular_modular_bicycle.py",
+  "conformance/receipts/regular-modular-bicycle-v1.json"
+]
+notes = "An integral right inverse supplies representative independence over arbitrary composite rings. Independent cycle completion, all-minor Smith factors, and Gram quotient enumeration support the proof. This is the fixed-TU case; general regular-matroid representation independence remains a separate gate."
+
+[[claim]]
+id = "ABC-FIXED-REALIZATION-ORDER"
+title = "Fixed realization determinant order"
+status = "working"
+statement = "For a full-row-rank integral realization A, det(AA^T) equals the sum of squared maximal minors; in the TU case it counts bases."
+authority = "standard_cauchy_binet_pending_source_record"
+
+[[claim]]
+id = "ABC-REALIZATION-INVARIANCE"
+title = "Arithmetic realization invariance"
+status = "open"
+statement = "The compatible modular bicycle tower depends only on the arithmetic matroid rather than the chosen integral realization."
+authority = "principal_conjectural_bridge"
+
+[[claim]]
+id = "ABC-PROJECTIVE-SHADOW"
+title = "Projective/Grassmannian shadow"
+status = "working"
+statement = "Over finite fields, cut and cycle spaces define Grassmannian incidence data whose intersection is the modular bicycle space."
+authority = "structural_view_pending_writeup"
+notes = "Derived field-valued shadow only; not authority for integral torsion."
+
+[[claim]]
+id = "ABC-UNIVERSAL-TORSION-MODEL"
+title = "Withdrawn universal finite-group strengthening"
+status = "retracted"
+statement = "For every torsion-free representable arithmetic matroid, there exists a canonical finite abelian group H with H[n] isomorphic to every modular bicycle module of a realization, for all n >= 2."
+authority = "repository_counterexample_proof_record"
+counterexample_record = "proof/arithmetic-torsion-model-obstruction.md"
+audit_record = "docs/audits/regular-modular-bicycle-independent-2026-10-09.md"
+evidence = [
+  "conformance/fixtures/regular-modular-bicycle-v1.json",
+  "conformance/test_regular_modular_bicycle.py",
+  "conformance/test_regular_modular_bicycle_audit.py",
+  "conformance/replay_regular_modular_bicycle.py",
+  "conformance/receipts/regular-modular-bicycle-v1.json"
+]
+notes = "The bootstrap folded this false strengthening into ABC-MAIN. A=[2] in Z has m(empty)=1 and m(E)=2, with Bic_2=0 and Bic_4=Z/2; H[2]=0 forces H[4]=0 for every abelian group. Retraction does not decide realization invariance."

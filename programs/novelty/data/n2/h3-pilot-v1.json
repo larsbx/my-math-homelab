@@ -1,0 +1,43 @@
+{
+ "model": "cayley-dickson/v1 (-1,-1,-1) mod ell",
+ "rows": [
+  {
+   "defect_classes": 25,
+   "distinct_values": 3753,
+   "ell": 5,
+   "generators": 10,
+   "null_same_class_share": "0.198",
+   "operator_collisions": 10715,
+   "random_target_expectation": "340.6",
+   "reduced_words": 7290,
+   "value_only_collisions": 546,
+   "value_only_same_class": 166
+  },
+  {
+   "defect_classes": 49,
+   "distinct_values": 5629,
+   "ell": 7,
+   "generators": 10,
+   "null_same_class_share": "0.118",
+   "operator_collisions": 3507,
+   "random_target_expectation": "32.3",
+   "reduced_words": 7290,
+   "value_only_collisions": 24,
+   "value_only_same_class": 4
+  },
+  {
+   "defect_classes": 49,
+   "distinct_values": 13244,
+   "ell": 7,
+   "generators": 12,
+   "null_same_class_share": "0.091",
+   "operator_collisions": 5440,
+   "random_target_expectation": "154.9",
+   "reduced_words": 15972,
+   "value_only_collisions": 135,
+   "value_only_same_class": 26
+  }
+ ],
+ "schema": "novelty-lab/n2-h3-pilot/v1",
+ "words": "reduced words of length 4, left comb, norm-1 generators and their inverses"
+}
