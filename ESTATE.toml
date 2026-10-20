@@ -198,14 +198,14 @@ authority = "exposition"
 required = true
 current = ["docs", "ARCHITECTURE.md", "README.md"]
 
-# While every source retains its authority this workspace owns no acceptance
-# boundary: its kernel only verifies imports. Program kernels keep their source
-# languages as supporting, non-accepting code here.
+# This workspace owns one acceptance boundary, import acceptance, implemented
+# by kernel/workspace.py; every source retains its own claim authority. Program
+# kernels keep their source languages as supporting, non-accepting code here.
 [[language]]
 name = "Python"
 authority = "canonical"
 roles = ["kernel", "tooling"]
-acceptance_authority = false
+acceptance_authority = true
 
 [[language]]
 name = "Mojo"

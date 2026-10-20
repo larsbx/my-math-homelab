@@ -48,9 +48,12 @@ Every source retains its authority: claims, theorem status, gates, releases
 and issues stay with the source repository until a reviewed, per-program
 transfer. Imported trees are byte-identical copies; nested `ESTATE.toml` files
 and workflows are preserved historical files and are not executed by this
-repository's CI. Accordingly the root canonical language declares
-`acceptance_authority = false`: this workspace emits no `accepted`, `proved` or
-`authorized` verdict. Its one owned check is `kernel/workspace.py`:
+repository's CI. The root canonical language declares
+`acceptance_authority = true` over one boundary, **import acceptance**: the
+workspace accepts an imported or metadata-only root only when it passes
+`kernel/workspace.py`, the boundary's single implementation. Accepting an
+import never transfers or re-issues a source's claim, theorem or release
+verdict. The check requires:
 
 - each `history` import has its locked commit as an ancestor of `HEAD`, the
   locked commit count, and an identical tree (mode, type, object id) under its root;
