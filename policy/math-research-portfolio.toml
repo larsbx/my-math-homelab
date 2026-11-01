@@ -16,10 +16,10 @@ claim_namespace = "AB"
 kind = "program"
 source_repository = "larsbx/arithmetic-bicycle-conjecture-research"
 objective = "Exact arithmetic matroids and realization invariance after the rank-two refutation"
-next_research_obligation = "Recheck the rank-two counterexample and identify corrected invariant statements"
+next_research_obligation = "Preserve refutations and proved m(E)=1 baseline; investigate extra lattice data for nonsurjective towers (ABC-RD-01)"
 research_evidence_path = "proof/arithmetic-realization-counterexample.md"
-mode = "source_evidence"
-independent_experiment = "requires_separate_verified_adapter"
+mode = "independent_finite"
+independent_experiment = "arithmetic-bicycle-v1"
 claim_authority = "source_retained"
 automatic_claim_promotion = false
 automatic_merge = false

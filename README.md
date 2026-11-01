@@ -81,8 +81,11 @@ documented in
 [`docs/research/math-estate-programme.md`](docs/research/math-estate-programme.md).
 The exact AKN independent experiment remains a distinct specialist
 schedule: status 04:07 UTC daily and complete finite investigation
-04:17 UTC Monday. All other source research adapters must be reviewed
-before the homelab claims to execute independent mathematical proofs;
-their provenance and explicit verification backlog are scheduled now.
+04:17 UTC Monday. The [arithmetic-bicycle pilot](docs/research/independent-experiment-contract.md)
+adds pinned finite-module enumeration, independent Smith/Gram and lattice
+verification, malicious mutation controls and bounded credential-free execution
+once in weekly shard 0. It preserves all retractions and distinguishes the
+proved surjective domain. Fourteen further adapters remain a visible backlog.
+Finite replay never promotes a theorem; hosted acceptance remains a separate gate.
 Source mathematical authority and locked imported histories do not
 change.

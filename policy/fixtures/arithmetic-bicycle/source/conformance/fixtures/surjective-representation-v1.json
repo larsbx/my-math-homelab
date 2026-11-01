@@ -1,0 +1,521 @@
+{
+  "negative_pairs": [
+    {
+      "columns": 2,
+      "id": "different-singletons",
+      "permutation": [
+        0,
+        1
+      ],
+      "source": [
+        [
+          1,
+          2
+        ]
+      ],
+      "target": [
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "columns": 6,
+      "id": "cycle-sign-conflict",
+      "permutation": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "source": [
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0,
+          3,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          4,
+          1
+        ]
+      ],
+      "target": [
+        [
+          1,
+          0,
+          0,
+          -1,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0,
+          3,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          4,
+          1
+        ]
+      ]
+    }
+  ],
+  "out_of_domain": [
+    {
+      "columns": 1,
+      "id": "scalar-two",
+      "rows": [
+        [
+          2
+        ]
+      ]
+    },
+    {
+      "columns": 2,
+      "id": "counterexample-a",
+      "rows": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    {
+      "columns": 2,
+      "id": "counterexample-b",
+      "rows": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          5
+        ]
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "columns": 0,
+      "gram_smith": [],
+      "id": "empty",
+      "moduli": [
+        2,
+        4,
+        6
+      ],
+      "no_unit_basis": false,
+      "note": "Empty rank and ground set.",
+      "permutation": [],
+      "source": [],
+      "target": []
+    },
+    {
+      "columns": 3,
+      "gram_smith": [],
+      "id": "rank-zero-loops",
+      "moduli": [
+        2,
+        4,
+        6
+      ],
+      "no_unit_basis": false,
+      "note": "Zero cut space in loop coordinates.",
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "source": [],
+      "target": []
+    },
+    {
+      "columns": 1,
+      "gram_smith": [
+        1
+      ],
+      "id": "unit-coloop",
+      "moduli": [
+        2,
+        4,
+        6
+      ],
+      "no_unit_basis": false,
+      "note": "Trivial Gram quotient.",
+      "permutation": [
+        0
+      ],
+      "source": [
+        [
+          1
+        ]
+      ],
+      "target": [
+        [
+          -1
+        ]
+      ]
+    },
+    {
+      "columns": 2,
+      "gram_smith": [
+        13
+      ],
+      "id": "rank-one-no-unit-basis",
+      "moduli": [
+        2,
+        4,
+        13,
+        26,
+        52,
+        169
+      ],
+      "no_unit_basis": true,
+      "note": "Surjective gcd(2,3)=1, neither maximal minor a unit; Gram C13.",
+      "permutation": [
+        1,
+        0
+      ],
+      "source": [
+        [
+          2,
+          3
+        ]
+      ],
+      "target": [
+        [
+          -3,
+          2
+        ]
+      ]
+    },
+    {
+      "columns": 3,
+      "gram_smith": [
+        1,
+        49
+      ],
+      "id": "rank-two-no-unit-basis",
+      "moduli": [
+        2,
+        7,
+        14,
+        49
+      ],
+      "no_unit_basis": true,
+      "note": "Maximal minors 6,2,-3 have gcd one and no units; Gram C49.",
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "source": [
+        [
+          2,
+          0,
+          1
+        ],
+        [
+          0,
+          3,
+          1
+        ]
+      ],
+      "target": [
+        [
+          -3,
+          2,
+          -6
+        ],
+        [
+          -1,
+          0,
+          -3
+        ]
+      ]
+    },
+    {
+      "columns": 2,
+      "gram_smith": [
+        5
+      ],
+      "id": "primitive-non-tu",
+      "moduli": [
+        2,
+        4,
+        5,
+        10,
+        25
+      ],
+      "no_unit_basis": false,
+      "note": "Non-TU split surjection with a unit column.",
+      "permutation": [
+        1,
+        0
+      ],
+      "source": [
+        [
+          1,
+          2
+        ]
+      ],
+      "target": [
+        [
+          2,
+          -1
+        ]
+      ]
+    },
+    {
+      "columns": 4,
+      "gram_smith": [
+        3,
+        3
+      ],
+      "id": "noncyclic-three-torsion",
+      "moduli": [
+        2,
+        3,
+        6,
+        9,
+        18
+      ],
+      "no_unit_basis": false,
+      "note": "Noncyclic Gram C3+C3 has exponent three; moduli 9 and 18 do not create order-nine elements.",
+      "permutation": [
+        2,
+        0,
+        3,
+        1
+      ],
+      "source": [
+        [
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          -1
+        ]
+      ],
+      "target": [
+        [
+          -3,
+          1,
+          -1,
+          -2
+        ],
+        [
+          -1,
+          0,
+          -1,
+          -1
+        ]
+      ]
+    },
+    {
+      "columns": 6,
+      "gram_smith": [
+        1,
+        1,
+        934
+      ],
+      "id": "chordless-six-cycle",
+      "moduli": [
+        2,
+        4
+      ],
+      "no_unit_basis": false,
+      "note": "Support six-cycle has unequal matching magnitudes one and twenty-four.",
+      "permutation": [
+        5,
+        1,
+        3,
+        0,
+        4,
+        2
+      ],
+      "source": [
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0,
+          3,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          4,
+          1
+        ]
+      ],
+      "target": [
+        [
+          -2,
+          2,
+          -7,
+          1,
+          2,
+          0
+        ],
+        [
+          -1,
+          1,
+          -3,
+          0,
+          5,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0,
+          0,
+          4,
+          -1
+        ]
+      ]
+    },
+    {
+      "columns": 4,
+      "gram_smith": [
+        1,
+        13
+      ],
+      "id": "disconnected-loop",
+      "moduli": [
+        2,
+        4,
+        13
+      ],
+      "no_unit_basis": true,
+      "note": "Nonunit singleton multiplicities, a coloop, and a loop.",
+      "permutation": [
+        3,
+        1,
+        0,
+        2
+      ],
+      "source": [
+        [
+          2,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "target": [
+        [
+          0,
+          3,
+          -2,
+          1
+        ],
+        [
+          0,
+          -3,
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "columns": 3,
+      "gram_smith": [
+        1,
+        3
+      ],
+      "id": "graphic-loses-tu",
+      "moduli": [
+        2,
+        3,
+        6,
+        9
+      ],
+      "no_unit_basis": false,
+      "note": "Unimodular ambient change need not preserve literal TU entries.",
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "source": [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "target": [
+        [
+          1,
+          -2,
+          3
+        ],
+        [
+          1,
+          -1,
+          2
+        ]
+      ]
+    }
+  ],
+  "schema": 1
+}

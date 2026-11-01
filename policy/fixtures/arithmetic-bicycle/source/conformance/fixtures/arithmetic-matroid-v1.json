@@ -1,0 +1,662 @@
+{
+  "schema": 1,
+  "domain": "essential integer realizations in their declared ambient lattice Z^r",
+  "fixtures": [
+    {
+      "id": "empty",
+      "matrix": [],
+      "columns": 0,
+      "signature": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "rank-zero-loops",
+      "matrix": [],
+      "columns": 3,
+      "signature": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "scalar-two",
+      "matrix": [
+        [
+          2
+        ]
+      ],
+      "columns": 1,
+      "signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "parallel-nonprimitive-loop",
+      "matrix": [
+        [
+          2,
+          4,
+          0
+        ]
+      ],
+      "columns": 3,
+      "signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "parallel-relabel",
+      "matrix": [
+        [
+          0,
+          2,
+          -4
+        ]
+      ],
+      "columns": 3,
+      "signature": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "dependent-a",
+      "matrix": [
+        [
+          2,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          1,
+          0
+        ]
+      ],
+      "columns": 4,
+      "signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "dependent-b",
+      "matrix": [
+        [
+          2,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          2,
+          0
+        ]
+      ],
+      "columns": 4,
+      "signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "counterexample-a",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "columns": 2,
+      "signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          5
+        ]
+      ]
+    },
+    {
+      "id": "counterexample-b",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "columns": 2,
+      "signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          5
+        ]
+      ]
+    },
+    {
+      "id": "primitive-non-tu",
+      "matrix": [
+        [
+          1,
+          2
+        ]
+      ],
+      "columns": 2,
+      "signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "parallel-tu",
+      "matrix": [
+        [
+          1,
+          1
+        ]
+      ],
+      "columns": 2,
+      "signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "same-full-smith-a",
+      "matrix": [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "columns": 2,
+      "signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ]
+      ]
+    },
+    {
+      "id": "same-full-smith-b",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "columns": 2,
+      "signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ]
+      ]
+    },
+    {
+      "id": "large-integer-index",
+      "matrix": [
+        [
+          1208925819614629174706176,
+          -3626777458843887524118528,
+          0
+        ]
+      ],
+      "columns": 3,
+      "signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1208925819614629174706176
+        ],
+        [
+          1,
+          3626777458843887524118528
+        ],
+        [
+          1,
+          1208925819614629174706176
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1208925819614629174706176
+        ],
+        [
+          1,
+          3626777458843887524118528
+        ],
+        [
+          1,
+          1208925819614629174706176
+        ]
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "source": "counterexample-a",
+      "target": "counterexample-b",
+      "permutation": [
+        0,
+        1
+      ],
+      "equal": true
+    },
+    {
+      "source": "parallel-nonprimitive-loop",
+      "target": "parallel-relabel",
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "equal": true
+    },
+    {
+      "source": "parallel-nonprimitive-loop",
+      "target": "parallel-relabel",
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "equal": false
+    },
+    {
+      "source": "dependent-a",
+      "target": "dependent-b",
+      "permutation": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "equal": false
+    },
+    {
+      "source": "primitive-non-tu",
+      "target": "parallel-tu",
+      "permutation": [
+        0,
+        1
+      ],
+      "equal": false
+    },
+    {
+      "source": "same-full-smith-a",
+      "target": "same-full-smith-b",
+      "permutation": [
+        0,
+        1
+      ],
+      "equal": false
+    }
+  ],
+  "counterexample": {
+    "source": "counterexample-a",
+    "target": "counterexample-b",
+    "moduli": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      15,
+      20,
+      25,
+      50
+    ],
+    "source_counts": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      5,
+      5
+    ],
+    "target_counts": [
+      1,
+      1,
+      1,
+      5,
+      1,
+      5,
+      5,
+      5,
+      5,
+      5
+    ]
+  }
+}

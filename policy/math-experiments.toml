@@ -1,0 +1,25 @@
+# Reviewed local executors only. No commands or source code are read from fixtures.
+version = 1
+contract = "homelab-independent-finite-experiment-v1"
+authority = "source_retained"
+automatic_claim_promotion = false
+
+[[adapter]]
+id = "arithmetic-bicycle-v1"
+program = "arithmetic-bicycle"
+source_repository = "larsbx/arithmetic-bicycle-conjecture-research"
+source_revision = "87737671a039ba610ba3cfda7c91b78c61fbc1d5"
+manifest = "policy/fixtures/arithmetic-bicycle/manifest.json"
+manifest_sha256 = "6f8bcbf46869bc1416b858f4cbadfaa4f32b75f7b063a4e9f3c1bd2836db9d82"
+execution = "weekly_shard_only"
+max_rows = 2
+max_columns = 4
+max_modulus = 26
+max_entry_abs = 100
+max_vectors_per_case = 200000
+max_vectors_total = 1000000
+max_input_bytes = 131072
+cpu_seconds = 10
+wall_seconds = 30
+memory_mb = 256
+output_bytes = 4194304

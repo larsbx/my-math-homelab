@@ -151,6 +151,8 @@ class ResearchPortfolio(unittest.TestCase):
             (root/"policy/math-research-portfolio.toml").write_text(
                 portfolio.REGISTRY.read_text())
             (root/"policy/source-locks.toml").write_text(altered)
+            (root/"policy/math-experiments.toml").write_text(
+                (ROOT/"policy/math-experiments.toml").read_text())
             with self.assertRaises(AssertionError):
                 portfolio.registry(root)
 

@@ -28,10 +28,10 @@ stated hypothesis / exact definition / imported assumptions
 subject to the same recurring provenance, CI/issue/PR review, evidence
 retention, scientific frontier, and claim-governance rules. The AKN track
 has an existing exact enumeration + independent-verifier executor.
-The other **15 tracks are not falsely marked as possessing an
-independent mathematical experiment**: their research-specific
-experiments, independent checkers, and autonomous hypothesis-selection
-policies must be separately reviewed and registered before execution.
+The arithmetic-bicycle track now has a pinned independent finite replay,
+using the [experiment contract](independent-experiment-contract.md).
+The other **14 tracks lack a configured independent experiment**: their
+research-specific experiments, independent checkers and execution policies must be separately reviewed and registered before execution.
 The scheduler makes that onboarding obligation visible in every report.
 Even AKN does not prove a universal theorem by running a finite job.
 
@@ -40,7 +40,7 @@ Even AKN does not prove a universal theorem by running a finite job.
 | Trigger | Scope | Activity |
 | --- | --- | --- |
 | Daily `43 4 * * *` | Every active repo | Inspect current default-branch SHA, source exact-file evidence, PRs, issues and CI; preserve a per-programme immutable-revision record. |
-| Tuesday `47 5 * * 2` | Every active repo, four shards | Conduct source-bound evidence/falsification triage and issue-specific mathematical next-step planning; explicitly flag missing independent proof adapters. |
+| Tuesday `47 5 * * 2` | Every active repo, four shards | Conduct source-bound evidence/falsification triage and issue-specific mathematical next-step planning; execute the reviewed arithmetic-bicycle adapter once in shard 0; flag remaining adapter gaps. |
 | Monday `17 4 * * 1` | AKN specialist | Execute exact complete 135-plane AKN chamber candidate and independent 2D-section replay, then checked bounded singular probes. |
 | Daily `7 4 * * *` | AKN specialist | Record exact source PR/issue/check status. |
 | PR updates | Homelab registry and scheduler files | Offline conformance, strict registration, mutation/regression tests. |
@@ -60,7 +60,7 @@ authorities.
 
 | Programme | Exact question / near-term research obligation | Independent experiment status |
 | --- | --- | --- |
-| arithmetic-bicycle | Check corrected arithmetic-matroid realization invariance against the **already refuted** original conjecture. | Needs reviewed adapter |
+| arithmetic-bicycle | Preserve the rank-two refutation, test the proved surjective domain, and investigate extra nonsurjective lattice data. | Pinned independent finite adapter; hosted acceptance pending |
 | bulb-ford | Reproduce finite exact P0/P2/P6 bulb/Ford evidence without using analytical limits as finite proof. | Needs reviewed adapter |
 | closure-fiber | Investigate exact identity fibers and literature dependence in algebraic-group closure. | Needs reviewed adapter |
 | finite-julia | Certificate-carrying dynamical-plane finite tests and consumer compatibility. | Needs reviewed adapter |
@@ -130,7 +130,9 @@ research cycle only after it has:
 
 This is not a licence for the homelab to execute unreviewed source
 scripts with its GitHub credentials. The AKN specialist is a separate
-opt-in research execution path. Additional opt-in runners should be
+opt-in research execution path. Arithmetic-bicycle is the first local
+adapter candidate under review under `policy/math-experiments.toml`; it executes no source
+scripts. Additional opt-in runners should be
 isolated, resource-limited and explicitly reviewed.
 
 ## Commands
@@ -158,6 +160,8 @@ explicitly retired or transferred under the estate contract.
 
 **Current completion boundary:** All 16 current active math sources
 are registered and scheduled for *research governance and evidence
-triage* once this workflow merges. Full independent exact research
-execution remains implemented only for AKN; 15 individual adapters
-are an explicit backlog, not silently counted as accomplished.
+triage*. AKN retains its specialist. Arithmetic-bicycle now has a bounded
+independent finite replay integrated into its existing weekly shard, pending PR review
+and hosted acceptance. The other 14 adapters remain an explicit backlog.
+See [independent-experiment-contract.md](independent-experiment-contract.md)
+for the reusable implementation and acceptance pattern.

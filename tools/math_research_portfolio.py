@@ -4,9 +4,8 @@ Daily: source head, claim/evidence-file provenance, PRs, issues and CI status.
 Weekly: the same per-program facts plus reproducible *research obligations*.
 The source repos alone own mathematical claim status. This tool DOES NOT run
 unreviewed source code, claim that CI proves a theorem, or edit imported trees.
-Only tiling-theory has a specialized mathematical runner in this homelab;
-other programmes require separate, source-validated independent experiment
-adapters, which are explicitly reported as pending, not silently presumed.
+Tiling-theory retains its specialist. Reviewed local finite adapters execute
+once in their weekly shard; all other adapter gaps remain explicit.
 
 Usage:
   python tools/math_research_portfolio.py --mode daily --out /tmp/math-daily
@@ -28,6 +27,8 @@ import tomllib
 import traceback
 from urllib.parse import quote
 from urllib.request import Request, urlopen
+
+import math_experiments
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "policy/math-research-portfolio.toml"
@@ -57,6 +58,8 @@ def registry(root=ROOT):
     assert {t["id"] for t in tracks} == set(active), (
         "Every active source lock must be registered exactly once; no phantom sources"
     )
+    adapters = {a["program"]: a for a in math_experiments.load_adapters(root)}
+    assert set(adapters) <= set(active), "experiment has no active source"
     for track in tracks:
         id_ = track["id"]
         lock = active[id_]
@@ -73,10 +76,15 @@ def registry(root=ROOT):
         path = track["research_evidence_path"]
         assert path and not path.startswith("/")
         assert all(segment not in (".", "..", "") for segment in path.split("/"))
-        assert track["mode"] in ("specialized_akn", "source_evidence")
+        assert track["mode"] in ("specialized_akn", "source_evidence", "independent_finite")
         if id_ == "tiling-theory":
             assert track["mode"] == "specialized_akn"
             assert track["independent_experiment"] == "scheduled_by_akn_specialist"
+        elif id_ in adapters:
+            adapter = adapters[id_]
+            assert adapter["source_repository"] == track["source_repository"]
+            assert track["mode"] == "independent_finite"
+            assert track["independent_experiment"] == adapter["id"]
         else:
             assert track["mode"] == "source_evidence"
             assert track["independent_experiment"] == "requires_separate_verified_adapter"
@@ -183,6 +191,8 @@ def observe(track, lock, mode):
         state = "exact_head_ci_unverified"
     research_stage = ("specialized_exact_experiment_scheduled_elsewhere"
                       if track["mode"] == "specialized_akn"
+                      else "pinned_independent_finite_adapter_registered"
+                      if track["mode"] == "independent_finite"
                       else "independent_experiment_adapter_not_yet_registered")
     return {
         "schema": "HOMELAB-MATH-PROGRAM-EVIDENCE-1",
@@ -238,6 +248,21 @@ def run(mode, out, shard=None, select_ids=None):
     for t in selected:
         try:
             record = observe(t, locks[t["id"]], mode)
+            if t["mode"] == "independent_finite":
+                record["experiment_execution"] = "weekly_only_not_run_in_daily"
+                if mode == "weekly":
+                    spec = next(a for a in math_experiments.load_adapters()
+                                if a["id"] == t["independent_experiment"])
+                    experiment = math_experiments.execute(
+                        spec, out/t["id"], observed_source_head=record["head_sha"])
+                    record["experiment_execution"] = experiment["state"]
+                    record["experiment_evidence"] = t["id"] + "/experiment.json"
+                    record["experiment_source_revision"] = experiment["source_revision"]
+                    record["finite_experiment_verified"] = experiment["state"] == "verified_finite"
+                    if experiment["state"] != "verified_finite":
+                        failed.append(t["id"])
+                    # Keep exact-head CI and mathematical replay as separate dimensions.
+                    record["next_finite_experiment_obligation"] = experiment["next_mathematical_obligation"]
         except Exception as exc:
             failed.append(t["id"])
             record = {
@@ -259,6 +284,8 @@ def run(mode, out, shard=None, select_ids=None):
         rows.append({"id": t["id"], "source_repository": t["source_repository"],
                      "state": record["evidence_state"],
                      "research_stage": record["research_stage"],
+                     "experiment_state": record.get("experiment_execution"),
+                     "experiment_source_revision": record.get("experiment_source_revision"),
                      "exact_sha": record.get("head_sha"),
                      "next_obligation": record["next_research_obligation"]})
     summary = {
@@ -267,7 +294,8 @@ def run(mode, out, shard=None, select_ids=None):
         "observed_at_utc": datetime.now(timezone.utc).isoformat(),
         "selected_count": len(rows),
         "registered_count": len(tracks),
-        "unreadable_sources": failed,
+        "sources_with_errors": sorted(set(failed)),
+        "unreadable_sources": [r["id"] for r in rows if r["state"] == "incomplete"],
         "source_authority_retained": True,
         "imported_trees_modified": False,
         "mathematical_theorems_promoted": 0,
