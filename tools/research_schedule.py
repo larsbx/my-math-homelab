@@ -252,7 +252,7 @@ def run(mode, out, checkout=None):
         "baseline": {
             "registration_head": study["source_head_at_registration"],
             "source_import_root": "programs/tiling-theory",
-            "source_import_is_unchanged": True,
+            "coordinator_edits_imported_tree": False,
         },
     }
     target = out / "research-cycle.json"
