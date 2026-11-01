@@ -24,7 +24,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: homelab-akn-research-${{ github.ref }}
+  group: homelab-akn-research-${{ github.event.schedule || github.ref }}
   cancel-in-progress: true
 
 jobs:
