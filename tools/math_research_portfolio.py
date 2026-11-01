@@ -135,6 +135,8 @@ def _next_action(track, runs, prs):
         return "Reproduce and diagnose failed exact-head source CI before changing mathematical claims."
     if any(r["status"] != "completed" for r in runs):
         return "Inspect pending source CI; queued/in-progress is not mathematical verification."
+    if any(r["conclusion"] != "success" for r in runs):
+        return "Investigate cancelled, skipped or inconclusive exact-head checks; do not assume acceptance."
     if prs:
         return "Review open PR hypotheses and exact-head evidence, then " + track["next_research_obligation"]
     return track["next_research_obligation"]
@@ -177,6 +179,8 @@ def observe(track, lock, mode):
         state = "source_ci_regression_observed"
     elif any(r["status"] != "completed" for r in runs):
         state = "source_ci_pending"
+    elif any(r["conclusion"] != "success" for r in runs):
+        state = "exact_head_ci_unverified"
     research_stage = ("specialized_exact_experiment_scheduled_elsewhere"
                       if track["mode"] == "specialized_akn"
                       else "independent_experiment_adapter_not_yet_registered")
