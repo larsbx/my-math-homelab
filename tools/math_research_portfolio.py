@@ -100,7 +100,7 @@ def resource(repo, endpoint):
 
 def git_blob_sha1(raw):
     """Independently recompute the exact Git blob hash from API file bytes."""
-    return sha1(b"blob " + str(len(raw)).encode("ascii") + b"\\0" + raw).hexdigest()
+    return sha1(b"blob " + str(len(raw)).encode("ascii") + bytes([0]) + raw).hexdigest()
 
 
 def evidence_file(repo, rev, path):
