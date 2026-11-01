@@ -52,11 +52,14 @@ history-preserving importer and a separate reviewed PR.
 | Pull request | On changes to registry, coordinator, tests or workflow | Validate schedule and authority invariants; record live source status. Do not run expensive full experiment automatically on every workspace PR. |
 | Manual dispatch | `status` or `full` | Replay the same procedure on demand with source provenance retained. |
 
-The source PR head is inspected through GitHub's API, then fetched via
-`refs/pull/23/head` and **compared to the inspected SHA**. A race or
-unexpected fork fails closed. The exact SHA is written to
-`research-cycle.json`; the registration SHA is historical provenance,
-not a stale frozen execution target.
+While PR #23 remains open, its head is inspected through GitHub's API
+and fetched via `refs/pull/23/head`. After it is merged, the
+coordinator instead inspects and fetches `refs/heads/main` from the
+source repository. **In both cases, the fetched SHA must match the
+inspected exact revision.** A race, unexpectedly forked PR, or
+closed-unmerged research branch fails closed. The exact SHA and source
+ref are written to `research-cycle.json`; the registration SHA is
+historical provenance, not a stale frozen execution target.
 
 Artifact output includes the source revision, exact witness packet,
 independent replay, forced/closed-possible singular cell experiments,
