@@ -1,0 +1,236 @@
+# Registry for ALL active sources in policy/source-locks.toml.
+# Each track has a weekly research/evidence cycle. Only explicitly specialized
+# tracks execute a mathematical experiment; other tracks MUST report their
+# independent reproduction adapter as pending, never pretend a proof ran.
+version = 1
+contract = "math-estate-research-v1"
+authority = "source_retained"
+daily_cron_utc = "43 4 * * *"
+weekly_cron_utc = "47 5 * * 2"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "arithmetic-bicycle"
+claim_namespace = "AB"
+kind = "program"
+source_repository = "larsbx/arithmetic-bicycle-conjecture-research"
+objective = "Exact arithmetic matroids and realization invariance after the rank-two refutation"
+next_research_obligation = "Recheck the rank-two counterexample and identify corrected invariant statements"
+research_evidence_path = "proof/arithmetic-realization-counterexample.md"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "bulb-ford"
+claim_namespace = "BFC"
+kind = "program"
+source_repository = "larsbx/mandelbrot-bulbs-and-ford-circles-research"
+objective = "Exact finite reformulations of Mandelbrot satellite-bulb and Ford-circle corrections"
+next_research_obligation = "Independently replay the finite P0/P2/P6 evidence without assuming analytic limits"
+research_evidence_path = "RESEARCH_bulb-ford-correction_finite.md"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "closure-fiber"
+claim_namespace = "CFM"
+kind = "program"
+source_repository = "larsbx/closure-fiber-of-multiplication-research"
+objective = "Algebraic identity fibers of multiplication and group-valued moment constraints"
+next_research_obligation = "Separate computable exact fibers from literature-imported assertions"
+research_evidence_path = "RESEARCH_CHARTER.md"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "finite-julia"
+claim_namespace = "FJ"
+kind = "program"
+source_repository = "larsbx/finite-julia-set-research"
+objective = "Certificate-carrying finite-regime Julia dynamics"
+next_research_obligation = "Recheck dynamical-plane finite evidence and cross-consumer kernel assumptions"
+research_evidence_path = "ROADMAP.md"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "finite-mandelbrot"
+claim_namespace = "FM"
+kind = "program"
+source_repository = "larsbx/finite-mandelbrot-research"
+objective = "Finite-regime Mandelbrot critical-orbit certificates"
+next_research_obligation = "Reproduce exact critical-orbit evidence while preserving open MLC boundary"
+research_evidence_path = "ROADMAP.md"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "giant-fibers"
+claim_namespace = "GF"
+kind = "program"
+source_repository = "larsbx/giant-fibers-finite-fields-thin-groups"
+objective = "Descartes quadric finite-field fibers and thin-group orbit experiments"
+next_research_obligation = "Independently distinguish conjectural heavy-fiber formulas from proved finite cases"
+research_evidence_path = "README.md"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "julia-oracle"
+claim_namespace = "JO"
+kind = "program"
+source_repository = "larsbx/julia-oracle-lab"
+objective = "Differential and exact independent Julia oracle infrastructure"
+next_research_obligation = "Track reproducibility and disagreement with consuming source-authoritative programs"
+research_evidence_path = "ROADMAP.md"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "langlands"
+claim_namespace = "LL"
+kind = "program"
+source_repository = "larsbx/langlands-lab"
+objective = "Exact Hecke and Galois calibration calculations with imported theorem boundaries"
+next_research_obligation = "Reproduce computed calibration dossiers independently of imported mathematics"
+research_evidence_path = "README.md"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "novelty"
+claim_namespace = "NL"
+kind = "program"
+source_repository = "larsbx/novelty-lab"
+objective = "Novelty calibration, Lean verification and finite algebra candidates"
+next_research_obligation = "Require independent exact tests and literature provenance for each novelty candidate"
+research_evidence_path = "README.md"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "pisot-substitution"
+claim_namespace = "PS"
+kind = "program"
+source_repository = "larsbx/pisot-substitution-conjecture-research"
+objective = "Pisot substitution conjecture proof frontiers and exact overlap certificates"
+next_research_obligation = "Prioritize unresolved mathematical boundary lemmas and exact-head integration evidence"
+research_evidence_path = "README.llm.txt"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "pisot-vijayaraghavan"
+claim_namespace = "PV"
+kind = "program"
+source_repository = "larsbx/pisot-vijayaraghavan-problem-research"
+objective = "Classical Pisot-Vijayaraghavan algebraicity frontier"
+next_research_obligation = "Preserve the open status; independently test only finite stated auxiliary lemmas"
+research_evidence_path = "proof/claims.toml"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "s-adic-pisot"
+claim_namespace = "SAP"
+kind = "program"
+source_repository = "larsbx/s-adic-pisot-conjecture-research"
+objective = "S-adic Pisot exact finite lemmas and conditional Selmer/Brun scope"
+next_research_obligation = "Independently verify finite censuses without promoting the open general conjecture"
+research_evidence_path = "CLAIMS.md"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "tiling-theory"
+claim_namespace = "TT"
+kind = "program"
+source_repository = "larsbx/tiling-theory-research"
+objective = "Exact 135-plane AKN atlas chamber completeness, conjugacy and singular boundaries"
+next_research_obligation = "Verify 21840 generic chambers and pursue complete singular-stratum witnesses"
+research_evidence_path = "docs/roadmap.md"
+mode = "specialized_akn"
+independent_experiment = "scheduled_by_akn_specialist"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "vizing-domination"
+claim_namespace = "VD"
+kind = "program"
+source_repository = "larsbx/vizing-domination-conjecture-research"
+objective = "Vizing domination graph products and finite census provenance"
+next_research_obligation = "Audit 16-to-3 exact representatives and the unavailable 491-entry census"
+research_evidence_path = "README.md"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "finite-math-kernels"
+claim_namespace = "FMK"
+kind = "shared"
+source_repository = "larsbx/finite-math-kernels"
+objective = "Exact finite mathematics kernel and canonical-codec interoperability"
+next_research_obligation = "Verify consumer compatibility and fail-closed finite arithmetic evidence"
+research_evidence_path = "README.md"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
+[[track]]
+id = "math-vizops"
+claim_namespace = "MV"
+kind = "shared"
+source_repository = "larsbx/math-vizops"
+objective = "Non-authoritative math visualization evidence provenance"
+next_research_obligation = "Verify scene-to-evidence binding without accepting scientific claims"
+research_evidence_path = "README.md"
+mode = "source_evidence"
+independent_experiment = "requires_separate_verified_adapter"
+claim_authority = "source_retained"
+automatic_claim_promotion = false
+automatic_merge = false
+
