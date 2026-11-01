@@ -243,6 +243,7 @@ def run(mode, out, shard=None, select_ids=None):
     tracks, locks, _ = registry()
     selected = select(tracks, mode, shard, select_ids)
     assert selected
+    out = math_experiments.safe_output(out)
     out.mkdir(parents=True, exist_ok=True)
     rows, failed = [], []
     for t in selected:

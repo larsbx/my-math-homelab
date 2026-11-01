@@ -66,12 +66,19 @@ def revision(root=ROOT):
             "homelab_working_tree_clean": not bool(git("status", "--porcelain"))}
 
 
-def execute(spec, out, observed_source_head=None):
-    """One bounded child per registered programme; retain all non-success states."""
+
+def safe_output(out):
+    """Reject import destinations before creating directories or failure evidence."""
     out = out.resolve()
     for name in ("programs", "shared"):
         boundary = (ROOT/name).resolve()
         require(out != boundary and boundary not in out.parents, "cannot write inside imported source trees")
+    return out
+
+
+def execute(spec, out, observed_source_head=None):
+    """One bounded child per registered programme; retain all non-success states."""
+    out = safe_output(out)
     require(spec == next(a for a in load_adapters() if a["id"] == spec["id"]),
             "execution spec must match reviewed registry")
     if observed_source_head is not None:

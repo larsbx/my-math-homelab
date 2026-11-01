@@ -210,6 +210,8 @@ class IndependentExperiment(unittest.TestCase):
         for prefix in ("programs/arithmetic-bicycle","shared/finite-math-kernels"):
             with self.assertRaisesRegex(ValueError,"imported source trees"):
                 executor.execute(self.spec,ROOT/prefix/"evidence")
+            with self.assertRaisesRegex(ValueError,"imported source trees"):
+                portfolio.run("weekly",ROOT/prefix/"evidence",select_ids=["arithmetic-bicycle"])
 
     def test_daily_never_executes_and_weekly_shards_execute_once(self):
         tracks,_,_=portfolio.registry()
