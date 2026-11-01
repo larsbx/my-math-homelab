@@ -5,7 +5,9 @@ on:
     paths:
       - "policy/math-research-portfolio.toml"
       - "tools/math_research_portfolio.py"
+      - "tools/math_adapters/**"
       - "tests/test_math_research_portfolio.py"
+      - "tests/test_*_adapter.py"
       - "docs/research/math-estate-programme.md"
       - ".github/workflows/math-estate-research.yml"
       - "policy/source-locks.toml"
