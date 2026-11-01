@@ -197,7 +197,7 @@ def observe(track, lock, mode):
         state = "exact_head_ci_unverified"
     research_stage = ("specialized_exact_experiment_scheduled_elsewhere"
                       if track["mode"] == "specialized_akn"
-                      else "independent_experiment_adapter_not_yet_registered")
+                      else ("independent_finite_fixture_adapter_registered" if track["mode"] == "exact_fixture_adapter" else "independent_experiment_adapter_not_yet_registered"))
     return {
         "schema": "HOMELAB-MATH-PROGRAM-EVIDENCE-1",
         "id": track["id"], "kind": track["kind"],
