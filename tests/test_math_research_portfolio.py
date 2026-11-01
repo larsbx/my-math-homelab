@@ -61,7 +61,7 @@ class ResearchPortfolio(unittest.TestCase):
         # This is Git's documented blob SHA1 for 'hello world\\n'.
         raw = b"hello world" + bytes([10])
         self.assertEqual(portfolio.git_blob_sha1(raw),
-                         "557db03de997c86a4a028e1ebd3a1ceb225be238")
+                         "3b18e512dba79e4c8300dd08aeb37f8e728b8dad")
         with patch.object(portfolio, "resource") as api:
             import base64
             api.return_value = {
