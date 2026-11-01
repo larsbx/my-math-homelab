@@ -118,6 +118,17 @@ def evidence_file(repo, rev, path):
             "bytes": len(raw), "at_commit": rev}
 
 
+def verified_source_json(repo, rev, path):
+    """Fetch source JSON only from an immutable commit; replay Git blob hash."""
+    assert HEX40.fullmatch(rev)
+    uri = "contents/" + "/".join(quote(s, safe="") for s in path.split("/"))
+    info = resource(repo, uri + "?ref=" + rev)
+    assert info["type"] == "file" and info["encoding"] == "base64"
+    raw = base64.b64decode(info["content"], validate=False)
+    assert git_blob_sha1(raw) == info["sha"], "source fixture Git blob mismatch"
+    return json.loads(raw), sha256(raw).hexdigest()
+
+
 def _compact_runs(runs, commit):
     result = []
     for x in runs:
@@ -238,6 +249,30 @@ def run(mode, out, shard=None, select_ids=None):
     for t in selected:
         try:
             record = observe(t, locks[t["id"]], mode)
+            if mode == "weekly" and t["id"] == "arithmetic-bicycle":
+                from math_adapters.arithmetic_bicycle import verify_fixture
+                fixture, fixture_sha = verified_source_json(
+                    t["source_repository"], record["head_sha"],
+                    "conformance/fixtures/realization-dependence-v1.json")
+                verified = verify_fixture(
+                    fixture, source_commit=record["head_sha"],
+                    source_sha256=fixture_sha)
+                (out/"arithmetic-bicycle-exact-adapter.json").write_text(
+                    json.dumps(verified, sort_keys=True, indent=2)+"\\n",
+                    encoding="utf-8")
+                record["independent_exact_finite_adapter"] = {
+                    "schema": verified["schema"],
+                    "result": verified["verdict"],
+                    "cases": verified["finite_modulus_cases"],
+                    "source_fixture_sha256": verified["source_fixture_sha256"],
+                    "proof_scope": verified["scope"],
+                }
+                record["research_stage"] = "independent_finite_fixture_replayed"
+                record["independent_finite_fixture_verified"] = True
+                # Passing 6 finite examples is NEVER a general theorem proof.
+                record["independent_mathematical_claim_verified"] = False
+                record["next_research_obligation"] = verified[
+                    "next_research_obligation"]
         except Exception as exc:
             failed.append(t["id"])
             record = {
