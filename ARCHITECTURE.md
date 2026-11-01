@@ -66,3 +66,28 @@ This repository is public. The owner decided on 2026-10-09 that every math
 source is public, so all programs are full history imports. The verifier still
 fails closed on a lock marked `private` with `import = "history"`, and a
 `metadata_only` root may publish nothing but its `PROGRAM.toml`.
+
+## Scheduled cross-program research orchestration (non-authoritative)
+
+The root workspace may schedule experiments against exact source revisions
+without transferring a programme's theorem/claim authority or editing
+locked imported history. The first such workload is the AKN atlas study,
+registered under `policy/research-schedules.toml`, implemented by
+`tools/research_schedule.py`, and scheduled through the root workflow
+`.github/workflows/akn-math-research.yml`. Its research statement,
+source PRs, evidence and frontier are documented in
+`docs/research/akn-automated-research.md`.
+
+This is **tooling and policy metadata**, not a second mathematical kernel
+or an acceptance boundary for tiling claims. The coordinator only reads
+the source repository and runs its independently checkable experiment at
+the exact inspected PR head (or the independently inspected source `main`
+after that PR merges). It checks the fetched SHA, stores certificates
+and errors, and never rewrites `programs/tiling-theory`,
+`policy/source-locks.toml`, claim ledgers, or source PR state. All
+global theorem claims require separate source-governed acceptance.
+
+Daily status snapshots and Monday full experiments are UTC-scheduled,
+with manually dispatched reruns for diagnosis. GitHub's schedule only
+becomes active once its workflow is merged into this repository's
+default branch.

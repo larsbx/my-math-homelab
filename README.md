@@ -42,3 +42,25 @@ tools/retire_sources.sh --apply --delete   # ...then delete each source
 A source is skipped if its `main` moved since its lock (refresh it first) or it
 has open PRs. Deletion is permanent; branches and issues survive only through
 the first two steps.
+
+## Automated mathematics research schedule
+
+The `tiling-theory` programme's AKN generic-chamber atlas and singular-
+strata investigation is registered in
+[`policy/research-schedules.toml`](policy/research-schedules.toml) and
+documented in
+[`docs/research/akn-automated-research.md`](docs/research/akn-automated-research.md).
+
+After the scheduled workflow lands on `main`,
+[`AKN autonomous mathematical research`](.github/workflows/akn-math-research.yml)
+records source PR and exact-head CI status every day at **04:07 UTC**,
+and runs the exact chamber experiment plus independent replay **Mondays
+at 04:17 UTC**. The full run also conducts bounded 105-plane singular
+probes; exhaustive singular strata remain an explicit research
+obligation.
+
+The coordinator executes the verified PR head while source PR #23 is
+open, then selects the inspected default-branch SHA after merge.
+It retains fail-closed evidence and never promotes a mathematical
+claim or edits a historically imported source tree. The source project
+remains authoritative for proofs and theorem status.
