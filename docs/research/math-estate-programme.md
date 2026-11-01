@@ -28,8 +28,16 @@ stated hypothesis / exact definition / imported assumptions
 subject to the same recurring provenance, CI/issue/PR review, evidence
 retention, scientific frontier, and claim-governance rules. The AKN track
 has an existing exact enumeration + independent-verifier executor.
-The other **15 tracks are not falsely marked as possessing an
-independent mathematical experiment**: their research-specific
+A second narrowly scoped adapter now covers the **Arithmetic Bicycle**
+source's six registered finite fixture families: one computation
+enumerates modular potentials and cut-cycle intersections; an independent
+checker enumerates edge vectors and tests image membership using exact
+gcds of maximal lattice minors. The latest source fixture is fetched
+at the inspected immutable SHA, with Git blob and SHA-256 checks.
+Its original realization-invariance conjecture remains **refuted**.
+
+The other **14 tracks** are not falsely marked as possessing an
+independent mathematical experiment: their research-specific
 experiments, independent checkers, and autonomous hypothesis-selection
 policies must be separately reviewed and registered before execution.
 The scheduler makes that onboarding obligation visible in every report.
@@ -60,7 +68,7 @@ authorities.
 
 | Programme | Exact question / near-term research obligation | Independent experiment status |
 | --- | --- | --- |
-| arithmetic-bicycle | Check corrected arithmetic-matroid realization invariance against the **already refuted** original conjecture. | Needs reviewed adapter |
+| arithmetic-bicycle | Exact 6-fixture code-hull and lattice-index cross-check at prime, prime-power and composite moduli; preserve **refuted** invariance. | Independent finite-fixture adapter implemented; hosted acceptance pending |
 | bulb-ford | Reproduce finite exact P0/P2/P6 bulb/Ford evidence without using analytical limits as finite proof. | Needs reviewed adapter |
 | closure-fiber | Investigate exact identity fibers and literature dependence in algebraic-group closure. | Needs reviewed adapter |
 | finite-julia | Certificate-carrying dynamical-plane finite tests and consumer compatibility. | Needs reviewed adapter |
@@ -158,6 +166,34 @@ explicitly retired or transferred under the estate contract.
 
 **Current completion boundary:** All 16 current active math sources
 are registered and scheduled for *research governance and evidence
-triage* once this workflow merges. Full independent exact research
-execution remains implemented only for AKN; 15 individual adapters
-are an explicit backlog, not silently counted as accomplished.
+triage* once this workflow merges. Full generic-chamber independent exact research remains AKN-specialized;
+the Arithmetic Bicycle six-specimen finite module replay is newly implemented.
+The other 14 individual adapters are an explicit backlog, not silently
+counted as accomplished.
+
+## Independent Arithmetic Bicycle finite adapter (next rollout)
+
+The adapter `tools/math_adapters/arithmetic_bicycle.py` is a
+source-SHA-bound **independent finite negative-control verifier**.
+For the six cases in
+`conformance/fixtures/realization-dependence-v1.json` it computes
+`im(A^T mod n) intersect ker(A mod n)` by enumerating potentials,
+and separately enumerates the **edge vectors** `x` subject to
+`Ax=0 mod n` while checking `x in im(A^T mod n)` by integer
+lattice-index equality:
+`[Z^m : (A^T Z^r + n Z^m)] =
+ [Z^m : (A^T Z^r + n Z^m + Z x)]`.
+
+Both procedures use exact integer arithmetic and cover the registered
+prime, prime-power and mixed-composite moduli, including 26. They compare
+the **actual finite sets**, not only their orders. The strict finite
+scope includes the rank-two realization-invariance counterexample at
+5 and 10, and an equal-order control at 25. It also records group
+annihilator profiles and exact fixture hashes.
+
+A source fixture change, inconsistent expected order, altered matrix
+or algorithm disagreement fails the weekly shard. Its artifacts retain
+the counterexample; this **does not reinstate** the refuted conjecture
+or prove its prospective surjective restriction. The next candidate
+obligation concerns the source's surjective essential domain with
+`m(E)=1`, independently of this refuted general domain.
