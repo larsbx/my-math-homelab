@@ -129,7 +129,7 @@ def verify_fixture(fixture, *, source_commit, source_sha256):
                 "invalid bounded integer matrix")
         modulus_list = case["moduli"]
         require(modulus_list == sorted(set(modulus_list))
-                and all(type(n) is int and 2 <= n <= 25 for n in modulus_list),
+                and all(type(n) is int and 2 <= n <= 26 for n in modulus_list),
                 "modulus cap/uniqueness invalid")
         require(set(case["expected_orders"]) == {str(n) for n in modulus_list},
                 "fixture expected-order coverage changed")
