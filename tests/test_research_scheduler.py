@@ -46,7 +46,7 @@ class ResearchScheduleContract(unittest.TestCase):
         workflow = (ROOT/".github/workflows/akn-math-research.yml").read_text()
         self.assertIn("cron: '" + study["status_cron_utc"] + "'", workflow)
         self.assertIn("cron: '" + study["full_cron_utc"] + "'", workflow)
-        self.assertIn("github.event_name == 'pull_request'", workflow)
+        self.assertIn("  pull_request:", workflow)
         self.assertIn("tools/research_schedule.py", workflow)
         self.assertIn("if: always()", workflow)
         self.assertNotIn("contents: write", workflow)
