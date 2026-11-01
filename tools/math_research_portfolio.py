@@ -73,10 +73,13 @@ def registry(root=ROOT):
         path = track["research_evidence_path"]
         assert path and not path.startswith("/")
         assert all(segment not in (".", "..", "") for segment in path.split("/"))
-        assert track["mode"] in ("specialized_akn", "source_evidence")
+        assert track["mode"] in ("specialized_akn", "source_evidence", "exact_fixture_adapter")
         if id_ == "tiling-theory":
             assert track["mode"] == "specialized_akn"
             assert track["independent_experiment"] == "scheduled_by_akn_specialist"
+        elif id_ == "arithmetic-bicycle":
+            assert track["mode"] == "exact_fixture_adapter"
+            assert track["independent_experiment"] == "homelab_arithmetic_matroid_v1"
         else:
             assert track["mode"] == "source_evidence"
             assert track["independent_experiment"] == "requires_separate_verified_adapter"
