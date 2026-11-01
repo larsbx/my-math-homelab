@@ -44,6 +44,7 @@ jobs:
           set -euo pipefail
           python tools/math_research_portfolio.py --mode validate
           python -m unittest discover -s tests -p 'test_math_research_portfolio.py' -v
+          python -m unittest discover -s tests -p 'test_arithmetic_bicycle_adapter.py' -v
 
   daily-source-research:
     if: >-
