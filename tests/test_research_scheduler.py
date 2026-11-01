@@ -68,6 +68,18 @@ class ResearchScheduleContract(unittest.TestCase):
                 with self.assertRaises(AssertionError):
                     rs.select_source(study, prs)
 
+    def test_after_merge_research_switches_to_verified_source_main(self):
+        study = rs.load_study()
+        prs = snapshots()
+        prs[22].update(state="closed", merged=True)
+        prs[23].update(state="closed", merged=True, base_branch="main")
+        self.assertIsNone(rs.select_source(study, prs))
+        prs[23].update(state="open", merged=False)
+        self.assertEqual(rs.select_source(study, prs), prs[23]["head_sha"])
+        prs[22].update(merged=False)
+        with self.assertRaises(AssertionError):
+            rs.select_source(study, prs)
+
     def test_status_cycle_writes_machine_readable_evidence_without_network(self):
         payload = {"source_head_sha": snapshots()[23]["head_sha"],
                    "source_prs": {}, "source_issue": {"state": "open"},
@@ -82,7 +94,8 @@ class ResearchScheduleContract(unittest.TestCase):
             self.assertFalse(saved["automatic_theorem_promotion"])
 
     def test_full_cycle_requires_exact_verification(self):
-        payload = {"source_head_sha": snapshots()[23]["head_sha"]}
+        payload = {"source_head_sha": snapshots()[23]["head_sha"],
+                   "source_fetch_ref": "refs/pull/23/head"}
         with tempfile.TemporaryDirectory() as tmp:
             checkout = Path(tmp)/"checkout"
             evidence = Path(tmp)/"evidence"
