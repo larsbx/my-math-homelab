@@ -110,7 +110,8 @@ class ResearchPortfolio(unittest.TestCase):
                     "path": "README.md", "at_commit": sha}):
                     result = portfolio.observe(t, self.locks[t["id"]], "weekly")
         self.assertEqual(result["evidence_state"], "source_ci_pending")
-        self.assertFalse(result["ci_pass_verified"])
+        self.assertFalse(result["observed_runs_all_succeeded"])
+        self.assertFalse(result["complete_required_ci_gate_verified"])
         self.assertFalse(result["independent_mathematical_claim_verified"])
         self.assertIn("pending", result["next_research_obligation"])
         self.assertEqual(len(result["exact_head_workflow_runs"]), 1)
