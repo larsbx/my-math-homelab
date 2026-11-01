@@ -199,8 +199,11 @@ def observe(track, lock, mode):
         "source_issues_truncated": len(issues) == 30,
         "exact_head_actions_status": actions_status,
         "exact_head_workflow_runs": runs,
-        "ci_pass_verified": bool(runs) and all(
+        "observed_action_run_limit": 50,
+        # The first page is not an exhaustive required-checks audit.
+        "observed_runs_all_succeeded": bool(runs) and all(
             r["status"] == "completed" and r["conclusion"] == "success" for r in runs),
+        "complete_required_ci_gate_verified": False,
         "independent_mathematical_claim_verified": False,
         "next_research_obligation": _next_action(track, runs, prs),
         "reproducible_research_adapter": track["independent_experiment"],
