@@ -1,0 +1,118 @@
+name: AKN autonomous mathematical research (homelab)
+
+on:
+  pull_request:
+    paths:
+      - "policy/research-schedules.toml"
+      - "tools/research_schedule.py"
+      - "tests/test_research_scheduler.py"
+      - "docs/research/akn-automated-research.md"
+      - ".github/workflows/akn-math-research.yml"
+  schedule:
+    - cron: '7 4 * * *'    # daily status/provenance; UTC
+    - cron: '17 4 * * 1'   # weekly full exact experiment; UTC Monday
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "status = read-only provenance; full = run exact proof-candidate and singular probes"
+        type: choice
+        required: true
+        default: status
+        options: [status, full]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: homelab-akn-research-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  schedule-and-provenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate registry and fail-closed research scheduler
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tests -p 'test_research_scheduler.py' -v
+      - name: Record source PR heads, issue and exact-head CI
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python tools/research_schedule.py --mode status --out evidence-status
+      - name: Preserve daily/PR-head research state even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: homelab-akn-source-research-status
+          path: evidence-status/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Source-claim authority and current obligation
+        if: always()
+        shell: bash
+        run: |
+          echo '## AKN automated mathematics research — homelab' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Tiling source retains mathematical claim authority. The imported program tree is not edited.' >> "$GITHUB_STEP_SUMMARY"
+          if test -f evidence-status/research-cycle.json; then
+            echo '~~~json' >> "$GITHUB_STEP_SUMMARY"
+            cat evidence-status/research-cycle.json >> "$GITHUB_STEP_SUMMARY"
+            echo '~~~' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Status not produced: inspect logs. No claim accepted.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+  full-exact-research:
+    # PR tests are lightweight; weekly mainline and explicit full dispatch
+    # execute the expensive independent mathematical experiment.
+    if: >-
+      github.event.schedule == '17 4 * * 1' ||
+      (github.event_name == 'workflow_dispatch' && inputs.mode == 'full')
+    runs-on: ubuntu-latest
+    timeout-minutes: 270
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute exact-head open-chamber experiment and independent replay
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python tools/research_schedule.py --mode full \
+            --out evidence-full \
+            --checkout "$RUNNER_TEMP/akn-source-pr23"
+      - name: Preserve complete research evidence and failure traces
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: homelab-akn-full-exact-certificate-and-singular-probes
+          path: evidence-full/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Summarize exact candidate and unresolved singular strata
+        if: always()
+        shell: bash
+        run: |
+          echo '## AKN homelab full mathematical research cycle' >> "$GITHUB_STEP_SUMMARY"
+          if test -f evidence-full/research-cycle.json; then
+            echo '~~~json' >> "$GITHUB_STEP_SUMMARY"
+            cat evidence-full/research-cycle.json >> "$GITHUB_STEP_SUMMARY"
+            echo '~~~' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Full evidence missing; no theorem accepted.' >> "$GITHUB_STEP_SUMMARY"
+          fi
