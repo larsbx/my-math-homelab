@@ -78,6 +78,7 @@ def compact_pr(pr):
 
 
 def select_source(study, prs):
+    """Return exact open PR head; after merge transition to validated main."""
     assert set(prs) == {22, 23}, "both source PRs must be observed"
     first, second = prs[22], prs[23]
     for pr in (first, second):
@@ -86,17 +87,23 @@ def select_source(study, prs):
         )
         assert HEX40.fullmatch(pr["head_sha"])
     assert second["number"] == 23 and first["number"] == 22
+    assert first["state"] == "open" or first["merged"], (
+        "parent PR #22 closed unmerged: research baseline requires review"
+    )
     if first["state"] == "open":
         assert first["head_branch"] == "research/akn-radius2-exact-feasibility"
     if second["state"] == "open":
         assert second["head_branch"] == "research/akn-chamber-conjugacy-certificate"
-        assert second["base_branch"] == first["head_branch"], (
-            "stacked PR unexpectedly retargeted: manual mathematical review required"
+        allowed_bases = (first["head_branch"], "main") if first["merged"] else (
+            first["head_branch"],)
+        assert second["base_branch"] in allowed_bases, (
+            "stacked PR unexpectedly retargeted: mathematical review required"
         )
-    assert second["state"] == "open", (
-        "source PR #23 was closed/merged: replan before executing stale branch"
+        return second["head_sha"]
+    assert second["merged"] and second["state"] == "closed", (
+        "source PR #23 closed without merge: replan before executing"
     )
-    return second["head_sha"]
+    return None  # main must be inspected separately after the merger
 
 
 def snapshot(study):
@@ -107,6 +114,15 @@ def snapshot(study):
     prs = {number: compact_pr(pr) for number, pr in raw.items()}
     issue = api_get(base + "/issues/" + str(study["source_next_issue"]))
     selected = select_source(study, prs)
+    if selected is None:
+        main = api_get(base + "/branches/main")
+        selected = main["commit"]["sha"]
+        assert HEX40.fullmatch(selected)
+        fetch_ref = "refs/heads/main"
+        revision_origin = "merged_default_branch"
+    else:
+        fetch_ref = "refs/pull/23/head"
+        revision_origin = "open_research_pr_head"
     runs = {}
     for number, pr in prs.items():
         try:
@@ -123,6 +139,8 @@ def snapshot(study):
                                  "reason": str(exc)[:500]}
     return {
         "source_head_sha": selected,
+        "source_fetch_ref": fetch_ref,
+        "source_revision_origin": revision_origin,
         "source_head_changed_since_registration":
             selected != study["source_head_at_registration"],
         "source_prs": {str(k): v for k, v in prs.items()},
@@ -151,18 +169,19 @@ def command(argv, *, cwd=None, stdout_file=None):
     return p.stdout.strip()
 
 
-def execute_full(study, sha, out, checkout):
-    """Run the exact PR head; retain all research output under out."""
+def execute_full(study, sha, fetch_ref, out, checkout):
+    """Run an inspected exact source revision; preserve evidence under out."""
+    assert fetch_ref in ("refs/pull/23/head", "refs/heads/main")
     assert HEX40.fullmatch(sha)
     checkout.mkdir(parents=True, exist_ok=True)
     command(["git", "init", "-q", str(checkout)])
     source = "https://github.com/" + study["source_repository"] + ".git"
     command(["git", "-C", str(checkout), "fetch", "--depth=1",
-             source, "refs/pull/23/head"])
+             source, fetch_ref])
     found = command(["git", "-C", str(checkout), "rev-parse", "FETCH_HEAD"])
     if found != sha:
         raise RuntimeError(
-            "PR head advanced between GitHub API inspection and fetch; "
+            "source ref advanced between GitHub API inspection and fetch; "
             "refusing mixed-revision research evidence"
         )
     command(["git", "-C", str(checkout), "checkout", "--detach", sha])
@@ -249,7 +268,8 @@ def run(mode, out, checkout=None):
         if mode == "full":
             if checkout is None:
                 raise ValueError("full mode requires --checkout outside imported trees")
-            evidence = execute_full(study, snap["source_head_sha"], out, checkout)
+            evidence = execute_full(study, snap["source_head_sha"],
+                                    snap["source_fetch_ref"], out, checkout)
             record["verified_experiment"] = evidence
             record["status"] = "finite_generic_candidate_verified"
         else:
