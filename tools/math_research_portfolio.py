@@ -77,9 +77,13 @@ def registry(root=ROOT):
         if id_ == "tiling-theory":
             assert track["mode"] == "specialized_akn"
             assert track["independent_experiment"] == "scheduled_by_akn_specialist"
-        elif id_ == "arithmetic-bicycle":
+        elif id_ in ("arithmetic-bicycle", "vizing-domination"):
             assert track["mode"] == "exact_fixture_adapter"
-            assert track["independent_experiment"] == "homelab_arithmetic_matroid_v1"
+            adapter_name = {
+                "arithmetic-bicycle": "homelab_arithmetic_matroid_v1",
+                "vizing-domination": "homelab_vizing_historical_casebase_v1",
+            }[id_]
+            assert track["independent_experiment"] == adapter_name
         else:
             assert track["mode"] == "source_evidence"
             assert track["independent_experiment"] == "requires_separate_verified_adapter"
