@@ -59,7 +59,7 @@ class ResearchPortfolio(unittest.TestCase):
 
     def test_known_git_blob_sha_and_independent_bytes(self):
         # This is Git's documented blob SHA1 for 'hello world\\n'.
-        raw = b"hello world\\n"
+        raw = b"hello world" + bytes([10])
         self.assertEqual(portfolio.git_blob_sha1(raw),
                          "557db03de997c86a4a028e1ebd3a1ceb225be238")
         with patch.object(portfolio, "resource") as api:
@@ -137,11 +137,13 @@ class ResearchPortfolio(unittest.TestCase):
         import tomllib
         from unittest.mock import mock_open
         old = portfolio.LOCKS.read_text()
-        altered = old + (
-            '\\n[[source]]\\nid = "new-math"\\nkind = "program"'
-            '\\nrepository = "larsbx/new-math"\\nvisibility = "public"'
-            '\\ncommit = "' + "a"*40 + '"\\ncommits = 1\\nfiles = 1'
-            '\\nimport = "history"\\nauthority = "retained"\\n')
+        new_source = [
+            "[[source]]", 'id = "new-math"', 'kind = "program"',
+            'repository = "larsbx/new-math"', 'visibility = "public"',
+            'commit = "' + "a"*40 + '"', 'commits = 1', 'files = 1',
+            'import = "history"', 'authority = "retained"'
+        ]
+        altered = old + chr(10) + chr(10).join(new_source) + chr(10)
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             (root/"policy").mkdir()
