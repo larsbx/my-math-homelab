@@ -64,3 +64,25 @@ open, then selects the inspected default-branch SHA after merge.
 It retains fail-closed evidence and never promotes a mathematical
 claim or edits a historically imported source tree. The source project
 remains authoritative for proofs and theorem status.
+
+## All-programme automated mathematics research
+
+The research portfolio registry
+[`policy/math-research-portfolio.toml`](policy/math-research-portfolio.toml)
+covers all **14 active mathematics programmes and two shared components**
+from `policy/source-locks.toml`. The
+[`math-estate-research.yml`](.github/workflows/math-estate-research.yml)
+workflow records exact source-head and CI/evidence provenance **daily at
+04:43 UTC** and runs four sharded per-programme **weekly research
+obligation cycles Tuesday at 05:47 UTC**.
+
+The scientific process, per-programme frontiers and autonomy levels are
+documented in
+[`docs/research/math-estate-programme.md`](docs/research/math-estate-programme.md).
+The exact AKN independent experiment remains a distinct specialist
+schedule: status 04:07 UTC daily and complete finite investigation
+04:17 UTC Monday. All other source research adapters must be reviewed
+before the homelab claims to execute independent mathematical proofs;
+their provenance and explicit verification backlog are scheduled now.
+Source mathematical authority and locked imported histories do not
+change.

@@ -91,3 +91,28 @@ Daily status snapshots and Monday full experiments are UTC-scheduled,
 with manually dispatched reruns for diagnosis. GitHub's schedule only
 becomes active once its workflow is merged into this repository's
 default branch.
+
+## Every-mathematics-programme research orchestration
+
+All 14 active programme source locks and both active shared-component
+locks are registered one-to-one in
+`policy/math-research-portfolio.toml`. The read-only portfolio
+coordinator `tools/math_research_portfolio.py` and workflow
+`.github/workflows/math-estate-research.yml` do daily source evidence
+acquisition and a four-shard weekly mathematical-obligation triage.
+
+The portfolio performs exact-revision source file/claim-surface
+fingerprints, independent Git blob digest replay, CI/issue/PR
+reconciliation and explicit negative evidence; it cannot grant claim
+authority and does not execute unreviewed arbitrary source code. It
+reports which 15 programme-specific independent mathematics adapters
+have not yet been built. The already established AKN specialist
+`tools/research_schedule.py` remains scheduled separately and is
+classified as an independently checked finite experiment, subject to
+its original source acceptance gate.
+
+See `docs/research/math-estate-programme.md` for the scientific
+process and honest completion boundary. All changes are in root
+`policy`, `tools`, `docs`, `.github/workflows`, and `tests`;
+they do not modify imported `programs/*` or `shared/*` content and
+do not transfer source claim authority.

@@ -1,0 +1,136 @@
+name: Mathematics estate — autonomous research portfolio
+
+on:
+  pull_request:
+    paths:
+      - "policy/math-research-portfolio.toml"
+      - "tools/math_research_portfolio.py"
+      - "tests/test_math_research_portfolio.py"
+      - "docs/research/math-estate-programme.md"
+      - ".github/workflows/math-estate-research.yml"
+      - "policy/source-locks.toml"
+  schedule:
+    - cron: '43 4 * * *'   # all 16 sources: status and exact evidence fingerprints
+    - cron: '47 5 * * 2'  # Tue UTC: four weekly sharded research cycles
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Validate registry, inspect every source, or execute weekly research cycles"
+        type: choice
+        required: true
+        default: daily
+        options: [validate, daily, weekly]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: math-estate-research-${{ github.event.schedule || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  registry-conformance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate 16 registered source boundaries and adversarial controls
+        run: |
+          set -euo pipefail
+          python tools/math_research_portfolio.py --mode validate
+          python -m unittest discover -s tests -p 'test_math_research_portfolio.py' -v
+
+  daily-source-research:
+    if: >-
+      github.event.schedule == '43 4 * * *' ||
+      (github.event_name == 'workflow_dispatch' && inputs.mode == 'daily')
+    needs: registry-conformance
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Collect source-head evidence and open scientific obligations
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python tools/math_research_portfolio.py --mode daily --out evidence-portfolio
+      - name: Preserve exact source provenance and errors for every programme
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-estate-daily-source-evidence
+          path: evidence-portfolio/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Include research state in Actions summary
+        if: always()
+        shell: bash
+        run: |
+          echo '## Mathematics estate: all registered source programmes' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Source claim authority retained; no mathematical theorems promoted.' >> "$GITHUB_STEP_SUMMARY"
+          if test -f evidence-portfolio/portfolio-index.json; then
+            echo '~~~json' >> "$GITHUB_STEP_SUMMARY"
+            cat evidence-portfolio/portfolio-index.json >> "$GITHUB_STEP_SUMMARY"
+            echo '~~~' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Evidence unavailable. Investigate failure; no acceptance.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+  weekly-programme-research:
+    if: >-
+      github.event.schedule == '47 5 * * 2' ||
+      (github.event_name == 'workflow_dispatch' && inputs.mode == 'weekly')
+    needs: registry-conformance
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently fingerprint current mathematical evidence and decide next research obligation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          python tools/math_research_portfolio.py \
+            --mode weekly --shard ${{ matrix.shard }} \
+            --out evidence-programme
+      - name: Preserve programme evidence, defects and proof-adapter gaps
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-estate-weekly-shard-${{ matrix.shard }}
+          path: evidence-programme/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Report bounded research obligations
+        if: always()
+        shell: bash
+        run: |
+          echo '## Mathematics research — shard ${{ matrix.shard }}' >> "$GITHUB_STEP_SUMMARY"
+          if test -f evidence-programme/portfolio-index.json; then
+            echo '~~~json' >> "$GITHUB_STEP_SUMMARY"
+            cat evidence-programme/portfolio-index.json >> "$GITHUB_STEP_SUMMARY"
+            echo '~~~' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Shard evidence unavailable; no claim accepted.' >> "$GITHUB_STEP_SUMMARY"
+          fi
