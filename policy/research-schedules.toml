@@ -1,0 +1,29 @@
+# Research scheduling is orchestration metadata, not mathematical authority.
+# Imported trees in programs/tiling-theory remain byte-identical at their source lock.
+version = 1
+
+[[study]]
+id = "akn-generic-atlas-and-singular-strata"
+program = "tiling-theory"
+claim_namespace = "TT"
+source_repository = "larsbx/tiling-theory-research"
+source_parent_pr = 22
+source_research_pr = 23
+source_next_issue = 24
+recorded_on = "2026-11-01"
+source_head_at_registration = "b1b956bef47813e7f299b6f3dbcd7b6b0c9bf951"
+authority = "source_retained"
+claim_status = "unpromoted-research"
+execution_strategy = "fetch_exact_pr_head"
+# Cron is in UTC. GitHub may start scheduled jobs later than the named minute.
+status_cron_utc = "7 4 * * *"
+full_cron_utc = "17 4 * * 1"
+max_depth = 15
+max_nodes = 100000
+expected_generic_regions = 21840
+expected_icosahedral_orbits = 24
+expected_stabilizer_conjugacy_types = 6
+singular_plane_probes = 105
+boundary_strata_exhaustive = false
+auto_merge = false
+auto_claim_promotion = false
