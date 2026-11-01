@@ -258,7 +258,7 @@ def run(mode, out, shard=None, select_ids=None):
                     fixture, source_commit=record["head_sha"],
                     source_sha256=fixture_sha)
                 (out/"arithmetic-bicycle-exact-adapter.json").write_text(
-                    json.dumps(verified, sort_keys=True, indent=2)+"\\n",
+                    json.dumps(verified, sort_keys=True, indent=2)+chr(10),
                     encoding="utf-8")
                 record["independent_exact_finite_adapter"] = {
                     "schema": verified["schema"],
