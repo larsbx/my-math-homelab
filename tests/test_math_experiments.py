@@ -1,5 +1,6 @@
 """Independent replay acceptance and adversarial controls, offline and bounded."""
 from copy import deepcopy
+from contextlib import ExitStack
 from hashlib import sha1, sha256
 from itertools import product
 import json
@@ -222,12 +223,24 @@ class IndependentExperiment(unittest.TestCase):
         def experiment(*args,**kwargs):
             return {"state":"verified_finite","source_revision":self.spec["source_revision"],
                     "next_mathematical_obligation":"ABC-RD-01"}
-        with tempfile.TemporaryDirectory() as temp, patch.object(portfolio,"observe",side_effect=observed), patch.object(executor,"execute",side_effect=experiment) as run:
+        with tempfile.TemporaryDirectory() as temp, ExitStack() as stack:
+            stack.enter_context(patch.object(portfolio,"observe",side_effect=observed))
+            run=stack.enter_context(patch.object(executor,"execute",side_effect=experiment))
+            old_ab=stack.enter_context(patch("math_adapters.arithmetic_bicycle.verify_fixture"))
+            stack.enter_context(patch.object(portfolio,"verified_source_text",return_value=("graph6", "c"*64)))
+            stack.enter_context(patch.object(portfolio,"verified_source_json",return_value=({}, "d"*64)))
+            vd=stack.enter_context(patch("math_adapters.vizing_domination.verify_casebase",return_value={
+                "schema":"VD-REPLAY", "verdict":"historical_casebase_verified", "n_graphs":16,
+                "iso_classes":3, "source_sha256":{"graph6":"c"*64,"classes":"d"*64},
+                "scope":"historical fixtures only", "next_research_obligation":"authoritative census"}))
             portfolio.run("daily",Path(temp)/"daily")
             run.assert_not_called()
+            vd.assert_not_called()
             for shard in range(4):
                 self.assertEqual(portfolio.run("weekly",Path(temp)/str(shard),shard=shard),0)
             self.assertEqual(run.call_count,1)
+            self.assertEqual(vd.call_count,1)
+            old_ab.assert_not_called()
             self.assertEqual(run.call_args.kwargs["observed_source_head"],"b"*40)
             record=json.loads((Path(temp)/"0/arithmetic-bicycle.json").read_text())
             self.assertEqual(record["evidence_state"],"source_ci_pending")

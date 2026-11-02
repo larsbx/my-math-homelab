@@ -105,10 +105,12 @@ The portfolio performs exact-revision source file/claim-surface
 fingerprints, independent Git blob digest replay, CI/issue/PR
 reconciliation and explicit negative evidence; it cannot grant claim
 authority and does not execute unreviewed arbitrary source code. It
-registers a pinned arithmetic-bicycle finite adapter in its weekly shard
-and reports the other 14 programme-specific adapter gaps. Local executors
-are statically allowlisted, hash-bound, resource-limited and run without
-inherited credentials; they never execute source scripts. The two independent
+registers a pinned arithmetic-bicycle finite adapter in its weekly shard,
+preserves Vizing's weekly historical graph6 replay, and reports the other
+13 programme-specific adapter gaps. The earlier arithmetic-bicycle adapter
+remains an offline oracle, with no duplicate scheduled dispatch. The new
+arithmetic-bicycle executor is statically allowlisted, hash-bound, resource-limited
+and runs without inherited credentials; it never executes source scripts. The two independent
 methods and reusable contract are documented in
 `docs/research/independent-experiment-contract.md`. The established AKN
 specialist

@@ -85,7 +85,10 @@ schedule: status 04:07 UTC daily and complete finite investigation
 adds pinned finite-module enumeration, independent Smith/Gram and lattice
 verification, malicious mutation controls and bounded credential-free execution
 once in weekly shard 0. It preserves all retractions and distinguishes the
-proved surjective domain. Fourteen further adapters remain a visible backlog.
+proved surjective domain. Vizing retains its independent historical graph6
+replay in the same weekly portfolio. Thirteen further adapters remain a
+visible backlog. The earlier arithmetic-bicycle implementation is retained
+for offline conformance, with no second scheduled execution.
 Finite replay never promotes a theorem; hosted acceptance remains a separate gate.
 Source mathematical authority and locked imported histories do not
 change.

@@ -151,7 +151,7 @@ CI replays conformance on PR changes and manual `validate`. Routine daily and
 weekly registry validation does not run the pilot conformance suite: recurring
 research execution occurs once in weekly shard 0. After review/merge, inspect
 the first actual weekly artifact before claiming hosted scheduled acceptance.
-Issue #10 stays open for the other programmes and the acceptance gate; do not
+Issue #10 stays open for the remaining 13 programmes and the acceptance gate; do not
 check off a source solely because adapter code or offline tests exist.
 
 **Next mathematical obligation:** source task ABC-RD-01, identifying the extra
@@ -178,3 +178,13 @@ the finite answers or the source's retractions. See the PR's exact-head CI
 and attached runtime artifacts for hosted acceptance; the checked-in worker
 receipt binds the implementation and inputs by SHA-256 without embedding a
 self-referential commit ID.
+
+## Reconciliation with main (November 2, 2026)
+
+Main also added arithmetic-bicycle and Vizing finite adapters in PR #12.
+The pinned resource-limited pilot replaces the earlier arithmetic-bicycle
+weekly dispatch; the earlier implementation and its tests remain an offline
+cross-check. Vizing's weekly graph6 dispatch and conformance remain intact.
+A shard regression verifies one arithmetic-bicycle execution and one Vizing
+execution per complete weekly cycle, with neither running in daily collection.
+The portfolio now has three specialized lanes and 13 remaining adapter gaps.

@@ -30,7 +30,8 @@ retention, scientific frontier, and claim-governance rules. The AKN track
 has an existing exact enumeration + independent-verifier executor.
 The arithmetic-bicycle track now has a pinned independent finite replay,
 using the [experiment contract](independent-experiment-contract.md).
-The other **14 tracks lack a configured independent experiment**: their
+Vizing retains its independently checked historical graph6 adapter.
+The other **13 tracks lack a configured independent experiment**: their
 research-specific experiments, independent checkers and execution policies must be separately reviewed and registered before execution.
 The scheduler makes that onboarding obligation visible in every report.
 Even AKN does not prove a universal theorem by running a finite job.
@@ -73,7 +74,7 @@ authorities.
 | pisot-vijayaraghavan | Bounded exact auxiliary calculations, with the classical PV problem still open. | Needs reviewed adapter |
 | s-adic-pisot | Independently verify theorem-scope assumptions and finite Selmer/Brun censuses. | Needs reviewed adapter |
 | tiling-theory | 21,840 generic AKN chambers, 24 star orbits, six stabilizer conjugacy types, 105 singular probes. | Specialized exact executor; hosted acceptance still required |
-| vizing-domination | Exact graph-census representatives and provenance of the missing larger catalogue. | Needs reviewed adapter |
+| vizing-domination | Exact historical 16-to-3 graph6 isomorphism and 16 domination-number-four witnesses; 491 census remains unavailable. | Independent finite historical adapter implemented; hosted acceptance pending |
 | finite-math-kernels | Cross-consumer exact kernel/canonical-record compatibility. | Shared-component adapter needed |
 | math-vizops | Source-owned proof/evidence attachment and scene reproducibility; no theorem acceptance. | Shared-component adapter needed |
 
@@ -162,6 +163,48 @@ explicitly retired or transferred under the estate contract.
 are registered and scheduled for *research governance and evidence
 triage*. AKN retains its specialist. Arithmetic-bicycle now has a bounded
 independent finite replay integrated into its existing weekly shard, pending PR review
-and hosted acceptance. The other 14 adapters remain an explicit backlog.
+and hosted acceptance. The other 13 adapters remain an explicit backlog; Vizing retains its
+existing weekly adapter.
 See [independent-experiment-contract.md](independent-experiment-contract.md)
 for the reusable implementation and acceptance pattern.
+
+## Independent Vizing historical graph-corpus adapter
+
+`tools/math_adapters/vizing_domination.py` now provides a second
+**source-SHA-pinned, independently checked finite programme adapter**.
+It fetches the 16 historical graph6 records and the declared A/A-class/B
+partition from the source's exact revision, verifying their Git blob
+SHA-1 and independent SHA-256 provenance.
+
+Unlike the source's canonical degree-IR labeling, the adapter performs
+exhaustive adjacency-preserving isomorphism search with degree and
+neighborhood-degree pruning. Every claimed equivalence comes with a
+literal bijection checked against all ordered vertex pairs; class
+representatives are also exhaustively tested for non-isomorphism.
+A separate exact subset-enumeration calculation establishes
+`gamma(G)=4` for each of the 16 historical ten-vertex graphs.
+
+The finite result is **16 records in exactly three isomorphism classes
+of sizes 1, 14 and 1**. The authoritative reported **491-entry**
+census remains unavailable. Neither these 16 specimens nor the
+completed small-graph domination numbers settle Vizing's general
+domination conjecture. A missing source entry, invalid graph6 padding,
+misassigned class, fake source promotion or non-isomorphic graph in
+a class fails closed; no source oracle is executed.
+
+This is a second source-specific finite adapter. The homelab now has
+**three mathematically specialized lanes** (AKN, arithmetic-bicycle
+and Vizing), leaving **13 registered source tracks** needing reviewed
+independent experiment adapters.
+
+
+## Arithmetic-bicycle implementation consolidation
+
+The resource-limited `arithmetic-bicycle-v1` executor is the single scheduled
+arithmetic-bicycle path, covering 12 matrices and 36 cases from pinned source
+fixtures with Gram/Smith and integral-lattice verification. The earlier
+`tools/math_adapters/arithmetic_bicycle.py` implementation remains an offline
+conformance oracle with its original tests and annihilator-profile checks. It
+is not dispatched alongside the pinned pilot. The source-proved surjective
+theorem remains a baseline; the next open obligation concerns nonsurjective
+lattice data. No retracted conjecture is reinstated.

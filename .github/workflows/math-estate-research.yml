@@ -7,11 +7,13 @@ on:
       - "tools/math_research_portfolio.py"
       - "tools/math_experiments.py"
       - "tools/experiments/**"
+      - "tools/math_adapters/**"
       - "policy/math-experiments.toml"
       - "policy/fixtures/**"
       - "tests/test_math_experiments.py"
       - "docs/research/independent-experiment-contract.md"
       - "tests/test_math_research_portfolio.py"
+      - "tests/test_*_adapter.py"
       - "docs/research/math-estate-programme.md"
       - ".github/workflows/math-estate-research.yml"
       - "policy/source-locks.toml"
@@ -57,6 +59,8 @@ jobs:
         run: |
           set -euo pipefail
           python -m unittest discover -s tests -p 'test_math_experiments.py' -v
+          python -m unittest discover -s tests -p 'test_arithmetic_bicycle_adapter.py' -v
+          python -m unittest discover -s tests -p 'test_vizing_domination_adapter.py' -v
           python tools/math_experiments.py --out evidence-conformance/arithmetic-bicycle
 
       - name: Preserve exact-revision pilot conformance evidence
