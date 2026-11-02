@@ -1,0 +1,202 @@
+# Conservative claim registry for Arithmetic Bicycle Conjecture research.
+
+# Research task ABC-HULL-01 is closed by the separate ABC-CODE-HULL-TOWER
+# proof record below, not by promoting the research queue or Python evidence.
+
+[meta]
+namespace = "ABC"
+status_values = ["open", "working", "computed", "proved", "retracted"]
+
+[[claim]]
+id = "ABC-MAIN"
+title = "Arithmetic Bicycle Conjecture"
+status = "retracted"
+statement = "For a torsion-free representable arithmetic matroid, the compatible modular bicycle tower is independent of the chosen integral realization."
+authority = "repository_counterexample_proof_record"
+counterexample_record = "proof/arithmetic-realization-counterexample.md"
+audit_record = "docs/audits/arithmetic-matroid-2026-10-14.md"
+evidence = ["oracles/arithmetic_matroid.py", "conformance/fixtures/arithmetic-matroid-v1.json", "conformance/test_arithmetic_matroid.py", "conformance/replay_arithmetic_matroid.py", "conformance/receipts/arithmetic-matroid-v1.json"]
+notes = "Refuted on 2026-10-14: A=((1,1),(0,5)) and A'=((1,2),(0,5)) have identical complete arithmetic data but bicycle orders one and five at moduli 5 and 10. Both are essential and torsion-free, with m(E)=5. The earlier universal torsion-model withdrawal is a separate negative result."
+
+[[claim]]
+id = "ABC-GRAPH-MODULAR-BICYCLE"
+title = "Graph modular bicycle theorem"
+status = "proved"
+statement = "For every finite nonempty connected undirected multigraph G and integer n >= 2, K(G)[n] is naturally isomorphic to im(B^T mod n) intersect ker(B mod n), equivariantly under graph isomorphisms and compatibly with reduction and inflation across dividing moduli."
+authority = "repository_integral_proof_record"
+proof_record = "proof/graph-modular-bicycle.md"
+audit_record = "docs/audits/graph-modular-bicycle-2026-10-09.md"
+evidence = [
+  "oracles/graph_snf.py",
+  "conformance/fixtures/graph-modular-bicycle-v1.json",
+  "conformance/test_graph_modular_bicycle.py",
+  "conformance/test_graph_modular_bicycle_audit.py",
+  "conformance/replay_graph_modular_bicycle.py",
+  "conformance/receipts/graph-modular-bicycle-v1.json"
+]
+notes = "Arbitrary-n integral proof with both inverse directions and representative independence. Composite-modulus evidence uses independent all-minors Smith factors and critical quotient enumeration. This promotes the graph case only."
+
+[[claim]]
+id = "ABC-REGULAR-MODULAR-BICYCLE"
+title = "Fixed-TU modular bicycle theorem"
+status = "proved"
+statement = "For a fixed full-row-rank TU representation A and every integer n >= 2, the n-torsion of coker(AA^T) is naturally isomorphic to im(A^T mod n) intersect ker(A mod n), compatibly with reduction and inflation across dividing moduli and equivariantly under specified unimodular row changes and signed column permutations."
+authority = "repository_integral_proof_record"
+proof_record = "proof/regular-modular-bicycle.md"
+audit_record = "docs/audits/regular-modular-bicycle-independent-2026-10-09.md"
+evidence = [
+  "oracles/regular_snf.py",
+  "oracles/graph_snf.py",
+  "conformance/fixtures/regular-modular-bicycle-v1.json",
+  "conformance/test_regular_modular_bicycle.py",
+  "conformance/test_regular_modular_bicycle_audit.py",
+  "conformance/replay_regular_modular_bicycle.py",
+  "conformance/receipts/regular-modular-bicycle-v1.json"
+]
+notes = "An integral right inverse supplies representative independence over arbitrary composite rings. Independent cycle completion, all-minor Smith factors, and Gram quotient enumeration support the proof. This is the fixed-TU case; general regular-matroid representation independence remains a separate gate."
+
+[[claim]]
+id = "ABC-FIXED-REALIZATION-ORDER"
+title = "Fixed realization determinant order"
+status = "working"
+statement = "For a full-row-rank integral realization A, det(AA^T) equals the sum of squared maximal minors; in the TU case it counts bases."
+authority = "standard_cauchy_binet_pending_source_record"
+
+[[claim]]
+id = "ABC-REALIZATION-INVARIANCE"
+title = "Arithmetic realization invariance"
+status = "retracted"
+statement = "The compatible modular bicycle tower depends only on the arithmetic matroid rather than the chosen integral realization."
+authority = "repository_counterexample_proof_record"
+counterexample_record = "proof/arithmetic-realization-counterexample.md"
+audit_record = "docs/audits/arithmetic-matroid-2026-10-14.md"
+evidence = ["oracles/arithmetic_matroid.py", "conformance/fixtures/arithmetic-matroid-v1.json", "conformance/test_arithmetic_matroid.py", "conformance/replay_arithmetic_matroid.py", "conformance/receipts/arithmetic-matroid-v1.json"]
+notes = "The two-realization order discrepancy refutes even the isomorphism-class assertion, independently of orientation, labeling, or compatibility choices. A corrected restricted-domain conjecture must receive a separate statement."
+
+[[claim]]
+id = "ABC-PROJECTIVE-SHADOW"
+title = "Projective/Grassmannian shadow"
+status = "working"
+statement = "Over finite fields, cut and cycle spaces define Grassmannian incidence data whose intersection is the modular bicycle space."
+authority = "structural_view_pending_writeup"
+notes = "Derived field-valued shadow only; not authority for integral torsion."
+
+[[claim]]
+id = "ABC-UNIVERSAL-TORSION-MODEL"
+title = "Withdrawn universal finite-group strengthening"
+status = "retracted"
+statement = "For every torsion-free representable arithmetic matroid, there exists a canonical finite abelian group H with H[n] isomorphic to every modular bicycle module of a realization, for all n >= 2."
+authority = "repository_counterexample_proof_record"
+counterexample_record = "proof/arithmetic-torsion-model-obstruction.md"
+audit_record = "docs/audits/regular-modular-bicycle-independent-2026-10-09.md"
+evidence = [
+  "conformance/fixtures/regular-modular-bicycle-v1.json",
+  "conformance/test_regular_modular_bicycle.py",
+  "conformance/test_regular_modular_bicycle_audit.py",
+  "conformance/replay_regular_modular_bicycle.py",
+  "conformance/receipts/regular-modular-bicycle-v1.json"
+]
+notes = "The bootstrap folded this false strengthening into ABC-MAIN. A=[2] in Z has m(empty)=1 and m(E)=2, with Bic_2=0 and Bic_4=Z/2; H[2]=0 forces H[4]=0 for every abelian group. Retraction does not decide realization invariance."
+
+[[claim]]
+id = "ABC-REGULAR-REPRESENTATION-INVARIANCE"
+title = "Regular TU representation-independence theorem"
+status = "proved"
+statement = "For full-row-rank TU integer representations of a regular matroid and a specified matroid label isomorphism, an integral unimodular row change and signed column permutation induce isomorphisms of the entire modular bicycle tower, compatible with both modulus maps and the Gram-cokernel torsion identifications. The tower's isomorphism class depends only on the regular matroid."
+authority = "repository_integral_proof_record"
+proof_record = "proof/regular-representation-independence.md"
+audit_record = "docs/audits/regular-representation-independence-2026-10-11.md"
+evidence = [
+  "oracles/regular_equivalence.py",
+  "conformance/fixtures/regular-representation-v1.json",
+  "conformance/test_regular_representation.py",
+  "conformance/replay_regular_representation.py",
+  "conformance/receipts/regular-representation-v1.json",
+  "sources/regular-representation-equivalence.md"
+]
+notes = "Unit-basis normal forms and integral cycle-sign cancellation establish the prescribed labeled equivalence. One witness transports all moduli. Comparison maps depend on the chosen witness; no unique canonical comparison or arithmetic realization-invariance result is asserted."
+
+[[claim]]
+id = "ABC-ARITHMETIC-SIGNATURE"
+title = "Exact essential arithmetic-matroid signature"
+status = "proved"
+statement = "For an essential integer realization in its declared free ambient lattice, the rank of every subset is its number of nonzero Smith factors and its arithmetic multiplicity is their product. Complete all-subset rank/multiplicity equality under a prescribed label bijection is exact equality of the represented arithmetic data."
+authority = "repository_integral_proof_record"
+proof_record = "proof/arithmetic-matroid-signature.md"
+audit_record = "docs/audits/arithmetic-matroid-2026-10-14.md"
+evidence = ["oracles/arithmetic_matroid.py", "conformance/fixtures/arithmetic-matroid-v1.json", "conformance/test_arithmetic_matroid.py", "conformance/replay_arithmetic_matroid.py", "conformance/receipts/arithmetic-matroid-v1.json", "sources/arithmetic-matroid-background.md"]
+notes = "Certificate-based Euclidean reduction is cross-checked against independent rectangular determinantal divisors. The executable domain is essential; equality does not certify realization equivalence or bicycle invariance."
+
+[[claim]]
+id = "ABC-ARITHMETIC-REALIZATION-COUNTEREXAMPLE"
+title = "Rank-two arithmetic bicycle realization counterexample"
+status = "proved"
+statement = "The essential integer realizations A=((1,1),(0,5)) and A'=((1,2),(0,5)) in Z^2 have common labeled subset ranks (0,1,1,2) and multiplicities (1,1,1,5), but Bic_5 and Bic_10 have orders one for A and five for A'. Thus the compatible modular bicycle tower is not an invariant of the torsion-free arithmetic matroid."
+authority = "repository_counterexample_proof_record"
+proof_record = "proof/arithmetic-realization-counterexample.md"
+audit_record = "docs/audits/arithmetic-matroid-2026-10-14.md"
+evidence = ["oracles/arithmetic_matroid.py", "conformance/fixtures/arithmetic-matroid-v1.json", "conformance/test_arithmetic_matroid.py", "conformance/replay_arithmetic_matroid.py", "conformance/receipts/arithmetic-matroid-v1.json", "sources/arithmetic-matroid-background.md"]
+notes = "Direct cut/cycle congruences give the elementary proof, including mixed-composite modulus 10. Complete arithmetic data and modular lattice membership are independently checked. Graph and TU results remain valid; nonsurjective arithmetic realizations are inside the original conjecture's domain."
+
+[[claim]]
+id = "ABC-SURJECTIVE-REALIZATION-INVARIANCE"
+title = "Essential surjective arithmetic realization-invariance theorem"
+status = "proved"
+statement = "For essential realizations of a torsion-free representable arithmetic matroid with m(E)=1 in declared free ambient lattices, every prescribed arithmetic label isomorphism admits an integral unimodular row change and signed column equivalence. One witness induces isomorphisms of the entire modular bicycle tower and Gram cokernels, with Bic_n(A) isomorphic to coker(AA^T)[n] for every n >= 2, compatible with reduction and inflation. The tower isomorphism class is independent of realization; comparison maps need not be unique."
+authority = "repository_integral_proof_record"
+proof_record = "proof/surjective-realization-invariance.md"
+audit_record = "docs/audits/surjective-realization-invariance-2026-10-15.md"
+evidence = [
+  "oracles/surjective_equivalence.py",
+  "oracles/arithmetic_matroid.py",
+  "oracles/regular_snf.py",
+  "conformance/fixtures/surjective-representation-v1.json",
+  "conformance/test_surjective_representation.py",
+  "conformance/replay_surjective_representation.py",
+  "conformance/receipts/surjective-representation-v1.json",
+  "sources/surjective-representation-equivalence.md"
+]
+notes = "Surjectivity m(E)=1 is additional to torsion-free m(empty)=1. A Smith-derived splitting needs no unit maximal minor. Equal normalized minor magnitudes give rational support-sign equivalence; surjectivity makes it integral. The source audit identifies established representation uniqueness; the local record proves labeled transport over every modulus. ABC-MAIN, ABC-REALIZATION-INVARIANCE, and ABC-UNIVERSAL-TORSION-MODEL remain retracted."
+
+[[claim]]
+id = "ABC-SURJECTIVE-SQUARE-TRIVIALITY"
+title = "Square surjective bicycle triviality"
+status = "proved"
+statement = "Every square integer surjection is unimodular and has zero modular cycle kernel and zero bicycle module for every integer n >= 2."
+authority = "repository_integral_proof_record"
+proof_record = "proof/surjective-boundary-cases.md"
+audit_record = "docs/audits/phase6-boundaries-2026-10-15.md"
+evidence = ["conformance/test_phase6_boundaries.py", "oracles/arithmetic_matroid.py", "oracles/regular_snf.py", "conformance/receipts/phase6-rank-two-v1.json"]
+notes = "Direct elementary proof independent of the general surjective uniqueness theorem. Loops are detected by singleton ranks, not multiplicities alone. Original unrestricted claims remain retracted."
+
+[[claim]]
+id = "ABC-RANK-ONE-REALIZATION-INVARIANCE"
+title = "Rank-one labeled bicycle tower invariance"
+status = "proved"
+statement = "Any two essential rank-one integer realizations with identical labeled arithmetic data differ by column signs. Those signs identify their bicycle towers for every modulus and commute with reduction and inflation, without requiring surjectivity."
+authority = "repository_integral_proof_record"
+proof_record = "proof/surjective-boundary-cases.md"
+audit_record = "docs/audits/phase6-boundaries-2026-10-15.md"
+evidence = ["conformance/test_phase6_boundaries.py", "oracles/arithmetic_matroid.py", "oracles/regular_snf.py", "conformance/receipts/phase6-rank-two-v1.json"]
+notes = "Direct elementary proof independent of the general surjective uniqueness theorem. Loops are detected by singleton ranks, not multiplicities alone. Original unrestricted claims remain retracted."
+
+[[claim]]
+id = "ABC-PHASE6-RANK-TWO-CENSUS"
+title = "Bounded rank-two surjective realization census"
+status = "computed"
+statement = "Exhaustive surjective searches in the 2-by-3 entry box [-2,2] and 2-by-4 entry box [-1,1] find no equal-arithmetic-data bicycle discrepancy at the recorded moduli; explicit signed integral witnesses and independent representative edge oracles are checked."
+authority = "replayable_finite_computation"
+audit_record = "docs/audits/phase6-boundaries-2026-10-15.md"
+evidence = ["experiments/surjective_rank_two.py", "conformance/receipts/phase6-rank-two-v1.json"]
+notes = "Finite scope only. Every admitted matrix receives complete signature, Smith and witness checks; edge/lattice enumeration covers one representative per arithmetic bucket, while potential/transport enumeration covers every matrix at moduli 2,3,4,6. The general result comes from ABC-SURJECTIVE-REALIZATION-INVARIANCE."
+
+[[claim]]
+id = "ABC-CODE-HULL-TOWER"
+title = "Euclidean code-hull quotient and modular tower interface"
+status = "proved"
+statement = "For every rectangular integer matrix A and every n >= 2, Hull(im A^T) = im A^T intersect ker A is naturally isomorphic to ker(AA^T)/ker(A^T) over Z/n. Reduction and scaled inflation descend to the quotient, commute with this isomorphism, compose across dividing moduli, and have both round trips equal to multiplication by the modulus ratio. Standard-pairing isometries are exactly S^T S=I at each modulus; coherent orthogonal edge and invertible row witnesses transport the tower, and a fixed integral edge isometry at every modulus is exactly a signed permutation."
+authority = "repository_ring_proof_record"
+proof_record = "proof/code-hull-tower.md"
+audit_record = "docs/audits/code-hull-tower-2026-10-16.md"
+evidence = ["kernel/code_hull.py", "conformance/fixtures/code-hull-tower-v1.json", "conformance/test_code_hull.py", "conformance/replay_code_hull.py", "conformance/receipts/code-hull-tower-v1.json", "experiments/realization_dependence.py", "oracles/arithmetic_matroid.py"]
+notes = "Elementary ring proof without essentiality, surjectivity, or field-rank assumptions. Quotient inflation is injective; reduction need not be onto. Proof record supplies authority; finite receipts and Python do not. No machine-checked formalization, novelty, or nonsurjective classification is claimed. ABC-MAIN, ABC-REALIZATION-INVARIANCE, and ABC-UNIVERSAL-TORSION-MODEL remain retracted."

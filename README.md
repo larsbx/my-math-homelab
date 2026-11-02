@@ -81,11 +81,14 @@ documented in
 [`docs/research/math-estate-programme.md`](docs/research/math-estate-programme.md).
 The exact AKN independent experiment remains a distinct specialist
 schedule: status 04:07 UTC daily and complete finite investigation
-04:17 UTC Monday. Two additional opt-in finite-source adapters
-(Arithmetic Bicycle and Vizing Domination) now independently replay
-the source's explicit counterexample/graph specimens each Tuesday.
-They do not prove any universal conjecture. The remaining 13 source
-tracks retain read-only monitoring and an explicit backlog for
-independently checked mathematical experiment adapters.
+04:17 UTC Monday. The [arithmetic-bicycle pilot](docs/research/independent-experiment-contract.md)
+adds pinned finite-module enumeration, independent Smith/Gram and lattice
+verification, malicious mutation controls and bounded credential-free execution
+once in weekly shard 0. It preserves all retractions and distinguishes the
+proved surjective domain. Vizing retains its independent historical graph6
+replay in the same weekly portfolio. Thirteen further adapters remain a
+visible backlog. The earlier arithmetic-bicycle implementation is retained
+for offline conformance, with no second scheduled execution.
+Finite replay never promotes a theorem; hosted acceptance remains a separate gate.
 Source mathematical authority and locked imported histories do not
 change.

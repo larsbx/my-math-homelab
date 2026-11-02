@@ -28,18 +28,11 @@ stated hypothesis / exact definition / imported assumptions
 subject to the same recurring provenance, CI/issue/PR review, evidence
 retention, scientific frontier, and claim-governance rules. The AKN track
 has an existing exact enumeration + independent-verifier executor.
-A second narrowly scoped adapter now covers the **Arithmetic Bicycle**
-source's six registered finite fixture families: one computation
-enumerates modular potentials and cut-cycle intersections; an independent
-checker enumerates edge vectors and tests image membership using exact
-gcds of maximal lattice minors. The latest source fixture is fetched
-at the inspected immutable SHA, with Git blob and SHA-256 checks.
-Its original realization-invariance conjecture remains **refuted**.
-
-The other **13 tracks** are not falsely marked as possessing an
-independent mathematical experiment: their research-specific
-experiments, independent checkers, and autonomous hypothesis-selection
-policies must be separately reviewed and registered before execution.
+The arithmetic-bicycle track now has a pinned independent finite replay,
+using the [experiment contract](independent-experiment-contract.md).
+Vizing retains its independently checked historical graph6 adapter.
+The other **13 tracks lack a configured independent experiment**: their
+research-specific experiments, independent checkers and execution policies must be separately reviewed and registered before execution.
 The scheduler makes that onboarding obligation visible in every report.
 Even AKN does not prove a universal theorem by running a finite job.
 
@@ -48,7 +41,7 @@ Even AKN does not prove a universal theorem by running a finite job.
 | Trigger | Scope | Activity |
 | --- | --- | --- |
 | Daily `43 4 * * *` | Every active repo | Inspect current default-branch SHA, source exact-file evidence, PRs, issues and CI; preserve a per-programme immutable-revision record. |
-| Tuesday `47 5 * * 2` | Every active repo, four shards | Conduct source-bound evidence/falsification triage and issue-specific mathematical next-step planning; explicitly flag missing independent proof adapters. |
+| Tuesday `47 5 * * 2` | Every active repo, four shards | Conduct source-bound evidence/falsification triage and issue-specific mathematical next-step planning; execute the reviewed arithmetic-bicycle adapter once in shard 0; flag remaining adapter gaps. |
 | Monday `17 4 * * 1` | AKN specialist | Execute exact complete 135-plane AKN chamber candidate and independent 2D-section replay, then checked bounded singular probes. |
 | Daily `7 4 * * *` | AKN specialist | Record exact source PR/issue/check status. |
 | PR updates | Homelab registry and scheduler files | Offline conformance, strict registration, mutation/regression tests. |
@@ -68,7 +61,7 @@ authorities.
 
 | Programme | Exact question / near-term research obligation | Independent experiment status |
 | --- | --- | --- |
-| arithmetic-bicycle | Exact 6-fixture code-hull and lattice-index cross-check at prime, prime-power and composite moduli; preserve **refuted** invariance. | Independent finite-fixture adapter implemented; hosted acceptance pending |
+| arithmetic-bicycle | Preserve the rank-two refutation, test the proved surjective domain, and investigate extra nonsurjective lattice data. | Pinned independent finite adapter; hosted acceptance pending |
 | bulb-ford | Reproduce finite exact P0/P2/P6 bulb/Ford evidence without using analytical limits as finite proof. | Needs reviewed adapter |
 | closure-fiber | Investigate exact identity fibers and literature dependence in algebraic-group closure. | Needs reviewed adapter |
 | finite-julia | Certificate-carrying dynamical-plane finite tests and consumer compatibility. | Needs reviewed adapter |
@@ -138,7 +131,9 @@ research cycle only after it has:
 
 This is not a licence for the homelab to execute unreviewed source
 scripts with its GitHub credentials. The AKN specialist is a separate
-opt-in research execution path. Additional opt-in runners should be
+opt-in research execution path. Arithmetic-bicycle is the first local
+adapter candidate under review under `policy/math-experiments.toml`; it executes no source
+scripts. Additional opt-in runners should be
 isolated, resource-limited and explicitly reviewed.
 
 ## Commands
@@ -166,10 +161,12 @@ explicitly retired or transferred under the estate contract.
 
 **Current completion boundary:** All 16 current active math sources
 are registered and scheduled for *research governance and evidence
-triage* once this workflow merges. Full generic-chamber independent exact research remains AKN-specialized;
-the Arithmetic Bicycle six-specimen finite module replay is newly implemented.
-The other 13 individual adapters are an explicit backlog, not silently
-counted as accomplished.
+triage*. AKN retains its specialist. Arithmetic-bicycle now has a bounded
+independent finite replay integrated into its existing weekly shard, pending PR review
+and hosted acceptance. The other 13 adapters remain an explicit backlog; Vizing retains its
+existing weekly adapter.
+See [independent-experiment-contract.md](independent-experiment-contract.md)
+for the reusable implementation and acceptance pattern.
 
 ## Independent Vizing historical graph-corpus adapter
 
@@ -200,29 +197,14 @@ This is a second source-specific finite adapter. The homelab now has
 and Vizing), leaving **13 registered source tracks** needing reviewed
 independent experiment adapters.
 
-## Independent Arithmetic Bicycle finite adapter (next rollout)
 
-The adapter `tools/math_adapters/arithmetic_bicycle.py` is a
-source-SHA-bound **independent finite negative-control verifier**.
-For the six cases in
-`conformance/fixtures/realization-dependence-v1.json` it computes
-`im(A^T mod n) intersect ker(A mod n)` by enumerating potentials,
-and separately enumerates the **edge vectors** `x` subject to
-`Ax=0 mod n` while checking `x in im(A^T mod n)` by integer
-lattice-index equality:
-`[Z^m : (A^T Z^r + n Z^m)] =
- [Z^m : (A^T Z^r + n Z^m + Z x)]`.
+## Arithmetic-bicycle implementation consolidation
 
-Both procedures use exact integer arithmetic and cover the registered
-prime, prime-power and mixed-composite moduli, including 26. They compare
-the **actual finite sets**, not only their orders. The strict finite
-scope includes the rank-two realization-invariance counterexample at
-5 and 10, and an equal-order control at 25. It also records group
-annihilator profiles and exact fixture hashes.
-
-A source fixture change, inconsistent expected order, altered matrix
-or algorithm disagreement fails the weekly shard. Its artifacts retain
-the counterexample; this **does not reinstate** the refuted conjecture
-or prove its prospective surjective restriction. The next candidate
-obligation concerns the source's surjective essential domain with
-`m(E)=1`, independently of this refuted general domain.
+The resource-limited `arithmetic-bicycle-v1` executor is the single scheduled
+arithmetic-bicycle path, covering 12 matrices and 36 cases from pinned source
+fixtures with Gram/Smith and integral-lattice verification. The earlier
+`tools/math_adapters/arithmetic_bicycle.py` implementation remains an offline
+conformance oracle with its original tests and annihilator-profile checks. It
+is not dispatched alongside the pinned pilot. The source-proved surjective
+theorem remains a baseline; the next open obligation concerns nonsurjective
+lattice data. No retracted conjecture is reinstated.

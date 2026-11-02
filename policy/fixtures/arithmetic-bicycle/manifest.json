@@ -1,0 +1,87 @@
+{
+  "next_mathematical_obligation": "ABC-RD-01: in the source repository, identify the extra lattice data needed for nonsurjective towers; expand only reviewed pinned finite fixtures. No general classification follows from this replay.",
+  "realization_cases": {
+    "index5-a1": [
+      5,
+      10,
+      25
+    ],
+    "index5-a2": [
+      5,
+      10,
+      25
+    ],
+    "rankzero": [
+      2,
+      4
+    ],
+    "scalar2": [
+      2,
+      4,
+      8,
+      12
+    ]
+  },
+  "schema": "HOMELAB-AB-FIXTURES-1",
+  "snapshots": [
+    {
+      "git_blob_sha1": "760ff4b4556f0f0dfb0fa3bc096544341678c78c",
+      "path": "conformance/fixtures/arithmetic-matroid-v1.json",
+      "sha256": "706b9798ef5eae2c88b075dad78b76f32f27358d2a00910c6eb319c3a44a658c"
+    },
+    {
+      "git_blob_sha1": "ad7f0d1433cabcf4a932b35464d7751a55c8c8c1",
+      "path": "conformance/fixtures/surjective-representation-v1.json",
+      "sha256": "0822b36a846a69865b995cb823c88c4e150ff3bb925f83a667de949004afffb1"
+    },
+    {
+      "git_blob_sha1": "5ffa7d7f4f0fc7bf99f3028f4fc801f6e1de05d4",
+      "path": "conformance/fixtures/realization-dependence-v1.json",
+      "sha256": "8f5714743541e0d0e998644a7965e4fb2212b27324d18234f0f96b7ed8b7d355"
+    },
+    {
+      "git_blob_sha1": "9c4250f2dfc491be363f33250ec27ca011e46fe0",
+      "path": "proof/claims.toml",
+      "sha256": "b28018a4972bbd8d8c3562d09061d058b7f392c7d19933ba67d01e53a0397959"
+    },
+    {
+      "git_blob_sha1": "9f3741741021a0ea4108174961a40a46d09d42e0",
+      "path": "proof/arithmetic-realization-counterexample.md",
+      "sha256": "5f7cbf6b8f46551a7117bf136d5e091ef097221b6afe8bb0e1d3a8eeeb943288"
+    },
+    {
+      "git_blob_sha1": "af98263c386f58b61ab1384de68a32476c8380f0",
+      "path": "proof/surjective-realization-invariance.md",
+      "sha256": "4be63f4b202247462b4524003449553578f1bdf532c834ac64720277b0e5fab2"
+    },
+    {
+      "git_blob_sha1": "4b9602ffbe71646afe13d74678d38ea9fec4e0c8",
+      "path": "proof/code-hull-tower.md",
+      "sha256": "f989d7933715cc95d594ac39ddbf9b0aa4dc39c312ac7b158540bdd6acd7780a"
+    }
+  ],
+  "source_repository": "larsbx/arithmetic-bicycle-conjecture-research",
+  "source_revision": "87737671a039ba610ba3cfda7c91b78c61fbc1d5",
+  "surjective_pairs": {
+    "noncyclic-three-torsion": [
+      3,
+      6,
+      9
+    ],
+    "primitive-non-tu": [
+      5,
+      10
+    ],
+    "rank-one-no-unit-basis": [
+      2,
+      4,
+      13,
+      26
+    ],
+    "rank-two-no-unit-basis": [
+      2,
+      7,
+      14
+    ]
+  }
+}

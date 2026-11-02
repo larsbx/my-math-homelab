@@ -1,0 +1,2600 @@
+{
+  "adapter": "arithmetic-bicycle-v1",
+  "automatic_claim_promotion": false,
+  "cases": [
+    {
+      "ambient_index": 5,
+      "arithmetic_signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "columns": 2,
+      "corrected_surjective_domain": false,
+      "essential": true,
+      "has_unit_maximal_minor": false,
+      "id": "index5-a1",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "moduli": [
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 1,
+          "independent": {
+            "bicycle_order": 1,
+            "gram": [
+              [
+                2,
+                5
+              ],
+              [
+                5,
+                25
+              ]
+            ],
+            "gram_kernel_order": 5,
+            "gram_smith_factors": [
+              1,
+              25
+            ],
+            "transpose_kernel_order": 5,
+            "transpose_smith_factors": [
+              1,
+              5
+            ]
+          },
+          "modulus": 5,
+          "witness_sha256": "b1de05ec9c1db98fd53994d90d9e7c1671348bc8fa3d53879f7c2b4f3eaec2c0",
+          "witnesses": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 1,
+          "independent": {
+            "bicycle_order": 1,
+            "gram": [
+              [
+                2,
+                5
+              ],
+              [
+                5,
+                25
+              ]
+            ],
+            "gram_kernel_order": 5,
+            "gram_smith_factors": [
+              1,
+              25
+            ],
+            "transpose_kernel_order": 5,
+            "transpose_smith_factors": [
+              1,
+              5
+            ]
+          },
+          "modulus": 10,
+          "witness_sha256": "b1de05ec9c1db98fd53994d90d9e7c1671348bc8fa3d53879f7c2b4f3eaec2c0",
+          "witnesses": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 5,
+          "independent": {
+            "bicycle_order": 5,
+            "gram": [
+              [
+                2,
+                5
+              ],
+              [
+                5,
+                25
+              ]
+            ],
+            "gram_kernel_order": 25,
+            "gram_smith_factors": [
+              1,
+              25
+            ],
+            "transpose_kernel_order": 5,
+            "transpose_smith_factors": [
+              1,
+              5
+            ]
+          },
+          "modulus": 25,
+          "witness_sha256": "482e13bd12e1fc9e805182cac399dbdbe571087b1bcd2eea30c5770070fe778c",
+          "witnesses": [
+            [
+              0,
+              0
+            ],
+            [
+              5,
+              20
+            ],
+            [
+              10,
+              15
+            ],
+            [
+              15,
+              10
+            ],
+            [
+              20,
+              5
+            ]
+          ]
+        }
+      ],
+      "origin": {
+        "fixture_id": "index5-a1",
+        "path": "conformance/fixtures/realization-dependence-v1.json"
+      }
+    },
+    {
+      "ambient_index": 5,
+      "arithmetic_signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "columns": 2,
+      "corrected_surjective_domain": false,
+      "essential": true,
+      "has_unit_maximal_minor": false,
+      "id": "index5-a2",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "moduli": [
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 5,
+          "independent": {
+            "bicycle_order": 5,
+            "gram": [
+              [
+                5,
+                10
+              ],
+              [
+                10,
+                25
+              ]
+            ],
+            "gram_kernel_order": 25,
+            "gram_smith_factors": [
+              5,
+              5
+            ],
+            "transpose_kernel_order": 5,
+            "transpose_smith_factors": [
+              1,
+              5
+            ]
+          },
+          "modulus": 5,
+          "witness_sha256": "e26c9e0bf2d294ee9c8e88bd545997ba00e651735eb52191c24fbf9cbb392320",
+          "witnesses": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              3
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 5,
+          "independent": {
+            "bicycle_order": 5,
+            "gram": [
+              [
+                5,
+                10
+              ],
+              [
+                10,
+                25
+              ]
+            ],
+            "gram_kernel_order": 25,
+            "gram_smith_factors": [
+              5,
+              5
+            ],
+            "transpose_kernel_order": 5,
+            "transpose_smith_factors": [
+              1,
+              5
+            ]
+          },
+          "modulus": 10,
+          "witness_sha256": "bf0bfd3b4ffe327d5f9540264b57608c4301eba8d92ec4a41f81b19bd09eb3d4",
+          "witnesses": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              8,
+              6
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 5,
+          "independent": {
+            "bicycle_order": 5,
+            "gram": [
+              [
+                5,
+                10
+              ],
+              [
+                10,
+                25
+              ]
+            ],
+            "gram_kernel_order": 25,
+            "gram_smith_factors": [
+              5,
+              5
+            ],
+            "transpose_kernel_order": 5,
+            "transpose_smith_factors": [
+              1,
+              5
+            ]
+          },
+          "modulus": 25,
+          "witness_sha256": "d20ca474a0135fa2803fe1d7dcf46abdf58b75817ba4eeeaf89261ad5b71fdf8",
+          "witnesses": [
+            [
+              0,
+              0
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              10,
+              20
+            ],
+            [
+              15,
+              5
+            ],
+            [
+              20,
+              15
+            ]
+          ]
+        }
+      ],
+      "origin": {
+        "fixture_id": "index5-a2",
+        "path": "conformance/fixtures/realization-dependence-v1.json"
+      }
+    },
+    {
+      "ambient_index": 1,
+      "arithmetic_signature": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "columns": 2,
+      "corrected_surjective_domain": true,
+      "essential": true,
+      "has_unit_maximal_minor": true,
+      "id": "rankzero",
+      "matrix": [],
+      "moduli": [
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 1,
+          "independent": {
+            "bicycle_order": 1,
+            "gram": [],
+            "gram_kernel_order": 1,
+            "gram_smith_factors": [],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": []
+          },
+          "modulus": 2,
+          "witness_sha256": "b1de05ec9c1db98fd53994d90d9e7c1671348bc8fa3d53879f7c2b4f3eaec2c0",
+          "witnesses": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 1,
+          "independent": {
+            "bicycle_order": 1,
+            "gram": [],
+            "gram_kernel_order": 1,
+            "gram_smith_factors": [],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": []
+          },
+          "modulus": 4,
+          "witness_sha256": "b1de05ec9c1db98fd53994d90d9e7c1671348bc8fa3d53879f7c2b4f3eaec2c0",
+          "witnesses": [
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "origin": {
+        "fixture_id": "rankzero",
+        "path": "conformance/fixtures/realization-dependence-v1.json"
+      }
+    },
+    {
+      "ambient_index": 2,
+      "arithmetic_signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "columns": 1,
+      "corrected_surjective_domain": false,
+      "essential": true,
+      "has_unit_maximal_minor": false,
+      "id": "scalar2",
+      "matrix": [
+        [
+          2
+        ]
+      ],
+      "moduli": [
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 1,
+          "independent": {
+            "bicycle_order": 1,
+            "gram": [
+              [
+                4
+              ]
+            ],
+            "gram_kernel_order": 2,
+            "gram_smith_factors": [
+              4
+            ],
+            "transpose_kernel_order": 2,
+            "transpose_smith_factors": [
+              2
+            ]
+          },
+          "modulus": 2,
+          "witness_sha256": "4e20210f9a42f2c6b09adc52001692859e1f3f640b1e8d4a28b493ec35da8183",
+          "witnesses": [
+            [
+              0
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 2,
+          "independent": {
+            "bicycle_order": 2,
+            "gram": [
+              [
+                4
+              ]
+            ],
+            "gram_kernel_order": 4,
+            "gram_smith_factors": [
+              4
+            ],
+            "transpose_kernel_order": 2,
+            "transpose_smith_factors": [
+              2
+            ]
+          },
+          "modulus": 4,
+          "witness_sha256": "5c7e4e432cc8458a5cb843e511be83c1d36a18aa486dbd6b44d3db53ecbdea09",
+          "witnesses": [
+            [
+              0
+            ],
+            [
+              2
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 2,
+          "independent": {
+            "bicycle_order": 2,
+            "gram": [
+              [
+                4
+              ]
+            ],
+            "gram_kernel_order": 4,
+            "gram_smith_factors": [
+              4
+            ],
+            "transpose_kernel_order": 2,
+            "transpose_smith_factors": [
+              2
+            ]
+          },
+          "modulus": 8,
+          "witness_sha256": "1cd2c8c40a78206fdb4816d742ae95cb0672b1b5eaa18dbd3b8b7f83990ebdc6",
+          "witnesses": [
+            [
+              0
+            ],
+            [
+              4
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 2,
+          "independent": {
+            "bicycle_order": 2,
+            "gram": [
+              [
+                4
+              ]
+            ],
+            "gram_kernel_order": 4,
+            "gram_smith_factors": [
+              4
+            ],
+            "transpose_kernel_order": 2,
+            "transpose_smith_factors": [
+              2
+            ]
+          },
+          "modulus": 12,
+          "witness_sha256": "33b97d14d9d495f8fa93ec5b3cea33568b9a51a617887c968d2b50bd2f495f7b",
+          "witnesses": [
+            [
+              0
+            ],
+            [
+              6
+            ]
+          ]
+        }
+      ],
+      "origin": {
+        "fixture_id": "scalar2",
+        "path": "conformance/fixtures/realization-dependence-v1.json"
+      }
+    },
+    {
+      "ambient_index": 1,
+      "arithmetic_signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "columns": 4,
+      "corrected_surjective_domain": true,
+      "essential": true,
+      "has_unit_maximal_minor": true,
+      "id": "noncyclic-three-torsion/source",
+      "matrix": [
+        [
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          -1
+        ]
+      ],
+      "moduli": [
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 9,
+          "independent": {
+            "bicycle_order": 9,
+            "gram": [
+              [
+                3,
+                0
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            "gram_kernel_order": 9,
+            "gram_smith_factors": [
+              3,
+              3
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1,
+              1
+            ]
+          },
+          "modulus": 3,
+          "witness_sha256": "b861a1e1e5409c1ca04fe282916ea0042fd2f2a0bc061f56ba5583c071ecb2bc",
+          "witnesses": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              2,
+              1
+            ],
+            [
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              2,
+              0
+            ],
+            [
+              1,
+              2,
+              0,
+              2
+            ],
+            [
+              2,
+              0,
+              2,
+              2
+            ],
+            [
+              2,
+              1,
+              0,
+              1
+            ],
+            [
+              2,
+              2,
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 9,
+          "independent": {
+            "bicycle_order": 9,
+            "gram": [
+              [
+                3,
+                0
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            "gram_kernel_order": 9,
+            "gram_smith_factors": [
+              3,
+              3
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1,
+              1
+            ]
+          },
+          "modulus": 6,
+          "witness_sha256": "e3939b2c39bf0b7d061c7a9597943dfea403f3a08c62e278bf222cc5d493cbd2",
+          "witnesses": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              2,
+              4
+            ],
+            [
+              0,
+              4,
+              4,
+              2
+            ],
+            [
+              2,
+              0,
+              2,
+              2
+            ],
+            [
+              2,
+              2,
+              4,
+              0
+            ],
+            [
+              2,
+              4,
+              0,
+              4
+            ],
+            [
+              4,
+              0,
+              4,
+              4
+            ],
+            [
+              4,
+              2,
+              0,
+              2
+            ],
+            [
+              4,
+              4,
+              2,
+              0
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 9,
+          "independent": {
+            "bicycle_order": 9,
+            "gram": [
+              [
+                3,
+                0
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            "gram_kernel_order": 9,
+            "gram_smith_factors": [
+              3,
+              3
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1,
+              1
+            ]
+          },
+          "modulus": 9,
+          "witness_sha256": "3b12e3d92028743c9a2f4cc193c42cebc0406abc2b26ec057523567e6ab23d1b",
+          "witnesses": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              3,
+              3,
+              6
+            ],
+            [
+              0,
+              6,
+              6,
+              3
+            ],
+            [
+              3,
+              0,
+              3,
+              3
+            ],
+            [
+              3,
+              3,
+              6,
+              0
+            ],
+            [
+              3,
+              6,
+              0,
+              6
+            ],
+            [
+              6,
+              0,
+              6,
+              6
+            ],
+            [
+              6,
+              3,
+              0,
+              3
+            ],
+            [
+              6,
+              6,
+              3,
+              0
+            ]
+          ]
+        }
+      ],
+      "origin": {
+        "fixture_id": "noncyclic-three-torsion",
+        "path": "conformance/fixtures/surjective-representation-v1.json",
+        "side": "source"
+      }
+    },
+    {
+      "ambient_index": 1,
+      "arithmetic_signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "columns": 4,
+      "corrected_surjective_domain": true,
+      "essential": true,
+      "has_unit_maximal_minor": true,
+      "id": "noncyclic-three-torsion/target",
+      "matrix": [
+        [
+          -3,
+          1,
+          -1,
+          -2
+        ],
+        [
+          -1,
+          0,
+          -1,
+          -1
+        ]
+      ],
+      "moduli": [
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 9,
+          "independent": {
+            "bicycle_order": 9,
+            "gram": [
+              [
+                15,
+                6
+              ],
+              [
+                6,
+                3
+              ]
+            ],
+            "gram_kernel_order": 9,
+            "gram_smith_factors": [
+              3,
+              3
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1,
+              1
+            ]
+          },
+          "modulus": 3,
+          "witness_sha256": "3d95c3b42b8a6f75f99f9c288c0aa31d381930e25be75f1198d9d129aa480c3a",
+          "witnesses": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              2,
+              1
+            ],
+            [
+              0,
+              2,
+              1,
+              2
+            ],
+            [
+              1,
+              0,
+              1,
+              1
+            ],
+            [
+              1,
+              1,
+              0,
+              2
+            ],
+            [
+              1,
+              2,
+              2,
+              0
+            ],
+            [
+              2,
+              0,
+              2,
+              2
+            ],
+            [
+              2,
+              1,
+              1,
+              0
+            ],
+            [
+              2,
+              2,
+              0,
+              1
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 9,
+          "independent": {
+            "bicycle_order": 9,
+            "gram": [
+              [
+                15,
+                6
+              ],
+              [
+                6,
+                3
+              ]
+            ],
+            "gram_kernel_order": 9,
+            "gram_smith_factors": [
+              3,
+              3
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1,
+              1
+            ]
+          },
+          "modulus": 6,
+          "witness_sha256": "e9fbe5226886f5607b420ba305edd32094c19c22dc61cb69fbab03434d307ef1",
+          "witnesses": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              4,
+              2
+            ],
+            [
+              0,
+              4,
+              2,
+              4
+            ],
+            [
+              2,
+              0,
+              2,
+              2
+            ],
+            [
+              2,
+              2,
+              0,
+              4
+            ],
+            [
+              2,
+              4,
+              4,
+              0
+            ],
+            [
+              4,
+              0,
+              4,
+              4
+            ],
+            [
+              4,
+              2,
+              2,
+              0
+            ],
+            [
+              4,
+              4,
+              0,
+              2
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 9,
+          "independent": {
+            "bicycle_order": 9,
+            "gram": [
+              [
+                15,
+                6
+              ],
+              [
+                6,
+                3
+              ]
+            ],
+            "gram_kernel_order": 9,
+            "gram_smith_factors": [
+              3,
+              3
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1,
+              1
+            ]
+          },
+          "modulus": 9,
+          "witness_sha256": "1bacd9b2027646ca7293076279543f7b3371c91522380ac6ccdf9fc3e9fb54a1",
+          "witnesses": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              3,
+              6,
+              3
+            ],
+            [
+              0,
+              6,
+              3,
+              6
+            ],
+            [
+              3,
+              0,
+              3,
+              3
+            ],
+            [
+              3,
+              3,
+              0,
+              6
+            ],
+            [
+              3,
+              6,
+              6,
+              0
+            ],
+            [
+              6,
+              0,
+              6,
+              6
+            ],
+            [
+              6,
+              3,
+              3,
+              0
+            ],
+            [
+              6,
+              6,
+              0,
+              3
+            ]
+          ]
+        }
+      ],
+      "origin": {
+        "fixture_id": "noncyclic-three-torsion",
+        "path": "conformance/fixtures/surjective-representation-v1.json",
+        "side": "target"
+      }
+    },
+    {
+      "ambient_index": 1,
+      "arithmetic_signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "columns": 2,
+      "corrected_surjective_domain": true,
+      "essential": true,
+      "has_unit_maximal_minor": true,
+      "id": "primitive-non-tu/source",
+      "matrix": [
+        [
+          1,
+          2
+        ]
+      ],
+      "moduli": [
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 5,
+          "independent": {
+            "bicycle_order": 5,
+            "gram": [
+              [
+                5
+              ]
+            ],
+            "gram_kernel_order": 5,
+            "gram_smith_factors": [
+              5
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1
+            ]
+          },
+          "modulus": 5,
+          "witness_sha256": "e26c9e0bf2d294ee9c8e88bd545997ba00e651735eb52191c24fbf9cbb392320",
+          "witnesses": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              3
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 5,
+          "independent": {
+            "bicycle_order": 5,
+            "gram": [
+              [
+                5
+              ]
+            ],
+            "gram_kernel_order": 5,
+            "gram_smith_factors": [
+              5
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1
+            ]
+          },
+          "modulus": 10,
+          "witness_sha256": "bf0bfd3b4ffe327d5f9540264b57608c4301eba8d92ec4a41f81b19bd09eb3d4",
+          "witnesses": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              8,
+              6
+            ]
+          ]
+        }
+      ],
+      "origin": {
+        "fixture_id": "primitive-non-tu",
+        "path": "conformance/fixtures/surjective-representation-v1.json",
+        "side": "source"
+      }
+    },
+    {
+      "ambient_index": 1,
+      "arithmetic_signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "columns": 2,
+      "corrected_surjective_domain": true,
+      "essential": true,
+      "has_unit_maximal_minor": true,
+      "id": "primitive-non-tu/target",
+      "matrix": [
+        [
+          2,
+          -1
+        ]
+      ],
+      "moduli": [
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 5,
+          "independent": {
+            "bicycle_order": 5,
+            "gram": [
+              [
+                5
+              ]
+            ],
+            "gram_kernel_order": 5,
+            "gram_smith_factors": [
+              5
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1
+            ]
+          },
+          "modulus": 5,
+          "witness_sha256": "e26c9e0bf2d294ee9c8e88bd545997ba00e651735eb52191c24fbf9cbb392320",
+          "witnesses": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              3
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 5,
+          "independent": {
+            "bicycle_order": 5,
+            "gram": [
+              [
+                5
+              ]
+            ],
+            "gram_kernel_order": 5,
+            "gram_smith_factors": [
+              5
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1
+            ]
+          },
+          "modulus": 10,
+          "witness_sha256": "bf0bfd3b4ffe327d5f9540264b57608c4301eba8d92ec4a41f81b19bd09eb3d4",
+          "witnesses": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              8,
+              6
+            ]
+          ]
+        }
+      ],
+      "origin": {
+        "fixture_id": "primitive-non-tu",
+        "path": "conformance/fixtures/surjective-representation-v1.json",
+        "side": "target"
+      }
+    },
+    {
+      "ambient_index": 1,
+      "arithmetic_signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "columns": 2,
+      "corrected_surjective_domain": true,
+      "essential": true,
+      "has_unit_maximal_minor": false,
+      "id": "rank-one-no-unit-basis/source",
+      "matrix": [
+        [
+          2,
+          3
+        ]
+      ],
+      "moduli": [
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 1,
+          "independent": {
+            "bicycle_order": 1,
+            "gram": [
+              [
+                13
+              ]
+            ],
+            "gram_kernel_order": 1,
+            "gram_smith_factors": [
+              13
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1
+            ]
+          },
+          "modulus": 2,
+          "witness_sha256": "b1de05ec9c1db98fd53994d90d9e7c1671348bc8fa3d53879f7c2b4f3eaec2c0",
+          "witnesses": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 1,
+          "independent": {
+            "bicycle_order": 1,
+            "gram": [
+              [
+                13
+              ]
+            ],
+            "gram_kernel_order": 1,
+            "gram_smith_factors": [
+              13
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1
+            ]
+          },
+          "modulus": 4,
+          "witness_sha256": "b1de05ec9c1db98fd53994d90d9e7c1671348bc8fa3d53879f7c2b4f3eaec2c0",
+          "witnesses": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 13,
+          "independent": {
+            "bicycle_order": 13,
+            "gram": [
+              [
+                13
+              ]
+            ],
+            "gram_kernel_order": 13,
+            "gram_smith_factors": [
+              13
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1
+            ]
+          },
+          "modulus": 13,
+          "witness_sha256": "d038ab4ce1f890f98def8c96229c2b81d5fd5081af2fac8b5bbb3c0296038605",
+          "witnesses": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              7,
+              4
+            ],
+            [
+              8,
+              12
+            ],
+            [
+              9,
+              7
+            ],
+            [
+              10,
+              2
+            ],
+            [
+              11,
+              10
+            ],
+            [
+              12,
+              5
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 13,
+          "independent": {
+            "bicycle_order": 13,
+            "gram": [
+              [
+                13
+              ]
+            ],
+            "gram_kernel_order": 13,
+            "gram_smith_factors": [
+              13
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1
+            ]
+          },
+          "modulus": 26,
+          "witness_sha256": "8fe2168c9c70a8bff48b2583f377487392729d46505cb07119331b922cb820ac",
+          "witnesses": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              16
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              6,
+              22
+            ],
+            [
+              8,
+              12
+            ],
+            [
+              10,
+              2
+            ],
+            [
+              12,
+              18
+            ],
+            [
+              14,
+              8
+            ],
+            [
+              16,
+              24
+            ],
+            [
+              18,
+              14
+            ],
+            [
+              20,
+              4
+            ],
+            [
+              22,
+              20
+            ],
+            [
+              24,
+              10
+            ]
+          ]
+        }
+      ],
+      "origin": {
+        "fixture_id": "rank-one-no-unit-basis",
+        "path": "conformance/fixtures/surjective-representation-v1.json",
+        "side": "source"
+      }
+    },
+    {
+      "ambient_index": 1,
+      "arithmetic_signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "columns": 2,
+      "corrected_surjective_domain": true,
+      "essential": true,
+      "has_unit_maximal_minor": false,
+      "id": "rank-one-no-unit-basis/target",
+      "matrix": [
+        [
+          -3,
+          2
+        ]
+      ],
+      "moduli": [
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 1,
+          "independent": {
+            "bicycle_order": 1,
+            "gram": [
+              [
+                13
+              ]
+            ],
+            "gram_kernel_order": 1,
+            "gram_smith_factors": [
+              13
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1
+            ]
+          },
+          "modulus": 2,
+          "witness_sha256": "b1de05ec9c1db98fd53994d90d9e7c1671348bc8fa3d53879f7c2b4f3eaec2c0",
+          "witnesses": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 1,
+          "independent": {
+            "bicycle_order": 1,
+            "gram": [
+              [
+                13
+              ]
+            ],
+            "gram_kernel_order": 1,
+            "gram_smith_factors": [
+              13
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1
+            ]
+          },
+          "modulus": 4,
+          "witness_sha256": "b1de05ec9c1db98fd53994d90d9e7c1671348bc8fa3d53879f7c2b4f3eaec2c0",
+          "witnesses": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 13,
+          "independent": {
+            "bicycle_order": 13,
+            "gram": [
+              [
+                13
+              ]
+            ],
+            "gram_kernel_order": 13,
+            "gram_smith_factors": [
+              13
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1
+            ]
+          },
+          "modulus": 13,
+          "witness_sha256": "d038ab4ce1f890f98def8c96229c2b81d5fd5081af2fac8b5bbb3c0296038605",
+          "witnesses": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              8
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              11
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              7,
+              4
+            ],
+            [
+              8,
+              12
+            ],
+            [
+              9,
+              7
+            ],
+            [
+              10,
+              2
+            ],
+            [
+              11,
+              10
+            ],
+            [
+              12,
+              5
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 13,
+          "independent": {
+            "bicycle_order": 13,
+            "gram": [
+              [
+                13
+              ]
+            ],
+            "gram_kernel_order": 13,
+            "gram_smith_factors": [
+              13
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1
+            ]
+          },
+          "modulus": 26,
+          "witness_sha256": "8fe2168c9c70a8bff48b2583f377487392729d46505cb07119331b922cb820ac",
+          "witnesses": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              16
+            ],
+            [
+              4,
+              6
+            ],
+            [
+              6,
+              22
+            ],
+            [
+              8,
+              12
+            ],
+            [
+              10,
+              2
+            ],
+            [
+              12,
+              18
+            ],
+            [
+              14,
+              8
+            ],
+            [
+              16,
+              24
+            ],
+            [
+              18,
+              14
+            ],
+            [
+              20,
+              4
+            ],
+            [
+              22,
+              20
+            ],
+            [
+              24,
+              10
+            ]
+          ]
+        }
+      ],
+      "origin": {
+        "fixture_id": "rank-one-no-unit-basis",
+        "path": "conformance/fixtures/surjective-representation-v1.json",
+        "side": "target"
+      }
+    },
+    {
+      "ambient_index": 1,
+      "arithmetic_signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "columns": 3,
+      "corrected_surjective_domain": true,
+      "essential": true,
+      "has_unit_maximal_minor": false,
+      "id": "rank-two-no-unit-basis/source",
+      "matrix": [
+        [
+          2,
+          0,
+          1
+        ],
+        [
+          0,
+          3,
+          1
+        ]
+      ],
+      "moduli": [
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 1,
+          "independent": {
+            "bicycle_order": 1,
+            "gram": [
+              [
+                5,
+                1
+              ],
+              [
+                1,
+                10
+              ]
+            ],
+            "gram_kernel_order": 1,
+            "gram_smith_factors": [
+              1,
+              49
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1,
+              1
+            ]
+          },
+          "modulus": 2,
+          "witness_sha256": "49f9276b7d051b6c3c7eecb593e618a53363a6921320bdeef33cad970fcdd6db",
+          "witnesses": [
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 7,
+          "independent": {
+            "bicycle_order": 7,
+            "gram": [
+              [
+                5,
+                1
+              ],
+              [
+                1,
+                10
+              ]
+            ],
+            "gram_kernel_order": 7,
+            "gram_smith_factors": [
+              1,
+              49
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1,
+              1
+            ]
+          },
+          "modulus": 7,
+          "witness_sha256": "09605bec01e57e0fe9615118ef29efdeada1ff60b30cffa103750c910ce5508e",
+          "witnesses": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              3,
+              5
+            ],
+            [
+              2,
+              6,
+              3
+            ],
+            [
+              3,
+              2,
+              1
+            ],
+            [
+              4,
+              5,
+              6
+            ],
+            [
+              5,
+              1,
+              4
+            ],
+            [
+              6,
+              4,
+              2
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 7,
+          "independent": {
+            "bicycle_order": 7,
+            "gram": [
+              [
+                5,
+                1
+              ],
+              [
+                1,
+                10
+              ]
+            ],
+            "gram_kernel_order": 7,
+            "gram_smith_factors": [
+              1,
+              49
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1,
+              1
+            ]
+          },
+          "modulus": 14,
+          "witness_sha256": "d71fc756b6926978d24f2656c85dd2def6f61507a243cf48440ddaa167f11f47",
+          "witnesses": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              6,
+              10
+            ],
+            [
+              4,
+              12,
+              6
+            ],
+            [
+              6,
+              4,
+              2
+            ],
+            [
+              8,
+              10,
+              12
+            ],
+            [
+              10,
+              2,
+              8
+            ],
+            [
+              12,
+              8,
+              4
+            ]
+          ]
+        }
+      ],
+      "origin": {
+        "fixture_id": "rank-two-no-unit-basis",
+        "path": "conformance/fixtures/surjective-representation-v1.json",
+        "side": "source"
+      }
+    },
+    {
+      "ambient_index": 1,
+      "arithmetic_signature": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "columns": 3,
+      "corrected_surjective_domain": true,
+      "essential": true,
+      "has_unit_maximal_minor": false,
+      "id": "rank-two-no-unit-basis/target",
+      "matrix": [
+        [
+          -3,
+          2,
+          -6
+        ],
+        [
+          -1,
+          0,
+          -3
+        ]
+      ],
+      "moduli": [
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 1,
+          "independent": {
+            "bicycle_order": 1,
+            "gram": [
+              [
+                49,
+                21
+              ],
+              [
+                21,
+                10
+              ]
+            ],
+            "gram_kernel_order": 1,
+            "gram_smith_factors": [
+              1,
+              49
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1,
+              1
+            ]
+          },
+          "modulus": 2,
+          "witness_sha256": "49f9276b7d051b6c3c7eecb593e618a53363a6921320bdeef33cad970fcdd6db",
+          "witnesses": [
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 7,
+          "independent": {
+            "bicycle_order": 7,
+            "gram": [
+              [
+                49,
+                21
+              ],
+              [
+                21,
+                10
+              ]
+            ],
+            "gram_kernel_order": 7,
+            "gram_smith_factors": [
+              1,
+              49
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1,
+              1
+            ]
+          },
+          "modulus": 7,
+          "witness_sha256": "60a45843362a113782395a54666d4e1105bedf2af22d10f0030ff8b777d2be4b",
+          "witnesses": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              4,
+              2
+            ],
+            [
+              2,
+              1,
+              4
+            ],
+            [
+              3,
+              5,
+              6
+            ],
+            [
+              4,
+              2,
+              1
+            ],
+            [
+              5,
+              6,
+              3
+            ],
+            [
+              6,
+              3,
+              5
+            ]
+          ]
+        },
+        {
+          "complete_lattice_witness_check": true,
+          "enumerated_order": 7,
+          "independent": {
+            "bicycle_order": 7,
+            "gram": [
+              [
+                49,
+                21
+              ],
+              [
+                21,
+                10
+              ]
+            ],
+            "gram_kernel_order": 7,
+            "gram_smith_factors": [
+              1,
+              49
+            ],
+            "transpose_kernel_order": 1,
+            "transpose_smith_factors": [
+              1,
+              1
+            ]
+          },
+          "modulus": 14,
+          "witness_sha256": "0d706c118a816dc8f2d41b669c98663368cd67ad8da9b48fec6a0189dceacba9",
+          "witnesses": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              8,
+              4
+            ],
+            [
+              4,
+              2,
+              8
+            ],
+            [
+              6,
+              10,
+              12
+            ],
+            [
+              8,
+              4,
+              2
+            ],
+            [
+              10,
+              12,
+              6
+            ],
+            [
+              12,
+              6,
+              10
+            ]
+          ]
+        }
+      ],
+      "origin": {
+        "fixture_id": "rank-two-no-unit-basis",
+        "path": "conformance/fixtures/surjective-representation-v1.json",
+        "side": "target"
+      }
+    }
+  ],
+  "corrected_domain_distinguished": true,
+  "counterexample_preserved": true,
+  "enumerated_vector_states": 27990,
+  "implementation_sha256": {
+    "tools/experiments/__init__.py": "fd79cd542541e7fd55337ee2d0d591d998eeef906d91df0e61f5ab44f10b16c7",
+    "tools/experiments/ab_enumeration.py": "bc850c53e83241142a5938ca82f5e09aca95b9e91eb2939ff83c32894067c73e",
+    "tools/experiments/ab_gram.py": "794372365231eac9d5e66162171bfe5217aaabf77fa2e124218024d28cffb8a8",
+    "tools/experiments/arithmetic_bicycle.py": "f38298f3e9e0af83014f49e4fdb080af19d589bec89fdde3d3d78fd2298e0aa3",
+    "tools/math_experiments.py": "0f66a91085a2b75f86f3652c4f4e6e8a97401cab3aca099ee7476fa2d1f04d33"
+  },
+  "independent_mathematical_claim_verified": false,
+  "input_sha256": "6f8bcbf46869bc1416b858f4cbadfaa4f32b75f7b063a4e9f3c1bd2836db9d82",
+  "mathematical_theorems_promoted": 0,
+  "matrix_count": 12,
+  "modulus_case_count": 36,
+  "next_mathematical_obligation": "ABC-RD-01: in the source repository, identify the extra lattice data needed for nonsurjective towers; expand only reviewed pinned finite fixtures. No general classification follows from this replay.",
+  "schema": "HOMELAB-MATH-EXPERIMENT-1",
+  "scope_complete": true,
+  "source_authority": "retained",
+  "source_claim_statuses": {
+    "ABC-CODE-HULL-TOWER": "proved",
+    "ABC-MAIN": "retracted",
+    "ABC-REALIZATION-INVARIANCE": "retracted",
+    "ABC-SURJECTIVE-REALIZATION-INVARIANCE": "proved",
+    "ABC-UNIVERSAL-TORSION-MODEL": "retracted"
+  },
+  "source_repository": "larsbx/arithmetic-bicycle-conjecture-research",
+  "source_revision": "87737671a039ba610ba3cfda7c91b78c61fbc1d5",
+  "source_snapshots": [
+    {
+      "git_blob_sha1": "760ff4b4556f0f0dfb0fa3bc096544341678c78c",
+      "path": "conformance/fixtures/arithmetic-matroid-v1.json",
+      "sha256": "706b9798ef5eae2c88b075dad78b76f32f27358d2a00910c6eb319c3a44a658c"
+    },
+    {
+      "git_blob_sha1": "ad7f0d1433cabcf4a932b35464d7751a55c8c8c1",
+      "path": "conformance/fixtures/surjective-representation-v1.json",
+      "sha256": "0822b36a846a69865b995cb823c88c4e150ff3bb925f83a667de949004afffb1"
+    },
+    {
+      "git_blob_sha1": "5ffa7d7f4f0fc7bf99f3028f4fc801f6e1de05d4",
+      "path": "conformance/fixtures/realization-dependence-v1.json",
+      "sha256": "8f5714743541e0d0e998644a7965e4fb2212b27324d18234f0f96b7ed8b7d355"
+    },
+    {
+      "git_blob_sha1": "9c4250f2dfc491be363f33250ec27ca011e46fe0",
+      "path": "proof/claims.toml",
+      "sha256": "b28018a4972bbd8d8c3562d09061d058b7f392c7d19933ba67d01e53a0397959"
+    },
+    {
+      "git_blob_sha1": "9f3741741021a0ea4108174961a40a46d09d42e0",
+      "path": "proof/arithmetic-realization-counterexample.md",
+      "sha256": "5f7cbf6b8f46551a7117bf136d5e091ef097221b6afe8bb0e1d3a8eeeb943288"
+    },
+    {
+      "git_blob_sha1": "af98263c386f58b61ab1384de68a32476c8380f0",
+      "path": "proof/surjective-realization-invariance.md",
+      "sha256": "4be63f4b202247462b4524003449553578f1bdf532c834ac64720277b0e5fab2"
+    },
+    {
+      "git_blob_sha1": "4b9602ffbe71646afe13d74678d38ea9fec4e0c8",
+      "path": "proof/code-hull-tower.md",
+      "sha256": "f989d7933715cc95d594ac39ddbf9b0aa4dc39c312ac7b158540bdd6acd7780a"
+    }
+  ],
+  "state": "verified_finite",
+  "surjective_pair_checks": [
+    {
+      "finite_orders_agree": true,
+      "general_theorem_verified_by_adapter": false,
+      "id": "noncyclic-three-torsion",
+      "permutation": [
+        2,
+        0,
+        3,
+        1
+      ],
+      "same_complete_arithmetic_data": true
+    },
+    {
+      "finite_orders_agree": true,
+      "general_theorem_verified_by_adapter": false,
+      "id": "primitive-non-tu",
+      "permutation": [
+        1,
+        0
+      ],
+      "same_complete_arithmetic_data": true
+    },
+    {
+      "finite_orders_agree": true,
+      "general_theorem_verified_by_adapter": false,
+      "id": "rank-one-no-unit-basis",
+      "permutation": [
+        1,
+        0
+      ],
+      "same_complete_arithmetic_data": true
+    },
+    {
+      "finite_orders_agree": true,
+      "general_theorem_verified_by_adapter": false,
+      "id": "rank-two-no-unit-basis",
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "same_complete_arithmetic_data": true
+    }
+  ]
+}

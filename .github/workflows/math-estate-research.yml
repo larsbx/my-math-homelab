@@ -5,7 +5,13 @@ on:
     paths:
       - "policy/math-research-portfolio.toml"
       - "tools/math_research_portfolio.py"
+      - "tools/math_experiments.py"
+      - "tools/experiments/**"
       - "tools/math_adapters/**"
+      - "policy/math-experiments.toml"
+      - "policy/fixtures/**"
+      - "tests/test_math_experiments.py"
+      - "docs/research/independent-experiment-contract.md"
       - "tests/test_math_research_portfolio.py"
       - "tests/test_*_adapter.py"
       - "docs/research/math-estate-programme.md"
@@ -46,8 +52,27 @@ jobs:
           set -euo pipefail
           python tools/math_research_portfolio.py --mode validate
           python -m unittest discover -s tests -p 'test_math_research_portfolio.py' -v
+      - name: Replay independent pilot conformance on changes or explicit validation
+        if: >-
+          github.event_name == 'pull_request' ||
+          (github.event_name == 'workflow_dispatch' && inputs.mode == 'validate')
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tests -p 'test_math_experiments.py' -v
           python -m unittest discover -s tests -p 'test_arithmetic_bicycle_adapter.py' -v
           python -m unittest discover -s tests -p 'test_vizing_domination_adapter.py' -v
+          python tools/math_experiments.py --out evidence-conformance/arithmetic-bicycle
+
+      - name: Preserve exact-revision pilot conformance evidence
+        if: >-
+          always() && (github.event_name == 'pull_request' ||
+          (github.event_name == 'workflow_dispatch' && inputs.mode == 'validate'))
+        uses: actions/upload-artifact@v4
+        with:
+          name: independent-finite-conformance-${{ github.sha }}
+          path: evidence-conformance/
+          if-no-files-found: warn
+          retention-days: 90
 
   daily-source-research:
     if: >-
@@ -110,7 +135,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Independently fingerprint current mathematical evidence and decide next research obligation
+      - name: Fingerprint source evidence and execute reviewed pinned finite adapters once
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

@@ -4,9 +4,8 @@ Daily: source head, claim/evidence-file provenance, PRs, issues and CI status.
 Weekly: the same per-program facts plus reproducible *research obligations*.
 The source repos alone own mathematical claim status. This tool DOES NOT run
 unreviewed source code, claim that CI proves a theorem, or edit imported trees.
-Only tiling-theory has a specialized mathematical runner in this homelab;
-other programmes require separate, source-validated independent experiment
-adapters, which are explicitly reported as pending, not silently presumed.
+Tiling-theory retains its specialist. Reviewed local finite adapters execute
+once in their weekly shard; all other adapter gaps remain explicit.
 
 Usage:
   python tools/math_research_portfolio.py --mode daily --out /tmp/math-daily
@@ -28,6 +27,8 @@ import tomllib
 import traceback
 from urllib.parse import quote
 from urllib.request import Request, urlopen
+
+import math_experiments
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "policy/math-research-portfolio.toml"
@@ -57,6 +58,8 @@ def registry(root=ROOT):
     assert {t["id"] for t in tracks} == set(active), (
         "Every active source lock must be registered exactly once; no phantom sources"
     )
+    adapters = {a["program"]: a for a in math_experiments.load_adapters(root)}
+    assert set(adapters) <= set(active), "experiment has no active source"
     for track in tracks:
         id_ = track["id"]
         lock = active[id_]
@@ -73,17 +76,18 @@ def registry(root=ROOT):
         path = track["research_evidence_path"]
         assert path and not path.startswith("/")
         assert all(segment not in (".", "..", "") for segment in path.split("/"))
-        assert track["mode"] in ("specialized_akn", "source_evidence", "exact_fixture_adapter")
+        assert track["mode"] in ("specialized_akn", "source_evidence", "independent_finite", "exact_fixture_adapter")
         if id_ == "tiling-theory":
             assert track["mode"] == "specialized_akn"
             assert track["independent_experiment"] == "scheduled_by_akn_specialist"
-        elif id_ in ("arithmetic-bicycle", "vizing-domination"):
+        elif id_ in adapters:
+            adapter = adapters[id_]
+            assert adapter["source_repository"] == track["source_repository"]
+            assert track["mode"] == "independent_finite"
+            assert track["independent_experiment"] == adapter["id"]
+        elif id_ == "vizing-domination":
             assert track["mode"] == "exact_fixture_adapter"
-            adapter_name = {
-                "arithmetic-bicycle": "homelab_arithmetic_matroid_v1",
-                "vizing-domination": "homelab_vizing_historical_casebase_v1",
-            }[id_]
-            assert track["independent_experiment"] == adapter_name
+            assert track["independent_experiment"] == "homelab_vizing_historical_casebase_v1"
         else:
             assert track["mode"] == "source_evidence"
             assert track["independent_experiment"] == "requires_separate_verified_adapter"
@@ -212,7 +216,11 @@ def observe(track, lock, mode):
         state = "exact_head_ci_unverified"
     research_stage = ("specialized_exact_experiment_scheduled_elsewhere"
                       if track["mode"] == "specialized_akn"
-                      else ("independent_finite_fixture_adapter_registered" if track["mode"] == "exact_fixture_adapter" else "independent_experiment_adapter_not_yet_registered"))
+                      else "pinned_independent_finite_adapter_registered"
+                      if track["mode"] == "independent_finite"
+                      else "independent_finite_fixture_adapter_registered"
+                      if track["mode"] == "exact_fixture_adapter"
+                      else "independent_experiment_adapter_not_yet_registered")
     return {
         "schema": "HOMELAB-MATH-PROGRAM-EVIDENCE-1",
         "id": track["id"], "kind": track["kind"],
@@ -262,35 +270,27 @@ def run(mode, out, shard=None, select_ids=None):
     tracks, locks, _ = registry()
     selected = select(tracks, mode, shard, select_ids)
     assert selected
+    out = math_experiments.safe_output(out)
     out.mkdir(parents=True, exist_ok=True)
     rows, failed = [], []
     for t in selected:
         try:
             record = observe(t, locks[t["id"]], mode)
-            if mode == "weekly" and t["id"] == "arithmetic-bicycle":
-                from math_adapters.arithmetic_bicycle import verify_fixture
-                fixture, fixture_sha = verified_source_json(
-                    t["source_repository"], record["head_sha"],
-                    "conformance/fixtures/realization-dependence-v1.json")
-                verified = verify_fixture(
-                    fixture, source_commit=record["head_sha"],
-                    source_sha256=fixture_sha)
-                (out/"arithmetic-bicycle-exact-adapter.json").write_text(
-                    json.dumps(verified, sort_keys=True, indent=2)+chr(10),
-                    encoding="utf-8")
-                record["independent_exact_finite_adapter"] = {
-                    "schema": verified["schema"],
-                    "result": verified["verdict"],
-                    "cases": verified["finite_modulus_cases"],
-                    "source_fixture_sha256": verified["source_fixture_sha256"],
-                    "proof_scope": verified["scope"],
-                }
-                record["research_stage"] = "independent_finite_fixture_replayed"
-                record["independent_finite_fixture_verified"] = True
-                # Passing 6 finite examples is NEVER a general theorem proof.
-                record["independent_mathematical_claim_verified"] = False
-                record["next_research_obligation"] = verified[
-                    "next_research_obligation"]
+            if t["mode"] == "independent_finite":
+                record["experiment_execution"] = "weekly_only_not_run_in_daily"
+                if mode == "weekly":
+                    spec = next(a for a in math_experiments.load_adapters()
+                                if a["id"] == t["independent_experiment"])
+                    experiment = math_experiments.execute(
+                        spec, out/t["id"], observed_source_head=record["head_sha"])
+                    record["experiment_execution"] = experiment["state"]
+                    record["experiment_evidence"] = t["id"] + "/experiment.json"
+                    record["experiment_source_revision"] = experiment["source_revision"]
+                    record["finite_experiment_verified"] = experiment["state"] == "verified_finite"
+                    if experiment["state"] != "verified_finite":
+                        failed.append(t["id"])
+                    # Keep exact-head CI and mathematical replay as separate dimensions.
+                    record["next_finite_experiment_obligation"] = experiment["next_mathematical_obligation"]
             elif mode == "weekly" and t["id"] == "vizing-domination":
                 from math_adapters.vizing_domination import verify_casebase
                 graph6, graph6_sha = verified_source_text(
@@ -339,6 +339,8 @@ def run(mode, out, shard=None, select_ids=None):
         rows.append({"id": t["id"], "source_repository": t["source_repository"],
                      "state": record["evidence_state"],
                      "research_stage": record["research_stage"],
+                     "experiment_state": record.get("experiment_execution"),
+                     "experiment_source_revision": record.get("experiment_source_revision"),
                      "exact_sha": record.get("head_sha"),
                      "next_obligation": record["next_research_obligation"]})
     summary = {
@@ -347,7 +349,8 @@ def run(mode, out, shard=None, select_ids=None):
         "observed_at_utc": datetime.now(timezone.utc).isoformat(),
         "selected_count": len(rows),
         "registered_count": len(tracks),
-        "unreadable_sources": failed,
+        "sources_with_errors": sorted(set(failed)),
+        "unreadable_sources": [r["id"] for r in rows if r["state"] == "incomplete"],
         "source_authority_retained": True,
         "imported_trees_modified": False,
         "mathematical_theorems_promoted": 0,
