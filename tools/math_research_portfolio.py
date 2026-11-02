@@ -73,10 +73,17 @@ def registry(root=ROOT):
         path = track["research_evidence_path"]
         assert path and not path.startswith("/")
         assert all(segment not in (".", "..", "") for segment in path.split("/"))
-        assert track["mode"] in ("specialized_akn", "source_evidence")
+        assert track["mode"] in ("specialized_akn", "source_evidence", "exact_fixture_adapter")
         if id_ == "tiling-theory":
             assert track["mode"] == "specialized_akn"
             assert track["independent_experiment"] == "scheduled_by_akn_specialist"
+        elif id_ in ("arithmetic-bicycle", "vizing-domination"):
+            assert track["mode"] == "exact_fixture_adapter"
+            adapter_name = {
+                "arithmetic-bicycle": "homelab_arithmetic_matroid_v1",
+                "vizing-domination": "homelab_vizing_historical_casebase_v1",
+            }[id_]
+            assert track["independent_experiment"] == adapter_name
         else:
             assert track["mode"] == "source_evidence"
             assert track["independent_experiment"] == "requires_separate_verified_adapter"
@@ -116,6 +123,28 @@ def evidence_file(repo, rev, path):
     return {"path": path, "git_blob_sha1": info["sha"],
             "sha256": sha256(raw).hexdigest(),
             "bytes": len(raw), "at_commit": rev}
+
+
+def verified_source_json(repo, rev, path):
+    """Fetch source JSON only from an immutable commit; replay Git blob hash."""
+    assert HEX40.fullmatch(rev)
+    uri = "contents/" + "/".join(quote(s, safe="") for s in path.split("/"))
+    info = resource(repo, uri + "?ref=" + rev)
+    assert info["type"] == "file" and info["encoding"] == "base64"
+    raw = base64.b64decode(info["content"], validate=False)
+    assert git_blob_sha1(raw) == info["sha"], "source fixture Git blob mismatch"
+    return json.loads(raw), sha256(raw).hexdigest()
+
+
+def verified_source_text(repo, rev, path):
+    """Read immutable text fixture and replay Git blob checksum."""
+    assert HEX40.fullmatch(rev)
+    uri = "contents/" + "/".join(quote(s, safe="") for s in path.split("/"))
+    info = resource(repo, uri + "?ref=" + rev)
+    assert info["type"] == "file" and info["encoding"] == "base64"
+    raw = base64.b64decode(info["content"], validate=False)
+    assert git_blob_sha1(raw) == info["sha"], "text source Git blob mismatch"
+    return raw.decode("utf-8"), sha256(raw).hexdigest()
 
 
 def _compact_runs(runs, commit):
@@ -183,7 +212,7 @@ def observe(track, lock, mode):
         state = "exact_head_ci_unverified"
     research_stage = ("specialized_exact_experiment_scheduled_elsewhere"
                       if track["mode"] == "specialized_akn"
-                      else "independent_experiment_adapter_not_yet_registered")
+                      else ("independent_finite_fixture_adapter_registered" if track["mode"] == "exact_fixture_adapter" else "independent_experiment_adapter_not_yet_registered"))
     return {
         "schema": "HOMELAB-MATH-PROGRAM-EVIDENCE-1",
         "id": track["id"], "kind": track["kind"],
@@ -238,6 +267,57 @@ def run(mode, out, shard=None, select_ids=None):
     for t in selected:
         try:
             record = observe(t, locks[t["id"]], mode)
+            if mode == "weekly" and t["id"] == "arithmetic-bicycle":
+                from math_adapters.arithmetic_bicycle import verify_fixture
+                fixture, fixture_sha = verified_source_json(
+                    t["source_repository"], record["head_sha"],
+                    "conformance/fixtures/realization-dependence-v1.json")
+                verified = verify_fixture(
+                    fixture, source_commit=record["head_sha"],
+                    source_sha256=fixture_sha)
+                (out/"arithmetic-bicycle-exact-adapter.json").write_text(
+                    json.dumps(verified, sort_keys=True, indent=2)+chr(10),
+                    encoding="utf-8")
+                record["independent_exact_finite_adapter"] = {
+                    "schema": verified["schema"],
+                    "result": verified["verdict"],
+                    "cases": verified["finite_modulus_cases"],
+                    "source_fixture_sha256": verified["source_fixture_sha256"],
+                    "proof_scope": verified["scope"],
+                }
+                record["research_stage"] = "independent_finite_fixture_replayed"
+                record["independent_finite_fixture_verified"] = True
+                # Passing 6 finite examples is NEVER a general theorem proof.
+                record["independent_mathematical_claim_verified"] = False
+                record["next_research_obligation"] = verified[
+                    "next_research_obligation"]
+            elif mode == "weekly" and t["id"] == "vizing-domination":
+                from math_adapters.vizing_domination import verify_casebase
+                graph6, graph6_sha = verified_source_text(
+                    t["source_repository"], record["head_sha"],
+                    "conformance/fixtures/casebase_graph6.txt")
+                classes, classes_sha = verified_source_json(
+                    t["source_repository"], record["head_sha"],
+                    "conformance/fixtures/casebase_classes.json")
+                verified = verify_casebase(
+                    graph6, classes, source_commit=record["head_sha"],
+                    sources_sha256={"graph6": graph6_sha, "classes": classes_sha})
+                (out/"vizing-domination-exact-adapter.json").write_text(
+                    json.dumps(verified, sort_keys=True, indent=2)+chr(10),
+                    encoding="utf-8")
+                record["independent_exact_finite_adapter"] = {
+                    "schema": verified["schema"],
+                    "result": verified["verdict"],
+                    "historical_entries": verified["n_graphs"],
+                    "classes": verified["iso_classes"],
+                    "source_sha256": verified["source_sha256"],
+                    "proof_scope": verified["scope"],
+                }
+                record["research_stage"] = "independent_finite_fixture_replayed"
+                record["independent_finite_fixture_verified"] = True
+                record["independent_mathematical_claim_verified"] = False
+                record["next_research_obligation"] = verified[
+                    "next_research_obligation"]
         except Exception as exc:
             failed.append(t["id"])
             record = {

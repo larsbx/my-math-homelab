@@ -5,7 +5,9 @@ on:
     paths:
       - "policy/math-research-portfolio.toml"
       - "tools/math_research_portfolio.py"
+      - "tools/math_adapters/**"
       - "tests/test_math_research_portfolio.py"
+      - "tests/test_*_adapter.py"
       - "docs/research/math-estate-programme.md"
       - ".github/workflows/math-estate-research.yml"
       - "policy/source-locks.toml"
@@ -44,6 +46,8 @@ jobs:
           set -euo pipefail
           python tools/math_research_portfolio.py --mode validate
           python -m unittest discover -s tests -p 'test_math_research_portfolio.py' -v
+          python -m unittest discover -s tests -p 'test_arithmetic_bicycle_adapter.py' -v
+          python -m unittest discover -s tests -p 'test_vizing_domination_adapter.py' -v
 
   daily-source-research:
     if: >-

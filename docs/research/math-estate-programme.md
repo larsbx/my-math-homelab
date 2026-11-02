@@ -28,8 +28,16 @@ stated hypothesis / exact definition / imported assumptions
 subject to the same recurring provenance, CI/issue/PR review, evidence
 retention, scientific frontier, and claim-governance rules. The AKN track
 has an existing exact enumeration + independent-verifier executor.
-The other **15 tracks are not falsely marked as possessing an
-independent mathematical experiment**: their research-specific
+A second narrowly scoped adapter now covers the **Arithmetic Bicycle**
+source's six registered finite fixture families: one computation
+enumerates modular potentials and cut-cycle intersections; an independent
+checker enumerates edge vectors and tests image membership using exact
+gcds of maximal lattice minors. The latest source fixture is fetched
+at the inspected immutable SHA, with Git blob and SHA-256 checks.
+Its original realization-invariance conjecture remains **refuted**.
+
+The other **13 tracks** are not falsely marked as possessing an
+independent mathematical experiment: their research-specific
 experiments, independent checkers, and autonomous hypothesis-selection
 policies must be separately reviewed and registered before execution.
 The scheduler makes that onboarding obligation visible in every report.
@@ -60,7 +68,7 @@ authorities.
 
 | Programme | Exact question / near-term research obligation | Independent experiment status |
 | --- | --- | --- |
-| arithmetic-bicycle | Check corrected arithmetic-matroid realization invariance against the **already refuted** original conjecture. | Needs reviewed adapter |
+| arithmetic-bicycle | Exact 6-fixture code-hull and lattice-index cross-check at prime, prime-power and composite moduli; preserve **refuted** invariance. | Independent finite-fixture adapter implemented; hosted acceptance pending |
 | bulb-ford | Reproduce finite exact P0/P2/P6 bulb/Ford evidence without using analytical limits as finite proof. | Needs reviewed adapter |
 | closure-fiber | Investigate exact identity fibers and literature dependence in algebraic-group closure. | Needs reviewed adapter |
 | finite-julia | Certificate-carrying dynamical-plane finite tests and consumer compatibility. | Needs reviewed adapter |
@@ -73,7 +81,7 @@ authorities.
 | pisot-vijayaraghavan | Bounded exact auxiliary calculations, with the classical PV problem still open. | Needs reviewed adapter |
 | s-adic-pisot | Independently verify theorem-scope assumptions and finite Selmer/Brun censuses. | Needs reviewed adapter |
 | tiling-theory | 21,840 generic AKN chambers, 24 star orbits, six stabilizer conjugacy types, 105 singular probes. | Specialized exact executor; hosted acceptance still required |
-| vizing-domination | Exact graph-census representatives and provenance of the missing larger catalogue. | Needs reviewed adapter |
+| vizing-domination | Exact historical 16-to-3 graph6 isomorphism and 16 domination-number-four witnesses; 491 census remains unavailable. | Independent finite historical adapter implemented; hosted acceptance pending |
 | finite-math-kernels | Cross-consumer exact kernel/canonical-record compatibility. | Shared-component adapter needed |
 | math-vizops | Source-owned proof/evidence attachment and scene reproducibility; no theorem acceptance. | Shared-component adapter needed |
 
@@ -158,6 +166,63 @@ explicitly retired or transferred under the estate contract.
 
 **Current completion boundary:** All 16 current active math sources
 are registered and scheduled for *research governance and evidence
-triage* once this workflow merges. Full independent exact research
-execution remains implemented only for AKN; 15 individual adapters
-are an explicit backlog, not silently counted as accomplished.
+triage* once this workflow merges. Full generic-chamber independent exact research remains AKN-specialized;
+the Arithmetic Bicycle six-specimen finite module replay is newly implemented.
+The other 13 individual adapters are an explicit backlog, not silently
+counted as accomplished.
+
+## Independent Vizing historical graph-corpus adapter
+
+`tools/math_adapters/vizing_domination.py` now provides a second
+**source-SHA-pinned, independently checked finite programme adapter**.
+It fetches the 16 historical graph6 records and the declared A/A-class/B
+partition from the source's exact revision, verifying their Git blob
+SHA-1 and independent SHA-256 provenance.
+
+Unlike the source's canonical degree-IR labeling, the adapter performs
+exhaustive adjacency-preserving isomorphism search with degree and
+neighborhood-degree pruning. Every claimed equivalence comes with a
+literal bijection checked against all ordered vertex pairs; class
+representatives are also exhaustively tested for non-isomorphism.
+A separate exact subset-enumeration calculation establishes
+`gamma(G)=4` for each of the 16 historical ten-vertex graphs.
+
+The finite result is **16 records in exactly three isomorphism classes
+of sizes 1, 14 and 1**. The authoritative reported **491-entry**
+census remains unavailable. Neither these 16 specimens nor the
+completed small-graph domination numbers settle Vizing's general
+domination conjecture. A missing source entry, invalid graph6 padding,
+misassigned class, fake source promotion or non-isomorphic graph in
+a class fails closed; no source oracle is executed.
+
+This is a second source-specific finite adapter. The homelab now has
+**three mathematically specialized lanes** (AKN, arithmetic-bicycle
+and Vizing), leaving **13 registered source tracks** needing reviewed
+independent experiment adapters.
+
+## Independent Arithmetic Bicycle finite adapter (next rollout)
+
+The adapter `tools/math_adapters/arithmetic_bicycle.py` is a
+source-SHA-bound **independent finite negative-control verifier**.
+For the six cases in
+`conformance/fixtures/realization-dependence-v1.json` it computes
+`im(A^T mod n) intersect ker(A mod n)` by enumerating potentials,
+and separately enumerates the **edge vectors** `x` subject to
+`Ax=0 mod n` while checking `x in im(A^T mod n)` by integer
+lattice-index equality:
+`[Z^m : (A^T Z^r + n Z^m)] =
+ [Z^m : (A^T Z^r + n Z^m + Z x)]`.
+
+Both procedures use exact integer arithmetic and cover the registered
+prime, prime-power and mixed-composite moduli, including 26. They compare
+the **actual finite sets**, not only their orders. The strict finite
+scope includes the rank-two realization-invariance counterexample at
+5 and 10, and an equal-order control at 25. It also records group
+annihilator profiles and exact fixture hashes.
+
+A source fixture change, inconsistent expected order, altered matrix
+or algorithm disagreement fails the weekly shard. Its artifacts retain
+the counterexample; this **does not reinstate** the refuted conjecture
+or prove its prospective surjective restriction. The next candidate
+obligation concerns the source's surjective essential domain with
+`m(E)=1`, independently of this refuted general domain.
