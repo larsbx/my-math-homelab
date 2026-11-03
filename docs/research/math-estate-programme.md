@@ -36,7 +36,7 @@ gcds of maximal lattice minors. The latest source fixture is fetched
 at the inspected immutable SHA, with Git blob and SHA-256 checks.
 Its original realization-invariance conjecture remains **refuted**.
 
-The other **13 tracks** are not falsely marked as possessing an
+The other **11 tracks** are not falsely marked as possessing an
 independent mathematical experiment: their research-specific
 experiments, independent checkers, and autonomous hypothesis-selection
 policies must be separately reviewed and registered before execution.
@@ -72,7 +72,7 @@ authorities.
 | bulb-ford | Reproduce finite exact P0/P2/P6 bulb/Ford evidence without using analytical limits as finite proof. | Needs reviewed adapter |
 | closure-fiber | Investigate exact identity fibers and literature dependence in algebraic-group closure. | Needs reviewed adapter |
 | finite-julia | Certificate-carrying dynamical-plane finite tests and consumer compatibility. | Needs reviewed adapter |
-| finite-mandelbrot | Exact critical-orbit certificates; keep MLC as open. | Needs reviewed adapter |
+| finite-mandelbrot | 11 exact finite-field critical-relation and simple-root controls, independently replayed by dual-number iteration and coefficient recurrence. MLC remains open. | Exact field adapter implemented; hosted acceptance pending |
 | giant-fibers | Finite-field Descartes fiber-count tests versus the proposed heavy-fiber formula. | Needs reviewed adapter |
 | julia-oracle | Differential oracle reproducibility, cross-consumer disagreement, no claim authority. | Needs reviewed adapter |
 | langlands | Reproduce small exact Hecke/Galois calibration claims without conflating imported results. | Needs reviewed adapter |
@@ -82,7 +82,7 @@ authorities.
 | s-adic-pisot | Independently verify theorem-scope assumptions and finite Selmer/Brun censuses. | Needs reviewed adapter |
 | tiling-theory | 21,840 generic AKN chambers, 24 star orbits, six stabilizer conjugacy types, 105 singular probes. | Specialized exact executor; hosted acceptance still required |
 | vizing-domination | Exact historical 16-to-3 graph6 isomorphism and 16 domination-number-four witnesses; 491 census remains unavailable. | Independent finite historical adapter implemented; hosted acceptance pending |
-| finite-math-kernels | Cross-consumer exact kernel/canonical-record compatibility. | Shared-component adapter needed |
+| finite-math-kernels | Independently reconstruct exact cyclotomic polynomials for q≤8 and check all 22 primitive-power residue identities; separately audit germ coefficients. | Cyclotomic finite adapter implemented; hosted acceptance pending |
 | math-vizops | Source-owned proof/evidence attachment and scene reproducibility; no theorem acceptance. | Shared-component adapter needed |
 
 The up-to-date, machine-readable individual research obligations are
@@ -104,8 +104,9 @@ the retrieved bytes and independently stores their SHA-256**, rejecting
 a mismatch. Current open PRs, issue titles and exact-head GitHub
 Actions runs are captured with their precise source commit IDs.
 
-This proves file/revision provenance, **not the truth of mathematics
-written in those files**. A CI failure or pending run is flagged.
+For public sources, this proves file/revision provenance, **not the
+truth of mathematics written in those files**. Private sources are
+isolated, not probed or presented as successfully inspected. A CI failure or pending run is flagged.
 A stale imported tree is registered as provenance drift, never modified
 automatically. Missing files, malformed registration, unavailable APIs
 and unexpected source revisions fail closed and retain errors.
@@ -114,6 +115,42 @@ Evidence is published as machine-readable per-programme JSON plus
 `portfolio-index.json`, using four disjoint weekly shards to limit
 resource use. Artifacts are retained for 90 days under the GitHub
 Actions policy.
+
+## Private-source isolation and first scheduled-run repair
+
+The first estate-wide scheduled daily run on **2026-11-02**
+([workflow 41447971436](https://github.com/larsbx/my-math-homelab/actions/runs/41447971436))
+failed on three HTTP 404 responses. Inspection of the actual source
+repository permissions established that `closure-fiber`, `finite-julia`,
+and `giant-fibers` are currently **private**, although the October 9
+import locks still declare them public. A homelab-scoped GitHub Actions
+`GITHUB_TOKEN` is not authorized to read those private repositories.
+
+**Do not solve this by passing a broad private token into a publicly
+accessible workflow artifact.** The homelab is a public repository.
+Private revision IDs, source issue/PR titles, file content and file
+hashes must not be written to its public evidence artifacts.
+
+These three sources are explicitly marked
+`source_access_policy = "private_isolated"` and the portfolio now
+refuses to contact them from the public homelab coordinator.
+The public daily/weekly index records only the already-registered
+source name and a coarse `private_source_isolated` / 
+`requires_private_source_runner` status, with
+`source_contents_retrieved=false`, no exact head and no source CI
+details. All other source records still fail closed if an unexpected
+private repository is discovered.
+
+**Research execution for those three must move into source-owned private
+workflows**, with source-scoped credentials and private artifacts.
+Any aggregate published to the public homelab needs a separately
+reviewed information-release contract. Until that exists, no private
+exact-head research result is claimed verified by the homelab.
+
+The import source-lock visibility mismatch is separately recorded for
+governance review. This change does not rewrite locked imported source
+histories, grant a token broader access, or turn a successful public
+portfolio run into proof that the private research jobs executed.
 
 ## Research automation versus monitoring
 
@@ -199,6 +236,63 @@ This is a second source-specific finite adapter. The homelab now has
 **three mathematically specialized lanes** (AKN, arithmetic-bicycle
 and Vizing), leaving **13 registered source tracks** needing reviewed
 independent experiment adapters.
+
+## Independent finite-Mandelbrot critical-relation adapter
+
+The source's `kernel/mojo/dynamics/critical_type_census.mojo` contains
+**11 finite-field Golden test vectors** with `(c,ell,k,p)`, including
+positive simple-root witnesses and negative collision controls.
+The new `tools/math_adapters/finite_mandelbrot.py` reads only this
+**source-Git-blob-verified text at an immutable source SHA** and then
+recomputes the values by two independently implemented exact methods:
+
+1. Formal dual-number recurrence for `Q_{n+1}=Q_n²+C`, tracking
+   `Q_n(c)`, `Q'_n(c)`, and every pairwise critical-orbit collision
+   modulo the declared prime `p`.
+2. Exact polynomial coefficient convolution and Horner evaluation
+   in `F_p[C]` to independently check `Q_{ell+k}-Q_ell`, its
+   derivative, and all collision-pair exclusions.
+
+All controls have horizons `ell+k ≤12`, primes `p<2³²`, explicit
+rational-free finite-field operations, and negative tests for false
+prime moduli, missing vectors, incorrect simple-root flags and
+unbounded horizons. The fixture's eleven exact finite field flags
+were independently cross-checked against the dual-number procedure.
+
+**Scope:** These are eleven finite candidate certificates, not a
+classification of the Mandelbrot set, a theorem about MLC, or a
+replacement for the source's source-governed proof/acceptance process.
+Their next obligation is exact integer-coefficient and squarefree
+independent replay beyond the current native Int bound.
+
+## Independent finite-math-kernels cyclotomic adapter
+
+The new `tools/math_adapters/finite_math_kernels.py` is a source-locked
+standard-library exact polynomial-arithmetic replay for the current
+`conformance/cyclotomic_germ_v1.json` fixture.
+
+It independently reconstructs each `Phi_q(X)` for `1 ≤ q ≤ 8` by
+integer polynomial multiplication and exact monic division of `X^q-1`
+by prior cyclotomic factors. It also checks all **22 coprime pairs
+`(q,p)`** by exact reduction `Phi_q(X^p) ≡ 0 mod Phi_q(X)`, with
+complete pair coverage and negative tests for altered coefficients,
+incomplete vectors, nonprimitive powers and bad dimensions.
+
+The source's rational **parabolic germ coefficients and byte encoding
+are not independently derived by this first adapter**. Those are a
+separate research obligation. A passing finite polynomial fixture
+does not prove a theorem about all cyclotomic orders, analytic
+parabolic dynamics or a consumer's canonical Mojo implementation.
+
+## CI and mathematical-frontier priority
+
+A source CI failure, pending run, cancelled check or unavailable
+required-check coverage remains the **primary next research obligation**
+even after a programme's finite mathematical fixture passes. The
+scientific follow-up is retained separately as
+`mathematical_next_research_obligation`. This corrects the review
+finding on PR #12, where successful AB or Vizing replay could overwrite
+the source's pending CI triage in the portfolio summary.
 
 ## Independent Arithmetic Bicycle finite adapter (next rollout)
 

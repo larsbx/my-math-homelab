@@ -60,6 +60,12 @@ def registry(root=ROOT):
     for track in tracks:
         id_ = track["id"]
         lock = active[id_]
+        access = track.get("source_access_policy", "public")
+        assert access in ("public", "private_isolated")
+        if access == "private_isolated":
+            assert id_ in {"closure-fiber", "finite-julia", "giant-fibers"}
+        else:
+            assert id_ not in {"closure-fiber", "finite-julia", "giant-fibers"}
         assert TRACK_ID.fullmatch(id_) and REPO.fullmatch(track["source_repository"])
         assert lock["repository"] == track["source_repository"]
         assert lock["kind"] == track["kind"]
@@ -77,11 +83,13 @@ def registry(root=ROOT):
         if id_ == "tiling-theory":
             assert track["mode"] == "specialized_akn"
             assert track["independent_experiment"] == "scheduled_by_akn_specialist"
-        elif id_ in ("arithmetic-bicycle", "vizing-domination"):
+        elif id_ in ("arithmetic-bicycle", "vizing-domination", "finite-math-kernels", "finite-mandelbrot"):
             assert track["mode"] == "exact_fixture_adapter"
             adapter_name = {
                 "arithmetic-bicycle": "homelab_arithmetic_matroid_v1",
                 "vizing-domination": "homelab_vizing_historical_casebase_v1",
+                "finite-math-kernels": "homelab_cyclotomic_polynomial_v1",
+                "finite-mandelbrot": "homelab_critical_relation_Fp_v1",
             }[id_]
             assert track["independent_experiment"] == adapter_name
         else:
@@ -175,6 +183,8 @@ def observe(track, lock, mode):
     """Evidence-bound source audit; no imported-tree writes or unverified code."""
     repo = track["source_repository"]
     metadata = get_json("https://api.github.com/repos/" + repo)
+    if metadata.get("private") is True or metadata.get("visibility") == "private":
+        raise ValueError("private repository cannot be read into public artifacts")
     assert metadata["full_name"].lower() == repo.lower()
     branch = metadata["default_branch"]
     assert re.fullmatch(r"[A-Za-z0-9._/-]+", branch) and ".." not in branch
@@ -246,6 +256,26 @@ def observe(track, lock, mode):
     }
 
 
+def attach_verified_finite_adapter(record, verified, *, scope_fields):
+    """Keep source CI triage primary while retaining independent math frontier.
+
+    Independent finite replay is evidence, not confirmation that every required
+    source workflow passed. Never overwrite a pending/failing CI obligation.
+    """
+    record["independent_exact_finite_adapter"] = {
+        "schema": verified["schema"], "result": verified["verdict"],
+        **scope_fields,
+    }
+    record["research_stage"] = "independent_finite_fixture_replayed"
+    record["independent_finite_fixture_verified"] = True
+    record["independent_mathematical_claim_verified"] = False
+    record["mathematical_next_research_obligation"] = verified[
+        "next_research_obligation"]
+    if record.get("complete_required_ci_gate_verified") is True:
+        record["next_research_obligation"] = verified[
+            "next_research_obligation"]
+
+
 def select(tracks, mode, shard=None, select_ids=None):
     assert mode in ("daily", "weekly")
     if shard is not None:
@@ -263,8 +293,39 @@ def run(mode, out, shard=None, select_ids=None):
     selected = select(tracks, mode, shard, select_ids)
     assert selected
     out.mkdir(parents=True, exist_ok=True)
-    rows, failed = [], []
+    rows, failed, isolated = [], [], []
     for t in selected:
+        if t.get("source_access_policy") == "private_isolated":
+            # Public homelab artifacts cannot contain private code, issue titles,
+            # source commits, CI metadata, or file hashes. Do not fetch at all.
+            isolated.append(t["id"])
+            record = {
+                "schema": "HOMELAB-MATH-PROGRAM-EVIDENCE-1",
+                "id": t["id"],
+                "source_repository": t["source_repository"],
+                "evidence_state": "private_source_isolated",
+                "research_stage": "requires_private_source_runner",
+                "source_authority": "retained",
+                "source_contents_retrieved": False,
+                "independent_mathematical_claim_verified": False,
+                "automatic_claim_promotion": False,
+                "automatic_merge": False,
+                "next_research_obligation": (
+                    "Configure a source-owned private experiment runner and "
+                    "publish only an explicitly approved aggregate verdict; "
+                    "do not expose source revisions or private research evidence."),
+            }
+            (out/(t["id"]+".json")).write_text(
+                json.dumps(record, sort_keys=True, indent=2)+chr(10),
+                encoding="utf-8")
+            rows.append({
+                "id": t["id"], "source_repository": t["source_repository"],
+                "state": record["evidence_state"],
+                "research_stage": record["research_stage"],
+                "exact_sha": None,
+                "next_obligation": record["next_research_obligation"],
+            })
+            continue
         try:
             record = observe(t, locks[t["id"]], mode)
             if mode == "weekly" and t["id"] == "arithmetic-bicycle":
@@ -278,19 +339,12 @@ def run(mode, out, shard=None, select_ids=None):
                 (out/"arithmetic-bicycle-exact-adapter.json").write_text(
                     json.dumps(verified, sort_keys=True, indent=2)+chr(10),
                     encoding="utf-8")
-                record["independent_exact_finite_adapter"] = {
-                    "schema": verified["schema"],
-                    "result": verified["verdict"],
-                    "cases": verified["finite_modulus_cases"],
-                    "source_fixture_sha256": verified["source_fixture_sha256"],
-                    "proof_scope": verified["scope"],
-                }
-                record["research_stage"] = "independent_finite_fixture_replayed"
-                record["independent_finite_fixture_verified"] = True
-                # Passing 6 finite examples is NEVER a general theorem proof.
-                record["independent_mathematical_claim_verified"] = False
-                record["next_research_obligation"] = verified[
-                    "next_research_obligation"]
+                attach_verified_finite_adapter(
+                    record, verified, scope_fields={
+                        "cases": verified["finite_modulus_cases"],
+                        "source_fixture_sha256": verified["source_fixture_sha256"],
+                        "proof_scope": verified["scope"],
+                    })
             elif mode == "weekly" and t["id"] == "vizing-domination":
                 from math_adapters.vizing_domination import verify_casebase
                 graph6, graph6_sha = verified_source_text(
@@ -305,19 +359,48 @@ def run(mode, out, shard=None, select_ids=None):
                 (out/"vizing-domination-exact-adapter.json").write_text(
                     json.dumps(verified, sort_keys=True, indent=2)+chr(10),
                     encoding="utf-8")
-                record["independent_exact_finite_adapter"] = {
-                    "schema": verified["schema"],
-                    "result": verified["verdict"],
-                    "historical_entries": verified["n_graphs"],
-                    "classes": verified["iso_classes"],
-                    "source_sha256": verified["source_sha256"],
-                    "proof_scope": verified["scope"],
-                }
-                record["research_stage"] = "independent_finite_fixture_replayed"
-                record["independent_finite_fixture_verified"] = True
-                record["independent_mathematical_claim_verified"] = False
-                record["next_research_obligation"] = verified[
-                    "next_research_obligation"]
+                attach_verified_finite_adapter(
+                    record, verified, scope_fields={
+                        "historical_entries": verified["n_graphs"],
+                        "classes": verified["iso_classes"],
+                        "source_sha256": verified["source_sha256"],
+                        "proof_scope": verified["scope"],
+                    })
+            elif mode == "weekly" and t["id"] == "finite-math-kernels":
+                from math_adapters.finite_math_kernels import verify_vectors
+                fixture, fixture_sha = verified_source_json(
+                    t["source_repository"], record["head_sha"],
+                    "conformance/cyclotomic_germ_v1.json")
+                verified = verify_vectors(
+                    fixture, source_commit=record["head_sha"],
+                    source_sha256=fixture_sha)
+                (out/"finite-math-kernels-exact-adapter.json").write_text(
+                    json.dumps(verified, sort_keys=True, indent=2)+chr(10),
+                    encoding="utf-8")
+                attach_verified_finite_adapter(
+                    record, verified, scope_fields={
+                        "polynomials": verified["polynomials_verified"],
+                        "primitive_powers": verified["primitive_powers_verified"],
+                        "source_fixture_sha256": verified["source_fixture_sha256"],
+                        "parabolic_coefficients_checked": False,
+                    })
+            elif mode == "weekly" and t["id"] == "finite-mandelbrot":
+                from math_adapters.finite_mandelbrot import verify_golden
+                source, source_sha = verified_source_text(
+                    t["source_repository"], record["head_sha"],
+                    "kernel/mojo/dynamics/critical_type_census.mojo")
+                verified = verify_golden(
+                    source, source_commit=record["head_sha"],
+                    source_sha256=source_sha)
+                (out/"finite-mandelbrot-exact-adapter.json").write_text(
+                    json.dumps(verified, sort_keys=True, indent=2)+chr(10),
+                    encoding="utf-8")
+                attach_verified_finite_adapter(
+                    record, verified, scope_fields={
+                        "vectors": verified["finite_vectors_checked"],
+                        "source_fixture_sha256": verified["source_fixture_sha256"],
+                        "proves_mlc": False,
+                    })
         except Exception as exc:
             failed.append(t["id"])
             record = {
@@ -348,6 +431,12 @@ def run(mode, out, shard=None, select_ids=None):
         "selected_count": len(rows),
         "registered_count": len(tracks),
         "unreadable_sources": failed,
+        "private_sources_isolated": isolated,
+        "source_access_coverage": {
+            "public_source_evidence_attempted": len(selected)-len(isolated),
+            "private_sources_not_accessed": len(isolated),
+            "independent_private_research_confirmed": 0,
+        },
         "source_authority_retained": True,
         "imported_trees_modified": False,
         "mathematical_theorems_promoted": 0,
