@@ -36,7 +36,7 @@ gcds of maximal lattice minors. The latest source fixture is fetched
 at the inspected immutable SHA, with Git blob and SHA-256 checks.
 Its original realization-invariance conjecture remains **refuted**.
 
-The other **13 tracks** are not falsely marked as possessing an
+The other **12 tracks** are not falsely marked as possessing an
 independent mathematical experiment: their research-specific
 experiments, independent checkers, and autonomous hypothesis-selection
 policies must be separately reviewed and registered before execution.
@@ -82,7 +82,7 @@ authorities.
 | s-adic-pisot | Independently verify theorem-scope assumptions and finite Selmer/Brun censuses. | Needs reviewed adapter |
 | tiling-theory | 21,840 generic AKN chambers, 24 star orbits, six stabilizer conjugacy types, 105 singular probes. | Specialized exact executor; hosted acceptance still required |
 | vizing-domination | Exact historical 16-to-3 graph6 isomorphism and 16 domination-number-four witnesses; 491 census remains unavailable. | Independent finite historical adapter implemented; hosted acceptance pending |
-| finite-math-kernels | Cross-consumer exact kernel/canonical-record compatibility. | Shared-component adapter needed |
+| finite-math-kernels | Independently reconstruct exact cyclotomic polynomials for q≤8 and check all 22 primitive-power residue identities; separately audit germ coefficients. | Cyclotomic finite adapter implemented; hosted acceptance pending |
 | math-vizops | Source-owned proof/evidence attachment and scene reproducibility; no theorem acceptance. | Shared-component adapter needed |
 
 The up-to-date, machine-readable individual research obligations are
@@ -199,6 +199,35 @@ This is a second source-specific finite adapter. The homelab now has
 **three mathematically specialized lanes** (AKN, arithmetic-bicycle
 and Vizing), leaving **13 registered source tracks** needing reviewed
 independent experiment adapters.
+
+## Independent finite-math-kernels cyclotomic adapter
+
+The new `tools/math_adapters/finite_math_kernels.py` is a source-locked
+standard-library exact polynomial-arithmetic replay for the current
+`conformance/cyclotomic_germ_v1.json` fixture.
+
+It independently reconstructs each `Phi_q(X)` for `1 ≤ q ≤ 8` by
+integer polynomial multiplication and exact monic division of `X^q-1`
+by prior cyclotomic factors. It also checks all **22 coprime pairs
+`(q,p)`** by exact reduction `Phi_q(X^p) ≡ 0 mod Phi_q(X)`, with
+complete pair coverage and negative tests for altered coefficients,
+incomplete vectors, nonprimitive powers and bad dimensions.
+
+The source's rational **parabolic germ coefficients and byte encoding
+are not independently derived by this first adapter**. Those are a
+separate research obligation. A passing finite polynomial fixture
+does not prove a theorem about all cyclotomic orders, analytic
+parabolic dynamics or a consumer's canonical Mojo implementation.
+
+## CI and mathematical-frontier priority
+
+A source CI failure, pending run, cancelled check or unavailable
+required-check coverage remains the **primary next research obligation**
+even after a programme's finite mathematical fixture passes. The
+scientific follow-up is retained separately as
+`mathematical_next_research_obligation`. This corrects the review
+finding on PR #12, where successful AB or Vizing replay could overwrite
+the source's pending CI triage in the portfolio summary.
 
 ## Independent Arithmetic Bicycle finite adapter (next rollout)
 
