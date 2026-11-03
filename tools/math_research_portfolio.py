@@ -60,6 +60,12 @@ def registry(root=ROOT):
     for track in tracks:
         id_ = track["id"]
         lock = active[id_]
+        access = track.get("source_access_policy", "public")
+        assert access in ("public", "private_isolated")
+        if access == "private_isolated":
+            assert id_ in {"closure-fiber", "finite-julia", "giant-fibers"}
+        else:
+            assert id_ not in {"closure-fiber", "finite-julia", "giant-fibers"}
         assert TRACK_ID.fullmatch(id_) and REPO.fullmatch(track["source_repository"])
         assert lock["repository"] == track["source_repository"]
         assert lock["kind"] == track["kind"]
@@ -177,6 +183,8 @@ def observe(track, lock, mode):
     """Evidence-bound source audit; no imported-tree writes or unverified code."""
     repo = track["source_repository"]
     metadata = get_json("https://api.github.com/repos/" + repo)
+    if metadata.get("private") is True or metadata.get("visibility") == "private":
+        raise ValueError("private repository cannot be read into public artifacts")
     assert metadata["full_name"].lower() == repo.lower()
     branch = metadata["default_branch"]
     assert re.fullmatch(r"[A-Za-z0-9._/-]+", branch) and ".." not in branch
@@ -285,8 +293,39 @@ def run(mode, out, shard=None, select_ids=None):
     selected = select(tracks, mode, shard, select_ids)
     assert selected
     out.mkdir(parents=True, exist_ok=True)
-    rows, failed = [], []
+    rows, failed, isolated = [], [], []
     for t in selected:
+        if t.get("source_access_policy") == "private_isolated":
+            # Public homelab artifacts cannot contain private code, issue titles,
+            # source commits, CI metadata, or file hashes. Do not fetch at all.
+            isolated.append(t["id"])
+            record = {
+                "schema": "HOMELAB-MATH-PROGRAM-EVIDENCE-1",
+                "id": t["id"],
+                "source_repository": t["source_repository"],
+                "evidence_state": "private_source_isolated",
+                "research_stage": "requires_private_source_runner",
+                "source_authority": "retained",
+                "source_contents_retrieved": False,
+                "independent_mathematical_claim_verified": False,
+                "automatic_claim_promotion": False,
+                "automatic_merge": False,
+                "next_research_obligation": (
+                    "Configure a source-owned private experiment runner and "
+                    "publish only an explicitly approved aggregate verdict; "
+                    "do not expose source revisions or private research evidence."),
+            }
+            (out/(t["id"]+".json")).write_text(
+                json.dumps(record, sort_keys=True, indent=2)+chr(10),
+                encoding="utf-8")
+            rows.append({
+                "id": t["id"], "source_repository": t["source_repository"],
+                "state": record["evidence_state"],
+                "research_stage": record["research_stage"],
+                "exact_sha": None,
+                "next_obligation": record["next_research_obligation"],
+            })
+            continue
         try:
             record = observe(t, locks[t["id"]], mode)
             if mode == "weekly" and t["id"] == "arithmetic-bicycle":
@@ -392,6 +431,12 @@ def run(mode, out, shard=None, select_ids=None):
         "selected_count": len(rows),
         "registered_count": len(tracks),
         "unreadable_sources": failed,
+        "private_sources_isolated": isolated,
+        "source_access_coverage": {
+            "public_source_evidence_attempted": len(selected)-len(isolated),
+            "private_sources_not_accessed": len(isolated),
+            "independent_private_research_confirmed": 0,
+        },
         "source_authority_retained": True,
         "imported_trees_modified": False,
         "mathematical_theorems_promoted": 0,
