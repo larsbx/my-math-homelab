@@ -52,8 +52,8 @@ class FiniteMandelbrotAdapter(unittest.TestCase):
         # Q_3=C^4+2C^3+C^2+C, a purely finite-field identity.
 
     def test_modified_or_missing_golden_rejected(self):
-        broken=GOLDEN_TEXT.replace("True, False, False",
-                                   "True, True, False")
+        broken=GOLDEN_TEXT.replace("Golden(137462, 4, 5, 1048583",
+                                   "Golden(137463, 4, 5, 1048583")
         with self.assertRaisesRegex(ValueError,"Golden finite fixture mismatch"):
             verify_golden(broken,source_commit="a"*40,
                           source_sha256="b"*64)
