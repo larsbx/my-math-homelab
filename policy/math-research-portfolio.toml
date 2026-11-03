@@ -49,6 +49,7 @@ research_evidence_path = "RESEARCH_CHARTER.md"
 mode = "source_evidence"
 independent_experiment = "requires_separate_verified_adapter"
 claim_authority = "source_retained"
+source_access_policy = "private_isolated"
 automatic_claim_promotion = false
 automatic_merge = false
 
@@ -63,6 +64,7 @@ research_evidence_path = "ROADMAP.md"
 mode = "source_evidence"
 independent_experiment = "requires_separate_verified_adapter"
 claim_authority = "source_retained"
+source_access_policy = "private_isolated"
 automatic_claim_promotion = false
 automatic_merge = false
 
@@ -91,6 +93,7 @@ research_evidence_path = "README.md"
 mode = "source_evidence"
 independent_experiment = "requires_separate_verified_adapter"
 claim_authority = "source_retained"
+source_access_policy = "private_isolated"
 automatic_claim_promotion = false
 automatic_merge = false
 
