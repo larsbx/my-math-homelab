@@ -36,7 +36,7 @@ gcds of maximal lattice minors. The latest source fixture is fetched
 at the inspected immutable SHA, with Git blob and SHA-256 checks.
 Its original realization-invariance conjecture remains **refuted**.
 
-The other **12 tracks** are not falsely marked as possessing an
+The other **11 tracks** are not falsely marked as possessing an
 independent mathematical experiment: their research-specific
 experiments, independent checkers, and autonomous hypothesis-selection
 policies must be separately reviewed and registered before execution.
@@ -72,7 +72,7 @@ authorities.
 | bulb-ford | Reproduce finite exact P0/P2/P6 bulb/Ford evidence without using analytical limits as finite proof. | Needs reviewed adapter |
 | closure-fiber | Investigate exact identity fibers and literature dependence in algebraic-group closure. | Needs reviewed adapter |
 | finite-julia | Certificate-carrying dynamical-plane finite tests and consumer compatibility. | Needs reviewed adapter |
-| finite-mandelbrot | Exact critical-orbit certificates; keep MLC as open. | Needs reviewed adapter |
+| finite-mandelbrot | 11 exact finite-field critical-relation and simple-root controls, independently replayed by dual-number iteration and coefficient recurrence. MLC remains open. | Exact field adapter implemented; hosted acceptance pending |
 | giant-fibers | Finite-field Descartes fiber-count tests versus the proposed heavy-fiber formula. | Needs reviewed adapter |
 | julia-oracle | Differential oracle reproducibility, cross-consumer disagreement, no claim authority. | Needs reviewed adapter |
 | langlands | Reproduce small exact Hecke/Galois calibration claims without conflating imported results. | Needs reviewed adapter |
@@ -199,6 +199,34 @@ This is a second source-specific finite adapter. The homelab now has
 **three mathematically specialized lanes** (AKN, arithmetic-bicycle
 and Vizing), leaving **13 registered source tracks** needing reviewed
 independent experiment adapters.
+
+## Independent finite-Mandelbrot critical-relation adapter
+
+The source's `kernel/mojo/dynamics/critical_type_census.mojo` contains
+**11 finite-field Golden test vectors** with `(c,ell,k,p)`, including
+positive simple-root witnesses and negative collision controls.
+The new `tools/math_adapters/finite_mandelbrot.py` reads only this
+**source-Git-blob-verified text at an immutable source SHA** and then
+recomputes the values by two independently implemented exact methods:
+
+1. Formal dual-number recurrence for `Q_{n+1}=Q_n²+C`, tracking
+   `Q_n(c)`, `Q'_n(c)`, and every pairwise critical-orbit collision
+   modulo the declared prime `p`.
+2. Exact polynomial coefficient convolution and Horner evaluation
+   in `F_p[C]` to independently check `Q_{ell+k}-Q_ell`, its
+   derivative, and all collision-pair exclusions.
+
+All controls have horizons `ell+k ≤12`, primes `p<2³²`, explicit
+rational-free finite-field operations, and negative tests for false
+prime moduli, missing vectors, incorrect simple-root flags and
+unbounded horizons. The fixture's eleven exact finite field flags
+were independently cross-checked against the dual-number procedure.
+
+**Scope:** These are eleven finite candidate certificates, not a
+classification of the Mandelbrot set, a theorem about MLC, or a
+replacement for the source's source-governed proof/acceptance process.
+Their next obligation is exact integer-coefficient and squarefree
+independent replay beyond the current native Int bound.
 
 ## Independent finite-math-kernels cyclotomic adapter
 
