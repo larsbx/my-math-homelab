@@ -83,13 +83,14 @@ def registry(root=ROOT):
         if id_ == "tiling-theory":
             assert track["mode"] == "specialized_akn"
             assert track["independent_experiment"] == "scheduled_by_akn_specialist"
-        elif id_ in ("arithmetic-bicycle", "vizing-domination", "finite-math-kernels", "finite-mandelbrot"):
+        elif id_ in ("arithmetic-bicycle", "vizing-domination", "finite-math-kernels", "finite-mandelbrot", "pisot-vijayaraghavan"):
             assert track["mode"] == "exact_fixture_adapter"
             adapter_name = {
                 "arithmetic-bicycle": "homelab_arithmetic_matroid_v1",
                 "vizing-domination": "homelab_vizing_historical_casebase_v1",
                 "finite-math-kernels": "homelab_cyclotomic_polynomial_v1",
                 "finite-mandelbrot": "homelab_critical_relation_Fp_v1",
+                "pisot-vijayaraghavan": "homelab_PV_finite_hankel_v1",
             }[id_]
             assert track["independent_experiment"] == adapter_name
         else:
@@ -400,6 +401,28 @@ def run(mode, out, shard=None, select_ids=None):
                         "vectors": verified["finite_vectors_checked"],
                         "source_fixture_sha256": verified["source_fixture_sha256"],
                         "proves_mlc": False,
+                    })
+            elif mode == "weekly" and t["id"] == "pisot-vijayaraghavan":
+                from math_adapters.pisot_vijayaraghavan import verify_pv_finite
+                test_source, test_sha = verified_source_text(
+                    t["source_repository"], record["head_sha"],
+                    "tests/test_hankel.py")
+                claims_source, claims_sha = verified_source_text(
+                    t["source_repository"], record["head_sha"],
+                    "proof/claims.toml")
+                verified = verify_pv_finite(
+                    test_source, claims_source, source_commit=record["head_sha"],
+                    source_sha256={"test_hankel": test_sha, "claims": claims_sha})
+                (out/"pisot-vijayaraghavan-exact-adapter.json").write_text(
+                    json.dumps(verified, sort_keys=True, indent=2)+chr(10),
+                    encoding="utf-8")
+                attach_verified_finite_adapter(
+                    record, verified, scope_fields={
+                        "specimens": verified["specimens"],
+                        "verified_hankel_windows": verified[
+                            "verified_hankel_windows"],
+                        "source_sha256": verified["source_sha256"],
+                        "proof_scope": "seven finite integer recurrences only; general PV open",
                     })
         except Exception as exc:
             failed.append(t["id"])

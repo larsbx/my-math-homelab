@@ -36,7 +36,7 @@ gcds of maximal lattice minors. The latest source fixture is fetched
 at the inspected immutable SHA, with Git blob and SHA-256 checks.
 Its original realization-invariance conjecture remains **refuted**.
 
-The other **11 tracks** are not falsely marked as possessing an
+The other **10 tracks** are not falsely marked as possessing an
 independent mathematical experiment: their research-specific
 experiments, independent checkers, and autonomous hypothesis-selection
 policies must be separately reviewed and registered before execution.
@@ -78,7 +78,7 @@ authorities.
 | langlands | Reproduce small exact Hecke/Galois calibration claims without conflating imported results. | Needs reviewed adapter |
 | novelty | Independently audit Lean/evidence/literature boundaries for novelty candidates. | Needs reviewed adapter |
 | pisot-substitution | Reconcile precise open PSC boundary lemmas, tests and claim integration on current heads. | Needs reviewed adapter |
-| pisot-vijayaraghavan | Bounded exact auxiliary calculations, with the classical PV problem still open. | Needs reviewed adapter |
+| pisot-vijayaraghavan | Exact 7-sequence recurrence and 140 Hankel-window witnesses, checked by independent permutation/Bareiss determinants, companion matrices and rational reconstruction; coprime-tail branch remains open. | Finite Hankel adapter implemented; hosted acceptance pending |
 | s-adic-pisot | Independently verify theorem-scope assumptions and finite Selmer/Brun censuses. | Needs reviewed adapter |
 | tiling-theory | 21,840 generic AKN chambers, 24 star orbits, six stabilizer conjugacy types, 105 singular probes. | Specialized exact executor; hosted acceptance still required |
 | vizing-domination | Exact historical 16-to-3 graph6 isomorphism and 16 domination-number-four witnesses; 491 census remains unavailable. | Independent finite historical adapter implemented; hosted acceptance pending |
@@ -236,6 +236,33 @@ This is a second source-specific finite adapter. The homelab now has
 **three mathematically specialized lanes** (AKN, arithmetic-bicycle
 and Vizing), leaving **13 registered source tracks** needing reviewed
 independent experiment adapters.
+
+## Independent Pisot–Vijayaraghavan finite Hankel adapter
+
+The new `tools/math_adapters/pisot_vijayaraghavan.py` performs an
+**exact, finite, source-SHA-pinned mathematical calculation** on the seven
+integer-recurrence specimens in `tests/test_hankel.py`. It extracts
+only AST literal arrays (never imports or executes the source code), and
+verifies the accompanying `proof/claims.toml` retains the **OPEN**
+coprime-tail branch and the **WITHDRAWN** two-state minimality claim.
+
+For each of seven recurrences it derives 36 integer terms in two distinct
+ways: the recurrence itself and companion-state transition. For twenty
+consecutive Hankel shifts it compares exact determinants from the
+**Leibniz permutation expansion** and independent fraction-free
+**Bareiss elimination**. Every order-`r` minor is nonzero, every next
+order minor is zero, the determinant transport identity holds, and a
+third **rational Gaussian elimination** reconstructs the declared
+recurrence coefficients at three shifts. Explicit Lucas and cubic
+Hankel boundary identities are reproduced. In total this creates
+**140 independently compared finite Hankel windows**.
+
+The negative controls reject missing/mutated seed arrays, invalid
+source claim statuses, and any attempt to treat a finite rank-one
+prefix as proof of an infinite tail recurrence. **Nothing in this
+adapter proves the classical PV problem, algebraicity from an
+unbounded witness, or the open bounded-gcd/coprime-tail branch.**
+Those remain separate proof obligations under source authority.
 
 ## Independent finite-Mandelbrot critical-relation adapter
 
