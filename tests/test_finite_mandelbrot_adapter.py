@@ -48,7 +48,7 @@ class FiniteMandelbrotAdapter(unittest.TestCase):
 
     def test_first_exact_critical_polynomials(self):
         self.assertEqual(critical_polynomials(101,3)[:4],[
-            (0,), (0,1), (0,1,1), (0,1,2,2,1)])
+            (0,), (0,1), (0,1,1), (0,1,1,2,1)])
         # Q_3=C^4+2C^3+C^2+C, a purely finite-field identity.
 
     def test_modified_or_missing_golden_rejected(self):
