@@ -34,8 +34,20 @@ class FiniteResultPriority(unittest.TestCase):
                 self.assertTrue(record["independent_finite_fixture_verified"])
                 self.assertFalse(record["independent_mathematical_claim_verified"])
 
+    def test_successful_subset_cannot_override_unverified_required_checks(self):
+        record={"evidence_state":"source_evidence_recorded",
+                "complete_required_ci_gate_verified":False,
+                "next_research_obligation":"Audit required-check coverage"}
+        attach_verified_finite_adapter(
+            record,self.EVIDENCE,scope_fields={})
+        self.assertEqual(record["next_research_obligation"],
+                         "Audit required-check coverage")
+        self.assertIn("exact lemma",
+                      record["mathematical_next_research_obligation"])
+
     def test_successful_observed_ci_allows_math_followup_but_not_proof(self):
         record={"evidence_state":"source_evidence_recorded",
+                "complete_required_ci_gate_verified":True,
                 "next_research_obligation":"Review open PR"}
         attach_verified_finite_adapter(
             record,self.EVIDENCE,scope_fields={})
