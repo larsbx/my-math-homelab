@@ -77,11 +77,12 @@ def registry(root=ROOT):
         if id_ == "tiling-theory":
             assert track["mode"] == "specialized_akn"
             assert track["independent_experiment"] == "scheduled_by_akn_specialist"
-        elif id_ in ("arithmetic-bicycle", "vizing-domination"):
+        elif id_ in ("arithmetic-bicycle", "vizing-domination", "finite-math-kernels"):
             assert track["mode"] == "exact_fixture_adapter"
             adapter_name = {
                 "arithmetic-bicycle": "homelab_arithmetic_matroid_v1",
                 "vizing-domination": "homelab_vizing_historical_casebase_v1",
+                "finite-math-kernels": "homelab_cyclotomic_polynomial_v1",
             }[id_]
             assert track["independent_experiment"] == adapter_name
         else:
@@ -324,6 +325,24 @@ def run(mode, out, shard=None, select_ids=None):
                         "classes": verified["iso_classes"],
                         "source_sha256": verified["source_sha256"],
                         "proof_scope": verified["scope"],
+                    })
+            elif mode == "weekly" and t["id"] == "finite-math-kernels":
+                from math_adapters.finite_math_kernels import verify_vectors
+                fixture, fixture_sha = verified_source_json(
+                    t["source_repository"], record["head_sha"],
+                    "conformance/cyclotomic_germ_v1.json")
+                verified = verify_vectors(
+                    fixture, source_commit=record["head_sha"],
+                    source_sha256=fixture_sha)
+                (out/"finite-math-kernels-exact-adapter.json").write_text(
+                    json.dumps(verified, sort_keys=True, indent=2)+chr(10),
+                    encoding="utf-8")
+                attach_verified_finite_adapter(
+                    record, verified, scope_fields={
+                        "polynomials": verified["polynomials_verified"],
+                        "primitive_powers": verified["primitive_powers_verified"],
+                        "source_fixture_sha256": verified["source_fixture_sha256"],
+                        "parabolic_coefficients_checked": False,
                     })
         except Exception as exc:
             failed.append(t["id"])
