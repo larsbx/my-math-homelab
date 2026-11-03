@@ -51,12 +51,22 @@ class FiniteMandelbrotAdapter(unittest.TestCase):
             (0,), (0,1), (0,1,1), (0,1,1,2,1)])
         # Q_3=C^4+2C^3+C^2+C, a purely finite-field identity.
 
-    def test_modified_or_missing_golden_rejected(self):
+    def test_missing_negative_control_rejected(self):
+        broken = GOLDEN_TEXT.replace("True, False, False", "True, True, False")
+        with self.assertRaisesRegex(ValueError, "^missing negative controls$"):
+            parse_golden(broken)
+
+    def test_incorrect_golden_parameter_rejected_by_verifier(self):
         broken=GOLDEN_TEXT.replace("Golden(137462, 4, 5, 1048583",
                                    "Golden(137463, 4, 5, 1048583")
-        with self.assertRaisesRegex(ValueError,"Golden finite fixture mismatch"):
+        self.assertEqual(len(parse_golden(broken)), 11)
+        with self.assertRaisesRegex(
+            ValueError, "^Golden finite fixture mismatch at 137463/1048583$"
+        ):
             verify_golden(broken,source_commit="a"*40,
                           source_sha256="b"*64)
+
+    def test_missing_golden_row_rejected(self):
         missing=GOLDEN_TEXT.replace("Golden(12345, 5, 7, 4294967291, False, False, True)","")
         with self.assertRaisesRegex(ValueError,"domain changed"):
             parse_golden(missing)
