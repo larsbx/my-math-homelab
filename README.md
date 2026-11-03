@@ -81,11 +81,11 @@ documented in
 [`docs/research/math-estate-programme.md`](docs/research/math-estate-programme.md).
 The exact AKN independent experiment remains a distinct specialist
 schedule: status 04:07 UTC daily and complete finite investigation
-04:17 UTC Monday. Two additional opt-in finite-source adapters
-(Arithmetic Bicycle and Vizing Domination) now independently replay
-the source's explicit counterexample/graph specimens each Tuesday.
-They do not prove any universal conjecture. The remaining 13 source
-tracks retain read-only monitoring and an explicit backlog for
-independently checked mathematical experiment adapters.
+04:17 UTC Monday. Four opt-in exact finite-source adapters (Arithmetic Bicycle,
+Vizing Domination, finite-math-kernels cyclotomic polynomials, and
+finite-Mandelbrot critical relations) independently replay precisely
+bounded source fixtures on the Tuesday research shards. These do not
+prove universal conjectures. The remaining 11 source tracks retain
+read-only monitoring and an explicit independent-experiment backlog.
 Source mathematical authority and locked imported histories do not
 change.
