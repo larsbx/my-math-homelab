@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "status = read-only provenance; full = run exact proof-candidate and singular probes"
+        description: "status = read-only provenance; full = run exact generic and singular research"
         type: choice
         required: true
         default: status
@@ -87,7 +87,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Execute exact-head open-chamber experiment and independent replay
+      - name: Execute exact-head generic and singular experiments
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
@@ -100,7 +100,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: homelab-akn-full-exact-certificate-and-singular-probes
+          name: homelab-akn-full-exact-research-evidence
           path: evidence-full/
           if-no-files-found: warn
           retention-days: 90

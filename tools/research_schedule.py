@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime, timezone
+from hashlib import file_digest
 import json
 import os
 from pathlib import Path
@@ -202,19 +203,7 @@ def execute_full(study, sha, fetch_ref, out, checkout):
     packet = exact / "chambers.json"
     if not packet.is_file():
         raise RuntimeError("full witness packet missing")
-    singular = out / "singular-plane-probes.json"
-    command([sys.executable, str(code / "atlas_singular_probe.py"),
-             "--packet", str(packet.resolve()), "--out", str(singular.resolve())],
-            cwd=checkout, stdout_file=out / "singular-stdout.txt")
-    replay = out / "singular-independent-replay.json"
-    command([sys.executable, str(code / "atlas_singular_check.py"),
-             str(singular.resolve()), "--out", str(replay.resolve())],
-            cwd=checkout, stdout_file=out / "singular-replay-stdout.txt")
-    result = json.loads(replay.read_text())
-    assert result["exact_interior_plane_probes_verified"] == study[
-        "singular_plane_probes"]
-    assert result["all_singular_strata_covered"] is False
-    assert result["boundary_convention_decided"] is False
+    singular = execute_singular(study, sha, out, checkout, code, packet)
     summary = json.loads((exact / "independent-replay.json").read_text())
     assert summary["coverage_verified_generic"] is True
     assert summary["independently_counted_regions"] == study[
@@ -229,6 +218,52 @@ def execute_full(study, sha, fetch_ref, out, checkout):
         "star_orbits": summary["icosahedral_star_orbits"],
         "stabilizer_conjugacy_types":
             summary["stabilizer_subgroup_conjugacy_types"],
+        **singular,
+    }
+
+
+def execute_singular(study, sha, out, checkout, code, generic_packet):
+    """Use the source's complete protocol when available on the exact ref."""
+    driver = code / "atlas_strata_driver.py"
+    if driver.is_file():
+        evidence = out / "exact-singular"
+        command([sys.executable, str(driver), "--out", str(evidence.resolve())],
+                cwd=checkout, stdout_file=out / "singular-stdout.txt")
+        record = json.loads((evidence / "singular-run.json").read_text())
+        replay_path = evidence / "singular-replay.json"
+        result = json.loads(replay_path.read_text())
+        if (record["source_revision"] != sha
+                or record["state"] != "verified_finite_singular_atlas"
+                or result["all_singular_strata_covered"] is not True):
+            raise RuntimeError("exact-head singular verification incomplete")
+        for name, path in (("packet_sha256", evidence / "singular-strata.json"),
+                           ("replay_sha256", replay_path)):
+            with path.open("rb") as stream:
+                if record[name] != file_digest(stream, "sha256").hexdigest():
+                    raise RuntimeError(f"singular evidence checksum mismatch: {name}")
+        return {
+            "singular_strata_complete": True,
+            "singular_strata_counts": result["strata_counts"],
+            "singular_orbits_by_convention_and_location": result["orbits"],
+            "singular_boundary_convention_decided":
+                result["boundary_convention_decided"],
+            "next_obligation": result["next_obligation"],
+        }
+
+    # The historically registered head remains replayable during rollout.
+    singular = out / "singular-plane-probes.json"
+    command([sys.executable, str(code / "atlas_singular_probe.py"),
+             "--packet", str(generic_packet.resolve()), "--out", str(singular.resolve())],
+            cwd=checkout, stdout_file=out / "singular-stdout.txt")
+    replay = out / "singular-independent-replay.json"
+    command([sys.executable, str(code / "atlas_singular_check.py"),
+             str(singular.resolve()), "--out", str(replay.resolve())],
+            cwd=checkout, stdout_file=out / "singular-replay-stdout.txt")
+    result = json.loads(replay.read_text())
+    assert result["exact_interior_plane_probes_verified"] == study["singular_plane_probes"]
+    assert result["all_singular_strata_covered"] is False
+    assert result["boundary_convention_decided"] is False
+    return {
         "singular_plane_probes": result["exact_interior_plane_probes_verified"],
         "singular_strata_complete": False,
         "next_obligation": (
@@ -265,19 +300,21 @@ def run(mode, out, checkout=None):
     try:
         snap = snapshot(study)
         record.update(snap)
+        persist()
         if mode == "full":
             if checkout is None:
                 raise ValueError("full mode requires --checkout outside imported trees")
             evidence = execute_full(study, snap["source_head_sha"],
                                     snap["source_fetch_ref"], out, checkout)
             record["verified_experiment"] = evidence
-            record["status"] = "finite_generic_candidate_verified"
+            record["status"] = ("finite_generic_and_singular_atlas_verified"
+                                if evidence["singular_strata_complete"]
+                                else "finite_generic_candidate_verified")
         else:
             record["status"] = "status_recorded"
-        record["next_obligation"] = (
-            "Review source PR #22 and #23 exact-head CI and finish issue #24 "
-            "singular-stratum proof; never promote finite evidence automatically."
-        )
+        record["next_obligation"] = record.get("verified_experiment", {}).get(
+            "next_obligation", "Review exact-head CI for source PRs #22 and #23 "
+            "and the evidence recorded under issue #24.")
     except Exception as exc:
         record["status"] = "incomplete"
         record["error"] = f"{type(exc).__name__}: {exc}"
@@ -291,7 +328,8 @@ def run(mode, out, checkout=None):
         record["finished_at_utc"] = datetime.now(timezone.utc).isoformat()
         persist()
     return 0 if record["status"] in (
-        "status_recorded", "finite_generic_candidate_verified") else 1
+        "status_recorded", "finite_generic_candidate_verified",
+        "finite_generic_and_singular_atlas_verified") else 1
 
 
 def main():

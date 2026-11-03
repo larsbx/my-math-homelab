@@ -1,4 +1,5 @@
 """Offline conformance for the homelab AKN research registration/scheduler."""
+from hashlib import sha256
 import json
 from pathlib import Path
 import sys
@@ -109,6 +110,40 @@ class ResearchScheduleContract(unittest.TestCase):
             saved = json.loads((evidence/"research-cycle.json").read_text())
             self.assertEqual(saved["status"], "finite_generic_candidate_verified")
             self.assertFalse(saved["verified_experiment"]["singular_strata_complete"])
+
+    def test_complete_singular_handoff_requires_head_and_artifact_digests(self):
+        sha = snapshots()[23]["head_sha"]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root/"atlas_strata_driver.py").touch()
+            evidence = root/"exact-singular"
+            evidence.mkdir()
+            replay = json.dumps({
+                "all_singular_strata_covered": True, "strata_counts": [1, 2, 3],
+                "orbits": {}, "boundary_convention_decided": False,
+                "next_obligation": "review singular selections",
+            }).encode()
+            (evidence/"singular-strata.json").write_bytes(b"packet")
+            (evidence/"singular-replay.json").write_bytes(replay)
+            record = {
+                "source_revision": sha, "state": "verified_finite_singular_atlas",
+                "packet_sha256": sha256(b"packet").hexdigest(),
+                "replay_sha256": sha256(replay).hexdigest(),
+            }
+            path = evidence/"singular-run.json"
+            path.write_text(json.dumps(record))
+            with patch.object(rs, "command") as command:
+                def replay_singular(head):
+                    return rs.execute_singular(rs.load_study(), head, root, root,
+                                               root, root/"generic.json")
+
+                self.assertTrue(replay_singular(sha)["singular_strata_complete"])
+                self.assertIn(str(root/"atlas_strata_driver.py"), command.call_args.args[0])
+                with self.assertRaisesRegex(RuntimeError, "exact-head"):
+                    replay_singular("a"*40)
+                (evidence/"singular-strata.json").write_bytes(b"tampered")
+                with self.assertRaisesRegex(RuntimeError, "checksum mismatch"):
+                    replay_singular(sha)
 
     def test_status_failure_retains_unaccepted_evidence(self):
         with tempfile.TemporaryDirectory() as tmp:

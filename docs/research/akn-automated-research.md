@@ -48,7 +48,7 @@ history-preserving importer and a separate reviewed PR.
 | Trigger | UTC schedule | Action |
 | --- | --- | --- |
 | Daily source monitor | `07 04 * * *` | Read PR #22/#23 exact GitHub heads, source issue #24, and available exact-head Actions runs; retain JSON status/evidence. |
-| Weekly full mathematical research | `17 04 * * 1` (Monday) | Fetch PR #23 **exact** head SHA, reproduce full 135-plane chamber candidate and independent proof replay, classify 24 star orbits and six stabilizer conjugacy types, then generate/replay 105 exact singular-plane probes. |
+| Weekly full mathematical research | `17 04 * * 1` (Monday) | Fetch PR #23 **exact** head SHA, reproduce full 135-plane chamber candidate and independent proof replay, classify 24 star orbits and six stabilizer conjugacy types, then run the source-owned exhaustive singular checker when available. Historical source revisions retain the 105-probe replay. |
 | Pull request | On changes to registry, coordinator, tests or workflow | Validate schedule and authority invariants; record live source status. Do not run expensive full experiment automatically on every workspace PR. |
 | Manual dispatch | `status` or `full` | Replay the same procedure on demand with source provenance retained. |
 
@@ -60,6 +60,11 @@ inspected exact revision.** A race, unexpectedly forked PR, or
 closed-unmerged research branch fails closed. The exact SHA and source
 ref are written to `research-cycle.json`; the registration SHA is
 historical provenance, not a stale frozen execution target.
+
+The complete singular protocol verifies the source revision and the two
+evidence digests before reporting singular coverage. It preserves the source
+driver's cell-pattern counterexamples and keeps boundary-convention
+realizability separate from geometric stratum completeness.
 
 Artifact output includes the source revision, exact witness packet,
 independent replay, forced/closed-possible singular cell experiments,
