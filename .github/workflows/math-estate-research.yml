@@ -8,6 +8,7 @@ on:
       - "tools/math_adapters/**"
       - "tests/test_math_research_portfolio.py"
       - "tests/test_*_adapter.py"
+      - "tests/test_math_research_triage.py"
       - "docs/research/math-estate-programme.md"
       - ".github/workflows/math-estate-research.yml"
       - "policy/source-locks.toml"
@@ -48,6 +49,8 @@ jobs:
           python -m unittest discover -s tests -p 'test_math_research_portfolio.py' -v
           python -m unittest discover -s tests -p 'test_arithmetic_bicycle_adapter.py' -v
           python -m unittest discover -s tests -p 'test_vizing_domination_adapter.py' -v
+          python -m unittest discover -s tests -p 'test_finite_math_kernels_adapter.py' -v
+          python -m unittest discover -s tests -p 'test_math_research_triage.py' -v
 
   daily-source-research:
     if: >-
