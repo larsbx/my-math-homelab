@@ -104,8 +104,9 @@ the retrieved bytes and independently stores their SHA-256**, rejecting
 a mismatch. Current open PRs, issue titles and exact-head GitHub
 Actions runs are captured with their precise source commit IDs.
 
-This proves file/revision provenance, **not the truth of mathematics
-written in those files**. A CI failure or pending run is flagged.
+For public sources, this proves file/revision provenance, **not the
+truth of mathematics written in those files**. Private sources are
+isolated, not probed or presented as successfully inspected. A CI failure or pending run is flagged.
 A stale imported tree is registered as provenance drift, never modified
 automatically. Missing files, malformed registration, unavailable APIs
 and unexpected source revisions fail closed and retain errors.
@@ -114,6 +115,42 @@ Evidence is published as machine-readable per-programme JSON plus
 `portfolio-index.json`, using four disjoint weekly shards to limit
 resource use. Artifacts are retained for 90 days under the GitHub
 Actions policy.
+
+## Private-source isolation and first scheduled-run repair
+
+The first estate-wide scheduled daily run on **2026-11-02**
+([workflow 41447971436](https://github.com/larsbx/my-math-homelab/actions/runs/41447971436))
+failed on three HTTP 404 responses. Inspection of the actual source
+repository permissions established that `closure-fiber`, `finite-julia`,
+and `giant-fibers` are currently **private**, although the October 9
+import locks still declare them public. A homelab-scoped GitHub Actions
+`GITHUB_TOKEN` is not authorized to read those private repositories.
+
+**Do not solve this by passing a broad private token into a publicly
+accessible workflow artifact.** The homelab is a public repository.
+Private revision IDs, source issue/PR titles, file content and file
+hashes must not be written to its public evidence artifacts.
+
+These three sources are explicitly marked
+`source_access_policy = "private_isolated"` and the portfolio now
+refuses to contact them from the public homelab coordinator.
+The public daily/weekly index records only the already-registered
+source name and a coarse `private_source_isolated` / 
+`requires_private_source_runner` status, with
+`source_contents_retrieved=false`, no exact head and no source CI
+details. All other source records still fail closed if an unexpected
+private repository is discovered.
+
+**Research execution for those three must move into source-owned private
+workflows**, with source-scoped credentials and private artifacts.
+Any aggregate published to the public homelab needs a separately
+reviewed information-release contract. Until that exists, no private
+exact-head research result is claimed verified by the homelab.
+
+The import source-lock visibility mismatch is separately recorded for
+governance review. This change does not rewrite locked imported source
+histories, grant a token broader access, or turn a successful public
+portfolio run into proof that the private research jobs executed.
 
 ## Research automation versus monitoring
 
