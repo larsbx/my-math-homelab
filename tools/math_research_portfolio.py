@@ -263,7 +263,7 @@ def attach_verified_finite_adapter(record, verified, *, scope_fields):
     record["independent_mathematical_claim_verified"] = False
     record["mathematical_next_research_obligation"] = verified[
         "next_research_obligation"]
-    if record["evidence_state"] == "source_evidence_recorded":
+    if record.get("complete_required_ci_gate_verified") is True:
         record["next_research_obligation"] = verified[
             "next_research_obligation"]
 
