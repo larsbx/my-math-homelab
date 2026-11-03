@@ -246,6 +246,26 @@ def observe(track, lock, mode):
     }
 
 
+def attach_verified_finite_adapter(record, verified, *, scope_fields):
+    """Keep source CI triage primary while retaining independent math frontier.
+
+    Independent finite replay is evidence, not confirmation that every required
+    source workflow passed. Never overwrite a pending/failing CI obligation.
+    """
+    record["independent_exact_finite_adapter"] = {
+        "schema": verified["schema"], "result": verified["verdict"],
+        **scope_fields,
+    }
+    record["research_stage"] = "independent_finite_fixture_replayed"
+    record["independent_finite_fixture_verified"] = True
+    record["independent_mathematical_claim_verified"] = False
+    record["mathematical_next_research_obligation"] = verified[
+        "next_research_obligation"]
+    if record["evidence_state"] == "source_evidence_recorded":
+        record["next_research_obligation"] = verified[
+            "next_research_obligation"]
+
+
 def select(tracks, mode, shard=None, select_ids=None):
     assert mode in ("daily", "weekly")
     if shard is not None:
@@ -278,19 +298,12 @@ def run(mode, out, shard=None, select_ids=None):
                 (out/"arithmetic-bicycle-exact-adapter.json").write_text(
                     json.dumps(verified, sort_keys=True, indent=2)+chr(10),
                     encoding="utf-8")
-                record["independent_exact_finite_adapter"] = {
-                    "schema": verified["schema"],
-                    "result": verified["verdict"],
-                    "cases": verified["finite_modulus_cases"],
-                    "source_fixture_sha256": verified["source_fixture_sha256"],
-                    "proof_scope": verified["scope"],
-                }
-                record["research_stage"] = "independent_finite_fixture_replayed"
-                record["independent_finite_fixture_verified"] = True
-                # Passing 6 finite examples is NEVER a general theorem proof.
-                record["independent_mathematical_claim_verified"] = False
-                record["next_research_obligation"] = verified[
-                    "next_research_obligation"]
+                attach_verified_finite_adapter(
+                    record, verified, scope_fields={
+                        "cases": verified["finite_modulus_cases"],
+                        "source_fixture_sha256": verified["source_fixture_sha256"],
+                        "proof_scope": verified["scope"],
+                    })
             elif mode == "weekly" and t["id"] == "vizing-domination":
                 from math_adapters.vizing_domination import verify_casebase
                 graph6, graph6_sha = verified_source_text(
@@ -305,19 +318,13 @@ def run(mode, out, shard=None, select_ids=None):
                 (out/"vizing-domination-exact-adapter.json").write_text(
                     json.dumps(verified, sort_keys=True, indent=2)+chr(10),
                     encoding="utf-8")
-                record["independent_exact_finite_adapter"] = {
-                    "schema": verified["schema"],
-                    "result": verified["verdict"],
-                    "historical_entries": verified["n_graphs"],
-                    "classes": verified["iso_classes"],
-                    "source_sha256": verified["source_sha256"],
-                    "proof_scope": verified["scope"],
-                }
-                record["research_stage"] = "independent_finite_fixture_replayed"
-                record["independent_finite_fixture_verified"] = True
-                record["independent_mathematical_claim_verified"] = False
-                record["next_research_obligation"] = verified[
-                    "next_research_obligation"]
+                attach_verified_finite_adapter(
+                    record, verified, scope_fields={
+                        "historical_entries": verified["n_graphs"],
+                        "classes": verified["iso_classes"],
+                        "source_sha256": verified["source_sha256"],
+                        "proof_scope": verified["scope"],
+                    })
         except Exception as exc:
             failed.append(t["id"])
             record = {
